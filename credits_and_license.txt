@@ -1,0 +1,221 @@
+https://license.paramarines.com/
+
+
+Since multiple contributors helped, the license varies between the PBO's. Please reference below to the specific PBO's to find the source. All PBO's in this pack have been modified in some form for the use by the PTF and are used in a non-commercial manner. They are only modified and uploaded with the permission of the original authors.
+
+Template:
+
+Mod: 
+Author: 
+Source Link: 
+License: 
+Includes PBO files:
+
+========================================================================================================================
+Mod: D3S Cars Pack (Modified)
+Original Author: Perseus Mar 
+Source Link: https://steamcommunity.com/workshop/filedetails/?id=1641826228
+License: https://www.gnu.org/licenses/quick-guide-gplv3.html
+License Basics: Use however you want, but attribute Perseus Mar
+Description: Includes a number of vehicles for the PTF pack, which we have been modified to be more realistic in terms of performance and capability.
+Included PBO files:
+d3s_cars_core.pbo
+d3s_cars_core_18.pbo
+d3s_escalade_16.pbo
+d3s_fseries_15.pbo
+d3s_peterbilt_579.pbo
+d3s_savana_05.pbo
+d3s_scripts.pbo
+d3s_SRmh_9500.pbo
+d3s_tahoe_08.pbo
+d3s_tundra_19.pbo
+d3s_tundra_19_2.pbo
+
+========================================================================================================================
+Mod: Paramarine Task Force - Core (Original Content)
+Original Author: Paramarine Task Force, Member, S4
+Source Link: www.Paramarines.com
+License: https://www.bohemia.net/community/licenses/arma-public-license-nd
+License Basics: You can use this on your server, but you cannot reupload to Steam or modify the source, and must attribute it with the following text: "This mod was provided by the Paramarine Task Force Milsim Unit, located at www.Paramarines.com".
+Included PBO files:
+DIHatUSMC.pbo
+PTF_Main.pbo
+PTF_Aircraft.pbo
+PTF_Clothes.pbo
+PTF_Models.pbo
+PTF_Textures.pbo
+PTF_Utility.pbo
+PTF_Vehicles.pbo
+PTF_TextureOverride_C130J.pbo
+PTF_TextureOverride_RQ4A.pbo
+PTF_TextureOverride_UH1Y.pbo
+
+========================================================================================================================
+Mod: US WWII Class A Dress Uniform
+Original Author: Unitatoe24
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2179846660
+License: https://www.gnu.org/licenses/quick-guide-gplv3.html
+License Basics: You cannot share this PBO. You can head straight to the author at the source link to get permission and download the full version.
+Included PBO files:
+riku_class_a.pbo
+
+========================================================================================================================
+Mod: Splendid Smoke
+Original Author: ZabuzaW
+Source Link: https://github.com/Zabuzard/SplendidSmoke
+License: https://www.gnu.org/licenses/quick-guide-gplv3.html
+License Basics: Use however you want, but attribute ZabuzaW
+Included PBO files:
+Zab_splendid_smoke.pbo
+
+========================================================================================================================
+Mod: Harvey Point
+Original Author: Sigma
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=1932265107
+License: Unknown, contact author for permission.
+License Basics: Unknown, contact author for permission.
+Special Permission: Sigma has given us specific permission to fix aspects of Harvey Point that prevented signatures. PTF Core will hold Harvey Point until the changes are made to the primary Harvey Point upload.
+Included PBO files:
+plp_containers.pbo
+opxbuildings.pbo
+harvey.pbo
+wgl_objects.pbo
+TaunusObjects.pbo
+EMOGLOBINSKY.pbo
+mm_buildings.pbo
+opxmisc.pbo
+plp_materials.pbo
+mbg_killhouses_a3.pbo
+mm_buildings3.pbo
+opxplants.pbo
+mm_bank.pbo
+mm_buildings2.pbo
+mm_residential2.pbo
+mm_residential.pbo
+SigmaSigns.pbo
+mm_post.pbo
+wgl_static_vehicles.pbo
+mm_buildings4.pbo
+hag_objects.pbo
+MM_objects.pbo
+
+======================================================================
+Mod: BackpackOnChest - Redux
+Author: mjc4wilton
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2372036642
+License: MIT
+Includes PBO files:
+bocr_main.pbo
+
+======================================================================
+Mod: Sling Load Rigging
+Author: Ampersand
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2128676112
+License: MIT
+Includes PBO files:
+slr_main.pbo
+slr_slingload.pbo
+
+======================================================================
+Mod: Breaching Charge
+Author: Ampersand
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=1314910827
+License: MIT
+Includes PBO files:
+bcdw_main.pbo
+bcdw_wedge.pbo
+
+===================================================================================
+Mod: Alternative Running
+Author: WebKnight
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2198339170
+License: Unknown, contact author for permission.
+License Basics: Unknown, contact author for permission.
+Special Permission: WebKnight has given PTF permission to reupload to steam workshop
+Includes PBO files:
+AlternativeRunning.pbo
+
+===================================================================================
+Mod: 6 x 6 All Terrain Vehicle
+Author: Neddles
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=1190934425
+License: Arma Public License
+Includes PBO files:
+NDS_6x6_ATV.pbo
+NDS_M224_mortar.pbo
+
+======================================================================
+Mod: BoxLoader - Vehicle in Vehicle loading
+Author: Vurtual
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=1199318917
+License: Arma Public License
+Includes PBO files:
+boxloader.pbo
+boxloader_cargo.pbo
+boxloader_fort.pbo
+boxloader_pallet.pbo
+boxloader_retrofit.pbo
+boxloader_tractor.pbo
+
+======================================================================
+Mod: cTab
+Author: Riouken
+Source Link: https://github.com/Riouken/cTab
+License: GNU General Public License v2.0
+Includes PBO files:
+ctab.pbo
+
+======================================================================
+Mod: MAAWS Additional Ammo
+Author: Neonex
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2589302544
+License: Unknown - requests credit in publicly accessible space
+Includes PBO files:
+MAA.pbo
+
+======================================================================
+Mod: Moe's Coveralls
+Author: 556Moe
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2127190744
+License: Unknown - Contact author
+Special Permission: 556Moe has given PTF permission to reupload to steam workshop
+Includes PBO files:
+MoeCoveralls.pbo
+MoeUnits.pbo
+MoeVests.pbo
+
+======================================================================
+Mod: Turret Enhanced
+Author: Fat_Lurch
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=1623498241
+License: Unknown, Share Alike
+Includes PBO files:
+Turret_Enhanced.pbo
+
+======================================================================
+Mod: Snowmobile
+Author: Xacuda
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2329040153
+License: Unknown, doesn't care about sharing
+Includes PBO files:
+xs_Snowmobile.pbo
+
+======================================================================
+Mod: M224 60mm Mortar (ACE)
+Author: ArmedVeteran
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2472780935
+License: Unknown, doesn't care about sharing
+Includes PBO files:
+avm224_main.pbo
+avm224_mortar.pbo
+
+======================================================================
+Mod: Ace Pharmacy
+Author: MJSTIC
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2558422366
+License: Unknown, contact author
+Special Permission: MJSTIC has given PTF permission to reupload to steam workshop
+Includes PBO files:
+circulation.pbo
+gui.pbo
+main.pbo

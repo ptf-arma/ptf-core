@@ -1,0 +1,6 @@
+//<'DIHatUSMC.pbo' properties via Mikero's dos tools, dll version 7.97>
+prefix=DIHatUSMC;
+Mikero=DePbo.dll.6.61;
+version=18020718;
+//PboType=Arma Addon;
+//</properties>
