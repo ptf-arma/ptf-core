@@ -38,6 +38,7 @@ class CfgPatches
           "PTF_Cargo_Industrial_Repair",
           "PTF_Cargo_Tiny_Ammo",
           "PTF_Cargo_Ammo",
+          "PTF_Aircraft_Spawner",
           "PTF_Standard_Arsenal_No_Ammo"};
       weapons[] = {};
       requiredVersion = 1.32;
@@ -73,6 +74,7 @@ class cfgVehicles
 #include "cfgFortHeavy.hpp"
 #include "cfgTools.hpp"
 #include "cfgFortLight.hpp"
+#include "cfgAircraftSpawner.hpp"
 };
 class Extended_InitPost_EventHandlers
 {
