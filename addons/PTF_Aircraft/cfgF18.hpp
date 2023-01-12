@@ -51,9 +51,3 @@ class PTF_F18D : FIR_F18D
    displayName = "F-18D Hornet [MAG36]";
    hiddenselectionstextures[] = {"PTF_Textures\aircraft\FA18D\VMFA 542\body_co.paa","PTF_Textures\aircraft\FA18D\VMFA 542\wing_co.paa","",""};		
 };
-
-class PTF_F18D_CAG : PTF_F18D
-{
-   displayName = "F-18D Hornet CAG [MAG36]";
-   hiddenselectionstextures[] = {"PTF_Textures\aircraft\FA18D\VMFA 542 CAG\body_co.paa","PTF_Textures\aircraft\FA18D\VMFA 542 CAG\wing_co.paa","",""};
-}
