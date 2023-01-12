@@ -32,8 +32,7 @@ class CfgPatches
           "PTF_AV8B",
 		  "PTF_F18C",
 		  "PTF_F18C_CAG",
-		  "PTF_F18D",
-		  "PTF_F18D_CAG"
+		  "PTF_F18D"
           };
       weapons[] = {
           "PTF_weap_mastersafe"};
