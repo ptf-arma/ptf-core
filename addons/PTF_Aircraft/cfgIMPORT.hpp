@@ -34,6 +34,9 @@ class Helicopter_Base_F;
 class ViewOptics;
 //AV-8B Harrier
 class FIR_AV8B;
+//F-18 Hornets
+class FIR_F18C;
+class FIR_F18D;
 //Misc.
 class MainTurret;
 class AnimationSources;
