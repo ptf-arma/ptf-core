@@ -219,3 +219,15 @@ Includes PBO files:
 circulation.pbo
 gui.pbo
 main.pbo
+
+Mod: Grad Trenches
+Author: Gruppe Adler
+Source Link: https://github.com/gruppe-adler/grad_trenches
+License: https://github.com/gruppe-adler/grad_trenches/blob/master/LICENSE
+Changes: PTF has modified Grad Trenches to make non-engineers take 10x longer to dig trenches than engineers. Currently this is a hard-coded number. We have the intent to eventually make this a variable so that other groups may use it, and PR it back into the main Grad Trenches git. 
+
+Includes PBO files:
+grad_trenches_assets.pbo
+grad_trenches_functions.pbo
+grad_trenches_main.pbo
+grad_trenches_sounds.pbo

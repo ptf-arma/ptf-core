@@ -5,6 +5,7 @@ class PTF_Uniform_Air_CSU13BP_WD : CSU13BP_Base_NG
    faction = "BLU_F";
    displayName = "[Air] CSU-13B/P (WD) [PTF]";
    author = "Paramarine Task Force";
+   ACE_GForceCoef = 0.8;	
    class ItemInfo : ItemInfo
    {
       containerClass = "Supply60";
@@ -18,6 +19,7 @@ class PTF_Uniform_Air_CSU13BP_D : CSU13BPTan_Base_NG
    faction = "BLU_F";
    displayName = "[Air] CSU-13B/P (D) [PTF]";
    author = "Paramarine Task Force";
+   ACE_GForceCoef = 0.8;	
    class ItemInfo : ItemInfo
    {
       containerClass = "Supply60";

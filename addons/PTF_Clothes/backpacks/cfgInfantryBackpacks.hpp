@@ -1,32 +1,3 @@
-class PTF_Backpack_Infantry_Corpsman_LR : TFAR_Bag_Base
-{
-   displayName="[PTF] Corpsman LR Backpack";
-   descriptionShort="RT-1523G (ASIP) + VHF/ UHF Antenna (15km)";
-   author="Paramarines Task Force";
-   scope=2;
-   scopeCurator=2;
-   scopeArsenal=2;
-   editorPreview="";
-   model="y\tfw_radios\addons\ilbe\data\model\dd\tfw_dd_ilbe.p3d";
-   hiddenSelections[]=
-   {
-      "camo"
-   };
-   maximumLoad=500;
-   mass=50;
-   isbackpack=1;
-   picture="y\tfw_radios\addons\ilbe\data\icons\ilbe_icon_coy.paa";
-   hiddenSelectionsTextures[]=
-   {
-      "y\tfw_radios\addons\ilbe\data\model\ilbe_coy_co.paa"
-   };
-
-   //TFAR shit
-   tf_encryptionCode="tf_west_radio_code";
-   tf_dialog="rt1523g_radio_dialog";
-   tf_subtype="digital_lr";
-   tf_range=15000;
-};
 class PTF_Backpack_Infantry_Kitbag : B_Kitbag_cbr
 {
    scope = 2;
