@@ -29,7 +29,10 @@ class CfgPatches
           "PTF_RQ4A_HQ",
           "PTF_C17",
           "PTF_KC135",
-          "PTF_AV8B"
+          "PTF_AV8B",
+		  "PTF_F18C",
+		  "PTF_F18C_CAG",
+		  "PTF_F18D"
           };
       weapons[] = {
           "PTF_weap_mastersafe"};
@@ -61,6 +64,7 @@ class cfgVehicles
 #include "cfgAH1Z.hpp"
 #include "cfgC130J.hpp"
 #include "cfgCH53.hpp"
+#include "cfgF18.hpp"
 #include "cfgMQ9.hpp"
 #include "cfgC17.hpp"
 #include "cfgKC135.hpp"
