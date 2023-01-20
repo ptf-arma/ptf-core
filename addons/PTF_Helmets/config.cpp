@@ -9,8 +9,8 @@ class cfgPatches
 		requiredVersion="0.1";
 		requiredAddons[]=
 		{
-         "rhsusf_infantry"
-         
+         "rhsusf_infantry",
+         "USP_GEAR_Head"
 		};
 	};
 };
