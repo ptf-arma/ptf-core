@@ -16,10 +16,14 @@ class cfgPatches
 };
 class cfgWeapons
 {
-class rhsusf_ach_helmet_headset_ucp_alt;
-class HitpointsProtectionInfo;
-class ItemInfo;
-class Head;
+   class rhsusf_ach_helmet_headset_ucp_alt;
+   class HitpointsProtectionInfo;
+   class ItemInfo;
+   class Head;
+   class USP_OPS_FASTXP_TAN;
+   class USP_OPS_FASTXP_CO_TAN;
+   class USP_OPS_FASTXP_CT_TAN;
+   class USP_OPS_FASTXP_CU_TAN;
    class PTF_Helmet_Cook_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    {
       scope = 2;
