@@ -303,9 +303,3 @@ class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_uc
       };
    };
 };
-
-class cfgMods
-{
-	author="3S-15 | M.Hawkins";
-	timepacked="1672997575";
-};
