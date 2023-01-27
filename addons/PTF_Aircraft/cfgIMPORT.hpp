@@ -37,6 +37,8 @@ class FIR_AV8B;
 //F-18 Hornets
 class FIR_F18C;
 class FIR_F18D;
+//Super Tucano
+class RHSGREF_A29B_HIDF;
 //Misc.
 class MainTurret;
 class AnimationSources;
