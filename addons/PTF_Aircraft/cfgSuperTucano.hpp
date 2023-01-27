@@ -19,6 +19,18 @@ class PTF_SuperTucano : RHSGREF_A29B_HIDF
    fuelCapacity = 500;
    author = "Paramarine Task Force";
    displayName = "SuperTucano [MAG36]";
-   hiddenSelections[] = {"camo0","camo1","camo2","camo3","MFD_Pilot_L","MFD_Pilot_R","MFD_WSO_L","MFD_WSO_R","n1","n2","n3","n4","n5","n6"};
-   hiddenSelectionsTextures[] = {"PTF_Textures\aircraft\Super Tucano\Trainer\ST_Fuselage_Navy_co.paa","PTF_Textures\aircraft\Super Tucano\Trainer\ST_WingsAndStabs_Navy_co.paa","PTF_Textures\aircraft\Super Tucano\Trainer\ST_EverythingElse_Navy_co.paa"};		
+
+	class textureSources
+	{
+		class PTF_Trainer
+		{
+			author = "$STR_RHS_AUTHOR_FULL";
+			displayName = "PTF_Trainer";
+			textures[] = {"PTF_Textures\aircraft\Super Tucano\Trainer\ST_Fuselage_Navy_co.paa","PTF_Textures\aircraft\Super Tucano\Trainer\ST_WingsAndStabs_Navy_co.paa","PTF_Textures\aircraft\Super Tucano\Trainer\ST_EverythingElse_Navy_co.paa",""};		
+			factions[] = {};
+		};
+   };
+
+   textureList[] = {"PTF_Trainer",1};
+
 };
