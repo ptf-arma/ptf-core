@@ -9,17 +9,120 @@ class cfgPatches
 		requiredVersion="0.1";
 		requiredAddons[]=
 		{
-         "rhsusf_infantry"
-         
+         "rhsusf_infantry",
+         "USP_GEAR_Head"
 		};
 	};
 };
 class cfgWeapons
 {
-class rhsusf_ach_helmet_headset_ucp_alt;
-class HitpointsProtectionInfo;
-class ItemInfo;
-class Head;
+   class rhsusf_ach_helmet_headset_ucp_alt;
+   class HitpointsProtectionInfo;
+   class ItemInfo;
+   class Head;
+   class USP_OPS_FASTXP_TAN;
+   class USP_OPS_FASTXP_CO_TAN;
+   class USP_OPS_FASTXP_CT_TAN;
+   class USP_OPS_FASTXP_CU_TAN;
+   class PTF_Helmet_FASTXP_TAN : USP_OPS_FASTXP_TAN
+   {
+      scopeArsenal = 2;
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] FAST XP (TAN)";
+      author = "Paramarine Task Force";
+      ace_hearing_protection = 0.8;
+      ace_hearing_lowerVolume = 0;
+      class ItemInfo : ItemInfo
+      {
+         mass = 20;
+         class HitpointsProtectionInfo
+         {
+            class Head
+            {
+               hitpointName = "HitHead";
+               armor = 6;
+               passThrough = 0.5;
+            };
+         };
+      };
+   };
+   class PTF_Helmet_FASTXP_CO_TAN : USP_OPS_FASTXP_CO_TAN
+   {
+      scopeArsenal = 2;
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] FAST XP CO (TAN)";
+      author = "Paramarine Task Force";
+      ace_hearing_protection = 0.8;
+      ace_hearing_lowerVolume = 0;
+      class ItemInfo : ItemInfo
+      {
+         mass = 20;
+         class HitpointsProtectionInfo
+         {
+            class Head
+            {
+               hitpointName = "HitHead";
+               armor = 6;
+               passThrough = 0.5;
+            };
+         };
+      };
+   };
+   class PTF_Helmet_FASTXP_CT_TAN : USP_OPS_FASTXP_CT_TAN
+   {
+      scopeArsenal = 2;
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] FAST XP CT (TAN)";
+      author = "Paramarine Task Force";
+      ace_hearing_protection = 0.8;
+      ace_hearing_lowerVolume = 0;
+      class ItemInfo : ItemInfo
+      {
+         mass = 20;
+         class HitpointsProtectionInfo
+         {
+            class Head
+            {
+               hitpointName = "HitHead";
+               armor = 6;
+               passThrough = 0.5;
+            };
+         };
+      };
+   };
+   class PTF_Helmet_FASTXP_CU_TAN : USP_OPS_FASTXP_CU_TAN
+   {
+      scopeArsenal = 2;
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] FAST XP CU (TAN)";
+      author = "Paramarine Task Force";
+      ace_hearing_protection = 0.8;
+      ace_hearing_lowerVolume = 0;
+      class ItemInfo : ItemInfo
+      {
+         mass = 20;
+         class HitpointsProtectionInfo
+         {
+            class Head
+            {
+               hitpointName = "HitHead";
+               armor = 6;
+               passThrough = 0.5;
+            };
+         };
+      };
+   };
+
+
+   
    class PTF_Helmet_Cook_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    {
       scope = 2;
