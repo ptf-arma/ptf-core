@@ -27,7 +27,7 @@ class CfgVehicles
 				position="pos driver";
 				onlyforplayer=1;
 				radius=10.0;
-				condition="this == player && getPlayerUID player == ""76561198085725205""";
+				condition="this == player && (getPlayerUID player == ""76561198085725205"" || getPlayerUID player == ""76561198077095616"")";
 				statement="[] execVM ""PTF_GCam\gcam.sqf""";
 			};
 		};
