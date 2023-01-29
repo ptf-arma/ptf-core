@@ -107,8 +107,8 @@ class PTF_SSO_AR2 : B_UAV_01_F
          gunnerForceOptics = 1;
          turretInfoType = "RscOptics_UAV_gunner";
          stabilizedInAxes = 3;
-         weapons[] = {""};
-         magazines[] = {""};
+         weapons[] = {"Laserdesignator_mounted"};
+         magazines[] = {"Laserbatteries"};
          soundServo[] = {"A3\Sounds_F\vehicles\air\noises\servo_drone_turret_2", 0.031622775, 0.5, 10};
          soundServoVertical[] = {"A3\Sounds_F\vehicles\air\noises\servo_drone_turret_2", 0.031622775, 0.5, 10};
          GunnerCompartments = "Compartment1";
