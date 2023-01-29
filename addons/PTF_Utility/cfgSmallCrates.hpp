@@ -171,9 +171,9 @@ class PTF_Cargo_Small_Medical : Boxloader_SmallPallet_Ammo
       item_xx(ACE_bodyBag, 5);
       item_xx(ACE_surgicalKit, 2);
       item_xx(ACE_CableTie, 5);
-      item_xx(ACE_salineIV, 10);
-      item_xx(ACE_salineIV_250, 15);
-      item_xx(ACE_salineIV_500, 15);
+      item_xx(ACE_plasmaIV, 10);
+      item_xx(ACE_plasmaIV_250, 15);
+      item_xx(ACE_plasmaIV_500, 15);
    };
 };
 class PTF_Cargo_Small_Humanitarian : Boxloader_SmallPallet_Ammo
