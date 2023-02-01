@@ -386,7 +386,7 @@ class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_uc
       author = "Paramarine Task Force";
       hiddenSelections[] = {"Camo1", "Camo2"};
       hiddenSelectionsTextures[] = {
-         "PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_gute.paa.paa",
+         "PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_gute.paa",
          "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
          };
       ace_hearing_protection = 0.8;

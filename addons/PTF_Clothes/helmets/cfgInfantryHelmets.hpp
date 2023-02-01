@@ -577,7 +577,7 @@ class PTF_Helmet_1st_plt_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_al
    scope = 2;
    side = 1;
    faction = "BLU_F";
-   displayName = "[Inf] MICH 2000 (WD) 1st Plr.";
+   displayName = "[Inf] MICH 2000 (WD) 1st Plt.";
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {

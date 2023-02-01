@@ -159,9 +159,9 @@ class PTF_Cargo_Large_Medical : Boxloader_Ammo_West
       item_xx(ACE_bodyBag, 10);
       item_xx(ACE_surgicalKit, 10);
       item_xx(ACE_CableTie, 20);
-      item_xx(ACE_salineIV, 20);
-      item_xx(ACE_salineIV_250, 30);
-      item_xx(ACE_salineIV_500, 30);
+      item_xx(ACE_plasmaIV, 20);
+      item_xx(ACE_plasmaIV_250, 30);
+      item_xx(ACE_plasmaIV_500, 30);
    };
 };
 class PTF_Cargo_Large_Cargo : Boxloader_Ammo_West

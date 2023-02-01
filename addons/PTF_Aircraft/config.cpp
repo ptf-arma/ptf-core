@@ -32,7 +32,8 @@ class CfgPatches
           "PTF_AV8B",
 		  "PTF_F18C",
 		  "PTF_F18C_CAG",
-		  "PTF_F18D"
+		  "PTF_F18D",
+          "PTF_SuperTucano"
           };
       weapons[] = {
           "PTF_weap_mastersafe"};
@@ -52,7 +53,8 @@ class CfgPatches
           "CUP_AirVehicles_MQ9",
           "ace_interaction",
           "USAF_C130J",
-          "FIR_AV8B_F"
+          "FIR_AV8B_F",
+          "rhsgref_a29"
           };
    };
 };
@@ -65,6 +67,7 @@ class cfgVehicles
 #include "cfgC130J.hpp"
 #include "cfgCH53.hpp"
 #include "cfgF18.hpp"
+#include "cfgSuperTucano.hpp"
 #include "cfgMQ9.hpp"
 #include "cfgC17.hpp"
 #include "cfgKC135.hpp"

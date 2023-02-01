@@ -6,8 +6,8 @@ class PTF_Standard_Arsenal : Box_NATO_Equip_F
    ace_cargo_hasCargo = 0;
    ace_cargo_size = 0;
    ace_cargo_canload = 0;
-   ace_dragging_canCarry = 1;
-   ace_dragging_candrag = 1;
+   ace_dragging_canCarry = 0;
+   ace_dragging_candrag = 0;
    faction = "BLU_F";
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Arsenal";
@@ -49,8 +49,8 @@ class PTF_Standard_Arsenal_No_Ammo : Box_NATO_Equip_F
    ace_cargo_hasCargo = 0;
    ace_cargo_size = 0;
    ace_cargo_canload = 0;
-   ace_dragging_canCarry = 1;
-   ace_dragging_candrag = 1;
+   ace_dragging_canCarry = 0;
+   ace_dragging_candrag = 0;
    faction = "BLU_F";
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Arsenal";
