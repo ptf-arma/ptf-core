@@ -231,3 +231,10 @@ grad_trenches_assets.pbo
 grad_trenches_functions.pbo
 grad_trenches_main.pbo
 grad_trenches_sounds.pbo
+
+======================================================================
+Mod: BettIR
+Author: Vestarr
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2260572637
+License: Unknown, Doesnt care about sharing / Repacking
+Includes PBO files: BettIR_Core.pbo
