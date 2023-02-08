@@ -405,4 +405,82 @@ class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_uc
          };
       };
    };
+   class PTF_Mich_Covered_Rhino_WD_Phillips: rhsusf_ach_helmet_headset_ucp_alt
+	{
+		scopeArsenal = 2;
+		scope = 2;
+		side = 1;
+		faction = "BLU_F";
+		displayName = "[Inf] MICH 2000 (WD) [Personal - J.Phillips]";
+		author = "Paramarine Task Force";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_phillips.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo: ItemInfo
+		{
+			mass = 20;
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName = "HitHead";
+					armor = 6;
+					passThrough = 0.5;
+				};
+			};
+		};
+	};
+	class PTF_Mich_Covered_Rhino_S_Phillips: rhsusf_ach_helmet_headset_ucp_alt
+	{
+		scopeArsenal = 2;
+		scope = 2;
+		side = 1;
+		faction = "BLU_F";
+		displayName = "[Inf] MICH 2000 (WD) [Personal - J.Phillips]";
+		author = "Paramarine Task Force";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_phillips.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo: ItemInfo
+		{
+			mass = 20;
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName = "HitHead";
+					armor = 6;
+					passThrough = 0.5;
+				};
+			};
+		};
+	};
+	class PTF_Mich_Covered_Rhino_D_Phillips: rhsusf_ach_helmet_headset_ucp_alt
+	{
+		scopeArsenal = 2;
+		scope = 2;
+		side = 1;
+		faction = "BLU_F";
+		displayName = "[Inf] MICH 2000 (WD) [Personal - J.Phillips]";
+		author = "Paramarine Task Force";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_phillips.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo: ItemInfo
+		{
+			mass = 20;
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName = "HitHead";
+					armor = 6;
+					passThrough = 0.5;
+				};
+			};
+		};
+	};
 };
