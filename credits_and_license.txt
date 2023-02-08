@@ -236,5 +236,38 @@ grad_trenches_sounds.pbo
 Mod: BettIR
 Author: Vestarr
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2260572637
-License: Unknown, Doesnt care about sharing / Repacking
-Includes PBO files: BettIR_Core.pbo
+License: see author
+Includes PBO files: 
+BettIR_Core.pbo
+
+======================================================================
+Mod: Simunition (Core, Magazines, Attachments, Grenades)
+Author: Crows Studio & C.Eagle
+Source Link: https://steamcommunity.com/workshop/filedetails/?id=2912742124
+License: APL-SA (Permission from atuhors)
+Includes PBO files: 
+training_attachment_adapter_blue.pbo
+training_attachment_adapter_yellow.pbo
+training_attachment_common.pbo
+training_attachment_compat_dmr_762.pbo
+training_attachment_suppressor_blue.pbo
+training_attachment_suppressor_yellow.pbo
+training_core.pbo
+training_grenade_40mm.pbo
+training_grenade_common.pbo
+training_grenade_m18.pbo
+training_grenade_m67.pbo
+training_grenade_mk2.pbo
+training_mag_common.pbo
+training_mag_compat_9mm.pbo
+training_mag_compat_762x39.pbo
+training_mag_compat_762x54.pbo
+training_mag_compat_dmr_762.pbo
+training_mag_compat_knockout.pbo
+training_mag_compat_lmg_556.pbo
+training_mag_compat_SAW_556.pbo
+training_mag_compat_shotgun_12g.pbo
+training_mag_pmag_blue.pbo
+training_mag_pmag_yellow.pbo
+training_mag_stanag_blue.pbo
+training_mag_stanag_yellow.pbo
