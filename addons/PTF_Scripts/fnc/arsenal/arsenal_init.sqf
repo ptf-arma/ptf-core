@@ -71,8 +71,6 @@ _standardWhitelist = [
 "rhs_weap_mk18_bk",
 "rhsusf_acc_wmx",
 "rhsusf_acc_wmx_bk",
-"rhsusf_acc_omega9k",
-"muzzle_snds_L",
 "rhsusf_weap_m9",
 "rhsusf_acc_harris_bipod",
 "rhs_weap_maaws",
@@ -132,6 +130,9 @@ _standardWhitelist = [
 "rhs_weap_sr25_wd",
 
 //backpack
+"ace_compact_rhs_usf3_m2_carry",
+"ace_csw_m3CarryTripodLow",
+"ace_compact_rhs_usf3_mk19_carry",
 "PTF_Backpack_Infantry_Corpsman_Kitbag_Black",
 "PTF_Backpack_Infantry_Corpsman_Kitbag_Red",
 "PTF_Backpack_Infantry_Crye_Zipon",
@@ -398,6 +399,7 @@ _standardWhitelist = [
 "CUP_H_USMC_CAP_WDL",
 
 //expo
+"ClaymoreDirectionalMine_Remote_Mag",
 "AMP_Breaching_Charge_Mag",
 "tsp_frameCharge_mag",
 "tsp_popperCharge_mag",
@@ -406,6 +408,9 @@ _standardWhitelist = [
 "SatchelCharge_Remote_Mag",
 
 //ammo
+"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
+"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M430A1",
+"ace_csw_100Rnd_127x99_mag_red",
 "training_mag_556_200rnd_rubber",
 "training_pmag_30rnd_rubber_blue",
 "training_stanag_30rnd_rubber_blue",
@@ -598,7 +603,6 @@ _standardWhitelist = [
 "ACE_Clacker",
 "ACE_Flashlight_XL50",
 "ACE_MapTools",
-"MineDetector",
 "ACE_rope12",
 "ACE_rope15",
 "ACE_rope18",
@@ -628,7 +632,6 @@ _standardWhitelist = [
 "tfw_dd",
 "ACE_VMM3",
 "ACE_VMH3",
-"ClaymoreDirectionalMine_Remote_Mag",
 "ace_marker_flags_orange",
 "ace_marker_flags_yellow",
 "ACE_SpareBarrel_Item",
@@ -645,6 +648,8 @@ _standardWhitelist = [
 "USP_PVS14",
 "USP_PVS15",
 "USP_PVS31_COMPACT",
+
+
 ];
 
 [_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
