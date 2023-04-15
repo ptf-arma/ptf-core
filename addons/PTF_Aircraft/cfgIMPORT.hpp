@@ -1,7 +1,18 @@
 //Super Tucano
 class rhsgref_c_a29;
 //AH-1Z
-class RHS_AH1Z;
+class Heli_Attack_01_base_F;
+class RHS_AH1Z_base : Heli_Attack_01_base_F
+{
+ class turrets;
+};
+class RHS_AH1Z : RHS_AH1Z_base
+{
+ class turrets
+ {
+ class MainTurret;
+ };
+};
 //C-130J
 class RHS_C130J;
 class RHS_C130J_Cargo;
@@ -20,11 +31,61 @@ class CUP_B_USMC_DYN_MQ9;
 class CUP_B_MV22_USMC;
 class CUP_B_MV22_USMC_RAMPGUN;
 class CUP_B_MV22_VIV_USMC;
-//UH-1Y
-class RHS_UH1Y_d;
-class RHS_UH1Y_FFAR_d;
-class RHS_UH1Y_UNARMED_d;
-class CUP_B_UH1Y_MEV_USMC;
+// "UH-1Y (FFAR/MG) [MAG36]"
+class RHS_UH1Y_US_Base;
+class RHS_UH1Y : RHS_UH1Y_US_Base
+{
+ class turrets;
+};
+class RHS_UH1Y_d : RHS_UH1Y // "UH-1Y (FFAR/MG) [MAG36]"
+{
+ class turrets : turrets
+ {
+ class MainTurret;
+ class RightDoorGun;
+ class CargoTurret_01;
+ class CargoTurret_02;
+ class CargoTurret_03;
+ class CargoTurret_04;
+ class CargoTurret_05;
+ class CargoTurret_06;
+ class CargoTurret_07;
+ class CargoTurret_08;
+ };
+};
+class RHS_UH1Y_FFAR;
+class RHS_UH1Y_UNARMED : RHS_UH1Y_FFAR
+{
+ class turrets;
+};
+class RHS_UH1Y_UNARMED_d : RHS_UH1Y_UNARMED //"UH-1Y (Trainer) [MAG36]"
+{
+ class turrets : turrets
+ {
+ class CargoTurret_01;
+ class CargoTurret_02;
+ class CargoTurret_03;
+ class CargoTurret_04;
+ class CargoTurret_05;
+ class CargoTurret_06;
+ class CargoTurret_07;
+ class CargoTurret_08;
+ };
+};
+
+class CUP_B_UH1Y_Base;
+class CUP_B_UH1Y_UNA_Base : CUP_B_UH1Y_Base
+{
+ class Turrets;
+};
+class CUP_B_UH1Y_MEV_USMC : CUP_B_UH1Y_UNA_Base //"UH-1Y (Medevac) [MAG36]"
+{
+ class Turrets : turrets
+ {
+    class CargoTurret_01;
+    class CargoTurret_02;
+ };
+};
 //Mastersafe
 class PTF_weap_mastersafe;
 //F-35B
