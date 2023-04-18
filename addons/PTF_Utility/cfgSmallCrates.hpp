@@ -33,22 +33,24 @@ class PTF_Cargo_Small_Ammo : Boxloader_SmallPallet_Ammo
    class Transportmagazines
    {
       mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 20);
-      mag_xx(rhsusf_100Rnd_556x45_mixed_soft_pouch_coyote, 10);
-      mag_xx(rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote, 10);
-	   mag_xx(rhsusf_20Rnd_762x51_SR25_m62_Mag, 10);
-      mag_xx(rhsusf_20Rnd_762x51_SR25_m993_Mag, 10);
-      mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 10);
-      mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 50);
-      mag_xx(PTF_Mag_556x45_Mk262_Stanag_Mix, 50);
+      mag_xx(rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote, 20);
+      mag_xx(rhsusf_20Rnd_762x51_SR25_m62_Mag, 5);
+      mag_xx(rhsusf_20Rnd_762x51_SR25_m993_Mag, 5);
+      mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 5);
+      mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 100);
       mag_xx(CUP_17Rnd_9x19_M17_Black, 15);
-      mag_xx(DemoCharge_Remote_Mag, 5);
       mag_xx(SmokeShellBlue, 10);
       mag_xx(SmokeShellGreen, 10);
       mag_xx(SmokeShellPurple, 20);
       mag_xx(SmokeShellRed, 10);
       mag_xx(SmokeShell, 30);
       mag_xx(rhs_mag_m67, 20);
-      mag_xx(rhs_mag_m433_HEDP, 40);
+      mag_xx(rhs_mag_m433_HEDP, 10);
+      mag_xx(rhs_mag_M441_HE, 10);
+      mag_xx(rhs_mag_M397_HET, 10);
+      mag_xx(ACE_CTS9, 40);
+      mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
+      mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 15);
    };
    class Transportweapons
    {
@@ -57,6 +59,62 @@ class PTF_Cargo_Small_Ammo : Boxloader_SmallPallet_Ammo
    };
    class Transportitems
    {
+      item_xx(ACE_CableTie, 20);
+      item_xx(ACE_IR_Strobe_Item, 25);
+   };
+};
+class PTF_Cargo_Small_Launcher : Boxloader_SmallPallet_Ammo
+{
+   scope = 2;
+   side = 8;
+   faction = "BLU_F";
+   ace_cargo_space = 0;
+   ace_cargo_hasCargo = 0;
+   ace_cargo_size = 5;
+   ace_cargo_canload = 1;
+   ace_dragging_canCarry = 0;
+   ace_dragging_candrag = 1;
+   editorCategory = "PTF_Empty";
+   editorSubcategory = "PTF_Cargo";
+   author = "Paramarine Task Force";
+   displayname = "Small - Launcher";
+
+   hiddenselections[] = {
+       "camo",
+       "camo_signs"};
+   hiddenselectionstextures[] = {
+       "PTF_Utility\data\cargo\PTF_Cargo_Small_explosives\Boxloader_SmallPallet_ammo_co.paa",
+       "PTF_Cargo\Data\PTF_Cargo_Small_explosives\Boxloader_SmallPallet_ammo_ca.paa"};
+
+   class vehicleTransport
+   {
+      class Cargo
+      {
+         parachuteClass = "B_Parachute_02_F";
+         parachuteHeightLimit = 15;
+         canBeTransported = 1;
+         dimensions[] = {
+             "BBox_Base", "BBox_Corner"};
+      };
+   };
+
+   class Transportmagazines
+   {
+      mag_xx(rhs_fgm148_magazine_AT, 5);
+      mag_xx(rhs_fim92_mag, 5);
+      mag_xx(MRAWS_HEAT_F, 10);
+      mag_xx(MMA_MAAWS_SMOKE463, 10);
+      mag_xx(MMA_MAAWS_ILLUM545, 10);
+      mag_xx(MMA_MAAWS_HEDP502, 10);
+      mag_xx(MRAWS_HE_F, 10);
+      mag_xx(MRAWS_HEAT55_F, 10);
+   };
+   class Transportweapons
+   {
+	   weap_xx(rhs_weap_m72a7, 10);
+      weap_xx(rhs_weap_M136_hp, 5);
+      weap_xx(rhs_weap_M136, 5);
+      weap_xx(rhs_weap_M136_hedp, 5);
    };
 };
 class PTF_Cargo_Small_Explosives : Boxloader_SmallPallet_Ammo
@@ -96,18 +154,18 @@ class PTF_Cargo_Small_Explosives : Boxloader_SmallPallet_Ammo
 
    class Transportmagazines
    {
-      mag_xx(rhs_fgm148_magazine_AT, 5);
-      mag_xx(rhs_fim92_mag, 5);
+      mag_xx(AMP_Breaching_Charge_Mag, 25);
+      mag_xx(tsp_popperCharge_mag, 25);
       mag_xx(DemoCharge_Remote_Mag, 10);
-      mag_xx(NDS_M_6Rnd_60mm_HE, 10);
-      mag_xx(MRAWS_HEAT_F, 20);
+      mag_xx(tsp_frameCharge_mag, 10);
       mag_xx(rhs_mag_m67, 15);
       mag_xx(SmokeShell, 15);
+      mag_xx(ClaymoreDirectionalMine_Remote_Mag, 5);
+      mag_xx(SatchelCharge_Remote_Mag, 5);
    };
-   class Transportweapons
+   class Transportitems
    {
-	  weap_xx(rhs_weap_m72a7, 2);
-      weap_xx(rhs_weap_M136_hp, 2);
+	   item_xx(ACE_Clacker, 5);
    };
 };
 class PTF_Cargo_Small_Medical : Boxloader_SmallPallet_Ammo
@@ -144,36 +202,32 @@ class PTF_Cargo_Small_Medical : Boxloader_SmallPallet_Ammo
              "BBox_Base", "BBox_Corner"};
       };
    };
-
-   class Transportmagazines
-   {
-      mag_xx(SmokeShellPurple, 20);
-   };
    class Transportitems
    {
-      item_xx(kat_IV_16, 30);
-      item_xx(kat_vacuum, 30);
-      item_xx(kat_EACA, 30);
-      item_xx(kat_flumazenil, 30);
-      item_xx(kat_naxolone, 30);
-      item_xx(kat_nitroglycerin, 30);
-      item_xx(kat_norepinephine, 30);
-      item_xx(kat_Painkiller, 50);
-      item_xx(kat_phenylephrine, 30);
-      item_xx(kat_TXA, 30);
-      item_xx(ACE_fieldDressing, 75);
-      item_xx(ACE_quikclot, 75);
+      item_xx(kat_IV_16, 25);
+      item_xx(ACE_salineIV_250, 15);
+      item_xx(kat_EACA, 25);
+      item_xx(ACE_tourniquet, 25);
+      item_xx(kat_naxolone, 25);
+      item_xx(kat_nitroglycerin, 25);
+      item_xx(kat_norepinephine, 25);
+      item_xx(kat_Painkiller, 35);
+      item_xx(kat_phenylephrine, 25);
+      item_xx(kat_TXA, 25);
+      item_xx(ACE_fieldDressing, 100);
+      item_xx(ACE_quikclot, 100);
       item_xx(ACE_elasticBandage, 75);
       item_xx(ACE_packingBandage, 75);
       item_xx(ACE_epinephrine, 25);
-      item_xx(ACE_adenosine, 15);
-      item_xx(ACE_morphine, 15);
+      item_xx(ACE_adenosine, 20);
+      item_xx(ACE_morphine, 20);
       item_xx(ACE_bodyBag, 5);
-      item_xx(ACE_surgicalKit, 2);
-      item_xx(ACE_CableTie, 5);
-      item_xx(ACE_plasmaIV, 10);
-      item_xx(ACE_plasmaIV_250, 15);
+      item_xx(ACE_splint, 25);
+      item_xx(kat_Carbonate, 25);
+      item_xx(kat_IO_FAST, 15);
+      item_xx(ACE_plasmaIV_1000, 30);
       item_xx(ACE_plasmaIV_500, 15);
+      item_xx(ACE_bloodIV_500, 15);
    };
 };
 class PTF_Cargo_Small_Humanitarian : Boxloader_SmallPallet_Ammo
@@ -264,7 +318,7 @@ class PTF_Cargo_Small_Cargo : Boxloader_SmallPallet_Ammo
    {
    };
 };
-class PTF_Cargo_Mortar_Smoke : NATO_Box_Base
+class PTF_Cargo_Mortar : NATO_Box_Base
 {
    scope = 2;
    side = 8;
@@ -279,54 +333,7 @@ class PTF_Cargo_Mortar_Smoke : NATO_Box_Base
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
-   displayname = "Mortar Smoke Rounds";
-
-   hiddenselections[] = {
-       "Camo_Signs ",
-       "Camo"};
-   hiddenselectionstextures[] = {
-       "A3\weapons_F\ammoboxes\data\ammoBox_signs_CA.paa",
-       "A3\weapons_F\ammoboxes\data\ammoBox_CO.paa"};
-
-   class vehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {
-             "BBox_Base", "BBox_Corner"};
-      };
-   };
-
-   class Transportmagazines
-   {
-      mag_xx(NDS_M_6Rnd_60mm_SMOKE, 3);
-   };
-   class Transportweapons
-   {
-   };
-   class Transportitems
-   {
-   };
-};
-class PTF_Cargo_Mortar_HE : NATO_Box_Base
-{
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 2;
-   ace_cargo_canload = 1;
-   ace_dragging_canCarry = 1;
-   ace_dragging_candrag = 1;
-   model = "\A3\weapons_F\ammoBoxes\ammoBox_F";
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
-   displayname = "Mortar HE Rounds";
+   displayname = "Small - Mortar";
 
    hiddenselections[] = {
        "Camo_Signs ",
@@ -349,8 +356,11 @@ class PTF_Cargo_Mortar_HE : NATO_Box_Base
 
    class TransportMagazines
    {
-       mag_xx(NDS_M_6Rnd_60mm_HE_0, 3);
-	   mag_xx(NDS_M_6Rnd_60mm_HE, 3);
+      mag_xx(NDS_M_6Rnd_60mm_HE   , 4);
+      mag_xx(avm224_M_6Rnd_60mm_SMOKE_csw, 4);
+      mag_xx(NDS_M_6Rnd_60mm_HE_0, 2);
+      mag_xx(avm224_M_6Rnd_60mm_ILLUM_IR_csw, 24);
+      mag_xx(avm224_M_6Rnd_60mm_ILLUM_csw, 4);
    };
    class TransportWeapons
    {
@@ -406,7 +416,7 @@ class PTF_Cargo_DEFENDER_Ammo : NATO_Box_Base
    {
    };
 };
-class PTF_Cargo_Wheels : Boxloader_SmallPallet_Ammo
+class PTF_Cargo_Vic : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
@@ -420,7 +430,7 @@ class PTF_Cargo_Wheels : Boxloader_SmallPallet_Ammo
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
-   displayname = "Wheel Box";
+   displayname = "Small - Vic Box";
 
    hiddenselections[] = {
        "camo",
@@ -443,7 +453,7 @@ class PTF_Cargo_Wheels : Boxloader_SmallPallet_Ammo
 
    class EventHandlers
    {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\arsenal\wheelbox_init.sqf';";
+      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\arsenal\SmallVicBox_init.sqf';";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
@@ -457,6 +467,7 @@ class PTF_Cargo_Wheels : Boxloader_SmallPallet_Ammo
    };
    class TransportItems
    {
+      item_xx(ToolKit, 2);
    };
    class TransportBackpacks
    {
@@ -513,64 +524,6 @@ class PTF_Cargo_Tracks : Boxloader_SmallPallet_Ammo
    };
    class TransportItems
    {
-   };
-   class TransportBackpacks
-   {
-   };
-};
-class PTF_Cargo_Fuel : Boxloader_SmallPallet_Ammo
-{
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_space = 10;
-   ace_cargo_hasCargo = 1;
-   ace_cargo_size = 5;
-   ace_cargo_canload = 1;
-   ace_dragging_canCarry = 0;
-   ace_dragging_candrag = 1;
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
-   displayname = "Fuel Box";
-
-   hiddenselections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenselectionstextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Small_ammo\Boxloader_SmallPallet_ammo_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Small_ammo\Boxloader_SmallPallet_ammo_ca.paa"};
-
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {
-             "BBox_Base", "BBox_Corner"};
-      };
-   };
-
-   class EventHandlers
-   {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\arsenal\fuel_init.sqf';";
-      class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
-      {
-      };
-   };
-
-   class TransportMagazines
-   {
-   };
-   class TransportWeapons
-   {
-   };
-   class TransportItems
-   {
-	  item_xx(ToolKit, 3);   
-	  item_xx(ACE_rope12, 3); 
    };
    class TransportBackpacks
    {
