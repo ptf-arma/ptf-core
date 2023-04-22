@@ -50,7 +50,6 @@ class PTF_Cargo_Small_Ammo : Boxloader_SmallPallet_Ammo
       mag_xx(rhs_mag_M397_HET, 10);
       mag_xx(ACE_CTS9, 40);
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
-      mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 15);
    };
    class Transportweapons
    {
@@ -103,7 +102,7 @@ class PTF_Cargo_Small_Launcher : Boxloader_SmallPallet_Ammo
       mag_xx(rhs_fgm148_magazine_AT, 5);
       mag_xx(rhs_fim92_mag, 5);
       mag_xx(MRAWS_HEAT_F, 10);
-      mag_xx(MMA_MAAWS_SMOKE463, 10);
+      mag_xx(MMA_MAAWS_SMOKE469, 10);
       mag_xx(MMA_MAAWS_ILLUM545, 10);
       mag_xx(MMA_MAAWS_HEDP502, 10);
       mag_xx(MRAWS_HE_F, 10);
@@ -421,7 +420,7 @@ class PTF_Cargo_Vic : Boxloader_SmallPallet_Ammo
    scope = 2;
    side = 8;
    faction = "BLU_F";
-   ace_cargo_space = 10;
+   ace_cargo_space = 14;
    ace_cargo_hasCargo = 1;
    ace_cargo_size = 5;
    ace_cargo_canload = 1;

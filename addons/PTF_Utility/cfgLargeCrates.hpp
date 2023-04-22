@@ -57,6 +57,7 @@ class PTF_Cargo_Large_Ammo : Boxloader_Ammo_West
       item_xx(ACE_IR_Strobe_Item, 50);
       item_xx(ACE_CableTie, 40);
    };
+};
 class PTF_Cargo_Large_Launcher: Boxloader_Ammo_West
 {
    scope = 2;
@@ -90,8 +91,7 @@ class PTF_Cargo_Large_Launcher: Boxloader_Ammo_West
    {
       mag_xx(rhs_fgm148_magazine_AT, 10);
       mag_xx(MRAWS_HEAT_F, 10);
-      mag_xx(MMA_MAAWS_SMOKE463, 20);
-      mag_xx(MMA_MAAWS_ILLUM545, 20);
+      mag_xx(MMA_MAAWS_SMOKE469, 20);
       mag_xx(MMA_MAAWS_ILLUM545, 20);
       mag_xx(MRAWS_HE_F, 20);
       mag_xx(MRAWS_HEAT55_F, 20);
@@ -105,7 +105,6 @@ class PTF_Cargo_Large_Launcher: Boxloader_Ammo_West
      weap_xx(rhs_weap_M136, 10);
      weap_xx(rhs_weap_M136_hedp, 10);
    };
-};
 };
 class PTF_Cargo_Large_Explosives: Boxloader_Ammo_West
 {
@@ -250,8 +249,8 @@ class PTF_Cargo_Large_VicBox : Boxloader_Ammo_West
    scope = 2;
    side = 8;
    faction = "BLU_F";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 36;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;

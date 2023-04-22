@@ -9,7 +9,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -41,7 +41,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -73,7 +73,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -105,11 +105,11 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
-			"PTF_Cargo_Large_Medical",
+			"PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",
 			getPosATL _hang,
 			[],
 			0,
@@ -137,11 +137,11 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
-			"PTF_Cargo_Small_Ammo",
+			"PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",
 			getPosATL _hang,
 			[],
 			0,
@@ -169,7 +169,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -201,11 +201,11 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
-			"PTF_Cargo_Small_Launcher",
+			"PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",
 			getPosATL _hang,
 			[],
 			0,
@@ -233,11 +233,11 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
-			"PTF_Cargo_Small_Medical",
+			"PTF_Cargo_Small_Medical",a
 			getPosATL _hang,
 			[],
 			0,
@@ -265,7 +265,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -297,7 +297,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -331,7 +331,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -362,7 +362,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -393,7 +393,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -424,7 +424,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -455,7 +455,7 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Medical", "PTF_Cargo_Large_Explosives", "PTF_Cargo_Small_Ammo", "PTF_Cargo_Small_Explosives", "PTF_Cargo_Small_Medical", "PTF_Cargo_Small_Humanitarian"], 7];
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC", "PTF_Cargo_Large_Ammo", "PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",], 7];
 		sleep 2;
 		_veh = createVehicle
 		[
@@ -477,3 +477,5 @@ _spawner addAction
 	"",
 	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
+
+//"PTF_Cargo_Large_Ammo","PTF_Cargo_Large_Launcher","PTF_Cargo_Large_Explosives","PTF_Cargo_Large_Medical","PTF_Cargo_Small_Ammo","PTF_Cargo_Small_Explosives","PTF_Cargo_Small_Launcher","PTF_Cargo_Small_Medical","PTF_Cargo_Small_Humanitarian","PTF_Cargo_Mortar","PTF_Cargo_Vic","PTF_Cargo_Large_VicBox","Box_NATO_AmmoVeh_f", FlexibleTank_01_forest_F", "FlexibleTank_01_Sand_F",
