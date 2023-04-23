@@ -324,6 +324,9 @@ _standardWhitelist = [
 
 //helmet
 "JHMCS",
+"PTF_Mich_Covered_Rhino_S_Nava",
+"PTF_Mich_Covered_Rhino_D_Nava",
+"PTF_Mich_Covered_Rhino_WD_Nava"
 "PTF_Helmet_Gute_Infantry_Mich2000_WD",
 "PTF_Helmet_1_1_Infantry_Mich2000_WD",
 "PTF_Helmet_1_2_Infantry_Mich2000_WD",
@@ -610,10 +613,6 @@ _standardWhitelist = [
 "ACE_rope36",
 "ACE_Sandbag_empty",
 "ACE_SpottingScope",
-"ACE_SpraypaintBlack",
-"ACE_SpraypaintBlue",
-"ACE_SpraypaintGreen",
-"ACE_SpraypaintRed",
 "ACE_Tripod",
 "ToolKit",
 "ACE_UAVBattery",
