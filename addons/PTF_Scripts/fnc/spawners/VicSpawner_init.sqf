@@ -5,7 +5,7 @@ _spawner addAction
 	"Humvee 50",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -37,7 +37,7 @@ _spawner addAction
 	"Humvee MK19",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -69,7 +69,7 @@ _spawner addAction
 	"Humvee 240",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -101,7 +101,7 @@ _spawner addAction
 	"Unarmed Humvee",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -133,7 +133,7 @@ _spawner addAction
 	"CAT M2",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -165,7 +165,7 @@ _spawner addAction
 	"CAT Mk19",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -197,7 +197,7 @@ _spawner addAction
 	"CAT TOW",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -229,7 +229,7 @@ _spawner addAction
 	"Mrap 50",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -261,7 +261,7 @@ _spawner addAction
 	"Mrap MK19",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -293,7 +293,7 @@ _spawner addAction
 	"Cougar 50",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
@@ -325,7 +325,7 @@ _spawner addAction
 	"Cougar MK19",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Target"];
+		_hang = nearestObject [(_this select 0), "VR_Area_01_circle_4_grey_F"];
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
