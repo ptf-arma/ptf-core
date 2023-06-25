@@ -83,8 +83,8 @@ class cfgVehicles
 #include "cfgFortHeavy.hpp"
 #include "cfgTools.hpp"
 #include "cfgFortLight.hpp"
-#include "cfgAircraftSpawner.hpp"
-#include "cfgSupplySpawner.hpp"
+#include "Spawners\cfgAircraftSpawner.hpp"
+#include "Spawners\cfgSupplySpawner.hpp"
 };
 class Extended_InitPost_EventHandlers
 {
