@@ -28,6 +28,8 @@ class cfgPatches
           "PTF_Command_MRZR_MAG36",
           "PTF_MRZR4",
           "PTF_M1151",
+		  "PTF_M1151CAT_MK19",
+		  "PTF_M1151CAT_M2",
           "PTF_M1152",
           "PTF_MRAP_CGRCAT1A2_MK19",
           "PTF_MRAP_CGRCAT1A2_M2",
@@ -38,6 +40,9 @@ class cfgPatches
           "PTF_M977A4_Ammo",
           "PTF_M1085A1P2",
           "PTF_M1078A1P2",
+		  "PTF_M1025_tow",
+		  "PTF_M1151CAT_MK19",
+		  "PTF_M1151CAT_M2",
           "PTF_MTVR_Repair",
           "PTF_MTVR_Ammo",
           "PTF_MTVR_Refuel",
@@ -128,4 +133,5 @@ class cfgVehicles
 #include "cfgAAV.hpp"
 #include "cfgSnowmobile.hpp"
 #include "cfgSAM.hpp"
+#include "cfgCAT.hpp"
 };
