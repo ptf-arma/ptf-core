@@ -755,7 +755,7 @@ _standardWhitelist = [
 "USP_PVS31_COMPACT",
 "rhs_1PN138",
 "rhsusf_ANPVS_14",
-"rhsusf_ANPVS_15",
+"rhsusf_ANPVS_15"
 
 
 ];
