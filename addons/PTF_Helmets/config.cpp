@@ -5,7 +5,11 @@ class cfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = "0.1";
-		requiredAddons[] = {"rhsusf_infantry","USP_GEAR_Head"};
+		requiredAddons[] = {
+			"rhsusf_infantry",
+			"USP_GEAR_Head",
+			"PTF_Clothes"
+			};
 	};
 };
 class cfgWeapons
@@ -14,6 +18,10 @@ class cfgWeapons
 	class HitpointsProtectionInfo;
 	class ItemInfo;
 	class Head;
+	class PTF_Helmet_Infantry_Mich2000_S;
+	class PTF_Helmet_Infantry_Mich2000_WD;
+	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
+	class PTF_Helmet_Infantry_Mich2000_D;
 	class USP_OPS_FASTXP_TAN;
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
@@ -114,416 +122,127 @@ class cfgWeapons
 			};
 		};
 	};
-	class PTF_Helmet_Cook_Infantry_Mich2000_WD: rhsusf_ach_helmet_headset_ucp_alt
+	// N.Cook Personal Helmets
+	class PTF_Helmet_Cook_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scope = 2;
-		side = 1;
 		displayName = "[Inf] MICH 2000 (WD) [Personal - N.Cook]";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_cook.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_cook.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Cook_Infantry_Mich2000_D: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Cook_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scope = 2;
-		side = 1;
 		displayName = "[Inf] MICH 2000 (D) [Personal - N.Cook]";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_cook.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_cook.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Cook_Infantry_Mich2000_S: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Cook_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scope = 2;
-		side = 1;
 		displayName = "[Inf] MICH 2000 (S) [Personal - N.Cook]";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_cook.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_cook.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Black_Infantry_Mich2000_WD: rhsusf_ach_helmet_headset_ucp_alt
+	// K.Black Personal Helmets
+	class PTF_Helmet_Black_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (WD) [Personal - K.Black]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_black.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_black.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Black_Infantry_Mich2000_D: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Black_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (D) [Personal - K.Black]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_black.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_black.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Black_Infantry_Mich2000_S: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Black_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (S) [Personal - K.Black]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_black.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_black.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD: rhsusf_ach_helmet_headset_ucp_alt
+	// B.Chmielewski Personal Helmets
+	class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (WD) [Personal - B.Chmielewski]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_chmielewski.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_chmielewski.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Chmielewski_Infantry_Mich2000_D: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Chmielewski_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (D) [Personal - B.Chmielewski]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_chmielewski.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_chmielewski.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Chmielewski_Infantry_Mich2000_S: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Chmielewski_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (S) [Personal - B.Chmielewski]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_chmielewski.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_chmielewski.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Gute_Infantry_Mich2000_WD: rhsusf_ach_helmet_headset_ucp_alt
+	// B.Gute Personal Helmets
+	class PTF_Helmet_Gute_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
-		displayName = "[Inf] MICH 2000 (S) [Personal - B.Gute]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_gute.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		displayName = "[Inf] MICH 2000 (WD) [Personal - B.Gute]";
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_gute.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Mich_Covered_Rhino_WD_Phillips: rhsusf_ach_helmet_headset_ucp_alt
+	// J.Phillips Personal Helmets
+	class PTF_Helmet_Phillips_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (WD) [Personal - J.Phillips]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_phillips.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_phillips.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Mich_Covered_Rhino_S_Phillips: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Phillips_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (S) [Personal - J.Phillips]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_phillips.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_phillips.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Mich_Covered_Rhino_D_Phillips: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Phillips_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (D) [Personal - J.Phillips]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_phillips.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_phillips.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Mich_Covered_Rhino_WD_Nava: rhsusf_ach_helmet_headset_ucp_alt
+	// I.Nava Personal Helmets
+	class PTF_Helmet_Nava_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (WD) [Personal - I.Nava]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_nava.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_nava.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Mich_Covered_Rhino_D_Nava: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Nava_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (D) [Personal - I.Nava]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_nava.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_nava.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Mich_Covered_Rhino_S_Nava: rhsusf_ach_helmet_headset_ucp_alt
+	class PTF_Helmet_Nava_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		scopeArsenal = 2;
-		scope = 2;
-		side = 1;
-		faction = "BLU_F";
 		displayName = "[Inf] MICH 2000 (S) [Personal - I.Nava]";
-		author = "Paramarine Task Force";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_s_co_nava.paa","rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-		ace_hearing_protection = 0.8;
-		ace_hearing_lowerVolume = 0;
-		class ItemInfo: ItemInfo
-		{
-			mass = 20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName = "HitHead";
-					armor = 6;
-					passThrough = 0.5;
-				};
-			};
-		};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_nava.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
 };
 class cfgMods
 {
-	author = "3S-15 | M.Hawkins";
+	author = "Hawkins";
 	timepacked = "1675880603";
 };

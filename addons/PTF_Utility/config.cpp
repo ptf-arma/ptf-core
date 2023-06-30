@@ -4,14 +4,21 @@ class CfgPatches
    {
       units[] = {
           "PTF_Cargo_Small_Ammo",
-          "PTF_Cargo_Small_Cargo",
+          "PTF_Cargo_Small_Launcher",
           "PTF_Cargo_Small_Explosives",
           "PTF_Cargo_Small_Medical",
           "PTF_Cargo_Small_Humanitarian",
+          "PTF_Cargo_Small_Cargo",
+          "PTF_Cargo_Mortar",
+          "PTF_Cargo_Vic",
+          "PTF_Cargo_Tracks",
+          "PTF_Cargo_Ammo",
           "PTF_Cargo_Large_Ammo",
-          "PTF_Cargo_Large_Cargo",
-          "PTF_Cargo_Large_Explosives",
+          "PTF_Cargo_Large_Launcher",
           "PTF_Cargo_Large_Medical",
+          "PTF_Cargo_Large_Cargo",
+          "PTF_Cargo_Large_VicBox",
+          "PTF_Cargo_Large_Explosives",
           "PTF_Fortifications_Tent_Medical",
           "PTF_Fortifications_Wall_Hesco",
           "PTF_Fortifications_Wall_BigHesco",
@@ -39,6 +46,7 @@ class CfgPatches
           "PTF_Cargo_Tiny_Ammo",
           "PTF_Cargo_Ammo",
           "PTF_Aircraft_Spawner",
+          "PTF_Vic_Spawner",
           "PTF_Supply_Spawner",
           "PTF_Standard_Arsenal_No_Ammo"};
       weapons[] = {};
@@ -75,8 +83,8 @@ class cfgVehicles
 #include "cfgFortHeavy.hpp"
 #include "cfgTools.hpp"
 #include "cfgFortLight.hpp"
-#include "cfgAircraftSpawner.hpp"
-#include "cfgSupplySpawner.hpp"
+#include "Spawners\cfgAircraftSpawner.hpp"
+#include "Spawners\cfgSupplySpawner.hpp"
 };
 class Extended_InitPost_EventHandlers
 {
