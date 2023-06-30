@@ -413,9 +413,12 @@ _standardWhitelist = [
 
 //helmet
 "JHMCS",
-"PTF_Mich_Covered_Rhino_S_Nava",
-"PTF_Mich_Covered_Rhino_D_Nava",
-"PTF_Mich_Covered_Rhino_WD_Nava",
+"PTF_Helmet_Nava_Infantry_Mich2000_WD",
+"PTF_Helmet_Nava_Infantry_Mich2000_D",
+"PTF_Helmet_Nava_Infantry_Mich2000_S",
+"PTF_Helmet_Phillips_Infantry_Mich2000_WD",
+"PTF_Helmet_Phillips_Infantry_Mich2000_D",
+"PTF_Helmet_Phillips_Infantry_Mich2000_S",
 "PTF_Helmet_Gute_Infantry_Mich2000_WD",
 "PTF_Helmet_1_1_Infantry_Mich2000_WD",
 "PTF_Helmet_1_2_Infantry_Mich2000_WD",
