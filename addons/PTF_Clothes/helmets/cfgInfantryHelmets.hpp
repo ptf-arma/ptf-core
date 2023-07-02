@@ -518,33 +518,6 @@ class PTF_Helmet_Infantry_FASTMT_FCV : USP_OPSCORE_FASTMT_FCV
       };
    };
 };
-class PTF_Helmet_Harris_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] MICH 2000 (WD) [Personal - R.Harris]";
-   author = "Paramarine Task Force";
-   hiddenSelections[] = {"Camo1", "Camo2"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_harris.paa",
-       "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
-   {
-      mass = 20;
-      class HitpointsProtectionInfo
-      {
-         class Head
-         {
-            hitpointName = "HitHead";
-            armor = 6;
-            passThrough = 0.5;
-         };
-      };
-   };
-};
 class PTF_Helmet_HQ_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
 {
    scope = 2;
