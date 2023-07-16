@@ -1,4 +1,4 @@
-class PTF_Supply_Spawner : Land_MultiScreenComputer_01_black_F
+class PTF_Vic_Spawner : Land_MultiScreenComputer_01_black_F
 {
    scope = 2;
    side = 8;
