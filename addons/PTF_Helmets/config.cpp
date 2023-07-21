@@ -281,7 +281,28 @@ class cfgWeapons
    		hiddenSelectionsTextures[] = {
        		"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_baker.paa",
        		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
-	};		
+	};	
+	class PTF_Helmet_Taylor_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (WD) [Personal - G.Taylor]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_taylor.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Taylor_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (D) [Personal - G.Taylor]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_taylor.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Taylor_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (S) [Personal - G.Taylor]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_taylor.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
 };
 class cfgMods
 {
