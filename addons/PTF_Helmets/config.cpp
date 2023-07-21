@@ -265,7 +265,7 @@ class cfgWeapons
 	{
    		displayName = "[Inf] MICH 2000 (WD) [Personal - M.Baker]";
    		hiddenSelectionsTextures[] = {
-       		"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_harris.paa",
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_baker.paa",
        		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};	
 	class PTF_Helmet_Baker_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
