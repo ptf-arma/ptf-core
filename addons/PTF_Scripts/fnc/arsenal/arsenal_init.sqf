@@ -1,9 +1,16 @@
 _arsenal = _this select 0;
 
 _standardWhitelist = [
+
 //weapon stuff
 "CUP_m2_carry",
 "CUP_MK19_carry",
+"rhsusf_acc_g33_t1",
+"rhsusf_acc_g33_xps3",
+"cup_optic_g33_hws_blk",
+"cup_acc_anpeq_15_flashlight_tan_l",
+"cup_acc_anpeq_15_flashlight_od_l",
+"cup_acc_anpeq_15_flashlight_black_l",
 "rhs_weap_m4a1_blockII_wd",
 "rhs_weap_m4a1_blockII_M203_wd",
 "rhs_weap_m4a1_blockII_KAC_wd",
@@ -214,6 +221,7 @@ _standardWhitelist = [
 "rhs_weap_M136_hedp",
 "rhs_weap_M136_hp",
 "launch_MRAWS_olive_F",
+"rhs_weap_smaw_green",
 "rhs_weap_fgm148",
 "rhs_weap_fim92",
 "rhs_weap_m72a7",
@@ -637,6 +645,19 @@ _standardWhitelist = [
 "rhsusf_mag_15Rnd_9x19_FMJ",
 
 //exp
+"Chemlight_blue",
+"Chemlight_green",
+"ACE_Chemlight_HiBlue",
+"ACE_Chemlight_HiGreen",
+"ACE_Chemlight_HiRed",
+"ACE_Chemlight_HiWhite",
+"ACE_Chemlight_HiYellow",
+"ACE_Chemlight_IR",
+"ACE_Chemlight_Orange",
+"Chemlight_red",
+"ACE_Chemlight_UltraHiOrange",
+"ACE_Chemlight_White",
+"Chemlight_yellow",
 "rhs_mag_m67",
 "SmokeShellBlue",
 "SmokeShellGreen",
@@ -757,6 +778,11 @@ _standardWhitelist = [
 //bino
 "ACE_VectorDay",
 "ACE_Vector",
+"Rangefinder",
+"Laserdesignator",
+"Laserdesignator_03",
+"Binocular",
+"ACE_Altimeter",
 
 //nvg
 "USP_PVS14",
@@ -765,7 +791,6 @@ _standardWhitelist = [
 "rhs_1PN138",
 "rhsusf_ANPVS_14",
 "rhsusf_ANPVS_15"
-
 
 ];
 
