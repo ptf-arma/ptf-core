@@ -20,6 +20,7 @@ class cfgWeapons
 	class Head;
 	class PTF_Helmet_Infantry_Mich2000_S;
 	class PTF_Helmet_Infantry_Mich2000_WD;
+	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
 	class PTF_Helmet_Infantry_Mich2000_D;
 	class USP_OPS_FASTXP_TAN;
 	class USP_OPS_FASTXP_CO_TAN;
@@ -122,91 +123,186 @@ class cfgWeapons
 		};
 	};
 	// N.Cook Personal Helmets
-	class PTF_Helmet_Cook_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Cook_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (WD) [Personal - N.Cook]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_cook.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_cook.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Cook_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Cook_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (D) [Personal - N.Cook]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_cook.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_cook.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Cook_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Cook_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (S) [Personal - N.Cook]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_cook.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_cook.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
 	// K.Black Personal Helmets
-	class PTF_Helmet_Black_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Black_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (WD) [Personal - K.Black]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_black.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_black.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Black_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Black_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (D) [Personal - K.Black]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_black.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_black.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Black_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Black_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (S) [Personal - K.Black]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_black.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_black.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
 	// B.Chmielewski Personal Helmets
-	class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Chmielewski_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (WD) [Personal - B.Chmielewski]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_chmielewski.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_chmielewski.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Chmielewski_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Chmielewski_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (D) [Personal - B.Chmielewski]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_chmielewski.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_chmielewski.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Chmielewski_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Chmielewski_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (S) [Personal - B.Chmielewski]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_chmielewski.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_chmielewski.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
 	// B.Gute Personal Helmets
-	class PTF_Helmet_Gute_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Gute_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (WD) [Personal - B.Gute]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_gute.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_gute.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
 	// J.Phillips Personal Helmets
-	class PTF_Helmet_Phillips_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Phillips_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (WD) [Personal - J.Phillips]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_phillips.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_phillips.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Phillips_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Phillips_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (S) [Personal - J.Phillips]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_phillips.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_phillips.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Phillips_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Phillips_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (D) [Personal - J.Phillips]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_phillips.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_phillips.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
 	// I.Nava Personal Helmets
-	class PTF_Helmet_Nava_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Nava_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (WD) [Personal - I.Nava]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_nava.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_nava.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Nava_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Nava_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (D) [Personal - I.Nava]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_nava.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_nava.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
-	class PTF_Helmet_Nava_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_WD
+	class PTF_Helmet_Nava_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName = "[Inf] MICH 2000 (S) [Personal - I.Nava]";
-		hiddenSelectionsTextures[] = {"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_nava.paa"};
+		hiddenSelectionsTextures[] = {
+			"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_nava.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
+	class PTF_Helmet_Harris_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (WD) [Personal - R.Harris]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_harris.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Harris_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (D) [Personal - R.Harris]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_harris.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Harris_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (S) [Personal - R.Harris]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_harris.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};
+	class PTF_Helmet_Baker_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (WD) [Personal - M.Baker]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_baker.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Baker_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (D) [Personal - M.Baker]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_baker.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Baker_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (S) [Personal - M.Baker]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_baker.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Taylor_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (WD) [Personal - G.Taylor]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_wd_co_taylor.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Taylor_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (D) [Personal - G.Taylor]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_des_co_taylor.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
+	class PTF_Helmet_Taylor_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+   		displayName = "[Inf] MICH 2000 (S) [Personal - G.Taylor]";
+   		hiddenSelectionsTextures[] = {
+       		"PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_taylor.paa",
+       		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};	
 };
 class cfgMods
 {

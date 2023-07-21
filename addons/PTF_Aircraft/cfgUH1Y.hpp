@@ -27,6 +27,14 @@ class PTF_UH1Y : RHS_UH1Y_d
        "rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_ext_co.paa", "rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_int_co.paa"};
    class Turrets : Turrets
    {
+      class CopilotTurret: CopilotTurret
+      {
+         weapons[] =
+             {
+                 "PTF_weap_mastersafe",
+                 "rhs_weap_laserDesignator_AI"};
+         magazines[] = {"rhs_LaserMag_ai"};
+      };
       class MainTurret : MainTurret
       {
          weapons[] =
@@ -94,6 +102,8 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 
    class Turrets : Turrets
    {
+      class CopilotTurret: CopilotTurret
+      {};
       class CargoTurret_01 : CargoTurret_01
       {};
       class CargoTurret_02 : CargoTurret_02
@@ -137,6 +147,8 @@ class PTF_UH1Y_Medevac : CUP_B_UH1Y_MEV_USMC
        "\PTF_Textures\aircraft\uh1y\medevac\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
    class Turrets : Turrets
    {
+      class CopilotTurret: CopilotTurret
+      {};
       class CargoTurret_01 : CargoTurret_01
       {};
       class CargoTurret_02 : CargoTurret_02
