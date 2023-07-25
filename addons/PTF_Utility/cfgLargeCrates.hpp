@@ -2,6 +2,8 @@ class PTF_Cargo_Large_Ammo : Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_hasCargo = 0;
    ace_cargo_size = 0;
@@ -62,6 +64,8 @@ class PTF_Cargo_Large_Launcher: Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_hasCargo = 0;
    ace_cargo_canLoad = 0;
@@ -110,6 +114,8 @@ class PTF_Cargo_Large_Explosives: Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_hasCargo = 0;
    ace_cargo_canLoad = 0;
@@ -156,6 +162,8 @@ class PTF_Cargo_Large_Medical : Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -215,6 +223,8 @@ class PTF_Cargo_Large_Cargo : Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 30;
    ace_cargo_hasCargo = 1;
@@ -248,6 +258,8 @@ class PTF_Cargo_Large_VicBox : Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 36;
    ace_cargo_hasCargo = 1;

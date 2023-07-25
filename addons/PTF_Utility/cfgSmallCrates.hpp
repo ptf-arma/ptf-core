@@ -2,6 +2,8 @@ class PTF_Cargo_Small_Ammo : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -66,6 +68,8 @@ class PTF_Cargo_Small_Launcher : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -120,6 +124,8 @@ class PTF_Cargo_Small_Explosives : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -171,6 +177,8 @@ class PTF_Cargo_Small_Medical : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -233,6 +241,8 @@ class PTF_Cargo_Small_Humanitarian : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -279,6 +289,8 @@ class PTF_Cargo_Small_Cargo : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 10;
    ace_cargo_hasCargo = 1;
@@ -321,6 +333,8 @@ class PTF_Cargo_Mortar : NATO_Box_Base
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -372,6 +386,8 @@ class PTF_Cargo_DEFENDER_Ammo : NATO_Box_Base
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -419,6 +435,8 @@ class PTF_Cargo_Vic : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 14;
    ace_cargo_hasCargo = 1;
@@ -476,6 +494,8 @@ class PTF_Cargo_Tracks : Boxloader_SmallPallet_Ammo
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 10;
    ace_cargo_hasCargo = 1;
@@ -532,6 +552,8 @@ class PTF_Cargo_Ammo : NATO_Box_Base
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;
@@ -582,6 +604,8 @@ class PTF_Cargo_Tiny_Ammo : Land_Ammobox_rounds_F
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;

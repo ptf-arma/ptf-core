@@ -48,7 +48,8 @@ class CfgPatches
           "PTF_Aircraft_Spawner",
           "PTF_Vic_Spawner",
           "PTF_Supply_Spawner",
-          "PTF_Standard_Arsenal_No_Ammo"};
+          "PTF_Standard_Arsenal_No_Ammo"
+          };
       weapons[] = {};
       requiredVersion = 1.32;
       requiredAddons[] = {
@@ -85,6 +86,7 @@ class cfgVehicles
 #include "cfgFortLight.hpp"
 #include "Spawners\cfgAircraftSpawner.hpp"
 #include "Spawners\cfgSupplySpawner.hpp"
+#include "Spawners\cfgVicSpawner.hpp"
 };
 class Extended_InitPost_EventHandlers
 {

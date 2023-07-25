@@ -12,7 +12,7 @@ class PTF_Vic_Spawner : Land_MultiScreenComputer_01_black_F
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Tools";
    author = "Paramarine Task Force";
-   displayName = "Supply Spawner";
+   displayName = "Vic Spawner";
 
    class EventHandlers
    {
@@ -21,8 +21,7 @@ class PTF_Vic_Spawner : Land_MultiScreenComputer_01_black_F
       {
       };
    };
-
-
+   
    class TransportMagazines
    {
    };

@@ -29,7 +29,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -61,7 +61,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -93,7 +93,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -125,7 +125,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -157,7 +157,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -189,7 +189,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -221,7 +221,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -253,7 +253,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -285,7 +285,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -317,7 +317,7 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
 _spawner addAction
@@ -349,6 +349,6 @@ _spawner addAction
 	true,
 	true,
 	"",
-	"_target distance (nearestObject [_target, ""Land_JumpTarget_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
+	"_target distance (nearestObject [_target, ""VR_Area_01_circle_4_grey_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
 ];
 
