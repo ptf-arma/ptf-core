@@ -9,8 +9,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1151_M240",
@@ -21,7 +21,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -41,8 +41,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1151_MK19",
@@ -53,7 +53,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -73,8 +73,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1151_M240",
@@ -85,7 +85,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -105,8 +105,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1151",
@@ -117,7 +117,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -137,8 +137,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1151CAT_M2",
@@ -149,7 +149,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -169,8 +169,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1151CAT_MK19",
@@ -181,7 +181,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -201,8 +201,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_M1025_tow",
@@ -213,7 +213,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -233,8 +233,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_MRAP_M1232_M2",
@@ -245,7 +245,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -265,8 +265,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_MRAP_M1232_MK19",
@@ -277,7 +277,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -297,8 +297,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_MRAP_CGRCAT1A2_M2",
@@ -309,7 +309,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,
@@ -329,8 +329,8 @@ _spawner addAction
 		{
 			deleteVehicleCrew _x;
 			deleteVehicle _x
-			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC",], 7];
-		sleep 2;
+			} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 7];
+		sleep 0.1;
 		_veh = createVehicle
 		[
 			"PTF_MRAP_CGRCAT1A2_MK19",
@@ -341,7 +341,7 @@ _spawner addAction
 		];
 		_veh setDir (getDir _hang);
 		// createVehicleCrew _veh;
-		_veh setFuel 0;
+		;
 		(_this select 0) setVariable ["SpawnerCooldown", true, true]
 	},
 	nil,

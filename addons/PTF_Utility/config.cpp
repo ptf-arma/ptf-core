@@ -56,6 +56,7 @@ class CfgPatches
           "PTF_Main",
           "PTF_Textures",
           "PTF_Models",
+          "PTF_Scripts",
           "cba_xeh",
           "rhsusf_main",
           "boxloader",
@@ -84,9 +85,7 @@ class cfgVehicles
 #include "cfgFortHeavy.hpp"
 #include "cfgTools.hpp"
 #include "cfgFortLight.hpp"
-#include "Spawners\cfgAircraftSpawner.hpp"
-#include "Spawners\cfgSupplySpawner.hpp"
-#include "Spawners\cfgVicSpawner.hpp"
+#include "Spawners\cfgSpawners.hpp"
 };
 class Extended_InitPost_EventHandlers
 {

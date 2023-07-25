@@ -15,16 +15,10 @@ class PTF_UH1Y : RHS_UH1Y_d
    hullDamageCauseExplosion = 0;
    author = "Paramarine Task Force";
    displayName = "UH-1Y (FFAR/MG) [MAG36]";
-   weapons[] = {
-       "PTF_weap_mastersafe",
-       "CMFlareLauncher"};
-   magazines[] = {
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine"};
+   weapons[] = {"PTF_weap_mastersafe", "CMFlareLauncher"};
+   magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
-   hiddenSelectionsTextures[] = {
-       "rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_ext_co.paa", "rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_int_co.paa"};
+   hiddenSelectionsTextures[] = {"rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_ext_co.paa", "rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_int_co.paa"};
    class Turrets : Turrets
    {
       class CopilotTurret: CopilotTurret
@@ -62,18 +56,12 @@ class PTF_UH1Y : RHS_UH1Y_d
             };
 
       };
-      class CargoTurret_01 : CargoTurret_01
-      {};
-      class CargoTurret_02 : CargoTurret_02
-      {};
-      class CargoTurret_03 : CargoTurret_03
-      {};
-      class CargoTurret_04 : CargoTurret_04
-      {};
-      class CargoTurret_05 : CargoTurret_05
-      {};
-      class CargoTurret_06 : CargoTurret_06
-      {};
+      class CargoTurret_01 : CargoTurret_01{};
+      class CargoTurret_02 : CargoTurret_02{};
+      class CargoTurret_03 : CargoTurret_03{};
+      class CargoTurret_04 : CargoTurret_04{};
+      class CargoTurret_05 : CargoTurret_05{};
+      class CargoTurret_06 : CargoTurret_06{};
    };
 };
 class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
@@ -91,35 +79,21 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
    hullDamageCauseExplosion = 0;
    author = "Paramarine Task Force";
    displayName = "UH-1Y (Trainer) [MAG36]";
-   weapons[] = {"CMFlareLauncher"};
-   magazines[] = {
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine"};
+   weapons[] = {"CMFlareLauncher", "PTF_weap_mastersafe"};
+   magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
-   hiddenSelectionsTextures[] = {
-       "\PTF_Textures\aircraft\uh1y\Trainer\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-
+   hiddenSelectionsTextures[] = {"\PTF_Textures\aircraft\uh1y\Trainer\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
    class Turrets : Turrets
    {
-      class CopilotTurret: CopilotTurret
-      {};
-      class CargoTurret_01 : CargoTurret_01
-      {};
-      class CargoTurret_02 : CargoTurret_02
-      {};
-      class CargoTurret_03 : CargoTurret_03
-      {};
-      class CargoTurret_04 : CargoTurret_04
-      {};
-      class CargoTurret_05 : CargoTurret_05
-      {};
-      class CargoTurret_06 : CargoTurret_06
-      {};
-      class CargoTurret_07 : CargoTurret_07
-      {};
-      class CargoTurret_08 : CargoTurret_08
-      {};
+      class CopilotTurret: CopilotTurret{};
+      class CargoTurret_01 : CargoTurret_01{};
+      class CargoTurret_02 : CargoTurret_02{};
+      class CargoTurret_03 : CargoTurret_03{};
+      class CargoTurret_04 : CargoTurret_04{};
+      class CargoTurret_05 : CargoTurret_05{};
+      class CargoTurret_06 : CargoTurret_06{};
+      class CargoTurret_07 : CargoTurret_07{};
+      class CargoTurret_08 : CargoTurret_08{};
    };
 };
 class PTF_UH1Y_Medevac : CUP_B_UH1Y_MEV_USMC
@@ -137,22 +111,15 @@ class PTF_UH1Y_Medevac : CUP_B_UH1Y_MEV_USMC
    hullDamageCauseExplosion = 0;
    author = "Paramarine Task Force";
    displayName = "UH-1Y (Medevac) [MAG36]";
-   weapons[] = {"CMFlareLauncher"};
-   magazines[] = {
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine"};
+   weapons[] = {"CMFlareLauncher", "PTF_weap_mastersafe"};
+   magazines[] = { "240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2"};
-   hiddenSelectionsTextures[] = {
-       "\PTF_Textures\aircraft\uh1y\medevac\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\PTF_Textures\aircraft\uh1y\medevac\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
    class Turrets : Turrets
    {
-      class CopilotTurret: CopilotTurret
-      {};
-      class CargoTurret_01 : CargoTurret_01
-      {};
-      class CargoTurret_02 : CargoTurret_02
-      {};
+      class CopilotTurret: CopilotTurret{};
+      class CargoTurret_01 : CargoTurret_01{};
+      class CargoTurret_02 : CargoTurret_02{};
    };
    class TransportMagazines : TransportMagazines
    {
