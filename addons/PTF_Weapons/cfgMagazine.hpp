@@ -4,7 +4,8 @@ class cfgMagazines {
 
 	class FIR_Hydra_WP_P_7rnd_M;
 
-	class rhs_mag_Hellfire_base{};
+	class VehicleMagazine;
+	class rhs_mag_Hellfire_base : VehicleMagazine{};
 	class rhs_mag_AGM114K : rhs_mag_Hellfire_base{};
 	class rhs_mag_AGM114M : rhs_mag_AGM114K{};
 	class rhs_mag_AGM114M_2 : rhs_mag_AGM114M{};
