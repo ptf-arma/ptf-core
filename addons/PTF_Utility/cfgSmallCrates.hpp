@@ -48,7 +48,6 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(rhsusf_20Rnd_762x51_SR25_m993_Mag, 5);
       mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 5);
       mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 100);
-      mag_xx(CUP_17Rnd_9x19_M17_Black, 15);
       mag_xx(SmokeShellBlue, 10);
       mag_xx(SmokeShellGreen, 10);
       mag_xx(SmokeShellPurple, 20);

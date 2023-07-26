@@ -25,8 +25,6 @@ class C_Heli_Light_01_civil_F;
 //Cessna TTx
 class C_Plane_Civil_01_F;
 class C_Plane_Civil_01_racing_F;
-//MQ-9
-class CUP_B_USMC_DYN_MQ9;
 //MV-22
 class DEGA_MV22_Vehicle_NATO;
 class DEGA_MV22_Infantry_NATO;
@@ -73,19 +71,7 @@ class RHS_UH1Y_UNARMED_d : RHS_UH1Y_UNARMED //"UH-1Y (Trainer) [MAG36]"
  };
 };
 
-class CUP_B_UH1Y_Base;
-class CUP_B_UH1Y_UNA_Base : CUP_B_UH1Y_Base
-{
- class Turrets;
-};
-class CUP_B_UH1Y_MEV_USMC : CUP_B_UH1Y_UNA_Base //"UH-1Y (Medevac) [MAG36]"
-{
- class Turrets : turrets
- {
-    class CargoTurret_01;
-    class CargoTurret_02;
- };
-};
+
 //Mastersafe
 class PTF_weap_mastersafe;
 //F-35B
@@ -120,7 +106,6 @@ class TransportBackpacks;
 class TransportMagazines;
 class TransportWeapons;
 class ViewGunner;
-class CUP_B_L39_CZ_GREY;
 class UserActions;
 class ViewPilot;
 

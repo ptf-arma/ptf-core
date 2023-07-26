@@ -100,52 +100,6 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
       class CargoTurret_08 : CargoTurret_08{};
    };
 };
-class PTF_UH1Y_Medevac : CUP_B_UH1Y_MEV_USMC
-{
-   scope = 2;
-   editorCategory = "PTF";
-   editorSubcategory = "PTF_AIR";
-   side = 1;
-   faction = "BLU_F";
-   ace_cargo_space = 10;
-   ace_cargo_hasCargo = 1;
-   armorStructural = 500;
-   epeImpulseDamageCoef = 0.1;
-   armor=500;
-   hullDamageCauseExplosion = 0;
-   author = "Paramarine Task Force";
-   displayName = "UH-1Y (Medevac) [MAG36]";
-   weapons[] = {"CMFlareLauncher", "PTF_weap_mastersafe"};
-   magazines[] = { "240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine"};
-   hiddenSelections[] = {"camo1", "camo2"};
-   hiddenSelectionsTextures[] = {"\PTF_Textures\aircraft\uh1y\medevac\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-   class Turrets : Turrets
-   {
-      class CopilotTurret: CopilotTurret{};
-      class CargoTurret_01 : CargoTurret_01{};
-      class CargoTurret_02 : CargoTurret_02{};
-   };
-   class TransportMagazines : TransportMagazines
-   {
-      mag_xx(SmokeShellPurple, 40);
-   };
-   class TransportItems : TransportItems
-   {
-      item_xx(ACE_fieldDressing, 300);
-      item_xx(ACE_quikclot, 300);
-      item_xx(ACE_elasticBandage, 300);
-      item_xx(ACE_packingBandage, 300);
-      item_xx(ACE_epinephrine, 100);
-      item_xx(ACE_adenosine, 50);
-      item_xx(ACE_morphine, 50);
-      item_xx(ACE_bodyBag, 20);
-      item_xx(ACE_surgicalKit, 10);
-      item_xx(ACE_CableTie, 20);
-      item_xx(ACE_salineIV, 30);
-      item_xx(ACE_salineIV_250, 60);
-      item_xx(ACE_salineIV_500, 60);
-   };
-};
 class PTF_UH1Y_HQ : PTF_UH1Y
 {
    displayName = "UH-1Y (MAG36 HQ) [MAG36]";

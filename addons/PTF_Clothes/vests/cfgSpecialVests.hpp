@@ -97,39 +97,6 @@ class PTF_Vest_SafetyVest_Long : V_Safety_yellow_F
       };
    };
 };
-class PTF_Vest_SafetyVest_Coat : CUP_V_B_LHDVest_Yellow
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[All] Safety Vest (Coat) [PTF]";
-   author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
-   {
-      containerClass = Supply250;
-      mass = 40;
-      class HitpointsProtectionInfo
-      {
-         class Chest
-         {
-            HitpointName = "HitChest";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Diaphragm
-         {
-            HitpointName = "HitDiaphragm";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Body
-         {
-            hitpointName = "HitBody";
-            passThrough = 0.4;
-         };
-      };
-   };
-};
 class PTF_Vest_LegStrapBag_Coy : V_LegStrapBag_coyote_F
 {
    scope = 2;

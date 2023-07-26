@@ -27,7 +27,6 @@ class cfgWeapons
 {
 #include "helmets\cfgInfantryHelmets.hpp"
 #include "helmets\cfgAirHelmets.hpp"
-#include "helmets\cfgLARHelmets.hpp"
 #include "helmets\cfgDIHat.hpp"
 #include "helmets\cfgSpecialHelmets.hpp"
 #include "vests\cfgAirVests.hpp"
@@ -35,8 +34,6 @@ class cfgWeapons
 #include "vests\cfgSpecialVests.hpp"
 #include "uniforms\cfgAirUniforms.hpp"
 #include "uniforms\cfgInfantryUniforms.hpp"
-#include "uniforms\cfgLARUniforms.hpp"
-#include "uniforms\cfgMCCUU.hpp"
 #include "uniforms\cfgSpecialUniforms.hpp"
 #include "cfgScopes.hpp"
 };

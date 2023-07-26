@@ -2,19 +2,7 @@
 class boxloader_tractor_build;
 class boxloader_kalmar;
 class boxloader_atlas;
-//CUP
-class CUP_B_MTVR_Repair_USMC;
-class CUP_B_MTVR_Ammo_USMC;
-class CUP_B_MTVR_Refuel_USMC;
-class CUP_B_TowingTractor_USA;
-class CUP_B_RHIB_USMC;
-class CUP_B_RHIB2Turret_USMC;
-class CUP_B_Zodiac_USMC;
-class CUP_B_LCU1600_USMC;
-class CUP_B_AAV_USMC;
-class CUP_B_AAV_Unarmed_USMC;
-class CUP_B_LAV25M240_USMC;
-class CUP_B_LAV25_USMC;
+
 class Turrets;
 class MainTurret;
 class RCWSOptics;
@@ -29,9 +17,6 @@ class Mode_Burst;
 class Mode_FullAuto;
 class HighROF;
 class LowROF;
-class CUP_Vacannon_M242_veh_LAV25;
-class CUP_Vacannon_M242_veh;
-class CUP_Vlmg_M240_veh;
 class VehicleMagazine;
 //D3S
 class d3s_fseries_LTD_17;

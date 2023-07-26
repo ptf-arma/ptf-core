@@ -14,10 +14,6 @@ class cfgPatches
           "PTF_M1078A1P2_M2",
           "PTF_Quadbike",
           "PTF_SDV",
-          "PTF_Rhib",
-          "PTF_Rhib_MK19",
-          "PTF_Zodiac",
-          "PTF_LCU1600",
           "PTF_MKVSOC",
           "PTF_Atlas",
           "PTF_Kalmar",
@@ -28,8 +24,8 @@ class cfgPatches
           "PTF_Command_MRZR_MAG36",
           "PTF_MRZR4",
           "PTF_M1151",
-		  "PTF_M1151CAT_MK19",
-		  "PTF_M1151CAT_M2",
+		    "PTF_M1151CAT_MK19",
+		    "PTF_M1151CAT_M2",
           "PTF_M1152",
           "PTF_MRAP_CGRCAT1A2_MK19",
           "PTF_MRAP_CGRCAT1A2_M2",
@@ -40,9 +36,9 @@ class cfgPatches
           "PTF_M977A4_Ammo",
           "PTF_M1085A1P2",
           "PTF_M1078A1P2",
-		  "PTF_M1025_tow",
-		  "PTF_M1151CAT_MK19",
-		  "PTF_M1151CAT_M2",
+		    "PTF_M1025_tow",
+		    "PTF_M1151CAT_MK19",
+		    "PTF_M1151CAT_M2",
           "PTF_MTVR_Repair",
           "PTF_MTVR_Ammo",
           "PTF_MTVR_Refuel",
@@ -69,24 +65,17 @@ class cfgPatches
               "d3s_fseries_15",
               "d3s_cars_core",
               "d3s_cars_core_18",
-              "CUP_WheeledVehicles_Core",
-              "CUP_WheeledVehicles_LAV25",
-              "CUP_WaterVehicles_RHIB",
-              "CUP_WheeledVehicles_MTVR",
               "boxloader_tractor",
               "rhsusf_c_mrzr",
-              "CUP_WaterVehicles_LCU1600",
               "rhsusf_c_fmtv",
-              "CUP_TrackedVehicles_AAV",
               "rhsusf_c_m11xx",
               "rhsusf_c_hemtt_a4",
               "rhsusf_c_cougar",
               "rhsusf_c_rg33l",
               "A3_Data_F_Oldman_Loadorder",
               "A3_Soft_F_Exp",
-              "A3_Boat_F_Beta",
-              "CUP_WheeledVehicles_TowingTractor",
-              "CUP_WaterVehicles_Zodiac"};
+              "A3_Boat_F_Beta"
+              };
    };
 };
 #include "cfgImport.hpp"
@@ -128,7 +117,6 @@ class cfgVehicles
 #include "cfgVanilla.hpp"
 #include "cfgStretcher.hpp"
 #include "cfg6x6.hpp"
-#include "cfgAAV.hpp"
 #include "cfgSAM.hpp"
 #include "cfgCAT.hpp"
 };
