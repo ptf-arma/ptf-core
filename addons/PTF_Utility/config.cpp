@@ -82,9 +82,7 @@ class cfgVehicles
 #include "cfgLargeCrates.hpp"
 #include "cfgIndustrialCrates.hpp"
 #include "cfgArsenal.hpp"
-#include "cfgFortHeavy.hpp"
 #include "cfgTools.hpp"
-#include "cfgFortLight.hpp"
 #include "Spawners\cfgSpawners.hpp"
 };
 class Extended_InitPost_EventHandlers
