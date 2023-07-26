@@ -229,36 +229,3 @@ class PTF_Vest_Air_SafetyVest_Long : V_Safety_blue_F
       };
    };
 };
-class PTF_Vest_Air_SafetyVest_Coat : CUP_V_B_LHDVest_Blue
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Air] Crew Vest (Coat) [PTF]";
-   author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
-   {
-      containerClass = Supply250;
-      mass = 40;
-      class HitpointsProtectionInfo
-      {
-         class Chest
-         {
-            HitpointName = "HitChest";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Diaphragm
-         {
-            HitpointName = "HitDiaphragm";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Body
-         {
-            hitpointName = "HitBody";
-            passThrough = 0.4;
-         };
-      };
-   };
-};
