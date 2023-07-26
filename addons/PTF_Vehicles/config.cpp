@@ -119,7 +119,6 @@ class cfgVehicles
 #include "cfgVanilla.hpp"
 #include "cfgStretcher.hpp"
 #include "cfg6x6.hpp"
-#include "cfgSnowmobile.hpp"
 #include "cfgSAM.hpp"
 #include "cfgCAT.hpp"
 };
