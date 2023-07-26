@@ -15,7 +15,7 @@ class PTF_Aircraft_Spawner : Land_MultiScreenComputer_01_black_F
    displayName = "Aircraft Spawner";
    class EventHandlers
    {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\spawners\aircraftSpawner_init.sqf';";
+      init = "[(_this select 0)] remoteExec ['PTF_fnc_aircraftSpawner_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
@@ -37,7 +37,7 @@ class PTF_Vic_Spawner : PTF_Aircraft_Spawner
    displayName = "Vic Spawner";
    class EventHandlers
    {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\spawners\VicSpawner_init.sqf';";
+      init = init = "[(_this select 0)] remoteExec ['PTF_fnc_VicSpawner_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
