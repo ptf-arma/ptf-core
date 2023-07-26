@@ -24,7 +24,7 @@ _standardWhitelist = [
 "rhs_mag_mk84",
 "acc_flashlight_pistol",
 "optic_mrd",
-"optic_mrd_black",,
+"optic_mrd_black",
 "rhs_weap_m4a1_m203s",
 "rhs_weap_m4a1_m320",
 "rhs_weap_m4a1_mstock",
