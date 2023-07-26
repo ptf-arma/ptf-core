@@ -44,7 +44,6 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
       mag_xx(rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote, 40);
       mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 40);
       mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 200);
-      mag_xx(CUP_17Rnd_9x19_M17_Black, 30);
       mag_xx(SmokeShellBlue, 20);
       mag_xx(SmokeShellGreen, 20);
       mag_xx(SmokeShellPurple, 20);

@@ -418,38 +418,6 @@ _spawner addAction
 
 _spawner addAction
 [
-	"Spawn UH-1Y Venom (MEDEVAC)",
-	{
-		(_this select 0) setVariable ["SpawnerCooldown", false, true];
-		_hang = nearestObject [(_this select 0), "Land_HelipadCircle_F"];
-		{
-			deleteVehicleCrew _x;
-			deleteVehicle _x
-		} forEach nearestObjects [_hang, ["Car", "Helicopter", "Motorcycle", "Plane", "Ship", "Submarine", "TrackedAPC", "Tank", "WheeledAPC"], 19];
-		sleep 0.1;
-		_veh = createVehicle
-		[
-			"PTF_UH1Y_Medevac",
-			getPosATL _hang,
-			[],
-			0,
-			"NONE"
-		];
-		_veh setDir (getDir _hang);
-		// createVehicleCrew _veh;
-		;
-		(_this select 0) setVariable ["SpawnerCooldown", true, true]
-	},
-	nil,
-	1.5,
-	true,
-	true,
-	"",
-	"_target distance (nearestObject [_target, ""Land_HelipadCircle_F""]) < 12 && _target getVariable ['SpawnerCooldown', true]"
-];
-
-_spawner addAction
-[
 	"Spawn UH-1Y Venom (Trainer)",
 	{
 		(_this select 0) setVariable ["SpawnerCooldown", false, true];

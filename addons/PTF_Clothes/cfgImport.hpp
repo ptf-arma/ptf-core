@@ -60,7 +60,6 @@ class SV2B_LPU36P;
 class SRU21P;
 class V_DeckCrew_blue_F;
 class V_Safety_blue_F;
-class CUP_V_B_LHDVest_Blue;
 //RHS Vests
 class rhsusf_mbav;
 class rhsusf_mbav_grenadier;
@@ -82,7 +81,6 @@ class rhsusf_spc_teamleader;
 class V_RebreatherB;
 class V_DeckCrew_yellow_F;
 class V_Safety_yellow_F;
-class CUP_V_B_LHDVest_Yellow;
 class V_LegStrapBag_Coyote_F;
 class V_LegStrapBag_black_F;
 //MOES Uniforms
@@ -97,16 +95,6 @@ class rhs_uniform_FROG01_wd;
 class rhs_uniform_FROG01_d;
 class rhs_uniform_g3_rgr;
 class rhs_uniform_g3_tan;
-//USP LAR Uniforms
-class CUP_U_CRYE_RGR_US_Full;
-class CUP_U_CRYE_RGR_US_Roll;
-class CUP_U_CRYE_TAN_US_Full;
-class CUP_U_CRYE_TAN_US_Roll;
-//MCCUU
-class CUP_U_B_USMC_MCCUU;
-class CUP_U_B_USMC_MCCUU_gloves;
-class CUP_U_B_USMC_MCCUU_des;
-class CUP_U_B_USMC_MCCUU_des_gloves;
 //Special Uniforms
 class U_B_Wetsuit;
 class U_C_CBRN_Suit_01_Wdl_F;
