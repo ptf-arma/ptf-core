@@ -44,8 +44,6 @@ class cfgPatches
           "PTF_MTVR_Refuel",
           "PTF_TowingTractor",
           "PTF_M1151_M2_LRAS",
-          "PTF_Snowmobile",
-          "PTF_Snowmobile_Basket",
           "PTF_Quadbike_6x6",
           "PTF_AAV",
           "PTF_AAV_CMD",

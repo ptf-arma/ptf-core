@@ -193,14 +193,6 @@ Includes PBO files:
 Turret_Enhanced.pbo
 
 ======================================================================
-Mod: Snowmobile
-Author: Xacuda
-Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2329040153
-License: Unknown, doesn't care about sharing
-Includes PBO files:
-xs_Snowmobile.pbo
-
-======================================================================
 Mod: M224 60mm Mortar (ACE)
 Author: ArmedVeteran
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2472780935
