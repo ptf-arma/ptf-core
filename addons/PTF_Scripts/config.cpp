@@ -1,3 +1,5 @@
+#include "CfgFunctions.hpp"
+
 class CfgPatches
 {
    class PTF_Scripts
@@ -17,10 +19,6 @@ class CBA_Extended_EventHandlers;
 class CfgUnitInsignia
 {
 #include "cfgUnitInsignia.hpp"
-};
-class CfgFunctions
-{
-#include "cfgFlagFunctions.hpp"
 };
 class CfgVehicles
 {

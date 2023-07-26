@@ -28,36 +28,9 @@ class PTF_Cargo_Industrial_Static_Cargo : B_Slingload_01_Cargo_F
          parachuteHeightLimit = 15;
       };
    };
-   class TransportMagazines
-   {
-   };
-   class TransportWeapons
-   {
-   };
-   class TransportItems
-   {
-   };
-};
-class PTF_Cargo_Industrial_Box_Repair : PTF_Cargo_Industrial_Static_Cargo
-{
-   displayName = "Repair Depot (Packed)";
-   class UserActions
-   {
-      class FieldDeploy
-      {
-         displayName = "Deploy - Repair Depot";
-         statement = "[(_this select 1)] execVM '\PTF_Scripts\fnc\fielddeploy\repairdepot.sqf';";
-         radius = 15;
-         condition = "alive this";
-         onlyForPlayer = 0;
-         position = "slingloadcargo1";
-         showWindow = 0;
-         hideOnUse = 1;
-         priority = 10;
-         shortcut = "";
-      };
-   };
-
+   class TransportMagazines{};
+   class TransportWeapons{};
+   class TransportItems{};
 };
 
 class PTF_Buiding_RepairDepot : Land_RepairDepot_01_green_F
