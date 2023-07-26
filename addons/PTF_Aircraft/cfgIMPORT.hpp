@@ -70,12 +70,8 @@ class RHS_UH1Y_UNARMED_d : RHS_UH1Y_UNARMED //"UH-1Y (Trainer) [MAG36]"
  class CargoTurret_08;
  };
 };
- class Turrets : turrets
- {
-    class CargoTurret_01;
-    class CargoTurret_02;
- };
-};
+
+
 //Mastersafe
 class PTF_weap_mastersafe;
 //F-35B
