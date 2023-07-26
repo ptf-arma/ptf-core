@@ -112,7 +112,6 @@ class cfgVehicles
 #include "cfgM1152.hpp"
 #include "cfgM1232.hpp"
 #include "cfgMRZR.hpp"
-#include "cfgMTVR.hpp"
 #include "cfgTractors.hpp"
 #include "cfgVanilla.hpp"
 #include "cfgStretcher.hpp"

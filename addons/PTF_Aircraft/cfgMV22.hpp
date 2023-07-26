@@ -2,6 +2,7 @@
 class PTF_MV22_Ramp : DEGA_MV22_Infantry_NATO
 {
    scope = 2;
+   scopeCurator = 2;
    editorCategory = "PTF";
    editorSubcategory = "PTF_Air";
    side = 1;
@@ -14,6 +15,7 @@ class PTF_MV22_Ramp : DEGA_MV22_Infantry_NATO
 class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
 {
    scope = 2;
+   scopeCurator = 2;
    editorCategory = "PTF";
    editorSubcategory = "PTF_Air";
    side = 1;
@@ -27,6 +29,7 @@ class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
 class PTF_MV22_Minigun : DEGA_MV22_IDWS_NATO
 {
    scope = 2;
+   scopeCurator = 2;
    editorCategory = "PTF";
    editorSubcategory = "PTF_Air";
    side = 1;
