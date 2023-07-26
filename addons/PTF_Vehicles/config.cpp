@@ -48,8 +48,6 @@ class cfgPatches
           "PTF_MTVR_Refuel",
           "PTF_TowingTractor",
           "PTF_M1151_M2_LRAS",
-          "PTF_Snowmobile",
-          "PTF_Snowmobile_Basket",
           "PTF_Quadbike_6x6",
           "PTF_AAV",
           "PTF_AAV_CMD",
@@ -131,7 +129,6 @@ class cfgVehicles
 #include "cfgStretcher.hpp"
 #include "cfg6x6.hpp"
 #include "cfgAAV.hpp"
-#include "cfgSnowmobile.hpp"
 #include "cfgSAM.hpp"
 #include "cfgCAT.hpp"
 };

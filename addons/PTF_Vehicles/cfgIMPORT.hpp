@@ -152,9 +152,6 @@ class DefaultEventHandlers;
 //6x6
 class NDS_6x6_ATV_MIL;
 class NDS_6x6_ATV_MIL2;
-//Snowmobile
-class xs_Snowmobile_combat;
-class xs_Snowmobile_sport_camo;
 
 class B_SAM_System_03_F;
 class B_Radar_System_01_F;
