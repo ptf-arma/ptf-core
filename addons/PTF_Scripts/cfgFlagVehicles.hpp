@@ -11,8 +11,6 @@
 //class PTF_MTVR_Repair
 //class PTF_MTVR_Ammo
 //class PTF_MTVR_Refuel
-//class PTF_Snowmobile
-//class PTF_Snowmobile_Basket
 //class PTF_Tractor
 //class PTF_TowingTractor
 //class PTF_M977A4_M2
