@@ -28,9 +28,9 @@ class C_Plane_Civil_01_racing_F;
 //MQ-9
 class CUP_B_USMC_DYN_MQ9;
 //MV-22
-class CUP_B_MV22_USMC;
-class CUP_B_MV22_USMC_RAMPGUN;
-class CUP_B_MV22_VIV_USMC;
+class DEGA_MV22_Vehicle_NATO;
+class DEGA_MV22_Infantry_NATO;
+class DEGA_MV22_IDWS_NATO;
 // "UH-1Y (FFAR/MG) [MAG36]"
 class RHS_UH1Y_US_Base;
 class RHS_UH1Y : RHS_UH1Y_US_Base

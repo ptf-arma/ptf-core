@@ -48,13 +48,15 @@ class CfgPatches
           "PTF_Aircraft_Spawner",
           "PTF_Vic_Spawner",
           "PTF_Supply_Spawner",
-          "PTF_Standard_Arsenal_No_Ammo"};
+          "PTF_Standard_Arsenal_No_Ammo"
+          };
       weapons[] = {};
       requiredVersion = 1.32;
       requiredAddons[] = {
           "PTF_Main",
           "PTF_Textures",
           "PTF_Models",
+          "PTF_Scripts",
           "cba_xeh",
           "rhsusf_main",
           "boxloader",
@@ -83,8 +85,7 @@ class cfgVehicles
 #include "cfgFortHeavy.hpp"
 #include "cfgTools.hpp"
 #include "cfgFortLight.hpp"
-#include "Spawners\cfgAircraftSpawner.hpp"
-#include "Spawners\cfgSupplySpawner.hpp"
+#include "Spawners\cfgSpawners.hpp"
 };
 class Extended_InitPost_EventHandlers
 {

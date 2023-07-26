@@ -1,7 +1,9 @@
-class PTF_Cargo_Large_Ammo : Boxloader_Ammo_West
+class PTF_Large_Box : Boxloader_Ammo_West
 {
    scope = 2;
    side = 8;
+   armor = 500;
+   epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_hasCargo = 0;
    ace_cargo_size = 0;
@@ -11,7 +13,7 @@ class PTF_Cargo_Large_Ammo : Boxloader_Ammo_West
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
-   displayName = "Large - Ammo";
+   displayName = "Large - Empty";
    hiddenSelections[] = {
        "camo",
        "camo_signs"};
@@ -28,6 +30,14 @@ class PTF_Cargo_Large_Ammo : Boxloader_Ammo_West
          dimensions[] = {"BBox_Base0", "BBox_Corner"};
       };
    };
+   class TransportMagazines{};
+   class Transportweapons{};
+   class TransportItems{};
+};
+
+class PTF_Cargo_Large_Ammo : PTF_Large_Box
+{
+   displayName = "Large - Ammo";
    class TransportMagazines
    {
       mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 40);
@@ -58,35 +68,9 @@ class PTF_Cargo_Large_Ammo : Boxloader_Ammo_West
       item_xx(ACE_CableTie, 40);
    };
 };
-class PTF_Cargo_Large_Launcher: Boxloader_Ammo_West
+class PTF_Cargo_Large_Launcher: PTF_Large_Box
 {
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_hasCargo = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
    displayName = "Large - Launcher";
-   hiddenSelections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Large_Explosives\Boxloader_Ammo_West_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Large_Explosives\Boxloader_Ammo_West_ca.paa"};
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_Base0", "BBox_Corner"};
-      };
-   };
    class TransportMagazines
    {
       mag_xx(rhs_fgm148_magazine_AT, 10);
@@ -106,35 +90,9 @@ class PTF_Cargo_Large_Launcher: Boxloader_Ammo_West
      weap_xx(rhs_weap_M136_hedp, 10);
    };
 };
-class PTF_Cargo_Large_Explosives: Boxloader_Ammo_West
+class PTF_Cargo_Large_Explosives: PTF_Large_Box
 {
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_hasCargo = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
    displayName = "Large - Explosives";
-   hiddenSelections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Large_Explosives\Boxloader_Ammo_West_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Large_Explosives\Boxloader_Ammo_West_ca.paa"};
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_Base0", "BBox_Corner"};
-      };
-   };
    class TransportMagazines
    {
    mag_xx(AMP_Breaching_Charge_Mag, 50);
@@ -152,37 +110,9 @@ class PTF_Cargo_Large_Explosives: Boxloader_Ammo_West
 	  item_xx(ACE_Clacker, 10);
    };
 };
-class PTF_Cargo_Large_Medical : Boxloader_Ammo_West
+class PTF_Cargo_Large_Medical : PTF_Large_Box
 {
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
    displayName = "Large - Medical";
-   hiddenSelections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Large_Medical\Boxloader_Ammo_West_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Large_Medical\Boxloader_Ammo_West_ca.paa"};
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_Base0", "BBox_Corner"};
-      };
-   };
    class TransportItems
    {
    item_xx(kat_IV_16, 50);
@@ -211,73 +141,18 @@ class PTF_Cargo_Large_Medical : Boxloader_Ammo_West
    item_xx(ACE_bloodIV_500, 30);
    };
 };
-class PTF_Cargo_Large_Cargo : Boxloader_Ammo_West
+class PTF_Cargo_Large_VicBox : PTF_Large_Box
 {
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_space = 30;
+   ace_cargo_space = 40;
    ace_cargo_hasCargo = 1;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
+   ace_cargo_size = 5;
+   ace_cargo_canload = 1;
    ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
-   maximumLoad = 90000;
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
-   displayName = "Large - Cargo";
-   hiddenSelections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Large_Ammo\Boxloader_Ammo_West_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Large_Ammo\Boxloader_Ammo_West_ca.paa"};
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_Base0", "BBox_Corner"};
-      };
-   };
-};
-class PTF_Cargo_Large_VicBox : Boxloader_Ammo_West
-{
-   scope = 2;
-   side = 8;
-   faction = "BLU_F";
-   ace_cargo_space = 36;
-   ace_cargo_hasCargo = 1;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Cargo";
-   author = "Paramarine Task Force";
+   ace_dragging_candrag = 0;
    displayName = "Large - VicBox";
-   hiddenSelections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Large_Ammo\Boxloader_Ammo_West_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Large_Ammo\Boxloader_Ammo_West_ca.paa"};
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_Base0", "BBox_Corner"};
-      };
-   };
   class EventHandlers
    {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\arsenal\BigVicBox_init.sqf';";
+      init = "[(_this select 0)] remoteExec ['PTF_fnc_BigVicBox_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };

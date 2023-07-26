@@ -19,94 +19,32 @@ class PTF_Standard_Arsenal : Box_NATO_Equip_F
    hiddenselectionstextures[] = {
        "PTF_textures\objects\arsenal\equipment_box_blufor_co.paa",
        "PTF_textures\objects\arsenal\equipment_box_blufor_ca.paa"};
-
    class EventHandlers
    {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\arsenal\arsenal_init.sqf';";
+      init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenal_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
    };
-
-   class Transportitems : Transportitems
-   {
-   };
-   class Transportbackpacks : Transportbackpacks
-   {
-   };
-   class Transportmagazines : Transportmagazines
-   {
-   };
-   class Transportweapons : Transportweapons
-   {
-   };
+   class Transportitems : Transportitems{};
+   class Transportbackpacks : Transportbackpacks{};
+   class Transportmagazines : Transportmagazines{};
+   class Transportweapons : Transportweapons{};
 };
-class PTF_Standard_Arsenal_No_Ammo : Box_NATO_Equip_F
+class PTF_Standard_Arsenal_No_Ammo : PTF_Standard_Arsenal
 {
-   scope = 2;
-   side = 8;
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canload = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_candrag = 0;
-   faction = "BLU_F";
-   editorCategory = "PTF_Empty";
-   editorSubcategory = "PTF_Arsenal";
-   author = "Paramarine Task Force";
    displayname = "Standard Arsenal (No ammo) [PTF]";
-   hiddenselections[] = {
-       "camo",
-       "camo_signs"};
-   hiddenselectionstextures[] = {
-       "PTF_textures\objects\arsenal\equipment_box_blufor_co.paa",
-       "PTF_textures\objects\arsenal\equipment_box_blufor_ca.paa"};
-
    class EventHandlers
    {
-      init = "[(_this select 0)] execVM '\PTF_Scripts\fnc\arsenal\arsenalnoammo_init.sqf';";
+      init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalnoammo_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
    };
-
-   class Transportitems : Transportitems
-   {
-   };
-   class Transportbackpacks : Transportbackpacks
-   {
-   };
-   class Transportmagazines : Transportmagazines
-   {
-   };
-   class Transportweapons : Transportweapons
-   {
-   };
 };
-class PTF_Training_box: Box_NATO_Equip_F
+class PTF_Training_box: PTF_Standard_Arsenal
 {
-   scope=2;
-   side=8;
-   ace_cargo_space=0;
-   ace_cargo_hasCargo=0;
-   ace_cargo_size=0;
-   ace_cargo_canload=0;
-   ace_dragging_canCarry=0;	
-   ace_dragging_candrag=0;
-   faction="BLU_F";
-   editorCategory="PTF_Empty";
-   editorSubcategory="PTF_Arsenal";
-   author="Paramarine Task Force";
-   displayname="Training Box [PTF]";
-   hiddenselections[]= {
-       "camo",
-       "camo_signs"
-		};
-   hiddenselectionstextures[]= {
-       "PTF_textures\objects\arsenal\equipment_box_blufor_training_co.paa",
-       "PTF_textures\objects\arsenal\equipment_box_blufor_ca.paa"
-		};
+    displayname="Training Box [PTF]";
 	class Transportitems: TransportItems
 	{
 		class _xx_training_attachment_adapter_yellow
@@ -120,9 +58,6 @@ class PTF_Training_box: Box_NATO_Equip_F
 			count=250;
 		};
 	};
-	class Transportbackpacks: TransportBackpacks
-	{
-	};
 	class Transportmagazines: TransportMagazines
 	{
 			class _xx_training_stanag_30rnd_rubber_blue
@@ -135,8 +70,5 @@ class PTF_Training_box: Box_NATO_Equip_F
 			magazine="training_stanag_30rnd_blank_yellow";
 			count=1000;
 			};
-		};
-		class Transportweapons: TransportWeapons
-		{
 		};
 	};
