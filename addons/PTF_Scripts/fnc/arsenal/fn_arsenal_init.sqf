@@ -454,6 +454,7 @@ _standardWhitelist = [
 "PTF_Helmet_Infantry_Mich2000_Headset_ESS_S",
 "PTF_Helmet_Infantry_Mich2000_S",
 "USMC_DI_HAT",
+"PTF_DI_COVER",
 "PTF_Helmet_Service_Cap",
 "PTF_Helmet_FASTXP_TAN",
 "PTF_Helmet_FASTXP_CU_TAN",
