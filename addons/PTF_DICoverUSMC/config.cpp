@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class PTF_Headgear
+	class PTF_DI_COVER
 	{
 		weapons[] = {"PTF_DI_COVER"};
 		requiredVersion = 0.1;
