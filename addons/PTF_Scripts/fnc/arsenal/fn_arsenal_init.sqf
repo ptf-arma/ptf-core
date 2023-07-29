@@ -697,6 +697,7 @@ _standardWhitelist = [
 "ACE_bloodIV_500",
 "ACE_epinephrine",
 "ACE_morphine",
+"ACE_adenosine",
 "ACE_personalAidKit",
 "ACE_plasmaIV",
 "ACE_plasmaIV_250",
