@@ -112,7 +112,7 @@ class PTF_M1123 : rhsusf_m998_d_s_2dr_fulltop
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Cars";
-   ace_cargo_space = 5;
+   ace_cargo_space = 10;
    ace_cargo_hasCargo = 1;
    side = 1;
    author = "Paramarine Task Force";
