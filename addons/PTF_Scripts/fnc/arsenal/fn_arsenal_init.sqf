@@ -721,6 +721,7 @@ _standardWhitelist = [
 "ACE_DefusalKit",
 "ACE_EarPlugs",
 "ACE_EntrenchingTool",
+"ACE_ATragMX",
 "ACE_Flashlight_MX991",
 "ItemcTabHCam",
 "ACE_IR_Strobe_Item",
