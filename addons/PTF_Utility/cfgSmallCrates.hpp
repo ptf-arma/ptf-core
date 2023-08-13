@@ -58,6 +58,8 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(rhs_mag_M441_HE, 10);
       mag_xx(rhs_mag_M397_HET, 10);
       mag_xx(ACE_CTS9, 40);
+        mag_xx(rhsusf_mag_15Rnd_9x19_FMD, 20)
+      mag_xx(rhsusf_mag_7x45_MPH, 20)
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
    };
    class Transportweapons
