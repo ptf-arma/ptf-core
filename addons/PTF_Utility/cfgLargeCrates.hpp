@@ -54,8 +54,8 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
       mag_xx(rhs_mag_M441_HE, 20);
       mag_xx(rhs_mag_M397_HET, 20);
       mag_xx(ACE_CTS9, 80);
-      mag_xx(rhsusf_mag_15Rnd_9x19_FMD, 40)
-      mag_xx(rhsusf_mag_7x45_MPH, 40)
+      mag_xx(rhsusf_mag_15Rnd_9x19_FMD, 40);
+      mag_xx(rhsusf_mag_7x45_MPH, 40);
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 40);
    };
    class Transportweapons
