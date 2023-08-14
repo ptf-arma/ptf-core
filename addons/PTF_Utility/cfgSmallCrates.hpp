@@ -120,7 +120,6 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
    class Transportitems
    {
       item_xx(kat_IV_16, 25);
-      item_xx(ACE_salineIV_250, 15);
       item_xx(kat_EACA, 25);
       item_xx(ACE_tourniquet, 25);
       item_xx(kat_naxolone, 25);
@@ -140,9 +139,8 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
       item_xx(ACE_splint, 25);
       item_xx(kat_Carbonate, 25);
       item_xx(kat_IO_FAST, 15);
-      item_xx(ACE_plasmaIV_1000, 30);
+      item_xx(ACE_plasmaIV,15);
       item_xx(ACE_plasmaIV_500, 15);
-      item_xx(ACE_bloodIV_500, 15);
    };
 };
 class PTF_Cargo_Small_Humanitarian : PTF_Cargo_Small

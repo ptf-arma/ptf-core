@@ -117,7 +117,6 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    class TransportItems
    {
    item_xx(kat_IV_16, 50);
-   item_xx(ACE_salineIV_250, 30);
    item_xx(kat_EACA, 50);
    item_xx(ACE_tourniquet, 50);
    item_xx(kat_naxolone, 50);
@@ -137,9 +136,9 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    item_xx(ACE_splint, 50);
    item_xx(kat_Carbonate, 50);
    item_xx(kat_IO_FAST, 30);
-   item_xx(ACE_plasmaIV_1000, 60);
    item_xx(ACE_plasmaIV_500, 30);
-   item_xx(ACE_bloodIV_500, 30);
+   item_xx(ACE_plasmaIV, 30);
+
    };
 };
 class PTF_Cargo_Large_VicBox : PTF_Large_Box
