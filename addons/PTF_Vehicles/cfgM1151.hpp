@@ -5,8 +5,8 @@ class PTF_M1151 : rhsusf_m1151_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Cars";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -117,8 +117,8 @@ class PTF_M1151_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_ArmedCars";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -223,8 +223,8 @@ class PTF_M1151_M240 : rhsusf_m1151_m240_v3_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_ArmedCars";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -336,8 +336,8 @@ class PTF_M1151_M2 : rhsusf_m1151_m2_v3_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_ArmedCars";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -442,8 +442,8 @@ class PTF_M1151_M2_LRAS : rhsusf_m1151_m2_lras3_v1_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_ArmedCars";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;

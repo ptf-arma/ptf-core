@@ -4,8 +4,8 @@ class PTF_MRAP_M1232_M2 : rhsusf_M1232_MC_M2_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_MRAP";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -103,8 +103,8 @@ class PTF_MRAP_M1232_MK19 : rhsusf_M1232_MC_MK19_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_MRAP";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
+   ace_cargo_space = 15;
+   ace_cargo_hasCargo = 1;
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
