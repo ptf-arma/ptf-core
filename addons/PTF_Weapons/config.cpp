@@ -1,7 +1,8 @@
 class CfgPatches
 {
-	class PTF_AirWeaponSystem_US
+	class PTF_AirWeapon
 	{
+		author = "PTF";
 		units[] = {};
 		weapons[] = {
 			"PTF_FIR_Hydra_WP_P_7rnd_M",
@@ -14,10 +15,13 @@ class CfgPatches
 			"rhsusf_c_airweapons",
 			"FIR_AirWeaponSystem_US",
 			"ace_missileguidance",
+			"rhsusf_c_weapons",
+			"rhs_c_weapons",
+			"A3_Weapons_F",
 			"ace_hellfire"
 			};
-		
 	};
+
 };
 #include "cfgWeapons.hpp"
 #include "cfgAmmo.hpp"

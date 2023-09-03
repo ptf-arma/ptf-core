@@ -1,9 +1,18 @@
-class cfgAmmo {
-	
-	class M_Scalpel_AT;
-	class ACE_Hellfire_AGM114K : M_Scalpel_AT {
-		class ace_missileguidance;
+class CfgPatches
+{
+	class PTF_40mm
+	{
+		units[] = {};
+		weapons[] = {};
+		requiredVersion = 1.0;
+		requiredAddons[] = {
+			"rhsusf_c_weapons",
+			"rhs_c_weapons",
+			"A3_Weapons_F",
+			};
 	};
+
+};
 
 	class SmokeShell;
 	class SmokeShellBlue;
@@ -12,8 +21,8 @@ class cfgAmmo {
 	class SmokeShellPurple;
 	class SmokeShellRed;
 	class SmokeShellYellow;
+class cfgAmmo {
 
-//40mm
 	class G_40mm_Smoke: SmokeShell {
 		simulation = "shotSmoke";
 		deflectionSlowDown = 0;
