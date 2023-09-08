@@ -1,9 +1,5 @@
 //UH-1Y
 #include "cfgMacro.hpp"
-
-
-
-
 class PTF_UH1Y : RHS_UH1Y_d
 {
    scope = 2;

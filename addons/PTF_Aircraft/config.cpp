@@ -51,6 +51,7 @@ class CfgPatches
 			"ace_interaction",
 			"USAF_C130J",
 			"FIR_AV8B_F",
+			"FIR_FA18_F",
 			"rhsgref_a29"
 		};
 	};

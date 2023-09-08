@@ -12,6 +12,16 @@ class PTF_MQ9 : USAF_MQ9
    weapons[] = {"CMFlareLauncher"};
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelectionsTextures[] = {"USAF_MQ9\data\USAF_MQ9_co.paa", "USAF_MQ9\data\USAF_MQ9_Wing_co.paa", "usaf_mq9\data\usaf_MQ9_hinges_co.paa", "", "\PTF_Textures\aircraft\3_ca.paa", "\PTF_Textures\aircraft\6_ca.paa", "", "", "", "", ""};
+   class ACE_Actions : ACE_Actions {
+      class ACE_MainActions : ACE_MainActions {
+         class AH1z_Loadouts {
+            displayName = "Loadouts";
+            statement = "";
+            icon = "";
+            #include "\PTF_Scripts\fnc\Ace actions\air\MQ9.hpp"
+         };
+      };
+   };
 };
 class PTF_MQ9_SCARFACE : PTF_MQ9
 {
