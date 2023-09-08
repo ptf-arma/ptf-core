@@ -81,13 +81,10 @@ class PTF_Cargo_Small_Launcher : PTF_Cargo_Small
    class Transportmagazines
    {
       mag_xx(rhs_fgm148_magazine_AT, 5);
-      mag_xx(rhs_fim92_mag, 5);
-      mag_xx(MRAWS_HEAT_F, 10);
-      mag_xx(MMA_MAAWS_SMOKE469, 10);
-      mag_xx(MMA_MAAWS_ILLUM545, 10);
-      mag_xx(MMA_MAAWS_HEDP502, 10);
+      mag_xx(MRAWS_HEAT_F, 5);
       mag_xx(MRAWS_HE_F, 10);
       mag_xx(MRAWS_HEAT55_F, 10);
+      mag_xx(rhs_fim92_mag, 10);
    };
    class Transportweapons
    {
@@ -122,6 +119,9 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
    class Transportitems
    {
       item_xx(kat_IV_16, 25);
+      item_xx(ACE_salineIV_250, 30);
+      item_xx(ACE_salineIV_500, 30);
+      item_xx(ACE_salineIV, 30)
       item_xx(kat_EACA, 25);
       item_xx(ACE_tourniquet, 25);
       item_xx(kat_naxolone, 25);

@@ -9,7 +9,9 @@ class CfgPatches
       requiredVersion = 1.0;
       requiredAddons[] = {
           "PTF_Main",
-          "cba_main"};
+          "ace_pylons",
+          "cba_main"
+          };
       author = "Paramarine Task Force";
    };
 };

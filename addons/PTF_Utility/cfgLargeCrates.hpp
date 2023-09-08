@@ -78,8 +78,6 @@ class PTF_Cargo_Large_Launcher: PTF_Large_Box
    {
       mag_xx(rhs_fgm148_magazine_AT, 10);
       mag_xx(MRAWS_HEAT_F, 10);
-      mag_xx(MMA_MAAWS_SMOKE469, 20);
-      mag_xx(MMA_MAAWS_ILLUM545, 20);
       mag_xx(MRAWS_HE_F, 20);
       mag_xx(MRAWS_HEAT55_F, 20);
       mag_xx(rhs_fim92_mag, 20);
@@ -119,6 +117,9 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    class TransportItems
    {
    item_xx(kat_IV_16, 50);
+   item_xx(ACE_salineIV_250, 30);
+   item_xx(ACE_salineIV_500, 30);
+   item_xx(ACE_salineIV, 30)
    item_xx(kat_EACA, 50);
    item_xx(ACE_tourniquet, 50);
    item_xx(kat_naxolone, 50);
@@ -138,7 +139,6 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    item_xx(ACE_splint, 50);
    item_xx(kat_Carbonate, 50);
    item_xx(kat_IO_FAST, 30);
-   item_xx(ACE_plasmaIV_500, 30);
    item_xx(ACE_plasmaIV, 30);
 
    };
