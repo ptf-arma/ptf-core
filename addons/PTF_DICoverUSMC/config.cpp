@@ -2,6 +2,7 @@ class CfgPatches
 {
 	class PTF_DI_COVER
 	{
+		units[] = {};
 		weapons[] = {"PTF_DI_COVER"};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"A3_Characters_F"};
