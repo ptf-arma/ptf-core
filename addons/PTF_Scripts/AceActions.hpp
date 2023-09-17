@@ -337,6 +337,37 @@ class Ship_F : Ship
    };
 };
 
+class Man;
+class CAManBase : Man {
+   class ACE_SelfActions {
+      class Markers {
+         displayName = "Markers";
+         icon = "\A3\ui_f\data\map\markers\military\dot_CA.paa";
+         priority = 0.9;
+            class lz {
+            displayName = "Place Lz Marker";
+            Icon = "\A3\ui_f\data\map\markers\handdrawn\pickup_CA.paa";
+            statement = "[_player] call PTF_Fnc_lz";
+            };
+            class re {
+            displayName = "Place Resupply Marker";
+            Icon = "\a3\ui_f\data\igui\cfg\simpletasks\types\rearm_ca.paa";
+            statement = "[_player] call PTF_Fnc_re";
+            };
+            class ccp {
+            displayName = "Place CCP Marker";
+            Icon = "\A3\ui_f_orange\data\cfgmarkers\redcrystal_ca.paa";
+            statement = "[_player] call PTF_Fnc_ccp"
+            };
+            class Dot {
+            displayName = "Place Dot Marker";
+            icon = "\A3\ui_f\data\map\markers\handdrawn\dot_CA.paa";
+            statement = "call PTF_Fnc_Dot"
+         };
+      };
+   };
+};
+
 
 
 

@@ -1,6 +1,13 @@
 class cfgFunctions {
 	class PTF_functions {
 		tag = "PTF";
+		class MapMarkers {
+			file = "\PTF_Scripts\fnc\Markers";
+			class Dot{};
+			class ccp{};
+			class lz{};
+			class re{};
+		};
 		class Boxes {
 			file = "\PTF_Scripts\fnc\Boxes";
 			class BigVicBox_init {};

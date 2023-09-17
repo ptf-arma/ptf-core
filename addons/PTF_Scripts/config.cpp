@@ -24,5 +24,5 @@ class CfgUnitInsignia
 };
 class CfgVehicles
 {
-#include "cfgFlagVehicles.hpp"
+#include "AceActions.hpp"
 };
