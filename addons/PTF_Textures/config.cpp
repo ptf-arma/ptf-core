@@ -143,161 +143,161 @@ class RscDisplayLoading
         	class NCA_loadingBackground13: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background1.paa";
+					text = "\PTF_Textures\Backgrounds\Background13.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground14: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background2.paa";
+					text = "\PTF_Textures\Backgrounds\Background14.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground15: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background3.paa";
+					text = "\PTF_Textures\Backgrounds\Background15.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground16: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background4.paa";
+					text = "\PTF_Textures\Backgrounds\Background16.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground17: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background5.paa";
+					text = "\PTF_Textures\Backgrounds\Background19.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground18: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background6.paa";
+					text = "\PTF_Textures\Backgrounds\Background18.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground19: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background7.paa";
+					text = "\PTF_Textures\Backgrounds\Background19.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground20: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background8.paa";
+					text = "\PTF_Textures\Backgrounds\Background20.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground21: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background9.paa";
+					text = "\PTF_Textures\Backgrounds\Background1.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground22: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background10.paa";
+					text = "\PTF_Textures\Backgrounds\Background2.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground23: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background11.paa";
+					text = "\PTF_Textures\Backgrounds\Background3.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground24: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background12.paa";
+					text = "\PTF_Textures\Backgrounds\Background4.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground25: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background1.paa";
+					text = "\PTF_Textures\Backgrounds\Background5.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground26: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background2.paa";
+					text = "\PTF_Textures\Backgrounds\Background6.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground27: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background3.paa";
+					text = "\PTF_Textures\Backgrounds\Background7.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground28: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background4.paa";
+					text = "\PTF_Textures\Backgrounds\Background8.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground29: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background5.paa";
+					text = "\PTF_Textures\Backgrounds\Background9.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground30: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background6.paa";
+					text = "\PTF_Textures\Backgrounds\Background10.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground31: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background7.paa";
+					text = "\PTF_Textures\Backgrounds\Background11.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground32: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background8.paa";
+					text = "\PTF_Textures\Backgrounds\Background12.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground33: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background9.paa";
+					text = "\PTF_Textures\Backgrounds\Background13.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground34: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background10.paa";
+					text = "\PTF_Textures\Backgrounds\Background14.paa";
 				};
 			};
 		};
         	class NCA_loadingBackground35: NCA_loadingBackground1 {
 			class controlsBackground: controlsBackground {
 				class NCA_loadingBackground: NCA_loadingBackground{
-					text = "\PTF_Textures\Backgrounds\Background11.paa";
+					text = "\PTF_Textures\Backgrounds\Background15.paa";
 				};
 			};
 		};
