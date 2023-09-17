@@ -342,7 +342,7 @@ class CAManBase : Man {
    class ACE_SelfActions {
       class Markers {
          displayName = "Markers";
-         icon = "\A3\ui_f\data\map\markers\military\dot_CA.paa";
+         icon = "\A3\ui_f\data\map\markers\handdrawn\objective_CA.paa";
          priority = 0.9;
             class lz {
             displayName = "Place Lz Marker";

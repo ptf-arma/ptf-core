@@ -5,7 +5,7 @@ class PTF_Helicopters_Attack {
     enableInside = 1;
     icon = "a3\ui_f\data\gui\cfg\communicationmenu\casheli_ca.paa";
         class AH1Z {
-        	statement = "createVehicle [""PTF_AH1Z_GUNFIGHTERS"", getPosATL (nearestObject [_player,""Land_helipadEmpty_F""])] call PTF_fnc_PylonRemoval";
+        	statement = "['PTF_AH1Z_GUNFIGHTERS', 'attack'] call PTF_fnc_SpawnFunction";
             displayName = "Spawn AH-1Z Viper";
             icon = "rhsusf\addons\rhsusf_a2port_air\data\ico\rhs_ah1z_pic_ca.paa";
             };

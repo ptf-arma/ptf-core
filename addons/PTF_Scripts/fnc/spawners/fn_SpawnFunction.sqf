@@ -1,24 +1,23 @@
-///param ["_player", "_vehicle", "_markers"] 
- 
-_player = player; 
-_vehicle = "PTF_AH1Z_GUNFIGHTERS"; 
-_markers = "attack"; 
- 
+params ["_vehicle", "_markers"];
+
 _id = missionNamespace getVariable [_markers, 0]; 
- 
 _name = _markers; 
+_cnt = { _markers in _x } count allMapMarkers;
+
+
+
 _markersA = [_name]; 
-for "_i" from 1 to 10 do { 
+for "_i" from 1 to _cnt - 1 do { 
   _markersA pushBack format ["%1_%2", _name, _i]; 
 }; 
- 
+
 _vH = createVehicle [ 
  _vehicle,  
  getMarkerPos [_markersA select _id] 
 ]; 
- 
-_vh setDir [getmarkerDir [_markersA select _id]]; 
-  
+
+_vh setDir (markerDir (_markersA select _id)); 
+
 if (_id == count _markersA - 1 ) then {  
  missionNamespace setVariable [_markers, 0 , true];  
  }  

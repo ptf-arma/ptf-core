@@ -38,12 +38,10 @@ class cfgFunctions {
 			class arsenal_init {};
 			class arsenalnoammo_init {};
 		};
-		class AirCraftPylongRemoval {
-			File = "\PTF_Scripts\fnc\Ace actions\air";
-			class PylonRemoval {
-				postInit = 1;
+		class Spawners {
+			File = "\PTF_Scripts\fnc\spawners";
+			class SpawnFunction{};
 			};
-		};
 		class F18Normal {
 			file = "\PTF_Scripts\fnc\Loadouts\F-18\Normal";
 			class ApkwsGbu16FN {};
