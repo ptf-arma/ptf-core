@@ -71,5 +71,19 @@ class cfgFunctions {
 			file = "\PTF_Scripts\fnc\Loadouts\MQ9";
 			class HellfireM {};
 		};
+		class PTFSalvage {
+			file = "\PTF_Scripts\fnc\Salvage";
+			class Salvage {};
+		};
+		class PTFSlingLoading {
+			file = "\PTF_Scripts\fnc\Sling loading";
+			class slingloading {};
+		}
+		class AddonOptions {
+			file = "\PTF_Scripts";
+			class AddonOptions {
+				preinit = 1;
+			};
+		};
 	};
 };

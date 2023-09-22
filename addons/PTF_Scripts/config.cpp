@@ -26,3 +26,6 @@ class CfgVehicles
 {
 #include "AceActions.hpp"
 };
+class CfgMarkers {
+#include "fnc\Markers\CfgMarker.hpp"
+};

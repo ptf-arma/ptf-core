@@ -84,6 +84,4 @@ class cfgVehicles
 #include "cfgTools.hpp"
 #include "Spawners\cfgSpawners.hpp"
 };
-class Extended_InitPost_EventHandlers
-{
-};
+

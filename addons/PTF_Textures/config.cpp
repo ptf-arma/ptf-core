@@ -53,12 +53,7 @@ class RscDisplayLoading
 			{
 				class NCA_loadingBackground: RscPicture
 				{
-					idc = 1000;
-					colorText[] = {1,1,1,1};
-					x = "SafeZoneX";
-					y = "SafeZoneY";
-					h = "SafeZoneH";
-					w = "SafeZoneW";
+					
 					text = "\PTF_Textures\Backgrounds\Background1.paa";
 				};
 			};
