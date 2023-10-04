@@ -6,17 +6,17 @@ _RopesAttached = missionNamespace getVariable ["PTF_RopesAttached", 0];
 if (_RopesAttached > 1) exitwith {};
 if (getmass _object2 > 6800) exitwith {};
 if (getmass _object2 > 2900) then {
-missionNamespace setVariable ["PTF_ObjectMass", getmass _object2];
+_object2 missionNamespace setVariable ["PTF_ObjectMass", getmass _object2, true];
 _object2 setMass [2900];
-missionNamespace setVariable ["PTF_RopesAttached", 1];
+_object2 missionNamespace setVariable ["PTF_RopesAttached", 1, true];
 }
 }];
 
-_Helit addEventHandler ["RopeBreak", {
+_Heli addEventHandler ["RopeBreak", {
 	params ["_object1", "_rope", "_object2"];
-_RopesAttached = missionNamespace getVariable ["PTF_RopesAttached", 0];
-_Defultmass = missionNamespace getVariable ["PTF_ObjectMass", 0];
+_RopesAttached = _object2 missionNamespace getVariable ["PTF_RopesAttached", 0, true];
+_Defultmass = _object2 missionNamespace getVariable ["PTF_ObjectMass", 0, true];
 if (_RopesAttached == 0) exitwith {};
 _object2 setmass [_Defultmass];
-missionNamespace setVariable ["PTF_RopesAttached", 0];
+_object2 missionNamespace setVariable ["PTF_RopesAttached", 0, true];
 }];
