@@ -57,7 +57,11 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(rhs_mag_m433_HEDP, 10);
       mag_xx(rhs_mag_M441_HE, 10);
       mag_xx(rhs_mag_M397_HET, 10);
+      mag_xx(rhsusf_mag_6Rnd_M441_HE, 10);
+      mag_xx(rhsusf_mag_6Rnd_M433_HEDP, 10);
       mag_xx(ACE_CTS9, 40);
+      mag_xx(rhsusf_mag_15Rnd_9x19_FMD, 20);
+      mag_xx(rhsusf_mag_7x45_MPH, 20);
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
    };
    class Transportweapons
@@ -77,13 +81,10 @@ class PTF_Cargo_Small_Launcher : PTF_Cargo_Small
    class Transportmagazines
    {
       mag_xx(rhs_fgm148_magazine_AT, 5);
-      mag_xx(rhs_fim92_mag, 5);
-      mag_xx(MRAWS_HEAT_F, 10);
-      mag_xx(MMA_MAAWS_SMOKE469, 10);
-      mag_xx(MMA_MAAWS_ILLUM545, 10);
-      mag_xx(MMA_MAAWS_HEDP502, 10);
+      mag_xx(MRAWS_HEAT_F, 5);
       mag_xx(MRAWS_HE_F, 10);
       mag_xx(MRAWS_HEAT55_F, 10);
+      mag_xx(rhs_fim92_mag, 10);
    };
    class Transportweapons
    {
@@ -118,7 +119,9 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
    class Transportitems
    {
       item_xx(kat_IV_16, 25);
-      item_xx(ACE_salineIV_250, 15);
+      item_xx(ACE_salineIV_250, 30);
+      item_xx(ACE_salineIV_500, 30);
+      item_xx(ACE_salineIV, 30)
       item_xx(kat_EACA, 25);
       item_xx(ACE_tourniquet, 25);
       item_xx(kat_naxolone, 25);
@@ -138,9 +141,8 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
       item_xx(ACE_splint, 25);
       item_xx(kat_Carbonate, 25);
       item_xx(kat_IO_FAST, 15);
-      item_xx(ACE_plasmaIV_1000, 30);
+      item_xx(ACE_plasmaIV,15);
       item_xx(ACE_plasmaIV_500, 15);
-      item_xx(ACE_bloodIV_500, 15);
    };
 };
 class PTF_Cargo_Small_Humanitarian : PTF_Cargo_Small

@@ -233,6 +233,96 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
          factions[] = {};
       };
    };
+   class TransportBackpacks
+                {
+                };
+            class TransportMagazines {
+            class _xx_rhsusf_100Rnd_762x51_m80a1epr {
+                magazine="rhsusf_100Rnd_762x51_m80a1epr";
+                count = 5;
+            };
+            class _xx_rhsusf_200Rnd_556x45_box {
+                magazine="rhsusf_200Rnd_556x45_box";
+                count = 5;
+            };
+            class _xx_PTF_Mag_556x45_Mk262_PMAG_Mix{
+                magazine="PTF_Mag_556x45_Mk262_PMAG_Mix";
+                count = 20;
+            };
+            class _xx_rhs_mag_an_m8hc {
+                magazine="rhs_mag_an_m8hc";
+                count = 5;
+            };
+            class _xx_SmokeShellBlue {
+                magazine="SmokeShellBlue";
+                count = 5;
+            };
+            class _xx_rhs_mag_m67 {
+                magazine="rhs_mag_m67";
+                count = 5;
+            };
+            class _xx_rhs_fim92_mag {
+                magazine="rhs_fim92_mag";
+                count = 2;
+            };
+            class _xx_rhs_fgm148_magazine_AT {
+                magazine="rhs_fgm148_magazine_AT";
+                count = 1;
+            };
+		};
+		class TransportItems{
+            class _xx_ACE_elasticBandage {
+                name="ACE_elasticBandage";
+                count = 20;
+            };
+            class _xx_ACE_plasmaIV {
+                name="ACE_plasmaIV";
+                count = 3;
+            };
+            class _xx_ACE_splint {
+                name="ACE_splint";
+                count = 4;
+            };
+            class _xx_ACE_tourniquet {
+                name="ACE_tourniquet";
+                count = 4;
+            };
+            class _xx_rhsusf_ANPVS_15 {
+                name="rhsusf_ANPVS_15";
+                count = 2;
+            };
+            class _xx_ACE_wirecutter {
+                name="ACE_wirecutter";
+                count = 2;
+            };
+            class _xx_ToolKit {
+                name="ToolKit";
+                count = 1;
+            };
+            class _xx_ACE_vmm3 {
+                name="ACE_vmm3";
+                count = 2;
+            };
+            class _xx_ACE_Clacker {
+                name="ACE_Clacker";
+                count = 2;
+            };
+            class _xx_ACE_DefusalKit {
+                name="ACE_DefusalKit";
+                count = 2;
+            };
+            class _xx_ACE_EarPlugs {
+                name="ACE_EarPlugs";
+                count = 5;
+            };
+		};
+		class TransportWeapons
+		{
+            class _xx_rhs_weap_M136_hp {
+                weapon="rhs_weap_M136_hp"
+                count = 1
+            };
+		};
    class VehicleTransport
    {
       class Cargo

@@ -12,15 +12,9 @@ class PTF_AH1Z : RHS_AH1Z
    side = 1;
    author = "Paramarine Task Force";
    displayName = "AH-1Z [MAG36]";
-   weapons[] = {
-       "PTF_weap_mastersafe",
-       "CMFlareLauncher"};
-   magazines[] = {
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine",
-       "240Rnd_CMFlare_Chaff_Magazine"};
-   hiddenSelectionsTextures[] = {
-       "\rhsusf\addons\rhsusf_a2port_air2\ah1z\data\ah1z_body_co.paa", "\rhsusf\addons\rhsusf_a2port_air2\ah1z\data\ah1z_engines_co.paa", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)"};
+   weapons[] = {"PTF_weap_mastersafe","CMFlareLauncher"};
+   magazines[] = {"240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
+   hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_a2port_air2\ah1z\data\ah1z_body_co.paa", "\rhsusf\addons\rhsusf_a2port_air2\ah1z\data\ah1z_engines_co.paa", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)"};
    class Turrets : Turrets
    {
       gunnerCompartments = "Compartment1";
@@ -37,6 +31,16 @@ class PTF_AH1Z : RHS_AH1Z
                  "rhs_mag_M197_750",
                  "rhs_laserfcsmag",
                  "rhs_LaserMag_ai"};
+      };
+   };
+   class ACE_Actions : ACE_Actions {
+      class ACE_MainActions : ACE_MainActions {
+         class AH1z_Loadouts {
+            displayName = "Loadouts";
+            statement = "";
+            icon = "";
+            #include "\PTF_Scripts\fnc\Ace actions\air\AH1z.hpp"
+         };
       };
    };
 };

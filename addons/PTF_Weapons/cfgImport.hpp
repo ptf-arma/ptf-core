@@ -19,3 +19,12 @@ class FIR_Hydra_WP_P_7rnd_M;
 			class StandardSound;
 		};
 	};
+//40mm
+
+class SmokeShell;
+class SmokeShellBlue;
+class SmokeShellGreen;
+class SmokeShellOrange;
+class SmokeShellPurple;
+class SmokeShellRed;
+class SmokeShellYellow;

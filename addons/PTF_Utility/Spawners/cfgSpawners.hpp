@@ -1,5 +1,5 @@
-class PTF_Aircraft_Spawner : Land_MultiScreenComputer_01_black_F
-{
+
+class PTF_Spawner : Land_MultiScreenComputer_01_black_F {
    scope = 2;
    side = 8;
    faction = "BLU_F";
@@ -12,34 +12,22 @@ class PTF_Aircraft_Spawner : Land_MultiScreenComputer_01_black_F
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Tools";
    author = "Paramarine Task Force";
-   displayName = "Aircraft Spawner";
-   class EventHandlers
-   {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_aircraftSpawner_init', 0, true]";
-      class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
-      {
-      };
-   };
-};
-class PTF_Supply_Spawner : PTF_Aircraft_Spawner
-{
-   displayName = "Supply Spawner";
-   class EventHandlers
-   {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_supplySpawner_init', 0, true]";
-      class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
-      {
-      };
-   };
-};
-class PTF_Vic_Spawner : PTF_Aircraft_Spawner
-{
-   displayName = "Vic Spawner";
-   class EventHandlers
-   {
-      init = init = "[(_this select 0)] remoteExec ['PTF_fnc_VicSpawner_init', 0, true]";
-      class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
-      {
+   displayName = "Spawner";
+
+class ACE_Actions {
+   class ACE_MainActions {
+      displayName = "Spawn Vehicles";
+      selection = "";
+      distance = 1.5;
+      condition = "true";
+
+      #include "\PTF_Scripts\fnc\spawners\Planes.hpp"
+      #include "\PTF_Scripts\fnc\spawners\HelicoptersTransport.hpp"
+      #include "\PTF_Scripts\fnc\spawners\HelicoptersSupply.hpp"
+      #include "\PTF_Scripts\fnc\spawners\HelicoptersAttack.hpp"
+      #include "\PTF_Scripts\fnc\spawners\Vics.hpp"
+      #include "\PTF_Scripts\fnc\spawners\Supplys.hpp"
+      
       };
    };
 };

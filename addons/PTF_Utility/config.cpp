@@ -45,9 +45,7 @@ class CfgPatches
           "PTF_Cargo_Industrial_Repair",
           "PTF_Cargo_Tiny_Ammo",
           "PTF_Cargo_Ammo",
-          "PTF_Aircraft_Spawner",
-          "PTF_Vic_Spawner",
-          "PTF_Supply_Spawner",
+          "PTF_Spawner",
           "PTF_Standard_Arsenal_No_Ammo"
           };
       weapons[] = {};
@@ -58,6 +56,7 @@ class CfgPatches
           "PTF_Models",
           "PTF_Scripts",
           "cba_xeh",
+          "MAAMod",
           "rhsusf_main",
           "boxloader",
           "boxloader_cargo",

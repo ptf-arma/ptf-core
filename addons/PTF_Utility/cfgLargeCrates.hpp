@@ -53,7 +53,11 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
       mag_xx(rhs_mag_m433_HEDP, 20);
       mag_xx(rhs_mag_M441_HE, 20);
       mag_xx(rhs_mag_M397_HET, 20);
+      mag_xx(rhsusf_mag_6Rnd_M441_HE, 20);
+      mag_xx(rhsusf_mag_6Rnd_M433_HEDP, 20);
       mag_xx(ACE_CTS9, 80);
+      mag_xx(rhsusf_mag_15Rnd_9x19_FMD, 40);
+      mag_xx(rhsusf_mag_7x45_MPH, 40);
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 40);
    };
    class Transportweapons
@@ -74,8 +78,6 @@ class PTF_Cargo_Large_Launcher: PTF_Large_Box
    {
       mag_xx(rhs_fgm148_magazine_AT, 10);
       mag_xx(MRAWS_HEAT_F, 10);
-      mag_xx(MMA_MAAWS_SMOKE469, 20);
-      mag_xx(MMA_MAAWS_ILLUM545, 20);
       mag_xx(MRAWS_HE_F, 20);
       mag_xx(MRAWS_HEAT55_F, 20);
       mag_xx(rhs_fim92_mag, 20);
@@ -116,6 +118,8 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    {
    item_xx(kat_IV_16, 50);
    item_xx(ACE_salineIV_250, 30);
+   item_xx(ACE_salineIV_500, 30);
+   item_xx(ACE_salineIV, 30)
    item_xx(kat_EACA, 50);
    item_xx(ACE_tourniquet, 50);
    item_xx(kat_naxolone, 50);
@@ -135,9 +139,8 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    item_xx(ACE_splint, 50);
    item_xx(kat_Carbonate, 50);
    item_xx(kat_IO_FAST, 30);
-   item_xx(ACE_plasmaIV_1000, 60);
-   item_xx(ACE_plasmaIV_500, 30);
-   item_xx(ACE_bloodIV_500, 30);
+   item_xx(ACE_plasmaIV, 30);
+
    };
 };
 class PTF_Cargo_Large_VicBox : PTF_Large_Box
