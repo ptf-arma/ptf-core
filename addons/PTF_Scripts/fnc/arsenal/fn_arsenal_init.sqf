@@ -643,7 +643,7 @@ _standardWhitelist = [
 "rhsusf_mag_7x45acp_MHP",
 "rhsusf_200Rnd_556x45_soft_pouch",
 "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red",
-"rhsusf_mag_15Rnd_9x19_FMJ",jkjkj
+"rhsusf_mag_15Rnd_9x19_FMJ",
 "rhsusf_5Rnd_300winmag_xm2010",
 "ACE_10Rnd_127x99_AMAX_Mag",
 "ACE_10Rnd_127x99_API_Mag",
