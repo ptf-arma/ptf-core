@@ -202,6 +202,9 @@ _standardWhitelist = [
 "rhs_weap_sr25_ec_d",
 "rhs_weap_sr25_ec_wd",
 "rhs_weap_sr25_wd",
+"rhs_weap_XM2010_d",
+"rhsusf_acc_m2010s_sa",
+"rhs_weap_M107_d",
 
 //rockets
 "rhs_weap_M136",
@@ -213,6 +216,7 @@ _standardWhitelist = [
 "rhs_weap_fgm148",
 "rhs_weap_fim92",
 "rhs_weap_m72a7",
+"optic_DMS",
 
 //backpack
 "ace_compact_rhs_usf3_m2_carry",
@@ -504,6 +508,12 @@ _standardWhitelist = [
 "H_Cap_khaki_specops_UK",
 "H_Cap_usblack",
 "H_Cap_tan_specops_US",
+"rhsusf_mich_bare_tan",
+"rhsusf_mich_bare_tan_headset",
+"rhsusf_mich_bare_alt_tan",
+"rhsusf_mich_bare",
+"rhsusf_mich_bare_alt",
+"rhsusf_mich_bare_headset",
 
 
 //ammo
@@ -634,6 +644,9 @@ _standardWhitelist = [
 "rhsusf_200Rnd_556x45_soft_pouch",
 "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red",
 "rhsusf_mag_15Rnd_9x19_FMJ",
+"rhsusf_5Rnd_300winmag_xm2010",
+"ACE_10Rnd_127x99_AMAX_Mag",
+"ACE_10Rnd_127x99_API_Mag",
 
 //exp
 "Chemlight_blue",
@@ -769,6 +782,7 @@ _standardWhitelist = [
 "ace_marker_flags_red",
 "ItemMap",
 "ItemCompass",
+"rhsusf_acc_premier_anpvs27",
 
 //bino
 "ACE_VectorDay",
