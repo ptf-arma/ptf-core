@@ -508,6 +508,12 @@ _standardWhitelist = [
 "H_Cap_khaki_specops_UK",
 "H_Cap_usblack",
 "H_Cap_tan_specops_US",
+"rhsusf_mich_bare_tan",
+"rhsusf_mich_bare_tan_headset",
+"rhsusf_mich_bare_alt_tan",
+"rhsusf_mich_bare",
+"rhsusf_mich_bare_alt",
+"rhsusf_mich_bare_headset",
 
 
 //ammo
