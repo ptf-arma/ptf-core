@@ -138,3 +138,6 @@ class USP_HYDROPACK_CBR;
 class USP_LAAW_CLIP;
 //vanilla shit
 class U_Tank_green_F;
+//nightvision
+class ACE_NVG_Gen4_Black_WP;
+class rhsusf_ANPVS_15;
