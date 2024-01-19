@@ -13,9 +13,11 @@ class cfgPatches
               "A3_Drones_F",
               "A3_Weapons_F",
               "A3_Characters_F",
+              "ace_nightvision",
               "rhsusf_c_troops",
               "rhsusf_c_weapons",
               "tfar_core",
+              "rhsusf_infantry",
               "tfar_backpacks",
               "tfar_handhelds",
               "tfar_ai_hearing"};
@@ -36,6 +38,7 @@ class cfgWeapons
 #include "uniforms\cfgInfantryUniforms.hpp"
 #include "uniforms\cfgSpecialUniforms.hpp"
 #include "cfgScopes.hpp"
+#include "cfgNightvision.hpp"
 };
 class cfgVehicles
 {

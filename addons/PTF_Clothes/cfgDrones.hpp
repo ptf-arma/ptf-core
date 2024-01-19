@@ -3,8 +3,8 @@ class PTF_SSO_AR2 : B_UAV_01_F
    scope = 2;
    side = 1;
    faction = "BLU_F";
-   maxSpeed = 25;
-   fuelCapacity = 10;
+   maxSpeed = 40;
+   fuelCapacity = 20;
    armor = 2.5;
    class HitPoints: HitPoints
 		{
