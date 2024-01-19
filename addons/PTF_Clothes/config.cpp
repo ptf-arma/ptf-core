@@ -17,6 +17,7 @@ class cfgPatches
               "rhsusf_c_troops",
               "rhsusf_c_weapons",
               "tfar_core",
+              "rhsusf_infantry",
               "tfar_backpacks",
               "tfar_handhelds",
               "tfar_ai_hearing"};

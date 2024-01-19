@@ -1,6 +1,6 @@
 
-class PTF_Helmet_Air_Green : PTF_Helmet_Air_Black
+class PTF_Nightvision_PVS15_WP : rhsusf_ANPVS_15
 {
-   displayName = "[Air] HGU-56P (Green) [PTF]";
-   hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_green_co.paa"};
+   displayName = "[Infantry] PVS-15 WP [PTF]";
+   ace_nightvision_colorPreset[] = {0,[0,0,0,0],[1.1,0.8,1.9,0.9],[1,1,6,0]};
 };
