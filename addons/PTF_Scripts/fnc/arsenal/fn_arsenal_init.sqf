@@ -408,6 +408,7 @@ _standardWhitelist = [
 
 //helmet
 "JHMCS",
+"FIR_JHMCS_II",
 "PTF_Helmet_Infantry_Mich2000_norotos_WD",
 "PTF_Helmet_Infantry_Mich2000_norotos_S",
 "PTF_Helmet_Infantry_Mich2000_norotos_D",
