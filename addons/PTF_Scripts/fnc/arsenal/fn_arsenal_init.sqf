@@ -775,6 +775,7 @@ _standardWhitelist = [
 "ace_marker_flags_orange",
 "ace_marker_flags_yellow",
 "ACE_SpareBarrel_Item",
+"ACE_SpareBarrel",
 "ACE_Canteen",
 "ACE_WaterBottle",
 "ACE_microDAGR",
