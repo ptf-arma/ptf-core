@@ -1,0 +1,28 @@
+params ["_player"];
+_markername = random 1000000;
+_id = missionNamespace getVariable ["IDLZ", 0];
+_names = call compile PTF_LzNames;
+
+if (!{_names isEqualType []}) 
+exitwith {
+hint "You addon settings are not set up correctly" };
+if (_names isEqualTo [])
+exitwith {
+hint "You addon settings are not set up correctly" };
+_names = _names select {_x isEqualType ""};
+if (_names isEqualTo []) exitwith {
+hint "You addon settings are not set up correctly"
+};
+
+_str = format ["|_USER_DEFINED%1|%2|hd_pickup|ICON|[1,1]|0|Solid|ColorGreen|1|LZ %3", _markername, position _player, _names select _id];
+hint format ["Created lz %1 at %2", _names select _id, mapGridPosition _player];
+
+
+_str call BIS_fnc_stringToMarker;
+
+if (_id == count _names - 1 ) then {
+	missionNamespace setVariable ["IDLZ", 0 , true];
+}
+else{
+	missionNamespace setVariable ["IDLZ", _ID + 1, true];
+};

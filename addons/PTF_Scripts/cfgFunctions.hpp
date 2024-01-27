@@ -1,6 +1,13 @@
 class cfgFunctions {
 	class PTF_functions {
 		tag = "PTF";
+		class MapMarkers {
+			file = "\PTF_Scripts\fnc\Markers";
+			class Dot{};
+			class ccp{};
+			class lz{};
+			class re{};
+		};
 		class Boxes {
 			file = "\PTF_Scripts\fnc\Boxes";
 			class BigVicBox_init {};
@@ -31,12 +38,10 @@ class cfgFunctions {
 			class arsenal_init {};
 			class arsenalnoammo_init {};
 		};
-		class AirCraftPylongRemoval {
-			File = "\PTF_Scripts\fnc\Ace actions\air";
-			class PylonRemoval {
-				postInit = 1;
+		class Spawners {
+			File = "\PTF_Scripts\fnc\spawners";
+			class SpawnFunction{};
 			};
-		};
 		class F18Normal {
 			file = "\PTF_Scripts\fnc\Loadouts\F-18\Normal";
 			class ApkwsGbu16FN {};
@@ -65,6 +70,20 @@ class cfgFunctions {
 		class MQ9LoadoutFunctions {
 			file = "\PTF_Scripts\fnc\Loadouts\MQ9";
 			class HellfireM {};
+		};
+		class PTFSalvage {
+			file = "\PTF_Scripts\fnc\Salvage";
+			class Salvage {};
+		};
+		class PTFSlingLoading {
+			file = "\PTF_Scripts\fnc\Sling loading";
+			class slingloading {};
+		}
+		class AddonOptions {
+			file = "\PTF_Scripts";
+			class AddonOptions {
+				preinit = 1;
+			};
 		};
 	};
 };
