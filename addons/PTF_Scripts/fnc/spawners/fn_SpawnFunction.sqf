@@ -6,7 +6,7 @@ params ["_vehicle", "_markers", ["_ticket", ""]];
 
 _id = missionNamespace getVariable [_markers, 0]; 
 _name = _markers; 
-_cnt = { _markers in _x } count allMapMarkers inArea;
+_cnt = { _markers in _x } count allMapMarkers;
 
 if (_ticket != "" && {missionNamespace getVariable _tickets <= 0}) exitwith {
 hint "there are no more tickets"
@@ -17,7 +17,7 @@ for "_i" from 1 to _cnt - 1 do {
   _markersA pushBack format ["%1_%2", _name, _i]; 
 }; 
 
-_check = nearestObjects [getMarkerPos [_markersA select _id] , ["LandVehicle", "Air", "Ship"], 5];  //find if an object is blocking the pad
+_check = nearestObjects [getMarkerPos [_markersA select _id] , ["LandVehicle", "Air", "Ship"], 7];  //find if an object is blocking the pad
 
 if (
   count _check != 0
@@ -48,8 +48,8 @@ else {
  missionNamespace setVariable [_markers, _id + 1, true];  
 };  //move the spawn location onto the next one in BIS_fnc_showMarkers
 
-if (_vehicle = "PTF_MV22_Cargo") then {
- ["_vehicle"] call PTF_Fnc_slingloading;
+if (_vehicle == "PTF_MV22_Cargo") then {
+ [_vH] call PTF_Fnc_slingloading;
 };
  
  

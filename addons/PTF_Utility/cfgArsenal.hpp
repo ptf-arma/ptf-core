@@ -21,9 +21,9 @@ class PTF_Standard_Arsenal : Box_NATO_Equip_F
        "PTF_textures\objects\arsenal\equipment_box_blufor_ca.paa"};
    class EventHandlers
    {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenal_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
+      init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenal_init', 0, true]";
       };
    };
    class Transportitems : Transportitems{};
@@ -36,9 +36,9 @@ class PTF_Standard_Arsenal_No_Ammo : PTF_Standard_Arsenal
    displayname = "Standard Arsenal (No ammo) [PTF]";
    class EventHandlers
    {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalnoammo_init', 0, true]";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
+       init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalnoammo_init', 0, true]";
       };
    };
 };

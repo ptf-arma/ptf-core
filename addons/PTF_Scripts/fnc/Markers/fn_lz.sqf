@@ -3,9 +3,7 @@ _markername = random 1000000;
 _id = missionNamespace getVariable ["IDLZ", 0];
 _names = call compile PTF_LzNames;
 
-if (!{_names isEqualType []}) 
-exitwith {
-hint "You addon settings are not set up correctly" };
+
 if (_names isEqualTo [])
 exitwith {
 hint "You addon settings are not set up correctly" };
