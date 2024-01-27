@@ -250,6 +250,12 @@ _standardWhitelist = [
 "PTF_Backpack_Infantry_Falcon",
 "PTF_Backpack_Infantry_Kitbag",
 "ACE_TacticalLadder_Pack",
+"USP_DELTA_BAG_CBR",
+"USP_HYDROPACK_CBR",
+"USP_45L_RUCKSACK_TAN",
+"USP_REEBOW_3DAP_ACC9_CBR",
+"USP_REEBOW_3DAP_ACC8_CBR",
+"USP_REEBOW_3DAP_ACC7_CBR",
 
 //unifrom
 "PTF_Uniform_Air_CSU13BP_WD",
