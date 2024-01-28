@@ -16,7 +16,7 @@ _heli = nearestObject [_SavLocation, "Air"];
 
 
 if (_SavLocation distance _heli > 10) exitWith {hint "Object is to far away"};
-if (getDammage _heli != 1) exitWith {hint "This Helicopter is repairable"};
+if (_heli getHitPointDamage "hithull" >= 0.8) exitWith {hint "This Helicopter is repairable"};
 
 if (typeof _heli in _hash) then {
 _ticket = _hash get typeOf _heli;
