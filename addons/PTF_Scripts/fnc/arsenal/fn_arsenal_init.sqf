@@ -407,7 +407,8 @@ _standardWhitelist = [
 "G_WirelessEarpiece_F",
 
 //helmet
-"JHMCS",
+"FIR_GroundCrew_Headset2",
+"FIR_JHMCS",
 "FIR_JHMCS_II",
 "PTF_Helmet_Infantry_Mich2000_norotos_WD",
 "PTF_Helmet_Infantry_Mich2000_norotos_S",
@@ -484,6 +485,12 @@ _standardWhitelist = [
 "rhsusf_ach_bare_ess",
 "rhsusf_ach_bare_headset",
 "rhsusf_ach_bare_headset_ess",
+"rhsusf_cvc_green_helmet",
+"rhsusf_cvc_green_alt_helmet",
+"rhsusf_cvc_green_ess",
+"rhsusf_cvc_helmet",
+"rhsusf_cvc_alt_helmet",
+"rhsusf_cvc_ess",
 "U_US_class_A_ab_inf_enlisted",
 "U_US_class_A_ab_inf_SecLT",
 "U_US_class_A_ab_inf_Cpt",
