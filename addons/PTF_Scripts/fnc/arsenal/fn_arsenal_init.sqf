@@ -23,6 +23,7 @@ _standardWhitelist = [
 "rhs_weap_hk416d145_wd",
 "rhs_mag_mk84",
 "acc_flashlight_pistol",
+"optic_dms",
 "optic_mrd",
 "optic_mrd_black",
 "rhs_weap_m4a1_m203s",
@@ -249,6 +250,12 @@ _standardWhitelist = [
 "PTF_Backpack_Infantry_Falcon",
 "PTF_Backpack_Infantry_Kitbag",
 "ACE_TacticalLadder_Pack",
+"USP_DELTA_BAG_CBR",
+"USP_HYDROPACK_CBR",
+"USP_45L_RUCKSACK_TAN",
+"USP_REEBOW_3DAP_ACC9_CBR",
+"USP_REEBOW_3DAP_ACC8_CBR",
+"USP_REEBOW_3DAP_ACC7_CBR",
 
 //unifrom
 "PTF_Uniform_Air_CSU13BP_WD",

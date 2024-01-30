@@ -21,6 +21,8 @@ class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
    side = 1;
    faction = "BLU_F";
    ace_cargo_space = 60;
+   slingLoadMaxCargoMass = 15000;
+   slingLoadMinCargoMass = 0;
    ace_cargo_hasCargo = 1;
    author = "Paramarine Task Force";
    displayName = "MV-22 Cargo [MAG36]";
