@@ -15,6 +15,7 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
     maximumLoad = 3500;
     side = 1;
     mass = 5000;
+	armor = 700;
     author = "Paramarine Task Force";
     displayName = "Badger Woodland [PTF]";
     hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_wd.paa", "\PTF_Textures\vehicles\badger\acc_wd.paa", "\PTF_Textures\vehicles\badger\turret_wd.paa"};
@@ -173,9 +174,92 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 			count = 1;
 		};
 	};
+	class HitPoints: HitPoints
+	{
+		class HitLFWheel: HitLFWheel
+		{
+			radius=0.33000001;
+			visual="wheel_1_1_hide";
+			armorComponent="wheel_1_1_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitLF2Wheel: HitLF2Wheel
+		{
+			radius=0.33000001;
+			visual="wheel_1_2_hide";
+			armorComponent="wheel_1_2_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitLMWheel: HitLMWheel
+		{
+			radius=0.33000001;
+			visual="wheel_1_3_hide";
+			armorComponent="wheel_1_3_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitLBWheel: HitLBWheel
+		{
+			radius=0.33000001;
+			visual="wheel_1_4_hide";
+			armorComponent="wheel_1_4_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitRFWheel: HitRFWheel
+		{
+			radius=0.33000001;
+			visual="wheel_2_1_hide";
+			armorComponent="wheel_2_1_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitRF2Wheel: HitRF2Wheel
+		{
+			radius=0.33000001;
+			visual="wheel_2_2_hide";
+			armorComponent="wheel_2_2_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitRMWheel: HitRMWheel
+		{
+			radius=0.33000001;
+			visual="wheel_2_3_hide";
+			armorComponent="wheel_2_3_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+		class HitRBWheel: HitRBWheel
+		{
+			radius=0.33000001;
+			visual="wheel_2_4_hide";
+			armorComponent="wheel_2_4_hide";
+			armor=-350;
+			minimalHit=-0.016000001;
+			explosionShielding=4;
+			passThrough=0;
+		};
+	};
 };
 class PTF_Badger_D : PTF_Badger
 {
-   displayName = "Badger Desert [PTF]";
-   hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_d.paa", "\PTF_Textures\vehicles\badger\acc_d.paa", "\PTF_Textures\vehicles\badger\turret_d.paa"};
+    displayName = "Badger Desert [PTF]";
+    hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_d.paa", "\PTF_Textures\vehicles\badger\acc_d.paa", "\PTF_Textures\vehicles\badger\turret_d.paa"};
 };
