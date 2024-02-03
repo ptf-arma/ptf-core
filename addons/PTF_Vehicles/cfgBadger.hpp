@@ -18,7 +18,7 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 	armor = 700;
     author = "Paramarine Task Force";
     displayName = "Badger Woodland [PTF]";
-    hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_wd.paa", "\PTF_Textures\vehicles\badger\acc_wd.paa", "\PTF_Textures\vehicles\badger\turret_wd.paa"};
+    hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_wd.paa", "\PTF_Textures\vehicles\badger\acc_wd.paa", "\PTF_Textures\vehicles\badger\turret_wd.paa", "a3\Armor_F\Data\camonet_NATO_Green_CO.paa", "a3\Armor_F\Data\cage_olive_CO.paa"};
 
 	class TransportMagazines
 	{
@@ -261,5 +261,5 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 class PTF_Badger_D : PTF_Badger
 {
     displayName = "Badger Desert [PTF]";
-    hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_d.paa", "\PTF_Textures\vehicles\badger\acc_d.paa", "\PTF_Textures\vehicles\badger\turret_d.paa"};
+    hiddenSelectionsTextures[] = {"\PTF_Textures\vehicles\badger\base_d.paa", "\PTF_Textures\vehicles\badger\acc_d.paa", "\PTF_Textures\vehicles\badger\turret_d.paa", "a3\Armor_F\Data\camonet_NATO_Desert_CO.paa", "a3\Armor_F\Data\cage_sand_CO.paa"};
 };
