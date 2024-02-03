@@ -14,7 +14,6 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
     ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
     maximumLoad = 3500;
     side = 1;
-    mass = 5000;
 	armor = 700;
     author = "Paramarine Task Force";
     displayName = "Badger Woodland [PTF]";
