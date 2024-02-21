@@ -192,8 +192,7 @@ class Tank_F : Tank
                };
                
             };
-            };
-
+         
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
@@ -310,8 +309,6 @@ class Ship_F : Ship
                };
                
             };
-            };
-
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
