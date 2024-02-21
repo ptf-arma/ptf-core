@@ -30,7 +30,7 @@ class Car : LandVehicle
 
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
-               displayName = "1st Platon Flags";
+               displayName = "1st Platoon Flags";
                icon = "\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
@@ -47,29 +47,33 @@ class Car : LandVehicle
                   displayName = "Raise 1-3 Flag";
                   statement = "0 = _target call PTF_fnc_13FlagRaise";
                };
+               class 14_Flag_Raise : PTF_Flag_Raise
+               {
+                  displayName = "Raise 1-4 Flag";
+                  statement = "0 = _target call PTF_fnc_14FlagRaise";
+               };
             };
 
-             class PTF_2nd_Squad_Flags : PTF_Flag_Raise
+            class PTF_3rd_Flags : PTF_Flag_Raise
             {
-               displayName = "2nd Platon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";    
-               distance = 3;
-               enableInside = 1;
-               class 21_Flag_Raise : PTF_Flag_Raise
+               displayName = "3rd Platoon Flags";
+               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               class 3_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-1 Flag";
-                  statement = "0 = _target call PTF_fnc_21FlagRaise"; 
+                  displayName = "Raise 3rd Platoon Flag";
+                  statement = "0 = _target call PTF_fnc_3flagRaise";
                };
-               class 22_Flag_Raise : PTF_Flag_Raise
+               class 3A_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-2 Flag";
-                  statement = "0 = _target call PTF_fnc_22FlagRaise"; 
+                  displayName = "Raise 3-A Flag";
+                  statement = "0 = _target call PTF_fnc_3AflagRaise";
                };
-               class 23_Flag_Raise : PTF_Flag_Raise
+               class 3E_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-3 Flag";
-                  statement = "0 = _target call PTF_fnc_23FlagRaise"; 
+                  displayName = "Raise 3-E Flag";
+                  statement = "0 = _target call PTF_fnc_3EflagRaise";
                };
+               
             };
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
@@ -160,29 +164,34 @@ class Tank_F : Tank
                   displayName = "Raise 1-3 Flag";
                   statement = "0 = _target call PTF_fnc_13FlagRaise";
                };
+                class 14_Flag_Raise : PTF_Flag_Raise
+               {
+                  displayName = "Raise 1-4 Flag";
+                  statement = "0 = _target call PTF_fnc_14FlagRaise";
+               };
             };
 
-             class PTF_2nd_Squad_Flags : PTF_Flag_Raise
+            class PTF_3rd_Flags : PTF_Flag_Raise
             {
-               displayName = "2nd Platon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";    
-               distance = 3;
-               enableInside = 1;
-               class 21_Flag_Raise : PTF_Flag_Raise
+               displayName = "3rd Platoon Flags";
+               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               class 3_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-1 Flag";
-                  statement = "0 = _target call PTF_fnc_21FlagRaise"; 
+                  displayName = "Raise 3rd Platoon Flag";
+                  statement = "0 = _target call PTF_fnc_3flagRaise";
                };
-               class 22_Flag_Raise : PTF_Flag_Raise
+               class 3A_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-2 Flag";
-                  statement = "0 = _target call PTF_fnc_22FlagRaise"; 
+                  displayName = "Raise 3-A Flag";
+                  statement = "0 = _target call PTF_fnc_3AflagRaise";
                };
-               class 23_Flag_Raise : PTF_Flag_Raise
+               class 3E_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-3 Flag";
-                  statement = "0 = _target call PTF_fnc_23FlagRaise"; 
+                  displayName = "Raise 3-E Flag";
+                  statement = "0 = _target call PTF_fnc_3EflagRaise";
                };
+               
+            };
             };
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
@@ -273,29 +282,34 @@ class Ship_F : Ship
                   displayName = "Raise 1-3 Flag";
                   statement = "0 = _target call PTF_fnc_13FlagRaise";
                };
+                class 14_Flag_Raise : PTF_Flag_Raise
+               {
+                  displayName = "Raise 1-4 Flag";
+                  statement = "0 = _target call PTF_fnc_14FlagRaise";
+               };
             };
-
-             class PTF_2nd_Squad_Flags : PTF_Flag_Raise
+            
+            class PTF_3rd_Flags : PTF_Flag_Raise
             {
-               displayName = "2nd Platon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";    
-               distance = 3;
-               enableInside = 1;
-               class 21_Flag_Raise : PTF_Flag_Raise
+               displayName = "3rd Platoon Flags";
+               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               class 3_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-1 Flag";
-                  statement = "0 = _target call PTF_fnc_21FlagRaise"; 
+                  displayName = "Raise 3rd Platoon Flag";
+                  statement = "0 = _target call PTF_fnc_3flagRaise";
                };
-               class 22_Flag_Raise : PTF_Flag_Raise
+               class 3A_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-2 Flag";
-                  statement = "0 = _target call PTF_fnc_22FlagRaise"; 
+                  displayName = "Raise 3-A Flag";
+                  statement = "0 = _target call PTF_fnc_3AflagRaise";
                };
-               class 23_Flag_Raise : PTF_Flag_Raise
+               class 3E_flag_Raise : PTF_Flag_Raise
                {
-                  displayName = "Raise 2-3 Flag";
-                  statement = "0 = _target call PTF_fnc_23FlagRaise"; 
+                  displayName = "Raise 3-E Flag";
+                  statement = "0 = _target call PTF_fnc_3EflagRaise";
                };
+               
+            };
             };
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
