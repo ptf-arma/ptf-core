@@ -131,3 +131,52 @@ class insignia19
    texture = "\PTF_Textures\patches\USMC-O4.paa";
    textureVehicle = "\PTF_Textures\patches\USMC-O4.paa";
 };
+class insignia20
+{
+   displayName = "USMC E-2 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E2-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E2-A.paa";
+};
+class insignia21
+{
+   displayName = "USMC E-3 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E3-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E3-A.paa";
+};
+class insignia22
+{
+   displayName = "USMC E-4 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E4-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E4-A.paa";
+};
+class insignia23
+{
+   displayName = "USMC E-5 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E5-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E5-A.paa";
+};
+class insignia24
+{
+   displayName = "USMC E-6 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E6-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E6-A.paa";
+};
+class insignia25
+{
+   displayName = "USMC E-7 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E7-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E7-A.paa";
+};
+class insignia26
+{
+   displayName = "USMC E-8 Alpha Patch";
+   author = "Paramarine Task Force";
+   texture = "\PTF_Textures\patches\USMC-E8-A.paa";
+   textureVehicle = "\PTF_Textures\patches\USMC-E8-A.paa";
+};
