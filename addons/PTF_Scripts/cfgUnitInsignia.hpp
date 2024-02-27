@@ -47,13 +47,6 @@ class insignia7
    texture = "\PTF_Textures\patches\USMC-E8.paa";
    textureVehicle = "\PTF_Textures\patches\USMC-E8.paa";
 };
-class insignia8
-{
-   displayName = "USMC E-9 Pin";
-   author = "Paramarine Task Force";
-   texture = "\PTF_Textures\patches\USMC-E9.paa";
-   textureVehicle = "\PTF_Textures\patches\USMC-E9.paa";
-};
 class insignia9
 {
    displayName = "USN E-2 Pin";
