@@ -1,11 +1,11 @@
  class CfgPatches
 {
-	class PTf_Menu
+	class PTF_Menu
 	{
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Data_F_Decade_Loadorder"  };
+		requiredAddons[] = {"PTF_Main","A3_Data_F_Decade_Loadorder"};
 	};
 };
 
@@ -46,7 +46,7 @@ class CfgMissions
 	{
 		class mymainmenu // Class referenced in 'cutscenes' property in CfgWorlds
 		{
-			directory = "\PTF_Menu\mainmenu.vr"; // Path to scenario with the scene
+			directory = "\PTF_Menu\Intro.VR"; // Path to scenario with the scene
 		};
 	};
 };
