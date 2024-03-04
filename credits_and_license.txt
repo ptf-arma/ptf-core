@@ -193,6 +193,14 @@ Includes PBO files:
 Turret_Enhanced.pbo
 
 ======================================================================
+Mod: Snowmobile
+Author: Xacuda
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2329040153
+License: Unknown, doesn't care about sharing
+Includes PBO files:
+xs_Snowmobile.pbo
+
+======================================================================
 Mod: M224 60mm Mortar (ACE)
 Author: ArmedVeteran
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2472780935
@@ -263,3 +271,20 @@ training_mag_pmag_blue.pbo
 training_mag_pmag_yellow.pbo
 training_mag_stanag_blue.pbo
 training_mag_stanag_yellow.pbo
+
+======================================================================
+Mod: Dagger Island Training Complex
+Author: Finger Jam
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2983546566
+License: see author
+Includes PBO files: 
+dagger_island_summer.pbo
+dagger_island_summer_no_targets.pbo
+
+======================================================================
+Mod: RHICC (Rigid Hull Inflatable Commando Craft)
+Author: Xovolovo | JTF-Monarch
+Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2942075551
+License: see author
+Includes PBO files:
+RHICC.pbo
