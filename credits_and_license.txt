@@ -288,14 +288,3 @@ Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2942075551
 License: see author
 Includes PBO files:
 RHICC.pbo
-
-======================================================================
-Mod: Simplex Tools and Extensions
-Author: Sceptre
-Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2981582086
-License: https://raw.githubusercontent.com/SceptreOfficial/Simplex-Tools-Extensions/main/LICENSE
-Includes PBO files:
-STX_civilians.pbo
-STX_main.pbo
-STX_sdf.pbo
-STX_common.pbo
