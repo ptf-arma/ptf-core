@@ -49,6 +49,8 @@ class cfgPatches
           "PTF_AAV_CMD",
           "PTF_SAM_RADAR",
           "PTF_SAM_DEFENDER",
+		  "PTF_Badger",
+		  "PTF_Badger_D",
           "PTF_M1123"};
       weapons[] = {
           "PTF_weap_mastersafe",
@@ -102,6 +104,7 @@ class cfgMagazines
 //Defines Vehicles
 class cfgVehicles
 {
+#include "cfgBadger.hpp"
 #include "cfgBoats.hpp"
 #include "cfgCougar.hpp"
 #include "cfgF450.hpp"
