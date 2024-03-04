@@ -28,7 +28,8 @@ class cfgFunctions {
 			class 14FlagRaise {};
 			class 3flagRaise {};
 			class 3AflagRaise {};
-			class 3BflagRaise {};  
+			class 3BflagRaise {};
+			class 3CflagRaise {};  
 			class 3EflagRaise {};
 			class MAG36FlagRaise {};
 			class scarFlagRaise {};
