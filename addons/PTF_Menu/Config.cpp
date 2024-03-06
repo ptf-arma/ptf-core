@@ -46,7 +46,7 @@ class CfgMissions
 	{
 		class mymainmenu // Class referenced in 'cutscenes' property in CfgWorlds
 		{
-			directory = "\PTF_Menu\Intro.VR"; // Path to scenario with the scene
+			directory = "\PTF_Menu\Intro.vr"; // Path to scenario with the scene
 		};
 	};
 };
