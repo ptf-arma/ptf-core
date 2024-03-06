@@ -5,8 +5,8 @@ class Attributes : Attributes {
 		property = "BoatSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['BoatSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['BoatSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_Cougar_Spawnable {
@@ -15,8 +15,8 @@ class Attributes : Attributes {
 		property = "CougarSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['CougarSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['CougarSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_ForkLift_Spawnable {
@@ -25,8 +25,8 @@ class Attributes : Attributes {
 		property = "ForkLiftSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['ForkLiftSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['ForkLiftSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_AttackHelicopter_Spawnable {
@@ -35,8 +35,8 @@ class Attributes : Attributes {
 		property = "AttackHelicoptersSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['AttackHelicoptersSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['AttackHelicoptersSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_SupplyHelicopter_Spawnable {
@@ -45,8 +45,8 @@ class Attributes : Attributes {
 		property = "SupplyHelicoptersSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['SupplyHelicoptersSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['SupplyHelicoptersSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_TransportHelicopter_Spawnable {
@@ -55,8 +55,8 @@ class Attributes : Attributes {
 		property = "TransportHelicoptersSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['TransportHelicoptersSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['TransportHelicoptersSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_Hummve_Spawnable {
@@ -65,8 +65,8 @@ class Attributes : Attributes {
 		property = "HummveSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['HummveSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['HummveSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_Mrap_Spawnable {
@@ -75,8 +75,8 @@ class Attributes : Attributes {
 		property = "MrapSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['MrapSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['MrapSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_Planes_Spawnable {
@@ -85,8 +85,8 @@ class Attributes : Attributes {
 		property = "PlanesSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['PlanesSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['PlanesSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 	class PTF_Supplys_Spawnable {
@@ -95,8 +95,8 @@ class Attributes : Attributes {
 		property = "SupplysSpawnAbleProperty"; // Unique config property name saved in SQM
     	condition = "objectVehicle";
     	control = "Checkbox";
-    	defaultValue = "(false)"; 
-    	expression = "if (_value) then {_this setVariable ['SupplysSpawnable', true]}";
+    	defaultValue = "(false)";
+    	expression = "if (_value) then {_this setVariable ['SupplysSpawnable', true, true]}";
    		typeName = "BOOL";
  	};
 };

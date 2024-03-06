@@ -34,7 +34,7 @@ d3s_tundra_19_2.pbo
 ========================================================================================================================
 Mod: Paramarine Task Force - Core (Original Content)
 Original Author: Paramarine Task Force, Member, S4
-Source Link: www.Paramarines.com
+Source Link: www.Paramarines.net
 License: https://www.bohemia.net/community/licenses/arma-public-license-nd
 License Basics: You can use this on your server, but you cannot reupload to Steam or modify the source, and must attribute it with the following text: "This mod was provided by the Paramarine Task Force Milsim Unit, located at www.Paramarines.com".
 Included PBO files:
@@ -46,9 +46,7 @@ PTF_Models.pbo
 PTF_Textures.pbo
 PTF_Utility.pbo
 PTF_Vehicles.pbo
-PTF_TextureOverride_C130J.pbo
-PTF_TextureOverride_RQ4A.pbo
-PTF_TextureOverride_UH1Y.pbo
+PTF_*.pbo (covers all PBO's with PTF prefix)
 
 ========================================================================================================================
 Mod: US WWII Class A Dress Uniform
@@ -58,54 +56,6 @@ License: https://www.gnu.org/licenses/quick-guide-gplv3.html
 License Basics: You cannot share this PBO. You can head straight to the author at the source link to get permission and download the full version.
 Included PBO files:
 riku_class_a.pbo
-
-========================================================================================================================
-Mod: Splendid Smoke
-Original Author: ZabuzaW
-Source Link: https://github.com/Zabuzard/SplendidSmoke
-License: https://www.gnu.org/licenses/quick-guide-gplv3.html
-License Basics: Use however you want, but attribute ZabuzaW
-Included PBO files:
-Zab_splendid_smoke.pbo
-
-========================================================================================================================
-Mod: Harvey Point
-Original Author: Sigma
-Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=1932265107
-License: Unknown, contact author for permission.
-License Basics: Unknown, contact author for permission.
-Special Permission: Sigma has given us specific permission to fix aspects of Harvey Point that prevented signatures. PTF Core will hold Harvey Point until the changes are made to the primary Harvey Point upload.
-Included PBO files:
-plp_containers.pbo
-opxbuildings.pbo
-harvey.pbo
-wgl_objects.pbo
-TaunusObjects.pbo
-EMOGLOBINSKY.pbo
-mm_buildings.pbo
-opxmisc.pbo
-plp_materials.pbo
-mbg_killhouses_a3.pbo
-mm_buildings3.pbo
-opxplants.pbo
-mm_bank.pbo
-mm_buildings2.pbo
-mm_residential2.pbo
-mm_residential.pbo
-SigmaSigns.pbo
-mm_post.pbo
-wgl_static_vehicles.pbo
-mm_buildings4.pbo
-hag_objects.pbo
-MM_objects.pbo
-
-======================================================================
-Mod: BackpackOnChest - Redux
-Author: mjc4wilton
-Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2372036642
-License: MIT
-Includes PBO files:
-bocr_main.pbo
 
 ======================================================================
 Mod: Sling Load Rigging
@@ -124,16 +74,6 @@ License: MIT
 Includes PBO files:
 bcdw_main.pbo
 bcdw_wedge.pbo
-
-===================================================================================
-Mod: Alternative Running
-Author: WebKnight
-Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2198339170
-License: Unknown, contact author for permission.
-License Basics: Unknown, contact author for permission.
-Special Permission: WebKnight has given PTF permission to reupload to steam workshop
-Includes PBO files:
-AlternativeRunning.pbo
 
 ===================================================================================
 Mod: 6 x 6 All Terrain Vehicle
@@ -193,14 +133,6 @@ Includes PBO files:
 Turret_Enhanced.pbo
 
 ======================================================================
-Mod: Snowmobile
-Author: Xacuda
-Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2329040153
-License: Unknown, doesn't care about sharing
-Includes PBO files:
-xs_Snowmobile.pbo
-
-======================================================================
 Mod: M224 60mm Mortar (ACE)
 Author: ArmedVeteran
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2472780935
@@ -220,6 +152,7 @@ circulation.pbo
 gui.pbo
 main.pbo
 
+======================================================================
 Mod: Grad Trenches
 Author: Gruppe Adler
 Source Link: https://github.com/gruppe-adler/grad_trenches
