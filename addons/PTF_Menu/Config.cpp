@@ -5,7 +5,7 @@
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"PTF_Main","A3_Data_F_Decade_Loadorder"};
+		requiredAddons[] = {"A3_Data_F_Decade_Loadorder"};
 	};
 };
 
@@ -36,8 +36,8 @@ class CfgWorlds {
 		cutscenes[] = {"mymainmenu"};
 	};
 
-	initWorld = "VR";
-	demoWorld = "VR";
+	initWorld = "Stratis";
+	demoWorld = "Stratis";
 };
 
 class CfgMissions
@@ -46,7 +46,7 @@ class CfgMissions
 	{
 		class mymainmenu // Class referenced in 'cutscenes' property in CfgWorlds
 		{
-			directory = "\PTF_Menu\Intro.vr"; // Path to scenario with the scene
+			directory = "PTF_Menu\Intro.Stratis"; // Path to scenario with the scene
 		};
 	};
 };
