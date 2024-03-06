@@ -73,6 +73,11 @@ class Car : LandVehicle
                   displayName = "Raise 3-B Flag";
                   statement = "0 = _target call PTF_fnc_3BflagRaise";
                };
+               class 3C_flag_Raise : PTF_Flag_Raise
+               {
+                  displayName = "Raise 3-C Flag";
+                  statement = "0 = _target call PTF_fnc_3CflagRaise";
+               };
                class 3E_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-E Flag";
@@ -195,6 +200,11 @@ class Tank_F : Tank
                   displayName = "Raise 3-B Flag";
                   statement = "0 = _target call PTF_fnc_3BflagRaise";
                };
+               class 3C_flag_Raise : PTF_Flag_Raise
+               {
+                  displayName = "Raise 3-C Flag";
+                  statement = "0 = _target call PTF_fnc_3CflagRaise";
+               };
                class 3E_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-E Flag";
@@ -316,6 +326,11 @@ class Ship_F : Ship
                {
                   displayName = "Raise 3-B Flag";
                   statement = "0 = _target call PTF_fnc_3BflagRaise";
+               };
+               class 3C_flag_Raise : PTF_Flag_Raise
+               {
+                  displayName = "Raise 3-C Flag";
+                  statement = "0 = _target call PTF_fnc_3CflagRaise";
                };
                class 3E_flag_Raise : PTF_Flag_Raise
                {
