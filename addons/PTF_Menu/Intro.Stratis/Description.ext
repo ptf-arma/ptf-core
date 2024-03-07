@@ -1,0 +1,11 @@
+class CfgMusic {
+	tracks[] = {"Menu1","Menu2"};
+	class Menu1 {
+		name	= "PTFMenu1";
+		sound[]	= { "Menu1.ogg", db + 0, 1.0 };
+	};
+	class Menu2 {
+		name	= "PTFMenu2";
+		sound[]	= { "Menu2.ogg", db + 0, 1.0 };
+	};
+};
