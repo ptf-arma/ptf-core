@@ -18,7 +18,27 @@ class Mode_FullAuto;
 class HighROF;
 class LowROF;
 class VehicleMagazine;
-
+//Vanilla Stuff
+class HitLFWheel;
+class HitLF2Wheel;
+class HitRFWheel;
+class HitRF2Wheel;
+class HitFuel;
+class HitHull;
+class HitEngine;
+class HitBody;
+class HitGlass1;
+class HitGlass2;
+class HitGlass3;
+class HitGlass4;
+class HitGlass5;
+class HitGlass6;
+class Components;
+class SensorTemplateDataLink;
+class SensorTemplatePassiveRadar;
+class SensorTemplateActiveRadar;
+class DefaultVehicleSystemsDisplayManagerLeft;
+class DefaultVehicleSystemsDisplayManagerRight;
 //RHS
 class rhsusf_m998_w_4dr_fulltop;
 class rhsusf_m1025_w : rhsusf_m998_w_4dr_fulltop {
