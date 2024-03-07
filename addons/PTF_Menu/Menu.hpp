@@ -34,13 +34,13 @@
 			soundEscape[] = {"",0.1,1};
 			soundPush[] = {"",0.1,1};
 			style = 48;
-			text = "W41st_Menu\data\41st_MainMenu.paa";
-			tooltip = "41st Website";
+			text = "PTF_Menu\data\ptfemblem.paa";
+			tooltip = "paramarines Website";
 			tooltipColorBox[] = {1,1,1,1};
 			tooltipColorShade[] = {0,0,0,0.65};
 			tooltipColorText[] = {1,1,1,1};
 			type = 11;
-			url = "https://www.41stelitecorps.com/";
+			url = "https://paramarines.net/";
 			w = "2 * 	5 * 	(pixelW * pixelGrid * 2)";
 			x = "0.5 - 	5 * 	(pixelW * pixelGrid * 2)";
 			y = "safezoneY + (3 - 0.5 * 	5) * 	(pixelH * pixelGrid * 2)";
@@ -120,17 +120,17 @@
 			delete ApexProtocol;
 				class Joinmainserver : Campaigns {
 					idc = 123987;
-					text = "Join Op server";
+					text = "Join Op Server";
 					tooltip = "";
 					y = "(0 * 	1.5) * 	(pixelH * pixelGrid * 2) + 	(pixelH)";
-					onbuttonclick = "connectToServer ['23.183.245.218', 2302, 'the41st']";
+					onbuttonclick = "connectToServer ['51.222.245.138', 2302, 'PTF2020']";
 				};
 				class JoinLibserver : Campaigns {
 					idc = 123987;
-					text = "Join Lib server";
+					text = "Join Training Server";
 					tooltip = "";
 					y = "(1 * 	1.5) * 	(pixelH * pixelGrid * 2) + 	(pixelH)";
-					onbuttonclick = "connectToServer ['23.183.245.218', 2302, 'the41st']";
+					onbuttonclick = "connectToServer ['54.39.29.138', 2402, 'PTF2020']";
 				};
 				class ServerBrowser : Campaigns {
 					idc = 105;

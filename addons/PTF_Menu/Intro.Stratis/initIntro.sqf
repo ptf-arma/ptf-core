@@ -1,4 +1,4 @@
-_tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTrack03_F_EXP"];
+_tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTrack03_F_EXP","Menu1","Menu2"];
 /////////
 // This is War (Marksmen Remix)
 // Marksmen DLC: Lead Track 02 (Into the Sun)
@@ -7,9 +7,15 @@ _tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTr
 /// tracks
 enableEnvironment true;
 
-_track = _tracks select floor random 4;
-
+_track = _tracks select floor random 3;
 playMusic _track;
+
+private _ehID = addMusicEventHandler ["MusicStop", {
+	_tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTrack03_F_EXP","Menu1","Menu2"];
+	_track = _tracks select floor random 3;
+	playMusic _track;
+}];
+
 
 	["_display"] call BIS_fnc_rscLayer cutRsc ["RscTitleDisplayEmpty", "PLAIN"]; 
 	     _display1 = uiNamespace getVariable ["RscTitleDisplayEmpty", displayNull];
