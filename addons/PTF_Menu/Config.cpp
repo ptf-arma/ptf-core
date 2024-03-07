@@ -5,7 +5,7 @@
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Data_F_Decade_Loadorder","ace_arsenal"};
+		requiredAddons[] = {"A3_Data_F_Decade_Loadorder","ace_arsenal","po_main"};
 	};
 };
 

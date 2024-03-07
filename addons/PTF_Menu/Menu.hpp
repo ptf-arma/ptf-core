@@ -5,6 +5,7 @@
 		delete Spotlight1;
 		delete ACE_news_apex;
 		delete Spotlight2;
+		delete ProjectOPFORLogo;
 		delete Spotlight3;
 		delete BackgroundSpotlightRight;
 		delete BackgroundSpotlightLeft;
