@@ -10,15 +10,22 @@ class RscVideo;
 class RscButton;
 class RscText;
 class RscStructuredText; 
+class RscButtonMenuMain;
+class ace_arsenal_display;
 class GroupSingleplayer : RscControlsGroupNoScrollbars {
 		class Controls {
-			class Campaigns{};
+			class Campaigns : RscButtonMenuMain {};
 		};
 };
-class GroupMultiplayer : GroupSingleplayer {
-	class Controls : Controls {
 
+class GroupTutorials : GroupSingleplayer {
+	class Controls : Controls {
+		class ace_arsenal_display : ace_arsenal_display {};
 	};
+};
+
+class GroupMultiplayer : GroupSingleplayer {
+	class Controls : Controls {};
 };
 
 ////////
