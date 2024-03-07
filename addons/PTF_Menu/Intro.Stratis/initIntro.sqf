@@ -1,4 +1,3 @@
- _backgrounds = ["background1.paa", "background2.paa", "background3.paa", "background4.paa", "background5.paa", "background6.paa", "background7.paa", "background8.paa", "background9.paa", "background10.paa", "background11.paa", "background12.paa", "background13.paa", "background14.paa", "background15.paa", "background16.paa", "background17.paa", "background18.paa", "background19.paa", "background20.paa"];
 _tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTrack03_F_EXP"];
 /////////
 // This is War (Marksmen Remix)
