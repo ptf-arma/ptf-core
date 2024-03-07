@@ -18,43 +18,7 @@ class Mode_FullAuto;
 class HighROF;
 class LowROF;
 class VehicleMagazine;
-//D3S
-class d3s_fseries_LTD_17;
-class d3s_fseries_17_TOW;
-class d3s_fseries_17_EMS;
-class HitLFWheel;
-class HitLF2Wheel;
-class HitRFWheel;
-class HitRF2Wheel;
-class HitFuel;
-class HitHull;
-class HitEngine;
-class HitBody;
-class HitGlass1;
-class HitGlass2;
-class HitGlass3;
-class HitGlass4;
-class HitGlass5;
-class HitGlass6;
-class Reflectors;
-class LightCarHeadL01;
-class UserActions;
-class code2;
-class R_on;
-class R_off;
-class OpenDoor_1;
-class CloseDoor_1;
-class OpenDoor_2;
-class CloseDoor_2;
-class ems_load_vehicle;
-class ems_unload_vehicle;
-class GurneyTabl;
-class Components;
-class SensorTemplateDataLink;
-class SensorTemplatePassiveRadar;
-class SensorTemplateActiveRadar;
-class DefaultVehicleSystemsDisplayManagerLeft;
-class DefaultVehicleSystemsDisplayManagerRight;
+
 //RHS
 class rhsusf_m998_w_4dr_fulltop;
 class rhsusf_m1025_w : rhsusf_m998_w_4dr_fulltop {
