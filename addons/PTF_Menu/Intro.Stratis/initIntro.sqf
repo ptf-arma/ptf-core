@@ -7,12 +7,12 @@ _tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTr
 /// tracks
 enableEnvironment true;
 
-_track = _tracks select floor random 3;
+_track = _tracks select floor random 5;
 playMusic _track;
 
 private _ehID = addMusicEventHandler ["MusicStop", {
 	_tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTrack03_F_EXP","Menu1","Menu2"];
-	_track = _tracks select floor random 3;
+	_track = _tracks select floor random 5;
 	playMusic _track;
 }];
 
