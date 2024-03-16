@@ -39,7 +39,7 @@ class PTF_AH1Z : RHS_AH1Z
             displayName = "Loadouts";
             statement = "";
             icon = "";
-            #include "\PTF_Scripts\fnc\Ace actions\air\AH1z.hpp"
+            #include "\z\PTF\addons\PTF_Scripts\fnc\Ace actions\air\AH1z.hpp"
          };
       };
    };
