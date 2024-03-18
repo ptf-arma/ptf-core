@@ -38,13 +38,13 @@ hint "this weapon can't be shoulderd"
 
 
 //if there is no weapon on shoulder
-if (_Acheck == 0) exitwith {
+if (_Acheck == 0) exitWith {
 [_player] call PTF_fnc_Shoulder;
 };
 
 
 //check that there is a weapon on back
-if (_Acheck > 1) exitwith {
+if (_Acheck > 1) exitWith {
 [_player] call PTF_fnc_SoulderNSwap;
 };
 
