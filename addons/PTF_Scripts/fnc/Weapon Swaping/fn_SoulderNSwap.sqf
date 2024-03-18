@@ -26,15 +26,18 @@ _primaryWeapon = [_Weapon, _muzzle, _laser, _optic, [_WeaponMag, _MagCount], _We
 _player removeWeapon _Weapon;
 
 _FakeWeapon = _player getVariable "PTFHolder" select 0;
-_NewWeapon = _player getVariable ["PTFHolder",[[],["","","","",["1",0],["1"],""]]] select 1;
+_NewWeapon = player getVariable ["PTFHolder",[[],null]] select 1;
+
 //gets all the info need to give the player the shouldered weapon
 
 deleteVehicle _FakeWeapon;
 //removed the fake wepaon from back
 
+
 _NewWeapon params ["_Weapon", "_muzzle", "_laser", "_optic", "_WeaponMag", "_WeaponGl", "_grip"];
 _WeaponMag params ["_WeaponMagg","_WeaponMaggAmount"];
-Hint str [_NewWeapon,_WeaponMag];
+
+
 
 _player addMagazine _WeaponMag;
 _player addWeapon _Weapon;

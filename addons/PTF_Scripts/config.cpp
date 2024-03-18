@@ -45,7 +45,7 @@ class CfgUserActions
 		tooltip = "Put a Weapon on your back or Swtich to the one allready there";
 		onActivate = "call PTF_fnc_weaponSwap";		// _this is always true.
 		onDeactivate = "";		// _this is always false.
-		onAnalog = "call PTF_fnc_weaponSwap";	// _this is the scalar analog value.
+		onAnalog = "";	// _this is the scalar analog value.
 		analogChangeThreshold = 0.1; // Minimum change required to trigger the onAnalog EH (default: 0.01).
 	};
 };
@@ -67,7 +67,7 @@ class UserActionGroups
 {
 	class PTF_KeyBinds // Unique classname of your category.
 	{
-		name = "PTF KeyBinds"; // Display name of your category.
+		name = "Paramarine Task Force KeyBinds "; // Display name of your category.
 		isAddon = 1;
 		group[] = {"PTF_WeaponSwitch"}; // List of all actions inside this category.
 	};
