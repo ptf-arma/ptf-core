@@ -18,7 +18,7 @@ class PTF_SuperTucano : RHSGREF_A29B_HIDF
 		{
 			author = "$STR_RHS_AUTHOR_FULL";
 			displayName = "PTF_Trainer";
-			textures[] = {"PTF_Textures\aircraft\Super Tucano\Trainer\ST_Fuselage_Navy_co.paa","PTF_Textures\aircraft\Super Tucano\Trainer\ST_WingsAndStabs_Navy_co.paa","PTF_Textures\aircraft\Super Tucano\Trainer\ST_EverythingElse_Navy_co.paa",""};		
+			textures[] = {"\z\PTF\addons\PTF_Textures\aircraft\Super Tucano\Trainer\ST_Fuselage_Navy_co.paa","\z\PTF\addons\PTF_Textures\aircraft\Super Tucano\Trainer\ST_WingsAndStabs_Navy_co.paa","\z\PTF\addons\PTF_Textures\aircraft\Super Tucano\Trainer\ST_EverythingElse_Navy_co.paa",""};		
 			factions[] = {};
 		};
    };

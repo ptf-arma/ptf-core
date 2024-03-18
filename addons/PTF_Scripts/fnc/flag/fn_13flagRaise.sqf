@@ -2,9 +2,9 @@ params["_vehicle"];
 
 if (isNil "_vehicle")
    exitWith{true};
-if ((getForcedFlagTexture _vehicle) == "\PTF_Textures\Flags\13flag.paa")
+if ((getForcedFlagTexture _vehicle) == "\z\PTF\addons\PTF_Textures\Flags\13flag.paa")
    exitWith{true};
 
-_vehicle forceFlagTexture "\PTF_Textures\Flags\13flag.paa";
+_vehicle forceFlagTexture "\z\PTF\addons\PTF_Textures\Flags\13flag.paa";
 
 true;

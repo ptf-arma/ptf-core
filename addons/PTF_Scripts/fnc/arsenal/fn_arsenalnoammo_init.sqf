@@ -6,4 +6,4 @@ _standardNoAmmoWhitelist = ["AMP_Breaching_Charge_Mag","tsp_frameCharge_mag","ts
 
 [_arsenal, _standardNoAmmoWhitelist, true] call ace_arsenal_fnc_initBox;
 
-#include "defaultloadouts.hpp"
+#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"

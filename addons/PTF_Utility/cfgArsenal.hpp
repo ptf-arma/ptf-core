@@ -17,8 +17,8 @@ class PTF_Standard_Arsenal : Box_NATO_Equip_F
        "camo",
        "camo_signs"};
    hiddenselectionstextures[] = {
-       "PTF_textures\objects\arsenal\equipment_box_blufor_co.paa",
-       "PTF_textures\objects\arsenal\equipment_box_blufor_ca.paa"};
+       "\z\PTF\addons\PTF_Textures\objects\arsenal\equipment_box_blufor_co.paa",
+       "\z\PTF\addons\PTF_Textures\objects\arsenal\equipment_box_blufor_ca.paa"};
    class EventHandlers
    {
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base

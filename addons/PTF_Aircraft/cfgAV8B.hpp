@@ -8,16 +8,16 @@ class PTF_AV8B : FIR_AV8B
    side = 1;
    author = "Paramarine Task Force";
    displayName = "AV-8B Harrier [MAG36]";
-   hiddenselectionstextures[] = {"PTF_Textures\aircraft\AV8B\VMA-542\body_co.paa","PTF_Textures\aircraft\AV8B\VMA-542\wing_co.paa","",""};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\AV8B\VMA-542\body_co.paa","\z\PTF\addons\PTF_Textures\aircraft\AV8B\VMA-542\wing_co.paa","",""};
    class TextureSources{
       class VMA_542{
          displayName="VMA-542";
-         textures[]={"PTF_Textures\aircraft\AV8B\VMA-542\body_co.paa","PTF_Textures\aircraft\AV8B\VMA-542\wing_co.paa"};
+         textures[]={"\z\PTF\addons\PTF_Textures\aircraft\AV8B\VMA-542\body_co.paa","\z\PTF\addons\PTF_Textures\aircraft\AV8B\VMA-542\wing_co.paa"};
 				factions[]={BLU_F, PTF};
       };
       class VMA_542_CAG{
          displayName="VMA-542 CAG";
-         textures[]={"PTF_Textures\aircraft\AV8B\VMA-542 CAG\body_co.paa","PTF_Textures\aircraft\AV8B\VMA-542 CAG\wing_co.paa"};
+         textures[]={"\z\PTF\addons\PTF_Textures\aircraft\AV8B\VMA-542 CAG\body_co.paa","\z\PTF\addons\PTF_Textures\aircraft\AV8B\VMA-542 CAG\wing_co.paa"};
 			factions[]={BLU_F,PTF};
       };
    };

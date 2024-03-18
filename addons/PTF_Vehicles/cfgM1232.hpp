@@ -55,7 +55,7 @@ class PTF_MRAP_M1232_M2 : rhsusf_M1232_MC_M2_usmc_wd
       {
          displayname = "Snow";
          author = "J.Downs";
-         textures[] = {"PTF_Textures\vehicles\m1232\RG33_Body_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Chassis_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Accessory2_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Armor_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Turret_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Wheels_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m1232\camonet_s_co.paa", "rhsusf\addons\rhsusf_RG33L\Decals\RG33_USMC_Decal_ca.paa"};
+         textures[] = {"\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Body_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Chassis_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Accessory2_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Armor_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Turret_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Wheels_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\camonet_s_co.paa", "rhsusf\addons\rhsusf_RG33L\Decals\RG33_USMC_Decal_ca.paa"};
          factions[] = {};
       };
       class Desert
@@ -154,7 +154,7 @@ class PTF_MRAP_M1232_MK19 : rhsusf_M1232_MC_MK19_usmc_wd
       {
          displayname = "Snow";
          author = "J.Downs";
-         textures[] = {"PTF_Textures\vehicles\m1232\RG33_Body_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Chassis_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Accessory2_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Armor_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Turret_s_CO.paa", "PTF_Textures\vehicles\m1232\RG33_Wheels_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m1232\camonet_s_co.paa", "rhsusf\addons\rhsusf_RG33L\Decals\RG33_USMC_Decal_ca.paa"};
+         textures[] = {"\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Body_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Chassis_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Accessory2_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Armor_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Turret_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\RG33_Wheels_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m1232\camonet_s_co.paa", "rhsusf\addons\rhsusf_RG33L\Decals\RG33_USMC_Decal_ca.paa"};
          factions[] = {};
       };
       class Desert

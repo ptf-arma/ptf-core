@@ -19,7 +19,7 @@ class Extended_PreInit_EventHandlers
 {
 	class tsp_animate
 	{
-		init = "call compile preProcessFileLineNumbers '\tsp_animate\cba.sqf'";
+		init = "call compile preProcessFileLineNumbers '\z\PTF\addons\tsp_animate\cba.sqf'";
 	};
 };
 class CfgFunctions
@@ -30,12 +30,12 @@ class CfgFunctions
 		{
 			class functions
 			{
-				file = "tsp_animate\functions.sqf";
+				file = "\z\PTF\addons\tsp_animate\functions.sqf";
 				preInit = "true";
 			};
 			class init
 			{
-				file = "tsp_animate\init.sqf";
+				file = "\z\PTF\addons\tsp_animate\init.sqf";
 				postInit = "true";
 			};
 		};
@@ -55,23 +55,23 @@ class CfgVehicles
 				class tsp_ace_animate_cancel
 				{
 					displayName = "Cancel";
-					icon = "tsp_animate\gui\cancel.paa";
+					icon = "\z\PTF\addons\tsp_animate\gui\cancel.paa";
 					statement = "[_player, ''] remoteExec ['switchMove', 0]; (call tsp_fnc_playa) setVariable ['tsp_gestureStop', true];";
 				};
 				class tsp_ace_animate_emotes
 				{
 					displayName = "Emotes";
-					icon = "tsp_animate\gui\emotes.paa";
+					icon = "\z\PTF\addons\tsp_animate\gui\emotes.paa";
 				};
 				class tsp_ace_animate_dances
 				{
 					displayName = "Dances";
-					icon = "tsp_animate\gui\dances.paa";
+					icon = "\z\PTF\addons\tsp_animate\gui\dances.paa";
 				};
 				class ace_gestures_cat_gestures
 				{
 					displayName = "Signals";
-					icon = "tsp_animate\gui\signal.paa";
+					icon = "\z\PTF\addons\tsp_animate\gui\signal.paa";
 					condition = "(canStand _target)";
 					statement = "";
 					exceptions[] = {"isNotSwimming"};
@@ -249,7 +249,7 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		class CutSceneAnimationBase;
 		class a2_duoivan: CutSceneAnimationBase
 		{
-			file = "tsp_animate\anim\ActsPercMstpSnonWnonDnon_DancingDuoIvan.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\ActsPercMstpSnonWnonDnon_DancingDuoIvan.rtm";
 			speed = 0.025;
 			showHandGun = "true";
 			canPullTrigger = "true";
@@ -266,22 +266,22 @@ class CfgMovesMaleSdr: CfgMovesBasic
 		};
 		class a2_duostefan: a2_duoivan
 		{
-			file = "tsp_animate\anim\ActsPercMstpSnonWnonDnon_DancingDuoStefan.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\ActsPercMstpSnonWnonDnon_DancingDuoStefan.rtm";
 			speed = 0.025;
 		};
 		class a2_stefan: a2_duoivan
 		{
-			file = "tsp_animate\anim\ActsPercMstpSnonWnonDnon_DancingStefan.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\ActsPercMstpSnonWnonDnon_DancingStefan.rtm";
 			speed = 0.0104;
 		};
 		class a2_zozo: a2_duoivan
 		{
-			file = "tsp_animate\anim\ZozinoDancing.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\ZozinoDancing.rtm";
 			speed = 0.03413;
 		};
 		class a2_metal: a2_duoivan
 		{
-			file = "tsp_animate\anim\MadMetalDancing.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\MadMetalDancing.rtm";
 			speed = 0.019036;
 		};
 		class Acts_Dance_01: CutSceneAnimationBase
@@ -307,7 +307,7 @@ class CfgGesturesMale
 		class GestureNo;
 		class tsp_animate_bird_in: GestureNo
 		{
-			file = "tsp_animate\anim\bird_in.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\bird_in.rtm";
 			mask = "rightArmAndNeck";
 			speed = 1.5;
 			interpolationSpeed = 3;
@@ -316,49 +316,49 @@ class CfgGesturesMale
 		};
 		class tsp_animate_bird_loop: tsp_animate_bird_in
 		{
-			file = "tsp_animate\anim\bird_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\bird_loop.rtm";
 			interpolationSpeed = 1;
 			speed = 0.5;
 			looped = "true";
 		};
 		class tsp_animate_ok_in: tsp_animate_bird_in
 		{
-			file = "tsp_animate\anim\ok_in.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\ok_in.rtm";
 			speed = 1.5;
 		};
 		class tsp_animate_ok_loop: tsp_animate_bird_loop
 		{
-			file = "tsp_animate\anim\ok_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\ok_loop.rtm";
 			speed = 0.5;
 		};
 		class tsp_animate_jackoff_loop: tsp_animate_bird_loop
 		{
-			file = "tsp_animate\anim\jackoff_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\jackoff_loop.rtm";
 			speed = 2.5;
 		};
 		class tsp_animate_jackoff_out: tsp_animate_bird_in
 		{
-			file = "tsp_animate\anim\jackoff_out.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\jackoff_out.rtm";
 			speed = 1.5;
 		};
 		class tsp_animate_mahalo_loop: tsp_animate_bird_loop
 		{
-			file = "tsp_animate\anim\mahalo_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\mahalo_loop.rtm";
 			speed = 1.5;
 		};
 		class tsp_animate_mic: tsp_animate_mahalo_loop
 		{
-			file = "tsp_animate\anim\mic.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\mic.rtm";
 			showHandgun = "true";
 			rightHandIKCurve[] = {1};
 		};
 		class tsp_animate_mic2: tsp_animate_mic
 		{
-			file = "tsp_animate\anim\mic2.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\mic2.rtm";
 		};
 		class tsp_animate_horns_loop: tsp_animate_bird_loop
 		{
-			file = "tsp_animate\anim\horns_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\horns_loop.rtm";
 			mask = "leftArmAndNeck";
 			speed = 1.5;
 			rightHandIKCurve[] = {1};
@@ -366,12 +366,12 @@ class CfgGesturesMale
 		};
 		class tsp_animate_peace_loop: tsp_animate_horns_loop
 		{
-			file = "tsp_animate\anim\peace_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\peace_loop.rtm";
 			speed = 0.5;
 		};
 		class tsp_animate_nightvision_up: tsp_animate_bird_in
 		{
-			file = "tsp_animate\anim\nightvision_up.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\nightvision_up.rtm";
 			mask = "leftArm";
 			speed = 1.5;
 			rightHandIKCurve[] = {1};
@@ -379,36 +379,36 @@ class CfgGesturesMale
 		};
 		class tsp_animate_nightvision_down: tsp_animate_nightvision_up
 		{
-			file = "tsp_animate\anim\nightvision_down.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\nightvision_down.rtm";
 		};
 		class tsp_animate_door: tsp_animate_nightvision_up
 		{
 			enableOptics = "true";
-			file = "tsp_animate\anim\door.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\door.rtm";
 		};
 		class tsp_animate_door_gun: tsp_animate_door
 		{
-			file = "tsp_animate\anim\door_gun.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\door_gun.rtm";
 		};
 		class tsp_animate_door_close: tsp_animate_door
 		{
-			file = "tsp_animate\anim\door_close.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\door_close.rtm";
 		};
 		class tsp_animate_door_close_gun: tsp_animate_door_gun
 		{
-			file = "tsp_animate\anim\door_close_gun.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\door_close_gun.rtm";
 		};
 		class tsp_animate_map_in: tsp_animate_nightvision_up
 		{
-			file = "tsp_animate\anim\map_in.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\map_in.rtm";
 		};
 		class tsp_animate_map_loop: tsp_animate_horns_loop
 		{
-			file = "tsp_animate\anim\map_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\map_loop.rtm";
 		};
 		class tsp_animate_dab_loop: tsp_animate_bird_loop
 		{
-			file = "tsp_animate\anim\dab_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\dab_loop.rtm";
 			mask = "bothArmsAndNeck";
 			speed = 0.5;
 			rightHandIKCurve[] = {1};
@@ -417,7 +417,7 @@ class CfgGesturesMale
 		};
 		class tsp_animate_rockpaperscissors_in: tsp_animate_bird_in
 		{
-			file = "tsp_animate\anim\rockpaperscissors_in.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\rockpaperscissors_in.rtm";
 			mask = "bothArmsAndNeck";
 			speed = 1;
 			rightHandIKCurve[] = {1};
@@ -427,20 +427,20 @@ class CfgGesturesMale
 		};
 		class tsp_animate_rockpaperscissors_rock_loop: tsp_animate_dab_loop
 		{
-			file = "tsp_animate\anim\rockpaperscissors_rock_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\rockpaperscissors_rock_loop.rtm";
 			interpolationSpeed = 5;
 		};
 		class tsp_animate_rockpaperscissors_paper_loop: tsp_animate_rockpaperscissors_rock_loop
 		{
-			file = "tsp_animate\anim\rockpaperscissors_paper_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\rockpaperscissors_paper_loop.rtm";
 		};
 		class tsp_animate_rockpaperscissors_scissors_loop: tsp_animate_rockpaperscissors_rock_loop
 		{
-			file = "tsp_animate\anim\rockpaperscissors_scissors_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\rockpaperscissors_scissors_loop.rtm";
 		};
 		class tsp_animate_suicide_pistol_in: tsp_animate_dab_loop
 		{
-			file = "tsp_animate\anim\suicide_pistol_in.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\suicide_pistol_in.rtm";
 			speed = 0.15;
 			mask = "suicidePistol";
 			rightHandIKCurve[] = {1};
@@ -448,31 +448,31 @@ class CfgGesturesMale
 		};
 		class tsp_animate_suicide_pistol_loop: tsp_animate_suicide_pistol_in
 		{
-			file = "tsp_animate\anim\suicide_pistol_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\suicide_pistol_loop.rtm";
 			looped = "true";
 		};
 		class tsp_animate_suicide_rifle_in: tsp_animate_suicide_pistol_in
 		{
-			file = "tsp_animate\anim\suicide_rifle_in.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\suicide_rifle_in.rtm";
 			mask = "suicideRifle";
 			leftHandIKCurve[] = {1};
 		};
 		class tsp_animate_suicide_rifle_loop: tsp_animate_suicide_rifle_in
 		{
-			file = "tsp_animate\anim\suicide_rifle_loop.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\suicide_rifle_loop.rtm";
 			looped = "true";
 		};
 		class tsp_animate_inspect_rifle: tsp_animate_suicide_rifle_in
 		{
-			file = "tsp_animate\anim\inspect_rifle.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\inspect_rifle.rtm";
 		};
 		class tsp_animate_inspect_pistol: tsp_animate_suicide_pistol_in
 		{
-			file = "tsp_animate\anim\inspect_pistol.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\inspect_pistol.rtm";
 		};
 		class tsp_animate_lowready_rifle_object: GestureNo
 		{
-			file = "tsp_animate\anim\lowready_rifle_object.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\lowready_rifle_object.rtm";
 			mask = "readyRifle";
 			looped = "true";
 			interpolationSpeed = 5;
@@ -487,38 +487,38 @@ class CfgGesturesMale
 		class tsp_animate_highready_rifle_object: tsp_animate_lowready_rifle_object
 		{
 			mask = "readyRifleAndArm";
-			file = "tsp_animate\anim\highready_rifle_object.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\highready_rifle_object.rtm";
 		};
 		class tsp_animate_highready_rifle_friend: tsp_animate_lowready_rifle_object
 		{
-			file = "tsp_animate\anim\highready_rifle_friend.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\highready_rifle_friend.rtm";
 			disableWeapons = "true";
 			disableWeaponsLong = "true";
 			canPullTrigger = "false";
 		};
 		class tsp_animate_lowready_rifle_friend: tsp_animate_highready_rifle_friend
 		{
-			file = "tsp_animate\anim\lowready_rifle_friend.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\lowready_rifle_friend.rtm";
 		};
 		class tsp_animate_highready_rifle_manual: tsp_animate_highready_rifle_friend{};
 		class tsp_animate_lowready_rifle_manual: tsp_animate_lowready_rifle_friend{};
 		class tsp_animate_highready_pistol_object: tsp_animate_lowready_rifle_object
 		{
-			file = "tsp_animate\anim\highready_pistol_object.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\highready_pistol_object.rtm";
 			mask = "readyPistol";
 			leftHandIKCurve[] = {1};
 			rightHandIKCurve[] = {1};
 		};
 		class tsp_animate_highready_pistol_friend: tsp_animate_highready_pistol_object
 		{
-			file = "tsp_animate\anim\highready_pistol_friend.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\highready_pistol_friend.rtm";
 			disableWeapons = "true";
 			disableWeaponsLong = "true";
 			canPullTrigger = "false";
 		};
 		class tsp_animate_lowready_pistol_friend: tsp_animate_highready_pistol_friend
 		{
-			file = "tsp_animate\anim\highready_pistol_friend.rtm";
+			file = "\z\PTF\addons\tsp_animate\anim\highready_pistol_friend.rtm";
 		};
 		class tsp_animate_highready_pistol_manual: tsp_animate_highready_pistol_friend{};
 		class tsp_animate_lowready_pistol_manual: tsp_animate_lowready_pistol_friend{};

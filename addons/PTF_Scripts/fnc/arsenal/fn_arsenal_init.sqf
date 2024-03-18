@@ -828,7 +828,7 @@ _standardWhitelist = [
 
 [_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
 
-#include "defaultloadouts.hpp"
+#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
 
 
 

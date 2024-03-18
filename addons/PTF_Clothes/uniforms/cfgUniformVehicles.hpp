@@ -26,7 +26,7 @@ class PTFInfantry_Air : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenselections[] = {"NomexTex"};
-   hiddenselectionstextures[] = {"PTF_Textures\gear\uniforms\CWU27P_blue.paa"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_blue.paa"};
 };
 class PTFInfantry_LAR : B_Pilot_F
 {
@@ -50,7 +50,7 @@ class PTFInfantry_LAR : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"Camo", "Camo2", "Gloves", "insignia"};
-   hiddenSelectionsTextures[] = {"PTF_Textures\gear\uniforms\ptf_g3_snow.paa", "rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa", "rhsusf\addons\rhsusf_infantry2\data\mechanix_g_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\ptf_g3_snow.paa", "rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa", "rhsusf\addons\rhsusf_infantry2\data\mechanix_g_co.paa"};
 };
 class PTFInfantry_LAR_Coveralls_WD : B_Pilot_F
 {
@@ -74,7 +74,7 @@ class PTFInfantry_LAR_Coveralls_WD : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"camo", "insignia"};
-   hiddenSelectionsTextures[] = {"PTF_Textures\gear\uniforms\ptf_lar_coverall_wd.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\ptf_lar_coverall_wd.paa"};
 };
 class PTFInfantry_LAR_Coveralls_D : B_Pilot_F
 {
@@ -98,7 +98,7 @@ class PTFInfantry_LAR_Coveralls_D : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"camo", "insignia"};
-   hiddenSelectionsTextures[] = {"PTF_Textures\gear\uniforms\ptf_lar_coverall_desert.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\ptf_lar_coverall_desert.paa"};
 };
 class PTFInfantry_LAR_Coveralls_S : B_Pilot_F
 {
@@ -122,7 +122,7 @@ class PTFInfantry_LAR_Coveralls_S : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"camo", "insignia"};
-   hiddenSelectionsTextures[] = {"PTF_Textures\gear\uniforms\ptf_lar_coverall_snow.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\ptf_lar_coverall_snow.paa"};
 };
 class PTFInfantry_Inf : B_Pilot_F
 {
@@ -146,5 +146,5 @@ class PTFInfantry_Inf : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"camo", "insignia"};
-   hiddenSelectionsTextures[] = {"PTF_Textures\gear\uniforms\ptf_frog_snow.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\ptf_frog_snow.paa"};
 };

@@ -8,7 +8,7 @@ class PTF_F18C : FIR_F18C
    side = 1;
    author = "Paramarine Task Force";
    displayName = "F-18C Hornet [MAG36]";
-   hiddenselectionstextures[] = {"PTF_Textures\aircraft\FA18C\VMFA 542\body_co.paa","PTF_Textures\aircraft\FA18C\VMFA 542\wing_co.paa","",""};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\FA18C\VMFA 542\body_co.paa","\z\PTF\addons\PTF_Textures\aircraft\FA18C\VMFA 542\wing_co.paa","",""};
    #include "FM\F-18FM.hpp"
    class ACE_Actions : ACE_Actions {
       class ACE_MainActions : ACE_MainActions {
@@ -35,7 +35,7 @@ class PTF_F18C : FIR_F18C
 class PTF_F18C_CAG : PTF_F18C 
 {
    displayName = "F-18C Hornet CAG [MAG36]";
-   hiddenselectionstextures[] = {"PTF_Textures\aircraft\FA18C\VMFA 542 CAG\body_co.paa","PTF_Textures\aircraft\FA18C\VMFA 542 CAG\wing_co.paa","",""};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\FA18C\VMFA 542 CAG\body_co.paa","\z\PTF\addons\PTF_Textures\aircraft\FA18C\VMFA 542 CAG\wing_co.paa","",""};
 };
 class PTF_F18D : FIR_F18D
 {
@@ -47,5 +47,5 @@ class PTF_F18D : FIR_F18D
    side = 1;
    author = "Paramarine Task Force";
    displayName = "F-18D Hornet [MAG36]";
-   hiddenselectionstextures[] = {"PTF_Textures\aircraft\FA18D\VMFA 542\body_co.paa","PTF_Textures\aircraft\FA18D\VMFA 542\wing_co.paa","",""};		
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\FA18D\VMFA 542\body_co.paa","\z\PTF\addons\PTF_Textures\aircraft\FA18D\VMFA 542\wing_co.paa","",""};		
 };

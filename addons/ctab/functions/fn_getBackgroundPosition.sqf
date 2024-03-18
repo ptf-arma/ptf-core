@@ -19,7 +19,7 @@
 		["cTab_Tablet_dlg"] call cTab_fnc_getBackgroundPosition;
 */
 
-#include "\cTab\shared\cTab_gui_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_gui_macros.hpp"
 
 private ["_displayName","_display","_isDialog","_backgroundCtrl","_backgroundClassName","_backgroundPosition","_backgroundConfigPosition","_displayConfigContainers"];
 

@@ -16,7 +16,7 @@
  * Public: No
  */
 
-#include "\cTab\shared\cTab_gui_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_gui_macros.hpp"
 
 private ["_displayName","_display","_ctrl","_currentTime","_text","_notification","_decayTime"];
 disableSerialization;

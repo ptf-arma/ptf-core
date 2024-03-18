@@ -82,7 +82,7 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
    weapons[] = {"CMFlareLauncher", "PTF_weap_mastersafe"};
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
-   hiddenSelectionsTextures[] = {"\PTF_Textures\aircraft\uh1y\Trainer\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\uh1y\Trainer\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
    class Turrets : Turrets
    {
       class CopilotTurret: CopilotTurret{};
@@ -99,25 +99,25 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 class PTF_UH1Y_HQ : PTF_UH1Y
 {
    displayName = "UH-1Y (MAG36 HQ) [MAG36]";
-   hiddenSelectionsTextures[] = {"\PTF_Textures\aircraft\uh1y\HQ\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\uh1y\HQ\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 };
 class PTF_UH1Y_SCARFACE : PTF_UH1Y
 {
    displayName = "UH-1Y (Scarface) [MAG36]";
-   hiddenSelectionsTextures[] = {"\PTF_Textures\Aircraft\UH1Y\Scarface\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\Aircraft\UH1Y\Scarface\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 };
 class PTF_UH1Y_SCARFACE_SL : PTF_UH1Y
 {
    displayName = "UH-1Y (Scarface SL) [MAG36]";
-   hiddenSelectionsTextures[] = {"\PTF_Textures\Aircraft\UH1Y\ScarfaceSL\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\Aircraft\UH1Y\ScarfaceSL\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 };
 class PTF_UH1Y_GUNFIGHTERS : PTF_UH1Y
 {
    displayName = "UH-1Y (Gunfighters) [MAG36]";
-   hiddenSelectionsTextures[] = {"\PTF_Textures\Aircraft\UH1Y\Gunfighters\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\Aircraft\UH1Y\Gunfighters\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 };
 class PTF_UH1Y_GUNFIGHTERS_SL : PTF_UH1Y
 {
    displayName = "UH-1Y (Gunfighters SL) [MAG36]";
-   hiddenSelectionsTextures[] = {"\PTF_Textures\Aircraft\UH1Y\GunfightersSL\uh1y_ext_co.paa", "\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\Aircraft\UH1Y\GunfightersSL\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 };

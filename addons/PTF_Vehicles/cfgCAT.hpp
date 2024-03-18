@@ -138,7 +138,7 @@ class PTF_M1151CAT_M2 : rhsusf_m1151_m2_v3_usmc_wd
          displayname = "Snow";
          author = "J.Downs";
          textures[] = {
-             "PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
+             "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
          factions[] = {};
       };
       class Desert
@@ -213,7 +213,7 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
          displayname = "Snow";
          author = "J.Downs";
          textures[] = {
-             "PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
+             "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
          factions[] = {};
       };
       class Desert

@@ -24,11 +24,55 @@ class CfgUnitInsignia
 };
 class CfgVehicles
 {
+class CargoNet_01_box_F;
+class PTF_DummyHolder: CargoNet_01_box_F {
+	displayName = "PTF_DummyHolder";
+	model = "\A3\Weapons_f\DummyWeapon_Single.p3d";
+	showWeaponCargo = 1;
+};
 #include "AceActions.hpp"
 };
 class CfgMarkers {
 #include "fnc\Markers\CfgMarker.hpp"
 };
+
+//custom keybinds
+class CfgUserActions
+{
+	class PTF_WeaponSwitch // This class name is used for internal representation and also for the inputAction command.
+	{
+		displayName = "Stow / Switch Weapon";
+		tooltip = "Put a Weapon on your back or Swtich to the one allready there";
+		onActivate = "call PTF_fnc_weaponSwap";		// _this is always true.
+		onDeactivate = "";		// _this is always false.
+		onAnalog = "call PTF_fnc_weaponSwap";	// _this is the scalar analog value.
+		analogChangeThreshold = 0.1; // Minimum change required to trigger the onAnalog EH (default: 0.01).
+	};
+};
+class CfgDefaultKeysPresets
+{
+	class Arma2 // Arma2 is inherited by all other presets.
+	{
+		class Mappings
+		{
+			PTF_WeaponSwitch[] = {
+				0x05, // DIK_K
+				"0x05", // 256 is the bitflag for "doubletap", 0x25 is the DIK code for K.
+				"0x00000000 + 4" // 0x00010000 is the bitflag for "mouse button".
+			};
+		};
+	};
+}
+class UserActionGroups
+{
+	class PTF_KeyBinds // Unique classname of your category.
+	{
+		name = "PTF KeyBinds"; // Display name of your category.
+		isAddon = 1;
+		group[] = {"PTF_WeaponSwitch"}; // List of all actions inside this category.
+	};
+};
+
 
 
 class CfgMovesBasic

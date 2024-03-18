@@ -1,66 +1,50 @@
 
+/*
+ * Author: lost
+ * Places a wepaon on a players shoulder or switches out the players wepaon with the one on the shoulder
+ *
+ * Arguments:
+ * N/A
+ * 
+ * Return Value:
+ * none
+ *
+ * Exslrle:
+ *  call PTF_fnc_weaponSwap 
+ */
 
-//make dummy weapon
+
 
 _player = player;
-_Weapon = primaryWeapon _player;
-_MagCount = _player ammo primaryWeapon _player;
-(primaryWeaponItems _player) params ["_muzzle","_laser","_optic","_grip"];
-(primaryWeaponMagazine _player) params ["_WeaponMag","_WeaponGl"]; 
-_primaryWeapon = [_Weapon, _muzzle, _laser, _optic, [_WeaponMag, _MagCount], _WeaponGl, _grip];
 
-// _player removeWeapon _Weapon;
+//white list of weapons to place on shoulder in addon settings
+_wList = call compile PTF_WeaponWList;
+_Acheck = _player getVariable ["PTFHolder", ""];
+_Acheck = count _Acheck;
 
-_fakeWeapon = createVehicle ["DummyWeapon_Wbk", getPosATL player, [], 0, "CAN_COLLIDE"];
-_fakeWeapon addWeaponWithAttachmentsCargoGlobal [_primaryWeapon, 1];
-_player setVariable ["PTFHolder",[_fakeWeapon,_primaryWeapon],true];
-_fakeWeapon attachTo [player,[-0.2,-0.12,0],"Spine3",true];
-		   _yaw = 130; _pitch = -10; _roll = 80;   
-	  _fakeWeapon setVectorDirAndUp [
-	[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],
-	[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D
-]; 
-player playActionNow "PTF_WeaponBack";
+_neardummy = position _player nearObjects ["PTF_DummyHolder", 1.4];
+_neardummyC = count _neardummy;
+//checks if there is a dummy wepaon allready on the player
 
+//checks if white list is active and if the weapon the player has is in there hand
+if ( PTF_WeaponW == true && (currentWeapon _player) in _wList == false && _neardummyC == 0 ) exitwith {
+hint "this weapon can't be shoulderd"
+};
 
-
-//switch weapons
-
-_player = player;
-_Weapon = primaryWeapon _player;
-_MagCount = _player ammo primaryWeapon _player;
-(primaryWeaponItems _player) params ["_muzzle","_laser","_optic","_grip"];
-(primaryWeaponMagazine _player) params ["_WeaponMag","_WeaponGl"]; 
-_primaryWeapon = [_Weapon, _muzzle, _laser, _optic, [_WeaponMag, _MagCount], _WeaponGl, _grip];
-
-_player removeWeapon _Weapon;
-
-_FakeWeapon = _player getVariable "PTFHolder" select 0;
-_NewWeapon = _player getVariable "PTFHolder" select 1;
-
-deleteVehicle _FakeWeapon;
-
-_NewWeapon params ["_Weapon", "_muzzle", "_laser", "_optic", "_WeaponMag", "_WeaponGl", "_grip"];
-_WeaponMag params ["_WeaponMagg","_WeaponMaggAmount"];
-
-_player addMagazine _WeaponMag;
-_player addWeapon _Weapon;
-{
-_player addPrimaryWeaponItem _x;
-} forEach [_muzzle,_laser,_optic,_grip, _WeaponGl];
+//check if the weapon on your shoulder is not in the white list and if the one in your hand is also not
+if ( PTF_WeaponW == true && ((weaponCargo (_neardummy select 0)) select 0) in _wList == false && (currentWeapon _player) in _wList == false) exitwith {
+hint "this weapon can't be shoulderd"
+};
 
 
-_fakeWeapon = createVehicle ["DummyWeapon_Wbk", getPosATL player, [], 0, "CAN_COLLIDE"];
-_fakeWeapon addWeaponWithAttachmentsCargoGlobal [_primaryWeapon, 1];
-_player setVariable ["PTFHolder",[_fakeWeapon,_primaryWeapon],true];
-_fakeWeapon attachTo [player,[-0.2,-0.12,0],"Spine3",true];
-		   _yaw = 130; _pitch = -10; _roll = 80;   
-	  _fakeWeapon setVectorDirAndUp [
-	[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],
-	[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D
-];
+//if there is no weapon on shoulder
+if (_Acheck == 0) exitwith {
+[_player] call PTF_fnc_Shoulder;
+};
 
-_player selectWeapon _Weapon;
-player playActionNow "PTF_TakeoutWeaponBack";
 
+//check that there is a weapon on back
+if (_Acheck > 1) exitwith {
+[_player] call PTF_fnc_SoulderNSwap;
+};
 

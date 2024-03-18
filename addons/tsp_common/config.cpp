@@ -23,12 +23,12 @@ class CfgFunctions
 		{
 			class functions
 			{
-				file = "tsp_common\functions.sqf";
+				file = "\z\PTF\addons\tsp_common\functions.sqf";
 				preInit = "true";
 			};
 			class init
 			{
-				file = "tsp_common\init.sqf";
+				file = "\z\PTF\addons\tsp_common\init.sqf";
 				postInit = "true";
 			};
 		};
