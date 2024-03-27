@@ -4,6 +4,11 @@ _standardWhitelist = [
 
 //weapon stuff
 "rhsusf_acc_g33_t1",
+"Scot_Trij_Accu",
+"Scot_Trij_Accu_RMR_Top_Canted",
+"Scot_Trij_Accu_RMR",
+"Scot_Trij_Accu_T1",
+"Scot_Trij_Accu_T2",
 "rhsusf_acc_g33_xps3",
 "rhs_weap_m4a1_blockII_wd",
 "rhs_weap_m4a1_blockII_M203_wd",
