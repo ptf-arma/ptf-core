@@ -4,10 +4,6 @@ class cfgPatches
    class PTF_Vehicles
    {
       units[] = {
-          "PTF_F450_S7Training",
-          "PTF_F450_AirOperations",
-          "PTF_F450_Tow",
-          "PTF_F450_EMS",
           "PTF_M1151_MK19",
           "PTF_M1151_M240",
           "PTF_M1151_M2",
@@ -64,9 +60,6 @@ class cfgPatches
               "PTF_Main",
               "PTF_Textures",
               "PTF_Models",
-              "d3s_fseries_15",
-              "d3s_cars_core",
-              "d3s_cars_core_18",
               "boxloader_tractor",
               "rhsusf_c_mrzr",
               "rhsusf_c_fmtv",
@@ -107,7 +100,6 @@ class cfgVehicles
 #include "cfgBadger.hpp"
 #include "cfgBoats.hpp"
 #include "cfgCougar.hpp"
-#include "cfgF450.hpp"
 #include "cfgFMTV.hpp"
 #include "cfgForklifts.hpp"
 #include "cfgM977A4.hpp"
@@ -117,7 +109,6 @@ class cfgVehicles
 #include "cfgMRZR.hpp"
 #include "cfgTractors.hpp"
 #include "cfgVanilla.hpp"
-#include "cfgStretcher.hpp"
 #include "cfg6x6.hpp"
 #include "cfgSAM.hpp"
 #include "cfgCAT.hpp"

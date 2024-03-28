@@ -12,26 +12,6 @@ License:
 Includes PBO files:
 
 ========================================================================================================================
-Mod: D3S Cars Pack (Modified)
-Original Author: Perseus Mar 
-Source Link: https://steamcommunity.com/workshop/filedetails/?id=1641826228
-License: https://www.gnu.org/licenses/quick-guide-gplv3.html
-License Basics: Use however you want, but attribute Perseus Mar
-Description: Includes a number of vehicles for the PTF pack, which we have been modified to be more realistic in terms of performance and capability.
-Included PBO files:
-d3s_cars_core.pbo
-d3s_cars_core_18.pbo
-d3s_escalade_16.pbo
-d3s_fseries_15.pbo
-d3s_peterbilt_579.pbo
-d3s_savana_05.pbo
-d3s_scripts.pbo
-d3s_SRmh_9500.pbo
-d3s_tahoe_08.pbo
-d3s_tundra_19.pbo
-d3s_tundra_19_2.pbo
-
-========================================================================================================================
 Mod: Paramarine Task Force - Core (Original Content)
 Original Author: Paramarine Task Force, Member, S4
 Source Link: www.Paramarines.net
