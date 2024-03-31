@@ -1,3 +1,17 @@
+/*
+ * Author: lost
+ * adds hitpart event handler to a projectile and checks where it hit
+ *
+ * Arguments:
+ * object
+ * 
+ * Return Value:
+ * N/a
+ *
+ * Exslrle:
+ *  [_bullet] call PTF_fnc_BeanBag
+ */
+
 params ["_bullet"];
 
 _bullet addEventHandler ["HitPart", {

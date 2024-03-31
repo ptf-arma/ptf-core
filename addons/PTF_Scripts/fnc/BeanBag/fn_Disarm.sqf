@@ -1,3 +1,17 @@
+/*
+ * Author: lost
+ * Removes the curret weapon from a units hand and drops it
+ *
+ * Arguments:
+ * object
+ * 
+ * Return Value:
+ * N/a
+ *
+ * Exslrle:
+ *  [player] call PTF_fnc_Disarm
+ */
+
 params ["_Object"];
 
 _key = "";
