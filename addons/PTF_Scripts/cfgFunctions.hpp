@@ -88,5 +88,10 @@ class cfgFunctions {
 				preinit = 1;
 			};
 		};
+		class BeanBag {
+			file = "\z\PTF\addons\PTF_Scripts\fnc\BeanBag";
+			class BeanBag {};
+			class Disarm {};
+		}
 	};
 };
