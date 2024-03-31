@@ -804,7 +804,7 @@ _standardWhitelist = [
 "ItemMap",
 "ItemCompass",
 "rhsusf_acc_premier_anpvs27",
-"acex_intelitems_notpad",
+"acex_intelitems_notepad",
 "ACE_PlottingBoard",
 
 //bino
