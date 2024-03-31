@@ -231,6 +231,7 @@ _standardWhitelist = [
 "PTF_Backpack_Infantry_Crye_Hydro",
 "PTF_Backpack_Infantry_Crye_Breacher",
 "PTF_Backpack_Infantry_Crye",
+"PTF_Backpack_LR_1,"
 "B_Parachute",
 "tfw_ilbe_blade_coy",
 "tfw_ilbe_DD_coy",
