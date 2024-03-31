@@ -1,6 +1,6 @@
 class PTF_Backpack_LR_1 : USP_REEBOW_3DAP_ACC9_CBR
 {
-   displayName = "[ILBE] Reebow 3DAP ACC9 (CBR) [PTF]";
+   displayName = "[Inf LR] Reebow 3DAP ACC9 (CBR) [PTF]";
    author = "Paramarine Task Force";
    maximumLoad = 300;
    mass = 50;
