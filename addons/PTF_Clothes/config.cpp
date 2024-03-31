@@ -46,6 +46,7 @@ class cfgVehicles
 #include "cfgDrones.hpp"
 #include "backpacks\cfgInfantryBackpacks.hpp"
 #include "backpacks\cfgAirBackpacks.hpp"
+#include "backpacks\cfgLRBackpacks.hpp"
 #include "uniforms\cfgUniformVehicles.hpp"
 };
 class cfgAmmo
