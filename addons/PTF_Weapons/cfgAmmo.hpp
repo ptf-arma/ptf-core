@@ -9,7 +9,7 @@ class cfgAmmo {
 	class ptf_B_12Gauge_Slug_NoCartridge : B_12Gauge_Slug_NoCartridge {
 		hit = 0;
 		class EventHandlers {
-			init	= "systemChat format ['init ammo EH output: %1 [time: %2]', _this, time]; _this call PTF_Fnc_BeanBag";
+			init	= "_this call PTF_Fnc_BeanBag";
 		};
 	};
 
