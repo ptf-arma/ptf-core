@@ -136,6 +136,7 @@ class USP_PACK_BREACHER_CBR;
 class USP_PATROL_PACK_CBR;
 class USP_HYDROPACK_CBR;
 class USP_LAAW_CLIP;
+class USP_REEBOW_3DAP_ACC9_CBR;
 //vanilla shit
 class U_Tank_green_F;
 //nightvision
