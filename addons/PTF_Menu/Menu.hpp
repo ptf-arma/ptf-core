@@ -35,7 +35,7 @@
 			soundEscape[] = {"",0.1,1};
 			soundPush[] = {"",0.1,1};
 			style = 48;
-			text = "PTF_Menu\data\ptfemblem.paa";
+			text = "\z\PTF\addons\PTF_Menu\data\ptfemblem.paa";
 			tooltip = "paramarines Website";
 			tooltipColorBox[] = {1,1,1,1};
 			tooltipColorShade[] = {0,0,0,0.65};
