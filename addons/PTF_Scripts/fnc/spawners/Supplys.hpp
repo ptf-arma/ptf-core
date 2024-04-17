@@ -10,17 +10,17 @@ class PTF_Supplys {
 				class PTF_SAmmo {
 				statement = "['PTF_Cargo_Small_Ammo', 'SmSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Small Ammo";
-            	icon = "\PTF_Textures\Icons\Ammobox.paa"; 
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa"; 
 				};
 				class PTF_SMed {
 				statement = "['PTF_Cargo_Small_Medical', 'SmSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Small Medical";
-            	icon = "\PTF_Textures\Icons\MedBox.paa";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\MedBox.paa";
 				};
 				class PTF_SLauncher {
 				statement = "['PTF_Cargo_Small_Launcher', 'SmSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Small Launcher";
-            	icon = "\PTF_Textures\Icons\Launcher.paa";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Launcher.paa";
 				};
 				class PTF_SExplosives {
 				statement = "['PTF_Cargo_Small_Explosives', 'SmSupplys'] call PTF_fnc_SpawnFunction";
@@ -35,7 +35,7 @@ class PTF_Supplys {
 				class PTF_Mortar {
 				statement = "['PTF_Cargo_Mortar', 'SmSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Small Mortar";
-            	icon = "\PTF_Textures\Icons\Mortar.paa";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Mortar.paa";
 				};
 				class PTF_SVic {
 				statement = "['PTF_Cargo_Vic', 'SmSupplys'] call PTF_fnc_SpawnFunction";
@@ -49,17 +49,17 @@ class PTF_Supplys {
 				class PTF_Ammo {
 				statement = "['PTF_Cargo_Large_VicBox', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Ammo";
-            	icon = "\PTF_Textures\Icons\Ammobox.paa"; 
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa"; 
 				};
 				class PTF_Med {
 				statement = "['PTF_Cargo_Large_Medical', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Medical";
-            	icon = "\PTF_Textures\Icons\MedBox.paa"; 
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\MedBox.paa"; 
 				};
 				class PTF_Launcher {
 				statement = "['PTF_Cargo_Large_Launcher', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Launcher";
-            	icon = "\PTF_Textures\Icons\Launcher.paa";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Launcher.paa";
 				};
 				class PTF_Explosives {
 				statement = "['PTF_Cargo_Large_Explosives', 'LgSupplys'] call PTF_fnc_SpawnFunction";

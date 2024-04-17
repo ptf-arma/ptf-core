@@ -4,6 +4,11 @@ _standardWhitelist = [
 
 //weapon stuff
 "rhsusf_acc_g33_t1",
+"Scot_Trij_Accu",
+"Scot_Trij_Accu_RMR_Top_Canted",
+"Scot_Trij_Accu_RMR",
+"Scot_Trij_Accu_T1",
+"Scot_Trij_Accu_T2",
 "rhsusf_acc_g33_xps3",
 "rhs_weap_m4a1_blockII_wd",
 "rhs_weap_m4a1_blockII_M203_wd",
@@ -231,6 +236,7 @@ _standardWhitelist = [
 "PTF_Backpack_Infantry_Crye_Hydro",
 "PTF_Backpack_Infantry_Crye_Breacher",
 "PTF_Backpack_Infantry_Crye",
+"PTF_Backpack_LR_1",
 "B_Parachute",
 "tfw_ilbe_blade_coy",
 "tfw_ilbe_DD_coy",
@@ -253,9 +259,11 @@ _standardWhitelist = [
 "USP_DELTA_BAG_CBR",
 "USP_HYDROPACK_CBR",
 "USP_45L_RUCKSACK_TAN",
-"USP_REEBOW_3DAP_ACC9_CBR",
 "USP_REEBOW_3DAP_ACC8_CBR",
 "USP_REEBOW_3DAP_ACC7_CBR",
+"USP_ZIPON_PANEL_CPC_CBR",
+"USP_ZIPON_PANEL_CPC_BC_SM_CBR",
+"USP_ZIPON_PANEL_CPC_SM_CBR",
 
 //unifrom
 "PTF_Uniform_Air_CSU13BP_WD",
@@ -804,7 +812,7 @@ _standardWhitelist = [
 "ItemMap",
 "ItemCompass",
 "rhsusf_acc_premier_anpvs27",
-"acex_intelitems_notpad",
+"acex_intelitems_notepad",
 "ACE_PlottingBoard",
 
 //bino
@@ -830,7 +838,7 @@ _standardWhitelist = [
 
 [_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
 
-#include "defaultloadouts.hpp"
+#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
 
 
 

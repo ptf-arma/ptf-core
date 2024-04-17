@@ -5,7 +5,7 @@
 		Gundy, Riouken
 	
 	Description:
-		Process user menu select events, initiated by "\cTab\shared\cTab_markerMenu_controls.hpp"
+		Process user menu select events, initiated by "\z\PTF\addons\cTab\shared\cTab_markerMenu_controls.hpp"
 		
 	
 	Parameters:
@@ -18,7 +18,7 @@
 		[1] call cTab_fnc_userMenuSelect;
 */
 
-#include "\cTab\shared\cTab_gui_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_gui_macros.hpp"
 
 private ["_type","_displayName","_display","_idcToShow","_control","_controlPos","_screenPos","_screenEdgeX","_screenEdgeY","_controlEdgeX","_controlEdgeY"];
 

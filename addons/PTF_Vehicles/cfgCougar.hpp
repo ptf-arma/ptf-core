@@ -130,7 +130,7 @@ class PTF_MRAP_CGRCAT1A2_MK19 : rhsusf_CGRCAT1A2_Mk19_usmc_wd
       {
          displayname = "Snow";
          author = "J.Downs";
-         textures[] = {"PTF_Textures\vehicles\cgrcat\CGR_Body_s_CO.paa", "rhsusf\addons\rhsusf_cougar\data\CGR_Labels_CA.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
+         textures[] = {"\z\PTF\addons\PTF_Textures\vehicles\cgrcat\CGR_Body_s_CO.paa", "rhsusf\addons\rhsusf_cougar\data\CGR_Labels_CA.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
          factions[] = {};
       };
       class Desert
@@ -303,7 +303,7 @@ class PTF_MRAP_CGRCAT1A2_M2 : rhsusf_CGRCAT1A2_M2_usmc_wd
       {
          displayname = "Snow";
          author = "J.Downs";
-         textures[] = {"PTF_Textures\vehicles\cgrcat\CGR_Body_s_CO.paa", "rhsusf\addons\rhsusf_cougar\data\CGR_Labels_CA.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
+         textures[] = {"\z\PTF\addons\PTF_Textures\vehicles\cgrcat\CGR_Body_s_CO.paa", "rhsusf\addons\rhsusf_cougar\data\CGR_Labels_CA.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
          factions[] = {};
       };
       class Desert

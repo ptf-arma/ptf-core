@@ -14,7 +14,7 @@
 #include <\cTab\android\cTab_android_controls.hpp>
 
 #define MENU_sizeEx pxToScreen_H(27)
-#include "\cTab\shared\cTab_markerMenu_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_markerMenu_macros.hpp"
 
 class cTab_Android_dlg {
 	idd = 177382;
@@ -29,7 +29,7 @@ class cTab_Android_dlg {
 		class screen: cTab_android_RscMapControl
 		{
 			onDraw = "nop = _this call cTabOnDrawbftAndroid;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 		};
 		class screenTopo: screen
@@ -282,7 +282,7 @@ class cTab_Android_dlg {
 		// ---------- BRIGHTNESS ------------
 		class brightness: cTab_android_brightness {};
 		// ---------- USER MARKERS ------------
-		#include "\cTab\shared\cTab_markerMenu_controls.hpp"
+		#include "\z\PTF\addons\cTab\shared\cTab_markerMenu_controls.hpp"
 		// ---------- BACKGROUND ------------
 		class background: cTab_android_background {};
 		// ---------- MOVING HANDLEs ------------

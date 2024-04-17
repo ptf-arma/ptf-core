@@ -39,7 +39,7 @@ class PTF_AH1Z : RHS_AH1Z
             displayName = "Loadouts";
             statement = "";
             icon = "";
-            #include "\PTF_Scripts\fnc\Ace actions\air\AH1z.hpp"
+            #include "\z\PTF\addons\PTF_Scripts\fnc\Ace actions\air\AH1z.hpp"
          };
       };
    };
@@ -48,11 +48,11 @@ class PTF_AH1Z_HQ : PTF_AH1Z
 {
    displayName = "AH-1Z (MAG36 HQ) [MAG36]";
    hiddenSelectionsTextures[] = {
-       "\PTF_Textures\Aircraft\AH1Z\HQ\ah1z_body_co.paa", "\PTF_Textures\Aircraft\AH1Z\HQ\ah1z_engines_co.paa", "", ""};
+       "\z\PTF\addons\PTF_Textures\Aircraft\AH1Z\HQ\ah1z_body_co.paa", "\z\PTF\addons\PTF_Textures\Aircraft\AH1Z\HQ\ah1z_engines_co.paa", "", ""};
 };
 class PTF_AH1Z_GUNFIGHTERS : PTF_AH1Z
 {
    displayName = "AH-1Z (Gunfighters) [MAG36]";
    hiddenSelectionsTextures[] = {
-       "\PTF_Textures\Aircraft\AH1Z\Gunfighters\ah1z_body_co.paa", "\PTF_Textures\Aircraft\AH1Z\Gunfighters\ah1z_engines_co.paa", "", ""};
+       "\z\PTF\addons\PTF_Textures\Aircraft\AH1Z\Gunfighters\ah1z_body_co.paa", "\z\PTF\addons\PTF_Textures\Aircraft\AH1Z\Gunfighters\ah1z_engines_co.paa", "", ""};
 };

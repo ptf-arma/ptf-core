@@ -22,7 +22,7 @@
 		[_display,_ctrlScreen,_playerPos,cTabMapCursorPos,0,false] call cTab_fnc_drawHook;
 */
 
-#include "\cTab\shared\cTab_gui_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_gui_macros.hpp"
 
 private ["_display","_ctrlScreen","_pos","_secondPos","_dirToSecondPos","_dstToSecondPos"];
 

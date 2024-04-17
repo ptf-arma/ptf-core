@@ -4,15 +4,15 @@ class PTF_Helmet_Infantry_DIHat : ItemCore
    weaponPoolAvailable = 1;
    displayName = "Campaign Cover [PTF]";
    author = "Paramarine Task Force";
-   picture = "\PTF_Textures\gear\dihat\DS_UI.paa";
-   model = "\PTF_Models\gear\dihat\dihat.p3d";
+   picture = "\z\PTF\addons\PTF_Textures\gear\dihat\DS_UI.paa";
+   model = "\z\PTF\addons\PTF_Models\gear\dihat\dihat.p3d";
    hiddenSelections[] = {""};
    hiddenSelectionsTextures[] = {""};
    class ItemInfo : HeadgearItem
    {
       mass = 2;
       allowedSlots[] = {901, 701, 605};
-      uniformModel = "\PTF_Models\gear\dihat\dihat.p3d";
+      uniformModel = "\z\PTF\addons\PTF_Models\gear\dihat\dihat.p3d";
       modelSides[] = {6};
       armor = "0*0";
       passThrough = 0.8;

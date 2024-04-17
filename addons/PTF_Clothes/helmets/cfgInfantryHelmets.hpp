@@ -292,7 +292,7 @@ class PTF_Helmet_Infantry_Mich2000_S : rhsusf_ach_helmet_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -324,7 +324,7 @@ class PTF_Helmet_Infantry_Mich2000_norotos_S: rhsusf_ach_helmet_ucp_alt
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 		ace_hearing_protection=0.80000001;
@@ -353,7 +353,7 @@ class PTF_Helmet_Infantry_Mich2000_ESS_S : rhsusf_ach_helmet_ESS_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -380,7 +380,7 @@ class PTF_Helmet_Infantry_Mich2000_Headset_S : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -407,7 +407,7 @@ class PTF_Helmet_Infantry_Mich2000_Headset_ESS_S : rhsusf_ach_helmet_headset_ess
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich2000_snow.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -527,7 +527,7 @@ class PTF_Helmet_HQ_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_HQ.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_HQ.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -554,7 +554,7 @@ class PTF_Helmet_1st_plt_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_al
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1st_plt.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1st_plt.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -581,7 +581,7 @@ class PTF_Helmet_1_1_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_1.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_1.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -608,7 +608,7 @@ class PTF_Helmet_1_2_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_2.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_2.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -635,7 +635,7 @@ class PTF_Helmet_1_3_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_3.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_3.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -662,7 +662,7 @@ class PTF_Helmet_2nd_plt_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_al
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2nd_plt.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2nd_plt.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -689,7 +689,7 @@ class PTF_Helmet_2_1_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2_1.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2_1.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -716,7 +716,7 @@ class PTF_Helmet_2_2_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2_2.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2_2.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
@@ -743,7 +743,7 @@ class PTF_Helmet_2_3_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2_3.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_2_3.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
