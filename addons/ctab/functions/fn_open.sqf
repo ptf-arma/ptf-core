@@ -32,7 +32,7 @@
 		[0,"cTab_TAD_dsp",player,vehicle player] call cTab_fnc_open;
 */
 
-#include "\cTab\shared\cTab_gui_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_gui_macros.hpp"
 
 private ["_interfaceType","_displayName","_player","_vehicle","_playerKilledEhId","_vehicleGetOutEhId"];
 

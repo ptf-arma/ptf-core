@@ -19,7 +19,7 @@ class PTF_Backpack_Infantry_Corpsman_Kitbag_Red : B_Kitbag_cbr
    mass = 50;
    hiddenSelectionsTextures[] =
        {
-           "\PTF_Textures\gear\backpacks\PTF_Corpsman_Kitbag_Red_co.paa"};
+           "\z\PTF\addons\PTF_Textures\gear\backpacks\PTF_Corpsman_Kitbag_Red_co.paa"};
 };
 class PTF_Backpack_Infantry_Corpsman_Kitbag_Black : B_Kitbag_cbr
 {
@@ -32,7 +32,7 @@ class PTF_Backpack_Infantry_Corpsman_Kitbag_Black : B_Kitbag_cbr
    mass = 50;
    hiddenSelectionsTextures[] =
        {
-           "\PTF_Textures\gear\backpacks\PTF_Corpsman_Kitbag_Black_co.paa"};
+           "\z\PTF\addons\PTF_Textures\gear\backpacks\PTF_Corpsman_Kitbag_Black_co.paa"};
 };
 class PTF_Backpack_Infantry_Carryall : B_Carryall_cbr
 {

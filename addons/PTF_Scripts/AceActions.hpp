@@ -9,7 +9,7 @@ class Car : LandVehicle
          {
             displayName = "Flags";
             distance = 3;
-            icon = "\PTF_Textures\Icons\flagup_ico.paa";
+            icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
             enableInside = 1;
             class PTF_Flag_Raise
             {
@@ -20,7 +20,7 @@ class Car : LandVehicle
                showDisabled = 0;
                priority = 1.1;
                enableInside = 1;
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
             };
             class USMC_Flag_Raise : PTF_Flag_Raise
             {
@@ -31,7 +31,7 @@ class Car : LandVehicle
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
                displayName = "1st Platoon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-1 Flag";
@@ -57,7 +57,7 @@ class Car : LandVehicle
             class PTF_3rd_Flags : PTF_Flag_Raise
             {
                displayName = "3rd Platoon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 3_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3rd Platoon Flag";
@@ -89,7 +89,7 @@ class Car : LandVehicle
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                distance = 3;
                enableInside = 1;
                class MAG36_Flag_Raise : PTF_Flag_Raise
@@ -119,7 +119,7 @@ class Car : LandVehicle
             showDisabled = 0;
             priority = 1.1;
             enableInside = 1;
-            icon = "\PTF_Textures\Icons\flagdown_ico.paa";
+            icon = "\z\PTF\addons\PTF_Textures\Icons\flagdown_ico.paa";
          };
       };
    };
@@ -136,7 +136,7 @@ class Tank_F : Tank
          {
             displayName = "Flags";
             distance = 3;
-            icon = "\PTF_Textures\Icons\flagup_ico.paa";
+            icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
             enableInside = 1;
             class PTF_Flag_Raise
             {
@@ -147,7 +147,7 @@ class Tank_F : Tank
                showDisabled = 0;
                priority = 1.1;
                enableInside = 1;
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
             };
             class USMC_Flag_Raise : PTF_Flag_Raise
             {
@@ -158,7 +158,7 @@ class Tank_F : Tank
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
                displayName = "1st Platon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-1 Flag";
@@ -184,7 +184,7 @@ class Tank_F : Tank
             class PTF_3rd_Flags : PTF_Flag_Raise
             {
                displayName = "3rd Platoon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 3_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3rd Platoon Flag";
@@ -216,7 +216,7 @@ class Tank_F : Tank
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                distance = 3;
                enableInside = 1;
                class MAG36_Flag_Raise : PTF_Flag_Raise
@@ -246,7 +246,7 @@ class Tank_F : Tank
             showDisabled = 0;
             priority = 1.1;
             enableInside = 1;
-            icon = "\PTF_Textures\Icons\flagdown_ico.paa";
+            icon = "\z\PTF\addons\PTF_Textures\Icons\flagdown_ico.paa";
          };
       };
    };
@@ -263,7 +263,7 @@ class Ship_F : Ship
          {
             displayName = "Flags";
             distance = 3;
-            icon = "\PTF_Textures\Icons\flagup_ico.paa";
+            icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
             enableInside = 1;
             class PTF_Flag_Raise
             {
@@ -274,7 +274,7 @@ class Ship_F : Ship
                showDisabled = 0;
                priority = 1.1;
                enableInside = 1;
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
             };
             class USMC_Flag_Raise : PTF_Flag_Raise
             {
@@ -285,7 +285,7 @@ class Ship_F : Ship
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
                displayName = "1st Platon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-1 Flag";
@@ -311,7 +311,7 @@ class Ship_F : Ship
             class PTF_3rd_Flags : PTF_Flag_Raise
             {
                displayName = "3rd Platoon Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 3_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3rd Platoon Flag";
@@ -342,7 +342,7 @@ class Ship_F : Ship
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
-               icon = "\PTF_Textures\Icons\flagup_ico.paa";
+               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                distance = 3;
                enableInside = 1;
                class MAG36_Flag_Raise : PTF_Flag_Raise
@@ -372,7 +372,7 @@ class Ship_F : Ship
             showDisabled = 0;
             priority = 1.1;
             enableInside = 1;
-            icon = "\PTF_Textures\Icons\flagdown_ico.paa";
+            icon = "\z\PTF\addons\PTF_Textures\Icons\flagdown_ico.paa";
          };
       };
    };

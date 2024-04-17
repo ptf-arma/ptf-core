@@ -18,7 +18,7 @@
 #include <\cTab\tablet\cTab_Tablet_controls.hpp>
 
 #define MENU_sizeEx pxToScreen_H(cTab_GUI_tablet_OSD_TEXT_STD_SIZE)
-#include "\cTab\shared\cTab_markerMenu_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_markerMenu_macros.hpp"
 
 class cTab_Tablet_dlg {
 	idd = 1775154;
@@ -70,7 +70,7 @@ class cTab_Tablet_dlg {
 		{
 			idc = IDC_CTAB_SCREEN;
 			onDraw = "nop = _this call cTabOnDrawbft;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 		};
 		class screenTopo: screen
@@ -368,7 +368,7 @@ class cTab_Tablet_dlg {
 		class brightness: cTab_Tablet_brightness {};
 		// ---------- USER MARKERS ------------
 		#define cTab_IS_TABLET
-		#include "\cTab\shared\cTab_markerMenu_controls.hpp"
+		#include "\z\PTF\addons\cTab\shared\cTab_markerMenu_controls.hpp"
 		#undef cTab_IS_TABLET
 		// ---------- BACKGROUND ------------
 		class background: cTab_Tablet_background {};

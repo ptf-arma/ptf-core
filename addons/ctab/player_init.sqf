@@ -6,7 +6,7 @@
 
 // keys.sqf parses the userconfig
 #include "functions\keys.sqf"
-#include "\cTab\shared\cTab_gui_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_gui_macros.hpp"
 
 // Exit if this is machine has no interface, i.e. is a headless client (HC)
 if (!hasInterface) exitWith {};

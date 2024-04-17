@@ -23,7 +23,7 @@ while {true} do {
 		if (_count == 0) then {
 		_count = _count + 1;
 		};
-		_displayBackground = format["PTF_Textures\Backgrounds\background%1.paa",_count];
+		_displayBackground = format["\z\PTF\addons\PTF_Textures\Backgrounds\background%1.paa",_count];
 		_display ctrlSetText _displayBackground;
 		sleep 10;
 };
