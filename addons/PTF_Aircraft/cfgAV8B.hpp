@@ -21,5 +21,5 @@ class PTF_AV8B : FIR_AV8B
 			factions[]={BLU_F,PTF};
       };
    };
-   #include "\PTF_Aircraft\FM\AV-8FM.hpp"	
+   #include "FM\AV-8FM.hpp"	
 };

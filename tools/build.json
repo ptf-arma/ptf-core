@@ -1,0 +1,10 @@
+{
+    "addonsFolder": "addons",
+    "excludePboSymlinks": ["Archive (DONT BUILD)"],
+    "noBinarize": [
+        "DIHatUSMC",
+        "drc_custom_billboards",
+        "riku_class_a"
+    ],
+    "outputFolder": "@[PTF] Paramarine Milsim Core/addons"
+}

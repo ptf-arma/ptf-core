@@ -18,7 +18,7 @@ class PTF_MQ9 : USAF_MQ9
             displayName = "Loadouts";
             statement = "";
             icon = "";
-            #include "\PTF_Scripts\fnc\Ace actions\air\MQ9.hpp"
+            #include "\z\PTF\addons\PTF_Scripts\fnc\Ace actions\air\MQ9.hpp"
          };
       };
    };
