@@ -46,7 +46,7 @@ class CfgMods
 	{
 		dir = "@cTab";
 		name = "cTab - Blue Force Tracking";
-		picture = "\cTab\img\cTab_BFT_ico.paa";
+		picture = "\z\PTF\addons\ctab\img\cTab_BFT_ico.paa";
 		hidePicture = "True";
 		hideName = "True";
 		actionName = "Website";
@@ -6819,7 +6819,7 @@ class CfgWeapons
 		descriptionuse = "<t color='#9cf953'>Use: </t>Show Commander's Tablet";
 		displayname = "Rugged Tablet";
 		picture = "\cTab\img\icon_dk10.paa";
-		model = "\ctab\data\itemDK10.p3d";
+		model = "\z\PTF\addons\ctab\data\itemDK10.p3d";
 		scope = 2;
 		author = "Gundy-Riouken-Raspu";
 		simulation = "Weapon";
@@ -6834,7 +6834,7 @@ class CfgWeapons
 		descriptionuse = "<t color='#9cf953'>Use: </t>Show Android Based BFT";
 		displayname = "Galaxy S20 Tactical Edition";
 		picture = "\cTab\img\icon_Android.paa";
-		model = "\ctab\data\itemAndroid.p3d";
+		model = "\z\PTF\addons\ctab\data\itemAndroid.p3d";
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass = 4;
@@ -6847,7 +6847,7 @@ class CfgWeapons
 		descriptionuse = "<t color='#9cf953'>Use: </t>Show Android Based BFT";
 		displayname = "MicroDAGR";
 		picture = "\cTab\img\icon_MicroDAGR.paa";
-		model = "\ctab\data\itemMicroDAGR.p3d";
+		model = "\z\PTF\addons\ctab\data\itemMicroDAGR.p3d";
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass = 2;
