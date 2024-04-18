@@ -662,7 +662,7 @@ class PTF_Helmet_1_4_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
    author = "Paramarine Task Force";
    hiddenSelections[] = {"Camo1", "Camo2"};
    hiddenSelectionsTextures[] = {
-       "PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_4.paa",
+       "\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_1_4.paa",
        "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
