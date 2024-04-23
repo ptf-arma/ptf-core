@@ -22,6 +22,8 @@ _wList = call compile PTF_WeaponWList;
 _Acheck = _player getVariable ["PTFHolder", ""];
 _Acheck = count _Acheck;
 
+_weaponCheck = primaryWeapon player;
+
 _neardummy = position _player nearObjects ["PTF_DummyHolder", 1.4];
 _neardummyC = count _neardummy;
 //checks if there is a dummy wepaon allready on the player
@@ -38,7 +40,7 @@ hint "this weapon can't be shoulderd"
 
 
 //if there is no weapon on shoulder
-if (_Acheck == 0) exitWith {
+if (_Acheck == 0 || _weaponCheck == "") exitWith {
 [_player] call PTF_fnc_Shoulder;
 };
 
