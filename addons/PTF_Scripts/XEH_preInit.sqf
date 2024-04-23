@@ -70,3 +70,39 @@
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
+[
+    "PTF_TFARSR", "EDITBOX",
+    ["Set SR Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
+    ["Paramarine Task Force", "TFAR Setting"],
+    "0",
+    false, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_TFARSRALT", "EDITBOX",
+    ["Set SR ALT Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
+    ["Paramarine Task Force", "TFAR Setting"],
+    "0",
+    false, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_TFARLR", "EDITBOX",
+    ["Set LR Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
+    ["Paramarine Task Force", "TFAR Setting"],
+    "0",
+    false, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_TFARLRALT", "EDITBOX",
+    ["Set LR ALT Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
+    ["Paramarine Task Force", "TFAR Setting"],
+    "0",
+    false, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
