@@ -16,10 +16,9 @@
 
 //when the players opens the loadout display check if they have a wepaon on there back and add that weapon to there backpack (or give them one to)
 ["ace_arsenal_loadoutsDisplayOpened",{
-_weaponholder = position player nearObjects ["PTF_DummyHolder", 1.4];
-_weapon = player getVariable ["PTFHolder", ""];
+_weapon = player getVariable ["PTFHolder", []];
 _backpack = unitBackpack player;
-if (count _weaponholder < 0) exitWith {};
+if (count _weapon == 0) exitWith {};
 if (isNull _backpack) then {
 player addBackpack "PTF_Backpack_Air_Carryall_Invis";
 _backpack = unitBackpack player;
@@ -53,7 +52,7 @@ private _weaponInset = [_allweapons select 0 select _forEachIndex,_allweapons se
 _weaponarray insert[-1,[_weaponInset]];
 };
 }foreach (_allweapons select 0);
-
+	
 clearWeaponCargo _backpack;
 
 {
@@ -69,8 +68,15 @@ _backpack addWeaponCargoGlobal _x
 
 private _loadoutsavevar = player getVariable ["PTF_LoadOutWeapon",[]];
 if (count _loadoutsavevar == 0) exitWith {};
+private _loadouts = profileNamespace getVariable ["ace_arsenal_saved_loadouts",[]];
+private _name = _loadouts select (_this select 0);
+_name = _name select 0;	
 private _profilevar = profileNamespace getVariable ["PTF_WeaponLoadOutSave",[]];
-private _insertarray = [_this select 0] + _loadoutsavevar;
+private _insertarray = [_name] + _loadoutsavevar;
+if (_name in (_loadouts select (_this select 0))) exitwith {
+
+_profilevar set [(_this select 0),_insertarray];
+};
 _profilevar insert [-1,[_insertarray]];
 profileNamespace setVariable ["PTF_WeaponLoadOutSave",_profilevar];
 saveProfileNamespace;
@@ -83,11 +89,17 @@ saveProfileNamespace;
 ["ace_arsenal_onLoadoutLoad",{
 
 private _profilevar = profileNamespace getVariable ["PTF_WeaponLoadOutSave",[]];
+private _weaponcheck = player getVariable ["PTFHolder", []];
+
+if (count _weaponcheck != 0) then {
+deleteVehicle (_weaponcheck select 0);
+};
 
 {
-if ((_x select 0) == _this select 0) then {
-_x deleteAt 0;
-_primaryWeapon = _x;
+if ((_x select 0) == (_this select 1)) then {
+_weapon = _x;
+_weapon = _weapon - [_weapon select 0];
+_primaryWeapon = _weapon;
 _fakeWeapon = createVehicle ["PTF_DummyHolder", getPosATL player, [], 0, "CAN_COLLIDE"];
 _fakeWeapon addWeaponWithAttachmentsCargoGlobal [_primaryWeapon, 1];
 player setVariable ["PTFHolder",[_fakeWeapon,_primaryWeapon],true];
@@ -107,20 +119,18 @@ _fakeWeapon attachTo [player,_pos,"Spine3",true];
 
 //check if when a loadout is delete that its save in PTF_WeaponLoadOutSave profile var if true delete it
 ["ace_arsenal_onLoadoutDelete",{
-private _loadouts = profileNamespace getVariable ["ace_arsenal_saved_loadouts",[]];
 private _WeaponHolderLoadouts = profileNamespace getVariable ["PTF_WeaponLoadOutSave",[]];
-if (count _loadouts == 0 || count _WeaponHolderLoadouts == 0 ) exitwith {};
-
+if ( count _WeaponHolderLoadouts == 0 ) exitwith {};
+private _Remove = scriptNull; 
 {
-private _name = _loadouts select (_x select 0);
-if (_name = _this) then {
-_WeaponHolderLoadouts deleteAt _loadouts
+if ( (_this select 0) in _x) then {
+_Remove = _forEachIndex;
 };
-}foreach _WeaponHolderLoadouts
+}foreach _WeaponHolderLoadouts;
+
+_WeaponHolderLoadouts = _WeaponHolderLoadouts - [_WeaponHolderLoadouts select _Remove];
 
 profileNamespace setVariable ["PTF_WeaponLoadOutSave",_WeaponHolderLoadouts];
 saveProfileNamespace;
 
 }] call CBA_fnc_addEventHandler;
-
-
