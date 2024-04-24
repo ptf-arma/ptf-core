@@ -6,10 +6,11 @@ class cfgFunctions {
 			class weaponSwap {};
 			class SoulderNSwap {};
 			class Shoulder {};
+			class SawpNDelete {};
 			class pos {};
-			//class ArsenalEventHandlers {
-			//	preinit = 1;
-			//};
+			class ArsenalEventHandlers {
+				preinit = 1;
+			};
 		};
 		class MapMarkers {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Markers";
@@ -96,6 +97,12 @@ class cfgFunctions {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\BeanBag";
 			class BeanBag {};
 			class Disarm {};
-		}
+		};
+		class TfarRadioSetting {
+			file = "\z\PTF\addons\PTF_Scripts\fnc\ArsenalRadioSet";
+			class SetTfrRadio {
+				preinit = 1;
+			};
+		};
 	};
 };
