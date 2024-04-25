@@ -124,7 +124,7 @@
 					text = "Join Op Server";
 					tooltip = "";
 					y = "(0 * 	1.5) * 	(pixelH * pixelGrid * 2) + 	(pixelH)";
-					onbuttonclick = "connectToServer ['51.222.245.138', 2302, 'PTF2020']";
+					onbuttonclick = "_display = ctrlParent (_this # 0) createDisplay 'RscDisplayPassword'; _password = _display displayCtrl 1002; _display displayAddEventHandler ['KeyDown',{if(_this select 1 == 28) then {_pasword = (_this select 0 displayctrl 1002); _textVar = profileNamespace getVariable ['PTF_serverPassword','']; if (_textVar != '') then {_pasword ctrlSetText _textVar; }; _passwordText = ctrlText _pasword; profileNamespace setVariable ['PTF_serverPassword',_passwordText]; saveProfileNamespace; connectToServer ['51.222.245.138', 2302,_passwordText]; }}];";
 				};
 				class JoinLibserver : Campaigns {
 					idc = 123987;
