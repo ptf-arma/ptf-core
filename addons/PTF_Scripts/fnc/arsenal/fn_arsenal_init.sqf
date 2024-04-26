@@ -217,6 +217,7 @@ _standardWhitelist = [
 "rhs_weap_M136_hedp",
 "rhs_weap_M136_hp",
 "launch_MRAWS_olive_F",
+"launch_MRAWS_sand_F",
 "rhs_weap_smaw_green",
 "rhs_weap_smaw",
 "rhs_weap_fgm148",
@@ -264,6 +265,9 @@ _standardWhitelist = [
 "USP_ZIPON_PANEL_CPC_CBR",
 "USP_ZIPON_PANEL_CPC_BC_SM_CBR",
 "USP_ZIPON_PANEL_CPC_SM_CBR",
+"ace_compat_rhs_usf3_mk19_carry",
+"ace_compat_rhs_usf3_m2_carry",
+
 
 //unifrom
 "PTF_Uniform_Air_CSU13BP_WD",
@@ -627,8 +631,10 @@ _standardWhitelist = [
 "ace_compact_rhs_usf3_m2_carry",
 "ace_csw_m3CarryTripodLow",
 "ace_compact_rhs_usf3_mk19_carry",
-"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
-"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M430A1",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M1001",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430A1",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430I",
 "ace_csw_100Rnd_127x99_mag_red",
 "rhs_mag_M441_HE",
 "rhs_mag_M433_HEDP",
