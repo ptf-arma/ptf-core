@@ -16,7 +16,11 @@ class CfgPatches
    };
 };
 
-class CBA_Extended_EventHandlers;
+class Extended_PreInit_EventHandlers {
+    class W41_PreInit {
+        init = "call compile preprocessFileLineNumbers '\z\PTF\addons\PTF_Scripts\XEH_preInit.sqf'";
+    };
+};
 
 class CfgUnitInsignia
 {
