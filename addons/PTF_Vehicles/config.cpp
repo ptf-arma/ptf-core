@@ -112,4 +112,8 @@ class cfgVehicles
 #include "cfg6x6.hpp"
 #include "cfgSAM.hpp"
 #include "cfgCAT.hpp"
+
+class slr_slingload_wreckDummy : slr_slingload_wreckDummy {
+   SlingloadingWeight = "[2900,2800]";
+};
 };
