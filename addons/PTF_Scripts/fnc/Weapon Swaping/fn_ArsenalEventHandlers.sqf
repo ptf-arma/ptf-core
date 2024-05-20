@@ -27,9 +27,11 @@ private _name = _loadouts select (_this select 0);
 _name = _name select 0;	
 private _profilevar = profileNamespace getVariable ["PTF_WeaponLoadOutSave",[]];
 private _insertarray = [_name] + _loadoutsavevar;
-if (_name in (_loadouts select (_this select 0))) exitwith {
+if (count _profilevar != 0) then {
+if (_name in (_profilevar select (_this select 0))) exitwith {
 
 _profilevar set [(_this select 0),_insertarray];
+};
 };
 _profilevar insert [-1,[_insertarray]];
 profileNamespace setVariable ["PTF_WeaponLoadOutSave",_profilevar];
