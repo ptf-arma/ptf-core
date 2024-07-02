@@ -282,6 +282,16 @@ _standardWhitelist = [
 "PTF_Uniform_Air_CSU15BP_WD",
 "PTF_Uniform_Air_CSU15BP_D",
 "PTF_Uniform_Air_CSU13BP",
+"USP_OPSCORE_FASTMTC_M81_CS",
+"USP_OPSCORE_FASTMTC_M81_CGSW",
+"USP_OPSCORE_FASTMTC_M81_CMSW",
+"USP_OPSCORE_FASTMTC_M81_CMGSW",
+"USP_OPSCORE_FASTMTC_M81_MSW",
+"USP_OPSCORE_FASTMTC_M81_MGSW",
+"USP_G3F_G3C_MX_M81",
+"USP_RUGBY_G3C_KP2_MX_RGR_M81",
+"USP_SOFTSHELL_G3C_MX_RGR_M81",
+"USP_TSHIRT2_G3C_MX_GRN_M81",
 "PTF_Uniform_Infantry_G3_Green",
 "PTF_Uniform_Infantry_G3_Tan",
 
@@ -542,7 +552,7 @@ _standardWhitelist = [
 "rhsusf_mich_bare_alt_tan",
 "rhsusf_mich_bare",
 "rhsusf_mich_bare_alt",
-"rhsusf_mich_bare_headset"
+"rhsusf_mich_bare_headset",
 "PTF_Smoll_rhsusf_hgu56p_mask_black",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
 
@@ -843,6 +853,8 @@ _standardWhitelist = [
 "rhsusf_ANPVS_14",
 "rhsusf_ANPVS_15",
 "PTF_Nightvision_PVS15_WP",
+"USP_GPNVG18_BLK",
+"USP_GPNVG18_WP_BLK",
 "PTF_Nightvision_PVS15_GN"
 
 ];

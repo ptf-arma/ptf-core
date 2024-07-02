@@ -18,6 +18,7 @@ class cfgWeapons
 	class HitpointsProtectionInfo;
 	class ItemInfo;
 	class Head;
+	class rhsusf_hgu56p_mask_black;
 	class PTF_Helmet_Infantry_Mich2000_S;
 	class PTF_Helmet_Infantry_Mich2000_WD;
 	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
@@ -361,6 +362,14 @@ class cfgWeapons
    		hiddenSelectionsTextures[] = {
        		"\z\PTF\addons\PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_Holt.paa",
        		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+	};
+	class PTF_Gute_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_mask_black {
+		displayName = "[MAG] HGU [Personal - B.Gute]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HUG_Gute.paa"};
+	};
+	class PTF_Smoll_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_mask_black {
+		displayName = "[MAG] HGU [Personal - S.Smoll]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Smool.paa"};
 	};
 };
 class cfgMods
