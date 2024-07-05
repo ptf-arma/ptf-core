@@ -16,6 +16,9 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
        "240Rnd_CMFlare_Chaff_Magazine",
        "240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\ch53\ch53_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\ch53\ch53_acc_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\3_ca.paa", "\z\PTF\addons\PTF_Textures\aircraft\6_ca.paa"};
+    class EventHandlers {
+      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   };
 };
 class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
 {
@@ -34,4 +37,7 @@ class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
        "240Rnd_CMFlare_Chaff_Magazine",
        "240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\ch53\cargo\ch53_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\ch53\cargo\ch53_acc_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\3_ca.paa", "\z\PTF\addons\PTF_Textures\aircraft\6_ca.paa"};
+    class EventHandlers {
+      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   };
 };

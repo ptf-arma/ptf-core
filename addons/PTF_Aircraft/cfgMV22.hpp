@@ -11,6 +11,9 @@ class PTF_MV22_Ramp : DEGA_MV22_Infantry_NATO
    author = "Paramarine Task Force";
    displayName = "MV-22 [MAG36]";
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\mv22_2_co.paa"};
+   class EventHandlers {
+      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   };
 };
 class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
 {
@@ -27,6 +30,9 @@ class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
    author = "Paramarine Task Force";
    displayName = "MV-22 Cargo [MAG36]";
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_2_co.paa"};
+   class EventHandlers {
+      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   };
 };
 class PTF_MV22_Minigun : DEGA_MV22_IDWS_NATO
 {
@@ -41,4 +47,7 @@ class PTF_MV22_Minigun : DEGA_MV22_IDWS_NATO
    author = "Paramarine Task Force";
    displayName = "MV-22 Mini [MAG36]";
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_2_co.paa"};
+   class EventHandlers {
+      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   };
 };
