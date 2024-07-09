@@ -1,3 +1,5 @@
+class FIR_AV8B;
+
 class PTF_AV8B : FIR_AV8B
 {
    scope = 2;

@@ -51,6 +51,7 @@ class cfgFunctions {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\arsenal";
 			class arsenal_init {};
 			class arsenalnoammo_init {};
+			class arsenalPSO_init {};
 		};
 		class Spawners {
 			File = "\z\PTF\addons\PTF_Scripts\fnc\spawners";

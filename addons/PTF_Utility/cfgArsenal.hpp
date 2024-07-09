@@ -42,6 +42,17 @@ class PTF_Standard_Arsenal_No_Ammo : PTF_Standard_Arsenal
       };
    };
 };
+class PTF_Pso_Arsenal : PTF_Standard_Arsenal
+{
+   displayname = "PSO Arsenal [PTF]";
+   class EventHandlers
+   {
+      class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
+      {
+       init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalPSO_init', 0, true]";
+      };
+   };
+};
 class PTF_Training_box: PTF_Standard_Arsenal
 {
     displayname="Training Box [PTF]";
