@@ -542,7 +542,7 @@ _standardWhitelist = [
 "rhsusf_mich_bare_alt_tan",
 "rhsusf_mich_bare",
 "rhsusf_mich_bare_alt",
-"rhsusf_mich_bare_headset"
+"rhsusf_mich_bare_headset",
 "PTF_Smoll_rhsusf_hgu56p_mask_black",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
 
