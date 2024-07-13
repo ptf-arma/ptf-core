@@ -56,7 +56,6 @@ class CfgPatches
           "PTF_Models",
           "PTF_Scripts",
           "cba_xeh",
-          "MAAMod",
           "rhsusf_main",
           "boxloader",
           "boxloader_cargo",
