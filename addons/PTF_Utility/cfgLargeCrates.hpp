@@ -95,10 +95,9 @@ class PTF_Cargo_Large_Explosives: PTF_Large_Box
    displayName = "Large - Explosives";
    class TransportMagazines
    {
-   mag_xx(AMP_Breaching_Charge_Mag, 50);
-   mag_xx(tsp_popperCharge_mag, 50);
+   mag_xx(tsp_breach_popper_mag, 50);
    mag_xx(DemoCharge_Remote_Mag, 20);
-   mag_xx(tsp_frameCharge_mag, 20);
+   mag_xx(tsp_breach_package_mag, 20);
    mag_xx(rhs_mag_m67, 30);
    mag_xx(SmokeShell, 30);
    mag_xx(ClaymoreDirectionalMine_Remote_Mag, 10);

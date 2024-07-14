@@ -725,7 +725,7 @@ _standardWhitelist = [
 "ACE_CTS9",
 "rhs_mag_mk3a2",
 "ClaymoreDirectionalMine_Remote_Mag",
-"AMP_Breaching_Charge_Mag",
+"tsp_breach_block_mag",
 "tsp_frameCharge_mag",
 "tsp_popperCharge_mag",
 "ATMine_Range_Mag",
