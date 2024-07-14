@@ -60,7 +60,6 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(rhsusf_mag_6Rnd_M441_HE, 10);
       mag_xx(rhsusf_mag_6Rnd_M433_HEDP, 10);
       mag_xx(ACE_CTS9, 40);
-      mag_xx(rhsusf_mag_15Rnd_9x19_FMD, 20);
       mag_xx(rhsusf_mag_7x45_MPH, 20);
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
    };
@@ -118,18 +117,10 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
    displayname = "Small - Medical";
    class Transportitems
    {
-      item_xx(kat_IV_16, 25);
       item_xx(ACE_salineIV_250, 30);
       item_xx(ACE_salineIV_500, 30);
       item_xx(ACE_salineIV, 30)
-      item_xx(kat_EACA, 25);
       item_xx(ACE_tourniquet, 25);
-      item_xx(kat_naxolone, 25);
-      item_xx(kat_nitroglycerin, 25);
-      item_xx(kat_norepinephine, 25);
-      item_xx(kat_Painkiller, 35);
-      item_xx(kat_phenylephrine, 25);
-      item_xx(kat_TXA, 25);
       item_xx(ACE_fieldDressing, 100);
       item_xx(ACE_quikclot, 100);
       item_xx(ACE_elasticBandage, 75);
@@ -139,8 +130,6 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
       item_xx(ACE_morphine, 20);
       item_xx(ACE_bodyBag, 5);
       item_xx(ACE_splint, 25);
-      item_xx(kat_Carbonate, 25);
-      item_xx(kat_IO_FAST, 15);
       item_xx(ACE_plasmaIV,15);
       item_xx(ACE_plasmaIV_500, 15);
    };
