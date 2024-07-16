@@ -99,9 +99,9 @@ class PTF_Cargo_Small_Explosives : PTF_Cargo_Small
    class Transportmagazines
    {
       mag_xx(tsp_breach_block_mag, 25);
-      mag_xx(tsp_popperCharge_mag, 25);
+      mag_xx(tsp_breach_popper_mag, 25);
       mag_xx(DemoCharge_Remote_Mag, 10);
-      mag_xx(tsp_frameCharge_mag, 10);
+      mag_xx(tsp_breach_package_mag, 10);
       mag_xx(rhs_mag_m67, 15);
       mag_xx(SmokeShell, 15);
       mag_xx(ClaymoreDirectionalMine_Remote_Mag, 5);
