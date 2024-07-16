@@ -70,7 +70,15 @@ class CfgPatches
           "A3_Signs_F",
           "A3_Structures_F_EPA",
           "A3_Structures_F_Heli",
-          "A3_Supplies_F_Exp"};
+          "A3_Supplies_F_Exp",
+          "tsp_breach",
+          "tsp_breach_block",
+          "tsp_breach_linear",
+          "tsp_breach_package",
+          "tsp_breach_popper",
+          "tsp_breach_shock",
+          "tsp_breach_silhouette",
+          "tsp_breach_stick"};
    };
 };
 #include "cfgImport.hpp"
