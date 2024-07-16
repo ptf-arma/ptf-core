@@ -36,9 +36,6 @@ class PTF_DummyHolder: CargoNet_01_box_F {
 };
 #include "AceActions.hpp"
 };
-class CfgMarkers {
-#include "fnc\Markers\CfgMarker.hpp"
-};
 
 //custom keybinds
 class CfgUserActions
