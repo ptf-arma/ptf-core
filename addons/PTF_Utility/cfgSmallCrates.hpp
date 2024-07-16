@@ -98,7 +98,7 @@ class PTF_Cargo_Small_Explosives : PTF_Cargo_Small
    displayname = "Small - Explosives";
    class Transportmagazines
    {
-      mag_xx(AMP_Breaching_Charge_Mag, 25);
+      mag_xx(tsp_breach_block_mag, 25);
       mag_xx(tsp_popperCharge_mag, 25);
       mag_xx(DemoCharge_Remote_Mag, 10);
       mag_xx(tsp_frameCharge_mag, 10);
