@@ -90,3 +90,24 @@ profileNamespace setVariable ["PTF_WeaponLoadOutSave",_WeaponHolderLoadouts];
 saveProfileNamespace;
 
 }] call CBA_fnc_addEventHandler;
+
+//check if player has a launcher if so delete it & weapon on back
+["ace_arsenal_displayClosed",{
+	private _shouldervar = player getVariable ["PTFHolder",[]];
+	if (count _shouldervar == 0) exitWith {};
+	if (secondaryWeapon player == "") exitWith {};
+	player removeWeapon  (secondaryWeapon player);
+}] call CBA_fnc_addEventHandler;
+
+
+
+player addEventHandler ["InventoryClosed", {
+	params ["_unit", "_container"];
+	private _shouldervar = player getVariable ["PTFHolder",[]];
+	if (count _shouldervar == 0) exitWith {};
+	if (secondaryWeapon player == "") exitWith {};
+	
+_fakeWeapon = createVehicle ["PTF_DummyHolder", getPosATL player, [], 0, "CAN_COLLIDE"];
+_fakeWeapon addWeaponCargo [secondaryWeapon player,1];
+player removeWeapon  (secondaryWeapon player);
+}];
