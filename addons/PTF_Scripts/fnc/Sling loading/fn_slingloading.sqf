@@ -16,6 +16,7 @@ Private _selectHash = createHashMapFromArray [
 ["PTFCH53",0],
 ["PTFMV22",1]
 ];
+if(isNil{parseSimpleArray ([configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry)}) exitwith {};
 Private _setmass = parseSimpleArray ([configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry);
 _Object setMass [_setmass select (_selectHash get _HeliCheck)];
 _Object setVariable ["PTF_RopesAttached", 1, true];

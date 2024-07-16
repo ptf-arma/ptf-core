@@ -131,7 +131,7 @@
 					text = "Join Training Server";
 					tooltip = "";
 					y = "(1 * 	1.5) * 	(pixelH * pixelGrid * 2) + 	(pixelH)";
-					onbuttonclick = "connectToServer ['54.39.29.138', 2402, 'PTF2020']";
+					onbuttonclick = "_display = ctrlParent (_this # 0) createDisplay 'RscDisplayPassword';_password = _display displayCtrl 101;_buttonok = _display displayCtrl 1;_buttonCancle = _display displayCtrl 2;_passwordText = profileNamespace getVariable ['PTF_serverPassword',''];_password ctrlSetText _passwordText;_display displayAddEventHandler ['KeyDown',{if(_this select 1 == 28) then {_passwordText = profileNamespace getVariable ['PTF_serverPassword',''];connectToServer ['51.222.245.138', 2302,_passwordText];}}];_password ctrlAddEventHandler ['EditChanged',{private _password = _this # 0;profileNamespace setVariable ['PTF_serverPassword',(ctrlText _password)];saveProfileNamespace;}];_ButtonOk ctrlAddEventHandler  ['MouseButtonUp',{_passwordText = profileNamespace getVariable ['PTF_serverPassword',''];connectToServer ['54.39.29.138', 2302,_passwordText];_display = ctrlParent (_this # 0);_display closeDisplay 1;}];_buttonCancle ctrlAddEventHandler  ['MouseButtonUp',{_passwordText = profileNamespace setVariable ['PTF_serverPassword',''];_display = ctrlParent (_this # 0);_display closeDisplay 1;}];";
 				};
 				class ServerBrowser : Campaigns {
 					idc = 105;
