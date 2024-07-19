@@ -26,8 +26,10 @@ _NewWeapon params ["_Weapon", "_muzzle", "_laser", "_optic", "_WeaponMag", "_Wea
 _WeaponMag params ["_WeaponMagg","_WeaponMaggAmount"];
 
 
-
+if (count _WeaponMagg != 0) then {
 player addMagazine _WeaponMag;
+};
+
 player addWeapon _Weapon;
 
 
