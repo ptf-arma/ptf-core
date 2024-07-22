@@ -29,7 +29,7 @@
     "PTF_Ah1zTickets", "SLIDER",
     ["Ah1z Tickets", "Set Ticket Pool for Helicopters"],
     ["Paramarine Task Force", "Tickets"],
-    [0, 100, 5, 0],
+    [0, 100, 2, 0],
     true, // isGlobal
     {},
     true // needRestart
@@ -38,7 +38,7 @@
     "PTF_PlaneTickets", "SLIDER",
     ["f18 Tickets", "Set Ticket Pool for Helicopters"],
     ["Paramarine Task Force", "Tickets"],
-    [0, 100, 5, 0],
+    [0, 100, 2, 0],
     true, // isGlobal
     {},
     true // needRestart
@@ -47,7 +47,7 @@
     "PTF_MQ9Tickets", "SLIDER",
     ["MQ9 Tickets", "Set Ticket Pool for Helicopters"],
     ["Paramarine Task Force", "Tickets"],
-    [0, 100, 5, 0],
+    [0, 100, 2, 0],
     true, // isGlobal
     {},
     true // needRestart
