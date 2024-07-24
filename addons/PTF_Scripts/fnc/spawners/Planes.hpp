@@ -29,11 +29,6 @@ class PTF_Planes {
             displayName = "Spawn MQ9";
             icon = "\A3\Drones_F\Air_F_Gamma\UAV_02\Data\UI\Map_UAV_02_CA.paa";
             };
-            class RQ9 {
-            statement = "['PTF_RQ4A', 'Plane'] call PTF_fnc_SpawnFunction";
-            displayName = "Spawn MQ9";
-            icon = "\A3\Drones_F\Air_F_Gamma\UAV_02\Data\UI\Map_UAV_02_CA.paa";
-            };
             class RQ4 {
             statement = "['PTF_RQ4A', 'Plane'] call PTF_fnc_SpawnFunction";
             displayName = "Spawn RQ4";
