@@ -63,6 +63,7 @@ _fakeWeapon attachTo [player,_pos,"Spine3",true];
 	[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D
 ];
 //rotates the dummy object
+_fakeWeapon lockInventory true;
 
 player selectWeapon _Weapon;
 player playActionNow "PTF_TakeoutWeaponBack";
