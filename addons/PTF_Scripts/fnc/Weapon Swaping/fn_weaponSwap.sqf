@@ -21,9 +21,14 @@ _Acheck = count _Acheck;
 
 _weaponCheck = primaryWeapon player;
 
-_neardummy = position player nearObjects ["PTF_DummyHolder", 1.4];
+_neardummy = position player nearObjects ["PTF_DummyHolder", 1.5];
 _neardummyC = count _neardummy;
 //checks if there is a dummy wepaon allready on the player
+
+
+if (_weaponCheck == "" && _neardummyC == 1) exitwith {
+call PTf_fnc_SawpNDelete
+};
 
 //checks if white list is active and if the weapon the player has is in there hand
 if ( PTF_WeaponW == true && (currentWeapon player) in _wList == false && _neardummyC == 0 ) exitwith {
@@ -33,10 +38,6 @@ hint "this weapon can't be shoulderd"
 //check if the weapon on your shoulder is not in the white list and if the one in your hand is also not
 if ( PTF_WeaponW == true && ((weaponCargo (_neardummy select 0)) select 0) in _wList == false && (currentWeapon player) in _wList == false) exitwith {
 hint "this weapon can't be shoulderd"
-};
-
-if (_weaponCheck == "") exitwith {
-call PTf_fnc_SawpNDelete
 };
 
 
