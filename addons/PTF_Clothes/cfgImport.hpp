@@ -142,5 +142,3 @@ class U_Tank_green_F;
 //nightvision
 class ACE_NVG_Gen4_Black_WP;
 class rhsusf_ANPVS_15;
-// 3d unifrom
-class rhs_uniform_g3_tan;
