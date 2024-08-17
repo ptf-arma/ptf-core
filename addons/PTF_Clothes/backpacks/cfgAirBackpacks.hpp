@@ -18,6 +18,6 @@ class PTF_Backpack_Air_Carryall_Invis : B_Carryall_cbr
    isbackpack = 1;
 };
 class PTF_FAKEBACKPACK : PTF_Backpack_Air_Carryall_Invis {
-   displayName = "FakeBackPack"
+   displayName = "FakeBackPack";
    scope = 1;
 };

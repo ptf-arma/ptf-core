@@ -373,6 +373,10 @@ class cfgWeapons
 		displayName = "[MAG] HGU [Personal - S.Smoll]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Smool.paa"};
 	};
+	class PTF_Gustav_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
+		displayName = "[MAG] HGU [Personal - T. Gustav]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gustav.paa"};
+	};
 };
 class cfgMods
 {
