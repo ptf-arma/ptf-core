@@ -9,7 +9,7 @@ _name = _markers;
 _cnt = { _markers in _x } count allMapMarkers;
 
 if (_ticket != "" && {missionNamespace getVariable _tickets <= 0}) exitwith {
-hint "there are no more tickets"
+hint "There are no more tickets"
 };
 
 _markersA = [_name]; 
@@ -22,7 +22,7 @@ _check = nearestObjects [getMarkerPos [_markersA select _id] , ["LandVehicle", "
 if (
   count _check != 0
 ) exitwith {
-  hint "Spawning loacation is blocked";
+  hint "Spawning location is blocked";
 }; // if there is an object in array _check then somthing is blocking the pad
 
  _vH = createVehicle [ 
@@ -37,7 +37,7 @@ _t = missionNamespace getVariable _ticket;
 _t = _t - 1;
 missionNamespace setVariable [_ticket, _t];
 publicVariable _ticket;
-hint format ["you have %1 tickets remaining", _t];
+hint format ["You have %1 tickets remaining", _t];
 }; // check if the tickets peram is empty if not set - 1 of thoses tickets
 
 if (_id == count _markersA - 1 ) then {  
