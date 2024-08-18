@@ -294,6 +294,8 @@ _standardWhitelist = [
 "USP_TSHIRT2_G3C_MX_GRN_M81",
 "PTF_Uniform_Infantry_G3_Green",
 "PTF_Uniform_Infantry_G3_Tan",
+"USP_G3C_RS2_M81",
+"USP_G3C_M81",
 
 //vest
 "PTF_Vest_Air_CMU33P_D",
@@ -552,7 +554,8 @@ _standardWhitelist = [
 "rhsusf_mich_bare_headset",
 "PTF_Smoll_rhsusf_hgu56p_mask_black",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
-
+"PTF_Gustav_rhsusf_hgu56p_mask_black",
+"rhssaf_booniehat_woodland",
 
 //ammo
 "ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
