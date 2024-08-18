@@ -211,6 +211,10 @@ _standardWhitelist = [
 "rhs_weap_XM2010_d",
 "rhsusf_acc_m2010s_sa",
 "rhs_weap_M107_d",
+"MHS_RomeoM17",
+"MHS_M45A1",
+"MHS_M17",
+"MHS_M18",
 
 //rockets
 "rhs_weap_M136",
@@ -672,6 +676,8 @@ _standardWhitelist = [
 "rhsusf_5Rnd_300winmag_xm2010",
 "ACE_10Rnd_127x99_AMAX_Mag",
 "ACE_10Rnd_127x99_API_Mag",
+"MHS_7rnd_45ACP_230FMJ_1911",
+"MHS_21rnd_9MM_124FMJ_M17",
 
 //exp
 "Chemlight_blue",
