@@ -107,6 +107,9 @@ class cfgFunctions {
 			class SetTfrRadio {
 				preinit = 1;
 			};
+			class ChangeSettings {};
+			class LRset {};
+			class SRset {};
 		};
 	};
 };
