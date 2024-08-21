@@ -547,8 +547,10 @@ _standardWhitelist = [
 "rhsusf_mich_bare_alt",
 "rhsusf_mich_bare_headset",
 "PTF_Smoll_rhsusf_hgu56p_mask_black",
+"PTF_Smoll_rhsusf_hgu56p_mask_black_cover",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
 "PTF_Gustav_rhsusf_hgu56p_mask_black",
+
 
 //ammo
 "ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
