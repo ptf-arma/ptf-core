@@ -11,6 +11,9 @@ class cfgFunctions {
 			class ArsenalEventHandlers {
 				preinit = 1;
 			};
+			class WeaponEventHandlerPlayer{
+				postinit = 1;
+			}
 		};
 		class MapMarkers {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Markers";
@@ -104,6 +107,9 @@ class cfgFunctions {
 			class SetTfrRadio {
 				preinit = 1;
 			};
+			class ChangeSettings {};
+			class LRset {};
+			class SRset {};
 		};
 	};
 };
