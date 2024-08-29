@@ -720,7 +720,6 @@ _standardWhitelist = [
 "tsp_breach_popper_mag",
 "tsp_breach_package_mag",
 "tsp_breach_block_mag",
-"tsp_breach_shock",
 "ATMine_Range_Mag",
 "SLAMDirectionalMine_Wire_Mag",
 "SatchelCharge_Remote_Mag",
