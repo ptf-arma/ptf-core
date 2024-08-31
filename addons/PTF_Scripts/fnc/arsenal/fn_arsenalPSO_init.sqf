@@ -556,8 +556,6 @@ _standardWhitelist = [
 "rhsusf_mich_bare",
 "rhsusf_mich_bare_alt",
 "rhsusf_mich_bare_headset",
-"PTF_Smoll_rhsusf_hgu56p_mask_black",
-"PTF_Smoll_rhsusf_hgu56p_mask_black_cover",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
 "PTF_Gustav_rhsusf_hgu56p_mask_black",
 "rhssaf_booniehat_woodland",
