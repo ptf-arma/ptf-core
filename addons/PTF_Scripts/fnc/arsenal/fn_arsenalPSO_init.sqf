@@ -1,5 +1,10 @@
+#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\arsenal_whitelist.hpp"
+
 _arsenal = _this select 0;
 
+_whitelist = _psoArsenal;
+
+/*
 _standardWhitelist = [
 
 //weapon stuff
@@ -834,8 +839,9 @@ _standardWhitelist = [
 "USP_PVS31_WP_MID_TAN",
 "USP_PVS31_WP_MID"
 ];
+*/
 
-[_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
+[_arsenal, _whitelist, true] call ace_arsenal_fnc_initBox;
 
 #include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
 
