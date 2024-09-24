@@ -737,6 +737,18 @@ _standardWhitelist = [
 "ACE_surgicalKit",
 "ACE_tourniquet",
 "ACE_painkillers",
+"kat_IV_16",
+"kat_AED",
+"kat_X_AED",
+"kat_EACA",
+"kat_IO_FAST",
+"kat_naloxone",
+"kat_nitroglycerin",
+"kat_norepinephrine",
+"kat_phenylephrine",
+"kat_TXA",
+"kat_Carbonate",
+"kat_Painkiller",
 
 //other
 "TFAR_anprc152",
