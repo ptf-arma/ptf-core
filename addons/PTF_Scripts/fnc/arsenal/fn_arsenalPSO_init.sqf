@@ -215,6 +215,7 @@ _standardWhitelist = [
 "MHS_M45A1",
 "MHS_M17",
 "MHS_M18",
+"rhsusf_acc_eotech_xps3",
 
 //rockets
 "rhs_weap_M136",
@@ -442,6 +443,10 @@ _standardWhitelist = [
 "G_Tactical_Black",
 "G_Spectacles_Tinted",
 "G_WirelessEarpiece_F",
+"USP_BALACLAVA_ESS_CBR",
+"USP_BALACLAVA_ESS_RGR",
+"USP_BALACLAVA_CBR",
+"USP_BALACLAVA_RGR",
 
 //helmet
 "PTF_Helmet_Infantry_Mich2000_norotos_WD",
@@ -839,7 +844,8 @@ _standardWhitelist = [
 "USP_GPNVG18_BLK",
 "USP_GPNVG18_WP_BLK",
 "PTF_Nightvision_PVS15_GN"
-
+"USP_PVS31_WP_MID_TAN",
+"USP_PVS31_WP_MID"
 ];
 
 [_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
