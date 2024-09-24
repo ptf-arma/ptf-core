@@ -830,7 +830,7 @@ _standardWhitelist = [
 "PTF_Nightvision_PVS15_WP",
 "USP_GPNVG18_BLK",
 "USP_GPNVG18_WP_BLK",
-"PTF_Nightvision_PVS15_GN"
+"PTF_Nightvision_PVS15_GN",
 "USP_PVS31_WP_MID_TAN",
 "USP_PVS31_WP_MID"
 ];
