@@ -70,39 +70,38 @@
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
+
 [
-    "PTF_TFARSR", "EDITBOX",
-    ["Set SR Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
-    ["Paramarine Task Force", "TFAR Setting"],
-    "0",
-    false, // isGlobal
-    {},
-    false // needRestart
+"PTF_SRChannels", "LIST",	 
+["Select # of Short Range Channels",	 "Select how many SR channels you want to set"], 
+["Paramarine Task Force", "TFAR Setting SR"], 
+[[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
+false, // isGlobal
+{
+params ["_value"];
+[_value,"SR"] call PTF_fnc_ChangeSettings;
+},
+false // needRestart
+] call CBA_fnc_addSetting;
+
+[
+"PTF_LRChannels", "LIST",	 
+["Select # of Long Range Channels",	 "Select how many LR channels you want to set"], 
+["Paramarine Task Force", "TFAR Setting LR"], 
+[[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
+false, // isGlobal
+{
+params ["_value"];
+[_value,"LR"] call PTF_fnc_ChangeSettings;
+},
+false // needRestart
 ] call CBA_fnc_addSetting;
 [
-    "PTF_TFARSRALT", "EDITBOX",
-    ["Set SR ALT Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
+    "PTF_ArsenelExit", "CHECKBOX",
+    ["Auto Set Radios When exiting Arsenal", "Auto the your radioes when you exit the arsenal"],
     ["Paramarine Task Force", "TFAR Setting"],
-    "0",
-    false, // isGlobal
-    {},
-    false // needRestart
-] call CBA_fnc_addSetting;
-[
-    "PTF_TFARLR", "EDITBOX",
-    ["Set LR Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
-    ["Paramarine Task Force", "TFAR Setting"],
-    "0",
-    false, // isGlobal
-    {},
-    false // needRestart
-] call CBA_fnc_addSetting;
-[
-    "PTF_TFARLRALT", "EDITBOX",
-    ["Set LR ALT Radio Channel", "Set what channel you would like to set when you exit the arsenal"],
-    ["Paramarine Task Force", "TFAR Setting"],
-    "0",
-    false, // isGlobal
+    true,
+    true, // isGlobal
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;

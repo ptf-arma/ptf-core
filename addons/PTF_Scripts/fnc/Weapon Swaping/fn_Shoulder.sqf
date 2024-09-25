@@ -36,5 +36,6 @@ _fakeWeapon attachTo [player,_pos,"Spine3",true];
 	[sin _yaw * cos _pitch, cos _yaw * cos _pitch, sin _pitch],
 	[[sin _roll, -sin _pitch, cos _roll * cos _pitch], -_yaw] call BIS_fnc_rotateVector2D
 ]; 
+_fakeWeapon lockInventory true;
 //play put back animation
 player playActionNow "PTF_WeaponBack";

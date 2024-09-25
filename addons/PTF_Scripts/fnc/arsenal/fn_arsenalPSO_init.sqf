@@ -1,5 +1,10 @@
-_arsenal = _this select 0;
+params ["_arsenal"];
 
+call PTF_fnc_arsenalWhitelist params ["_standardArsenal", "_psoArsenal"];
+
+_whitelist = _psoArsenal;
+
+/*
 _standardWhitelist = [
 
 //weapon stuff
@@ -211,6 +216,11 @@ _standardWhitelist = [
 "rhs_weap_XM2010_d",
 "rhsusf_acc_m2010s_sa",
 "rhs_weap_M107_d",
+"MHS_RomeoM17",
+"MHS_M45A1",
+"MHS_M17",
+"MHS_M18",
+"rhsusf_acc_eotech_xps3",
 
 //rockets
 "rhs_weap_M136",
@@ -294,6 +304,8 @@ _standardWhitelist = [
 "USP_TSHIRT2_G3C_MX_GRN_M81",
 "PTF_Uniform_Infantry_G3_Green",
 "PTF_Uniform_Infantry_G3_Tan",
+"USP_G3C_RS2_M81",
+"USP_G3C_M81",
 
 //vest
 "PTF_Vest_Air_CMU33P_D",
@@ -336,11 +348,6 @@ _standardWhitelist = [
 //glass
 "G_AirPurifyingRespirator_01_F",
 "G_Aviator",
-"rhs_balaclava",
-"rhs_balaclava1_olive",
-"G_Balaclava_blk",
-"G_Balaclava_combat",
-"G_Balaclava_lowprofile",
 "rhs_googles_black",
 "rhs_googles_clear",
 "rhs_googles_orange",
@@ -428,10 +435,6 @@ _standardWhitelist = [
 "G_Sport_Greenblack",
 "G_Squares_Tinted",
 "G_Squares",
-"G_Balaclava_TI_blk_F",
-"G_Balaclava_TI_G_blk_F",
-"G_Balaclava_TI_tna_F",
-"G_Balaclava_TI_G_tna_F",
 "G_Tactical_Clear",
 "G_Tactical_Black",
 "G_Spectacles_Tinted",
@@ -550,9 +553,9 @@ _standardWhitelist = [
 "rhsusf_mich_bare",
 "rhsusf_mich_bare_alt",
 "rhsusf_mich_bare_headset",
-"PTF_Smoll_rhsusf_hgu56p_mask_black",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
-
+"PTF_Gustav_rhsusf_hgu56p_mask_black",
+"rhssaf_booniehat_woodland",
 
 //ammo
 "ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
@@ -692,6 +695,8 @@ _standardWhitelist = [
 "rhsusf_5Rnd_300winmag_xm2010",
 "ACE_10Rnd_127x99_AMAX_Mag",
 "ACE_10Rnd_127x99_API_Mag",
+"MHS_7rnd_45ACP_230FMJ_1911",
+"MHS_21rnd_9MM_124FMJ_M17",
 
 //exp
 "Chemlight_blue",
@@ -828,11 +833,13 @@ _standardWhitelist = [
 "PTF_Nightvision_PVS15_WP",
 "USP_GPNVG18_BLK",
 "USP_GPNVG18_WP_BLK",
-"PTF_Nightvision_PVS15_GN"
-
+"PTF_Nightvision_PVS15_GN",
+"USP_PVS31_WP_MID_TAN",
+"USP_PVS31_WP_MID"
 ];
+*/
 
-[_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
+[_arsenal, _whitelist, true] call ace_arsenal_fnc_initBox;
 
 #include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
 

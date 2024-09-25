@@ -1,6 +1,12 @@
-_arsenal = _this select 0;
+params ["_arsenal"];
 
+call PTF_fnc_arsenalWhitelist params ["_standardArsenal", "_psoArsenal"];
+
+_whitelist = _standardArsenal;
+
+/*
 _standardWhitelist = [
+
 
 //weapon stuff
 "rhsusf_acc_g33_t1",
@@ -92,6 +98,11 @@ _standardWhitelist = [
 "rhsusf_acc_eotech_552",
 "rhsusf_acc_eotech_552_d",
 "rhsusf_acc_eotech_552_wd",
+"rhsusf_acc_ACOG_USMC",
+"rhsusf_acc_ACOG2_USMC",
+"rhsusf_acc_ACOG3_USMC",
+"rhsusf_acc_eotech_xps3",
+"rhsusf_acc_EOTECH",
 "rhsusf_acc_compm4",
 "rhsusf_acc_M8541",
 "rhsusf_acc_anpeq15side_bk",
@@ -211,6 +222,12 @@ _standardWhitelist = [
 "rhs_weap_XM2010_d",
 "rhsusf_acc_m2010s_sa",
 "rhs_weap_M107_d",
+"MHS_RomeoM17",
+"MHS_M45A1",
+"MHS_M17",
+"MHS_M18",
+"rhsusf_acc_eotech_xps3",
+
 
 //rockets
 "rhs_weap_M136",
@@ -240,6 +257,8 @@ _standardWhitelist = [
 "PTF_Backpack_LR_1",
 "B_Parachute",
 "tfw_ilbe_blade_coy",
+"tfw_ilbe_blade_wd",
+"tfw_ilbe_blade_d",
 "tfw_ilbe_DD_coy",
 "tfw_ilbe_whip_coy",
 "tfw_rf3080Item",
@@ -326,11 +345,6 @@ _standardWhitelist = [
 //glass
 "G_AirPurifyingRespirator_01_F",
 "G_Aviator",
-"rhs_balaclava",
-"rhs_balaclava1_olive",
-"G_Balaclava_blk",
-"G_Balaclava_combat",
-"G_Balaclava_lowprofile",
 "rhs_googles_black",
 "rhs_googles_clear",
 "rhs_googles_orange",
@@ -410,10 +424,6 @@ _standardWhitelist = [
 "rhsusf_shemagh2_gogg_white",
 "G_Squares_Tinted",
 "G_Squares",
-"G_Balaclava_TI_blk_F",
-"G_Balaclava_TI_G_blk_F",
-"G_Balaclava_TI_tna_F",
-"G_Balaclava_TI_G_tna_F",
 "G_Tactical_Clear",
 "G_Tactical_Black",
 "G_Spectacles_Tinted",
@@ -535,8 +545,8 @@ _standardWhitelist = [
 "rhsusf_mich_bare",
 "rhsusf_mich_bare_alt",
 "rhsusf_mich_bare_headset",
-"PTF_Smoll_rhsusf_hgu56p_mask_black",
 "PTF_Gute_rhsusf_hgu56p_mask_black",
+"PTF_Gustav_rhsusf_hgu56p_mask_black",
 
 
 //ammo
@@ -672,6 +682,8 @@ _standardWhitelist = [
 "rhsusf_5Rnd_300winmag_xm2010",
 "ACE_10Rnd_127x99_AMAX_Mag",
 "ACE_10Rnd_127x99_API_Mag",
+"MHS_7rnd_45ACP_230FMJ_1911",
+"MHS_21rnd_9MM_124FMJ_M17",
 
 //exp
 "Chemlight_blue",
@@ -705,10 +717,6 @@ _standardWhitelist = [
 "tsp_breach_popper_mag",
 "tsp_breach_package_mag",
 "tsp_breach_block_mag",
-"tsp_breach_linear_mag",
-"tsp_breach_silhouette_mag",
-"tsp_breach_stick_mag",
-"tsp_breach_shock",
 "ATMine_Range_Mag",
 "SLAMDirectionalMine_Wire_Mag",
 "SatchelCharge_Remote_Mag",
@@ -735,6 +743,18 @@ _standardWhitelist = [
 "ACE_surgicalKit",
 "ACE_tourniquet",
 "ACE_painkillers",
+"kat_IV_16",
+"kat_AED",
+"kat_X_AED",
+"kat_EACA",
+"kat_IO_FAST",
+"kat_naloxone",
+"kat_nitroglycerin",
+"kat_norepinephrine",
+"kat_phenylephrine",
+"kat_TXA",
+"kat_Carbonate",
+"kat_Painkiller",
 
 //other
 "TFAR_anprc152",
@@ -813,11 +833,12 @@ _standardWhitelist = [
 "rhsusf_ANPVS_14",
 "rhsusf_ANPVS_15",
 "PTF_Nightvision_PVS15_WP",
-"PTF_Nightvision_PVS15_GN"
-
+"PTF_Nightvision_PVS15_GN",
+"USP_PVS31_WP_MID_TAN",
+"USP_PVS31_WP_MID"
 ];
-
-[_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
+*/
+[_arsenal, _whitelist, true] call ace_arsenal_fnc_initBox;
 
 #include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
 
