@@ -73,7 +73,7 @@
 
 [
 "PTF_SRChannels", "LIST",	 
-["Select # of SR Channels",	 "Select how many sr channels you want to set"], 
+["Select # of Short Range Channels",	 "Select how many SR channels you want to set"], 
 ["Paramarine Task Force", "TFAR Setting SR"], 
 [[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
 false, // isGlobal
@@ -86,7 +86,7 @@ false // needRestart
 
 [
 "PTF_LRChannels", "LIST",	 
-["Select # of SR Channels",	 "Select how many sr channels you want to set"], 
+["Select # of Long Range Channels",	 "Select how many LR channels you want to set"], 
 ["Paramarine Task Force", "TFAR Setting LR"], 
 [[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
 false, // isGlobal
