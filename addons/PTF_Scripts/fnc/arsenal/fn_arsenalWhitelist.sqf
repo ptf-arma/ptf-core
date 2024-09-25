@@ -738,7 +738,7 @@ _medical = [
 	"ACE_splint",
 	"ACE_surgicalKit",
 	"ACE_tourniquet",
-	"ACE_painkillers",
+	//"ACE_painkillers",
 	"kat_IV_16",
 	"kat_AED",
 	"kat_X_AED",
