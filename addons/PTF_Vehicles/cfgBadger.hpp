@@ -12,7 +12,7 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
     ace_dragging_canCarry = 0;
     ace_dragging_canDrag = 0;
     ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
-    maximumLoad = 3500;
+    maximumLoad = 3250;
     side = 1;
 	SlingloadingWeight = "[2900,2800]";
 	armor = 700;
@@ -29,7 +29,7 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 		};
 		class _xx_rhsusf_100Rnd_556x45_mixed_soft_pouch
 		{
-			magazine = "rhsusf_100Rnd_556x45_mixed_soft_pouch";
+			magazine = "rhsusf_200Rnd_556x45_mixed_soft_pouch";
 			count = 10;
 		};
 		class _xx_PTF_Mag_556x45_M855A1_PMAG_Mix
@@ -40,17 +40,12 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 		class _xx_rhs_fgm148_magazine_AT
 		{
 			magazine = "rhs_fgm148_magazine_AT";
-			count = 3;
+			count = 2;
 		};
 		class _xx_DemoCharge_Remote_Mag
 		{
 			magazine = "DemoCharge_Remote_Mag";
 			count = 2;
-		};
-		class _xx_ClaymoreDirectionalMine_Remote_Mag
-		{
-			magazine = "ClaymoreDirectionalMine_Remote_Mag";
-			count = 4;
 		};
 		class _xx_rhs_mag_m67
 		{
@@ -100,19 +95,14 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 			name = "ACE_quikclot";
 			count = 30;
 		};
-   		class _xx_ACE_bloodIV
+   		class _xx_ACE_plasmaIV
 		{
-			name = "ACE_bloodIV";
+			name = "ACE_plasmaIV";
 			count = 5;
 		};
-   		class _xx_ACE_bloodIV_500
+   		class _xx_ACE_plasmaIV_500
 		{
-			name = "ACE_bloodIV_500";
-			count = 5;
-		};
-   		class _xx_ACE_bloodIV_250
-		{
-			name = "ACE_quikclot_250";
+			name = "ACE_plasmaIV_500";
 			count = 5;
 		};
   		class _xx_ACE_Chemlight_HiGreen
@@ -148,12 +138,17 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
    		class _xx_ACE_rope15
 		{
 			name = "ACE_rope15";
-			count = 2;
+			count = 1;
 		};
    		class _xx_ACE_splint
 		{
 			name = "ACE_splint";
 			count = 8;
+		};
+		class _xx_ACE_UAVBattery
+		{
+			name = "ACE_UAVBattery";
+			count = 3;
 		};
 	};
 	class TransportWeapons
@@ -172,6 +167,11 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 		{
 			weapon = "ACE_VMH3";
 			count = 1;
+		};
+		class _xx_rhs_weap_m72a7
+		{
+			weapon = "rhs_weap_m72a7";
+			count = 2;
 		};
 	};
 	class HitPoints: HitPoints
