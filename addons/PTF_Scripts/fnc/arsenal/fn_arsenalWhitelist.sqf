@@ -829,7 +829,6 @@ _nightvision = [
 	"USP_PVS14",
 	"USP_PVS15",
 	"USP_PVS31_COMPACT",
-	"rhs_1PN138",
 	"rhsusf_ANPVS_14",
 	"rhsusf_ANPVS_15",
 	"PTF_Nightvision_PVS15_WP",
