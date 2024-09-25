@@ -46,7 +46,7 @@ class CfgMods
 	{
 		dir = "@cTab";
 		name = "cTab - Blue Force Tracking";
-		picture = "\cTab\img\cTab_BFT_ico.paa";
+		picture = "\z\PTF\addons\ctab\img\cTab_BFT_ico.paa";
 		hidePicture = "True";
 		hideName = "True";
 		actionName = "Website";
@@ -64,7 +64,7 @@ class CfgFunctions
 	{
 		class Functions
 		{
-			file = "cTab\functions";
+			file = "\z\PTF\addons\cTab\functions";
 			class addNotification{};
 			class addToPairs{};
 			class addUserMarker{};
@@ -173,8 +173,8 @@ class Extended_PostInit_EventHandlers
 {
 	class cTab
 	{
-		clientInit = "call compile preprocessFileLineNumbers '\cTab\player_init.sqf'";
-		serverInit = "call compile preprocessFileLineNumbers '\cTab\server_init.sqf'";
+		clientInit = "call compile preprocessFileLineNumbers '\z\PTF\addons\cTab\player_init.sqf'";
+		serverInit = "call compile preprocessFileLineNumbers '\z\PTF\addons\cTab\server_init.sqf'";
 	};
 };
 class cTab_RscText
@@ -1497,7 +1497,7 @@ class cTab_Tablet_dlg
 		{
 			idc = 1201;
 			onDraw = "nop = _this call cTabOnDrawbft;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 		};
 		class screenTopo: screen
@@ -2845,7 +2845,7 @@ class cTab_Android_dlg
 		class screen: cTab_android_RscMapControl
 		{
 			onDraw = "nop = _this call cTabOnDrawbftAndroid;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 		};
 		class screenTopo: screen
@@ -4060,7 +4060,7 @@ class cTab_FBCB2_dlg
 			w = "(((810))) / 2048  * 	(safezoneW)";
 			h = "(((810) - (44) - (0))) / 2048  * 	(	(safezoneW) * 4/3)";
 			onDraw = "nop = _this call cTabOnDrawbftVeh;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 			maxSatelliteAlpha = 10000;
 			alphaFadeStartScale = 10;
@@ -5655,7 +5655,7 @@ class cTab_TAD_dlg
 		{
 			idc = 1201;
 			onDraw = "nop = _this call cTabOnDrawbftTADdialog;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 		};
 		class screenTopo: screen
@@ -5667,7 +5667,7 @@ class cTab_TAD_dlg
 		{
 			idc = 1203;
 			onDraw = "nop = _this call cTabOnDrawbftTADdialog;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 		};
 	};
@@ -6819,7 +6819,7 @@ class CfgWeapons
 		descriptionuse = "<t color='#9cf953'>Use: </t>Show Commander's Tablet";
 		displayname = "Rugged Tablet";
 		picture = "\cTab\img\icon_dk10.paa";
-		model = "\ctab\data\itemDK10.p3d";
+		model = "\z\PTF\addons\ctab\data\itemDK10.p3d";
 		scope = 2;
 		author = "Gundy-Riouken-Raspu";
 		simulation = "Weapon";
@@ -6834,7 +6834,7 @@ class CfgWeapons
 		descriptionuse = "<t color='#9cf953'>Use: </t>Show Android Based BFT";
 		displayname = "Galaxy S20 Tactical Edition";
 		picture = "\cTab\img\icon_Android.paa";
-		model = "\ctab\data\itemAndroid.p3d";
+		model = "\z\PTF\addons\ctab\data\itemAndroid.p3d";
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass = 4;
@@ -6847,7 +6847,7 @@ class CfgWeapons
 		descriptionuse = "<t color='#9cf953'>Use: </t>Show Android Based BFT";
 		displayname = "MicroDAGR";
 		picture = "\cTab\img\icon_MicroDAGR.paa";
-		model = "\ctab\data\itemMicroDAGR.p3d";
+		model = "\z\PTF\addons\ctab\data\itemMicroDAGR.p3d";
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass = 2;

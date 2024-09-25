@@ -1,9 +1,20 @@
-_arsenal = _this select 0;
+params ["_arsenal"];
 
+call PTF_fnc_arsenalWhitelist params ["_standardArsenal", "_psoArsenal"];
+
+_whitelist = _standardArsenal;
+
+/*
 _standardWhitelist = [
+
 
 //weapon stuff
 "rhsusf_acc_g33_t1",
+"Scot_Trij_Accu",
+"Scot_Trij_Accu_RMR_Top_Canted",
+"Scot_Trij_Accu_RMR",
+"Scot_Trij_Accu_T1",
+"Scot_Trij_Accu_T2",
 "rhsusf_acc_g33_xps3",
 "rhs_weap_m4a1_blockII_wd",
 "rhs_weap_m4a1_blockII_M203_wd",
@@ -87,6 +98,11 @@ _standardWhitelist = [
 "rhsusf_acc_eotech_552",
 "rhsusf_acc_eotech_552_d",
 "rhsusf_acc_eotech_552_wd",
+"rhsusf_acc_ACOG_USMC",
+"rhsusf_acc_ACOG2_USMC",
+"rhsusf_acc_ACOG3_USMC",
+"rhsusf_acc_eotech_xps3",
+"rhsusf_acc_EOTECH",
 "rhsusf_acc_compm4",
 "rhsusf_acc_M8541",
 "rhsusf_acc_anpeq15side_bk",
@@ -206,12 +222,19 @@ _standardWhitelist = [
 "rhs_weap_XM2010_d",
 "rhsusf_acc_m2010s_sa",
 "rhs_weap_M107_d",
+"MHS_RomeoM17",
+"MHS_M45A1",
+"MHS_M17",
+"MHS_M18",
+"rhsusf_acc_eotech_xps3",
+
 
 //rockets
 "rhs_weap_M136",
 "rhs_weap_M136_hedp",
 "rhs_weap_M136_hp",
 "launch_MRAWS_olive_F",
+"launch_MRAWS_sand_F",
 "rhs_weap_smaw_green",
 "rhs_weap_smaw",
 "rhs_weap_fgm148",
@@ -231,8 +254,11 @@ _standardWhitelist = [
 "PTF_Backpack_Infantry_Crye_Hydro",
 "PTF_Backpack_Infantry_Crye_Breacher",
 "PTF_Backpack_Infantry_Crye",
+"PTF_Backpack_LR_1",
 "B_Parachute",
 "tfw_ilbe_blade_coy",
+"tfw_ilbe_blade_wd",
+"tfw_ilbe_blade_d",
 "tfw_ilbe_DD_coy",
 "tfw_ilbe_whip_coy",
 "tfw_rf3080Item",
@@ -253,9 +279,14 @@ _standardWhitelist = [
 "USP_DELTA_BAG_CBR",
 "USP_HYDROPACK_CBR",
 "USP_45L_RUCKSACK_TAN",
-"USP_REEBOW_3DAP_ACC9_CBR",
 "USP_REEBOW_3DAP_ACC8_CBR",
 "USP_REEBOW_3DAP_ACC7_CBR",
+"USP_ZIPON_PANEL_CPC_CBR",
+"USP_ZIPON_PANEL_CPC_BC_SM_CBR",
+"USP_ZIPON_PANEL_CPC_SM_CBR",
+"ace_compat_rhs_usf3_mk19_carry",
+"ace_compat_rhs_usf3_m2_carry",
+
 
 //unifrom
 "PTF_Uniform_Air_CSU13BP_WD",
@@ -270,6 +301,8 @@ _standardWhitelist = [
 "PTF_Uniform_Air_CSU15BP_WD",
 "PTF_Uniform_Air_CSU15BP_D",
 "PTF_Uniform_Air_CSU13BP",
+"PTF_Uniform_Infantry_G3_Green",
+"PTF_Uniform_Infantry_G3_Tan",
 
 //vest
 "PTF_Vest_Air_CMU33P_D",
@@ -312,11 +345,6 @@ _standardWhitelist = [
 //glass
 "G_AirPurifyingRespirator_01_F",
 "G_Aviator",
-"rhs_balaclava",
-"rhs_balaclava1_olive",
-"G_Balaclava_blk",
-"G_Balaclava_combat",
-"G_Balaclava_lowprofile",
 "rhs_googles_black",
 "rhs_googles_clear",
 "rhs_googles_orange",
@@ -371,14 +399,12 @@ _standardWhitelist = [
 "G_Blindfold_01_black_F",
 "G_Blindfold_01_white_F",
 "G_B_Diving",
-"G_Lowprofile",
 "G_Respirator_blue_F",
 "G_Respirator_white_F",
 "G_Respirator_yellow_F",
 "rhs_scarf",
 "G_Shades_Black",
 "G_Shades_Blue",
-"G_Shades_Green",
 "G_Shades_Red",
 "rhsusf_shemagh_grn",
 "rhsusf_shemagh2_grn",
@@ -396,18 +422,8 @@ _standardWhitelist = [
 "rhsusf_shemagh2_gogg_tan",
 "rhsusf_shemagh_gogg_white",
 "rhsusf_shemagh2_gogg_white",
-"G_Sport_Red",
-"G_Sport_Blackyellow",
-"G_Sport_BlackWhite",
-"G_Sport_Checkered",
-"G_Sport_Blackred",
-"G_Sport_Greenblack",
 "G_Squares_Tinted",
 "G_Squares",
-"G_Balaclava_TI_blk_F",
-"G_Balaclava_TI_G_blk_F",
-"G_Balaclava_TI_tna_F",
-"G_Balaclava_TI_G_tna_F",
 "G_Tactical_Clear",
 "G_Tactical_Black",
 "G_Spectacles_Tinted",
@@ -529,6 +545,8 @@ _standardWhitelist = [
 "rhsusf_mich_bare",
 "rhsusf_mich_bare_alt",
 "rhsusf_mich_bare_headset",
+"PTF_Gute_rhsusf_hgu56p_mask_black",
+"PTF_Gustav_rhsusf_hgu56p_mask_black",
 
 
 //ammo
@@ -567,11 +585,6 @@ _standardWhitelist = [
 "rhsusf_mag_6Rnd_M716_yellow",
 "30Rnd_9x21_Mag_SMG_02",
 "SMG_05_F",
-"MAA_MAAWS_ILLUM545",
-"MAA_MAAWS_SMOKE469",
-"MAA_MAAWS_ASM509",
-"MAA_MAAWS_HEDP502",
-"MAA_MAAWS_MT756",
 "avm224_M_6Rnd_60mm_SMOKE_csw",
 "avm224_M_6Rnd_60mm_ILLUM_csw",
 "avm224_M_6Rnd_60mm_ILLUM_IR_csw",
@@ -619,8 +632,10 @@ _standardWhitelist = [
 "ace_compact_rhs_usf3_m2_carry",
 "ace_csw_m3CarryTripodLow",
 "ace_compact_rhs_usf3_mk19_carry",
-"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
-"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M430A1",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M1001",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430A1",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19",
+"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430I",
 "ace_csw_100Rnd_127x99_mag_red",
 "rhs_mag_M441_HE",
 "rhs_mag_M433_HEDP",
@@ -667,6 +682,8 @@ _standardWhitelist = [
 "rhsusf_5Rnd_300winmag_xm2010",
 "ACE_10Rnd_127x99_AMAX_Mag",
 "ACE_10Rnd_127x99_API_Mag",
+"MHS_7rnd_45ACP_230FMJ_1911",
+"MHS_21rnd_9MM_124FMJ_M17",
 
 //exp
 "Chemlight_blue",
@@ -697,35 +714,14 @@ _standardWhitelist = [
 "ACE_CTS9",
 "rhs_mag_mk3a2",
 "ClaymoreDirectionalMine_Remote_Mag",
-"AMP_Breaching_Charge_Mag",
-"tsp_frameCharge_mag",
-"tsp_popperCharge_mag",
+"tsp_breach_popper_mag",
+"tsp_breach_package_mag",
+"tsp_breach_block_mag",
 "ATMine_Range_Mag",
 "SLAMDirectionalMine_Wire_Mag",
 "SatchelCharge_Remote_Mag",
 
 //med
-"kat_IV_16",
-"kat_AED",
-"kat_X_AED",
-"kat_plate",
-"kat_clamp",
-"kat_vacuum",
-"kat_EACA",
-"kat_etomidate",
-"kat_IO_FAST",
-"kat_flumazenil",
-"kat_lidocaine",
-"kat_lorazepam",
-"kat_naloxone",
-"kat_nitroglycerin",
-"kat_norepinephrine",
-"kat_phenylephrine",
-"kat_retractor",
-"kat_scalpel",
-"kat_TXA",
-"kat_Painkiller",
-"kat_Carbonate",
 "ACE_fieldDressing",
 "ACE_elasticBandage",
 "ACE_packingBandage",
@@ -746,6 +742,19 @@ _standardWhitelist = [
 "ACE_splint",
 "ACE_surgicalKit",
 "ACE_tourniquet",
+"ACE_painkillers",
+"kat_IV_16",
+"kat_AED",
+"kat_X_AED",
+"kat_EACA",
+"kat_IO_FAST",
+"kat_naloxone",
+"kat_nitroglycerin",
+"kat_norepinephrine",
+"kat_phenylephrine",
+"kat_TXA",
+"kat_Carbonate",
+"kat_Painkiller",
 
 //other
 "TFAR_anprc152",
@@ -804,7 +813,7 @@ _standardWhitelist = [
 "ItemMap",
 "ItemCompass",
 "rhsusf_acc_premier_anpvs27",
-"acex_intelitems_notpad",
+"acex_intelitems_notepad",
 "ACE_PlottingBoard",
 
 //bino
@@ -824,13 +833,14 @@ _standardWhitelist = [
 "rhsusf_ANPVS_14",
 "rhsusf_ANPVS_15",
 "PTF_Nightvision_PVS15_WP",
-"PTF_Nightvision_PVS15_GN"
-
+"PTF_Nightvision_PVS15_GN",
+"USP_PVS31_WP_MID_TAN",
+"USP_PVS31_WP_MID"
 ];
+*/
+[_arsenal, _whitelist, true] call ace_arsenal_fnc_initBox;
 
-[_arsenal, _standardWhitelist, true] call ace_arsenal_fnc_initBox;
-
-#include "defaultloadouts.hpp"
+#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
 
 
 

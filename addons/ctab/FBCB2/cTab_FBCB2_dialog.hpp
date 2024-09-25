@@ -6,7 +6,7 @@
 #include <\cTab\FBCB2\cTab_FBCB2_controls.hpp>
 
 #define MENU_sizeEx pxToScreen_H(cTab_GUI_FBCB2_OSD_TEXT_STD_SIZE)
-#include "\cTab\shared\cTab_markerMenu_macros.hpp"
+#include "\z\PTF\addons\cTab\shared\cTab_markerMenu_macros.hpp"
 
 class cTab_FBCB2_dlg {
 	idd = 1775144;
@@ -29,7 +29,7 @@ class cTab_FBCB2_dlg {
 			w = pxToScreen_W(cTab_GUI_FBCB2_SCREEN_CONTENT_W);
 			h = pxToScreen_H(cTab_GUI_FBCB2_SCREEN_CONTENT_H);
 			onDraw = "nop = _this call cTabOnDrawbftVeh;";
-			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\cTab\shared\cTab_markerMenu_load.sqf';";
+			onMouseButtonDblClick = "_ok = [3300,_this] execVM '\z\PTF\addons\cTab\shared\cTab_markerMenu_load.sqf';";
 			onMouseMoving = "cTabCursorOnMap = _this select 3;cTabMapCursorPos = _this select 0 ctrlMapScreenToWorld [_this select 1,_this select 2];";
 			maxSatelliteAlpha = 10000;
 			alphaFadeStartScale = 10;
@@ -110,7 +110,7 @@ class cTab_FBCB2_dlg {
 		class hookDst: cTab_FBCB2_on_screen_hookDst {};
 		class hookDir: cTab_FBCB2_on_screen_hookDir {};
 		//### Secondary Map Pop up	------------------------------------------------------------------------------------------------------
-		#include "\cTab\shared\cTab_markerMenu_controls.hpp"
+		#include "\z\PTF\addons\cTab\shared\cTab_markerMenu_controls.hpp"
 
 		// ---------- NOTIFICATION ------------
 		class notification: cTab_FBCB2_notification {};

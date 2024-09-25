@@ -128,3 +128,6 @@ class B_Radar_System_01_F;
 class B_APC_Wheeled_01_cannon_F;
 
 class rhsusf_m998_d_s_2dr_fulltop;
+
+//SlingLoading
+class slr_slingload_wreckDummy;

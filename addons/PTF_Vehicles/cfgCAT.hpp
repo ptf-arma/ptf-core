@@ -12,7 +12,8 @@ class PTF_M1151CAT_M2 : rhsusf_m1151_m2_v3_usmc_wd
    displayName = "M1151 (M2) [CAT]";
    driverCompartments = "Compartment1";
    cargoCompartments[] = {"Compartment1"};
-
+   // class for slinglaoding weight [53,22]
+   SlingloadingWeight = "[2900,2800]";
    hiddenSelections[] = {"camo", "camo1", "camo2", "camo3", "camo4", "camo5", "camo6", "camo7", "camo8", "camo19", "BFT_screen"};
    hiddenSelectionTextures[] = {
        "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Ext_wd_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Tire_wd_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_wd_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_wd_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_w_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_wd_CO.paa", "rhsusf\addons\rhsusf_rg33l\data\mctags_wd_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\mk64mount_w_co.paa"};
@@ -138,7 +139,7 @@ class PTF_M1151CAT_M2 : rhsusf_m1151_m2_v3_usmc_wd
          displayname = "Snow";
          author = "J.Downs";
          textures[] = {
-             "PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
+             "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
          factions[] = {};
       };
       class Desert
@@ -169,6 +170,8 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
    ace_cargo_hasCargo = 1;
    maximumLoad = 750;
    side = 1;
+   // class for slinglaoding weight [53,22]
+   SlingloadingWeight = "[2900,2800]";
    author = "Paramarine Task Force";
    displayName = "M1151 (Mk19) [CAT]";
    driverCompartments = "Compartment1";
@@ -213,7 +216,7 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
          displayname = "Snow";
          author = "J.Downs";
          textures[] = {
-             "PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
+             "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\m1151_Tire_s_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Int_CO.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1151_Acc_d_CO.paa", "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_d_co.paa", "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_d_co.paa", "rhsusf\addons\rhsusf_m11xx\data\rhsusf_M1152M1165_d_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\MCTAGS_s_CO.paa", "\z\PTF\addons\PTF_Textures\vehicles\m115x\mk64mount_s_co.paa"};
          factions[] = {};
       };
       class Desert
@@ -362,6 +365,8 @@ class PTF_M1025_tow : rhsusf_m966_w
    ace_dragging_canDrag = 0;
    maximumLoad = 750;
    side = 1;
+   // class for slinglaoding weight [53,22]
+   SlingloadingWeight = "[2900,2800]";
    author = "Paramarine Task Force";
    displayName = "M1151 (TOW) [CAT]";
    driverCompartments = "Compartment1";
@@ -531,5 +536,4 @@ class PTF_M1025_tow : rhsusf_m966_w
          parachuteHeightLimitDefault = 5;
       };
    };
-  };
 };

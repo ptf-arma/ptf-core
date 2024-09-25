@@ -4,8 +4,8 @@ class cfgAmmo {
 		class ace_missileguidance;
 	};
 	class PTF_ACE_Hellfire_AGM114K : ACE_Hellfire_AGM114K {
-		model = "\PTF_Aircraft\Weapons\HellFireStolenFromHatchet.p3d";
-		proxyShape = "\PTF_Aircraft\Weapons\HellFireStolenFromHatchet.p3d";
+		model = "Weapons\HellFireStolenFromHatchet.p3d";
+		proxyShape = "Weapons\HellFireStolenFromHatchet.p3d";
 		class ace_missileguidance : ace_missileguidance{};
 };
 };

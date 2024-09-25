@@ -52,3 +52,56 @@
     {},
     true // needRestart
 ] call CBA_fnc_addSetting;
+[
+    "PTF_WeaponWList", "EDITBOX",
+    ["WhiteList Shoulderable Weapons", "Set what weapons you want to be able to shoulder"],
+    ["Paramarine Task Force", "Weapon Swaping"],
+    "['rhs_weap_m32','rhs_weap_M590_5RD','rhs_weap_M590_8RD']",
+    true, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_WeaponW", "CHECKBOX",
+    ["Enable Shoulderable Whitelist", "Only allowe the weapons defined under Whitelist to be place on your shoulder"],
+    ["Paramarine Task Force", "Weapon Swaping"],
+    true,
+    true, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+
+[
+"PTF_SRChannels", "LIST",	 
+["Select # of SR Channels",	 "Select how many sr channels you want to set"], 
+["Paramarine Task Force", "TFAR Setting SR"], 
+[[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
+false, // isGlobal
+{
+params ["_value"];
+[_value,"SR"] call PTF_fnc_ChangeSettings;
+},
+false // needRestart
+] call CBA_fnc_addSetting;
+
+[
+"PTF_LRChannels", "LIST",	 
+["Select # of SR Channels",	 "Select how many sr channels you want to set"], 
+["Paramarine Task Force", "TFAR Setting LR"], 
+[[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
+false, // isGlobal
+{
+params ["_value"];
+[_value,"LR"] call PTF_fnc_ChangeSettings;
+},
+false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_ArsenelExit", "CHECKBOX",
+    ["Auto Set Radios When exiting Arsenal", "Auto the your radioes when you exit the arsenal"],
+    ["Paramarine Task Force", "TFAR Setting"],
+    true,
+    true, // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;

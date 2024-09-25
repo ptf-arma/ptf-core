@@ -50,8 +50,6 @@ class CfgPatches
 			"dega_vehicles_v22",
 			"ace_interaction",
 			"USAF_C130J",
-			"FIR_AV8B_F",
-			"FIR_FA18_F",
 			"rhsgref_a29"
 		};
 	};
@@ -62,13 +60,11 @@ class cfgVehicles
 #include "cfgAH1Z.hpp"
 #include "cfgC130J.hpp"
 #include "cfgCH53.hpp"
-#include "cfgF18.hpp"
 #include "cfgSuperTucano.hpp"
 #include "cfgMQ9.hpp"
 #include "cfgC17.hpp"
 #include "cfgKC135.hpp"
 #include "cfgMV22.hpp"
-#include "cfgAV8B.hpp"
 #include "cfgVANILLA.hpp"
 #include "cfgRQ4A.hpp"
 #include "cfgUH1Y.hpp"

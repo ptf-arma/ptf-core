@@ -21,16 +21,16 @@ class ACE_Actions {
       distance = 1.5;
       condition = "true";
 
-      #include "\PTF_Scripts\fnc\spawners\Planes.hpp"
-      #include "\PTF_Scripts\fnc\spawners\HelicoptersTransport.hpp"
-      #include "\PTF_Scripts\fnc\spawners\HelicoptersSupply.hpp"
-      #include "\PTF_Scripts\fnc\spawners\HelicoptersAttack.hpp"
-      #include "\PTF_Scripts\fnc\spawners\Boat.hpp"
-      #include "\PTF_Scripts\fnc\spawners\Cougar.hpp"
-      #include "\PTF_Scripts\fnc\spawners\ForkLift.hpp"
-      #include "\PTF_Scripts\fnc\spawners\Mrap.hpp"
-      #include "\PTF_Scripts\fnc\spawners\Hummve.hpp"
-      #include "\PTF_Scripts\fnc\spawners\Supplys.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\Planes.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\HelicoptersTransport.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\HelicoptersSupply.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\HelicoptersAttack.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\Boat.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\Cougar.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\ForkLift.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\Mrap.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\Hummve.hpp"
+      #include "\z\PTF\addons\PTF_Scripts\fnc\spawners\Supplys.hpp"
       };
    };
 };

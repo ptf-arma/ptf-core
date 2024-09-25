@@ -1,4 +1,0 @@
-//<'ctab.pbo' properties via Mikero's dos tools, dll version 8.35>
-prefix=ctab;
-//PboType=Arma Addon;
-//</properties>

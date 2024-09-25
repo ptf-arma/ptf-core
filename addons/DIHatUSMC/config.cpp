@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////
-//DeRap: DIHatUSMC\config.bin
+//DeRap: \z\PTF\DIHatUSMC\config.bin
 //Produced from mikero's Dos Tools Dll version 7.97
 //https://mikero.bytex.digital/Downloads
 //'now' is Fri Apr 02 14:30:21 2021 : 'file' last modified on Wed Feb 07 18:28:47 2018
@@ -26,15 +26,15 @@ class cfgWeapons
 		scope = 2;
 		weaponPoolAvailable = 1;
 		displayName = "Campaign Cover [http://www.paramarinetaskforce.com/]";
-		picture = "DIHatUSMC\UI\DS_UI.paa";
-		model = "DIHatUSMC\USMC_DI_HAT.p3d";
+		picture = "\z\PTF\DIHatUSMC\UI\DS_UI.paa";
+		model = "\z\PTF\DIHatUSMC\USMC_DI_HAT.p3d";
 		hiddenSelections[] = {""};
 		hiddenSelectionsTextures[] = {""};
 		class ItemInfo: HeadgearItem
 		{
 			mass = 2;
 			allowedSlots[] = {901,701,605};
-			uniformModel = "DIHatUSMC\USMC_DI_HAT.p3d";
+			uniformModel = "\z\PTF\DIHatUSMC\USMC_DI_HAT.p3d";
 			modelSides[] = {6};
 			armor = "0*0";
 			passThrough = 0.8;

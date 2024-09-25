@@ -46,7 +46,7 @@ class CfgMissions
 	{
 		class mymainmenu // Class referenced in 'cutscenes' property in CfgWorlds
 		{
-			directory = "PTF_Menu\Intro.Stratis"; // Path to scenario with the scene
+			directory = "\z\PTF\addons\PTF_Menu\Intro.Stratis"; // Path to scenario with the scene
 		};
 	};
 };
