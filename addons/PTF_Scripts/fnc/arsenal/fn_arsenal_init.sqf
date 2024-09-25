@@ -1,6 +1,6 @@
-#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\arsenal_whitelist.hpp"
+params ["_arsenal"];
 
-_arsenal = _this select 0;
+call PTF_fnc_arsenalWhitelist params ["_standardArsenal", "_psoArsenal"];
 
 _whitelist = _standardArsenal;
 

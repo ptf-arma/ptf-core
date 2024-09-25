@@ -874,6 +874,10 @@ _nightvisionPSO = [
 	"USP_GPNVG18_WP_BLK"
 ];
 
-_standardArsenal = [_rifles + _launchers + _pistols + _attachments + _backpacks + _uniforms + _vests + _helmets + _glasses + _ammo + _throwables + _medical + _demolition + _equipment + _binoculars + _nightvision];
+_standardArsenal = _rifles + _launchers + _pistols + _attachments + _backpacks + _uniforms + _vests + _helmets + _glasses + _ammo + _throwables + _medical + _demolition + _equipment + _binoculars + _nightvision;
 
-_psoArsenal = [_standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO];
+_psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
+
+_return = [_standardArsenal, _psoArsenal];
+
+_return
