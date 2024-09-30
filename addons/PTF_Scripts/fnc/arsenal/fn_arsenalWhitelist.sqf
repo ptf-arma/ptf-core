@@ -534,7 +534,11 @@ _glasses = [
 	"G_Tactical_Clear",
 	"G_Tactical_Black",
 	"G_Spectacles_Tinted",
-	"G_WirelessEarpiece_F"
+	"G_WirelessEarpiece_F",
+	"PTF_Tank_3A",
+	"PTF_Tank_3B",
+	"PTF_Tank_3C",
+	"PTF_Tank_3E"
 ];
 
 // ammo, Throwables, Medical, Demolition
