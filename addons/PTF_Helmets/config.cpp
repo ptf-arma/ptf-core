@@ -26,6 +26,7 @@ class cfgWeapons
 	class PTF_Helmet_Infantry_Mich2000_WD;
 	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
 	class PTF_Helmet_Infantry_Mich2000_D;
+	class rhsusf_cvc_green_helmet;
 	class USP_OPS_FASTXP_TAN;
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
@@ -368,12 +369,32 @@ class cfgWeapons
 	};
 	class PTF_Gute_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
 		displayName = "[MAG] HGU [Personal - B.Gute]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HUG_Gute.paa"};
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gute.paa"};
 	};
 	class PTF_Gustav_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
 		displayName = "[MAG] HGU [Personal - T. Gustav]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gustav.paa"};
 	};
+	class PTF_David_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
+		displayName = "[MAG] HGU [Personal - J. David]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"};
+	};
+	class PTF_Tank_3A : rhsusf_cvc_green_helmet {
+		displayName = "[3RD] Tanker [Team - 3-A]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3A.paa"};
+	};
+	class PTF_Tank_3B : rhsusf_cvc_green_helmet {
+		displayName = "[3RD] Tanker [Team - 3-B]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3B.paa"};
+	};
+	class PTF_Tank_3C : rhsusf_cvc_green_helmet {
+		displayName = "[3RD] Tanker [Team - 3-C]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3C.paa"};
+	};
+	class PTF_Tank_3E : rhsusf_cvc_green_helmet {
+		displayName = "[3RD] Tanker [Team - 3-E]";
+	hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3E.paa"};
+		};
 };
 class cfgMods
 {
