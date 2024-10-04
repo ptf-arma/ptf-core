@@ -406,21 +406,21 @@ class cfgWeapons
 		displayName = "[MAG] HGU [Personal - J. David]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"};
 	};
-	class PTF_Tank_3A : rhsusf_cvc_green_helmet {
-		displayName = "[3RD] Tanker [Team - 3-A]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3A.paa"};
+	class PTF_LAV_3A : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-A]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3A.paa"};
 	};
-	class PTF_Tank_3B : rhsusf_cvc_green_helmet {
-		displayName = "[3RD] Tanker [Team - 3-B]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3B.paa"};
+	class PTF_LAV_3B : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-B]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3B.paa"};
 	};
-	class PTF_Tank_3C : rhsusf_cvc_green_helmet {
-		displayName = "[3RD] Tanker [Team - 3-C]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3C.paa"};
+	class PTF_LAV_3C : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-C]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3C.paa"};
 	};
-	class PTF_Tank_3E : rhsusf_cvc_green_helmet {
-		displayName = "[3RD] Tanker [Team - 3-E]";
-	hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_tank_3E.paa"};
+	class PTF_LAV_3E : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-E]";
+	hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"};
 		};
 };
 class cfgMods

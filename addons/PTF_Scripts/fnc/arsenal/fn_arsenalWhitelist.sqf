@@ -452,7 +452,11 @@ _helmets = [
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
 	"rhs_8point_marpatd",
 	"rhs_8point",
-	"rhs_8point_marpatwd"
+	"rhs_8point_marpatwd",
+	"PTF_LAV_3A",
+	"PTF_LAV_3B",
+	"PTF_LAV_3C",
+	"PTF_LAV_3E"
 ];
 
 _glasses = [
