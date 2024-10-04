@@ -383,7 +383,6 @@ _helmets = [
 	"PTF_Helmet_Air_Black",
 	"PTF_Helmet_Air_Green",
 	"PTF_Helmet_Air_Olive",
-	"PTF_Helmet_Air_Smiley",
 	"PTF_Helmet_Air_Tan",
 	"PTF_Helmet_Air_USA",
 	"PTF_Helmet_Air_White",

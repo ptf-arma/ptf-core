@@ -49,16 +49,6 @@ class PTF_Helmet_Air_USA : PTF_Helmet_Air_Black
    displayName = "[Air] HGU-56P (USA) [PTF]";
    hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_usa_co.paa"};
 };
-class PTF_Helmet_Air_Smiley : PTF_Helmet_Air_Black
-{
-   displayName = "[Air] HGU-56P (Smiley) [PTF]";
-   model = "rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\rhs_hgu56_visor_mask";
-   hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_smiley_co.paa"};
-   class ItemInfo: ItemInfo
-	{
-		uniformModel = "rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\rhs_hgu56_visor_mask";
-	};
-};
 class PTF_Helmet_Air_HMDS : PTF_Helmet_Air_Black
 {
    
