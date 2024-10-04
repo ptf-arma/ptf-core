@@ -39,11 +39,6 @@ class PTF_Helmet_Air_Olive : PTF_Helmet_Air_Black
    hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_olv_co.paa"};
    
 };
-class PTF_Helmet_Air_Pink : PTF_Helmet_Air_Black
-{ 
-   displayName = "[Air] HGU-56P (Pink) [PTF]";
-   hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_pink_co.paa"};
-};
 class PTF_Helmet_Air_White : PTF_Helmet_Air_Black
 {
    displayName = "[Air] HGU-56P (White) [PTF]";
