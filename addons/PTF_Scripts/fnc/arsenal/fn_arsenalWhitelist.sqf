@@ -450,6 +450,7 @@ _helmets = [
 	"rhsusf_mich_bare_headset",
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
+	"PTF_David_rhsusf_hgu56p_mask_black",
 	"rhs_8point_marpatd",
 	"rhs_8point",
 	"rhs_8point_marpatwd",
