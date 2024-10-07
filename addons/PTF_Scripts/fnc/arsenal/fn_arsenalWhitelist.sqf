@@ -543,10 +543,9 @@ _glasses = [
 	"G_Tactical_Black",
 	"G_Spectacles_Tinted",
 	"G_WirelessEarpiece_F",
-	"PTF_Tank_3A",
-	"PTF_Tank_3B",
-	"PTF_Tank_3C",
-	"PTF_Tank_3E"
+	"kat_mask_M50",
+	"kat_mask_M04",
+	"kat_gasmaskFilter"
 ];
 
 // ammo, Throwables, Medical, Demolition
