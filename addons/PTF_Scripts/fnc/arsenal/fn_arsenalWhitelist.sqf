@@ -377,6 +377,9 @@ _helmets = [
 	"PTF_Helmet_Cook_Infantry_Mich2000_WD",
 	"PTF_Helmet_Cook_Infantry_Mich2000_D",
 	"PTF_Helmet_Cook_Infantry_Mich2000_S",
+	"PTF_Helmet_Lowe_Infantry_Mich2000_WD",
+	"PTF_Helmet_Lowe_Infantry_Mich2000_D",
+	"PTF_Helmet_Lowe_Infantry_Mich2000_S",
 	"PTF_Helmet_Air_Black",
 	"PTF_Helmet_Air_Green",
 	"PTF_Helmet_Air_Olive",
@@ -442,9 +445,14 @@ _helmets = [
 	"rhsusf_mich_bare_headset",
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
+	"PTF_David_rhsusf_hgu56p_mask_black",
 	"rhs_8point_marpatd",
 	"rhs_8point",
-	"rhs_8point_marpatwd"
+	"rhs_8point_marpatwd",
+	"PTF_LAV_3A",
+	"PTF_LAV_3B",
+	"PTF_LAV_3C",
+	"PTF_LAV_3E"
 ];
 
 _glasses = [
@@ -529,7 +537,10 @@ _glasses = [
 	"G_Tactical_Clear",
 	"G_Tactical_Black",
 	"G_Spectacles_Tinted",
-	"G_WirelessEarpiece_F"
+	"G_WirelessEarpiece_F",
+	"kat_mask_M50",
+	"kat_mask_M04",
+	"kat_gasmaskFilter"
 ];
 
 // ammo, Throwables, Medical, Demolition
