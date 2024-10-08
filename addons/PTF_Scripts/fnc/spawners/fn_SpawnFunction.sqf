@@ -35,7 +35,7 @@ _vh setDir (markerDir (_markersA select _id));
 
 if (_vh isKindOf "UAV") then {
 
-_uavgroup = createGroup [east, true];
+_uavgroup = createGroup [west, true];
 for "_i" from 1 to (_vh emptyPositions "") do {
 _unit = _uavgroup createUnit ["B_UAV_AI", [0,0,0], [], 0, "NONE"];
 _unit moveInAny _vh;
