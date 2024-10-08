@@ -32,7 +32,7 @@ class PTF_AH1Z : RHS_AH1Z
             initFov           = 0.456;
             minFov            = 0.456;
             maxFov            = 0.456;
-            directionStabilized  = 0;
+            directionStabilized  = 1;
             visionMode[]=
             {
                "Normal",
@@ -93,7 +93,7 @@ class PTF_AH1Z : RHS_AH1Z
                   initFov=0.456;
                   minFov=0.456;
                   maxFov=0.456;
-                  directionStabilized = 0;
+                  directionStabilized = 1;
                   visionMode[]=
                   {
                      "Normal",
@@ -101,6 +101,7 @@ class PTF_AH1Z : RHS_AH1Z
                      "Ti"
                   };
                   thermalMode[]={0,1};
+                  opticsPPEffects[] = {"OpticsCHAbera2","OpticsBlur2"};
                   gunnerOpticsModel="\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64";
                };
                class Medium: Wide
