@@ -47,7 +47,7 @@ class PTF_Supplys {
             displayName = "Large Supplys";
             icon = "a3\weapons_f\ammoboxes\data\ui\map_wpnsbox_large_f_ca.paa";
 				class PTF_Ammo {
-				statement = "['PTF_Cargo_Large_VicBox', 'LgSupplys'] call PTF_fnc_SpawnFunction";
+				statement = "['PTF_Cargo_Large_Ammo', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Ammo";
             	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa"; 
 				};
