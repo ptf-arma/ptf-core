@@ -20,7 +20,9 @@ class cfgPatches
               "rhsusf_infantry",
               "tfar_backpacks",
               "tfar_handhelds",
-              "tfar_ai_hearing"};
+              "tfar_ai_hearing",
+              "ace_common",
+              "ace_gforces"};
    };
 };
 #include "cfgImport.hpp"

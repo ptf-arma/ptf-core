@@ -10,6 +10,8 @@ class UniformItem;
 class HitPoints;
 class HitHull;
 class HitHRotor;
+class B_Pilot_F;
+
 //RHS Backpacks
 class rhsusf_calonii_coy;
 class rhsusf_falconii_coy;
