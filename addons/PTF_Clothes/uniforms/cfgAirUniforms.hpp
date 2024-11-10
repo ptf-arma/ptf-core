@@ -58,6 +58,7 @@ class PTF_Uniform_Air_CSU15BP_WD : CSU15BP_Base_Rolled_FG
    side = 1;
    faction = "BLU_F";
    displayName = "[Air] CSU-15B/P (WD) [PTF]";
+   ACE_GForceCoef = 0.8;
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
@@ -72,6 +73,7 @@ class PTF_Uniform_Air_CSU15BP_D : CSU15BPTan_Base_Rolled_FG
    faction = "BLU_F";
    displayName = "[Air] CSU-15B/P (D) [PTF]";
    author = "Paramarine Task Force";
+   ACE_GForceCoef = 0.8;
    class ItemInfo : ItemInfo
    {
       containerClass = "Supply60";
