@@ -357,6 +357,7 @@ _helmets = [
 	"PTF_Helmet_1_1_Infantry_Mich2000_WD",
 	"PTF_Helmet_1_2_Infantry_Mich2000_WD",
 	"PTF_Helmet_1_3_Infantry_Mich2000_WD",
+	"PTF_Helmet_1_4_Infantry_Mich2000_WD",
 	"PTF_Helmet_Chmielewski_Infantry_Mich2000_S",
 	"PTF_Helmet_Harris_Infantry_Mich2000_WD",
 	"PTF_Helmet_Harris_Infantry_Mich2000_S",
