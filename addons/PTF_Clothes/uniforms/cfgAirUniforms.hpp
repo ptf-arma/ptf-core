@@ -1,31 +1,3 @@
-class PTF_Uniform_Air_CSU13BP_WD : CSU13BP_Base_NG
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Air] CSU-13B/P (WD) [PTF]";
-   author = "Paramarine Task Force";
-   ACE_GForceCoef = 0.8;	
-   class ItemInfo : ItemInfo
-   {
-      containerClass = "Supply60";
-      mass = 20;
-   };
-};
-class PTF_Uniform_Air_CSU13BP_D : CSU13BPTan_Base_NG
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Air] CSU-13B/P (D) [PTF]";
-   author = "Paramarine Task Force";
-   ACE_GForceCoef = 0.8;	
-   class ItemInfo : ItemInfo
-   {
-      containerClass = "Supply60";
-      mass = 20;
-   };
-};
 class PTF_Uniform_Air_CWU27P_WD : CWU27P_Base
 {
    scope = 2;
