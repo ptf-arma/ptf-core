@@ -2,7 +2,7 @@ class cfgPatches
 {
    class PTF_Clothes
    {
-      units[] = {};
+      units[] = {"PTF_MAG_Pilot"};
       weapons[] = {"PTF_Infantry_Weapon_Scope_M8541A"};
       requiredVersion = "0.1";
       requiredAddons[] =
@@ -46,6 +46,7 @@ class cfgVehicles
 {
 #include "cfgDroneItems.hpp"
 #include "cfgDrones.hpp"
+#include "cfgSpawnUnits.hpp"
 #include "backpacks\cfgInfantryBackpacks.hpp"
 #include "backpacks\cfgAirBackpacks.hpp"
 #include "backpacks\cfgLRBackpacks.hpp"
