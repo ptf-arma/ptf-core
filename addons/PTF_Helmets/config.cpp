@@ -27,6 +27,7 @@ class cfgWeapons
 	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
 	class PTF_Helmet_Infantry_Mich2000_D;
 	class rhsusf_cvc_green_helmet;
+	class rhsusf_cvc_green_alt_helmet;
 	class USP_OPS_FASTXP_TAN;
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
@@ -406,20 +407,20 @@ class cfgWeapons
 		displayName = "[MAG] HGU [Personal - J. David]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"};
 	};
-	class PTF_LAV_3A : rhsusf_cvc_green_helmet {
-		displayName = " [LAV] Crewman Helmet [Team - 3-A]";
+	class PTF_LAV_3A : rhsusf_cvc_green_alt_helmet {
+		displayName = " [ACV] Crewman Helmet [Team - 3-A]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3A.paa"};
 	};
-	class PTF_LAV_3B : rhsusf_cvc_green_helmet {
-		displayName = " [LAV] Crewman Helmet [Team - 3-B]";
+	class PTF_LAV_3B : rhsusf_cvc_green_alt_helmet {
+		displayName = " [ACV] Crewman Helmet [Team - 3-B]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3B.paa"};
 	};
-	class PTF_LAV_3C : rhsusf_cvc_green_helmet {
-		displayName = " [LAV] Crewman Helmet [Team - 3-C]";
+	class PTF_LAV_3C : rhsusf_cvc_green_alt_helmet {
+		displayName = " [ACV] Crewman Helmet [Team - 3-C]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3C.paa"};
 	};
-	class PTF_LAV_3E : rhsusf_cvc_green_helmet {
-		displayName = " [LAV] Crewman Helmet [Team - 3-E]";
+	class PTF_LAV_3E : rhsusf_cvc_green_alt_helmet {
+		displayName = " [ACV] Crewman Helmet [Team - 3-E]";
 	hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"};
 		};
 };
