@@ -32,6 +32,16 @@ if (
 
 _vh setDir (markerDir (_markersA select _id));
 //set vics rotation to rotaiton of marker
+
+if (_vh isKindOf "UAV") then {
+
+_uavgroup = createGroup [west, true];
+for "_i" from 1 to (_vh emptyPositions "") do {
+_unit = _uavgroup createUnit ["B_UAV_AI", [0,0,0], [], 0, "NONE"];
+_unit moveInAny _vh;
+  };
+};
+
 if (_ticket != "") then {
 _t = missionNamespace getVariable _ticket;
 _t = _t - 1;

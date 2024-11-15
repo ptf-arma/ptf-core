@@ -283,8 +283,6 @@ _backpacks = [
 ];
 
 _uniforms = [
-	"PTF_Uniform_Air_CSU13BP_WD",
-	"PTF_Uniform_Air_CSU13BP_D",
 	"PTF_Uniform_Infantry_FROG_D",
 	"PTF_Uniform_Infantry_FROG_S",
 	"PTF_Uniform_Infantry_FROG_WD",
@@ -294,7 +292,6 @@ _uniforms = [
 	"PTF_Uniform_Air_CWU27P_D",
 	"PTF_Uniform_Air_CSU15BP_WD",
 	"PTF_Uniform_Air_CSU15BP_D",
-	"PTF_Uniform_Air_CSU13BP",
 	"PTF_Uniform_Infantry_G3_Green",
 	"PTF_Uniform_Infantry_G3_Tan"
 ];
@@ -306,9 +303,6 @@ _vests = [
 	"PTF_Vest_Air_SafetyVest_Short",
 	"PTF_Vest_Air_LPU23P",
 	"PTF_Vest_Air_LPU36P",
-	"PTF_Vest_Air_SRU21P",
-	"PTF_Vest_LegStrapBag_Blk",
-	"PTF_Vest_LegStrapBag_Coy",
 	"PTF_Vest_Rebreather",
 	"PTF_Vest_SafetyVest_Long",
 	"PTF_Vest_SafetyVest_Short",
@@ -360,6 +354,7 @@ _helmets = [
 	"PTF_Helmet_1_1_Infantry_Mich2000_WD",
 	"PTF_Helmet_1_2_Infantry_Mich2000_WD",
 	"PTF_Helmet_1_3_Infantry_Mich2000_WD",
+	"PTF_Helmet_1_4_Infantry_Mich2000_WD",
 	"PTF_Helmet_Chmielewski_Infantry_Mich2000_S",
 	"PTF_Helmet_Harris_Infantry_Mich2000_WD",
 	"PTF_Helmet_Harris_Infantry_Mich2000_S",
@@ -380,11 +375,12 @@ _helmets = [
 	"PTF_Helmet_Cook_Infantry_Mich2000_WD",
 	"PTF_Helmet_Cook_Infantry_Mich2000_D",
 	"PTF_Helmet_Cook_Infantry_Mich2000_S",
+	"PTF_Helmet_Lowe_Infantry_Mich2000_WD",
+	"PTF_Helmet_Lowe_Infantry_Mich2000_D",
+	"PTF_Helmet_Lowe_Infantry_Mich2000_S",
 	"PTF_Helmet_Air_Black",
 	"PTF_Helmet_Air_Green",
 	"PTF_Helmet_Air_Olive",
-	"PTF_Helmet_Air_Pink",
-	"PTF_Helmet_Air_Smiley",
 	"PTF_Helmet_Air_Tan",
 	"PTF_Helmet_Air_USA",
 	"PTF_Helmet_Air_White",
@@ -447,9 +443,14 @@ _helmets = [
 	"rhsusf_mich_bare_headset",
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
+	"PTF_David_rhsusf_hgu56p_mask_black",
 	"rhs_8point_marpatd",
 	"rhs_8point",
-	"rhs_8point_marpatwd"
+	"rhs_8point_marpatwd",
+	"PTF_LAV_3A",
+	"PTF_LAV_3B",
+	"PTF_LAV_3C",
+	"PTF_LAV_3E"
 ];
 
 _glasses = [
@@ -534,7 +535,10 @@ _glasses = [
 	"G_Tactical_Clear",
 	"G_Tactical_Black",
 	"G_Spectacles_Tinted",
-	"G_WirelessEarpiece_F"
+	"G_WirelessEarpiece_F",
+	"kat_mask_M50",
+	"kat_mask_M04",
+	"kat_gasmaskFilter"
 ];
 
 // ammo, Throwables, Medical, Demolition

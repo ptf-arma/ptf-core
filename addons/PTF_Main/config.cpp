@@ -12,7 +12,7 @@ class CfgEditorCategories
 {
    class PTF
    {
-      displayName = "- Paramarine Task Force - Vehicles";
+      displayName = "- Paramarine Task Force";
       Priority = 0;
       side = 1;
    };
@@ -28,6 +28,10 @@ class CfgEditorSubcategories
    class PTF_Cars
    {
       displayName = "PTF - Cars";
+   };
+   class PTF_Units
+   {
+      displayName = "PTF - Units";
    };
    class PTF_ArmedCars
    {

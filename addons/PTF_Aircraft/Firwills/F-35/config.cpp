@@ -2,7 +2,11 @@ class CfgPatches
 {
 	class PTF_Aircraft_f35
 	{
-		units[]={"PTF_F35a"};
+		units[]={
+		"PTF_F35Heavy",
+		"PTF_F35Light",
+		"PTF_F35Stealth"
+		};
 		skipWhenMissingDependencies = 1;
 		addonRootClass = "PTF_Aircraft";
 		weapons[]={};

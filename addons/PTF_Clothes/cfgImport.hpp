@@ -10,6 +10,8 @@ class UniformItem;
 class HitPoints;
 class HitHull;
 class HitHRotor;
+class B_Pilot_F;
+
 //RHS Backpacks
 class rhsusf_calonii_coy;
 class rhsusf_falconii_coy;
@@ -84,8 +86,6 @@ class V_Safety_yellow_F;
 class V_LegStrapBag_Coyote_F;
 class V_LegStrapBag_black_F;
 //MOES Uniforms
-class CSU13BP_Base_NG;
-class CSU13BPTan_Base_NG;
 class CWU27P_Base;
 class CWU27PTan_Base;
 class CSU15BP_Base_Rolled_FG;

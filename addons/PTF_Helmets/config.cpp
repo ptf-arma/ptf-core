@@ -26,6 +26,7 @@ class cfgWeapons
 	class PTF_Helmet_Infantry_Mich2000_WD;
 	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
 	class PTF_Helmet_Infantry_Mich2000_D;
+	class rhsusf_cvc_green_helmet;
 	class USP_OPS_FASTXP_TAN;
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
@@ -366,22 +367,61 @@ class cfgWeapons
        		"\z\PTF\addons\PTF_Helmets\data\ptf_mich_covered_rhino_snow_co_Holt.paa",
        		"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
 	};
+	class PTF_Helmet_Lowe_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (WD) [Personal - B.Lowe]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_lowe.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Lowe_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (D) [Personal - B.Lowe]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_lowe.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Lowe_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (S) [Personal - B.Lowe]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_lowe.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
 	class PTF_Gute_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
 		displayName = "[MAG] HGU [Personal - B.Gute]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HUG_Gute.paa"};
-	};
-	class PTF_Smoll_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
-		displayName = "[MAG] HGU [Personal - S.Smoll]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Smool.paa"};
-	};
-	class PTF_Smoll_rhsusf_hgu56p_mask_black_cover : PTF_Helmet_Air_Smiley {
-		displayName = "[MAG] HGU MASK [Personal - S.Smoll]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Smool.paa"};
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gute.paa"};
 	};
 	class PTF_Gustav_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
 		displayName = "[MAG] HGU [Personal - T. Gustav]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gustav.paa"};
 	};
+	class PTF_David_rhsusf_hgu56p_mask_black : rhsusf_hgu56p_visor_black {
+		displayName = "[MAG] HGU [Personal - J. David]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"};
+	};
+	class PTF_LAV_3A : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-A]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3A.paa"};
+	};
+	class PTF_LAV_3B : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-B]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3B.paa"};
+	};
+	class PTF_LAV_3C : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-C]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3C.paa"};
+	};
+	class PTF_LAV_3E : rhsusf_cvc_green_helmet {
+		displayName = " [LAV] Crewman Helmet [Team - 3-E]";
+	hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"};
+		};
 };
 class cfgMods
 {
