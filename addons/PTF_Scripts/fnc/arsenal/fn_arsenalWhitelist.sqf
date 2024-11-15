@@ -283,8 +283,6 @@ _backpacks = [
 ];
 
 _uniforms = [
-	"PTF_Uniform_Air_CSU13BP_WD",
-	"PTF_Uniform_Air_CSU13BP_D",
 	"PTF_Uniform_Infantry_FROG_D",
 	"PTF_Uniform_Infantry_FROG_S",
 	"PTF_Uniform_Infantry_FROG_WD",
@@ -294,7 +292,6 @@ _uniforms = [
 	"PTF_Uniform_Air_CWU27P_D",
 	"PTF_Uniform_Air_CSU15BP_WD",
 	"PTF_Uniform_Air_CSU15BP_D",
-	"PTF_Uniform_Air_CSU13BP",
 	"PTF_Uniform_Infantry_G3_Green",
 	"PTF_Uniform_Infantry_G3_Tan"
 ];
