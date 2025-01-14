@@ -744,7 +744,9 @@ _medical = [
 	"kat_phenylephrine",
 	"kat_TXA",
 	"kat_Carbonate",
-	"kat_Painkiller"
+	"kat_Painkiller",
+	"kat_sealant",
+	"kat_atropine"
 ];
 
 _demolition = [
@@ -818,7 +820,8 @@ _equipment = [
 	"rhsusf_acc_premier_anpvs27",
 	"acex_intelitems_notepad",
 	"ACE_PlottingBoard",
-	"ACE_Altimeter"
+	"ACE_Altimeter",
+	"KAT_ChemicalDetector"
 ];
 
 _binoculars = [
