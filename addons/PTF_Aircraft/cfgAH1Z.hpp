@@ -63,7 +63,6 @@ class PTF_AH1Z : RHS_AH1Z
       };
    class Turrets : Turrets
    {
-      gunnerCompartments = "Compartment1";
       class MainTurret : MainTurret
       {
          weapons[] =
@@ -73,55 +72,6 @@ class PTF_AH1Z : RHS_AH1Z
                  "rhs_weap_M197",
                  "rhs_weap_laserDesignator_AI"
               };
-         magazines[] =
-             {
-                 "rhs_mag_M197_750",
-                 "rhs_laserfcsmag",
-                 "rhs_LaserMag_ai"
-              };
-         class OpticsIn
-            {
-               class Wide
-               {
-                  opticsDisplayName="W";
-                  initAngleX=0;
-                  minAngleX=-30;
-                  maxAngleX=30;
-                  initAngleY=0;
-                  minAngleY=-100;
-                  maxAngleY=100;
-                  initFov=0.456;
-                  minFov=0.456;
-                  maxFov=0.456;
-                  directionStabilized = 1;
-                  visionMode[]=
-                  {
-                     "Normal",
-                     "NVG",
-                     "Ti"
-                  };
-                  thermalMode[]={0,1};
-                  opticsPPEffects[] = {"OpticsCHAbera2","OpticsBlur2"};
-                  gunnerOpticsModel="\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64";
-               };
-               class Medium: Wide
-               {
-                  directionStabilized = 1;
-                  opticsDisplayName="M - Stabilized";
-                  initFov=0.093;
-                  minFov=0.093;
-                  maxFov=0.093;
-                  gunnerOpticsModel="\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64_2";
-               };
-               class Narrow: Medium
-               {
-                  opticsDisplayName="N - Stabilized";
-                  gunnerOpticsModel="\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64_3";
-                  initFov=0.029;
-                  minFov=0.029;
-                  maxFov=0.029;
-               };
-            };
       };
    };
    class ACE_Actions : ACE_Actions {
