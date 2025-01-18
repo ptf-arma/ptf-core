@@ -507,6 +507,15 @@ class cfgWeapons
             "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
         };
     };
+    class PTF_Helmet_Halstead_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (S) [Personal - W.Halstead]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_halstead.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
     class PTF_Gute_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
 	{
 		displayName="[MAG] HGU [Personal - B.Gute]";
