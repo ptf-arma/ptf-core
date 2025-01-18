@@ -444,6 +444,7 @@ _helmets = [
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
 	"PTF_David_rhsusf_hgu56p_mask_black",
+	"PTF_Jesus_rhsusf_hgu56p_visor_black",
 	"rhs_8point_marpatd",
 	"rhs_8point",
 	"rhs_8point_marpatwd",
@@ -743,7 +744,9 @@ _medical = [
 	"kat_phenylephrine",
 	"kat_TXA",
 	"kat_Carbonate",
-	"kat_Painkiller"
+	"kat_Painkiller",
+	"kat_sealant",
+	"kat_atropine"
 ];
 
 _demolition = [
@@ -817,7 +820,8 @@ _equipment = [
 	"rhsusf_acc_premier_anpvs27",
 	"acex_intelitems_notepad",
 	"ACE_PlottingBoard",
-	"ACE_Altimeter"
+	"ACE_Altimeter",
+	"KAT_ChemicalDetector"
 ];
 
 _binoculars = [

@@ -53,25 +53,6 @@
     true // needRestart
 ] call CBA_fnc_addSetting;
 [
-    "PTF_WeaponWList", "EDITBOX",
-    ["WhiteList Shoulderable Weapons", "Set what weapons you want to be able to shoulder"],
-    ["Paramarine Task Force", "Weapon Swaping"],
-    "['rhs_weap_m32','rhs_weap_M590_5RD','rhs_weap_M590_8RD']",
-    true, // isGlobal
-    {},
-    false // needRestart
-] call CBA_fnc_addSetting;
-[
-    "PTF_WeaponW", "CHECKBOX",
-    ["Enable Shoulderable Whitelist", "Only allowe the weapons defined under Whitelist to be place on your shoulder"],
-    ["Paramarine Task Force", "Weapon Swaping"],
-    true,
-    true, // isGlobal
-    {},
-    false // needRestart
-] call CBA_fnc_addSetting;
-
-[
 "PTF_SRChannels", "LIST",	 
 ["Select # of Short Range Channels",	 "Select how many SR channels you want to set"], 
 ["Paramarine Task Force", "TFAR Setting SR"], 

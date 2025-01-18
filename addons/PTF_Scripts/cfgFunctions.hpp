@@ -1,20 +1,6 @@
 class cfgFunctions {
 	class PTF_functions {
 		tag = "PTF";
-		class WeaponSwap {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\Weapon Swaping";
-			class weaponSwap {};
-			class SoulderNSwap {};
-			class Shoulder {};
-			class SawpNDelete {};
-			class pos {};
-			class ArsenalEventHandlers {
-				preinit = 1;
-			};
-			class WeaponEventHandlerPlayer{
-				postinit = 1;
-			}
-		};
 		class MapMarkers {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Markers";
 			class Dot{};
