@@ -451,7 +451,13 @@ _helmets = [
 	"PTF_LAV_3A",
 	"PTF_LAV_3B",
 	"PTF_LAV_3C",
-	"PTF_LAV_3E"
+	"PTF_LAV_3E",
+	"PTF_Helmet_HQ_Infantry_Mich2000_DES",
+	"PTF_Helmet_1st_plt_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_4_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_3_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_2_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_1_Infantry_Mich2000_DES"
 ];
 
 _glasses = [
