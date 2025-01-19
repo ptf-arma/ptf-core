@@ -89,14 +89,5 @@ class cfgFunctions {
 			class BeanBag {};
 			class Disarm {};
 		};
-		class TfarRadioSetting {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\ArsenalRadioSet";
-			class SetTfrRadio {
-				preinit = 1;
-			};
-			class ChangeSettings {};
-			class LRset {};
-			class SRset {};
-		};
 	};
 };

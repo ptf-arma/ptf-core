@@ -378,6 +378,7 @@ _helmets = [
 	"PTF_Helmet_Lowe_Infantry_Mich2000_WD",
 	"PTF_Helmet_Lowe_Infantry_Mich2000_D",
 	"PTF_Helmet_Lowe_Infantry_Mich2000_S",
+	"PTF_Helmet_Halstead_Infantry_Mich2000_D",
 	"PTF_Helmet_Air_Black",
 	"PTF_Helmet_Air_Green",
 	"PTF_Helmet_Air_Olive",
@@ -451,7 +452,13 @@ _helmets = [
 	"PTF_LAV_3A",
 	"PTF_LAV_3B",
 	"PTF_LAV_3C",
-	"PTF_LAV_3E"
+	"PTF_LAV_3E",
+	"PTF_Helmet_HQ_Infantry_Mich2000_DES",
+	"PTF_Helmet_1st_plt_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_4_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_3_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_2_Infantry_Mich2000_DES",
+	"PTF_Helmet_1_1_Infantry_Mich2000_DES"
 ];
 
 _glasses = [
