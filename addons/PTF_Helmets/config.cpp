@@ -580,6 +580,14 @@ class cfgWeapons
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"
 		};
 	};
+	class PTF_ACV_David_Green: rhsusf_cvc_green_alt_helmet
+	{
+		displayName=" [ACV] David Personal Helmet ";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ACV_David_Green.paa"
+		};
+	};
 };
 	
 class cfgMods
