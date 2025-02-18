@@ -132,6 +132,16 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
       item_xx(ACE_splint, 25);
       item_xx(ACE_plasmaIV,15);
       item_xx(ACE_plasmaIV_500, 15);
+      item_xx(kat_IV_16, 30);
+      item_xx(kat_Carbonate, 30);
+      item_xx(kat_Painkiller, 30);
+      item_xx(kat_EACA, 30);
+      item_xx(kat_IO_FAST, 30);
+      item_xx(kat_naloxone, 30);
+      item_xx(kat_norepinephrine, 30);
+      item_xx(kat_phenylephrine, 30);
+      item_xx(kat_Carbonate, 30);
+      item_xx(kat_TXA, 30);
    };
 };
 class PTF_Cargo_Small_Humanitarian : PTF_Cargo_Small
@@ -237,6 +247,24 @@ class PTF_Cargo_Ammo : NATO_Box_Base
    class TransportWeapons{};
    class TransportItems {};
    class TransportBackpacks{};
+};
+class PTF_Cargo_Small_Repair : PTF_Cargo_Small
+{
+   displayname = "Small - Repair";
+   supplyRadius = 10;
+   transportRepair = 200000000;
+};
+class PTF_Cargo_Small_Refuel : PTF_Cargo_Small
+{
+   displayname = "Small - Refuel";
+   supplyRadius = 10;
+   transportRefuel = 200000000;
+};
+class PTF_Cargo_Small_Rearm : PTF_Cargo_Small
+{
+   displayname = "Small - Rearm";
+   supplyRadius = 10;
+   transportAmmo = 200000000;
 };
 class PTF_Cargo_Tiny_Ammo : Land_Ammobox_rounds_F
 {
