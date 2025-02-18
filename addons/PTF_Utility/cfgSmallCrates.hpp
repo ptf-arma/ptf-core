@@ -254,12 +254,6 @@ class PTF_Cargo_Small_Repair : PTF_Cargo_Small
    supplyRadius = 10;
    transportRepair = 200000000;
 };
-class PTF_Cargo_Small_Refuel : PTF_Cargo_Small
-{
-   displayname = "Small - Refuel";
-   supplyRadius = 10;
-   transportRefuel = 200000000;
-};
 class PTF_Cargo_Small_Rearm : PTF_Cargo_Small
 {
    displayname = "Small - Rearm";
