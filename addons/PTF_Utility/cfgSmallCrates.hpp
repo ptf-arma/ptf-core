@@ -251,6 +251,18 @@ class PTF_Cargo_Ammo : NATO_Box_Base
 class PTF_Cargo_Small_Repair : PTF_Cargo_Small
 {
    displayname = "Small - Repair";
+   class VehicleTransport
+      {
+         class Cargo
+         {
+            parachuteClass = "B_Parachute_02_F";
+            parachuteHeightLimit = 40;
+            canBeTransported = 1;
+            dimensions[] = {"BBox_Base0","BBox_Corner_1m"};
+         };
+         class Carrier{};
+      };
+   model = "\boxloader\mdl\boxloader_crate1.p3d";
    supplyRadius = 10;
    transportRepair = 200000000;
 };
