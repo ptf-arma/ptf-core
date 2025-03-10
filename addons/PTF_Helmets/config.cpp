@@ -458,7 +458,16 @@ class cfgWeapons
 		displayName="[Inf] MICH 2000 (D) [Personal - B.Soarin]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_desert_co_soarin.paa",
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_soarin.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Soarin_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (D) [Personal - B.Soarin]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_soarin.paa",
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
