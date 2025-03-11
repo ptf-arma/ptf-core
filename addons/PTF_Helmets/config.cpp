@@ -572,6 +572,11 @@ class cfgWeapons
 		displayName="[MAG] HGU [Personal - W. Halstead]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
 	};
+	class PTF_Halstead_rhsusf_hgu56p_mask_Visor_black: rhsusf_hgu56p_visor_mask_black
+	{
+		displayName="[MAG] HGU [Personal - W. Halstead - Mask]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
+	};
 	class PTF_LAV_3A: rhsusf_cvc_green_alt_helmet
 	{
 		displayName=" [ACV] Crewman Helmet [Team - 3-A]";
