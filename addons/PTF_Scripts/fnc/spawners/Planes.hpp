@@ -24,6 +24,11 @@ class PTF_Planes {
             displayName = "Spawn F35a";
             icon = "\USAF_F35A\data\f35_icon_bw.paa";
             };
+           class f35b {
+            statement = "['FIR_f35b_black1', 'Plane','PTF_PlaneTickets'] call PTF_fnc_SpawnFunction";
+            displayName = "Spawn F35b";
+            icon = "\USAF_F35A\data\f35_icon_bw.paa";
+            };
 		class MQ9 {
             statement = "['PTF_MQ9_SCARFACE', 'Plane','PTF_MQ9Tickets'] call PTF_fnc_SpawnFunction";
             displayName = "Spawn MQ9";
