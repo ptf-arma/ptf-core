@@ -292,6 +292,18 @@ _uniforms = [
 	"PTF_Uniform_Air_CWU27P_D",
 	"PTF_Uniform_Air_CSU15BP_WD",
 	"PTF_Uniform_Air_CSU15BP_D",
+	"CSU15BPTan_Base_FG",
+	"CSU15BP_Base_FG",
+	"CSU15BPTan_Base_NG",
+	"CSU15BP_Base_NG",
+	"CSU15BPTan_Base_Rolled_FG",
+	"CSU15BP_Base_Rolled_FG",
+	"CWU27P_Base",
+	"CWU27PTan_Base_NG",
+	"CWU27P_Base_NG",
+	"CWU27PTan_Base_Rolled",
+	"CWU27P_Base_Rolled",
+	"CWU27PTan_Base",
 	"PTF_Uniform_Infantry_G3_Green",
 	"PTF_Uniform_Infantry_G3_Tan"
 ];
@@ -328,7 +340,10 @@ _vests = [
 	"PTF_Vest_Infantry_CRYE_Light",
 	"PTF_Vest_Infantry_CRYE_Medic",
 	"PTF_Vest_Infantry_CRYE_Rifleman",
-	"PTF_Vest_Infantry_CRYE"
+	"PTF_Vest_Infantry_CRYE",
+	"SRU21P_LPU9P_PCU15AP_Alt",
+	"SRU21P_LPU9P_Alt",
+	"SRU21P_Alt"
 ];
 
 _helmets = [
@@ -449,7 +464,10 @@ _helmets = [
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
 	"PTF_David_rhsusf_hgu56p_mask_black",
 	"PTF_Jesus_rhsusf_hgu56p_visor_black",
-	"PTF_Halstead_rhsusf_hgu56p_mask_black",
+	"rhsusf_hgu56p_visor_mask_black"
+	"rhsusf_hgu56p_visor_mask_green",
+	"rhsusf_hgu56p_visor_mask",
+	"rhsusf_hgu56p_visor_mask_tan",
 	"rhs_8point_marpatd",
 	"rhs_8point",
 	"rhs_8point_marpatwd",
