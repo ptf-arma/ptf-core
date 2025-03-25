@@ -42,6 +42,16 @@ class PTF_Supplys {
             	displayName = "Spawn Small VicBox";
             	icon = "a3\supplies_f_exp\ammoboxes\data\ui\icon_equipment_box_ca.paa";
 				};
+				class PTF_SRepair {
+				statement = "['PTF_Cargo_Small_Repair', 'SmSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Small Repair Box";
+            	icon = "a3\supplies_f_exp\ammoboxes\data\ui\icon_equipment_box_ca.paa";
+				};
+				class PTF_SVAmmo {
+				statement = "['PTF_Cargo_Small_Rearm', 'SmSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Small Vehicle Ammo";
+            	icon = "a3\supplies_f_exp\ammoboxes\data\ui\icon_equipment_box_ca.paa";
+				};
             };
 			class Large {
             displayName = "Large Supplys";
@@ -69,6 +79,11 @@ class PTF_Supplys {
 				class PTF_Vic {
 				statement = "['PTF_Cargo_Large_VicBox', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn VicBox";
+            	icon = "a3\supplies_f_exp\ammoboxes\data\ui\icon_equipment_box_ca.paa";
+				};
+				class PTF_Refuel {
+				statement = "['PTF_Cargo_Large_Refuel', 'LgSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Refuel";
             	icon = "a3\supplies_f_exp\ammoboxes\data\ui\icon_equipment_box_ca.paa";
 				};
             };

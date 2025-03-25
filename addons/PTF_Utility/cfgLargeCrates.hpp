@@ -152,3 +152,24 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
       item_xx(ToolKit, 6);
    };
 };
+class PTF_Cargo_Large_Refuel : PTF_Large_Box
+{
+   ace_dragging_dragPosition[] = {0,2,0};
+   class VehicleTransport
+      {
+         class Cargo
+         {
+            parachuteClass = "B_Parachute_02_F";
+            parachuteHeightLimit = 40;
+            canBeTransported = 1;
+            dimensions[] = {"VTV_Cargo_Base","VTV_Cargo_Corner"};
+         };
+         class Carrier{};
+      };
+   displayname = "Large - Refuel";
+   model = "\boxloader_cargo\mdl\boxloader_sixcon_dar.p3d";
+   supplyRadius = 10;
+   transportRefuel = 200000000;
+   ace_refuel_fuelCargo = 100000; // Maximum fuel cargo amount (in liters)
+   ace_refuel_hooks[] = {{0,0,0},{0,0,0}}; // Nozzle hooks
+};
