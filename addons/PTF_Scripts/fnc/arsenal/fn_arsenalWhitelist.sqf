@@ -176,6 +176,10 @@ _attachments = [
 	"rhsusf_acc_rotex_mp7_desert",
 	"avm224_W_M224_mortar_carry",
 	"ace_csw_carryMortarBaseplate",
+	"ace_compat_rhs_usf3_mk19_carry",
+	"ace_compat_rhs_usf3_m2_carry",
+	"ace_csw_m3CarryTripodLow",
+	"ace_csw_m3CarryTripod",
 	"rhsusf_acc_rotex_mp7_winter",
 	"rhsusf_acc_rotex_mp7_aor1",
 	"rhsusf_acc_grip2",
@@ -237,9 +241,6 @@ _attachments = [
 // Backpacks, Uniforms, Vests, Helmets, Glasses, 
 
 _backpacks = [
-	"ace_compact_rhs_usf3_m2_carry",
-	"ace_csw_m3CarryTripodLow",
-	"ace_compact_rhs_usf3_mk19_carry",
 	"PTF_Backpack_Infantry_Corpsman_Kitbag_Black",
 	"PTF_Backpack_Infantry_Corpsman_Kitbag_Red",
 	"PTF_Backpack_Infantry_Crye_Zipon",
@@ -278,8 +279,8 @@ _backpacks = [
 	"USP_ZIPON_PANEL_CPC_CBR",
 	"USP_ZIPON_PANEL_CPC_BC_SM_CBR",
 	"USP_ZIPON_PANEL_CPC_SM_CBR",
-	"ace_compat_rhs_usf3_mk19_carry",
-	"ace_compat_rhs_usf3_m2_carry"
+	"rhs_M252_Gun_Bag",
+	"rhs_M252_bipod_Bag"
 ];
 
 _uniforms = [
@@ -575,8 +576,6 @@ _glasses = [
 // ammo, Throwables, Medical, Demolition
 
 _ammo = [
-	"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M1001",
-	"ace_compact_rhs_usf3_48Rnd_40mm_MK19_M430A1",
 	"ace_csw_100Rnd_127x99_mag_red",
 	"training_mag_556_200rnd_rubber",
 	"training_pmag_30rnd_rubber_blue",
@@ -614,6 +613,11 @@ _ammo = [
 	"avm224_M_6Rnd_60mm_ILLUM_csw",
 	"avm224_M_6Rnd_60mm_ILLUM_IR_csw",
 	"avm224_M_6Rnd_60mm_HE_0",
+	"ACE_1Rnd_82mm_Mo_HE_Guided",
+	"ACE_1Rnd_82mm_Mo_HE",
+	"ACE_1Rnd_82mm_Mo_illum",
+	"ACE_1Rnd_82mm_Mo_HE_Laser_Guided",
+	"ACE_1Rnd_82mm_Mo_HE_Smoke",
 	"rhs_mag_30Rnd_556x45_M855A1_Stanag",
 	"PTF_Training_Mag",
 	"PTF_Mag_556x45_M855A1_PMAG_Tan_Mix",
@@ -654,13 +658,12 @@ _ammo = [
 	"rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red",
 	"rhs_mag_30Rnd_556x45_Mk262_Stanag",
 	"B_IR_Grenade",
-	"ace_compact_rhs_usf3_m2_carry",
 	"ace_csw_m3CarryTripodLow",
-	"ace_compact_rhs_usf3_mk19_carry",
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M1001",
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430A1",
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19",
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430I",
+	"rhs_mag_100rnd_127x99_slap_mag",
 	"ace_csw_100Rnd_127x99_mag_red",
 	"rhs_mag_M441_HE",
 	"rhs_mag_M433_HEDP",
