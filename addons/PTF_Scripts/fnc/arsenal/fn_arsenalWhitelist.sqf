@@ -641,7 +641,7 @@ _ammo = [
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430A1",
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19",
 	"ace_compat_rhs_usf3_48Rnd_40mm_MK19_M430I",
-	"rhs_mag_200rnd_127x99_slap_mag",
+	"rhs_mag_100rnd_127x99_slap_mag",
 	"ace_csw_100Rnd_127x99_mag_red",
 	"rhs_mag_M441_HE",
 	"rhs_mag_M433_HEDP",
