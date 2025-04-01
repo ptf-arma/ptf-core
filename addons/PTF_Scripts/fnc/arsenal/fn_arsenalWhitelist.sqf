@@ -530,15 +530,8 @@ _glasses = [
 // ammo, Throwables, Medical, Demolition
 
 _ammo = [
-	"training_mag_556_200rnd_rubber",
-	"training_pmag_30rnd_rubber_blue",
-	"training_stanag_30rnd_rubber_blue",
-	"training_mag_4rnd_12g_rubber",
-	"training_40mm_6rnd_12g_rubber",
 	"avm224_M_6Rnd_60mm_HE_0_csw",
 	"avm224_M_6Rnd_60mm_HE_csw",
-	"PTF_Training_Mag_Blue",
-	"PTF_Training_Mag_Red",
 	"PTF_Mag_556x45_M855A1_Stanag_Mix",
 	"rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan_Tracer_Red",
 	"MRAWS_HEAT55_F",
@@ -572,7 +565,6 @@ _ammo = [
 	"ACE_1Rnd_82mm_Mo_HE_Laser_Guided",
 	"ACE_1Rnd_82mm_Mo_HE_Smoke",
 	"rhs_mag_30Rnd_556x45_M855A1_Stanag",
-	"PTF_Training_Mag",
 	"PTF_Mag_556x45_M855A1_PMAG_Tan_Mix",
 	"PTF_Mag_556x45_M855A1_PMAG_Mix",
 	"PTF_Mag_556x45_Mk262_PMAG_Tan_Mix",
