@@ -54,18 +54,6 @@ class PTF_Backpack_Infantry_Assault : B_AssaultPack_cbr
    maximumLoad = 300;
    mass = 30;
 };
-class PTF_Backpack_Infantry_Assault_Invis : B_AssaultPack_cbr
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] Assault (Hidden) [PTF]";
-   author = "Paramarine Task Force";
-   model = "\A3\weapons_f\empty";
-   hiddenSelectionsTextures[] = {""};
-   maximumLoad = 300;
-   mass = 30;
-};
 //RHS BAGS
 class PTF_Backpack_Infantry_Falcon : rhsusf_falconii_coy
 {
@@ -127,24 +115,4 @@ class PTF_Backpack_Infantry_Crye_Patrol : USP_PATROL_PACK_CBR
    author = "Paramarine Task Force";
    maximumLoad = 300;
    mass = 30;
-};
-class PTF_Backpack_Infantry_Crye_Hydro : USP_HYDROPACK_CBR
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] Crye Hydro [PTF]";
-   author = "Paramarine Task Force";
-   maximumLoad = 200;
-   mass = 20;
-};
-class PTF_Backpack_Infantry_Crye_LAAW : USP_LAAW_CLIP
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] Crye LAAW [PTF]";
-   author = "Paramarine Task Force";
-   maximumLoad = 200;
-   mass = 20;
 };
