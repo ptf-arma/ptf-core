@@ -34,7 +34,7 @@ class ACE_Actions {
       };
    };
 };
-class PTF_Salave : Land_MultiScreenComputer_01_black_F {
+class PTF_Salvage : Land_MultiScreenComputer_01_black_F {
    scope = 2;
    side = 8;
    faction = "BLU_F";
@@ -50,7 +50,7 @@ class PTF_Salave : Land_MultiScreenComputer_01_black_F {
    displayName = "Salavage Computer";
 class ACE_Actions {
    class ACE_MainActions {
-      displayName = "Salave Vehicles";
+      displayName = "Salvage Vehicles";
       selection = "";
       distance = 1.5;
       condition = "true";

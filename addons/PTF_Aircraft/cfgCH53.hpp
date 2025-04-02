@@ -10,6 +10,7 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
    ace_cargo_hasCargo = 1;
    author = "Paramarine Task Force";
    displayName = "CH-53E GAU-21 [MAG36]";
+   slingLoadMaxCargoMass = 16329;
    weapons[] = {"CMFlareLauncher"};
    magazines[] = {
        "240Rnd_CMFlare_Chaff_Magazine",
@@ -31,6 +32,7 @@ class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
    faction = "BLU_F";
    author = "Paramarine Task Force";
    displayName = "CH-53E Cargo [MAG36]";
+   slingLoadMaxCargoMass = 16329;
    weapons[] = {"CMFlareLauncher"};
    magazines[] = {
        "240Rnd_CMFlare_Chaff_Magazine",

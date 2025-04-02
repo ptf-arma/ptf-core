@@ -53,33 +53,3 @@ class PTF_Pso_Arsenal : PTF_Standard_Arsenal
       };
    };
 };
-class PTF_Training_box: PTF_Standard_Arsenal
-{
-    displayname="Training Box [PTF]";
-	class Transportitems: TransportItems
-	{
-		class _xx_training_attachment_adapter_yellow
-		{
-			name="training_attachment_adapter_yellow";
-			count=250;
-		};
-		class _xx_training_attachment_suppressor_blue
-		{
-			name="training_attachment_suppressor_blue";
-			count=250;
-		};
-	};
-	class Transportmagazines: TransportMagazines
-	{
-			class _xx_training_stanag_30rnd_rubber_blue
-			{
-			magazine="training_stanag_30rnd_rubber_blue";
-			count=1000;
-			};
-			class _xx_training_stanag_30rnd_blank_yellow
-			{
-			magazine="training_stanag_30rnd_blank_yellow";
-			count=1000;
-			};
-		};
-	};

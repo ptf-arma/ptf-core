@@ -453,6 +453,33 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
+	class PTF_Helmet_Soarin_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (WD) [Personal - B.Soarin]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_Soarin.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Soarin_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (D) [Personal - B.Soarin]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_soarin.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Soarin_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (S) [Personal - B.Soarin]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_soarin.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
 	class PTF_Helmet_1_1_Infantry_Mich2000_DES: PTF_Helmet_Infantry_Mich2000_Headset_WD
     {
         displayName="[Inf] MICH 2000 (D) 1-1";
@@ -509,7 +536,7 @@ class cfgWeapons
     };
     class PTF_Helmet_Halstead_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
-		displayName="[Inf] MICH 2000 (S) [Personal - W.Halstead]";
+		displayName="[Inf] MICH 2000 (D) [Personal - W.Halstead]";
 		hiddenSelectionsTextures[]=
 		{
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_halstead.paa",
@@ -548,6 +575,17 @@ class cfgWeapons
 			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"
 		};
 	};
+
+	class PTF_Halstead_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
+	{
+		displayName="[MAG] HGU [Personal - W. Halstead]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
+	};
+	class PTF_Halstead_rhsusf_hgu56p_mask_Visor_black: rhsusf_hgu56p_visor_mask_black
+	{
+		displayName="[MAG] HGU [Personal - W. Halstead - Mask]";
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
+	};
 	class PTF_LAV_3A: rhsusf_cvc_green_alt_helmet
 	{
 		displayName=" [ACV] Crewman Helmet [Team - 3-A]";
@@ -578,6 +616,14 @@ class cfgWeapons
 		hiddenSelectionsTextures[]=
 		{
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"
+		};
+	};
+	class PTF_ACV_David_Green: rhsusf_cvc_green_alt_helmet
+	{
+		displayName=" [ACV] David Personal Helmet ";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ACV_David_Green.paa"
 		};
 	};
 };

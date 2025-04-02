@@ -45,6 +45,9 @@ class cfgPatches
           "PTF_AAV_CMD",
           "PTF_SAM_RADAR",
           "PTF_SAM_DEFENDER",
+          "PTF_ACV",
+          "PTF_ACV_MK19",
+          "PTF_ACV_30",
 		  "PTF_Badger",
 		  "PTF_Badger_D",
           "PTF_M1123"};
@@ -69,7 +72,8 @@ class cfgPatches
               "rhsusf_c_rg33l",
               "A3_Data_F_Oldman_Loadorder",
               "A3_Soft_F_Exp",
-              "A3_Boat_F_Beta"
+              "A3_Boat_F_Beta",
+              "ACV"
               };
    };
 };
@@ -97,6 +101,7 @@ class cfgMagazines
 //Defines Vehicles
 class cfgVehicles
 {
+#include "cfgACV.hpp"
 #include "cfgBadger.hpp"
 #include "cfgBoats.hpp"
 #include "cfgCougar.hpp"

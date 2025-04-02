@@ -11,10 +11,7 @@ class STANAG_556x45
            "PTF_Mag_556x45_Mk318_SCAR_Mix",
            "PTF_Mag_556x45_Mk262_Stanag_Mix",
            "PTF_Mag_556x45_Mk318_Stanag_Mix",
-           "PTF_Mag_556x45_M855A1_Stanag_Mix",
-           "PTF_Training_Mag",
-           "PTF_Training_Mag_Red",
-           "PTF_Training_Mag_Blue"};
+           "PTF_Mag_556x45_M855A1_Stanag_Mix"};
 };
 class CBA_556x45_STANAG
 {
@@ -29,10 +26,7 @@ class CBA_556x45_STANAG
            "PTF_Mag_556x45_Mk318_SCAR_Mix",
            "PTF_Mag_556x45_Mk262_Stanag_Mix",
            "PTF_Mag_556x45_Mk318_Stanag_Mix",
-           "PTF_Mag_556x45_M855A1_Stanag_Mix",
-           "PTF_Training_Mag",
-           "PTF_Training_Mag_Red",
-           "PTF_Training_Mag_Blue"};
+           "PTF_Mag_556x45_M855A1_Stanag_Mix"};
 };
 class CBA_762x51_SCAR
 {

@@ -37,6 +37,11 @@ class rhsusf_ach_helmet_headset_ess_ucp_alt;
 class rhsusf_ach_helmet_ucp_norotos;
 //Scopes
 class rhsusf_acc_premier_mrds;
+class Scot_Trij_Accu;
+class Scot_Trij_Accu_RMR_Top_Canted;
+class Scot_Trij_Accu_RMR;
+class Scot_Trij_Accu_T1;
+class Scot_Trij_Accu_T2;
 class InventoryOpticsItem_Base_F;
 class OpticsModes;
 class ItemCore;
@@ -129,6 +134,12 @@ class USP_CRYE_CPC_LEAD_BELT;
 class USP_CRYE_CPC_LIGHT_BELT;
 class USP_CRYE_CPC_MEDIC;
 class USP_CRYE_CPC_WEAPON;
+class USP_ZIPON_PANEL_CPC_CBR;
+class USP_ZIPON_PANEL_CPC_BC_SM_CBR;
+class USP_ZIPON_PANEL_CPC_SM_CBR;
+class USP_DELTA_BAG_CBR;
+class USP_REEBOW_3DAP_ACC7_CBR;
+class USP_REEBOW_3DAP_ACC8_CBR;
 //Crye Backpacks
 class USP_CRYE_BELT_PACK;
 class USP_ZIPON_PANEL_CBR;
@@ -137,6 +148,14 @@ class USP_PATROL_PACK_CBR;
 class USP_HYDROPACK_CBR;
 class USP_LAAW_CLIP;
 class USP_REEBOW_3DAP_ACC9_CBR;
+class USP_45L_RUCKSACK_TAN;
+//ILBE Radio Backpacks
+class tfw_ilbe_DD_coy;
+class tfw_ilbe_DD_d;
+class tfw_ilbe_DD_wd2;
+class tfw_ilbe_blade_wd;
+class tfw_ilbe_blade_d;
+class tfw_ilbe_blade_coy;
 //vanilla shit
 class U_Tank_green_F;
 //nightvision
