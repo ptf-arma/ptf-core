@@ -64,3 +64,458 @@ class PTF_Infantry_Weapon_Scope_M8541A : rhsusf_acc_premier_mrds
       };
    };
 };
+
+class PTF_Infantry_Weapon_Scope_Accu: Scot_Trij_Accu
+{
+   scope=2;
+   displayName="GSM Trijicon AccuPower";
+   author="Scotty_Z";
+   picture="\a3\Weapons_F\acc\Data\UI\icon_optic_DMS_ca.paa";
+   model="\Scottys_LPVO\Trij_Accu\Trij_Accu.p3d";
+   descriptionShort="Trijicon AccuPower 1-8x Magnification";
+   weaponInfoType="RscWeaponZeroing";
+   ACE_ScopeAdjust_Vertical[]={-14.5,14.5};
+   ACE_ScopeAdjust_Horizontal[]={-14.5,14.5};
+   ACE_ScopeAdjust_VerticalIncrement=0.1;
+   ACE_ScopeAdjust_HorizontalIncrement=0.1;
+   class ItemInfo: InventoryOpticsItem_Base_F
+   {
+      mass=14;
+      RMBhint="1-8x28 Low Power Variable Optic";
+      opticType=2;
+      optics=1;
+      modelOptics="\A3\Weapons_f_beta\acc\reticle_MRCO_F";
+      memoryPointCamera="eye";
+      class OpticsModes
+      {
+         class Snip
+         {
+            opticsID=1;
+            useModelOptics=1;
+            opticsPPEffects[]=
+            {
+               "OpticsCHAbera5",
+               "OpticsBlur5"
+            };
+            opticsFlare=1;
+            opticsDisablePeripherialVision=1;
+            opticsZoomMin="0.249/8";
+            opticsZoomMax="0.249/1";
+            opticsZoomInit="0.249/1";
+            discretefov[]=
+            {
+               "0.249/1",
+               "0.249/2",
+               "0.249/3",
+               "0.249/4",
+               "0.249/5",
+               "0.249/6",
+               "0.249/7",
+               "0.249/8"
+            };
+            discreteInitIndex=0;
+            memoryPointCamera="opticView";
+            modelOptics[]=
+            {
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_1.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_2.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_3.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_4.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_5.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_6.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_7.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_8.p3d"
+            };
+            discretedistance[]={100};
+            discreteDistanceInitIndex=0;
+            visionMode[] = {"Normal"};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+         class RMR
+         {
+            opticsID=2;
+            useModelOptics=0;
+            opticsPPEffects[]=
+            {
+               ""
+            };
+            opticsFlare=0;
+            opticsDisablePeripherialVision=0;
+            opticsZoomMin=0.25;
+            opticsZoomMax=1.25;
+            opticsZoomInit=0.75;
+            memoryPointCamera="eye2";
+            visionMode[]={};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+      };
+   };
+};
+
+class PTF_Infantry_Weapon_Scope_Accu_RMR: Scot_Trij_Accu_RMR
+{
+   scope=2;
+   displayName="GSM Trijicon AccuPower (RMR)";
+   author="Scotty_Z";
+   picture="\a3\Weapons_F\acc\Data\UI\icon_optic_DMS_ca.paa";
+   model="\Scottys_LPVO\Trij_Accu\Trij_Accu_RMR.p3d";
+   descriptionShort="Trijicon AccuPower 1-8x Magnification";
+   weaponInfoType="RscWeaponZeroing";
+   ACE_ScopeAdjust_Vertical[]={-14.5,14.5};
+   ACE_ScopeAdjust_Horizontal[]={-14.5,14.5};
+   ACE_ScopeAdjust_VerticalIncrement=0.1;
+   ACE_ScopeAdjust_HorizontalIncrement=0.1;
+   class ItemInfo: InventoryOpticsItem_Base_F
+   {
+      mass=14;
+      RMBhint="1-8x28 Low Power Variable Optic";
+      opticType=2;
+      optics=1;
+      modelOptics="\A3\Weapons_f_beta\acc\reticle_MRCO_F";
+      memoryPointCamera="eye";
+      class OpticsModes
+      {
+         class Snip
+         {
+            opticsID=1;
+            useModelOptics=1;
+            opticsPPEffects[]=
+            {
+               "OpticsCHAbera5",
+               "OpticsBlur5"
+            };
+            opticsFlare=1;
+            opticsDisablePeripherialVision=1;
+            opticsZoomMin="0.249/8";
+            opticsZoomMax="0.249/1";
+            opticsZoomInit="0.249/1";
+            discretefov[]=
+            {
+               "0.249/1",
+               "0.249/2",
+               "0.249/3",
+               "0.249/4",
+               "0.249/5",
+               "0.249/6",
+               "0.249/7",
+               "0.249/8"
+            };
+            discreteInitIndex=0;
+            memoryPointCamera="opticView";
+            modelOptics[]=
+            {
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_1.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_2.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_3.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_4.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_5.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_6.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_7.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_8.p3d"
+            };
+            discretedistance[]={100};
+            discreteDistanceInitIndex=0;
+            visionMode[] = {"Normal"};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+         class RMR
+         {
+            opticsID=2;
+            useModelOptics=0;
+            opticsPPEffects[]=
+            {
+               ""
+            };
+            opticsFlare=0;
+            opticsDisablePeripherialVision=0;
+            opticsZoomMin=0.25;
+            opticsZoomMax=1.25;
+            opticsZoomInit=0.75;
+            memoryPointCamera="eye2";
+            visionMode[]={};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+      };
+   };
+};
+
+class PTF_Infantry_Weapon_Scope_Accu_RMRCant: Scot_Trij_Accu_RMR_Top_Canted
+{
+   scope=2;
+   displayName="GSM Trijicon AccuPower (RMR Top Canted)";
+   author="Scotty_Z";
+   picture="\a3\Weapons_F\acc\Data\UI\icon_optic_DMS_ca.paa";
+   model="\Scottys_LPVO\Trij_Accu\Trij_Accu_RMR_TOP45.p3d";
+   descriptionShort="Trijicon AccuPower 1-8x Magnification";
+   weaponInfoType="RscWeaponZeroing";
+   ACE_ScopeAdjust_Vertical[]={-14.5,14.5};
+   ACE_ScopeAdjust_Horizontal[]={-14.5,14.5};
+   ACE_ScopeAdjust_VerticalIncrement=0.1;
+   ACE_ScopeAdjust_HorizontalIncrement=0.1;
+   class ItemInfo: InventoryOpticsItem_Base_F
+   {
+      mass=14;
+      RMBhint="1-8x28 Low Power Variable Optic";
+      opticType=2;
+      optics=1;
+      modelOptics="\A3\Weapons_f_beta\acc\reticle_MRCO_F";
+      memoryPointCamera="eye";
+      class OpticsModes
+      {
+         class Snip
+         {
+            opticsID=1;
+            useModelOptics=1;
+            opticsPPEffects[]=
+            {
+               "OpticsCHAbera5",
+               "OpticsBlur5"
+            };
+            opticsFlare=1;
+            opticsDisablePeripherialVision=1;
+            opticsZoomMin="0.249/8";
+            opticsZoomMax="0.249/1";
+            opticsZoomInit="0.249/1";
+            discretefov[]=
+            {
+               "0.249/1",
+               "0.249/2",
+               "0.249/3",
+               "0.249/4",
+               "0.249/5",
+               "0.249/6",
+               "0.249/7",
+               "0.249/8"
+            };
+            discreteInitIndex=0;
+            memoryPointCamera="opticView";
+            modelOptics[]=
+            {
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_1.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_2.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_3.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_4.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_5.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_6.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_7.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_8.p3d"
+            };
+            discretedistance[]={100};
+            discreteDistanceInitIndex=0;
+            visionMode[]={"Normal"};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+         class RMR
+         {
+            opticsID=2;
+            useModelOptics=0;
+            opticsPPEffects[]=
+            {
+               ""
+            };
+            opticsFlare=0;
+            opticsDisablePeripherialVision=0;
+            opticsZoomMin=0.25;
+            opticsZoomMax=1.25;
+            opticsZoomInit=0.75;
+            memoryPointCamera="eye2";
+            visionMode[]={};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+      };
+   };
+};
+
+class PTF_Infantry_Weapon_Scope_Accu_T1: Scot_Trij_Accu_T1
+{
+   scope=2;
+   displayName="GSM Trijicon AccuPower (T1)";
+   author="Scotty_Z";
+   picture="\a3\Weapons_F\acc\Data\UI\icon_optic_DMS_ca.paa";
+   model="\Scottys_LPVO\Trij_Accu\Trij_Accu_T1.p3d";
+   descriptionShort="Trijicon AccuPower 1-8x Magnification";
+   weaponInfoType="RscWeaponZeroing";
+   ACE_ScopeAdjust_Vertical[]={-14.5,14.5};
+   ACE_ScopeAdjust_Horizontal[]={-14.5,14.5};
+   ACE_ScopeAdjust_VerticalIncrement=0.1;
+   ACE_ScopeAdjust_HorizontalIncrement=0.1;
+   class ItemInfo: InventoryOpticsItem_Base_F
+   {
+      mass=14;
+      RMBhint="1-8x28 Low Power Variable Optic";
+      opticType=2;
+      optics=1;
+      modelOptics="\A3\Weapons_f_beta\acc\reticle_MRCO_F";
+      memoryPointCamera="eye";
+      class OpticsModes
+      {
+         class Snip
+         {
+            opticsID=1;
+            useModelOptics=1;
+            opticsPPEffects[]=
+            {
+               "OpticsCHAbera5",
+               "OpticsBlur5"
+            };
+            opticsFlare=1;
+            opticsDisablePeripherialVision=1;
+            opticsZoomMin="0.249/8";
+            opticsZoomMax="0.249/1";
+            opticsZoomInit="0.249/1";
+            discretefov[]=
+            {
+               "0.249/1",
+               "0.249/2",
+               "0.249/3",
+               "0.249/4",
+               "0.249/5",
+               "0.249/6",
+               "0.249/7",
+               "0.249/8"
+            };
+            discreteInitIndex=0;
+            memoryPointCamera="opticView";
+            modelOptics[]=
+            {
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_1.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_2.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_3.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_4.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_5.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_6.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_7.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_8.p3d"
+            };
+            discretedistance[]={100};
+            discreteDistanceInitIndex=0;
+            visionMode[]={"Normal"};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+         class RMR
+         {
+            opticsID=2;
+            useModelOptics=0;
+            opticsPPEffects[]=
+            {
+               ""
+            };
+            opticsFlare=0;
+            opticsDisablePeripherialVision=0;
+            opticsZoomMin=0.25;
+            opticsZoomMax=1.25;
+            opticsZoomInit=0.75;
+            memoryPointCamera="eye2";
+            visionMode[]={};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+      };
+   };
+};
+
+class PTF_Infantry_Weapon_Scope_Accu_T2: Scot_Trij_Accu_T2
+{
+   scope=2;
+   displayName="GSM Trijicon AccuPower (T2)";
+   author="Scotty_Z";
+   picture="\a3\Weapons_F\acc\Data\UI\icon_optic_DMS_ca.paa";
+   model="\Scottys_LPVO\Trij_Accu\Trij_Accu_T2.p3d";
+   descriptionShort="Trijicon AccuPower 1-8x Magnification";
+   weaponInfoType="RscWeaponZeroing";
+   ACE_ScopeAdjust_Vertical[]={-14.5,14.5};
+   ACE_ScopeAdjust_Horizontal[]={-14.5,14.5};
+   ACE_ScopeAdjust_VerticalIncrement=0.1;
+   ACE_ScopeAdjust_HorizontalIncrement=0.1;
+   class ItemInfo: InventoryOpticsItem_Base_F
+   {
+      mass=14;
+      RMBhint="1-8x28 Low Power Variable Optic";
+      opticType=2;
+      optics=1;
+      modelOptics="\A3\Weapons_f_beta\acc\reticle_MRCO_F";
+      memoryPointCamera="eye";
+      class OpticsModes
+      {
+         class Snip
+         {
+            opticsID=1;
+            useModelOptics=1;
+            opticsPPEffects[]=
+            {
+               "OpticsCHAbera5",
+               "OpticsBlur5"
+            };
+            opticsFlare=1;
+            opticsDisablePeripherialVision=1;
+            opticsZoomMin="0.249/8";
+            opticsZoomMax="0.249/1";
+            opticsZoomInit="0.249/1";
+            discretefov[]=
+            {
+               "0.249/1",
+               "0.249/2",
+               "0.249/3",
+               "0.249/4",
+               "0.249/5",
+               "0.249/6",
+               "0.249/7",
+               "0.249/8"
+            };
+            discreteInitIndex=0;
+            memoryPointCamera="opticView";
+            modelOptics[]=
+            {
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_1.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_2.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_3.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_4.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_5.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_6.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_7.p3d",
+               "Scottys_LPVO\data\reticles\Trij_Accu_1-8_8.p3d"
+            };
+            discretedistance[]={100};
+            discreteDistanceInitIndex=0;
+            visionMode[]={"Normal"};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+         class RMR
+         {
+            opticsID=2;
+            useModelOptics=0;
+            opticsPPEffects[]=
+            {
+               ""
+            };
+            opticsFlare=0;
+            opticsDisablePeripherialVision=0;
+            opticsZoomMin=0.25;
+            opticsZoomMax=1.25;
+            opticsZoomInit=0.75;
+            memoryPointCamera="eye2";
+            visionMode[]={};
+            distanceZoomMin=100;
+            distanceZoomMax=100;
+            cameraDir="";
+         };
+      };
+   };
+};

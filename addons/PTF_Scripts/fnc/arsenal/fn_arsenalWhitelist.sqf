@@ -105,6 +105,11 @@ _pistols = [
 
 _attachments = [
 	"rhsusf_acc_su230",
+	"PTF_Infantry_Weapon_Scope_Accu",
+	"PTF_Infantry_Weapon_Scope_Accu_RMR",
+	"PTF_Infantry_Weapon_Scope_Accu_RMRCant",
+	"PTF_Infantry_Weapon_Scope_Accu_T1",
+	"PTF_Infantry_Weapon_Scope_Accu_T2",
 	"rhsusf_acc_ACOG_wd",
 	"rhsusf_acc_ACOG_d",
 	"ACE_DBAL_A3_Red",
@@ -197,11 +202,6 @@ _attachments = [
 	"rhsusf_weap_m1911a1",
 	"PTF_Infantry_Weapon_Scope_M8541A",
 	"rhsusf_acc_g33_t1",
-	"Scot_Trij_Accu",
-	"Scot_Trij_Accu_RMR_Top_Canted",
-	"Scot_Trij_Accu_RMR",
-	"Scot_Trij_Accu_T1",
-	"Scot_Trij_Accu_T2",
 	"optic_DMS"
 ];
 

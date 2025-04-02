@@ -3,7 +3,15 @@ class cfgPatches
    class PTF_Clothes
    {
       units[] = {"PTF_MAG_Pilot"};
-      weapons[] = {"PTF_Infantry_Weapon_Scope_M8541A"};
+      weapons[] = 
+         {
+            "PTF_Infantry_Weapon_Scope_M8541A", 
+            "PTF_Infantry_Weapon_Scope_Accu", 
+            "PTF_Infantry_Weapon_Scope_Accu_RMR",
+            "PTF_Infantry_Weapon_Scope_Accu_RMRCant",
+            "PTF_Infantry_Weapon_Scope_Accu_T1",
+            "PTF_Infantry_Weapon_Scope_Accu_T2"
+         };
       requiredVersion = "0.1";
       requiredAddons[] =
           {
@@ -22,7 +30,8 @@ class cfgPatches
               "tfar_handhelds",
               "tfar_ai_hearing",
               "ace_common",
-              "ace_gforces"};
+              "ace_gforces"
+            };
    };
 };
 #include "cfgImport.hpp"

@@ -37,6 +37,11 @@ class rhsusf_ach_helmet_headset_ess_ucp_alt;
 class rhsusf_ach_helmet_ucp_norotos;
 //Scopes
 class rhsusf_acc_premier_mrds;
+class Scot_Trij_Accu;
+class Scot_Trij_Accu_RMR_Top_Canted;
+class Scot_Trij_Accu_RMR;
+class Scot_Trij_Accu_T1;
+class Scot_Trij_Accu_T2;
 class InventoryOpticsItem_Base_F;
 class OpticsModes;
 class ItemCore;
