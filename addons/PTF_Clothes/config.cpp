@@ -27,6 +27,7 @@ class cfgPatches
 };
 #include "cfgImport.hpp"
 #include "cfgOpticRail.hpp"
+
 class cfgWeapons
 {
 #include "helmets\cfgInfantryHelmets.hpp"
@@ -51,10 +52,6 @@ class cfgVehicles
 #include "backpacks\cfgAirBackpacks.hpp"
 #include "backpacks\cfgLRBackpacks.hpp"
 #include "uniforms\cfgUniformVehicles.hpp"
-};
-class cfgAmmo
-{
-#include "cfgAmmo.hpp"
 };
 class cfgMagazineWells
 {

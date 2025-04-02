@@ -137,6 +137,14 @@ class USP_PATROL_PACK_CBR;
 class USP_HYDROPACK_CBR;
 class USP_LAAW_CLIP;
 class USP_REEBOW_3DAP_ACC9_CBR;
+class USP_45L_RUCKSACK_TAN;
+//ILBE Radio Backpacks
+class tfw_ilbe_DD_coy;
+class tfw_ilbe_DD_d;
+class tfw_ilbe_DD_wd2;
+class tfw_ilbe_blade_wd;
+class tfw_ilbe_blade_d;
+class tfw_ilbe_blade_coy;
 //vanilla shit
 class U_Tank_green_F;
 //nightvision
