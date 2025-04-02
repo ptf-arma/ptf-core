@@ -559,7 +559,6 @@ _ammo = [
 	"avm224_M_6Rnd_60mm_ILLUM_csw",
 	"avm224_M_6Rnd_60mm_ILLUM_IR_csw",
 	"avm224_M_6Rnd_60mm_HE_0",
-	"ACE_1Rnd_82mm_Mo_HE_Guided",
 	"ACE_1Rnd_82mm_Mo_HE",
 	"ACE_1Rnd_82mm_Mo_illum",
 	"ACE_1Rnd_82mm_Mo_HE_Laser_Guided",
