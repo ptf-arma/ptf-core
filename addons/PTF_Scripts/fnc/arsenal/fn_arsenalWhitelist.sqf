@@ -21,6 +21,8 @@ _rifles = [
 	"rhs_weap_m4a1_m203s",
 	"rhs_weap_m4a1_m320",
 	"rhs_weap_m4a1_mstock",
+	"rhs_weap_m4a1_wd",
+	"rhs_weap_m4a1_m203s_wd",
 	"rhs_weap_mk18_KAC_bk",
 	"rhs_weap_mk18_d",
 	"rhs_weap_mk18_KAC_d",
