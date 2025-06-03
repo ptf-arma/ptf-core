@@ -384,6 +384,8 @@ _helmets = [
 	"PTF_Helmet_FASTXP_CU_TAN",
 	"PTF_Helmet_FASTXP_CT_TAN",
 	"PTF_Helmet_FASTXP_CO_TAN",
+	"PTF_Helmet_Foliage_DES",
+	"PTF_Helmet_Foliage_WD",
 	"rhsusf_ach_bare_tan",
 	"rhsusf_ach_bare_tan_ess",
 	"rhsusf_ach_bare_tan_headset",
