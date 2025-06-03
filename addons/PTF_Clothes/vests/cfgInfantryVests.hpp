@@ -757,12 +757,12 @@ class PTF_Vest_Infantry_SPC_TeamLeader : rhsusf_spc_teamleader
       };
    };
 };
-class PTF_Vest_Infantry_Namehere_name : USP_VEST_STRANDHOGG2_CBR
+class PTF_Vest_Infantry_Strandhogg : USP_VEST_STRANDHOGG2_CBR
 {
    scope = 2;
    side = 1;
    faction = "BLU_F";
-   displayName = "[Inf] PLACEHOLDER [PTF]";
+   displayName = "[Inf] Strandhogg [PTF]";
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
