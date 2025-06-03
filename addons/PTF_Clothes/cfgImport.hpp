@@ -55,6 +55,7 @@ class rhsusf_cvc_helmet;
 class rhsusf_cvc_alt_helmet;
 class rhsusf_cvc_ess;
 class rhsusf_cvc_ess_helmet;
+class rhsusf_ach_helmet_camo_ocp;
 //USP Helmets
 class USP_OPSCORE_FASTMT_C;
 class USP_OPS_FASTXP_CT_TAN;

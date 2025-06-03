@@ -788,3 +788,63 @@ class PTF_Helmet_2_3_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
       };
    };
 };
+// Netting helmets
+	class PTF_Helmet_Foliage_WD: rhsusf_ach_helmet_camo_ocp
+	{
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] MICH 2000 Foliage (WD)";
+      author = "Paramarine Task Force";
+		hiddenSelectionsTextures[]=
+		{
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_wd_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\camo_net_co.paa"
+		};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo : ItemInfo
+   {
+      mass = 20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName = "HitHead";
+            armor = 6;
+            passThrough = 0.5;
+			};
+		 };
+	  };
+   };
+   	class PTF_Helmet_Foliage_DES: rhsusf_ach_helmet_camo_ocp
+	{
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] MICH 2000 Foliage (D)";
+      author = "Paramarine Task Force";
+		hiddenSelectionsTextures[]=
+		{
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_des_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\camo_net_co.paa"
+		};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo : ItemInfo
+   {
+      mass = 20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName = "HitHead";
+            armor = 6;
+            passThrough = 0.5;
+			};
+		 };
+	  };
+   }; 
+   
