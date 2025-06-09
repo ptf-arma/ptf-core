@@ -788,3 +788,30 @@ class PTF_Helmet_2_3_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
       };
    };
 };
+class PTF_MSO_FASTMTC_M81_MGSW : USP_OPSCORE_FASTMTC_M81_MGSW
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] MICH 2000 (WD) 2-3";
+   author = "Paramarine Task Force";
+   hiddenSelections[] = {"Camo1", "Camo2"};
+   hiddenSelectionsTextures[] = {
+      "",
+      ""};
+   ace_hearing_protection = 0.8;
+   ace_hearing_lowerVolume = 0;
+   class ItemInfo : ItemInfo
+   {
+      mass = 20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName = "HitHead";
+            armor = 6;
+            passThrough = 0.5;
+         };
+      };
+   };
+}
