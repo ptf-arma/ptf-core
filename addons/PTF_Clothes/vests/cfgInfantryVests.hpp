@@ -757,3 +757,36 @@ class PTF_Vest_Infantry_SPC_TeamLeader : rhsusf_spc_teamleader
       };
    };
 };
+class PTF_Vest_Infantry_Strandhogg : USP_VEST_STRANDHOGG2_CBR
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] Strandhogg [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : ItemInfo
+   {
+      containerClass = Supply250;
+      mass = 40;
+      class HitpointsProtectionInfo
+      {
+         class Chest
+         {
+            HitpointName = "HitChest";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Diaphragm
+         {
+            HitpointName = "HitDiaphragm";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Body
+         {
+            hitpointName = "HitBody";
+            passThrough = 0.4;
+         };
+      };
+   };
+};

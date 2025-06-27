@@ -304,9 +304,10 @@ _vests = [
 	"PTF_Vest_Infantry_CRYE_Medic",
 	"PTF_Vest_Infantry_CRYE_Rifleman",
 	"PTF_Vest_Infantry_CRYE",
-	"SRU21P_LPU9P_PCU15AP_Alt",
-	"SRU21P_LPU9P_Alt",
-	"SRU21P_Alt"
+	"PTF_Vest_Air_SRU21P_LPU9P_PCU15AP_Alt",
+	"PTF_Vest_Air_SRU21P_LPU9P_Alt",
+	"PTF_Vest_Air_SRU21P_Alt",
+	"PTF_Vest_Infantry_Strandhogg"
 ];
 
 _helmets = [
@@ -816,12 +817,12 @@ _nightvision = [
 // PSO Additional items 
 
 _helmetsPSO = [
-	"USP_OPSCORE_FASTMTC_M81_CS",
-	"USP_OPSCORE_FASTMTC_M81_CGSW",
-	"USP_OPSCORE_FASTMTC_M81_CMSW",
-	"USP_OPSCORE_FASTMTC_M81_CMGSW",
-	"USP_OPSCORE_FASTMTC_M81_MSW",
-	"USP_OPSCORE_FASTMTC_M81_MGSW"
+	"PTF_MSO_FASTMTC_M81_MGSW",
+	"PTF_MSO_FASTMTC_M81_MSW",
+	"PTF_MSO_FASTMTC_M81_CMGSW",
+	"PTF_MSO_FASTMTC_M81_CMSW",
+	"PTF_MSO_FASTMTC_M81_CGSW",
+	"PTF_MSO_FASTMTC_M81_CS"
 ];
 
 _uniformsPSO = [
