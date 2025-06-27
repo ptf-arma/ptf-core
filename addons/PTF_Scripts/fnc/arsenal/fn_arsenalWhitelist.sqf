@@ -306,7 +306,7 @@ _vests = [
 	"PTF_Vest_Infantry_CRYE",
 	"PTF_Vest_Air_SRU21P_LPU9P_PCU15AP_Alt",
 	"PTF_Vest_Air_SRU21P_LPU9P_Alt",
-	"PTF_Vest_Air_SRU21P_Alt"
+	"PTF_Vest_Air_SRU21P_Alt",
 	"PTF_Vest_Infantry_Strandhogg"
 ];
 
