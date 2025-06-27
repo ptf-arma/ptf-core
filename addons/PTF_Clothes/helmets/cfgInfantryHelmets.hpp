@@ -788,21 +788,23 @@ class PTF_Helmet_2_3_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
       };
    };
 };
-class PTF_MSO_FASTMTC_M81_MGSW : USP_OPSCORE_FASTMTC_M81_MGSW
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] FASTMT M81 (MGSW) [PTF]";
-   author = "Paramarine Task Force";
-   hiddenSelections[] = {"camo","camo1","camo2","_Comtac","_Tasklight"};
-    hiddenSelectionsTextures[] = {
-   "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
-   "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
-   "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
+// Netting helmets
+	class PTF_Helmet_Foliage_WD: rhsusf_ach_helmet_camo_ocp
+	{
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] MICH 2000 Foliage (WD)";
+      author = "Paramarine Task Force";
+		hiddenSelectionsTextures[]=
+		{
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_wd_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\camo_net_co.paa"
+		};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo : ItemInfo
    {
       mass = 20;
       class HitpointsProtectionInfo
@@ -812,26 +814,26 @@ class PTF_MSO_FASTMTC_M81_MGSW : USP_OPSCORE_FASTMTC_M81_MGSW
             hitpointName = "HitHead";
             armor = 6;
             passThrough = 0.5;
-         };
-      };
+			};
+		 };
+	  };
    };
-};
-
-class PTF_MSO_FASTMTC_M81_MSW : USP_OPSCORE_FASTMTC_M81_MSW
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] FASTMT M81 (MSW) [PTF]";
-   author = "Paramarine Task Force";
-   hiddenSelections[] = {"camo","camo1","camo2","_Comtac","_Goggles","_Tasklight"};
-   hiddenSelectionsTextures[] = {
-   "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
-   "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
-   "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
+   	class PTF_Helmet_Foliage_DES: rhsusf_ach_helmet_camo_ocp
+	{
+      scope = 2;
+      side = 1;
+      faction = "BLU_F";
+      displayName = "[Inf] MICH 2000 Foliage (D)";
+      author = "Paramarine Task Force";
+		hiddenSelectionsTextures[]=
+		{
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_des_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa",
+			"\rhsusf\addons\rhsusf_infantry\gear\head\data\camo_net_co.paa"
+		};
+		ace_hearing_protection = 0.8;
+		ace_hearing_lowerVolume = 0;
+		class ItemInfo : ItemInfo
    {
       mass = 20;
       class HitpointsProtectionInfo
@@ -841,123 +843,8 @@ class PTF_MSO_FASTMTC_M81_MSW : USP_OPSCORE_FASTMTC_M81_MSW
             hitpointName = "HitHead";
             armor = 6;
             passThrough = 0.5;
-         };
-      };
-   };
-};
-
-class PTF_MSO_FASTMTC_M81_CMGSW : USP_OPSCORE_FASTMTC_M81_CMGSW
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] FASTMT M81 (CMGSW) [PTF]";
-   author = "Paramarine Task Force";
-hiddenSelections[] = {"camo","camo1","camo2","_Tasklight"};
-   hiddenSelectionsTextures[] = {
-   "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
-   "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
-   "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
-   {
-      mass = 20;
-      class HitpointsProtectionInfo
-      {
-         class Head
-         {
-            hitpointName = "HitHead";
-            armor = 6;
-            passThrough = 0.5;
-         };
-      };
-   };
-};
-
-class PTF_MSO_FASTMTC_M81_CMSW : USP_OPSCORE_FASTMTC_M81_CMSW
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] FASTMT M81 (CMSW) [PTF]";
-   author = "Paramarine Task Force";
-   hiddenSelections[] = {"camo","camo1","camo2","_Tasklight"};
-   hiddenSelectionsTextures[] = {
-   "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
-   "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
-   "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
-   {
-      mass = 20;
-      class HitpointsProtectionInfo
-      {
-         class Head
-         {
-            hitpointName = "HitHead";
-            armor = 6;
-            passThrough = 0.5;
-         };
-      };
-   };
-};
-
-class PTF_MSO_FASTMTC_M81_CGSW : USP_OPSCORE_FASTMTC_M81_CGSW
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] FASTMT M81 (CGSW) [PTF]";
-   author = "Paramarine Task Force";
-   hiddenSelections[] = {"camo","camo1","camo2","_Camera","_Tasklight"};
-   hiddenSelectionsTextures[] = {
-   "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
-   "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
-   "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
-   {
-      mass = 20;
-      class HitpointsProtectionInfo
-      {
-         class Head
-         {
-            hitpointName = "HitHead";
-            armor = 6;
-            passThrough = 0.5;
-         };
-      };
-   };
-};
-
-class PTF_MSO_FASTMTC_M81_CS : USP_OPSCORE_FASTMTC_M81_CS
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Inf] FASTMT M81 (CS) [PTF]";
-   author = "Paramarine Task Force";
-   hiddenSelections[] = {"camo","camo1","camo2","_Camera","_CW","_Goggles","_Tasklight"};
-   hiddenSelectionsTextures[] = {
-   "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
-   "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
-   "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
-   ace_hearing_protection = 0.8;
-   ace_hearing_lowerVolume = 0;
-   class ItemInfo : ItemInfo
-   {
-      mass = 20;
-      class HitpointsProtectionInfo
-      {
-         class Head
-         {
-            hitpointName = "HitHead";
-            armor = 6;
-            passThrough = 0.5;
-         };
-      };
-   };
-};
+			};
+		 };
+	  };
+   }; 
+   
