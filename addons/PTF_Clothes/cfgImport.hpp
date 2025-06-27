@@ -73,6 +73,9 @@ class SV2B_LPU36P;
 class SRU21P;
 class V_DeckCrew_blue_F;
 class V_Safety_blue_F;
+class SRU21P_LPU9P_PCU15AP_Alt;
+class SRU21P_LPU9P_Alt;
+class SRU21P_Alt;
 //RHS Vests
 class rhsusf_mbav;
 class rhsusf_mbav_grenadier;
