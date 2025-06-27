@@ -306,7 +306,8 @@ _vests = [
 	"PTF_Vest_Infantry_CRYE",
 	"SRU21P_LPU9P_PCU15AP_Alt",
 	"SRU21P_LPU9P_Alt",
-	"SRU21P_Alt"
+	"SRU21P_Alt",
+	"PTF_Vest_Infantry_Strandhogg"
 ];
 
 _helmets = [
