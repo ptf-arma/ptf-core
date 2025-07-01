@@ -55,10 +55,17 @@ class rhsusf_cvc_helmet;
 class rhsusf_cvc_alt_helmet;
 class rhsusf_cvc_ess;
 class rhsusf_cvc_ess_helmet;
+class rhsusf_ach_helmet_camo_ocp;
 //USP Helmets
 class USP_OPSCORE_FASTMT_C;
 class USP_OPS_FASTXP_CT_TAN;
 class USP_OPSCORE_FASTMT_FCV;
+class USP_OPSCORE_FASTMTC_M81_MGSW;
+class USP_OPSCORE_FASTMTC_M81_MSW;
+class USP_OPSCORE_FASTMTC_M81_CMGSW;
+class USP_OPSCORE_FASTMTC_M81_CMSW;
+class USP_OPSCORE_FASTMTC_M81_CGSW;
+class USP_OPSCORE_FASTMTC_M81_CS;
 //MOES Vests
 class CMU33P;
 class CMU33PTan;
@@ -140,6 +147,7 @@ class USP_ZIPON_PANEL_CPC_SM_CBR;
 class USP_DELTA_BAG_CBR;
 class USP_REEBOW_3DAP_ACC7_CBR;
 class USP_REEBOW_3DAP_ACC8_CBR;
+class USP_VEST_STRANDHOGG2_CBR;
 //Crye Backpacks
 class USP_CRYE_BELT_PACK;
 class USP_ZIPON_PANEL_CBR;
