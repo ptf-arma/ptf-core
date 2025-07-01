@@ -409,7 +409,7 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-	class PTF_Helmet_Jettison_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	class PTF_Helmet_Jettison_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName="[Inf] MICH 2000 (D) [Personal - S.Jettison]";
 		hiddenSelectionsTextures[]=
@@ -418,7 +418,7 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-	class PTF_Helmet_Jettison_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	class PTF_Helmet_Jettison_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName="[Inf] MICH 2000 (S) [Personal - S.Jettison]";
 		hiddenSelectionsTextures[]=
