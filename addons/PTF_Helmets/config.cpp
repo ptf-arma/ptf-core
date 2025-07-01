@@ -414,7 +414,7 @@ class cfgWeapons
 		displayName="[Inf] MICH 2000 (D) [Personal - S.Jettison]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_d_co_jettison.paa",
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_jettison.paa",
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
