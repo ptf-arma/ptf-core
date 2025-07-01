@@ -45,6 +45,12 @@ class PTF_Standard_Arsenal_No_Ammo : PTF_Standard_Arsenal
 class PTF_Pso_Arsenal : PTF_Standard_Arsenal
 {
    displayname = "PSO Arsenal [PTF]";
+   hiddenselections[] = {
+       "camo",
+       "camo_signs"};
+   hiddenselectionstextures[] = {
+       "\z\PTF\addons\PTF_Textures\objects\arsenal\equipment_box_blufor_co.paa",
+       "\z\PTF\addons\PTF_Textures\objects\arsenal\PSO_equipment_box_blufor_ca.paa"};
    class EventHandlers
    {
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
