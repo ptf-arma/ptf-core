@@ -102,6 +102,7 @@ _pistols = [
 	"MHS_M45A1",
 	"MHS_M17",
 	"MHS_M18",
+	"crow_x26",
 	"rhsusf_weap_m9"
 ];
 
