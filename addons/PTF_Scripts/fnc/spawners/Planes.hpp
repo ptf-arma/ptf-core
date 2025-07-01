@@ -21,22 +21,22 @@ class PTF_Planes {
            // };
       class f35a {
             statement = "['PTF_F35Stealth', 'Plane','PTF_PlaneTickets'] call PTF_fnc_SpawnFunction";
-            displayName = "Spawn F35a";
+            displayName = "Spawn F-35A";
             icon = "\USAF_F35A\data\f35_icon_bw.paa";
       };
       class f35b {
-            statement = "['FIR_F_35B_Blank1', 'Plane','PTF_PlaneTickets'] call PTF_fnc_SpawnFunction";
-            displayName = "Spawn F35b";
+            statement = "['FIR_F35B_Blank1', 'Plane','PTF_PlaneTickets'] call PTF_fnc_SpawnFunction";
+            displayName = "Spawn F-35B";
             icon = "\FIR_F35B_Armaverse\ui\icon_f35b_ca.paa";
       };
 	class MQ9 {
             statement = "['PTF_MQ9_SCARFACE', 'Plane','PTF_MQ9Tickets'] call PTF_fnc_SpawnFunction";
-            displayName = "Spawn MQ9";
+            displayName = "Spawn MQ-9";
             icon = "\A3\Drones_F\Air_F_Gamma\UAV_02\Data\UI\Map_UAV_02_CA.paa";
       };
       class RQ4 {
             statement = "['PTF_RQ4A', 'Plane'] call PTF_fnc_SpawnFunction";
-            displayName = "Spawn RQ4";
+            displayName = "Spawn RQ-4";
             icon = "\A3\Drones_F\Air_F_Gamma\UAV_02\Data\UI\Map_UAV_02_CA.paa";
       };
 };
