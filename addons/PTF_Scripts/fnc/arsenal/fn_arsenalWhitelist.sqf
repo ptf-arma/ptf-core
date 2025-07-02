@@ -539,6 +539,7 @@ _glasses = [
 _ammo = [
 	"avm224_M_6Rnd_60mm_HE_0_csw",
 	"avm224_M_6Rnd_60mm_HE_csw",
+	"X26_Cartridge",
 	"PTF_Mag_556x45_M855A1_Stanag_Mix",
 	"rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan_Tracer_Red",
 	"MRAWS_HEAT55_F",
