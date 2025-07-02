@@ -345,6 +345,9 @@ _helmets = [
 	"PTF_Helmet_Havel_Infantry_Mich2000_S",
 	"PTF_Helmet_Havel_Infantry_Mich2000_D",
 	"PTF_Helmet_Havel_Infantry_Mich2000_WD",
+	"PTF_Helmet_Jettison_Infantry_Mich2000_WD",
+	"PTF_Helmet_Jettison_Infantry_Mich2000_D",
+	"PTF_Helmet_Jettison_Infantry_Mich2000_S",
 	"PTF_Helmet_Holt_Infantry_Mich2000_S",
 	"PTF_Helmet_Holt_Infantry_Mich2000_WD",
 	"PTF_Helmet_Holt_Infantry_Mich2000_D",
@@ -536,6 +539,7 @@ _glasses = [
 _ammo = [
 	"avm224_M_6Rnd_60mm_HE_0_csw",
 	"avm224_M_6Rnd_60mm_HE_csw",
+	"X26_Cartridge",
 	"PTF_Mag_556x45_M855A1_Stanag_Mix",
 	"rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan_Tracer_Red",
 	"MRAWS_HEAT55_F",
