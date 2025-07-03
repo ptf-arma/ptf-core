@@ -7,6 +7,8 @@ _hash = createHashMapFromArray
 ["PTF_F18D" , "PTF_PlaneTickets"],
 ["PTF_F18C_CAG" , "PTF_PlaneTickets"],
 ["FIR_EA6B_VMAQ4" , "PTF_PlaneTickets"],
+["PTF_F35Stealth" , "PTF_PlaneTickets"],
+["FIR_F35B_Blank1" , "PTF_PlaneTickets"],
 ["PTF_MQ9_SCARFACE" ,"PTF_MQ9Tickets"]
 ];
 
