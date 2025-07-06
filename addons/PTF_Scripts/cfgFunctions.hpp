@@ -47,6 +47,10 @@ class cfgFunctions {
 			File = "\z\PTF\addons\PTF_Scripts\fnc\spawners";
 			class SpawnFunction{};
 			};
+		class Aircraft {
+			file = "\z\PTF\addons\PTF_Scripts\fnc\Aircraft\AH1Z";
+			class ah1z_gunnerUI {};
+		};
 		class F18Normal {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\F-18\Normal";
 			class ApkwsGbu16FN {};
@@ -69,6 +73,7 @@ class cfgFunctions {
 		};
 		class AH1zLoadoutFunctions {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\AH1z";
+			class ApkwsA {};
 			class ATA {};
 			class ThermoA {};
 		};
