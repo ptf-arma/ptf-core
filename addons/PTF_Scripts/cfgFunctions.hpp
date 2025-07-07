@@ -48,8 +48,9 @@ class cfgFunctions {
 			class SpawnFunction{};
 			};
 		class Aircraft {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\Aircraft\AH1Z";
+			file = "\z\PTF\addons\PTF_Scripts\fnc\Aircraft";
 			class ah1z_gunnerUI {};
+			class uh1_obsHandler {};
 		};
 		class F18Normal {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\F-18\Normal";

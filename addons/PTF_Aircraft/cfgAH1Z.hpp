@@ -1,14 +1,4 @@
 //AH-1Z
-
-class RscInGameUI
-{
-   class RHS_RscOptics_Heli_Attack_01_gunner;
-   class PTF_RscOptics_AH1Z_gunner: RHS_RscOptics_Heli_Attack_01_gunner
-   {
-      onLoad = "['onLoad',_this,'RscUnitInfo','IGUI'] call (uinamespace getvariable 'BIS_fnc_initDisplay'); _this spawn PTF_fnc_ah1z_gunnerUI";
-   };
-};
-
 class PTF_AH1Z : RHS_AH1Z
 {
    scope = 2;
@@ -189,7 +179,7 @@ class PTF_AH1Z : RHS_AH1Z
                  "rhs_weap_M197",
                  "rhs_weap_laserDesignator_AI"
               };
-         turretInfoType = "PTF_RscOptics_AH1Z_gunner";
+         turretInfoType = "PTF_RscOptics_AH1Z_Gunner";
          class OpticsIn
             {
                class Wide

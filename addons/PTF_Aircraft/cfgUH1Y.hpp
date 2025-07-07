@@ -28,6 +28,7 @@ class PTF_UH1Y : RHS_UH1Y_d
                  "PTF_weap_mastersafe",
                  "rhs_weap_laserDesignator_AI"};
          magazines[] = {"rhs_LaserMag_ai"};
+         turretInfoType = "PTF_RscOptics_UH1Y_Observer";
          class OpticsIn
          {
             class Wide
@@ -107,6 +108,7 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
    {
       class CopilotTurret: CopilotTurret
       {
+         turretInfoType = "PTF_RscOptics_UH1Y_Observer";
          class OpticsIn
          {
             class Wide
