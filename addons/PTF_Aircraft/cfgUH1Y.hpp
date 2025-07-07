@@ -28,6 +28,26 @@ class PTF_UH1Y : RHS_UH1Y_d
                  "PTF_weap_mastersafe",
                  "rhs_weap_laserDesignator_AI"};
          magazines[] = {"rhs_LaserMag_ai"};
+         class OpticsIn
+         {
+            class Wide
+            {
+               opticsDisplayName = "W";
+               initAngleX = 0;
+               minAngleX = -30;
+               maxAngleX = 30;
+               initAngleY = 0;
+               minAngleY = -100;
+               maxAngleY = 100;
+               initFov = 0.466;
+               minFov = 0.0218;
+               maxFov = 0.466;
+               visionMode[] = {"Normal","NVG","Ti"};
+               directionStabilized = 1;
+               thermalMode[] = {0,1};
+               gunnerOpticsModel = "\rhsusf\addons\rhsusf_optics\data\rhs_uh1_flir";
+            };
+         };
       };
       class MainTurret : MainTurret
       {
@@ -85,7 +105,29 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\uh1y\Trainer\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
    class Turrets : Turrets
    {
-      class CopilotTurret: CopilotTurret{};
+      class CopilotTurret: CopilotTurret
+      {
+         class OpticsIn
+         {
+            class Wide
+            {
+               opticsDisplayName = "W";
+               initAngleX = 0;
+               minAngleX = -30;
+               maxAngleX = 30;
+               initAngleY = 0;
+               minAngleY = -100;
+               maxAngleY = 100;
+               initFov = 0.466;
+               minFov = 0.0218;
+               maxFov = 0.466;
+               visionMode[] = {"Normal","NVG","Ti"};
+               directionStabilized = 1;
+               thermalMode[] = {0,1};
+               gunnerOpticsModel = "\rhsusf\addons\rhsusf_optics\data\rhs_uh1_flir";
+            };
+         };
+      };
       class CargoTurret_01 : CargoTurret_01{};
       class CargoTurret_02 : CargoTurret_02{};
       class CargoTurret_03 : CargoTurret_03{};
