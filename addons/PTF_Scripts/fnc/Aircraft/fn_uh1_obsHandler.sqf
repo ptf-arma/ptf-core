@@ -152,8 +152,6 @@ low refresh rate loop [1 sec]
 
     while{not(isNull _d)}do
     {
-        _textureList=[];
-
         /*
             lrf distance handler
         */
@@ -206,8 +204,6 @@ low refresh rate loop [1 sec]
 
         if(_oldDistance != _distance)then{_v setVariable ["rhs_uh1_range",_distance,true];_oldDistance=_distance;};
         if(_oldZoom != _zoomLevel)then{_v setVariable ["rhs_uh1_zoom",_zoomLevel,true];_oldZoom=_zoomLevel;};
-
-        {rhs_uh1Flir setObjectTexture _x}foreach _textureList;
 
         sleep 1;
     };
