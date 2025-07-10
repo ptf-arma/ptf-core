@@ -50,7 +50,10 @@ class cfgFunctions {
 		class Aircraft {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Aircraft";
 			class ah1z_gunnerUI {};
+			class ah1z_MFD_switch {};
+			class uh1_handler {};
 			class uh1_obsHandler {};
+			class uh1_toggleCam {};
 		};
 		class F18Normal {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\F-18\Normal";

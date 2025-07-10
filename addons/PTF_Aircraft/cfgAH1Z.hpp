@@ -181,42 +181,64 @@ class PTF_AH1Z : RHS_AH1Z
               };
          turretInfoType = "PTF_RscOptics_AH1Z_Gunner";
          class OpticsIn
+         {
+            class Wide
             {
-               class Wide
-               {
-                  opticsDisplayName = "W";
-                  initAngleX = 0;
-                  minAngleX = -30;
-                  maxAngleX = 30;
-                  initAngleY = 0;
-                  minAngleY = -100;
-                  maxAngleY = 100;
-                  initFov = 0.456;
-                  minFov = 0.456;
-                  maxFov = 0.456;
-                  directionStabilized = 0;
-                  visionMode[] = {"Normal","NVG","Ti"};
-                  thermalMode[] = {0,1};
-                  gunnerOpticsModel = "\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64";
-               };
-               class Medium: Wide
-               {
-                  directionStabilized = 1;
-                  opticsDisplayName = "M - Stabilized";
-                  initFov = 0.093;
-                  minFov = 0.093;
-                  maxFov = 0.093;
-                  gunnerOpticsModel = "\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64_2";
-               };
-               class Narrow: Medium
-               {
-                  opticsDisplayName = "N - Stabilized";
-                  gunnerOpticsModel = "\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64_3";
-                  initFov = 0.029;
-                  minFov = 0.029;
-                  maxFov = 0.029;
-               };
+               opticsDisplayName = "W";
+               initAngleX = 0;
+               minAngleX = -30;
+               maxAngleX = 30;
+               initAngleY = 0;
+               minAngleY = -100;
+               maxAngleY = 100;
+               initFov = 0.456;
+               minFov = 0.456;
+               maxFov = 0.456;
+               directionStabilized = 0;
+               visionMode[] = {"Normal","NVG","Ti"};
+               thermalMode[] = {0,1};
+               gunnerOpticsModel = "\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64";
             };
+            class Medium: Wide
+            {
+               directionStabilized = 1;
+               opticsDisplayName = "M - Stabilized";
+               initFov = 0.093;
+               minFov = 0.093;
+               maxFov = 0.093;
+               gunnerOpticsModel = "\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64_2";
+            };
+            class Narrow: Medium
+            {
+               opticsDisplayName = "N - Stabilized";
+               gunnerOpticsModel = "\rhsusf\addons\rhsusf_a2port_air\ah64\gunnerOptics_ah64_3";
+               initFov = 0.029;
+               minFov = 0.029;
+               maxFov = 0.029;
+            };
+         };
+      };
+   };
+   class UserActions: UserActions
+   {
+      class Toggle_Left_MFD
+      {
+            displayName = "<t color='#FBB829'>Left MFD Toggle</t>";
+            condition = "(call rhsusf_fnc_findPlayer) in this";
+            statement = "[this,4] call PTF_fnc_ah1z_MFD_switch";
+            position = "";
+            radius = 10;
+            priority = 10.5;
+            onlyforplayer = 1;
+            showWindow = 0;
+            hideOnUse = 1;
+            shortcut = "user1";
+      };
+      class Toggle_Right_MFD: Toggle_Left_MFD
+      {
+            displayName = "<t color='#FBB829'>Right MFD Toggle</t>";
+            statement = "[this,5] call PTF_fnc_ah1z_MFD_switch";
+            shortcut = "user2";
       };
    };
    class ACE_Actions : ACE_Actions {

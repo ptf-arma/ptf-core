@@ -1,7 +1,6 @@
 /*
 PTF_fnc_uh1_obsHandler
 UH1Y Flir camera handling script
-handles monitor stuff
 
 a: reyhard (RHS Original), A.Nilsen (PTF Modifications)
 */

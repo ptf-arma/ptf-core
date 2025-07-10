@@ -15,6 +15,8 @@ class PTF_UH1Y : RHS_UH1Y_d
    hullDamageCauseExplosion = 0;
    author = "Paramarine Task Force";
    displayName = "UH-1Y (FFAR/MG) [MAG36]";
+   unitInfoType = "PTF_RscUnitInfo_Air_UH1Y";
+   unitInfoTypeRTD = "PTF_RscUnitInfo_AirRTDFullDigital_UH1Y";
    weapons[] = {"PTF_weap_mastersafe", "CMFlareLauncher"};
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
@@ -84,6 +86,19 @@ class PTF_UH1Y : RHS_UH1Y_d
       class CargoTurret_05 : CargoTurret_05{};
       class CargoTurret_06 : CargoTurret_06{};
    };
+   class UserActions: UserActions
+   {
+      class TogglePIP
+      {
+         displayName = "Toggle monitor";
+         displayNameDefault = "Toggle monitor";
+         condition = "( (call rhsusf_fnc_findPlayer)==driver this) or ((call rhsusf_fnc_findPlayer)==this turretUnit [0]) ";
+         statement = "call PTF_fnc_uh1_toggleCam";
+         position = "zamerny";
+         radius = 1;
+         onlyForPlayer = 1;
+      };
+   };
 };
 class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 {
@@ -100,6 +115,8 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
    hullDamageCauseExplosion = 0;
    author = "Paramarine Task Force";
    displayName = "UH-1Y (Trainer) [MAG36]";
+   unitInfoType = "PTF_RscUnitInfo_Air_UH1Y";
+   unitInfoTypeRTD = "PTF_RscUnitInfo_AirRTDFullDigital_UH1Y";
    weapons[] = {"CMFlareLauncher", "PTF_weap_mastersafe"};
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
@@ -138,6 +155,19 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
       class CargoTurret_06 : CargoTurret_06{};
       class CargoTurret_07 : CargoTurret_07{};
       class CargoTurret_08 : CargoTurret_08{};
+   };
+   class UserActions: UserActions
+   {
+      class TogglePIP
+      {
+         displayName = "Toggle monitor";
+         displayNameDefault = "Toggle monitor";
+         condition = "( (call rhsusf_fnc_findPlayer)==driver this) or ((call rhsusf_fnc_findPlayer)==this turretUnit [0]) ";
+         statement = "call PTF_fnc_uh1_toggleCam";
+         position = "zamerny";
+         radius = 1;
+         onlyForPlayer = 1;
+      };
    };
 };
 class PTF_UH1Y_HQ : PTF_UH1Y
