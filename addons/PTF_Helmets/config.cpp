@@ -509,6 +509,33 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
+		class PTF_Helmet_Walker_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (WD) [Personal - K.Walker]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_walker.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+		class PTF_Helmet_Walker_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (D) [Personal - K.Walker]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_walker.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+		class PTF_Helmet_Walker_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (S) [Personal - K.Walker]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_walker.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
 	class PTF_Helmet_1_1_Infantry_Mich2000_DES: PTF_Helmet_Infantry_Mich2000_Headset_WD
     {
         displayName="[Inf] MICH 2000 (D) 1-1";
