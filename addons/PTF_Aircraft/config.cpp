@@ -74,3 +74,4 @@ class cfgMods
 	author="3S-15 | M.Hawkins";
 	timepacked="1675414171";
 };
+#include "cfgRsc.hpp"
