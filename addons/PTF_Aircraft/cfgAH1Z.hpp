@@ -15,6 +15,7 @@ class PTF_AH1Z : RHS_AH1Z
    weapons[] = {"PTF_weap_mastersafe","CMFlareLauncher"};
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_a2port_air2\ah1z\data\ah1z_body_co.paa", "\rhsusf\addons\rhsusf_a2port_air2\ah1z\data\ah1z_engines_co.paa", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)", "#(argb,8,8,3)color(0,0,0,1.0,co)"};
+   AL_helidollyAttachpoint[] = {0,-2.2,1.95};
    class Components: Components
       {
          class TransportPylonsComponent
