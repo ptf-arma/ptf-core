@@ -599,6 +599,13 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
+	class PTF_Goltred_rhsusf_hgu56p_visor_black : rhsusf_hgu56p_visor_black
+	{
+		displayName = "[MAG] HGU [Personal - F.Goltred] (Black)";
+		hiddenSelectionsTextures[] = {
+			"\z\PTF\addons\PTF_Textures\gear\helmets\MAG_Goltred_blk.paa"
+		};
+	};
     class PTF_Gute_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
 	{
 		displayName="[MAG] HGU [Personal - B.Gute]";
@@ -631,7 +638,6 @@ class cfgWeapons
 			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"
 		};
 	};
-
 	class PTF_Halstead_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
 	{
 		displayName="[MAG] HGU [Personal - W. Halstead]";

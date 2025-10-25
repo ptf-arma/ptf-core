@@ -429,6 +429,7 @@ _helmets = [
 	"rhsusf_mich_bare",
 	"rhsusf_mich_bare_alt",
 	"rhsusf_mich_bare_headset",
+	"PTF_Goltred_rhsusf_hgu56p_visor_black",
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
 	"PTF_David_rhsusf_hgu56p_mask_black",
