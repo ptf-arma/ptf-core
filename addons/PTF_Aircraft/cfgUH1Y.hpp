@@ -21,6 +21,14 @@ class PTF_UH1Y : RHS_UH1Y_d
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
    hiddenSelectionsTextures[] = {"rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_ext_co.paa", "rhsusf\addons\rhsusf_a2port_air2\uh1y\data\uh1y_int_co.paa"};
+   LESH_canBeTowed = 1;
+   LESH_towFromFront = 0;
+   LESH_AxisOffsetTarget[] = {0,-7.3,-0.95};
+   LESH_WheelOffset[] = {0,2.5};
+   AL_canBeMoved = 1;
+   AL_HelidollyWeight = 200;
+   AL_helidollyAttachpoint[] = {0,-2.2,2.19};
+   AL_CraneAttachpoint[] = {0,0.25,0.45};
    class Turrets : Turrets
    {
       class CopilotTurret: CopilotTurret
@@ -121,6 +129,14 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
    magazines[] = {"240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
    hiddenSelections[] = {"camo1", "camo2", "rn1", "rn2", "rn3", "rn4", "tn1", "tn2", "tn3", "tn4", "tn5", "tn6", "dn1", "dn2", "dn3", "dn4", "dn5", "dn6", "dn7", "dn8", "dn9", "dn10", "dn11", "dn12", "zn1", "zn2", "zn3"};
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\uh1y\Trainer\uh1y_ext_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\uh1y\uh1y_int_co.paa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+   LESH_canBeTowed = 1;
+   LESH_towFromFront = 0;
+   LESH_AxisOffsetTarget[] = {0,-7.3,-0.95};
+   LESH_WheelOffset[] = {0,2.5};
+   AL_canBeMoved = 1;
+   AL_CraneAttachpoint[] = {0,0.25,0.45};
+   AL_helidollyAttachpoint[] = {0,-2.2,2.19};
+   AL_HelidollyWeight = 200;
    class Turrets : Turrets
    {
       class CopilotTurret: CopilotTurret
