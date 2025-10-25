@@ -4,9 +4,14 @@ class PTF_Helicopters_Attack {
     distance = 1.5;
     enableInside = 1;
     icon = "a3\ui_f\data\gui\cfg\communicationmenu\casheli_ca.paa";
-        class AH1Z {
-        	statement = "['PTF_AH1Z_GUNFIGHTERS', 'Attack','PTF_Ah1zTickets'] call PTF_fnc_SpawnFunction";
-            displayName = "Spawn AH-1Z Viper";
-            icon = "rhsusf\addons\rhsusf_a2port_air\data\ico\rhs_ah1z_pic_ca.paa";
-            };
+    class AH1Z {
+        statement = "['PTF_AH1Z_GUNFIGHTERS', 'Attack', 'PTF_Ah1zTickets'] call PTF_fnc_SpawnFunction";
+        displayName = "Spawn AH-1Z";
+        icon = "rhsusf\addons\rhsusf_a2port_air\data\ico\rhs_ah1z_pic_ca.paa";
+    };
+    class AH1Z_VIS {
+        statement = "['PTF_AH1Z_VIS', 'Attack', 'PTF_Ah1zTickets'] call PTF_fnc_SpawnFunction";
+        displayName = "Spawn AH-1Z (Interactive)";
+        icon = "\Peral_AH1Z\Data\UI\AH1Z_icon_ca.paa";
+    };
 };

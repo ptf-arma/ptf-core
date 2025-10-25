@@ -4,11 +4,13 @@ _hash = createHashMapFromArray
 [
 ["PTF_UH1Y_GUNFIGHTERS" ,"PTF_Uh1yTickets"],
 ["PTF_AH1Z_GUNFIGHTERS" , "PTF_Ah1zTickets"],
+["PTF_AH1Z_VIS" , "PTF_Ah1zTickets"],
 ["PTF_F18D" , "PTF_PlaneTickets"],
 ["PTF_F18C_CAG" , "PTF_PlaneTickets"],
 ["FIR_EA6B_VMAQ4" , "PTF_PlaneTickets"],
 ["PTF_F35Stealth" , "PTF_PlaneTickets"],
 ["FIR_F35B_Blank1" , "PTF_PlaneTickets"],
+["PTF_F35B_VIS" , "PTF_PlaneTickets"],
 ["PTF_MQ9_SCARFACE" ,"PTF_MQ9Tickets"]
 ];
 
