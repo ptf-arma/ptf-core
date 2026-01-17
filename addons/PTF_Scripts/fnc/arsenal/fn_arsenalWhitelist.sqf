@@ -103,7 +103,8 @@ _pistols = [
 	"MHS_M17",
 	"MHS_M18",
 	"crow_x26",
-	"rhsusf_weap_m9"
+	"rhsusf_weap_m9",
+	"hgun_esd_01_F"
 ];
 
 _attachments = [
@@ -205,7 +206,12 @@ _attachments = [
 	"rhsusf_weap_m1911a1",
 	"PTF_Infantry_Weapon_Scope_M8541A",
 	"rhsusf_acc_g33_t1",
-	"optic_DMS"
+	"optic_DMS",
+	"acc_esd_01_flashlight",
+	"muzzle_antenna_01_f",
+	"muzzle_antenna_02_f",
+	"muzzle_antenna_03_f",
+	"Optic_VCOG_SCO"
 ];
 
 // Backpacks, Uniforms, Vests, Helmets, Glasses, 
@@ -801,7 +807,9 @@ _equipment = [
 	"acex_intelitems_notepad",
 	"ACE_PlottingBoard",
 	"ACE_Altimeter",
-	"KAT_ChemicalDetector"
+	"KAT_ChemicalDetector",
+	"crowsew_ctrack",
+	"crowsew_tfar_icom"
 ];
 
 _binoculars = [
