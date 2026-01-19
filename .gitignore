@@ -1,27 +1,7 @@
 /build
 *.pbo
 .sconsign.dblite
-@\[PTF\] Paramarine Milsim Core/addons/BettIR_PTF.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/ctab.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/DIHatUSMC.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/drc_custom_billboards.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Aircraft.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Clothes.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_DICoverUSMC.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_GCam.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Helmets.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Main.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Menu.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Models.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Scripts.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Smoke.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Textures.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_TrainingMap.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Utility.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/PTF_Vehicles.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/riku_class_a.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/tsp_animate.pbo.ptf2.1.bisign
-@\[PTF\] Paramarine Milsim Core/addons/tsp_common.pbo.ptf2.1.bisign
+@\[PTF\] Paramarine Milsim Core/
 *.bisign
 .sconsign.dblite
 .sconsign.dblite
