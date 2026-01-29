@@ -80,7 +80,13 @@ _rifles = [
 	"rhs_weap_XM2010_d",
 	"rhsusf_acc_m2010s_sa",
 	"rhs_weap_M107",
-	"rhs_weap_m32"
+	"rhs_weap_m32",
+	"lot_m1014",
+	"lot_m1014_olive",
+	"lot_m1014_sand",
+	"lot_m1014_cqb",
+	"lot_m1014_cqb_olive",
+	"lot_m1014_cqb_sand"
 ];
 
 _launchers = [
@@ -147,6 +153,7 @@ _attachments = [
 	"muzzle_snds_m_khk_F",
 	"muzzle_snds_m_snd_F",
 	"rhsusf_acc_ARDEC_M240",
+	"MHS_X300U",
 	"muzzle_snds_H_MG",
 	"muzzle_snds_H_MG_blk_F",
 	"muzzle_snds_H_MG_khk_F",
@@ -681,7 +688,11 @@ _ammo = [
 	"ACE_10Rnd_127x99_AMAX_Mag",
 	"ACE_10Rnd_127x99_API_Mag",
 	"MHS_7rnd_45ACP_230FMJ_1911",
-	"MHS_21rnd_9MM_124FMJ_M17"
+	"MHS_21rnd_9MM_124FMJ_M17",
+	"lot_6Rnd_12Gauge_Pellets",
+	"lot_6Rnd_12Gauge_Slug",
+	"lot_8Rnd_12Gauge_Pellets",
+	"lot_8Rnd_12Gauge_Slug"
 ];
 
 _throwables = [
