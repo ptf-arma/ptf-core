@@ -28,10 +28,6 @@ class CfgPatches
 			"PTF_RQ4A",
 			"PTF_C17",
 			"PTF_KC135",
-			"PTF_AV8B",
-			"PTF_F18C",
-			"PTF_F18C_CAG",
-			"PTF_F18D",
 			"PTF_F35B_VIS",
 			"PTF_SuperTucano"
 		};

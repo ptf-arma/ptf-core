@@ -77,26 +77,9 @@ class RHS_UH1Y_UNARMED_d : RHS_UH1Y_UNARMED //"UH-1Y (Trainer) [MAG36]"
 
 //Mastersafe
 class PTF_weap_mastersafe;
-//F-35B
-class FIR_F35B_Standard;
 //MQ-8
 class Helicopter_Base_F;
 class ViewOptics;
-//AV-8B Harrier
-class FIR_AV8B;
-//F-18 Hornets
-class FIR_FA18_Base {
-	class components;
-};
-class FIR_F18C : FIR_FA18_Base  {
-	class ACE_Actions {
-		class ACE_MainActions {};
-	};
-	class components : components{
-		class TransportPylonsComponent;
-	};
-};
-class FIR_F18D;
 //Super Tucano
 class RHSGREF_A29B_HIDF;
 //Misc.
