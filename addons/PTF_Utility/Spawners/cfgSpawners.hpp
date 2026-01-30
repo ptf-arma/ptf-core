@@ -47,18 +47,18 @@ class PTF_Salvage : Land_MultiScreenComputer_01_black_F {
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Tools";
    author = "Paramarine Task Force";
-   displayName = "Salavage Computer";
-class ACE_Actions {
-   class ACE_MainActions {
-      displayName = "Salvage Vehicles";
-      selection = "";
-      distance = 1.5;
-      condition = "true";
-      class PTF_Salavge {
-         statement = "[_target] call PTF_fnc_Salvage";
-         displayName = "Salave Aircraft";
-         icon = "a3\ui_f\data\igui\cfg\actions\repair_ca.paa"; 
+   displayName = "Salvage Computer";
+   class ACE_Actions {
+      class ACE_MainActions {
+         displayName = "Salvage Vehicles";
+         selection = "";
+         distance = 1.5;
+         condition = "true";
+         class PTF_Salavge {
+            statement = "[_target] call PTF_fnc_Salvage";
+            displayName = "Salvage Aircraft";
+            icon = "a3\ui_f\data\igui\cfg\actions\repair_ca.paa";
+         };
       };
    };
-};
 };

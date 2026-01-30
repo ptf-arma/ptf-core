@@ -21,16 +21,14 @@ class CfgPatches
 			"PTF_Cessna_400_HQ",
 			"PTF_AH1Z_GUNFIGHTERS",
 			"PTF_AH1Z_HQ",
+			"PTF_AH1Z_VIS",
 			"PTF_MQ9_SCARFACE",
 			"PTF_MQ9_HQ",
 			"PTF_UH1Y_GUNFIGHTERS",
-			"PTF_RQ4A_HQ",
+			"PTF_RQ4A",
 			"PTF_C17",
 			"PTF_KC135",
-			"PTF_AV8B",
-			"PTF_F18C",
-			"PTF_F18C_CAG",
-			"PTF_F18D",
+			"PTF_F35B_VIS",
 			"PTF_SuperTucano"
 		};
 		weapons[]=
@@ -74,3 +72,4 @@ class cfgMods
 	author="3S-15 | M.Hawkins";
 	timepacked="1675414171";
 };
+#include "cfgRsc.hpp"

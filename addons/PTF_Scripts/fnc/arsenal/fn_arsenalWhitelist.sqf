@@ -80,7 +80,13 @@ _rifles = [
 	"rhs_weap_XM2010_d",
 	"rhsusf_acc_m2010s_sa",
 	"rhs_weap_M107",
-	"rhs_weap_m32"
+	"rhs_weap_m32",
+	"lot_m1014",
+	"lot_m1014_olive",
+	"lot_m1014_sand",
+	"lot_m1014_cqb",
+	"lot_m1014_cqb_olive",
+	"lot_m1014_cqb_sand"
 ];
 
 _launchers = [
@@ -103,7 +109,8 @@ _pistols = [
 	"MHS_M17",
 	"MHS_M18",
 	"crow_x26",
-	"rhsusf_weap_m9"
+	"rhsusf_weap_m9",
+	"hgun_esd_01_F"
 ];
 
 _attachments = [
@@ -146,6 +153,7 @@ _attachments = [
 	"muzzle_snds_m_khk_F",
 	"muzzle_snds_m_snd_F",
 	"rhsusf_acc_ARDEC_M240",
+	"MHS_X300U",
 	"muzzle_snds_H_MG",
 	"muzzle_snds_H_MG_blk_F",
 	"muzzle_snds_H_MG_khk_F",
@@ -205,7 +213,12 @@ _attachments = [
 	"rhsusf_weap_m1911a1",
 	"PTF_Infantry_Weapon_Scope_M8541A",
 	"rhsusf_acc_g33_t1",
-	"optic_DMS"
+	"optic_DMS",
+	"acc_esd_01_flashlight",
+	"muzzle_antenna_01_f",
+	"muzzle_antenna_02_f",
+	"muzzle_antenna_03_f",
+	"Optic_VCOG_SCO"
 ];
 
 // Backpacks, Uniforms, Vests, Helmets, Glasses, 
@@ -361,6 +374,18 @@ _helmets = [
 	"PTF_Helmet_Lowe_Infantry_Mich2000_WD",
 	"PTF_Helmet_Lowe_Infantry_Mich2000_D",
 	"PTF_Helmet_Lowe_Infantry_Mich2000_S",
+	"PTF_Helmet_Walker_Infantry_Mich2000_WD",
+	"PTF_Helmet_Walker_Infantry_Mich2000_D",
+	"PTF_Helmet_Walker_Infantry_Mich2000_S",
+	"PTF_Helmet_Wolff_Infantry_Mich2000_WD",
+	"PTF_Helmet_Wolff_Infantry_Mich2000_D",
+	"PTF_Helmet_Wolff_Infantry_Mich2000_S",
+	"PTF_Helmet_Adams_Infantry_Mich2000_WD",
+	"PTF_Helmet_Adams_Infantry_Mich2000_D",
+	"PTF_Helmet_Adams_Infantry_Mich2000_S",
+	"PTF_Helmet_Byrnes_Infantry_Mich2000_WD",
+	"PTF_Helmet_Byrnes_Infantry_Mich2000_D",
+	"PTF_Helmet_Byrnes_Infantry_Mich2000_S",
 	"PTF_Helmet_Halstead_Infantry_Mich2000_D",
 	"PTF_Helmet_Soarin_Infantry_Mich2000_WD",
 	"PTF_Helmet_Soarin_Infantry_Mich2000_D",
@@ -426,10 +451,13 @@ _helmets = [
 	"rhsusf_mich_bare",
 	"rhsusf_mich_bare_alt",
 	"rhsusf_mich_bare_headset",
+	"PTF_Goltred_rhsusf_hgu56p_visor_black",
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
 	"PTF_David_rhsusf_hgu56p_mask_black",
 	"PTF_Jesus_rhsusf_hgu56p_visor_black",
+	"PTF_Halstead_rhsusf_hgu56p_mask_Visor_black",
+	"PTF_Halstead_rhsusf_hgu56p_mask_black",
 	"rhsusf_hgu56p_visor_mask_black",
 	"rhsusf_hgu56p_visor_mask_green",
 	"rhsusf_hgu56p_visor_mask",
@@ -660,7 +688,11 @@ _ammo = [
 	"ACE_10Rnd_127x99_AMAX_Mag",
 	"ACE_10Rnd_127x99_API_Mag",
 	"MHS_7rnd_45ACP_230FMJ_1911",
-	"MHS_21rnd_9MM_124FMJ_M17"
+	"MHS_21rnd_9MM_124FMJ_M17",
+	"lot_6Rnd_12Gauge_Pellets",
+	"lot_6Rnd_12Gauge_Slug",
+	"lot_8Rnd_12Gauge_Pellets",
+	"lot_8Rnd_12Gauge_Slug"
 ];
 
 _throwables = [
@@ -795,7 +827,9 @@ _equipment = [
 	"acex_intelitems_notepad",
 	"ACE_PlottingBoard",
 	"ACE_Altimeter",
-	"KAT_ChemicalDetector"
+	"KAT_ChemicalDetector",
+	"crowsew_ctrack",
+	"crowsew_tfar_icom"
 ];
 
 _binoculars = [

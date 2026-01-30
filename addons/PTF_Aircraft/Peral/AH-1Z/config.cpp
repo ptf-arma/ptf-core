@@ -1,22 +1,20 @@
 class CfgPatches
 {
-	class PTF_Aircraft_f35
+	class PTF_Aircraft_AH1Z_VIS
 	{
 		units[]={
-		"PTF_F35Heavy",
-		"PTF_F35Light",
-		"PTF_F35Stealth"
+			"PTF_AH1Z_VIS"
 		};
 		skipWhenMissingDependencies = 1;
 		addonRootClass = "PTF_Aircraft";
 		weapons[]={};
 		requiredVersion=1.3200001;
-		requiredAddons[]={"PTF_Main","PTF_Textures","USAF_F35A_C"};
+		requiredAddons[]={"PTF_Main","Peral_AH1Z"};
 	};
 };
 
 
 class cfgVehicles
 {
-#include "cfgF35.hpp"
+#include "cfgAH1Z.hpp"
 };	
