@@ -161,6 +161,13 @@ class USP_HYDROPACK_CBR;
 class USP_LAAW_CLIP;
 class USP_REEBOW_3DAP_ACC9_CBR;
 class USP_45L_RUCKSACK_TAN;
+//USP Uniforms
+class USP_G3C_M81;
+class USP_G3F_G3C_MX_M81;
+class USP_RUGBY_G3C_KP2_MX_RGR_M81;
+class USP_SOFTSHELL_G3C_MX_RGR_M81;
+class USP_TSHIRT2_G3C_MX_GRN_M81;
+class USP_G3C_RS2_M81;
 //ILBE Radio Backpacks
 class tfw_ilbe_DD_coy;
 class tfw_ilbe_DD_d;
