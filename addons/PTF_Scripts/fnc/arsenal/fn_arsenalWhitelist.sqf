@@ -866,11 +866,11 @@ _helmetsPSO = [
 
 _uniformsPSO = [
 	"PTF_Uniform_MSOT_G3C_M81",
+	"PTF_Uniform_MSOT_G3C_RS2_M81",
+	"PTF_Uniform_MSOT_G3F_G3C_MX_M81",
 	"PTF_Uniform_MSOT_RUGBY_G3C_KP2_MX_RGR_M81",
 	"PTF_Uniform_MSOT_SOFTSHELL_G3C_MX_RGR_M81",
-	"PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81",
-	"PTF_Uniform_MSOT_G3C_RS2_M81",
-	"PTF_Uniform_MSOT_G3C_M81"
+	"PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81"
 ];
 
 _nightvisionPSO = [
