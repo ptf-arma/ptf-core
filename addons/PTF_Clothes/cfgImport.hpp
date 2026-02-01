@@ -17,7 +17,23 @@ class rhsusf_calonii_coy;
 class rhsusf_falconii_coy;
 class rhsusf_assault_eagleaiii_coy;
 //ILBE
+class tfw_ilbe_blade_coy;
+class tfw_ilbe_blade_d;
+class tfw_ilbe_blade_wd2;
+class tfw_ilbe_blade_alpine;
 class tfw_ilbe_whip_coy;
+class tfw_ilbe_whipext_coy;
+class tfw_ilbe_whip_alpine;
+class tfw_ilbe_whipext_alpine;
+class tfw_ilbe_whip_d;
+class tfw_ilbe_whipext_d;
+class tfw_ilbe_whip_wd2;
+class tfw_ilbe_whipext_wd2;
+class tfw_ilbe_DD_wd2;
+class tfw_ilbe_DD_d;
+class tfw_ilbe_DD_coy;
+class tfw_ilbe_DD_alpine;
+class tfw_ilbe_DD_alpine;
 //Drones
 class Toolkit;
 class B_UAV_01_backpack_F;
