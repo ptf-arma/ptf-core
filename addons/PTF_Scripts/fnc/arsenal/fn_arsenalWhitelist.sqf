@@ -327,7 +327,10 @@ _vests = [
 	"PTF_Vest_Air_SRU21P_LPU9P_PCU15AP_Alt",
 	"PTF_Vest_Air_SRU21P_LPU9P_Alt",
 	"PTF_Vest_Air_SRU21P_Alt",
-	"PTF_Vest_Infantry_Strandhogg"
+	"PTF_Vest_Infantry_Strandhogg",
+	"PTF_Vest_Infantry_JPC_JTAC_Tan",
+	"PTF_Vest_Infantry_JPC_Marksman_Tan",
+	"PTF_Vest_Infantry_JPC_SL_Tan"
 ];
 
 _helmets = [
@@ -431,6 +434,8 @@ _helmets = [
 	"PTF_Helmet_FASTXP_CO_TAN",
 	"PTF_Helmet_Foliage_DES",
 	"PTF_Helmet_Foliage_WD",
+	"PTF_Helmet_Infantry_Mich2000_Bare_Alt_Semi",
+	"PTF_Helmet_Infantry_Mich2000_Bare_Semi_Headset",
 	"rhsusf_ach_bare_tan",
 	"rhsusf_ach_bare_tan_ess",
 	"rhsusf_ach_bare_tan_headset",

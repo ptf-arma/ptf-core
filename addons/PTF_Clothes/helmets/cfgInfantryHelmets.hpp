@@ -169,39 +169,39 @@ class PTF_Helmet_Infantry_Mich2000_D : rhsusf_ach_helmet_ucp_alt
    };
 };
 class PTF_Helmet_Infantry_Mich2000_norotos_D: rhsusf_ach_helmet_ucp_alt
-	{
-		scope=2;
-		side=1;
-		faction="BLU_F";
-		displayName="[Inf] MICH 2000 Norotos (D) [PTF]";
-		author="Paramarine Task Force";
-		hiddenSelections[]=
-		{
-			"Camo1",
-			"Camo2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_des_co.paa",
-			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
-		};
-		ace_hearing_protection=0.80000001;
-		ace_hearing_lowerVolume=0;
-		class ItemInfo: ItemInfo
-		{
-			uniformModel="\rhsusf\addons\rhsusf_infantry\gear\head\ach_norotos_01";
-			mass=20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=6;
-					passThrough=0.5;
-				};
-			};
-		};
-	};
+{
+   scope=2;
+   side=1;
+   faction="BLU_F";
+   displayName="[Inf] MICH 2000 Norotos (D) [PTF]";
+   author="Paramarine Task Force";
+   hiddenSelections[]=
+   {
+      "Camo1",
+      "Camo2"
+   };
+   hiddenSelectionsTextures[]=
+   {
+      "rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_des_co.paa",
+      "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+   };
+   ace_hearing_protection=0.80000001;
+   ace_hearing_lowerVolume=0;
+   class ItemInfo: ItemInfo
+   {
+      uniformModel="\rhsusf\addons\rhsusf_infantry\gear\head\ach_norotos_01";
+      mass=20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName="HitHead";
+            armor=6;
+            passThrough=0.5;
+         };
+      };
+   };
+};
 class PTF_Helmet_Infantry_Mich2000_ESS_D : rhsusf_ach_helmet_ESS_ucp_alt
 {
    scope = 2;
@@ -1005,6 +1005,54 @@ class PTF_MSO_FASTMTC_M81_CS : USP_OPSCORE_FASTMTC_M81_CS
    "\usp_gear_head\data\tex\opscore_fastmt_tan_co.paa",
    "\usp_gear_head\data\tex\opscore_fastmt_tan2_co.paa",
    "\usp_gear_head\data\tex\fs_cover_m81_co.paa"};
+   ace_hearing_protection = 0.8;
+   ace_hearing_lowerVolume = 0;
+   class ItemInfo : ItemInfo
+   {
+      mass = 20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName = "HitHead";
+            armor = 6;
+            passThrough = 0.5;
+         };
+      };
+   };
+};
+
+class PTF_Helmet_Infantry_Mich2000_Bare_Alt_Semi: rhsusf_mich_bare_alt_semi
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] Mich 2000 (Semi-Arid/Alt) [PTF]";
+   author = "Paramarine Task Force";
+   ace_hearing_protection = 0.8;
+   ace_hearing_lowerVolume = 0;
+   class ItemInfo : ItemInfo
+   {
+      mass = 20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName = "HitHead";
+            armor = 6;
+            passThrough = 0.5;
+         };
+      };
+   };
+};
+
+class PTF_Helmet_Infantry_Mich2000_Bare_Semi_Headset: rhsusf_mich_bare_semi_headset
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] Mich 2000 (Semi-Arid/Headset) [PTF]";
+   author = "Paramarine Task Force";
    ace_hearing_protection = 0.8;
    ace_hearing_lowerVolume = 0;
    class ItemInfo : ItemInfo

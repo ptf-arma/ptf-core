@@ -33,7 +33,6 @@ class tfw_ilbe_DD_wd2;
 class tfw_ilbe_DD_d;
 class tfw_ilbe_DD_coy;
 class tfw_ilbe_DD_alpine;
-class tfw_ilbe_DD_alpine;
 //Drones
 class Toolkit;
 class B_UAV_01_backpack_F;
@@ -72,6 +71,9 @@ class rhsusf_cvc_alt_helmet;
 class rhsusf_cvc_ess;
 class rhsusf_cvc_ess_helmet;
 class rhsusf_ach_helmet_camo_ocp;
+class rhsusf_mich_bare_alt_semi;
+class rhsusf_mich_bare_semi_headset;
+
 //USP Helmets
 class USP_OPSCORE_FASTMT_C;
 class USP_OPS_FASTXP_CT_TAN;
@@ -82,6 +84,7 @@ class USP_OPSCORE_FASTMTC_M81_CMGSW;
 class USP_OPSCORE_FASTMTC_M81_CMSW;
 class USP_OPSCORE_FASTMTC_M81_CGSW;
 class USP_OPSCORE_FASTMTC_M81_CS;
+
 //MOES Vests
 class CMU33P;
 class CMU33PTan;
@@ -177,15 +180,13 @@ class USP_HYDROPACK_CBR;
 class USP_LAAW_CLIP;
 class USP_REEBOW_3DAP_ACC9_CBR;
 class USP_45L_RUCKSACK_TAN;
-//ILBE Radio Backpacks
-class tfw_ilbe_DD_coy;
-class tfw_ilbe_DD_d;
-class tfw_ilbe_DD_wd2;
-class tfw_ilbe_blade_wd;
-class tfw_ilbe_blade_d;
-class tfw_ilbe_blade_coy;
 //vanilla shit
 class U_Tank_green_F;
 //nightvision
 class ACE_NVG_Gen4_Black_WP;
 class rhsusf_ANPVS_15;
+
+// Peral's USMC
+class JPC_2_JTAC_Tan;
+class JPC_2_Marksman_Tan;
+class JPC_2_SL_Tan;
