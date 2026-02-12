@@ -55,26 +55,6 @@ class cfgFunctions {
 			class uh1_obsHandler {};
 			class uh1_toggleCam {};
 		};
-		class F18Normal {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\F-18\Normal";
-			class ApkwsGbu16FN {};
-			class MaverickFN {};
-			class SeadFN {};
-			class SmokeGpFN {};
-			class SnakeyeFN {};
-			class UnguidedBombFN {};
-		};
-		class F18ED {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\F-18\ED";
-			class A2aFE {};
-			class CbuFE {};
-			class CmFE {};
-			class GbuFE {};
-			class GpsFE {};
-			class MarverickFE {};
-			class ScalpelFE {};
-			class ZuniFE {};
-		};
 		class AH1zLoadoutFunctions {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\AH1z";
 			class ApkwsA {};

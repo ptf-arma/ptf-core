@@ -5,7 +5,7 @@ class PTF_ACV : ACV
 	faction = "BLU_F";
     editorCategory = "PTF";
     editorSubcategory = "PTF_Armor";
-    ace_cargo_space = 6;
+    ace_cargo_space = 15;
     ace_cargo_hasCargo = 1;
     ace_cargo_size = 0;
     ace_cargo_canLoad = 0;
@@ -176,7 +176,7 @@ class PTF_ACV_MK19 : ACV_MK19
 	faction = "BLU_F";
     editorCategory = "PTF";
     editorSubcategory = "PTF_Armor";
-    ace_cargo_space = 6;
+    ace_cargo_space = 15;
     ace_cargo_hasCargo = 1;
     ace_cargo_size = 0;
     ace_cargo_canLoad = 0;
@@ -347,7 +347,7 @@ class PTF_ACV_30 : ACV_30
 	faction = "BLU_F";
     editorCategory = "PTF";
     editorSubcategory = "PTF_Armor";
-    ace_cargo_space = 6;
+    ace_cargo_space = 15;
     ace_cargo_hasCargo = 1;
     ace_cargo_size = 0;
     ace_cargo_canLoad = 0;

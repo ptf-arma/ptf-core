@@ -757,12 +757,115 @@ class PTF_Vest_Infantry_SPC_TeamLeader : rhsusf_spc_teamleader
       };
    };
 };
+
 class PTF_Vest_Infantry_Strandhogg : USP_VEST_STRANDHOGG2_CBR
 {
    scope = 2;
    side = 1;
    faction = "BLU_F";
    displayName = "[Inf] Strandhogg [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : ItemInfo
+   {
+      containerClass = Supply250;
+      mass = 40;
+      class HitpointsProtectionInfo
+      {
+         class Chest
+         {
+            HitpointName = "HitChest";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Diaphragm
+         {
+            HitpointName = "HitDiaphragm";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Body
+         {
+            hitpointName = "HitBody";
+            passThrough = 0.4;
+         };
+      };
+   };
+};
+
+class PTF_Vest_Infantry_JPC_JTAC_Tan: JPC_2_JTAC_Tan
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] JPC (JTAC) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : ItemInfo
+   {
+      containerClass = Supply250;
+      mass = 40;
+      class HitpointsProtectionInfo
+      {
+         class Chest
+         {
+            HitpointName = "HitChest";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Diaphragm
+         {
+            HitpointName = "HitDiaphragm";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Body
+         {
+            hitpointName = "HitBody";
+            passThrough = 0.4;
+         };
+      };
+   };
+};
+
+class PTF_Vest_Infantry_JPC_Marksman_Tan: JPC_2_Marksman_Tan
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] JPC (Marksman) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : ItemInfo
+   {
+      containerClass = Supply250;
+      mass = 40;
+      class HitpointsProtectionInfo
+      {
+         class Chest
+         {
+            HitpointName = "HitChest";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Diaphragm
+         {
+            HitpointName = "HitDiaphragm";
+            armor = 28;
+            PassThrough = 0.1;
+         };
+         class Body
+         {
+            hitpointName = "HitBody";
+            passThrough = 0.4;
+         };
+      };
+   };
+};
+
+class PTF_Vest_Infantry_JPC_SL_Tan: JPC_2_SL_Tan
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] JPC (Squad Leader) [PTF]";
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {

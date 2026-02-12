@@ -245,12 +245,18 @@ _backpacks = [
 	"PTF_Backpack_Infantry_Zipon2",
 	"PTF_Backpack_Infantry_Zipon3",
 	"PTF_Backpack_LR_1",
-	"PTF_Backpack_LR_2",
-	"PTF_Backpack_LR_3",
-	"PTF_Backpack_LR_4",
-	"PTF_Backpack_LR_5",
-	"PTF_Backpack_LR_6",
-	"PTF_Backpack_LR_7",
+	"PTF_Backpack_blade_coy",
+	"PTF_Backpack_blade_d",
+	"PTF_Backpack_blade_wd2",
+	"PTF_Backpack_blade_alpine",
+	"PTF_Backpack_whip_coy",
+	"PTF_Backpack_whip_alpine",
+	"PTF_Backpack_whip_d",
+	"PTF_Backpack_whip_wd2",
+	"PTF_Backpack_DD_wd2",
+	"PTF_Backpack_DD_d",
+	"PTF_Backpack_DD_coy",
+	"PTF_Backpack_DD_alpine",
 	"PTF_Backpack_Infantry_Delta",
 	"PTF_Backpack_Infantry_ACC7",
 	"PTF_Backpack_Infantry_ACC8",
@@ -321,7 +327,10 @@ _vests = [
 	"PTF_Vest_Air_SRU21P_LPU9P_PCU15AP_Alt",
 	"PTF_Vest_Air_SRU21P_LPU9P_Alt",
 	"PTF_Vest_Air_SRU21P_Alt",
-	"PTF_Vest_Infantry_Strandhogg"
+	"PTF_Vest_Infantry_Strandhogg",
+	"PTF_Vest_Infantry_JPC_JTAC_Tan",
+	"PTF_Vest_Infantry_JPC_Marksman_Tan",
+	"PTF_Vest_Infantry_JPC_SL_Tan"
 ];
 
 _helmets = [
@@ -368,6 +377,15 @@ _helmets = [
 	"PTF_Helmet_Galvin_Infantry_Mich2000_WD",
 	"PTF_Helmet_Chmielewski_Infantry_Mich2000_WD",
 	"PTF_Helmet_Chmielewski_Infantry_Mich2000_D",
+	"PTF_Helmet_Jameson_Infantry_Mich2000_WD",
+	"PTF_Helmet_Jameson_Infantry_Mich2000_D",
+	"PTF_Helmet_Jameson_Infantry_Mich2000_S",
+	"PTF_Helmet_Wade_Infantry_Mich2000_WD",
+	"PTF_Helmet_Wade_Infantry_Mich2000_D",
+	"PTF_Helmet_Wade_Infantry_Mich2000_S",
+	"PTF_Helmet_C_Havel_Infantry_Mich2000_WD",
+	"PTF_Helmet_C_Havel_Infantry_Mich2000_D",
+	"PTF_Helmet_C_Havel_Infantry_Mich2000_S",
 	"PTF_Helmet_Cook_Infantry_Mich2000_WD",
 	"PTF_Helmet_Cook_Infantry_Mich2000_D",
 	"PTF_Helmet_Cook_Infantry_Mich2000_S",
@@ -416,6 +434,8 @@ _helmets = [
 	"PTF_Helmet_FASTXP_CO_TAN",
 	"PTF_Helmet_Foliage_DES",
 	"PTF_Helmet_Foliage_WD",
+	"PTF_Helmet_Infantry_Mich2000_Bare_Alt_Semi",
+	"PTF_Helmet_Infantry_Mich2000_Bare_Semi_Headset",
 	"rhsusf_ach_bare_tan",
 	"rhsusf_ach_bare_tan_ess",
 	"rhsusf_ach_bare_tan_headset",
@@ -807,9 +827,6 @@ _equipment = [
 	"Laserbatteries",
 	"ACE_HuntIR_monitor",
 	"ACE_Humanitarian_Ration",
-	"tfw_blade",
-	"tfw_whip",
-	"tfw_dd",
 	"ACE_VMM3",
 	"ACE_VMH3",
 	"ace_marker_flags_orange",
@@ -865,12 +882,12 @@ _helmetsPSO = [
 ];
 
 _uniformsPSO = [
-	"USP_G3F_G3C_MX_M81",
-	"USP_RUGBY_G3C_KP2_MX_RGR_M81",
-	"USP_SOFTSHELL_G3C_MX_RGR_M81",
-	"USP_TSHIRT2_G3C_MX_GRN_M81",
-	"USP_G3C_RS2_M81",
-	"USP_G3C_M81"
+	"PTF_Uniform_MSOT_G3C_M81",
+	"PTF_Uniform_MSOT_G3C_RS2_M81",
+	"PTF_Uniform_MSOT_G3F_G3C_MX_M81",
+	"PTF_Uniform_MSOT_RUGBY_G3C_KP2_MX_RGR_M81",
+	"PTF_Uniform_MSOT_SOFTSHELL_G3C_MX_RGR_M81",
+	"PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81"
 ];
 
 _nightvisionPSO = [
