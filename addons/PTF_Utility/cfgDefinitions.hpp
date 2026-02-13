@@ -16,3 +16,9 @@
       name = a;       \
       count = b;      \
    }
+#define backpack_xx(a, b) \
+   class _xx_##a          \
+   {                      \
+      backpack = a;       \
+      count = b;          \
+   }

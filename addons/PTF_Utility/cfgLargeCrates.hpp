@@ -43,7 +43,7 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
       mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 40);
       mag_xx(rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote, 40);
       mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 40);
-      mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 200);
+      mag_xx(PTF_Mag_556x45_Mk262_Stanag_Mix, 200);
       mag_xx(SmokeShellBlue, 20);
       mag_xx(SmokeShellGreen, 20);
       mag_xx(SmokeShellPurple, 20);
@@ -68,6 +68,11 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
    {
       item_xx(ACE_IR_Strobe_Item, 50);
       item_xx(ACE_CableTie, 40);
+      item_xx(ACE_UAVBattery, 10);
+   };
+   class TransportBackpacks
+   {
+      backpack_xx(PTF_SSO_Backpack, 2);
    };
 };
 class PTF_Cargo_Large_Launcher: PTF_Large_Box

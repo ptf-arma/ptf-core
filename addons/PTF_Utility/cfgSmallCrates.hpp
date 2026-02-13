@@ -47,7 +47,7 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(rhsusf_20Rnd_762x51_SR25_m62_Mag, 5);
       mag_xx(rhsusf_20Rnd_762x51_SR25_m993_Mag, 5);
       mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 5);
-      mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 100);
+      mag_xx(PTF_Mag_556x45_Mk262_Stanag_Mix, 100);
       mag_xx(SmokeShellBlue, 10);
       mag_xx(SmokeShellGreen, 10);
       mag_xx(SmokeShellPurple, 20);
@@ -72,6 +72,11 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
    {
       item_xx(ACE_CableTie, 20);
       item_xx(ACE_IR_Strobe_Item, 25);
+      item_xx(ACE_UAVBattery, 5);
+   };
+   class TransportBackpacks
+   {
+      backpack_xx(PTF_SSO_Backpack, 1);
    };
 };
 class PTF_Cargo_Small_Launcher : PTF_Cargo_Small

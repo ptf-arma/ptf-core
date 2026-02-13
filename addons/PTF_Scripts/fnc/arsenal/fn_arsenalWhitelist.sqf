@@ -100,7 +100,18 @@ _launchers = [
 	"rhs_weap_fgm148",
 	"rhs_weap_fim92",
 	"rhs_weap_m72a7",
-	"rhs_weap_M320"
+	"rhs_weap_M320",
+	"JPSP_weap_M136_csast",
+	"JPSP_weap_M136_cser",
+	"JPSP_weap_M136_cshe",
+	"JPSP_weap_M136_cshp",
+	"JPSP_weap_m72asmrc",
+	"JPSP_weap_m72ecmk1",
+	"JPSP_weap_m72ecmk2",
+	"JPSP_weap_m72a10",
+	"JPSP_weap_m72a12",
+	"JPSP_weap_m72a8",
+	"JPSP_weap_m72a9"
 ];
 
 _pistols = [
@@ -218,7 +229,19 @@ _attachments = [
 	"muzzle_antenna_01_f",
 	"muzzle_antenna_02_f",
 	"muzzle_antenna_03_f",
-	"Optic_VCOG_SCO"
+	"Optic_VCOG_SCO",
+	"rhsusf_acc_RM05",
+	"rhsusf_acc_RM05_fwd",
+	"rhsusf_acc_T1_high",
+	"rhsusf_acc_T1_low",
+	"rhsusf_acc_T1_low_fwd",
+	"rhsusf_acc_mrds_c",
+	"rhsusf_acc_mrds_fwd_c",
+	"mars_lc_RangeFinder_left_alt",
+	"mars_lc_RangeFinder_left",
+	"mars_lc_RangeFinder_right_alt",
+	"mars_lc_RangeFinder_right",
+	"scout_pro_flashlight"
 ];
 
 // Backpacks, Uniforms, Vests, Helmets, Glasses, 
