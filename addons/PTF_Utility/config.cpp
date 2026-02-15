@@ -3,6 +3,10 @@ class CfgPatches
    class PTF_Utility
    {
       units[] = {
+          "PTF_Cargo_Small_Ammo",
+          "PTF_Cargo_Small_Launcher",
+          "PTF_Cargo_Small_Explosives",
+          "PTF_Cargo_Small_Medical",
           "PTF_Cargo_Small_Humanitarian",
           "PTF_Cargo_Small_Cargo",
           "PTF_Cargo_Small_Repair",

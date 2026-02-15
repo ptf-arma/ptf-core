@@ -7,6 +7,26 @@ class PTF_Supplys {
         class Small {
             displayName = "Small Supplys";
             icon = "a3\weapons_f\ammoboxes\data\ui\map_wpnsbox_long_f_ca.paa";
+				class PTF_SAmmo {
+				statement = "['PTF_Cargo_Small_Ammo', 'SmSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Small Ammo";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa"; 
+				};
+				class PTF_SMed {
+				statement = "['PTF_Cargo_Small_Medical', 'SmSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Small Medical";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\MedBox.paa";
+				};
+				class PTF_SLauncher {
+				statement = "['PTF_Cargo_Small_Launcher', 'SmSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Small Launcher";
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Launcher.paa";
+				};
+				class PTF_SExplosives {
+				statement = "['PTF_Cargo_Small_Explosives', 'SmSupplys'] call PTF_fnc_SpawnFunction";
+            	displayName = "Spawn Small Explosives";
+            	icon = "a3\weapons_f\ammoboxes\data\ui\map_grenades_f_ca.paa";
+				};
 				class PTF_SHumanitarian {
 				statement = "['PTF_Cargo_Small_Humanitarian', 'SmSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Small Humanitarian";
