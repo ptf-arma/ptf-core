@@ -10,6 +10,9 @@ class PTF_Large_Box : Boxloader_Ammo_West
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
    ace_dragging_canDrag = 0;
+   AL_canBeMoved = 1;
+   AL_weight = 30;
+   AL_ForkAttachpoint[] = {0,0.9,0};
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
@@ -155,6 +158,7 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
 class PTF_Cargo_Large_Refuel : PTF_Large_Box
 {
    ace_dragging_dragPosition[] = {0,2,0};
+   AL_ForkAttachpoint[] = {0,0.55,0};
    class VehicleTransport
       {
          class Cargo

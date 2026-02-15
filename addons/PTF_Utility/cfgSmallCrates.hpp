@@ -11,6 +11,9 @@ class PTF_Cargo_Small : Boxloader_SmallPallet_Ammo
    ace_cargo_canload = 1;
    ace_dragging_canCarry = 0;
    ace_dragging_candrag = 1;
+   AL_canBeMoved = 1;
+   AL_weight = 10;
+   AL_ForkAttachpoint[] = {0,0.15,0};
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
@@ -217,6 +220,9 @@ class PTF_Cargo_Ammo : NATO_Box_Base
    ace_cargo_canload = 1;
    ace_dragging_canCarry = 1;
    ace_dragging_candrag = 1;
+   AL_canBeMoved = 1;
+   AL_weight = 10;
+   AL_ForkAttachpoint[] = {0,0,0.25};
    maximumLoad = 375;
    model = "\A3\weapons_F\ammoBoxes\ammoBox_F";
    editorCategory = "PTF_Empty";

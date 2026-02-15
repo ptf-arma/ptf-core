@@ -7,6 +7,21 @@ class PTF_Forklift {
     class Forklift {
         displayName = "Forklift";
         icon = "";
+        class 527_58M_Forklift {
+            statement = "['Peral_527_58M', 'Forklift'] call PTF_fnc_SpawnFunction";
+            displayName = "Spawn 527-58M Heavy Forklift";
+            icon = "\Peral_Airfield_Logistics\Data\UI\527_58M_icon_ca.paa";
+        };
+        class H3_Forklift {
+            statement = "['Peral_H2_Forklift', 'Forklift'] call PTF_fnc_SpawnFunction";
+            displayName = "Spawn H3 Forklift";
+            icon = "\Peral_Airfield_Logistics\Data\UI\H2_forklift_icon_ca.paa";
+        };
+        class USN6_Forklift {
+            statement = "['Peral_USN6', 'Forklift'] call PTF_fnc_SpawnFunction";
+            displayName = "Spawn USN6 Forklift";
+            icon = "\Peral_Airfield_Logistics\Data\UI\USN6_icon_ca.paa";
+        };
         class PTF_Atlas {
             statement = "['PTF_Atlas', 'Forklift'] call PTF_fnc_SpawnFunction";
             displayName = "Spawn ATLAS Heavy Forklift";

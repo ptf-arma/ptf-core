@@ -22,6 +22,9 @@ class CfgPatches
           "PTF_Cargo_Large_VicBox",
           "PTF_Cargo_Large_Explosives",
           "PTF_Cargo_Large_Refuel",
+          "PTF_Cargo_VicAmmo",
+          "PTF_Cargo_Fuel_WD",
+          "PTF_Cargo_Fuel_D",
           "PTF_Fortifications_Tent_Medical",
           "PTF_Fortifications_Wall_Hesco",
           "PTF_Fortifications_Wall_BigHesco",
@@ -90,6 +93,7 @@ class cfgVehicles
 {
 #include "cfgSmallCrates.hpp"
 #include "cfgLargeCrates.hpp"
+#include "cfgOtherCrates.hpp"
 #include "cfgIndustrialCrates.hpp"
 #include "cfgArsenal.hpp"
 #include "cfgTools.hpp"

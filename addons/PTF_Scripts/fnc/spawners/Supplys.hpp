@@ -91,17 +91,17 @@ class PTF_Supplys {
 			displayName = "Other";
 			icon = "a3\weapons_f\ammoboxes\data\ui\map_ammoveh_f_ca.paa";
 				class PTF_VicAmmo {
-				statement = "['Box_NATO_AmmoVeh_f', 'Other'] call PTF_fnc_SpawnFunction";
+				statement = "['PTF_Cargo_VicAmmo', 'Other'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Vic Ammo";
             	icon = "a3\weapons_f\ammoboxes\data\ui\map_ammoveh_f_ca.paa";
 				};
 				class PTF_FuelWD {
-				statement = "['FlexibleTank_01_forest_F', 'Other'] call PTF_fnc_SpawnFunction";
+				statement = "['PTF_Cargo_Fuel_WD', 'Other'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Fuel (WD)";
             	icon = "ca\ui\data\icon_mission_refuel_ca.paa";
 				};
 				class PTF_FuelS {
-				statement = "['FlexibleTank_01_Sand_F', 'Other'] call PTF_fnc_SpawnFunction";
+				statement = "['PTF_Cargo_Fuel_D', 'Other'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Fuel (S)";
             	icon = "ca\ui\data\icon_mission_refuel_ca.paa";
 				};
