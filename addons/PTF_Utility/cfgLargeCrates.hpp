@@ -75,6 +75,7 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
       backpack_xx(PTF_SSO_Backpack, 2);
    };
 };
+
 class PTF_Cargo_Large_Launcher: PTF_Large_Box
 {
    displayName = "Large - Launcher";
@@ -95,47 +96,60 @@ class PTF_Cargo_Large_Launcher: PTF_Large_Box
      weap_xx(rhs_weap_M136_hedp, 10);
    };
 };
+
 class PTF_Cargo_Large_Explosives: PTF_Large_Box
 {
    displayName = "Large - Explosives";
    class TransportMagazines
    {
-   mag_xx(tsp_breach_popper_mag, 50);
-   mag_xx(DemoCharge_Remote_Mag, 20);
-   mag_xx(tsp_breach_package_mag, 20);
-   mag_xx(rhs_mag_m67, 30);
-   mag_xx(SmokeShell, 30);
-   mag_xx(ClaymoreDirectionalMine_Remote_Mag, 10);
-   mag_xx(SatchelCharge_Remote_Mag, 10);
-     
+      mag_xx(tsp_breach_popper_mag, 50);
+      mag_xx(DemoCharge_Remote_Mag, 20);
+      mag_xx(tsp_breach_package_mag, 20);
+      mag_xx(rhs_mag_m67, 30);
+      mag_xx(SmokeShell, 30);
+      mag_xx(ClaymoreDirectionalMine_Remote_Mag, 10);
+      mag_xx(SatchelCharge_Remote_Mag, 10);
+      mag_xx(tsp_breach_block_mag, 25);
    };
+
    class TransportItems
    {
 	  item_xx(ACE_Clacker, 10);
    };
 };
+
 class PTF_Cargo_Large_Medical : PTF_Large_Box
 {
    displayName = "Large - Medical";
    class TransportItems
    {
-   item_xx(ACE_salineIV_250, 30);
-   item_xx(ACE_salineIV_500, 30);
-   item_xx(ACE_salineIV, 30)
-   item_xx(ACE_tourniquet, 50);
-   item_xx(ACE_fieldDressing, 200);
-   item_xx(ACE_quikclot, 200);
-   item_xx(ACE_elasticBandage, 150);
-   item_xx(ACE_packingBandage, 150);
-   item_xx(ACE_epinephrine, 50);
-   item_xx(ACE_adenosine, 40);
-   item_xx(ACE_morphine, 40);
-   item_xx(ACE_bodyBag, 10);
-   item_xx(ACE_splint, 50);
-   item_xx(ACE_plasmaIV, 30);
-
+      item_xx(ACE_salineIV_250, 30);
+      item_xx(ACE_salineIV_500, 30);
+      item_xx(ACE_salineIV, 30)
+      item_xx(ACE_tourniquet, 50);
+      item_xx(ACE_fieldDressing, 200);
+      item_xx(ACE_quikclot, 200);
+      item_xx(ACE_elasticBandage, 150);
+      item_xx(ACE_packingBandage, 150);
+      item_xx(ACE_epinephrine, 50);
+      item_xx(ACE_adenosine, 40);
+      item_xx(ACE_morphine, 40);
+      item_xx(ACE_bodyBag, 10);
+      item_xx(ACE_splint, 50);
+      item_xx(ACE_plasmaIV, 30);
+      item_xx(ACE_plasmaIV_500, 15);
+      item_xx(kat_IV_16, 30);
+      item_xx(kat_Carbonate, 30);
+      item_xx(kat_Painkiller, 30);
+      item_xx(kat_EACA, 30);
+      item_xx(kat_IO_FAST, 30);
+      item_xx(kat_naloxone, 30);
+      item_xx(kat_norepinephrine, 30);
+      item_xx(kat_phenylephrine, 30);
+      item_xx(kat_TXA, 30);
    };
 };
+
 class PTF_Cargo_Large_VicBox : PTF_Large_Box
 {
    ace_cargo_space = 40;
@@ -157,6 +171,7 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
       item_xx(ToolKit, 6);
    };
 };
+
 class PTF_Cargo_Large_Refuel : PTF_Large_Box
 {
    ace_dragging_dragPosition[] = {0,2,0};
