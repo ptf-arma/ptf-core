@@ -23,8 +23,8 @@ class cfgPatches
          "PTF_Command_MRZR_MAG36",
          "PTF_MRZR4",
          "PTF_M1151",
-		   "PTF_M1151CAT_MK19",
-		   "PTF_M1151CAT_M2",
+         "PTF_M1151CAT_MK19",
+         "PTF_M1151CAT_M2",
          "PTF_M1152",
          "PTF_MRAP_CGRCAT1A2_MK19",
          "PTF_MRAP_CGRCAT1A2_M2",
@@ -35,9 +35,9 @@ class cfgPatches
          "PTF_M977A4_Ammo",
          "PTF_M1085A1P2",
          "PTF_M1078A1P2",
-		   "PTF_M1025_tow",
-		   "PTF_M1151CAT_MK19",
-		   "PTF_M1151CAT_M2",
+         "PTF_M1025_tow",
+         "PTF_M1151CAT_MK19",
+         "PTF_M1151CAT_M2",
          "PTF_MTVR_Repair",
          "PTF_MTVR_Ammo",
          "PTF_MTVR_Refuel",
@@ -51,8 +51,8 @@ class cfgPatches
          "PTF_ACV",
          "PTF_ACV_MK19",
          "PTF_ACV_30",
-		   "PTF_Badger",
-		   "PTF_Badger_D",
+         "PTF_Badger",
+         "PTF_Badger_D",
          "PTF_M1123",
          "PTF_LCAC",
          "PTF_MK23",
@@ -86,10 +86,11 @@ class cfgPatches
               };
    };
 };
+
 #include "cfgImport.hpp"
 class cfgWeapons
 {
-#include "cfgMastersafe.hpp"
+   #include "cfgMastersafe.hpp"
 };
 
 class cfgMagazines
@@ -110,26 +111,26 @@ class cfgMagazines
 //Defines Vehicles
 class cfgVehicles
 {
-#include "cfgACV.hpp"
-#include "cfgBadger.hpp"
-#include "cfgBoats.hpp"
-#include "cfgCougar.hpp"
-#include "cfgFMTV.hpp"
-#include "cfgForklifts.hpp"
-#include "cfgM977A4.hpp"
-#include "cfgM1151.hpp"
-#include "cfgM1152.hpp"
-#include "cfgM1232.hpp"
-#include "cfgMRZR.hpp"
-#include "cfgTractors.hpp"
-#include "cfgVanilla.hpp"
-#include "cfg6x6.hpp"
-#include "cfgSAM.hpp"
-#include "cfgCAT.hpp"
-#include "cfgLCAC.hpp"
-#include "cfgMTVR.hpp"
+   #include "cfgACV.hpp"
+   #include "cfgBadger.hpp"
+   #include "cfgBoats.hpp"
+   #include "cfgCougar.hpp"
+   #include "cfgFMTV.hpp"
+   #include "cfgForklifts.hpp"
+   #include "cfgM977A4.hpp"
+   #include "cfgM1151.hpp"
+   #include "cfgM1152.hpp"
+   #include "cfgM1232.hpp"
+   #include "cfgMRZR.hpp"
+   #include "cfgTractors.hpp"
+   #include "cfgVanilla.hpp"
+   #include "cfg6x6.hpp"
+   #include "cfgSAM.hpp"
+   #include "cfgCAT.hpp"
+   #include "cfgLCAC.hpp"
+   #include "cfgMTVR.hpp"
 
-class slr_slingload_wreckDummy : slr_slingload_wreckDummy {
-   SlingloadingWeight = "[2900,2800]";
-};
+   class slr_slingload_wreckDummy : slr_slingload_wreckDummy {
+      SlingloadingWeight = "[2900,2800]";
+   };
 };
