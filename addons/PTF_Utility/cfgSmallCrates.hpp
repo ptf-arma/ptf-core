@@ -37,118 +37,6 @@ class PTF_Cargo_Small : Boxloader_SmallPallet_Ammo
    class Transportitems{};
 };
 
-class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
-{
-   displayname = "Small - Ammo";
-   class Transportmagazines
-   {
-      mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 20);
-      mag_xx(rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote, 20);
-      mag_xx(rhsusf_20Rnd_762x51_SR25_m62_Mag, 5);
-      mag_xx(rhsusf_20Rnd_762x51_SR25_m993_Mag, 5);
-      mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 5);
-      mag_xx(PTF_Mag_556x45_Mk262_Stanag_Mix, 100);
-      mag_xx(SmokeShellBlue, 10);
-      mag_xx(SmokeShellGreen, 10);
-      mag_xx(SmokeShellPurple, 20);
-      mag_xx(SmokeShellRed, 10);
-      mag_xx(SmokeShell, 30);
-      mag_xx(rhs_mag_m67, 20);
-      mag_xx(rhs_mag_m433_HEDP, 10);
-      mag_xx(rhs_mag_M441_HE, 10);
-      mag_xx(rhs_mag_M397_HET, 10);
-      mag_xx(rhsusf_mag_6Rnd_M441_HE, 10);
-      mag_xx(rhsusf_mag_6Rnd_M433_HEDP, 10);
-      mag_xx(ACE_CTS9, 40);
-      mag_xx(rhsusf_mag_7x45acp_MHP, 20);
-      mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
-   };
-   class Transportweapons
-   {
-      weap_xx(rhs_weap_m72a7, 10);
-      weap_xx(rhs_weap_M136_hp, 10);
-   };
-   class Transportitems
-   {
-      item_xx(ACE_CableTie, 20);
-      item_xx(ACE_IR_Strobe_Item, 25);
-      item_xx(ACE_UAVBattery, 5);
-   };
-   class TransportBackpacks
-   {
-      backpack_xx(PTF_SSO_Backpack, 1);
-   };
-};
-class PTF_Cargo_Small_Launcher : PTF_Cargo_Small
-{
-   displayname = "Small - Launcher";
-   class Transportmagazines
-   {
-      mag_xx(rhs_fgm148_magazine_AT, 5);
-      mag_xx(MRAWS_HEAT_F, 5);
-      mag_xx(MRAWS_HE_F, 10);
-      mag_xx(MRAWS_HEAT55_F, 10);
-      mag_xx(rhs_fim92_mag, 10);
-   };
-   class Transportweapons
-   {
-	   weap_xx(rhs_weap_m72a7, 10);
-      weap_xx(rhs_weap_M136_hp, 5);
-      weap_xx(rhs_weap_M136, 5);
-      weap_xx(rhs_weap_M136_hedp, 5);
-   };
-};
-class PTF_Cargo_Small_Explosives : PTF_Cargo_Small
-{
-   displayname = "Small - Explosives";
-   class Transportmagazines
-   {
-      mag_xx(tsp_breach_block_mag, 25);
-      mag_xx(tsp_breach_popper_mag, 25);
-      mag_xx(DemoCharge_Remote_Mag, 10);
-      mag_xx(tsp_breach_package_mag, 10);
-      mag_xx(rhs_mag_m67, 15);
-      mag_xx(SmokeShell, 15);
-      mag_xx(ClaymoreDirectionalMine_Remote_Mag, 5);
-      mag_xx(SatchelCharge_Remote_Mag, 5);
-   };
-   class Transportitems
-   {
-	   item_xx(ACE_Clacker, 5);
-   };
-};
-class PTF_Cargo_Small_Medical : PTF_Cargo_Small
-{
-   displayname = "Small - Medical";
-   class Transportitems
-   {
-      item_xx(ACE_salineIV_250, 30);
-      item_xx(ACE_salineIV_500, 30);
-      item_xx(ACE_salineIV, 30)
-      item_xx(ACE_tourniquet, 25);
-      item_xx(ACE_fieldDressing, 100);
-      item_xx(ACE_quikclot, 100);
-      item_xx(ACE_elasticBandage, 75);
-      item_xx(ACE_packingBandage, 75);
-      item_xx(ACE_epinephrine, 25);
-      item_xx(ACE_adenosine, 20);
-      item_xx(ACE_morphine, 20);
-      item_xx(ACE_bodyBag, 5);
-      item_xx(ACE_splint, 25);
-      item_xx(ACE_plasmaIV,15);
-      item_xx(ACE_plasmaIV_500, 15);
-      item_xx(kat_IV_16, 30);
-      item_xx(kat_Carbonate, 30);
-      item_xx(kat_Painkiller, 30);
-      item_xx(kat_EACA, 30);
-      item_xx(kat_IO_FAST, 30);
-      item_xx(kat_naloxone, 30);
-      item_xx(kat_norepinephrine, 30);
-      item_xx(kat_phenylephrine, 30);
-      item_xx(kat_Carbonate, 30);
-      item_xx(kat_TXA, 30);
-   };
-};
 class PTF_Cargo_Small_Humanitarian : PTF_Cargo_Small
 {
    displayname = "Small - Humanitarian";
@@ -163,6 +51,7 @@ class PTF_Cargo_Small_Humanitarian : PTF_Cargo_Small
       item_xx(ACE_WaterBottle, 100);
    };
 };
+
 class PTF_Cargo_Mortar : PTF_Cargo_Small
 {
    displayname = "Small - Mortar";
@@ -175,6 +64,7 @@ class PTF_Cargo_Mortar : PTF_Cargo_Small
       mag_xx(avm224_M_6Rnd_60mm_ILLUM_csw, 4);
    };
 };
+
 class PTF_Cargo_Vic : PTF_Cargo_Small
 {
    ace_cargo_space = 40;
@@ -192,6 +82,7 @@ class PTF_Cargo_Vic : PTF_Cargo_Small
       };
    };
 };
+
 class PTF_Cargo_Tracks : PTF_Cargo_Small
 {
    ace_cargo_space = 40;
@@ -209,6 +100,7 @@ class PTF_Cargo_Tracks : PTF_Cargo_Small
       };
    };
 };
+
 class PTF_Cargo_Ammo : NATO_Box_Base
 {
    scope = 2;
