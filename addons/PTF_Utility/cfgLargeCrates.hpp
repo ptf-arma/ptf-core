@@ -187,6 +187,7 @@ class PTF_Cargo_Large_Refuel : PTF_Large_Box
          class Carrier{};
       };
    displayname = "Large - Refuel";
+   ace_cargo_size = 5;
    ace_cargo_canLoad = 1;
    model = "\boxloader_cargo\mdl\boxloader_sixcon_dar.p3d";
    supplyRadius = 10;
