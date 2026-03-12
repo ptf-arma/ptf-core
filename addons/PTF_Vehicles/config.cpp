@@ -76,7 +76,7 @@ class cfgPatches
               "A3_Data_F_Oldman_Loadorder",
               "A3_Soft_F_Exp",
               "A3_Boat_F_Beta",
-              "ACV"
+              "Peral_ACV"
               };
    };
 };
