@@ -156,6 +156,19 @@ class rhs_mag_30Rnd_556x45_Mk318_Stanag;
 class rhs_mag_30Rnd_556x45_M855A1_Stanag;
 class rhs_mag_20Rnd_SCAR_762x51_mk316_special;
 class rhs_mag_20Rnd_SCAR_762x51_m80a1_epr;
+class rhs_mag_20Rnd_SCAR_762x51_m118_special;
+class rhs_mag_20Rnd_SCAR_762x51_m118_special_bk;
+class rhs_mag_20Rnd_SCAR_762x51_m61_ap;
+class rhs_mag_20Rnd_SCAR_762x51_m61_ap_bk;
+class rhs_mag_20Rnd_SCAR_762x51_m62_tracer;
+class rhs_mag_20Rnd_SCAR_762x51_m62_tracer_bk;
+class rhs_mag_20Rnd_SCAR_762x51_m80_ball;
+class rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk;
+class rhs_mag_20Rnd_SCAR_762x51_m80a1_epr;
+class rhs_mag_20Rnd_SCAR_762x51_m80a1_epr_bk;
+class rhs_mag_20Rnd_SCAR_762x51_mk316_special;
+class rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk;
+
 //Crye Vests
 class USP_CRYE_CPC;
 class USP_CRYE_CPC_COMMS;
