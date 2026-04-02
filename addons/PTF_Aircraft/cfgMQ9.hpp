@@ -67,41 +67,41 @@ class PTF_MQ9 : USAF_MQ9
             }
          };
          class pylons
-				{
-					class pylons1
-					{
-						UIposition[] = {0.32,0.1};
-						maxweight = 1000;
-						hardpoints[] = {"B_USAF_MQ9_FUEL","B_BOMB_GBU12","B_BOMB_GBU38","B_BOMB_GBU39","B_BOMB_GBU49","B_BOMB_GBU53","B_BOMB_GBU54","B_BOMB_APKWS7","B_MISSILE_AGM114P_4","B_MISSILE_AGM114P_2","B_MISSILE_AGM114R", "B_MISSILE_AGM114R_4","B_AIM9X_DUAL_RAIL"};
-						attachment = "PTF_PylonRack_4Rnd_AGM114R";
-						priority = 2;
-						turret[] = {0};
-						memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.001";
-					};
-					class pylons2: pylons1
-					{
-						UIposition[] = {0.32,0.2};
-						maxweight = 1000;
+            {
+               class pylons1
+               {
+                  UIposition[] = {0.32,0.1};
+                  maxweight = 1000;
+                  hardpoints[] = {"B_USAF_MQ9_FUEL","B_BOMB_GBU12","B_BOMB_GBU38","B_BOMB_GBU39","B_BOMB_GBU49","B_BOMB_GBU53","B_BOMB_GBU54","B_BOMB_APKWS7","B_MISSILE_AGM114P_4","B_MISSILE_AGM114P_2","B_MISSILE_AGM114R", "B_MISSILE_AGM114R_4","B_AIM9X_DUAL_RAIL"};
+                  attachment = "PTF_PylonRack_4Rnd_AGM114R";
+                  priority = 2;
+                  turret[] = {0};
+                  memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.001";
+               };
+               class pylons2: pylons1
+               {
+                  UIposition[] = {0.32,0.2};
+                  maxweight = 1000;
                   hardpoints[] = {"B_USAF_MQ9_FUEL","B_BOMB_GBU12","B_BOMB_GBU38","B_BOMB_GBU39","B_BOMB_GBU49","B_BOMB_GBU53","B_BOMB_GBU54","B_MISSILE_AGM114R","B_MISSILE_AGM114P_2", "B_AIM9X_DUAL_RAIL"};
-						attachment = "USAF_PylonRack_2Rnd_AGM114R";
-						priority = 1;
-						memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.002";
-					};
-					class pylons3: pylons2
-					{
-						UIposition[] = {0.32,0.38};
-						attachment = "USAF_PylonRack_1Rnd_MQ9FuelTank";
-						mirroredMissilePos = 2;
-						memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.003";
-					};
-					class pylons4: pylons1
-					{
-						UIposition[] = {0.32,0.48};
-						attachment = "PTF_PylonRack_4Rnd_AGM114R";
-						mirroredMissilePos = 1;
-						memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.004";
-					};
-				};
+                  attachment = "USAF_PylonRack_2Rnd_AGM114R";
+                  priority = 1;
+                  memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.002";
+               };
+               class pylons3: pylons2
+               {
+                  UIposition[] = {0.32,0.38};
+                  attachment = "USAF_PylonRack_1Rnd_MQ9FuelTank";
+                  mirroredMissilePos = 2;
+                  memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.003";
+               };
+               class pylons4: pylons1
+               {
+                  UIposition[] = {0.32,0.48};
+                  attachment = "PTF_PylonRack_4Rnd_AGM114R";
+                  mirroredMissilePos = 1;
+                  memPoint = "proxy:\A3\Weapons_F\DynamicLoadout\PylonPod_3x_Missile_AGM_02_F.004";
+               };
+            };
       };
    };
 };
