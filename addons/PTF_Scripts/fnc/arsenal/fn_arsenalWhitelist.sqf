@@ -873,7 +873,19 @@ _equipment = [
 	"ACE_Altimeter",
 	"KAT_ChemicalDetector",
 	"crowsew_ctrack",
-	"crowsew_tfar_icom"
+	"crowsew_tfar_icom",
+	"ace_flags_black",
+	"ace_flags_blue",
+	"ace_flags_green",
+	"ace_flags_orange",
+	"ace_flags_purple",
+	"ace_flags_red",
+	"ace_flags_yellow",
+	"ace_flags_white",
+	"ace_marker_flags_blue",
+	"ace_marker_flags_green",
+	"ace_marker_flags_purple",
+	"ace_marker_flags_black"
 ];
 
 _binoculars = [
