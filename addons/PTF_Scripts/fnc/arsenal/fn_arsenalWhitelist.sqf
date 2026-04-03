@@ -285,7 +285,8 @@ _backpacks = [
 	"PTF_Backpack_Infantry_ACC8",
 	"ACE_TacticalLadder_Pack",
 	"rhs_M252_Gun_Bag",
-	"rhs_M252_bipod_Bag"
+	"rhs_M252_bipod_Bag",
+	"B_UGV_02_Demining_backpack_F"
 ];
 
 _uniforms = [
