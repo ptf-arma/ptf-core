@@ -73,3 +73,5 @@ class cfgMods
 	timepacked="1675414171";
 };
 #include "cfgRsc.hpp"
+#include "cfgWeapons.hpp"
+#include "cfgMagazine.hpp"
