@@ -21,9 +21,7 @@ class PTF_Cargo_Small : Boxloader_SmallPallet_Ammo
    hiddenselections[] = {
        "camo",
        "camo_signs"};
-   hiddenselectionstextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Small_ammo\Boxloader_SmallPallet_ammo_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Small_ammo\Boxloader_SmallPallet_ammo_ca.paa"};
+   hiddenselectionstextures[] = {};
    class vehicleTransport
    {
       class Cargo
