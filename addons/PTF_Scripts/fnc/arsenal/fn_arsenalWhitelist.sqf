@@ -100,7 +100,18 @@ _launchers = [
 	"rhs_weap_fgm148",
 	"rhs_weap_fim92",
 	"rhs_weap_m72a7",
-	"rhs_weap_M320"
+	"rhs_weap_M320",
+	"JPSP_weap_M136_csast",
+	"JPSP_weap_M136_cser",
+	"JPSP_weap_M136_cshe",
+	"JPSP_weap_M136_cshp",
+	"JPSP_weap_m72asmrc",
+	"JPSP_weap_m72ecmk1",
+	"JPSP_weap_m72ecmk2",
+	"JPSP_weap_m72a10",
+	"JPSP_weap_m72a12",
+	"JPSP_weap_m72a8",
+	"JPSP_weap_m72a9"
 ];
 
 _pistols = [
@@ -218,7 +229,19 @@ _attachments = [
 	"muzzle_antenna_01_f",
 	"muzzle_antenna_02_f",
 	"muzzle_antenna_03_f",
-	"Optic_VCOG_SCO"
+	"Optic_VCOG_SCO",
+	"rhsusf_acc_RM05",
+	"rhsusf_acc_RM05_fwd",
+	"rhsusf_acc_T1_high",
+	"rhsusf_acc_T1_low",
+	"rhsusf_acc_T1_low_fwd",
+	"rhsusf_acc_mrds_c",
+	"rhsusf_acc_mrds_fwd_c",
+	"mars_lc_RangeFinder_left_alt",
+	"mars_lc_RangeFinder_left",
+	"mars_lc_RangeFinder_right_alt",
+	"mars_lc_RangeFinder_right",
+	"scout_pro_flashlight"
 ];
 
 // Backpacks, Uniforms, Vests, Helmets, Glasses, 
@@ -262,7 +285,8 @@ _backpacks = [
 	"PTF_Backpack_Infantry_ACC8",
 	"ACE_TacticalLadder_Pack",
 	"rhs_M252_Gun_Bag",
-	"rhs_M252_bipod_Bag"
+	"rhs_M252_bipod_Bag",
+	"B_UGV_02_Demining_backpack_F"
 ];
 
 _uniforms = [
@@ -631,6 +655,18 @@ _ammo = [
 	"PTF_Mag_556x45_Mk318_PMAG_Mix",
 	"PTF_Mag_762x51_M80A1_EPR_Mix",
 	"PTF_Mag_762x51_MK316_Special_Mix",
+	"PTF_Mag_762x51_20Rnd_SCAR_m118_special",
+	"PTF_Mag_762x51_20Rnd_SCAR_m118_special_bk",
+	"PTF_Mag_762x51_20Rnd_SCAR_m61_ap",
+	"PTF_Mag_762x51_20Rnd_SCAR_m61_ap_bk",
+	"PTF_Mag_762x51_20Rnd_SCAR_m62_tracer",
+	"PTF_Mag_762x51_20Rnd_SCAR_m62_tracer_bk",
+	"PTF_Mag_762x51_20Rnd_SCAR_m80_ball",
+	"PTF_Mag_762x51_20Rnd_SCAR_m80_ball_bk",
+	"PTF_Mag_762x51_20Rnd_SCAR_m80a1_epr",
+	"PTF_Mag_762x51_20Rnd_SCAR_m80a1_epr_bk",
+	"PTF_Mag_762x51_20Rnd_SCAR_mk316_special",
+	"PTF_Mag_762x51_20Rnd_SCAR_mk316_special_bk",
 	"rhsusf_100Rnd_762x51",
 	"rhsusf_100Rnd_762x51_m80a1epr",
 	"rhsusf_20Rnd_762x51_SR25_m993_Mag",
@@ -639,14 +675,6 @@ _ammo = [
 	"rhsusf_10Rnd_762x51_m993_Mag",
 	"rhsusf_8Rnd_Slug",
 	"rhs_8Rnd_00Buck",
-	"rhs_mag_20Rnd_SCAR_762x51_m62_tracer_bk",
-	"rhs_mag_20Rnd_SCAR_762x51_m80a1_epr_bk",
-	"rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk",
-	"rhs_mag_20Rnd_SCAR_762x51_m118_special_bk",
-	"rhs_mag_20Rnd_SCAR_762x51_m61_ap_bk",
-	"rhs_mag_20Rnd_SCAR_762x51_mk316_special",
-	"rhs_mag_20Rnd_SCAR_762x51_m80a1_epr",
-	"rhs_mag_20Rnd_SCAR_762x51_m62_tracer",
 	"rhsusf_200Rnd_556x45_mixed_soft_pouch",
 	"rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote",
 	"rhsusf_200Rnd_556x45_mixed_soft_pouch_ucp",
@@ -846,7 +874,19 @@ _equipment = [
 	"ACE_Altimeter",
 	"KAT_ChemicalDetector",
 	"crowsew_ctrack",
-	"crowsew_tfar_icom"
+	"crowsew_tfar_icom",
+	"ace_flags_black",
+	"ace_flags_blue",
+	"ace_flags_green",
+	"ace_flags_orange",
+	"ace_flags_purple",
+	"ace_flags_red",
+	"ace_flags_yellow",
+	"ace_flags_white",
+	"ace_marker_flags_blue",
+	"ace_marker_flags_green",
+	"ace_marker_flags_purple",
+	"ace_marker_flags_black"
 ];
 
 _binoculars = [

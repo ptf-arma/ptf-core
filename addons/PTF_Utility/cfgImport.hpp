@@ -44,3 +44,6 @@ class NATO_Box_Base;
 class Land_RepairDepot_01_green_F;
 class CBA_Extended_EventHandlers_base;
 class Land_Ammobox_rounds_F;
+class Box_NATO_AmmoVeh_f;
+class FlexibleTank_01_forest_F;
+class FlexibleTank_01_Sand_F;

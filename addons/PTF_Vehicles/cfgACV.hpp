@@ -1,5 +1,5 @@
 //ACV M2
-class PTF_ACV : ACV
+class PTF_ACV : Peral_ACV
 {
 	scope = 2;
 	faction = "BLU_F";
@@ -170,7 +170,7 @@ class PTF_ACV : ACV
 };
 
 //ACV M2
-class PTF_ACV_MK19 : ACV_MK19
+class PTF_ACV_MK19 : Peral_ACV_MK19
 {
 	scope = 2;
 	faction = "BLU_F";
@@ -341,7 +341,7 @@ class PTF_ACV_MK19 : ACV_MK19
 };
 
 //ACV M2
-class PTF_ACV_30 : ACV_30
+class PTF_ACV_30 : Peral_ACV_30
 {
 	scope = 2;
 	faction = "BLU_F";

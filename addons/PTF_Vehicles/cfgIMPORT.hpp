@@ -126,11 +126,18 @@ class B_SAM_System_03_F;
 class B_Radar_System_01_F;
 
 class B_APC_Wheeled_01_cannon_F;
-class ACV;
-class ACV_MK19;
-class ACV_30;
+class Peral_ACV;
+class Peral_ACV_MK19;
+class Peral_ACV_30;
 
 class rhsusf_m998_d_s_2dr_fulltop;
+
+//Peral's Vehicles
+class Peral_LCAC;
+class Peral_MK23;
+class Peral_MK23_50;
+class Peral_MK23T;
+class Peral_MK23T_50;
 
 //SlingLoading
 class slr_slingload_wreckDummy;

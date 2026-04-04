@@ -11,6 +11,9 @@ class PTF_Cargo_Small : Boxloader_SmallPallet_Ammo
    ace_cargo_canload = 1;
    ace_dragging_canCarry = 0;
    ace_dragging_candrag = 1;
+   AL_canBeMoved = 1;
+   AL_weight = 10;
+   AL_ForkAttachpoint[] = {0,0.15,0};
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
@@ -18,9 +21,7 @@ class PTF_Cargo_Small : Boxloader_SmallPallet_Ammo
    hiddenselections[] = {
        "camo",
        "camo_signs"};
-   hiddenselectionstextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Small_ammo\Boxloader_SmallPallet_ammo_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Small_ammo\Boxloader_SmallPallet_ammo_ca.paa"};
+   hiddenselectionstextures[] = {};
    class vehicleTransport
    {
       class Cargo
@@ -47,7 +48,7 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(rhsusf_20Rnd_762x51_SR25_m62_Mag, 5);
       mag_xx(rhsusf_20Rnd_762x51_SR25_m993_Mag, 5);
       mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 5);
-      mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 100);
+      mag_xx(PTF_Mag_556x45_Mk262_Stanag_Mix, 100);
       mag_xx(SmokeShellBlue, 10);
       mag_xx(SmokeShellGreen, 10);
       mag_xx(SmokeShellPurple, 20);
@@ -62,6 +63,8 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
       mag_xx(ACE_CTS9, 40);
       mag_xx(rhsusf_mag_7x45acp_MHP, 20);
       mag_xx(PTF_Mag_762x51_M80A1_EPR_Mix, 20);
+      mag_xx(ACE_HuntIR_M203, 20);
+      mag_xx(X26_Cartridge, 40);
    };
    class Transportweapons
    {
@@ -72,6 +75,11 @@ class PTF_Cargo_Small_Ammo : PTF_Cargo_Small
    {
       item_xx(ACE_CableTie, 20);
       item_xx(ACE_IR_Strobe_Item, 25);
+      item_xx(ACE_UAVBattery, 5);
+   };
+   class TransportBackpacks
+   {
+      backpack_xx(PTF_SSO_Backpack, 1);
    };
 };
 class PTF_Cargo_Small_Launcher : PTF_Cargo_Small
@@ -119,7 +127,7 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
    {
       item_xx(ACE_salineIV_250, 30);
       item_xx(ACE_salineIV_500, 30);
-      item_xx(ACE_salineIV, 30)
+      item_xx(ACE_salineIV, 30);
       item_xx(ACE_tourniquet, 25);
       item_xx(ACE_fieldDressing, 100);
       item_xx(ACE_quikclot, 100);
@@ -164,10 +172,22 @@ class PTF_Cargo_Mortar : PTF_Cargo_Small
    class TransportMagazines
    {
       mag_xx(NDS_M_6Rnd_60mm_HE   , 4);
-      mag_xx(avm224_M_6Rnd_60mm_SMOKE_csw, 4);
+      mag_xx(avm224_M_6Rnd_60mm_SMOKE_csw, 8);
       mag_xx(NDS_M_6Rnd_60mm_HE_0, 2);
-      mag_xx(avm224_M_6Rnd_60mm_ILLUM_IR_csw, 24);
-      mag_xx(avm224_M_6Rnd_60mm_ILLUM_csw, 4);
+      mag_xx(avm224_M_6Rnd_60mm_ILLUM_IR_csw, 2);
+      mag_xx(avm224_M_6Rnd_60mm_ILLUM_csw, 2);
+      mag_xx(avm224_M_6Rnd_60mm_HE_0_csw, 4);
+      mag_xx(avm224_M_6Rnd_60mm_HE_csw, 8);
+      mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 40);
+   };
+   class TransportWeapons
+   {
+      weap_xx(avm224_W_M224_mortar_carry, 1);
+   };
+   class TransportItems
+   {
+      item_xx(ACE_SpareBarrel, 6);
+      item_xx(ACE_Canteen, 12);
    };
 };
 class PTF_Cargo_Vic : PTF_Cargo_Small
@@ -217,6 +237,9 @@ class PTF_Cargo_Ammo : NATO_Box_Base
    ace_cargo_canload = 1;
    ace_dragging_canCarry = 1;
    ace_dragging_candrag = 1;
+   AL_canBeMoved = 1;
+   AL_weight = 10;
+   AL_ForkAttachpoint[] = {0,0,0.25};
    maximumLoad = 375;
    model = "\A3\weapons_F\ammoBoxes\ammoBox_F";
    editorCategory = "PTF_Empty";

@@ -10,6 +10,9 @@ class PTF_Large_Box : Boxloader_Ammo_West
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
    ace_dragging_canDrag = 0;
+   AL_canBeMoved = 1;
+   AL_weight = 30;
+   AL_ForkAttachpoint[] = {0,0.9,0};
    editorCategory = "PTF_Empty";
    editorSubcategory = "PTF_Cargo";
    author = "Paramarine Task Force";
@@ -43,7 +46,7 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
       mag_xx(rhsusf_100Rnd_762x51_m80a1epr, 40);
       mag_xx(rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote, 40);
       mag_xx(rhsusf_20Rnd_762x51_SR25_mk316_special_Mag, 40);
-      mag_xx(PTF_Mag_556x45_M855A1_Stanag_Mix, 200);
+      mag_xx(PTF_Mag_556x45_Mk262_Stanag_Mix, 200);
       mag_xx(SmokeShellBlue, 20);
       mag_xx(SmokeShellGreen, 20);
       mag_xx(SmokeShellPurple, 20);
@@ -68,8 +71,14 @@ class PTF_Cargo_Large_Ammo : PTF_Large_Box
    {
       item_xx(ACE_IR_Strobe_Item, 50);
       item_xx(ACE_CableTie, 40);
+      item_xx(ACE_UAVBattery, 10);
+   };
+   class TransportBackpacks
+   {
+      backpack_xx(PTF_SSO_Backpack, 2);
    };
 };
+
 class PTF_Cargo_Large_Launcher: PTF_Large_Box
 {
    displayName = "Large - Launcher";
@@ -90,47 +99,60 @@ class PTF_Cargo_Large_Launcher: PTF_Large_Box
      weap_xx(rhs_weap_M136_hedp, 10);
    };
 };
+
 class PTF_Cargo_Large_Explosives: PTF_Large_Box
 {
    displayName = "Large - Explosives";
    class TransportMagazines
    {
-   mag_xx(tsp_breach_popper_mag, 50);
-   mag_xx(DemoCharge_Remote_Mag, 20);
-   mag_xx(tsp_breach_package_mag, 20);
-   mag_xx(rhs_mag_m67, 30);
-   mag_xx(SmokeShell, 30);
-   mag_xx(ClaymoreDirectionalMine_Remote_Mag, 10);
-   mag_xx(SatchelCharge_Remote_Mag, 10);
-     
+      mag_xx(tsp_breach_popper_mag, 50);
+      mag_xx(DemoCharge_Remote_Mag, 20);
+      mag_xx(tsp_breach_package_mag, 20);
+      mag_xx(rhs_mag_m67, 30);
+      mag_xx(SmokeShell, 30);
+      mag_xx(ClaymoreDirectionalMine_Remote_Mag, 10);
+      mag_xx(SatchelCharge_Remote_Mag, 10);
+      mag_xx(tsp_breach_block_mag, 25);
    };
+
    class TransportItems
    {
 	  item_xx(ACE_Clacker, 10);
    };
 };
+
 class PTF_Cargo_Large_Medical : PTF_Large_Box
 {
    displayName = "Large - Medical";
    class TransportItems
    {
-   item_xx(ACE_salineIV_250, 30);
-   item_xx(ACE_salineIV_500, 30);
-   item_xx(ACE_salineIV, 30)
-   item_xx(ACE_tourniquet, 50);
-   item_xx(ACE_fieldDressing, 200);
-   item_xx(ACE_quikclot, 200);
-   item_xx(ACE_elasticBandage, 150);
-   item_xx(ACE_packingBandage, 150);
-   item_xx(ACE_epinephrine, 50);
-   item_xx(ACE_adenosine, 40);
-   item_xx(ACE_morphine, 40);
-   item_xx(ACE_bodyBag, 10);
-   item_xx(ACE_splint, 50);
-   item_xx(ACE_plasmaIV, 30);
-
+      item_xx(ACE_salineIV_250, 30);
+      item_xx(ACE_salineIV_500, 30);
+      item_xx(ACE_salineIV, 30)
+      item_xx(ACE_tourniquet, 50);
+      item_xx(ACE_fieldDressing, 200);
+      item_xx(ACE_quikclot, 200);
+      item_xx(ACE_elasticBandage, 150);
+      item_xx(ACE_packingBandage, 150);
+      item_xx(ACE_epinephrine, 50);
+      item_xx(ACE_adenosine, 40);
+      item_xx(ACE_morphine, 40);
+      item_xx(ACE_bodyBag, 10);
+      item_xx(ACE_splint, 50);
+      item_xx(ACE_plasmaIV, 30);
+      item_xx(ACE_plasmaIV_500, 15);
+      item_xx(kat_IV_16, 30);
+      item_xx(kat_Carbonate, 30);
+      item_xx(kat_Painkiller, 30);
+      item_xx(kat_EACA, 30);
+      item_xx(kat_IO_FAST, 30);
+      item_xx(kat_naloxone, 30);
+      item_xx(kat_norepinephrine, 30);
+      item_xx(kat_phenylephrine, 30);
+      item_xx(kat_TXA, 30);
    };
 };
+
 class PTF_Cargo_Large_VicBox : PTF_Large_Box
 {
    ace_cargo_space = 40;
@@ -152,9 +174,11 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
       item_xx(ToolKit, 6);
    };
 };
+
 class PTF_Cargo_Large_Refuel : PTF_Large_Box
 {
    ace_dragging_dragPosition[] = {0,2,0};
+   AL_ForkAttachpoint[] = {0,0.55,0};
    class VehicleTransport
       {
          class Cargo
@@ -167,6 +191,8 @@ class PTF_Cargo_Large_Refuel : PTF_Large_Box
          class Carrier{};
       };
    displayname = "Large - Refuel";
+   ace_cargo_size = 5;
+   ace_cargo_canLoad = 1;
    model = "\boxloader_cargo\mdl\boxloader_sixcon_dar.p3d";
    supplyRadius = 10;
    transportRefuel = 200000000;
