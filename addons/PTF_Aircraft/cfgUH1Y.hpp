@@ -51,7 +51,7 @@ class PTF_UH1Y : RHS_UH1Y_d
                minAngleY = -100;
                maxAngleY = 100;
                initFov = 0.466;
-               minFov = 0.0218;
+               minFov = 0.0018;
                maxFov = 0.466;
                visionMode[] = {"Normal","NVG","Ti"};
                directionStabilized = 1;
@@ -59,6 +59,7 @@ class PTF_UH1Y : RHS_UH1Y_d
                gunnerOpticsModel = "\rhsusf\addons\rhsusf_optics\data\rhs_uh1_flir";
             };
          };
+         gunnerCompartments = "Compartment2";
       };
       class MainTurret : MainTurret
       {
