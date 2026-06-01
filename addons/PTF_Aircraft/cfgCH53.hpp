@@ -24,6 +24,14 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
     class EventHandlers {
       init = "[(_this select 0)] call PTF_fnc_slingloading";
    };
+
+   class Turrets: Turrets
+   {
+      class CopilotTurret: CopilotTurret
+      {
+         gunnerCompartments = "Compartment2";
+      };
+   };
 };
 class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
 {
@@ -49,5 +57,13 @@ class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
    LESH_WheelOffset[] = {0,4};
     class EventHandlers {
       init = "[(_this select 0)] call PTF_fnc_slingloading";
+   };
+
+   class Turrets: Turrets
+   {
+      class CopilotTurret: CopilotTurret
+      {
+         gunnerCompartments = "Compartment2";
+      };
    };
 };

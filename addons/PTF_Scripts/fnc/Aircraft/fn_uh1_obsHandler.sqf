@@ -14,11 +14,7 @@ high refresh rate loop [0.1 sec]
 */
 [] spawn
 {
-    private _RHS_TV_ppEffect = ppEffectCreate ["FilmGrain", 1400];
-    _RHS_TV_ppEffect ppEffectAdjust [0.15,1,1,0.45,1, false];
-    _RHS_TV_ppEffect ppEffectCommit 0;
-
-
+    private _RHS_TV_ppEffect = [];
     disableSerialization;
     private _p = call rhsusf_fnc_findPlayer;
     private _v = vehicle _p;
@@ -61,9 +57,6 @@ high refresh rate loop [0.1 sec]
             {
                 _v setVariable ["rhs_uh1_mode",_visionMode,true];
             };
-            {_x ppEffectEnable true}foreach [_RHS_TV_ppEffect];
-        }else{
-            {_x ppEffectEnable false}foreach [_RHS_TV_ppEffect];
         };
 
 
@@ -113,7 +106,6 @@ high refresh rate loop [0.1 sec]
 
         sleep 0.07;
     };
-    ppEffectDestroy _RHS_TV_ppEffect;
     uiNameSpace setVariable ["PTF_UH1_ObsCtrl",displayNull];
 };
 

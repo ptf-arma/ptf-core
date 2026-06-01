@@ -109,6 +109,17 @@ class USAF_MQ9 {
 	class ACE_Actions {
 		class ACE_MainActions {};
 	};
+
+	class Components {
+		class TransportPylonsComponent {
+			class pylons {
+				class pylons1 {};
+				class pylons2 {};
+				class pylons3 {};
+				class pylons4 {};
+			};
+		};
+	};
 };
 class USAF_C17;
 class usaf_kc135;
