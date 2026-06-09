@@ -1,6 +1,6 @@
 class cfgPatches
 {
-	class PTF_Clothes
+	class PTF_Helmets
 	{
 		units[]={};
 		weapons[]={};
@@ -543,6 +543,10 @@ class cfgWeapons
 		{
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_lowe.paa",
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_lowe.rvmat"
 		};
 	};
 	class PTF_Helmet_Lowe_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
