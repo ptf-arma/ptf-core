@@ -86,7 +86,9 @@ _rifles = [
 	"lot_m1014_sand",
 	"lot_m1014_cqb",
 	"lot_m1014_cqb_olive",
-	"lot_m1014_cqb_sand"
+	"lot_m1014_cqb_sand",
+	"Peral_M4A1_SOPMOD",
+	"Peral_M4A1_Magpul"
 ];
 
 _launchers = [
