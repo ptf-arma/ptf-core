@@ -20,9 +20,7 @@ class PTF_Large_Box : Boxloader_Ammo_West
    hiddenSelections[] = {
        "camo",
        "camo_signs"};
-   hiddenSelectionsTextures[] = {
-       "PTF_Utility\data\cargo\PTF_Cargo_Large_Ammo\Boxloader_Ammo_West_co.paa",
-       "PTF_Cargo\Data\PTF_Cargo_Large_Ammo\Boxloader_Ammo_West_ca.paa"};
+   hiddenSelectionsTextures[] = {};
    class VehicleTransport
    {
       class Cargo
