@@ -33,10 +33,14 @@ jobs:
             fail=1
           fi
 
+          # NB: steps run under `bash -eo pipefail`. Ending the loop body on a
+          # bare `[ ] && printf` makes the last (small) file's false test exit
+          # non-zero, which pipefail+errexit turn into a spurious job failure —
+          # use if/then/fi so the loop always ends 0.
           big=$(git ls-files | while IFS= read -r f; do
             [ -f "$f" ] || continue
             sz=$(wc -c < "$f")
-            [ "$sz" -gt 94371840 ] && printf '%s (%sMB)\n' "$f" "$((sz / 1048576))"
+            if [ "$sz" -gt 94371840 ]; then printf '%s (%sMB)\n' "$f" "$((sz / 1048576))"; fi
           done)
           if [ -n "$big" ]; then
             echo "::error::Files over 90MB (GitHub rejects >100MB) — keep large assets out of git:"
