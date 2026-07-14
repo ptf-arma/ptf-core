@@ -20,6 +20,12 @@ jobs:
         uses: arma-actions/hemtt@v1
       - name: Check project
         run: hemtt check
+      # Informational — surfaces findings in the log without failing the build.
+      # Add --strict to either line to make it gating.
+      - name: Unused assets
+        run: sh tools/find-unused-assets.sh
+      - name: Arsenal whitelist
+        run: sh tools/check-arsenal.sh
 
   build:
     name: Build (hemtt release)

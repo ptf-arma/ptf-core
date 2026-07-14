@@ -1,0 +1,37 @@
+# `hemtt launch` builds this repo's dev version of PTF Core and boots Arma 3
+# with the framework mods it depends on, in one step. Run:  hemtt launch
+#
+# The workshop IDs below are PTF Core's framework dependencies; HEMTT mounts
+# them from your local Steam Workshop install (subscribe to them first).
+# Add or remove entries as your test needs.
+#
+# NOTE: the ~40 external PBOs that ship WITH the mod (ctab, boxloader, Peral
+# rifles, Dagger Island, etc.) are NOT listed here — they aren't framework
+# mods you subscribe to. For a full-fidelity test, also load the published
+# "@[PTF] Paramarine Milsim Core" mod alongside this launch.
+
+[default]
+workshop = [
+    "450814997",   # CBA_A3
+    "463939057",   # ACE3
+    "843577117",   # RHSUSAF
+    "843425103",   # RHSAFRF
+    "843593391",   # RHSGREF
+    "894678801",   # Task Force Arrowhead Radio (BETA)
+    "2397360831",  # USAF Mod - Main
+    "2397371875",  # USAF Mod - Fighters
+    "2397376046",  # USAF Mod - Utility
+    "1795825073",  # USP Gear & Uniforms AIO
+    "3048131698",  # Airfield Logistics (Lala Peral)
+    "1875281645",  # ILBE Assault Pack - Rewrite
+    "1779063631",  # Zeus Enhanced
+]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-debug", "-noPause"]
+executable = "arma3_x64"
+file_patching = true
+
+# A quick preset that also opens a bare VR mission for fast in-editor testing.
+# Run it with:  hemtt launch vr
+[vr]
+extends = "default"
+mission = "test.VR"
