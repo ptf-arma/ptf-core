@@ -1,0 +1,31 @@
+#!/bin/sh
+# PTF Core pre-commit hook: run `hemtt check` before allowing a commit so
+# config/SQF mistakes are caught locally instead of failing CI after a push.
+#
+# Enable it once per clone:
+#   git config core.hooksPath .githooks
+# (see CONTRIBUTING.md)
+
+# Find hemtt: PATH first, then the default winget install location.
+HEMTT="$(command -v hemtt 2>/dev/null)"
+if [ -z "$HEMTT" ]; then
+    for c in "$LOCALAPPDATA"/Microsoft/WinGet/Packages/BrettMayson.HEMTT_*/hemtt.exe; do
+        [ -f "$c" ] && HEMTT="$c" && break
+    done
+fi
+
+if [ -z "$HEMTT" ]; then
+    echo "pre-commit: HEMTT not found on PATH; skipping the check."
+    echo "            Install it (see CONTRIBUTING.md) so mistakes get caught before push."
+    exit 0
+fi
+
+echo "pre-commit: running hemtt check..."
+if ! "$HEMTT" check; then
+    echo ""
+    echo "pre-commit: hemtt check FAILED — fix the errors above, or commit with"
+    echo "            --no-verify to bypass (not recommended)."
+    exit 1
+fi
+echo "pre-commit: hemtt check passed."
+exit 0

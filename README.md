@@ -82,6 +82,9 @@ Run these from the repo root:
 - When a release is ready, merge `develop` → `master`, then build and
   publish per [BUILDING.md](BUILDING.md).
 
+New to contributing? **[CONTRIBUTING.md](CONTRIBUTING.md)** walks through the
+whole process step by step (setup, branching, checking your work, opening a PR).
+
 The GitHub repo is <https://github.com/matthawkins2/ptf-core>. Issues and
 merge requests from before the GitHub migration live in the old GitLab
 archive.
