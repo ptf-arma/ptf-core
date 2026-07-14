@@ -3,7 +3,13 @@ name: HEMTT
 on:
   push:
     branches: [develop, master]
+    # Docs-only changes don't affect the build, so skip CI and save free
+    # Actions minutes. NOTE: if you later mark these jobs as *required* status
+    # checks in branch protection, a docs-only PR will sit "waiting" for a
+    # check that never runs — use a path-filter step instead of skipping then.
+    paths-ignore: ['**/*.md', 'docs/**', '.gitignore', 'LICENSE*']
   pull_request:
+    paths-ignore: ['**/*.md', 'docs/**', '.gitignore', 'LICENSE*']
   workflow_dispatch:
 
 concurrency:
@@ -20,12 +26,30 @@ jobs:
         uses: arma-actions/hemtt@v1
       - name: Check project
         run: hemtt check
-      # Informational — surfaces findings in the log without failing the build.
-      # Add --strict to either line to make it gating.
+      # Gating: these fail the build so dead assets / duplicate or broken
+      # whitelist entries can't merge. The repo is currently clean of both.
       - name: Unused assets
-        run: sh tools/find-unused-assets.sh
+        run: sh tools/find-unused-assets.sh --strict
       - name: Arsenal whitelist
-        run: sh tools/check-arsenal.sh
+        run: sh tools/check-arsenal.sh --strict
+      # Advisory: dependency resolution can't fully verify external addons, so
+      # it reports without failing — eyeball any new findings (see the script).
+      - name: Dependency resolution
+        run: sh tools/check-dependencies.sh
+
+  test:
+    name: SQF unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install sqflint
+        run: pip install sqflint
+      - name: Run tests
+        run: python tests/run_tests.py
 
   build:
     name: Build (hemtt release)

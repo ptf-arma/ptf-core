@@ -80,7 +80,6 @@ _rifles = [
 	"rhs_weap_XM2010_d",
 	"rhsusf_acc_m2010s_sa",
 	"rhs_weap_M107",
-	"rhs_weap_m32",
 	"lot_m1014",
 	"lot_m1014_olive",
 	"lot_m1014_sand",

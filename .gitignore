@@ -18,5 +18,9 @@
 # merged from the Workshop copy at release time (see BUILDING.md).
 /addons/ctab/
 
+# Python bytecode from the tests/ harness
+__pycache__/
+*.pyc
+
 # Local, uncommitted project notes
 CLAUDE.local.md

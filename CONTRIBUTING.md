@@ -69,6 +69,14 @@ change *added* a warning, look at it. If you have Arma 3 Tools, also try
 `hemtt build`, then load the mod in-game and verify your change actually
 works (especially for anything visual — check it in the Arsenal).
 
+If you touched the **arsenal whitelist** or other pure logic, you can run the
+same automated checks CI runs (all optional locally, but they save a round-trip):
+```
+sh tools/find-unused-assets.sh --strict   # no orphaned textures/models
+sh tools/check-arsenal.sh --strict         # no duplicate/broken whitelist entries
+python tests/run_tests.py                   # SQF unit tests (pip install sqflint first)
+```
+
 ### e. Commit
 ```
 git add <the files you changed>
@@ -89,10 +97,18 @@ you for what changed and how you tested it — fill it in. It's fine to open a
 
 ## 3. What happens after you open a PR
 
-GitHub Actions automatically runs `hemtt check` and a build on your PR. You'll
-see a green check ✓ or a red ✗ on the PR page. If it's red, click "Details" to
-see what failed — usually it's the same thing `hemtt check` would tell you
-locally (often a capitalization mismatch that only shows up on Linux).
+GitHub Actions automatically runs several checks on your PR. You'll see a green
+check ✓ or a red ✗ on the PR page. If it's red, click "Details" to see what
+failed — usually it's the same thing the checks would tell you locally (often a
+capitalization mismatch that only shows up on Linux). The checks are:
+
+- **Lint (`hemtt check`)** + asset/whitelist checks — these **block** merging.
+- **SQF unit tests** — run pure logic functions; blocks if a test fails.
+- **Build** — a full `hemtt release` (unbinarized) must succeed.
+- **No secrets or build artifacts** — blocks if a `.pbo` or the private key
+  slips in.
+- **PR hygiene** — a friendly bot comment with reminders (screenshots, issue
+  link, size). It **never blocks** — just guidance.
 
 A reviewer will look it over. Don't take review comments personally — they're
 about the code, not you, and everyone's changes get reviewed.
