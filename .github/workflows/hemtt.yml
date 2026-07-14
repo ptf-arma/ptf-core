@@ -102,7 +102,7 @@ jobs:
       - name: Build release
         run: hemtt release
       - name: Upload release artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ptf-core-${{ github.sha }}
           path: .hemttout/release/
