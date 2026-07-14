@@ -31,7 +31,7 @@ else {
     if (-not $hemtt) { throw "hemtt not found; install with: winget install BrettMayson.HEMTT" }
 }
 
-# DSSignFile from Arma 3 Tools (registry lookup, same as the old SConstruct)
+# DSSignFile from Arma 3 Tools (registry lookup)
 $a3tools = (Get-ItemProperty "HKCU:\SOFTWARE\Bohemia Interactive\Arma 3 Tools").path
 $dsSign = Join-Path $a3tools "DSSignFile\DSSignFile.exe"
 if (-not (Test-Path $dsSign)) { throw "DSSignFile not found: $dsSign" }

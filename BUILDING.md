@@ -74,11 +74,11 @@ subscribed Workshop copy is the de-facto ground truth).
 `hemtt release` (unbinarized on Linux) on every PR and push to
 `develop`/`master`, uploading the release zip as an artifact.
 
-## Legacy SCons build
+## History
 
-`SConstruct` and `tools/` still contain the old AddonBuilder-based build
-(`scons -j 25`). They are kept until the first HEMTT-built release has
-shipped, then can be removed. Note the old build had packaging bugs the
-HEMTT build fixes: `.p3d`/`.rvmat`/`.jpg`/`.ogg` files missing from the
-no-binarize PBOs and the intro music, an empty drc config, and dropped
-Peral Zeus patches.
+This mod was previously built with SCons + Arma 3 Tools AddonBuilder
+(`scons -j 25`). That build was removed once HEMTT took over; the old
+`SConstruct`/`tools/build.json` are in git history if ever needed. The
+AddonBuilder build had packaging bugs the HEMTT build fixes:
+`.p3d`/`.rvmat`/`.jpg`/`.ogg` files missing from the no-binarize PBOs and
+the intro music, an empty drc config, and dropped Peral Zeus patches.
