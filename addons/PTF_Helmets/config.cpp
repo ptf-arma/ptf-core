@@ -22,7 +22,6 @@ class cfgWeapons
 	class rhsusf_hgu56p_mask_black;
 	class rhsusf_hgu56p_visor_mask_black;
 	class rhsusf_hgu56p_visor_black;
-	class PTF_Helmet_Air_Smiley;
 	class PTF_Helmet_Infantry_Mich2000_S;
 	class PTF_Helmet_Infantry_Mich2000_WD;
 	class PTF_Helmet_Infantry_Mich2000_Headset_WD;

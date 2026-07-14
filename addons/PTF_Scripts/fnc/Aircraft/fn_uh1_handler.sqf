@@ -64,7 +64,6 @@ low refresh rate loop [1 sec]
         _n=(_v getVariable ["rhs_uh1_zoom",42])/21;
         if(_oldZoom != _n)then
         {
-            diag_log format ["%1",_oldZoom ];
             [_n,_oldZoom] spawn
             {
                 private["_n","_i","_s"];

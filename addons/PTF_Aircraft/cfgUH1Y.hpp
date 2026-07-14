@@ -113,7 +113,7 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 {
    scope = 2;
    editorCategory = "PTF";
-   editorSubcategory = "PTF_AIR";
+   editorSubcategory = "PTF_Air";
    side = 1;
    faction = "BLU_F";
    ace_cargo_space = 20;

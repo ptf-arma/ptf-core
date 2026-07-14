@@ -451,7 +451,7 @@ class PTF_M1151_M2_LRAS : rhsusf_m1151_m2_lras3_v1_usarmy_wd
    maximumLoad = 750;
    side = 1;
    author = "Paramarine Task Force";
-   displayName = "M1151 (M2\LRAS) [PTF]";
+   displayName = "M1151 (M2/LRAS) [PTF]";
    driverCompartments = "Compartment1";
    cargoCompartments[] = {"Compartment1"};
 

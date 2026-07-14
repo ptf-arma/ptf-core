@@ -368,7 +368,7 @@ class PTF_M1025_tow : rhsusf_m966_w
    // class for slinglaoding weight [53,22]
    SlingloadingWeight = "[2900,2800]";
    author = "Paramarine Task Force";
-   displayName = "M1151 (TOW) [CAT]";
+   displayName = "M966 (TOW) [CAT]";
    driverCompartments = "Compartment1";
    cargoCompartments[] = {"Compartment1"};
    hiddenSelections[]=

@@ -174,26 +174,6 @@ class PTF_Vest_Air_SafetyVest_Short : V_DeckCrew_blue_F
    {
       containerClass = "Supply250";
       mass = 40;
-      class HitpointsProtectionInfo
-      {
-         class Chest
-         {
-            HitpointName = "HitChest";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Diaphragm
-         {
-            HitpointName = "HitDiaphragm";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Body
-         {
-            hitpointName = "HitBody";
-            passThrough = 0.4;
-         };
-      };
    };
 };
 class PTF_Vest_Air_SafetyVest_Long : V_Safety_blue_F
@@ -207,26 +187,6 @@ class PTF_Vest_Air_SafetyVest_Long : V_Safety_blue_F
    {
       containerClass = "Supply250";
       mass = 40;
-      class HitpointsProtectionInfo
-      {
-         class Chest
-         {
-            HitpointName = "HitChest";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Diaphragm
-         {
-            HitpointName = "HitDiaphragm";
-            armor = 28;
-            PassThrough = 0.1;
-         };
-         class Body
-         {
-            hitpointName = "HitBody";
-            passThrough = 0.4;
-         };
-      };
    };
 };
 class PTF_Vest_Air_SRU21P_LPU9P_PCU15AP_Alt : SRU21P_LPU9P_PCU15AP_Alt
