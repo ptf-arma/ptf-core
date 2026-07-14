@@ -132,7 +132,7 @@ low refresh rate loop [1 sec]
     };
 
     uiNameSpace setVariable ["PTF_UH1_Ctrl",displayNull];
-    removeMissionEventHandler ["draw3d",_ehID];
+    removeMissionEventHandler ["Draw3D",_ehID];
     rhs_uh1_cam cameraeffect ["terminate","back"];
     camDestroy rhs_uh1_cam;
     rhs_uh1_cam = nil;
