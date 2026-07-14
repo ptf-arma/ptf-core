@@ -15,7 +15,7 @@ class CfgWorlds {
 	class Altis : CAWorld {
 		cutscenes[] = {"mymainmenu"};
 	};
-	
+
 	class Stratis : CAWorld {
 		cutscenes[] = {"mymainmenu"};
 	};
@@ -27,7 +27,7 @@ class CfgWorlds {
 	class hellanmaa : CAWorld {
 		cutscenes[] = {"mymainmenu"};
 	};
-	
+
 	class hellanmaaw : CAWorld {
 		cutscenes[] = {"mymainmenu"};
 	};

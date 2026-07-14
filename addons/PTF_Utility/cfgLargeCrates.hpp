@@ -87,11 +87,11 @@ class PTF_Cargo_Large_Launcher: PTF_Large_Box
       mag_xx(MRAWS_HE_F,20);
       mag_xx(MRAWS_HEAT55_F,20);
       mag_xx(rhs_fim92_mag,20);
-     
+
    };
    class TransportWeapons
    {
-	  weap_xx(rhs_weap_m72a7,20); 
+	  weap_xx(rhs_weap_m72a7,20);
      weap_xx(rhs_weap_M136_hp,10);
      weap_xx(rhs_weap_M136,10);
      weap_xx(rhs_weap_M136_hedp,10);

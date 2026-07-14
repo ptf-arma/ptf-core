@@ -23,13 +23,13 @@ class cfgFunctions {
 			class PTFFlagRaise {};
 			class USMCFlagRaise {};
 			class 11FlagRaise {};
-			class 12FlagRaise {}; 
+			class 12FlagRaise {};
 			class 13FlagRaise {};
 			class 14FlagRaise {};
 			class 3flagRaise {};
 			class 3AflagRaise {};
 			class 3BflagRaise {};
-			class 3CflagRaise {};  
+			class 3CflagRaise {};
 			class 3EflagRaise {};
 			class MAG36FlagRaise {};
 			class scarFlagRaise {};

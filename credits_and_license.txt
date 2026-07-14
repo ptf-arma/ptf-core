@@ -5,10 +5,10 @@ Since multiple contributors helped, the license varies between the PBO's. Please
 
 Template:
 
-Mod: 
-Author: 
-Source Link: 
-License: 
+Mod:
+Author:
+Source Link:
+License:
 Includes PBO files:
 
 ========================================================================================================================
@@ -137,7 +137,7 @@ Mod: Grad Trenches
 Author: Gruppe Adler
 Source Link: https://github.com/gruppe-adler/grad_trenches
 License: https://github.com/gruppe-adler/grad_trenches/blob/master/LICENSE
-Changes: PTF has modified Grad Trenches to make non-engineers take 10x longer to dig trenches than engineers. Currently this is a hard-coded number. We have the intent to eventually make this a variable so that other groups may use it, and PR it back into the main Grad Trenches git. 
+Changes: PTF has modified Grad Trenches to make non-engineers take 10x longer to dig trenches than engineers. Currently this is a hard-coded number. We have the intent to eventually make this a variable so that other groups may use it, and PR it back into the main Grad Trenches git.
 
 Includes PBO files:
 grad_trenches_assets.pbo
@@ -150,7 +150,7 @@ Mod: BettIR
 Author: Vestarr
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2260572637
 License: see author
-Includes PBO files: 
+Includes PBO files:
 BettIR_Core.pbo
 
 ======================================================================
@@ -158,7 +158,7 @@ Mod: Simunition (Core, Magazines, Attachments, Grenades)
 Author: Crows Studio & C.Eagle
 Source Link: https://steamcommunity.com/workshop/filedetails/?id=2912742124
 License: APL-SA (Permission from atuhors)
-Includes PBO files: 
+Includes PBO files:
 training_attachment_adapter_blue.pbo
 training_attachment_adapter_yellow.pbo
 training_attachment_common.pbo
@@ -190,7 +190,7 @@ Mod: Dagger Island Training Complex
 Author: Finger Jam
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2983546566
 License: see author
-Includes PBO files: 
+Includes PBO files:
 dagger_island_summer.pbo
 dagger_island_summer_no_targets.pbo
 

@@ -53,9 +53,9 @@
     true // needRestart
 ] call CBA_fnc_addSetting;
 [
-"PTF_SRChannels", "LIST",	 
-["Select # of Short Range Channels",	 "Select how many SR channels you want to set"], 
-["Paramarine Task Force", "TFAR Setting"], 
+"PTF_SRChannels", "LIST",
+["Select # of Short Range Channels",	 "Select how many SR channels you want to set"],
+["Paramarine Task Force", "TFAR Setting"],
 [[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
 false, // isGlobal
 {
@@ -66,9 +66,9 @@ false // needRestart
 ] call CBA_fnc_addSetting;
 
 [
-"PTF_LRChannels", "LIST",	 
-["Select # of Long Range Channels",	 "Select how many LR channels you want to set"], 
-["Paramarine Task Force", "TFAR Setting"], 
+"PTF_LRChannels", "LIST",
+["Select # of Long Range Channels",	 "Select how many LR channels you want to set"],
+["Paramarine Task Force", "TFAR Setting"],
 [[0,1,2,3,4,5,6,7,8,9], ["0","1","2","3","4","5","6","7","8","9"], 0],
 false, // isGlobal
 {

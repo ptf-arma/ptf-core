@@ -89,7 +89,7 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 		{
 			name = "ACE_packingBandage";
 			count = 30;
-		};  
+		};
    		class _xx_ACE_quikclot
 		{
 			name = "ACE_quikclot";

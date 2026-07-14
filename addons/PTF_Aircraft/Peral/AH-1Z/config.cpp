@@ -17,4 +17,4 @@ class CfgPatches
 class cfgVehicles
 {
 #include "cfgAH1Z.hpp"
-};	
+};

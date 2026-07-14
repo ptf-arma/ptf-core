@@ -1,5 +1,5 @@
 class cfgAmmo {
-	
+
 	// PTF_ACE_Hellfire_AGM114K is defined once in PTF_Aircraft (where its
 	// model lives). It was previously also defined here with a broken
 	// \PTF_Weapons\... model path, making the effective model load-order

@@ -881,7 +881,7 @@ class cfgWeapons
 		};
 	};
 };
-	
+
 class cfgMods
 {
 	author="Hawkins";

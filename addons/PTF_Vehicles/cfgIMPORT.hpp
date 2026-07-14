@@ -46,7 +46,7 @@ class rhsusf_m1025_w : rhsusf_m998_w_4dr_fulltop {
 };
 class rhsusf_m966_w : rhsusf_m1025_w {
     class turrets : turrets {
-    class TOW_Turret;  
+    class TOW_Turret;
  };
 };
 class rhsusf_mrzr4_d;

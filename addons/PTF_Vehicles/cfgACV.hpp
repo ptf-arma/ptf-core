@@ -87,7 +87,7 @@ class PTF_ACV : Peral_ACV
 		{
 			name = "ACE_packingBandage";
 			count = 30;
-		};  
+		};
    		class _xx_ACE_quikclot
 		{
 			name = "ACE_quikclot";
@@ -258,7 +258,7 @@ class PTF_ACV_MK19 : Peral_ACV_MK19
 		{
 			name = "ACE_packingBandage";
 			count = 30;
-		};  
+		};
    		class _xx_ACE_quikclot
 		{
 			name = "ACE_quikclot";
@@ -429,7 +429,7 @@ class PTF_ACV_30 : Peral_ACV_30
 		{
 			name = "ACE_packingBandage";
 			count = 30;
-		};  
+		};
    		class _xx_ACE_quikclot
 		{
 			name = "ACE_quikclot";

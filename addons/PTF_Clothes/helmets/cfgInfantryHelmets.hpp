@@ -846,7 +846,7 @@ class PTF_Helmet_2_3_Infantry_Mich2000_WD : rhsusf_ach_helmet_headset_ucp_alt
 			};
 		 };
 	  };
-   }; 
+   };
 
 class PTF_MSO_FASTMTC_M81_MGSW : USP_OPSCORE_FASTMTC_M81_MGSW
 {

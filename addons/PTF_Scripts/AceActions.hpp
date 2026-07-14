@@ -83,7 +83,7 @@ class Car : LandVehicle
                   displayName = "Raise 3-E Flag";
                   statement = "0 = _target call PTF_fnc_3EflagRaise";
                };
-               
+
             };
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
@@ -210,9 +210,9 @@ class Tank_F : Tank
                   displayName = "Raise 3-E Flag";
                   statement = "0 = _target call PTF_fnc_3EflagRaise";
                };
-               
+
             };
-         
+
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
@@ -307,7 +307,7 @@ class Ship_F : Ship
                   statement = "0 = _target call PTF_fnc_14FlagRaise";
                };
             };
-            
+
             class PTF_3rd_Flags : PTF_Flag_Raise
             {
                displayName = "3rd Platoon Flags";
@@ -337,7 +337,7 @@ class Ship_F : Ship
                   displayName = "Raise 3-E Flag";
                   statement = "0 = _target call PTF_fnc_3EflagRaise";
                };
-               
+
             };
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {

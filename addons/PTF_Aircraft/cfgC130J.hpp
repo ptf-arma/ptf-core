@@ -27,7 +27,7 @@ class PTF_C130J_Cargo : USAF_C130J_Cargo
    ace_cargo_hasCargo = 1;
    maximumLoad = 375;
    side = 1;
- 
+
    faction = "BLU_F";
    author = "Paramarine Task Force";
    displayName = "C-130J Cargo [MAG36]";

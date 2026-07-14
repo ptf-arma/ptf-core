@@ -245,7 +245,7 @@ _attachments = [
 	"scout_pro_flashlight"
 ];
 
-// Backpacks, Uniforms, Vests, Helmets, Glasses, 
+// Backpacks, Uniforms, Vests, Helmets, Glasses,
 
 _backpacks = [
 	"PTF_Backpack_Infantry_Corpsman_Kitbag_Black",
@@ -914,7 +914,7 @@ _nightvision = [
 	"USP_PVS31_WP_MID"
 ];
 
-// PSO Additional items 
+// PSO Additional items
 
 _helmetsPSO = [
 	"PTF_MSO_FASTMTC_M81_MGSW",

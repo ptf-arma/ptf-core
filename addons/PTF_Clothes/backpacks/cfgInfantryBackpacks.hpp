@@ -170,7 +170,7 @@ class PTF_Backpack_Infantry_Delta : USP_DELTA_BAG_CBR
    author = "Paramarine Task Force";
    maximumLoad = 200;
    mass = 30;
-};   
+};
 
 class PTF_Backpack_Infantry_ACC7 : USP_REEBOW_3DAP_ACC7_CBR
 {

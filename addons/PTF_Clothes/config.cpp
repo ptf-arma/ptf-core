@@ -3,10 +3,10 @@ class cfgPatches
    class PTF_Clothes
    {
       units[] = {"PTF_MAG_Pilot"};
-      weapons[] = 
+      weapons[] =
          {
-            "PTF_Infantry_Weapon_Scope_M8541A", 
-            "PTF_Infantry_Weapon_Scope_Accu", 
+            "PTF_Infantry_Weapon_Scope_M8541A",
+            "PTF_Infantry_Weapon_Scope_Accu",
             "PTF_Infantry_Weapon_Scope_Accu_RMR",
             "PTF_Infantry_Weapon_Scope_Accu_RMRCant",
             "PTF_Infantry_Weapon_Scope_Accu_T1",

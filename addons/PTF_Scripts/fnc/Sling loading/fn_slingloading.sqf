@@ -1,6 +1,6 @@
 params ["_Heli"];
 
-_Heli addEventHandler ["RopeAttach", { 
+_Heli addEventHandler ["RopeAttach", {
  params ["_Heli", "_rope", "_Object"];
 private _RopesAttached = _Object getVariable ["PTF_RopesAttached", 0];
 if (_RopesAttached >= 1) exitwith {};

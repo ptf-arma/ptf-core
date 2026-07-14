@@ -4,7 +4,7 @@
  *
  * Arguments:
  * object
- * 
+ *
  * Return Value:
  * N/a
  *

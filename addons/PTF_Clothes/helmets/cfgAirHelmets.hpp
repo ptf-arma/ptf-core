@@ -37,7 +37,7 @@ class PTF_Helmet_Air_Olive : PTF_Helmet_Air_Black
 {
    displayName = "[Air] HGU-56P (Olive) [PTF]";
    hiddenSelectionsTextures[] = {"\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_olv_co.paa"};
-   
+
 };
 class PTF_Helmet_Air_White : PTF_Helmet_Air_Black
 {
@@ -51,7 +51,7 @@ class PTF_Helmet_Air_USA : PTF_Helmet_Air_Black
 };
 class PTF_Helmet_Air_HMDS : PTF_Helmet_Air_Black
 {
-   
+
    tf_encryptionCode = "tf_west_radio_code";
    tf_dialog = "rt1523g_radio_dialog";
    tf_subtype = "digital_lr";

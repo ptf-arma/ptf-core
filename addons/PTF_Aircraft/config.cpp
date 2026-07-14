@@ -71,7 +71,7 @@ class cfgVehicles
 #include "cfgVANILLA.hpp"
 #include "cfgRQ4A.hpp"
 #include "cfgUH1Y.hpp"
-};	
+};
 class cfgMods
 {
 	author="3S-15 | M.Hawkins";

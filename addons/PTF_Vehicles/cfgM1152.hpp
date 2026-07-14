@@ -119,7 +119,7 @@ class PTF_M1123 : rhsusf_m998_d_s_2dr_fulltop
    displayName = "M1123 [PTF]";
    driverCompartments = "Compartment1";
    cargoCompartments[] = {"Compartment1"};
-   
+
    class VehicleTransport
    {
       class Cargo
