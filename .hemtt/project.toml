@@ -33,6 +33,39 @@ enabled = false
 [lints.sqf.command_case]
 enabled = false
 
+# --- Convention / style lints this mod opts out of --------------------------
+# These flag style and convention, not bugs. Lints that catch real problems
+# (file_missing, invalid_args, undefined) stay ENABLED on purpose.
+
+# The mod doesn't list every public class in CfgPatches units[]/weapons[].
+# It has shipped for years; retrofitting ~180 declarations isn't worth it.
+[lints.config.cfgpatches_scope]
+enabled = false
+
+# Informational only — external classes declared but not used.
+[lints.config.unused_external]
+enabled = false
+
+# `removeEventHandler ["fired", idx]` is valid ("fired" is a real event);
+# HEMTT flags it as unknown (L-S02UE) — a false positive. NOTE: HEMTT
+# 1.19 has no default_config for the event lints, so this disable is not
+# yet honored; kept here to document intent and take effect once it is.
+[lints.sqf.event_unknown]
+enabled = false
+
+# SQF micro-optimizations / style — no runtime impact, not worth churning
+# the large existing camera and aircraft scripts.
+[lints.sqf.if_assign]
+enabled = false
+[lints.sqf.config_of]
+enabled = false
+[lints.sqf.in_vehicle_check]
+enabled = false
+[lints.sqf.count_array_comp]
+enabled = false
+[lints.sqf.reimplementing_command]
+enabled = false
+
 [files]
 include = [
     "mod.cpp",
