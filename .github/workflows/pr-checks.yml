@@ -2,6 +2,7 @@ name: PR checks
 
 on:
   pull_request:
+    branches: [develop, master]  # only PRs targeting develop/master
   push:
     branches: [develop, master]
 

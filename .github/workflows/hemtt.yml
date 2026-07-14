@@ -9,6 +9,7 @@ on:
     # check that never runs — use a path-filter step instead of skipping then.
     paths-ignore: ['**/*.md', 'docs/**', '.gitignore', 'LICENSE*']
   pull_request:
+    branches: [develop, master]  # only PRs targeting develop/master
     paths-ignore: ['**/*.md', 'docs/**', '.gitignore', 'LICENSE*']
   workflow_dispatch:
 

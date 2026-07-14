@@ -2,7 +2,9 @@ name: Labeler
 
 # Tags each PR with labels based on which addon/area it touches (see
 # .github/labeler.yml) so the queue is easy to triage at a glance.
-on: [pull_request_target]
+on:
+  pull_request_target:
+    branches: [develop, master]  # only PRs targeting develop/master
 
 permissions:
   contents: read
