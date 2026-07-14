@@ -2359,7 +2359,7 @@ if (isNil "_this") then
 { _o = player }
 else
 { _o = vehicle (_this select 0) };
-if (isNil"_o") then { _o = player };
+if (isNil "_o") then { _o = player };
 _o_l = _o;
 _initobject = _o;
 
@@ -3497,7 +3497,7 @@ while {_l} do
 		_li_ol = nearestObjects [ [_op select 0, _op select 1, (visiblePosition _c select 2)-(_cp_r select 2)], ["AllVehicles"], 50 ];
 		_lostchk = _li_ol select 0;
 
-		if ( count _li_ol != 0 and !(isNil"_lostchk") ) then
+		if ( count _li_ol != 0 and !(isNil "_lostchk") ) then
 		{
 			if ( LISTCIVILIAN and (_o isKindOf "Civilian") ) then
 			{

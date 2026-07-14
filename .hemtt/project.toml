@@ -22,3 +22,6 @@ include = [
     "meta.cpp",
     "credits_and_license.txt",
 ]
+exclude = [
+    "**/.gitkeep",
+]

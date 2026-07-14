@@ -6,7 +6,7 @@ class CfgPatches
    {
       units[] = {};
       weapons[] = {};
-      requiredVersion = 1.0;
+      requiredVersion = 1.60;
       requiredAddons[] = {
           "PTF_Main",
           "ace_pylons",
