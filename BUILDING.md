@@ -58,6 +58,21 @@ the Workshop) pass `-NoExternal`. A future build server needs a canonical
 store for these PBOs (currently the subscribed Workshop copy is the
 de-facto ground truth).
 
+## Environment variables
+
+Only `tools/release.ps1` (signed Workshop builds) reads these — **contributors
+don't need any environment variables.** Set them once (Windows → *Edit the
+system environment variables*) or pass the equivalent flag on each run.
+
+| Variable | Equivalent flag | Points to |
+| --- | --- | --- |
+| `PTF_KEYS_DIR` | `-KeyDir` | Folder holding `ptf2.1.biprivatekey` + `ptf2.1.bikey` (the signing key — never committed). |
+| `PTF_EXTERNAL_ADDONS` | `-ExternalAddons` | Folder holding the ~40 prebuilt external PBOs that get merged into a release. |
+
+`release.ps1` also accepts `-KeyName` (default `ptf2.1`), `-NoExternal` (a
+repo-only build — never upload it to the Workshop), and `-NoSign` (skip signing
+for a quick local test).
+
 ## Releasing to the Workshop
 
 1. Merge `develop` into `master` and push. This triggers

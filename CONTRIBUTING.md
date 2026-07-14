@@ -1,8 +1,9 @@
 # Contributing to PTF Core
 
 Welcome! This guide walks you through making a change to the mod, start to
-finish. It assumes you've never done this before — if a step is unclear, ask
-in the unit's dev channel rather than getting stuck.
+finish, using **[GitHub Desktop](https://desktop.github.com/)** — a point-and-
+click app, no command line required. If a step is unclear, ask in the unit's
+dev channel rather than getting stuck.
 
 If you just want to know how to build, see [BUILDING.md](BUILDING.md). This
 page is about the *workflow* around a change.
@@ -11,113 +12,94 @@ page is about the *workflow* around a change.
 
 ## 1. One-time setup
 
-You need these installed once:
+1. **Get access.** You need a GitHub account, and an admin has to add you to
+   the `ptf-arma` organization. Post your GitHub username in the dev channel.
+2. **Install [GitHub Desktop](https://desktop.github.com/)** and sign in. This
+   is the only tool you strictly need.
+3. **(Recommended) Install HEMTT** so you can check your work before pushing —
+   open a terminal (Windows: *Command Prompt* or *PowerShell*) and run:
+   ```
+   winget install BrettMayson.HEMTT
+   ```
+   Not required — CI checks your PR automatically either way — but it catches
+   mistakes faster.
+4. **(Optional, advanced)** If you're comfortable with a terminal, run
+   `git config core.hooksPath .githooks` inside the repo folder once. That runs
+   `hemtt check` automatically on every commit. Skippable — CI runs the same
+   checks on your PR.
 
-- **Git** — https://git-scm.com/ (includes "Git Bash", which we use for commands)
-- **HEMTT** (the build/lint tool) — open a terminal and run:
-  ```
-  winget install BrettMayson.HEMTT
-  ```
-- **Arma 3 Tools** (from Steam) — only needed if you're building/binarizing
-  models locally. Not required just to lint your work.
-
-Then clone the repo and turn on the pre-commit check (this runs `hemtt check`
-automatically every time you commit, so you catch mistakes early):
-
-```
-git clone https://github.com/ptf-arma/ptf-core.git
-cd ptf-core
-git config core.hooksPath .githooks
-```
+> **Do I need environment variables?** No. The `PTF_KEYS_DIR` /
+> `PTF_EXTERNAL_ADDONS` variables are only for **maintainers** building signed
+> Workshop releases — see [BUILDING.md](BUILDING.md). Contributing needs none.
 
 ---
 
-## 2. The workflow, step by step
+## 2. Making a change (in GitHub Desktop)
 
-### a. Start from an up-to-date `develop`
-```
-git checkout develop
-git pull
-```
-`develop` is our integration branch. **Never commit directly to `develop` or
-`master`** — always work on your own branch.
+### a. Clone the repo (first time only)
+**File → Clone repository →** find `ptf-arma/ptf-core` **→ Clone.** GitHub
+Desktop downloads it to a folder on your PC.
 
-### b. Make a branch named after the issue you're working on
-```
-git checkout -b 123-fix-mrap-texture
-```
-Use the issue number + a short description. If there's no issue yet, make one
-first (it takes 30 seconds and keeps things organized).
+### b. Start from an up-to-date `develop`
+In the top bar, set **Current Branch** to `develop`, then click **Fetch
+origin** and **Pull** so you have the latest. `develop` is our integration
+branch — **never commit directly to `develop` or `master`.**
 
-### c. Make your change
-Edit the files. A few golden rules:
-- **Keep it focused.** One PR = one thing. Don't fix five unrelated bugs in
-  one branch.
+### c. Make a branch for your change
+**Current Branch → New Branch.** Base it on `develop` and name it after the
+issue you're fixing, e.g. `123-fix-mrap-texture`. (No issue yet? Create one
+first — 30 seconds, and it keeps things organized.)
+
+### d. Edit the files
+Open the repo folder in your text editor and make your change. Golden rules:
+- **Keep it focused.** One PR = one thing. Don't fix five unrelated bugs at once.
 - **Watch capitalization.** Our servers run Linux, which is *case-sensitive*.
   `#include "cfgImport.hpp"` will NOT find a file named `cfgIMPORT.hpp` on a
   server, even though it works on your Windows PC. Match filenames exactly.
 - **Don't commit build output.** Never add `.pbo` files or the `.hemttout/`,
-  `build/`, or `releases/` folders — they're generated. (`.gitignore` already
-  blocks them.)
+  `build/`, or `releases/` folders — they're generated (`.gitignore` blocks them).
 
-### d. Check your work
-```
-hemtt check
-```
-Fix anything reported as `error`. Warnings are usually fine, but if your
-change *added* a warning, look at it. If you have Arma 3 Tools, also try
-`hemtt build`, then load the mod in-game and verify your change actually
-works (especially for anything visual — check it in the Arsenal).
+### e. Check your work (if you installed HEMTT)
+In a terminal opened to the repo folder, run `hemtt check`. Fix anything
+reported as `error`. If you have Arma 3 Tools, also try `hemtt build` and load
+the mod in-game to verify your change (especially anything visual — check it in
+the Arsenal). No HEMTT installed? Skip this — CI will check your PR for you.
 
-You can also run the same automated checks CI runs (all optional locally, but
-they save a round-trip):
-```
-sh tools/find-unused-assets.sh --strict     # no orphaned textures/models
-sh tools/check-arsenal.sh --strict           # no duplicate/broken whitelist entries
-python tools/check_asset_refs.py --strict    # every texture/model path resolves
-python tools/check_class_collisions.py --strict  # no class defined in two addons
-python tools/check_display_names.py --strict     # no blank arsenal names
-python tests/run_tests.py                     # SQF unit tests (pip install sqflint first)
-```
-
-### e. Commit
-```
-git add <the files you changed>
-git commit -m "Fix swapped MRAP camo textures"
-```
-The pre-commit hook runs `hemtt check` for you here. If it fails, fix the
+### f. Commit (in GitHub Desktop)
+Your changed files appear on the left. Type a short **Summary** of what you
+changed (bottom-left), then click **Commit to `<your-branch>`**. If you enabled
+the pre-commit check in step 4, `hemtt check` runs here — if it fails, fix the
 errors and commit again.
 
-### f. Push and open a Pull Request
-```
-git push -u origin 123-fix-mrap-texture
-```
-Then open a PR on GitHub **targeting `develop`**. The PR template will prompt
-you for what changed and how you tested it — fill it in. It's fine to open a
-**draft** PR if you want early feedback before it's finished.
+### g. Publish and open a Pull Request
+Click **Publish branch** (first push) or **Push origin**. GitHub Desktop then
+shows a **Create Pull Request** button — click it. Your browser opens a new PR
+**targeting `develop`**; fill in the template (what changed, how you tested it)
+and submit. It's fine to open a **draft** PR if you want early feedback before
+it's finished.
 
 ---
 
 ## 3. What happens after you open a PR
 
-GitHub Actions automatically runs several checks on your PR. You'll see a green
-check ✓ or a red ✗ on the PR page. If it's red, click "Details" to see what
-failed — usually it's the same thing the checks would tell you locally (often a
-capitalization mismatch that only shows up on Linux). The checks are:
+GitHub automatically runs several checks on your PR. You'll see a green check ✓
+or a red ✗ on the PR page. If it's red, click "Details" to see what failed —
+usually the same thing the checks would tell you locally (often a capitalization
+mismatch that only shows up on Linux). The checks are:
 
 - **Lint (`hemtt check`)** + asset/whitelist checks — these **block** merging.
-- **SQF unit tests** — run pure logic functions; blocks if a test fails.
+- **SQF unit tests** — run pure logic functions; block if a test fails.
 - **Build** — a full `hemtt release` (unbinarized) must succeed.
 - **No secrets or build artifacts** — blocks if a `.pbo` or the private key
   slips in.
 - **PR hygiene** — a friendly bot comment with reminders (screenshots, issue
   link, size). It **never blocks** — just guidance.
 
-A reviewer will look it over. Don't take review comments personally — they're
+A maintainer will review it. Don't take review comments personally — they're
 about the code, not you, and everyone's changes get reviewed.
 
-Once approved and green, it's merged into `develop`. Releases happen later when
-`develop` is merged into `master` and published to the Workshop.
+Once approved and green, a maintainer merges it into `develop`. Releases happen
+later when `develop` is merged into `master` and published to the Workshop.
 
 ---
 
@@ -134,3 +116,26 @@ Once approved and green, it's merged into `develop`. Releases happen later when
 
 When in doubt, open the PR as a draft and ask. Getting eyes on it early beats
 struggling alone.
+
+---
+
+<details>
+<summary><b>Prefer the command line? Git equivalents</b></summary>
+
+```
+# one-time
+git clone https://github.com/ptf-arma/ptf-core.git
+cd ptf-core
+git config core.hooksPath .githooks        # optional pre-commit hemtt check
+
+# each change
+git checkout develop && git pull
+git checkout -b 123-fix-mrap-texture
+# ...edit files...
+hemtt check
+git add <the files you changed>
+git commit -m "Fix swapped MRAP camo textures"
+git push -u origin 123-fix-mrap-texture
+```
+Then open a PR targeting `develop` on GitHub.
+</details>

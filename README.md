@@ -24,8 +24,7 @@ prefix namespace `z\PTF\addons\<name>`. Broadly:
   tree), `PTF_Scripts` (SQF: healing/gestures/XEH handlers), `PTF_Models`,
   `PTF_Textures`.
 - **Content** — `PTF_Aircraft`, `PTF_Vehicles`, `PTF_Weapons`,
-  `PTF_Clothes`, `PTF_Helmets`, `PTF_Utility`, `PTF_Menu`, `PTF_Smoke`,
-  `PTF_GCam`.
+  `PTF_Clothes`, `PTF_Helmets`, `PTF_Utility`, `PTF_Menu`, `PTF_Smoke`.
 - **Third-party (in-repo, modified with permission)** — `DIHatUSMC`,
   `PTF_DICoverUSMC`, `drc_custom_billboards`, `riku_class_a`, `BettIR_PTF`.
 
