@@ -26,40 +26,34 @@ class PTF_Helmet_Infantry_Mich2000_WD : rhsusf_ach_helmet_ucp_alt
       };
    };
 };
-class PTF_Helmet_Infantry_Mich2000_norotos_WD: rhsusf_ach_helmet_ucp_alt
-	{
-		scope=2;
-		side=1;
-		faction="BLU_F";
-		displayName="[Inf] MICH 2000 Norotos (WD) [PTF]";
-		author="Paramarine Task Force";
-		hiddenSelections[]=
-		{
-			"Camo1",
-			"Camo2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_wd_co.paa",
-			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
-		};
-		ace_hearing_protection=0.80000001;
-		ace_hearing_lowerVolume=0;
-		class ItemInfo: ItemInfo
-		{
-			uniformModel="\rhsusf\addons\rhsusf_infantry\gear\head\ach_norotos_01";
-			mass=20;
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=6;
-					passThrough=0.5;
-				};
-			};
-		};
-	};
+class PTF_Helmet_Infantry_Mich2000_norotos_WD : rhsusf_ach_helmet_ucp_alt
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Inf] MICH 2000 Norotos (WD) [PTF]";
+   author = "Paramarine Task Force";
+   hiddenSelections[] = {"Camo1", "Camo2"};
+   hiddenSelectionsTextures[] = {
+       "rhsusf\addons\rhsusf_infantry\gear\head\data\mich_covered_rhino_wd_co.paa",
+       "rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"};
+   ace_hearing_protection = 0.80000001;
+   ace_hearing_lowerVolume = 0;
+   class ItemInfo : ItemInfo
+   {
+      uniformModel = "\rhsusf\addons\rhsusf_infantry\gear\head\ach_norotos_01";
+      mass = 20;
+      class HitpointsProtectionInfo
+      {
+         class Head
+         {
+            hitpointName = "HitHead";
+            armor = 6;
+            passThrough = 0.5;
+         };
+      };
+   };
+};
 class PTF_Helmet_Infantry_Mich2000_ESS_WD : rhsusf_ach_helmet_ESS_ucp_alt
 {
    scope = 2;

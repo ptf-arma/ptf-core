@@ -94,17 +94,7 @@ class CoDriverTurret;
 class GPK_Turret;
 class M2_Turret;
 
-// class B_APC_Wheeled_01_cannon_F;
-// class Components;
-// class SensorTemplatePassiveRadar;
-// class SensorTemplateAntiRadiation;
-// class SensorTemplateActiveRadar;
-// class SensorTemplateIR;
-// class SensorTemplateVisual;
-// class SensorTemplateMan;
-// class SensorTemplateLaser;
-// class SensorTemplateNV;
-// class SensorTemplateDataLink;
+// Unused sensor-template forward-decl stubs kept for reference if sensor/radar configs are added later.
 
 //Mastersafe
 class Default;
