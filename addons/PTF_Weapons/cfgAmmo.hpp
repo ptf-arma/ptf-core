@@ -1,10 +1,10 @@
 class cfgAmmo {
 	
-	class PTF_ACE_Hellfire_AGM114K : ACE_Hellfire_AGM114K {        
-		model = "\PTF_Weapons\Weapons\HellFireStolenFromHatchet.p3d";
-		proxyShape = "\PTF_Weapons\Weapons\HellFireStolenFromHatchet.p3d";
-		class ace_missileguidance : ace_missileguidance{};
-	};
+	// PTF_ACE_Hellfire_AGM114K is defined once in PTF_Aircraft (where its
+	// model lives). It was previously also defined here with a broken
+	// \PTF_Weapons\... model path, making the effective model load-order
+	// dependent. cfgMagazine.hpp references it by string, which resolves
+	// at runtime, so no declaration is needed here.
 
 	class ptf_B_12Gauge_Slug_NoCartridge : B_12Gauge_Slug_NoCartridge {
 		hit = 0;
