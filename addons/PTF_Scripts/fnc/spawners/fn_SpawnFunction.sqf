@@ -8,7 +8,7 @@ _id = missionNamespace getVariable [_markers, 0];
 _name = _markers; 
 _cnt = { _markers in _x } count allMapMarkers;
 
-if (_ticket != "" && {missionNamespace getVariable _tickets <= 0}) exitwith {
+if (_ticket != "" && {missionNamespace getVariable _ticket <= 0}) exitwith {
 hint "There are no more tickets"
 };
 
@@ -20,7 +20,7 @@ for "_i" from 1 to _cnt - 1 do {
 _check = nearestObjects [getMarkerPos [_markersA select _id] , ["LandVehicle", "Air", "Ship"], 7];  //find if an object is blocking the pad
 
 if (
-  count _check != 0
+  _check isNotEqualTo []
 ) exitwith {
   hint "Spawning location is blocked";
 }; // if there is an object in array _check then somthing is blocking the pad

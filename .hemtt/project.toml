@@ -27,6 +27,12 @@ options.allow_no_extension = true
 [lints.config.math_could_be_unquoted]
 enabled = false
 
+# Command casing (e.g. `safezoneH` vs `safeZoneH`) has no runtime effect in
+# SQF — it is case-insensitive. Not worth churning ~140 cosmetic edits
+# across the existing camera/aircraft scripts.
+[lints.sqf.command_case]
+enabled = false
+
 [files]
 include = [
     "mod.cpp",

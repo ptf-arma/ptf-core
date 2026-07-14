@@ -32,7 +32,7 @@ high refresh rate loop [0.1 sec]
 
     private _turPos=[26.29 *   (0.01875 *    Safezoneh),31.8*   (0.025 *    SafezoneH),0.8 *   (0.01875 * SafezoneH),0.8 *   (0.025 * SafezoneH)];
     private _turMid=26.29*   (0.01875 *    Safezoneh);
-    private _turMax=-(14 *   (0.01875 *    Safezoneh)) /3.14159;
+    private _turMax=-(14 *   (0.01875 *    Safezoneh)) /pi;
 
     private _gunPos=[10.65 *   (0.01875 *    Safezoneh),10.8*   (0.025 *    SafezoneH),0.8 *   (0.01875 * SafezoneH),0.8 *   (0.025 * SafezoneH)];
     private _gunMid=10.8*   (0.025 *    SafezoneH);

@@ -41,7 +41,7 @@ high refresh rate loop [0.01 sec]
         };
 
         _r = (ctrlText _z);
-        if(!(_r isEqualTo "W") && _t)then{
+        if((_r isNotEqualTo "W") && _t)then{
             _t=false;
             _v lockCameraTo [AGLtoASL _lockPos,[0]];
             sleep 0.01;
