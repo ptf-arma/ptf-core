@@ -33,8 +33,12 @@ jobs:
     needs: check
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history + tags so gen-version.sh can count them
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
+      - name: Generate version
+        run: sh tools/gen-version.sh
       # Linux runners have no Arma 3 Tools, so the seven MLOD models are
       # packed unbinarized and nothing is signed here — fine for validation
       # and test artifacts. Workshop releases are built on a Windows machine

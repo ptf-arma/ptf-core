@@ -1,0 +1,82 @@
+name: Release
+
+# Cuts a GitHub Release ONLY when master advances (a develop -> master merge,
+# i.e. an actual release). The version is X.Y.Z with Y bumped for this release
+# and Z reset to 0 — see tools/gen-version.sh. Nothing here signs PBOs; the
+# signed Workshop zip is built separately on Windows with tools/release.ps1.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:  # allow a manual re-cut from the Actions tab
+
+permissions:
+  contents: write  # needed to create the tag and the GitHub Release
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag + GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history + tags for version + changelog
+
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
+
+      - name: Compute release version
+        id: ver
+        run: |
+          version=$(sh tools/gen-version.sh --release)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+          # Most recent existing release tag, for the changelog range.
+          prev=$(git tag -l 'v*' | sort -V | tail -1)
+          echo "prev=$prev" >> "$GITHUB_OUTPUT"
+          echo "Releasing v$version (previous tag: ${prev:-none})"
+
+      - name: Abort if tag already exists
+        run: |
+          if git rev-parse -q --verify "refs/tags/${{ steps.ver.outputs.tag }}" >/dev/null; then
+            echo "::error::Tag ${{ steps.ver.outputs.tag }} already exists. Bump MAJOR in script_version.hpp or delete the stale tag."
+            exit 1
+          fi
+
+      - name: Build release
+        run: hemtt release
+
+      - name: Package build artifact
+        run: |
+          cd .hemttout/release
+          zip -r "$GITHUB_WORKSPACE/PTF-${{ steps.ver.outputs.version }}-unsigned.zip" .
+
+      - name: Generate changelog
+        id: log
+        run: |
+          if [ -n "${{ steps.ver.outputs.prev }}" ]; then
+            range="${{ steps.ver.outputs.prev }}..HEAD"
+          else
+            range="HEAD"
+          fi
+          {
+            echo "body<<EOF"
+            echo "## Changes since ${{ steps.ver.outputs.prev }}"
+            echo ""
+            git log "$range" --no-merges --first-parent --pretty='- %s' || true
+            echo ""
+            echo "_Unsigned build attached for reference. The signed Workshop release is published separately._"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: PTF Core ${{ steps.ver.outputs.version }}
+          body: ${{ steps.log.outputs.body }}
+          files: PTF-${{ steps.ver.outputs.version }}-unsigned.zip
+          make_latest: true

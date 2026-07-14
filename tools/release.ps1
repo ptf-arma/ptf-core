@@ -67,6 +67,42 @@ try {
     $out = Join-Path $repo ".hemttout\release"
     if (Test-Path -LiteralPath $out) { Remove-Item -LiteralPath $out -Recurse -Force }
 
+    # Derive the X.Y.Z version from git and write MINOR/PATCH into
+    # script_version.hpp BEFORE building, so the PBOs carry the right version.
+    # This mirrors tools/gen-version.sh (used by CI) but is implemented natively
+    # so it needs no `sh` on PATH. Pull tags first (best effort) so a release tag
+    # cut by CI is visible: on master after that tag exists this yields the
+    # release version (X.Y.0); on develop it yields the dev version.
+    #   X (MAJOR) : hand-maintained in script_version.hpp.
+    #   Y (MINOR) : number of release tags at this major (v<MAJOR>.*).
+    #   Z (PATCH) : first-parent commits since the most recent release tag.
+    git fetch --tags --quiet 2>$null
+    $verFile = Join-Path $repo "addons\PTF_Main\script_version.hpp"
+    $vhText = Get-Content -Raw $verFile
+    if ($vhText -notmatch '#define\s+MAJOR\s+(\d+)') {
+        throw "script_version.hpp is missing #define MAJOR."
+    }
+    $major = [int]$Matches[1]
+
+    $minor = @(git tag -l "v$major.*").Count
+    $allTags = @(git tag -l 'v*')
+    $lastTag = $allTags |
+        Where-Object { $_ -match '^v(\d+)\.(\d+)\.(\d+)$' } |
+        Sort-Object { [version]($_.Substring(1)) } |
+        Select-Object -Last 1
+    if ($lastTag) {
+        $patch = [int](git rev-list --count --first-parent "$lastTag..HEAD")
+    }
+    else {
+        $patch = [int](git rev-list --count --first-parent HEAD)
+    }
+
+    $vhText = $vhText -replace '#define\s+MINOR\s+\d+', "#define MINOR $minor"
+    $vhText = $vhText -replace '#define\s+PATCH\s+\d+', "#define PATCH $patch"
+    Set-Content -LiteralPath $verFile -Value $vhText -NoNewline
+    $version = "$major.$minor.$patch"
+    Write-Host "Version: $version"
+
     & $hemtt release
     if ($LASTEXITCODE -ne 0) { throw "hemtt release failed" }
 
@@ -126,17 +162,7 @@ try {
         Copy-Item $publicKey $keysDir
     }
 
-    # Version from script_version.hpp
-    $ver = @{}
-    foreach ($line in Get-Content (Join-Path $repo "addons\PTF_Main\script_version.hpp")) {
-        if ($line -match '#define\s+(\w+)\s+(\d+)') { $ver[$Matches[1]] = $Matches[2] }
-    }
-    foreach ($k in 'MAJOR', 'MINOR', 'PATCH', 'BUILD') {
-        if (-not $ver.ContainsKey($k)) {
-            throw "script_version.hpp is missing #define $k - cannot form a valid version string."
-        }
-    }
-    $version = "$($ver.MAJOR).$($ver.MINOR).$($ver.PATCH).$($ver.BUILD)"
+    # $version was derived from git before the build (see the version block above).
 
     # Stage under the Workshop folder name and zip. The folder name contains
     # PowerShell wildcard characters ([PTF]), so use .NET IO throughout —

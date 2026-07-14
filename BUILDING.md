@@ -9,12 +9,25 @@ PTF Core is built with [HEMTT](https://hemtt.dev). Install it once with
 | --- | --- |
 | `hemtt check` | Lint and validate every config and SQF file. Fast; run before committing. |
 | `hemtt dev` | Development build (no binarization) into `.hemttout/dev`. |
-| `hemtt launch` | Launch Arma 3 with the dev build (requires a `.hemtt/launch.toml`, not yet configured). |
+| `hemtt launch` | Launch Arma 3 with the dev build and its framework mods (configured in `.hemtt/launch.toml`; `hemtt launch vr` also opens a bare VR mission). |
 | `hemtt build` | Full build with binarization into `.hemttout/build`. |
 | `hemtt release` | Signed release build; produces `releases/PTF-<version>.zip` containing `@[PTF] Paramarine Milsim Core`. |
 
-The mod version lives in `addons/PTF_Main/script_version.hpp` — bump it
-before a release.
+## Versioning
+
+The version is `X.Y.Z`, derived from git by `tools/gen-version.sh` (which
+writes `MINOR`/`PATCH` into `addons/PTF_Main/script_version.hpp` at build
+time):
+
+- **X (MAJOR)** — hand-maintained in `script_version.hpp`. Bump it only for
+  a major overhaul.
+- **Y (MINOR)** — number of releases so far (count of `vX.*` tags). It bumps
+  automatically when a release is cut off `master` (see below).
+- **Z (PATCH)** — first-parent commits since the last release tag, i.e.
+  develop updates since the last release. Resets to 0 at each release.
+
+Both `hemtt` in CI and `tools/release.ps1` run `gen-version.sh` before
+building, so you never edit `MINOR`/`PATCH` by hand — only `MAJOR`.
 
 ## Signing
 
@@ -47,14 +60,23 @@ de-facto ground truth).
 
 ## Releasing to the Workshop
 
-1. Merge `develop` into `master`.
+1. Merge `develop` into `master` and push. This triggers
+   `.github/workflows/release.yml`, which computes the next version
+   (`Y+1`, `Z=0`), tags it `vX.Y.0`, and cuts a GitHub Release with a
+   changelog and an unsigned reference build. Tag/Release creation happens
+   **only on master** — develop pushes never cut a release.
 2. On a Windows machine with Arma 3 Tools installed, with `PTF_KEYS_DIR`
    and `PTF_EXTERNAL_ADDONS` set (or pass `-KeyDir`/`-ExternalAddons`),
-   run `tools\release.ps1`. It runs `hemtt release` (binarizes the MLOD
+   run `tools\release.ps1`. It fetches the tag CI just created, derives the
+   matching `X.Y.0` version, runs `hemtt release` (binarizes the MLOD
    models), merges the external PBOs, signs everything with `ptf2.1`,
    ships the bikey, and writes `releases/PTF-<version>.zip`.
 3. Unzip and upload the `@[PTF] Paramarine Milsim Core` folder with the
    Arma 3 Publisher, same as before.
+
+Run `release.ps1` *after* the release workflow has tagged master, so its
+git-derived version matches the tag. For a major overhaul, bump `MAJOR` in
+`script_version.hpp` and commit that before merging to master.
 
 ## Project layout notes
 
@@ -70,8 +92,6 @@ de-facto ground truth).
     `drc_custom_billboards` also ships a pre-rapified `config.bin` and keeps
     the original flat `drc_custom_billboards` PBO prefix — the Dagger Island
     terrain references those paths, so do not "fix" it to `z\PTF\addons\...`.
-  - `PTF_GCam` ships a plain-text config because its dialog positions use
-    runtime-evaluated `SafeZoneW/H` expressions HEMTT cannot rapify.
   - `PTF_Menu` keeps the intro mission's `Description.ext` unrapified
     (`db + 0` sound syntax).
 
@@ -79,7 +99,13 @@ de-facto ground truth).
 
 `.github/workflows/hemtt.yml` runs `hemtt check` and a full
 `hemtt release` (unbinarized on Linux) on every PR and push to
-`develop`/`master`, uploading the release zip as an artifact.
+`develop`/`master`, uploading the build as an artifact. It checks out full
+history (`fetch-depth: 0`) so `gen-version.sh` can derive the version.
+
+`.github/workflows/release.yml` runs **only on push to `master`** (or a
+manual dispatch). It bumps the release version, tags `vX.Y.0`, and creates
+a GitHub Release with a changelog and an unsigned reference build. It never
+runs on `develop`, so only a `develop -> master` merge cuts a release.
 
 ## History
 
