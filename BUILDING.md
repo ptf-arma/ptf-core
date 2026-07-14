@@ -1,0 +1,60 @@
+# Building PTF Core
+
+PTF Core is built with [HEMTT](https://hemtt.dev). Install it once with
+`winget install BrettMayson.HEMTT` (or grab a release from GitHub).
+
+## Everyday commands
+
+| Command | What it does |
+| --- | --- |
+| `hemtt check` | Lint and validate every config and SQF file. Fast; run before committing. |
+| `hemtt dev` | Development build (no binarization) into `.hemttout/dev`. |
+| `hemtt launch` | Launch Arma 3 with the dev build (requires a `.hemtt/launch.toml`, not yet configured). |
+| `hemtt build` | Full build with binarization into `.hemttout/build`. |
+| `hemtt release` | Signed release build; produces `releases/PTF-<version>.zip` containing `@[PTF] Paramarine Milsim Core`. |
+
+The mod version lives in `addons/PTF_Main/script_version.hpp` — bump it
+before a release.
+
+## Releasing to the Workshop
+
+1. Merge `develop` into `master`.
+2. Run `hemtt release` on a Windows machine with Arma 3 Tools installed
+   (binarize.exe is needed to binarize the handful of MLOD models; CI's
+   Linux builds skip that step).
+3. Unzip `releases/PTF-<version>.zip` and upload the
+   `@[PTF] Paramarine Milsim Core` folder with the Arma 3 Publisher, same
+   as before.
+
+## Project layout notes
+
+- `.hemtt/project.toml` — main build config (prefix `z\PTF\addons\...`,
+  lint tuning, release folder name).
+- `.hemtt/hooks/` — Rhai hooks that rename HEMTT's `PTF_<folder>.pbo`
+  output back to the historical `<folder>.pbo` names (and keep the
+  `.bisign` files paired during release).
+- `addons/<X>/addon.toml` — per-addon overrides:
+  - `DIHatUSMC`, `drc_custom_billboards`, `riku_class_a` ship pre-binarized
+    (ODOL) models, so binarization is disabled;
+    `drc_custom_billboards` also ships a pre-rapified `config.bin`.
+  - `PTF_GCam` ships a plain-text config because its dialog positions use
+    runtime-evaluated `SafeZoneW/H` expressions HEMTT cannot rapify.
+  - `PTF_Menu` keeps the intro mission's `Description.ext` unrapified
+    (`db + 0` sound syntax).
+- `include/` — build-time stubs for game-data includes (e.g. ctab's
+  `dikCodes.h`); never packed into PBOs.
+
+## CI
+
+`.github/workflows/hemtt.yml` runs `hemtt check` and a full
+`hemtt release` (unbinarized on Linux) on every PR and push to
+`develop`/`master`, uploading the release zip as an artifact.
+
+## Legacy SCons build
+
+`SConstruct` and `tools/` still contain the old AddonBuilder-based build
+(`scons -j 25`). They are kept until the first HEMTT-built release has
+shipped, then can be removed. Note the old build had packaging bugs the
+HEMTT build fixes: `.p3d`/`.rvmat`/`.jpg`/`.ogg` files missing from the
+no-binarize PBOs and the intro music, an empty drc config, and dropped
+Peral Zeus patches.

@@ -3,6 +3,11 @@ prefix = "PTF"
 mainprefix = "z"
 author = "Paramarine Task Force"
 
+# Mod folder name in the release zip: "@[PTF] Paramarine Milsim Core",
+# matching the folder the Workshop mod has always shipped as.
+[hemtt.release]
+folder = "[PTF] Paramarine Milsim Core"
+
 [version]
 path = "addons/PTF_Main/script_version.hpp"
 git_hash = 0
