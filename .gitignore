@@ -1,7 +1,12 @@
 /build
+/.hemttout
+/releases
+*.hemttprivatekey
+*.biprivatekey
 *.pbo
 .sconsign.dblite
 @\[PTF\] Paramarine Milsim Core/
 *.bisign
 .sconsign.dblite
 .sconsign.dblite
+CLAUDE.local.md

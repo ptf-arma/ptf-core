@@ -1,0 +1,7 @@
+# Config-less asset pack shipping a pre-rapified config.bin, pre-rapified
+# rvmats, and ODOL models — nothing here can be preprocessed from source.
+[binarize]
+enabled = false
+
+[rapify]
+enabled = false

@@ -154,8 +154,6 @@ class rhs_mag_30Rnd_556x45_Mk318_SCAR;
 class rhs_mag_30Rnd_556x45_Mk262_Stanag;
 class rhs_mag_30Rnd_556x45_Mk318_Stanag;
 class rhs_mag_30Rnd_556x45_M855A1_Stanag;
-class rhs_mag_20Rnd_SCAR_762x51_mk316_special;
-class rhs_mag_20Rnd_SCAR_762x51_m80a1_epr;
 class rhs_mag_20Rnd_SCAR_762x51_m118_special;
 class rhs_mag_20Rnd_SCAR_762x51_m118_special_bk;
 class rhs_mag_20Rnd_SCAR_762x51_m61_ap;
@@ -201,12 +199,7 @@ class USP_SOFTSHELL_G3C_MX_RGR_M81;
 class USP_TSHIRT2_G3C_MX_GRN_M81;
 class USP_G3C_RS2_M81;
 //ILBE Radio Backpacks
-class tfw_ilbe_DD_coy;
-class tfw_ilbe_DD_d;
-class tfw_ilbe_DD_wd2;
 class tfw_ilbe_blade_wd;
-class tfw_ilbe_blade_d;
-class tfw_ilbe_blade_coy;
 //vanilla shit
 class U_Tank_green_F;
 //nightvision

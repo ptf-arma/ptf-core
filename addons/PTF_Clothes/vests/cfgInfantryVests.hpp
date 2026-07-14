@@ -7,7 +7,7 @@ class PTF_Vest_Infantry_CRYE : USP_CRYE_CPC
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -40,7 +40,7 @@ class PTF_Vest_Infantry_CRYE_Comms : USP_CRYE_CPC_COMMS
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -73,7 +73,7 @@ class PTF_Vest_Infantry_CRYE_Fast : USP_CRYE_CPC_FAST_BELT
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -106,7 +106,7 @@ class PTF_Vest_Infantry_CRYE_Lead : USP_CRYE_CPC_LEAD_BELT
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -139,7 +139,7 @@ class PTF_Vest_Infantry_CRYE_Light : USP_CRYE_CPC_LIGHT_BELT
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -172,7 +172,7 @@ class PTF_Vest_Infantry_CRYE_Medic : USP_CRYE_CPC_MEDIC
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -205,7 +205,7 @@ class PTF_Vest_Infantry_CRYE_Rifleman : USP_CRYE_CPC_WEAPON
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -238,7 +238,7 @@ class PTF_Vest_Infantry_MBAV : rhsusf_mbav
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -271,7 +271,7 @@ class PTF_Vest_Infantry_MBAV_Grenadier : rhsusf_mbav_grenadier
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -304,7 +304,7 @@ class PTF_Vest_Infantry_MBAV_Light : rhsusf_mbav_light
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -337,7 +337,7 @@ class PTF_Vest_Infantry_MBAV_MG : rhsusf_mbav_mg
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -370,7 +370,7 @@ class PTF_Vest_Infantry_MBAV_Medic : rhsusf_mbav_medic
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -403,7 +403,7 @@ class PTF_Vest_Infantry_MBAV_Rifleman : rhsusf_mbav_rifleman
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -436,7 +436,7 @@ class PTF_Vest_Infantry_SPC : rhsusf_spc
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -469,7 +469,7 @@ class PTF_Vest_Infantry_SPC_Medic : rhsusf_spc_corpsman
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -502,7 +502,7 @@ class PTF_Vest_Infantry_SPC_Crewman : rhsusf_spc_crewman
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -535,7 +535,7 @@ class PTF_Vest_Infantry_SPC_IAR : rhsusf_spc_iar
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -568,7 +568,7 @@ class PTF_Vest_Infantry_SPC_Light : rhsusf_spc_light
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -601,7 +601,7 @@ class PTF_Vest_Infantry_SPC_Marksman : rhsusf_spc_marksman
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -634,7 +634,7 @@ class PTF_Vest_Infantry_SPC_Rifleman : rhsusf_spc_rifleman
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -667,7 +667,7 @@ class PTF_Vest_Infantry_SPC_Sniper : rhsusf_spc_sniper
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -700,7 +700,7 @@ class PTF_Vest_Infantry_SPC_SquadLeader : rhsusf_spc_squadleader
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -733,7 +733,7 @@ class PTF_Vest_Infantry_SPC_TeamLeader : rhsusf_spc_teamleader
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -767,7 +767,7 @@ class PTF_Vest_Infantry_Strandhogg : USP_VEST_STRANDHOGG2_CBR
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -801,7 +801,7 @@ class PTF_Vest_Infantry_JPC_JTAC_Tan: JPC_2_JTAC_Tan
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -835,7 +835,7 @@ class PTF_Vest_Infantry_JPC_Marksman_Tan: JPC_2_Marksman_Tan
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -869,7 +869,7 @@ class PTF_Vest_Infantry_JPC_SL_Tan: JPC_2_SL_Tan
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {

@@ -29,9 +29,9 @@ class PTF_SAM_DEFENDER : B_SAM_System_03_F
       };
    };
 
-   reportOwnPosition = true;
-   receiveRemoteTargets = true;
-   reportRemoteTargets = true;
+   reportOwnPosition = 1;
+   receiveRemoteTargets = 1;
+   reportRemoteTargets = 1;
    showAllTargets = 2;
 
    hiddenSelections[] = {
@@ -298,9 +298,9 @@ class PTF_SAM_RADAR : B_Radar_System_01_F
       };
    };
 
-   reportOwnPosition = true;
-   receiveRemoteTargets = true;
-   reportRemoteTargets = true;
+   reportOwnPosition = 1;
+   receiveRemoteTargets = 1;
+   reportRemoteTargets = 1;
    showAllTargets = 2;
 
    hiddenSelections[] = {

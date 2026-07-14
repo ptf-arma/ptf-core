@@ -128,8 +128,8 @@ class PTF_M1151CAT_M2 : rhsusf_m1151_m2_v3_usmc_wd
 		class TransportWeapons
 		{
             class _xx_rhs_weap_M136_hp {
-                weapon="rhs_weap_M136_hp"
-                count = 1
+                weapon="rhs_weap_M136_hp";
+                count = 1;
             };
 		};
    class textureSources
@@ -322,8 +322,8 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
 		class TransportWeapons
 		{
             class _xx_rhs_weap_M136_hp {
-                weapon="rhs_weap_M136_hp"
-                count = 1
+                weapon="rhs_weap_M136_hp";
+                count = 1;
             };
 		};
    class VehicleTransport
@@ -508,8 +508,8 @@ class PTF_M1025_tow : rhsusf_m966_w
 		class TransportWeapons
 		{
             class _xx_rhs_weap_M136_hp {
-                weapon="rhs_weap_M136_hp"
-                count = 1
+                weapon="rhs_weap_M136_hp";
+                count = 1;
             };
 		};
    class VehicleTransport
