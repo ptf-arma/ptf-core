@@ -16,6 +16,16 @@ PTF Core is built with [HEMTT](https://hemtt.dev). Install it once with
 The mod version lives in `addons/PTF_Main/script_version.hpp` — bump it
 before a release.
 
+## Signing
+
+`hemtt release` generates a fresh key per release (authority
+`PTF_<version>`) and signs every PBO it builds. The previously published
+mod (and the reupload PBOs kept outside this repo) are signed with the
+`ptf2.1` key in `C:\A3Mods\Keys`. HEMTT cannot reuse an existing
+`.biprivatekey`, so either keep both bikeys on the server, or keep
+re-signing the final mod folder with DSSignFile/`ptf2.1` as before —
+extra `.bisign` files per PBO are allowed.
+
 ## Releasing to the Workshop
 
 1. Merge `develop` into `master`.
@@ -36,7 +46,9 @@ before a release.
 - `addons/<X>/addon.toml` — per-addon overrides:
   - `DIHatUSMC`, `drc_custom_billboards`, `riku_class_a` ship pre-binarized
     (ODOL) models, so binarization is disabled;
-    `drc_custom_billboards` also ships a pre-rapified `config.bin`.
+    `drc_custom_billboards` also ships a pre-rapified `config.bin` and keeps
+    the original flat `drc_custom_billboards` PBO prefix — the Dagger Island
+    terrain references those paths, so do not "fix" it to `z\PTF\addons\...`.
   - `PTF_GCam` ships a plain-text config because its dialog positions use
     runtime-evaluated `SafeZoneW/H` expressions HEMTT cannot rapify.
   - `PTF_Menu` keeps the intro mission's `Description.ext` unrapified
