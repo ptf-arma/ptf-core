@@ -110,6 +110,11 @@ try {
     foreach ($line in Get-Content (Join-Path $repo "addons\PTF_Main\script_version.hpp")) {
         if ($line -match '#define\s+(\w+)\s+(\d+)') { $ver[$Matches[1]] = $Matches[2] }
     }
+    foreach ($k in 'MAJOR', 'MINOR', 'PATCH', 'BUILD') {
+        if (-not $ver.ContainsKey($k)) {
+            throw "script_version.hpp is missing #define $k - cannot form a valid version string."
+        }
+    }
     $version = "$($ver.MAJOR).$($ver.MINOR).$($ver.PATCH).$($ver.BUILD)"
 
     # Stage under the Workshop folder name and zip. The folder name contains
@@ -125,7 +130,9 @@ try {
     $releases = Join-Path $repo "releases"
     [System.IO.Directory]::CreateDirectory($releases) | Out-Null
     $zip = Join-Path $releases "PTF-$version.zip"
-    if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip }
+    if (Test-Path -LiteralPath $zip) {
+        throw "Release $zip already exists - bump the version in addons\PTF_Main\script_version.hpp (or remove the old zip) before re-releasing."
+    }
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     [System.IO.Compression.ZipFile]::CreateFromDirectory($staging, $zip)
     Remove-Item -LiteralPath $staging -Recurse -Force
