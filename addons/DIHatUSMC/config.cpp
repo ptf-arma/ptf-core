@@ -26,15 +26,15 @@ class cfgWeapons
 		scope = 2;
 		weaponPoolAvailable = 1;
 		displayName = "Campaign Cover [http://www.paramarinetaskforce.com/]";
-		picture = "\z\PTF\DIHatUSMC\UI\DS_UI.paa";
-		model = "\z\PTF\DIHatUSMC\USMC_DI_HAT.p3d";
+		picture = "\z\PTF\addons\DIHatUSMC\UI\DS_UI.paa";
+		model = "\z\PTF\addons\DIHatUSMC\USMC_DI_HAT.p3d";
 		hiddenSelections[] = {""};
 		hiddenSelectionsTextures[] = {""};
 		class ItemInfo: HeadgearItem
 		{
 			mass = 2;
 			allowedSlots[] = {901,701,605};
-			uniformModel = "\z\PTF\DIHatUSMC\USMC_DI_HAT.p3d";
+			uniformModel = "\z\PTF\addons\DIHatUSMC\USMC_DI_HAT.p3d";
 			modelSides[] = {6};
 			armor = "0*0";
 			passThrough = 0.8;
