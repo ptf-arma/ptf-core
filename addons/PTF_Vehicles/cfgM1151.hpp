@@ -1,4 +1,36 @@
 //M1151
+// Shared vehicle-in-vehicle transport block for every PTF M1151 variant.
+// The block below was byte-identical across all five variant classes. Each
+// variant keeps its own external RHS parent (single inheritance), so a shared
+// PTF base class is not usable; a macro reproduces the exact original tokens,
+// preserving behaviour verbatim. #undef'd at the end of this file so it does
+// not leak into sibling cfgVehicles includes.
+#define PTF_M1151_VEHICLETRANSPORT \
+   class VehicleTransport \
+   { \
+      class Cargo \
+      { \
+         parachuteClass = "B_Parachute_02_F"; \
+         parachuteHeightLimit = 15; \
+         canBeTransported = 1; \
+         dimensions[] = {"BBox_1_1_pos", "BBox_1_2_pos"}; \
+      }; \
+      class Carrier \
+      { \
+         cargoBayDimensions[] = {"VTV_cargo_1", "VTV_cargo_2"}; \
+         disableHeightLimit = 1; \
+         maxLoadMass = 1500; \
+         cargoAlignment[] = {"center", "front"}; \
+         cargoSpacing[] = {0, 0, 0}; \
+         exits[] = {"VTV_exit"}; \
+         unloadingInterval = 2; \
+         loadingDistance = 3; \
+         loadingAngle = 60; \
+         parachuteClassDefault = "B_Parachute_02_F"; \
+         parachuteHeightLimitDefault = 5; \
+      }; \
+   };
+
 class PTF_M1151 : rhsusf_m1151_usmc_wd
 {
    scope = 2;
@@ -74,30 +106,7 @@ class PTF_M1151 : rhsusf_m1151_usmc_wd
          factions[] = {};
       };
    };
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_1_1_pos", "BBox_1_2_pos"};
-      };
-      class Carrier
-      {
-         cargoBayDimensions[] = {"VTV_cargo_1", "VTV_cargo_2"};
-         disableHeightLimit = 1;
-         maxLoadMass = 1500;
-         cargoAlignment[] = {"center", "front"};
-         cargoSpacing[] = {0, 0, 0};
-         exits[] = {"VTV_exit"};
-         unloadingInterval = 2;
-         loadingDistance = 3;
-         loadingAngle = 60;
-         parachuteClassDefault = "B_Parachute_02_F";
-         parachuteHeightLimitDefault = 5;
-      };
-   };
+   PTF_M1151_VEHICLETRANSPORT
    class TransportItems : TransportItems
    {
    };
@@ -179,30 +188,7 @@ class PTF_M1151_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
          factions[] = {};
       };
    };
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_1_1_pos", "BBox_1_2_pos"};
-      };
-      class Carrier
-      {
-         cargoBayDimensions[] = {"VTV_cargo_1", "VTV_cargo_2"};
-         disableHeightLimit = 1;
-         maxLoadMass = 1500;
-         cargoAlignment[] = {"center", "front"};
-         cargoSpacing[] = {0, 0, 0};
-         exits[] = {"VTV_exit"};
-         unloadingInterval = 2;
-         loadingDistance = 3;
-         loadingAngle = 60;
-         parachuteClassDefault = "B_Parachute_02_F";
-         parachuteHeightLimitDefault = 5;
-      };
-   };
+   PTF_M1151_VEHICLETRANSPORT
 
    class TransportItems : TransportItems
    {
@@ -292,30 +278,7 @@ class PTF_M1151_M240 : rhsusf_m1151_m240_v3_usmc_wd
          factions[] = {};
       };
    };
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_1_1_pos", "BBox_1_2_pos"};
-      };
-      class Carrier
-      {
-         cargoBayDimensions[] = {"VTV_cargo_1", "VTV_cargo_2"};
-         disableHeightLimit = 1;
-         maxLoadMass = 1500;
-         cargoAlignment[] = {"center", "front"};
-         cargoSpacing[] = {0, 0, 0};
-         exits[] = {"VTV_exit"};
-         unloadingInterval = 2;
-         loadingDistance = 3;
-         loadingAngle = 60;
-         parachuteClassDefault = "B_Parachute_02_F";
-         parachuteHeightLimitDefault = 5;
-      };
-   };
+   PTF_M1151_VEHICLETRANSPORT
 
    class TransportItems : TransportItems
    {
@@ -398,30 +361,7 @@ class PTF_M1151_M2 : rhsusf_m1151_m2_v3_usmc_wd
          factions[] = {};
       };
    };
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_1_1_pos", "BBox_1_2_pos"};
-      };
-      class Carrier
-      {
-         cargoBayDimensions[] = {"VTV_cargo_1", "VTV_cargo_2"};
-         disableHeightLimit = 1;
-         maxLoadMass = 1500;
-         cargoAlignment[] = {"center", "front"};
-         cargoSpacing[] = {0, 0, 0};
-         exits[] = {"VTV_exit"};
-         unloadingInterval = 2;
-         loadingDistance = 3;
-         loadingAngle = 60;
-         parachuteClassDefault = "B_Parachute_02_F";
-         parachuteHeightLimitDefault = 5;
-      };
-   };
+   PTF_M1151_VEHICLETRANSPORT
 
    class TransportItems : TransportItems
    {
@@ -745,30 +685,7 @@ class PTF_M1151_M2_LRAS : rhsusf_m1151_m2_lras3_v1_usarmy_wd
          factions[] = {};
       };
    };
-   class VehicleTransport
-   {
-      class Cargo
-      {
-         parachuteClass = "B_Parachute_02_F";
-         parachuteHeightLimit = 15;
-         canBeTransported = 1;
-         dimensions[] = {"BBox_1_1_pos", "BBox_1_2_pos"};
-      };
-      class Carrier
-      {
-         cargoBayDimensions[] = {"VTV_cargo_1", "VTV_cargo_2"};
-         disableHeightLimit = 1;
-         maxLoadMass = 1500;
-         cargoAlignment[] = {"center", "front"};
-         cargoSpacing[] = {0, 0, 0};
-         exits[] = {"VTV_exit"};
-         unloadingInterval = 2;
-         loadingDistance = 3;
-         loadingAngle = 60;
-         parachuteClassDefault = "B_Parachute_02_F";
-         parachuteHeightLimitDefault = 5;
-      };
-   };
+   PTF_M1151_VEHICLETRANSPORT
 
    class TransportItems : TransportItems
    {
@@ -783,3 +700,5 @@ class PTF_M1151_M2_LRAS : rhsusf_m1151_m2_lras3_v1_usarmy_wd
    {
    };
 };
+
+#undef PTF_M1151_VEHICLETRANSPORT
