@@ -19,24 +19,30 @@ param(
     [string]$ExternalAddons = $env:PTF_EXTERNAL_ADDONS,
     # Build only the repo-tracked PBOs, skipping the external merge. The
     # resulting mod is incomplete — intended for dev/testing, not release.
-    [switch]$NoExternal
+    [switch]$NoExternal,
+    # Skip signing entirely (no key or Arma 3 Tools needed). For quick local
+    # dev builds; the output is UNSIGNED — never upload it to the Workshop.
+    [switch]$NoSign
 )
 $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $PSScriptRoot
 
-if (-not $KeyDir) {
+if (-not $NoSign -and -not $KeyDir) {
     throw "No signing key directory. Pass -KeyDir <folder> or set `$env:PTF_KEYS_DIR " +
-          "(the folder holding $KeyName.biprivatekey and $KeyName.bikey)."
+          "(the folder holding $KeyName.biprivatekey and $KeyName.bikey), or pass " +
+          "-NoSign for an unsigned local build."
 }
 if (-not $NoExternal -and -not $ExternalAddons) {
     throw "No external PBO folder. Pass -ExternalAddons <folder> or set " +
           "`$env:PTF_EXTERNAL_ADDONS (the ~40 PBOs not built from git, incl. ctab). " +
           "For a deliberate repo-only build, pass -NoExternal."
 }
-$privateKey = Join-Path $KeyDir "$KeyName.biprivatekey"
-$publicKey  = Join-Path $KeyDir "$KeyName.bikey"
-if (-not (Test-Path $privateKey)) { throw "Private key not found: $privateKey" }
-if (-not (Test-Path $publicKey))  { throw "Public key not found: $publicKey" }
+if (-not $NoSign) {
+    $privateKey = Join-Path $KeyDir "$KeyName.biprivatekey"
+    $publicKey  = Join-Path $KeyDir "$KeyName.bikey"
+    if (-not (Test-Path $privateKey)) { throw "Private key not found: $privateKey" }
+    if (-not (Test-Path $publicKey))  { throw "Public key not found: $publicKey" }
+}
 
 # hemtt: PATH first, then the winget install location
 $hemtt = Get-Command hemtt -ErrorAction SilentlyContinue
@@ -47,10 +53,12 @@ else {
     if (-not $hemtt) { throw "hemtt not found; install with: winget install BrettMayson.HEMTT" }
 }
 
-# DSSignFile from Arma 3 Tools (registry lookup)
-$a3tools = (Get-ItemProperty "HKCU:\SOFTWARE\Bohemia Interactive\Arma 3 Tools").path
-$dsSign = Join-Path $a3tools "DSSignFile\DSSignFile.exe"
-if (-not (Test-Path $dsSign)) { throw "DSSignFile not found: $dsSign" }
+# DSSignFile from Arma 3 Tools (registry lookup) — only needed for signing
+if (-not $NoSign) {
+    $a3tools = (Get-ItemProperty "HKCU:\SOFTWARE\Bohemia Interactive\Arma 3 Tools").path
+    $dsSign = Join-Path $a3tools "DSSignFile\DSSignFile.exe"
+    if (-not (Test-Path $dsSign)) { throw "DSSignFile not found: $dsSign" }
+}
 
 Push-Location $repo
 try {
@@ -94,16 +102,29 @@ try {
             "not the full published mod. Do NOT upload this to the Workshop (see BUILDING.md)."
     }
 
-    Get-ChildItem "$out\addons\*.bisign" -ErrorAction SilentlyContinue | Remove-Item
-    foreach ($pbo in Get-ChildItem "$out\addons\*.pbo") {
-        & $dsSign $privateKey $pbo.FullName
-        if ($LASTEXITCODE -ne 0) { throw "Signing failed: $($pbo.Name)" }
+    if ($NoSign) {
+        Write-Host "WARNING: -NoSign set; the build is UNSIGNED. Do NOT upload it to the Workshop."
     }
+    else {
+        Get-ChildItem "$out\addons\*.bisign" -ErrorAction SilentlyContinue | Remove-Item
+        $pbos = Get-ChildItem "$out\addons\*.pbo"
+        foreach ($pbo in $pbos) {
+            & $dsSign $privateKey $pbo.FullName
+            if ($LASTEXITCODE -ne 0) { throw "Signing failed: $($pbo.Name)" }
+        }
+        # Verify a .bisign was actually produced for every PBO — DSSignFile can
+        # exit 0 without writing output (e.g. a locked/read-only file), which
+        # would otherwise let an unsigned PBO ship undetected.
+        $signed = (Get-ChildItem "$out\addons\*.bisign").Count
+        if ($signed -ne $pbos.Count) {
+            throw "Signing produced $signed .bisign file(s) for $($pbos.Count) PBOs - some are unsigned."
+        }
 
-    $keysDir = Join-Path $out "keys"
-    if (Test-Path $keysDir) { Remove-Item "$keysDir\*" }
-    else { New-Item -ItemType Directory $keysDir | Out-Null }
-    Copy-Item $publicKey $keysDir
+        $keysDir = Join-Path $out "keys"
+        if (Test-Path $keysDir) { Remove-Item "$keysDir\*" }
+        else { New-Item -ItemType Directory $keysDir | Out-Null }
+        Copy-Item $publicKey $keysDir
+    }
 
     # Version from script_version.hpp
     $ver = @{}
@@ -140,7 +161,8 @@ try {
     if (-not (Test-Path -LiteralPath $zip)) { throw "Zip was not created: $zip" }
 
     Write-Host ""
-    Write-Host "Release ready: $zip (signed with $KeyName)"
-    Write-Host "Unzipped signed mod folder: $out"
+    $signNote = if ($NoSign) { "UNSIGNED - local dev only" } else { "signed with $KeyName" }
+    Write-Host "Release ready: $zip ($signNote)"
+    Write-Host "Unzipped mod folder: $out"
 }
 finally { Pop-Location }

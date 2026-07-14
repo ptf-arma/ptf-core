@@ -22,6 +22,12 @@ class Extended_PreInit_EventHandlers {
     };
 };
 
+class Extended_PostInit_EventHandlers {
+    class W41_PostInit {
+        init = "call compile preprocessFileLineNumbers '\z\PTF\addons\PTF_Scripts\XEH_postInit.sqf'";
+    };
+};
+
 class CfgUnitInsignia
 {
 #include "cfgUnitInsignia.hpp"

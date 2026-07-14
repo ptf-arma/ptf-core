@@ -170,7 +170,7 @@ class PTFInfantry_Inf_3rd_Green : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"Camo","Camo2","Gloves","insignia"};
-   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_tan_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa", "rhsusf\addons\rhsusf_infantry2\data\mechanix_g_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_green_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa", "rhsusf\addons\rhsusf_infantry2\data\mechanix_g_co.paa"};
 };
 class PTFInfantry_Inf_3rd_Tan : B_Pilot_F
 {
@@ -194,5 +194,5 @@ class PTFInfantry_Inf_3rd_Tan : B_Pilot_F
    linkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemRadio", "ItemWatch"};
    hiddenSelections[] = {"Camo","Camo2","Gloves","insignia"};
-   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_Green_co.paa", "rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa", "rhsusf\addons\rhsusf_infantry2\data\mechanix_g_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_tan_co.paa", "rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa", "rhsusf\addons\rhsusf_infantry2\data\mechanix_g_co.paa"};
 };

@@ -61,7 +61,7 @@ class PTF_Uniform_Infantry_G3_Green : rhs_uniform_g3_tan
    faction = "BLU_F";
    displayName = "[Inf] G3 (Green) [PTF]";
    author = "Paramarine Task Force";
-   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_Green_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa","rhsusf\addons\rhsusf_infantry2\data\Mechanix_green_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_green_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa","rhsusf\addons\rhsusf_infantry2\data\Mechanix_green_co.paa"};
    class ItemInfo : UniformItem
    {
       uniformClass = "PTFInfantry_Inf_3rd_Tan";
