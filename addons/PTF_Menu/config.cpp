@@ -51,8 +51,8 @@ class CfgMissions
 	};
 };
 
-#include "import.hpp"
+#include "Import.hpp"
 
 class RscDisplayMain: RscStandardDisplay {
- #include "menu.hpp"
+ #include "Menu.hpp"
 };

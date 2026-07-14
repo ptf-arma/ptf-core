@@ -1,4 +1,4 @@
-#include "CfgFunctions.hpp"
+#include "cfgFunctions.hpp"
 
 class CfgPatches
 {

@@ -87,7 +87,7 @@ class cfgPatches
    };
 };
 
-#include "cfgImport.hpp"
+#include "cfgIMPORT.hpp"
 class cfgWeapons
 {
    #include "cfgMastersafe.hpp"
@@ -123,7 +123,7 @@ class cfgVehicles
    #include "cfgM1232.hpp"
    #include "cfgMRZR.hpp"
    #include "cfgTractors.hpp"
-   #include "cfgVanilla.hpp"
+   #include "cfgVANILLA.hpp"
    #include "cfg6x6.hpp"
    #include "cfgSAM.hpp"
    #include "cfgCAT.hpp"
