@@ -48,9 +48,10 @@ try {
 
     # HEMTT names PBOs "{prefix}_{folder}.pbo"; strip the added PTF_ so every
     # PBO keeps its historical "<folder>.pbo" name (PTF_PTF_Aircraft.pbo ->
-    # PTF_Aircraft.pbo, PTF_ctab.pbo -> ctab.pbo). The post_build Rhai hook
-    # does the same for `hemtt build`/`dev`, but hooks tied to HEMTT's own
-    # release stages don't run here because archiving is disabled.
+    # PTF_Aircraft.pbo, PTF_riku_class_a.pbo -> riku_class_a.pbo). The
+    # post_build Rhai hook does the same for `hemtt build`/`dev`, but hooks
+    # tied to HEMTT's release stages don't run here because archiving is
+    # disabled.
     foreach ($pbo in Get-ChildItem "$out\addons\PTF_*.pbo") {
         Rename-Item -LiteralPath $pbo.FullName -NewName $pbo.Name.Substring(4)
     }

@@ -1,7 +1,7 @@
 // HEMTT names PBOs "{prefix}_{folder}.pbo", which would double the prefix on
 // our already-prefixed folders (PTF_PTF_Aircraft.pbo) and rename the
-// third-party PBOs (ctab.pbo -> PTF_ctab.pbo). Strip the added prefix so
-// every PBO keeps its historical "<folder>.pbo" name.
+// third-party PBOs (riku_class_a.pbo -> PTF_riku_class_a.pbo). Strip the
+// added prefix so every PBO keeps its historical "<folder>.pbo" name.
 //
 // This hook only runs for dev/build; releases are renamed (and signed) by
 // tools/release.ps1, which owns the whole release flow.

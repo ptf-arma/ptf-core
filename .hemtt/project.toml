@@ -21,8 +21,9 @@ git_hash = 0
 [lints.config.file_type]
 options.allow_no_extension = true
 
-# ctab ships a de-rapped config full of quoted math from the original mod;
-# not worth diverging from upstream over a build-time micro-optimization
+# PTF_GCam's config carries quoted math expressions (importance/size) from
+# the original mod; not worth diverging from upstream over a build-time
+# micro-optimization.
 [lints.config.math_could_be_unquoted]
 enabled = false
 

@@ -10,3 +10,6 @@
 .sconsign.dblite
 .sconsign.dblite
 CLAUDE.local.md
+# ctab is not built from source here; it ships as a prebuilt external PBO
+# merged from the Workshop copy at release time (see BUILDING.md).
+/addons/ctab/

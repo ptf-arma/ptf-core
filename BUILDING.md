@@ -28,14 +28,15 @@ with `-KeyDir`/`-KeyName`). The private key is never copied or committed.
 
 ## External PBOs (not in git)
 
-The published mod contains ~57 PBOs but this repo only builds 19. The
-rest (~39: boxloader, grad_trenches, Peral, Dagger Island, Moe's, NDS,
-sling-load-rigging, ptf_sql, and other reuploads) are kept outside git
-because they cannot be rebuilt (binarized/obfuscated third-party PBOs) or
-are too large. They must be merged into every release — pass their folder
-to the release script with `-ExternalAddons`. A future build server needs
-a canonical store for them (currently the subscribed Workshop copy is the
-de-facto ground truth).
+The published mod contains ~57 PBOs but this repo only builds 18. The
+rest (~40: ctab, boxloader, grad_trenches, Peral, Dagger Island, Moe's,
+NDS, sling-load-rigging, ptf_sql, and other reuploads) are kept outside
+git because they cannot be rebuilt (binarized/obfuscated third-party
+PBOs), are too large, or are complex third-party addons that rarely
+change and don't need rebuilding (ctab). They must be merged into every
+release — pass their folder to the release script with `-ExternalAddons`.
+A future build server needs a canonical store for them (currently the
+subscribed Workshop copy is the de-facto ground truth).
 
 ## Releasing to the Workshop
 
@@ -52,9 +53,10 @@ de-facto ground truth).
 
 - `.hemtt/project.toml` — main build config (prefix `z\PTF\addons\...`,
   lint tuning, release folder name).
-- `.hemtt/hooks/` — Rhai hooks that rename HEMTT's `PTF_<folder>.pbo`
-  output back to the historical `<folder>.pbo` names (and keep the
-  `.bisign` files paired during release).
+- `.hemtt/hooks/` — a post_build Rhai hook that renames HEMTT's
+  `PTF_<folder>.pbo` output back to the historical `<folder>.pbo` names
+  for `hemtt build`/`dev`. (`hemtt release` renaming is done by
+  `tools/release.ps1`, which owns the full release flow.)
 - `addons/<X>/addon.toml` — per-addon overrides:
   - `DIHatUSMC`, `drc_custom_billboards`, `riku_class_a` ship pre-binarized
     (ODOL) models, so binarization is disabled;
@@ -65,8 +67,6 @@ de-facto ground truth).
     runtime-evaluated `SafeZoneW/H` expressions HEMTT cannot rapify.
   - `PTF_Menu` keeps the intro mission's `Description.ext` unrapified
     (`db + 0` sound syntax).
-- `include/` — build-time stubs for game-data includes (e.g. ctab's
-  `dikCodes.h`); never packed into PBOs.
 
 ## CI
 
