@@ -13,13 +13,14 @@ _hash = createHashMapFromArray
 _SavLocation = nearestObject [_target, "Land_JumpTarget_F"];
 _heli = nearestObject [_SavLocation, "Air"];
 
+if (isNull _SavLocation || isNull _heli) exitWith {hint "No aircraft found to salvage nearby"};
 
 if (_SavLocation distance _heli > 10) exitWith {hint "Object is to far away"};
 if (_heli getHitPointDamage "hithull" <= 0.8) exitWith {hint "This Helicopter is repairable"};
 
 if (typeof _heli in _hash) then {
 _ticket = _hash get typeOf _heli;
-_t = missionNamespace getVariable _ticket;
+_t = missionNamespace getVariable [_ticket, 0];
 _t = _t + 1;
 missionNamespace setVariable [_ticket, _t];
 publicVariable _ticket;
