@@ -26,12 +26,24 @@ keep working with the bikey they already have. HEMTT cannot reuse a
 script expects the key at `C:\A3Mods\Keys\ptf2.1.biprivatekey` (override
 with `-KeyDir`/`-KeyName`). The private key is never copied or committed.
 
+## External PBOs (not in git)
+
+The published mod contains ~57 PBOs but this repo only builds 19. The
+rest (~39: boxloader, grad_trenches, Peral, Dagger Island, Moe's, NDS,
+sling-load-rigging, ptf_sql, and other reuploads) are kept outside git
+because they cannot be rebuilt (binarized/obfuscated third-party PBOs) or
+are too large. They must be merged into every release — pass their folder
+to the release script with `-ExternalAddons`. A future build server needs
+a canonical store for them (currently the subscribed Workshop copy is the
+de-facto ground truth).
+
 ## Releasing to the Workshop
 
 1. Merge `develop` into `master`.
-2. Run `tools\release.ps1` on a Windows machine with Arma 3 Tools
-   installed. It runs `hemtt release` (binarizes the MLOD models), signs
-   every PBO with `ptf2.1`, ships the bikey, and writes
+2. Run `tools\release.ps1 -ExternalAddons <folder-with-untracked-pbos>`
+   on a Windows machine with Arma 3 Tools installed. It runs
+   `hemtt release` (binarizes the MLOD models), merges the external PBOs,
+   signs everything with `ptf2.1`, ships the bikey, and writes
    `releases/PTF-<version>.zip`.
 3. Unzip and upload the `@[PTF] Paramarine Milsim Core` folder with the
    Arma 3 Publisher, same as before.

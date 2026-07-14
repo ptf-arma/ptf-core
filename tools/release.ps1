@@ -8,7 +8,11 @@
 # leave the key directory.
 param(
     [string]$KeyDir  = "C:\A3Mods\Keys",
-    [string]$KeyName = "ptf2.1"
+    [string]$KeyName = "ptf2.1",
+    # Folder holding the PBOs that ship with the mod but are not in git
+    # (reuploads / obfuscated third-party addons — see BUILDING.md).
+    # When set, they are merged into the release and signed too.
+    [string]$ExternalAddons = ""
 )
 $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $PSScriptRoot
@@ -34,10 +38,43 @@ if (-not (Test-Path $dsSign)) { throw "DSSignFile not found: $dsSign" }
 
 Push-Location $repo
 try {
+    # hemtt does not clean its release output; stale PBOs from previous runs
+    # (e.g. earlier external merges) would otherwise leak into this release.
+    $out = Join-Path $repo ".hemttout\release"
+    if (Test-Path -LiteralPath $out) { Remove-Item -LiteralPath $out -Recurse -Force }
+
     & $hemtt release
     if ($LASTEXITCODE -ne 0) { throw "hemtt release failed" }
 
-    $out = Join-Path $repo ".hemttout\release"
+    # HEMTT names PBOs "{prefix}_{folder}.pbo"; strip the added PTF_ so every
+    # PBO keeps its historical "<folder>.pbo" name (PTF_PTF_Aircraft.pbo ->
+    # PTF_Aircraft.pbo, PTF_ctab.pbo -> ctab.pbo). The post_build Rhai hook
+    # does the same for `hemtt build`/`dev`, but hooks tied to HEMTT's own
+    # release stages don't run here because archiving is disabled.
+    foreach ($pbo in Get-ChildItem "$out\addons\PTF_*.pbo") {
+        Rename-Item -LiteralPath $pbo.FullName -NewName $pbo.Name.Substring(4)
+    }
+
+    # Merge the PBOs that ship with the mod but are not built from git
+    if ($ExternalAddons) {
+        if (-not (Test-Path -LiteralPath $ExternalAddons)) {
+            throw "External addons folder not found: $ExternalAddons"
+        }
+        $built = (Get-ChildItem "$out\addons\*.pbo").Name
+        $external = Get-ChildItem -LiteralPath $ExternalAddons -Filter *.pbo |
+            Where-Object { $built -notcontains $_.Name }
+        $skipped = (Get-ChildItem -LiteralPath $ExternalAddons -Filter *.pbo).Count - $external.Count
+        Write-Host "Merging $($external.Count) external PBOs from $ExternalAddons"
+        if ($skipped -gt 0) {
+            Write-Host "Skipped $skipped external PBO(s) that this repo builds itself - repo builds always win."
+        }
+        $external | Copy-Item -Destination "$out\addons"
+    }
+    else {
+        Write-Host "NOTE: no -ExternalAddons folder given; the zip will only" `
+            "contain the $((Get-ChildItem "$out\addons\*.pbo").Count) repo-built PBOs," `
+            "not the full published mod (see BUILDING.md)."
+    }
 
     Get-ChildItem "$out\addons\*.bisign" -ErrorAction SilentlyContinue | Remove-Item
     foreach ($pbo in Get-ChildItem "$out\addons\*.pbo") {

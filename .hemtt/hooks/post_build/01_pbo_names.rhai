@@ -3,9 +3,8 @@
 // third-party PBOs (ctab.pbo -> PTF_ctab.pbo). Strip the added prefix so
 // every PBO keeps its historical "<folder>.pbo" name.
 //
-// During `hemtt release` the signing step still expects the generated names,
-// so this hook only runs for dev/build; the archive-phase hook renames the
-// PBOs together with their .bisign files after signing.
+// This hook only runs for dev/build; releases are renamed (and signed) by
+// tools/release.ps1, which owns the whole release flow.
 if !HEMTT.is_release() {
     let addons = HEMTT_OUT.join("addons");
     for entry in addons.list() {
