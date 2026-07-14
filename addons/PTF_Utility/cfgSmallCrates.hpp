@@ -247,7 +247,7 @@ class PTF_Cargo_Ammo : NATO_Box_Base
    displayname = "Ammo Box";
 
    hiddenselections[] = {
-       "Camo_Signs ",
+       "Camo_Signs",
        "Camo"};
    hiddenselectionstextures[] = {
        "A3\weapons_F\ammoboxes\data\ammoBox_signs_CA.paa",

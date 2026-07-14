@@ -43,11 +43,16 @@ class CfgPatches
 			"PTF_Models",
 			"rhsusf_a2port_air2",
 			"rhsusf_ch53",
+			"RHS_US_A2_AirImport",
 			"A3_Air_F_Exp",
 			"A3_Air_F",
 			"dega_vehicles_v22",
 			"ace_interaction",
 			"USAF_C130J",
+			"USAF_C17",
+			"USAF_MQ9",
+			"usaf_kc135_c",
+			"USAF_RQ4A",
 			"rhsgref_a29"
 		};
 	};
