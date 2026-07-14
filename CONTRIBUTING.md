@@ -69,12 +69,15 @@ change *added* a warning, look at it. If you have Arma 3 Tools, also try
 `hemtt build`, then load the mod in-game and verify your change actually
 works (especially for anything visual — check it in the Arsenal).
 
-If you touched the **arsenal whitelist** or other pure logic, you can run the
-same automated checks CI runs (all optional locally, but they save a round-trip):
+You can also run the same automated checks CI runs (all optional locally, but
+they save a round-trip):
 ```
-sh tools/find-unused-assets.sh --strict   # no orphaned textures/models
-sh tools/check-arsenal.sh --strict         # no duplicate/broken whitelist entries
-python tests/run_tests.py                   # SQF unit tests (pip install sqflint first)
+sh tools/find-unused-assets.sh --strict     # no orphaned textures/models
+sh tools/check-arsenal.sh --strict           # no duplicate/broken whitelist entries
+python tools/check_asset_refs.py --strict    # every texture/model path resolves
+python tools/check_class_collisions.py --strict  # no class defined in two addons
+python tools/check_display_names.py --strict     # no blank arsenal names
+python tests/run_tests.py                     # SQF unit tests (pip install sqflint first)
 ```
 
 ### e. Commit

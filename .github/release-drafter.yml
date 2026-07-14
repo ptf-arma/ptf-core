@@ -1,0 +1,31 @@
+# Maintains a rolling DRAFT of the next release's notes, categorised by the
+# labels the auto-labeler applies, updated every time a PR merges into develop.
+# It's a live preview for release prep — the actual tagged release is still cut
+# by .github/workflows/release.yml when develop merges to master.
+name-template: 'Next release (draft)'
+tag-template: 'next-draft'
+categories:
+  - title: '✈️ Aircraft'
+    labels: [aircraft]
+  - title: '🚙 Vehicles'
+    labels: [vehicles]
+  - title: '🔫 Weapons'
+    labels: [weapons]
+  - title: '🎽 Clothing & helmets'
+    labels: [clothing]
+  - title: '🎨 Textures & models'
+    labels: [textures, models]
+  - title: '🧰 Utility & objects'
+    labels: [utility]
+  - title: '📜 Scripts'
+    labels: [scripts]
+  - title: '🛠️ Build & CI'
+    labels: [build, tests]
+  - title: '📝 Docs'
+    labels: [docs]
+change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
+no-changes-template: '- No changes yet.'
+template: |
+  ## What's changed
+
+  $CHANGES

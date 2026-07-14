@@ -1,0 +1,54 @@
+name: Bug report
+description: Something in the mod is broken or behaving wrong in-game
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report! The more detail here, the faster it gets fixed.
+  - type: textarea
+    id: whats-wrong
+    attributes:
+      label: What's wrong?
+      description: Describe what's broken in plain language.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Addon / item / vehicle (if known)
+      placeholder: e.g. PTF_Vehicles, the M1151, the FAST helmet…
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Where does it happen?
+      options:
+        - Singleplayer / editor
+        - Local host (hosted MP)
+        - Dedicated server
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Screenshots or .rpt log
+      description: >
+        A screenshot or the relevant lines from your Arma3.rpt help a lot. The
+        .rpt is in %LOCALAPPDATA%\Arma 3\.

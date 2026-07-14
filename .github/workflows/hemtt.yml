@@ -36,6 +36,16 @@ jobs:
       # it reports without failing — eyeball any new findings (see the script).
       - name: Dependency resolution
         run: sh tools/check-dependencies.sh
+      # Gating: broken/misrouted in-repo asset paths (known-broken ones are
+      # listed in tools/asset-refs-ignore.txt so this fails only on NEW breakage).
+      - name: Asset references
+        run: python3 tools/check_asset_refs.py --strict
+      # Gating: same game-asset class defined in two addons (silent override).
+      - name: Class collisions
+        run: python3 tools/check_class_collisions.py --strict
+      # Gating on empty displayName; advisory on arsenal-visible-but-unnamed.
+      - name: Display names
+        run: python3 tools/check_display_names.py --strict
 
   test:
     name: SQF unit tests
@@ -50,6 +60,19 @@ jobs:
         run: pip install sqflint
       - name: Run tests
         run: python tests/run_tests.py
+
+  format:
+    name: Formatting (advisory)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Advisory only: the tree has pre-existing trailing-whitespace, so this
+      # reports issues (honouring .editorconfig / .ecrc) but never blocks. Drop
+      # the "|| true" once the tree is clean to make it gating.
+      - name: editorconfig-checker
+        run: |
+          pip install editorconfig-checker
+          ec || true
 
   build:
     name: Build (hemtt release)

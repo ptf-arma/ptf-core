@@ -58,6 +58,13 @@ if (-not $NoSign) {
     $a3tools = (Get-ItemProperty "HKCU:\SOFTWARE\Bohemia Interactive\Arma 3 Tools").path
     $dsSign = Join-Path $a3tools "DSSignFile\DSSignFile.exe"
     if (-not (Test-Path $dsSign)) { throw "DSSignFile not found: $dsSign" }
+    # DSCheckSignatures verifies each PBO's signature against the public key.
+    # It lives next to DSSignFile in some installs and in its own folder in
+    # others; probe both. Optional — we warn (not fail) if it isn't present.
+    $dsCheck = @(
+        (Join-Path $a3tools "DSSignFile\DSCheckSignatures.exe"),
+        (Join-Path $a3tools "DSCheckSignatures\DSCheckSignatures.exe")
+    ) | Where-Object { Test-Path $_ } | Select-Object -First 1
 }
 
 Push-Location $repo
@@ -154,6 +161,20 @@ try {
         $signed = (Get-ChildItem "$out\addons\*.bisign").Count
         if ($signed -ne $pbos.Count) {
             throw "Signing produced $signed .bisign file(s) for $($pbos.Count) PBOs - some are unsigned."
+        }
+        # Cryptographically verify every PBO validates against the public key —
+        # catches a signature made with the wrong key or a corrupted .bisign,
+        # which the count check above can't see.
+        if ($dsCheck) {
+            $report = & $dsCheck $publicKey "$out\addons" 2>&1 | Out-String
+            Write-Host $report
+            if ($report -match '(?im)\b(wrong|bad|corrupt|missing|unsigned|not\s+signed|fail)') {
+                throw "DSCheckSignatures reported a signature problem (see report above)."
+            }
+            Write-Host "All $($pbos.Count) PBOs verified against $KeyName.bikey."
+        }
+        else {
+            Write-Host "NOTE: DSCheckSignatures.exe not found; skipped cryptographic verification (.bisign count check still passed)."
         }
 
         $keysDir = Join-Path $out "keys"

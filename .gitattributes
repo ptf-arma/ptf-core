@@ -25,6 +25,7 @@
 # Shell scripts must stay LF even when committed from Windows — they run on
 # the Linux CI runners, where CRLF would break the shebang / `set` lines.
 *.sh     text eol=lf
+*.py     text eol=lf
 
 # rvmats are usually text material definitions (normalize them), but
 # drc_custom_billboards ships pre-rapified BINARY rvmats — protect those.

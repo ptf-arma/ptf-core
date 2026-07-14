@@ -43,6 +43,13 @@ jobs:
             fail=1
           fi
 
+          markers=$(git grep -nE '^(<{7}|>{7})( |$)' -- ':!*.md' || true)
+          if [ -n "$markers" ]; then
+            echo "::error::Unresolved merge conflict markers found:"
+            printf '%s\n' "$markers" | sed 's/^/  /'
+            fail=1
+          fi
+
           [ "$fail" -eq 0 ] && echo "guard: clean."
           exit "$fail"
 

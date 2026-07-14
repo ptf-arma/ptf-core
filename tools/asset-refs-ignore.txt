@@ -1,0 +1,17 @@
+# Known-broken asset references, tolerated by tools/check_asset_refs.py so it
+# can gate on NEW breakage without failing on this pre-existing tech debt.
+# Burn these down as the art/paths get fixed, then delete the line.
+#
+# One reference per line, exactly as the checker prints it. Blank lines and
+# lines starting with # are ignored.
+
+# --- DIHatUSMC (drill-instructor cover) references its own model/UI with the
+#     wrong PBO prefix: "z\PTF\DIHatUSMC\..." instead of the actual
+#     "z\PTF\addons\DIHatUSMC\...". The files exist at addons/DIHatUSMC/; the
+#     config paths in addons/DIHatUSMC/config.cpp need the addons\ segment.
+\z\PTF\DIHatUSMC\USMC_DI_HAT.p3d
+\z\PTF\DIHatUSMC\UI\DS_UI.paa
+
+# --- PTF_Helmets references assets that aren't in the repo (need the art):
+\z\PTF\addons\PTF_Models\gear\dihat\dihat.p3d
+\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_lowe.rvmat
