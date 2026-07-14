@@ -18,23 +18,23 @@ before a release.
 
 ## Signing
 
-`hemtt release` generates a fresh key per release (authority
-`PTF_<version>`) and signs every PBO it builds. The previously published
-mod (and the reupload PBOs kept outside this repo) are signed with the
-`ptf2.1` key in `C:\A3Mods\Keys`. HEMTT cannot reuse an existing
-`.biprivatekey`, so either keep both bikeys on the server, or keep
-re-signing the final mod folder with DSSignFile/`ptf2.1` as before —
-extra `.bisign` files per PBO are allowed.
+Releases are signed with the community's existing `ptf2.1` key (the same
+key the published mod and the outside-repo reupload PBOs use), so servers
+keep working with the bikey they already have. HEMTT cannot reuse a
+`.biprivatekey`, so its own signing is disabled in `project.toml` and
+`tools/release.ps1` signs with DSSignFile from Arma 3 Tools instead. The
+script expects the key at `C:\A3Mods\Keys\ptf2.1.biprivatekey` (override
+with `-KeyDir`/`-KeyName`). The private key is never copied or committed.
 
 ## Releasing to the Workshop
 
 1. Merge `develop` into `master`.
-2. Run `hemtt release` on a Windows machine with Arma 3 Tools installed
-   (binarize.exe is needed to binarize the handful of MLOD models; CI's
-   Linux builds skip that step).
-3. Unzip `releases/PTF-<version>.zip` and upload the
-   `@[PTF] Paramarine Milsim Core` folder with the Arma 3 Publisher, same
-   as before.
+2. Run `tools\release.ps1` on a Windows machine with Arma 3 Tools
+   installed. It runs `hemtt release` (binarizes the MLOD models), signs
+   every PBO with `ptf2.1`, ships the bikey, and writes
+   `releases/PTF-<version>.zip`.
+3. Unzip and upload the `@[PTF] Paramarine Milsim Core` folder with the
+   Arma 3 Publisher, same as before.
 
 ## Project layout notes
 

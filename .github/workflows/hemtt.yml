@@ -29,14 +29,14 @@ jobs:
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
       # Linux runners have no Arma 3 Tools, so the seven MLOD models are
-      # packed unbinarized here — fine for validation and test artifacts.
-      # Workshop releases are built with `hemtt release` on a Windows
-      # machine with Arma 3 Tools installed, which binarizes them.
+      # packed unbinarized and nothing is signed here — fine for validation
+      # and test artifacts. Workshop releases are built on a Windows machine
+      # with tools/release.ps1, which binarizes and signs with the ptf2.1 key.
       - name: Build release
         run: hemtt release
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
         with:
           name: ptf-core-${{ github.sha }}
-          path: releases/*.zip
+          path: .hemttout/release/
           if-no-files-found: error
