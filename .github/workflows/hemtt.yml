@@ -25,6 +25,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
+        env:
+          # Authenticate the release lookup so it isn't throttled by the 60/hr
+          # unauthenticated API limit (which fails Dependabot/concurrent runs).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check project
         run: hemtt check
       # Gating: these fail the build so dead assets / duplicate or broken
@@ -85,6 +89,10 @@ jobs:
           fetch-depth: 0  # full history + tags so gen-version.sh can count them
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
+        env:
+          # Authenticate the release lookup so it isn't throttled by the 60/hr
+          # unauthenticated API limit (which fails Dependabot/concurrent runs).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate version
         run: sh tools/gen-version.sh
       # Linux runners have no Arma 3 Tools, so the seven MLOD models are
