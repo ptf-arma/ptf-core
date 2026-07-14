@@ -13,9 +13,13 @@ param(
     [string]$KeyName = "ptf2.1",
     # Folder holding the PBOs that ship with the mod but are not in git
     # (reuploads / obfuscated third-party addons, incl. ctab — see
-    # BUILDING.md). When set, they are merged into the release and signed.
-    # Defaults to $env:PTF_EXTERNAL_ADDONS.
-    [string]$ExternalAddons = $env:PTF_EXTERNAL_ADDONS
+    # BUILDING.md). They are merged into the release and signed. Required
+    # for a real release (defaults to $env:PTF_EXTERNAL_ADDONS); use
+    # -NoExternal for a deliberate repo-only build.
+    [string]$ExternalAddons = $env:PTF_EXTERNAL_ADDONS,
+    # Build only the repo-tracked PBOs, skipping the external merge. The
+    # resulting mod is incomplete — intended for dev/testing, not release.
+    [switch]$NoExternal
 )
 $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $PSScriptRoot
@@ -23,6 +27,11 @@ $repo = Split-Path -Parent $PSScriptRoot
 if (-not $KeyDir) {
     throw "No signing key directory. Pass -KeyDir <folder> or set `$env:PTF_KEYS_DIR " +
           "(the folder holding $KeyName.biprivatekey and $KeyName.bikey)."
+}
+if (-not $NoExternal -and -not $ExternalAddons) {
+    throw "No external PBO folder. Pass -ExternalAddons <folder> or set " +
+          "`$env:PTF_EXTERNAL_ADDONS (the ~40 PBOs not built from git, incl. ctab). " +
+          "For a deliberate repo-only build, pass -NoExternal."
 }
 $privateKey = Join-Path $KeyDir "$KeyName.biprivatekey"
 $publicKey  = Join-Path $KeyDir "$KeyName.bikey"
@@ -63,8 +72,9 @@ try {
         Rename-Item -LiteralPath $pbo.FullName -NewName $pbo.Name.Substring(4)
     }
 
-    # Merge the PBOs that ship with the mod but are not built from git
-    if ($ExternalAddons) {
+    # Merge the PBOs that ship with the mod but are not built from git.
+    # -NoExternal (validated above) is the only way to skip this.
+    if (-not $NoExternal) {
         if (-not (Test-Path -LiteralPath $ExternalAddons)) {
             throw "External addons folder not found: $ExternalAddons"
         }
@@ -79,9 +89,9 @@ try {
         $external | Copy-Item -Destination "$out\addons"
     }
     else {
-        Write-Host "NOTE: no -ExternalAddons folder given; the zip will only" `
-            "contain the $((Get-ChildItem "$out\addons\*.pbo").Count) repo-built PBOs," `
-            "not the full published mod (see BUILDING.md)."
+        Write-Host "WARNING: -NoExternal set; the zip will contain only the" `
+            "$((Get-ChildItem "$out\addons\*.pbo").Count) repo-built PBOs," `
+            "not the full published mod. Do NOT upload this to the Workshop (see BUILDING.md)."
     }
 
     Get-ChildItem "$out\addons\*.bisign" -ErrorAction SilentlyContinue | Remove-Item

@@ -37,18 +37,22 @@ NDS, sling-load-rigging, ptf_sql, and other reuploads) are kept outside
 git because they cannot be rebuilt (binarized/obfuscated third-party
 PBOs), are too large, or are complex third-party addons that rarely
 change and don't need rebuilding (ctab). They must be merged into every
-release — pass their folder to the release script with `-ExternalAddons`.
-A future build server needs a canonical store for them (currently the
-subscribed Workshop copy is the de-facto ground truth).
+release: set `PTF_EXTERNAL_ADDONS` (or pass `-ExternalAddons`) to their
+folder. The release script **requires** this — it refuses to run without
+it, so a release can't silently ship without the ~40 external PBOs. For a
+deliberate repo-only build (dev/testing the 18 tracked PBOs, never for
+the Workshop) pass `-NoExternal`. A future build server needs a canonical
+store for these PBOs (currently the subscribed Workshop copy is the
+de-facto ground truth).
 
 ## Releasing to the Workshop
 
 1. Merge `develop` into `master`.
-2. Run `tools\release.ps1 -ExternalAddons <folder-with-untracked-pbos>`
-   on a Windows machine with Arma 3 Tools installed. It runs
-   `hemtt release` (binarizes the MLOD models), merges the external PBOs,
-   signs everything with `ptf2.1`, ships the bikey, and writes
-   `releases/PTF-<version>.zip`.
+2. On a Windows machine with Arma 3 Tools installed, with `PTF_KEYS_DIR`
+   and `PTF_EXTERNAL_ADDONS` set (or pass `-KeyDir`/`-ExternalAddons`),
+   run `tools\release.ps1`. It runs `hemtt release` (binarizes the MLOD
+   models), merges the external PBOs, signs everything with `ptf2.1`,
+   ships the bikey, and writes `releases/PTF-<version>.zip`.
 3. Unzip and upload the `@[PTF] Paramarine Milsim Core` folder with the
    Arma 3 Publisher, same as before.
 
