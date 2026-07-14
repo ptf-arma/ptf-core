@@ -30,17 +30,20 @@ high refresh rate loop [0.01 sec]
     _RHS_TV_ppEffect ppEffectAdjust [0.15,1,1,0.45,1, false];
     _RHS_TV_ppEffect ppEffectCommit 0;
 
-    _lockPos = (positionCameraToWorld [0,0,4210]);
+    // Track previous gunner-view state so ppEffectEnable is only toggled on transition (-1 forces first update)
+    private _prevGunner = -1;
+
+    private _lockPos = (positionCameraToWorld [0,0,4210]);
     while{not(isNull _z)}do
     {
-        if(cameraView == "gunner")then
+        private _isGunner = (cameraView == "gunner");
+        if(_isGunner isNotEqualTo _prevGunner)then
         {
-            {_x ppEffectEnable true}foreach [_RHS_TV_ppEffect];
-        }else{
-            {_x ppEffectEnable false}foreach [_RHS_TV_ppEffect];
+            _RHS_TV_ppEffect ppEffectEnable _isGunner;
+            _prevGunner = _isGunner;
         };
 
-        _r = (ctrlText _z);
+        private _r = (ctrlText _z);
         if((_r isNotEqualTo "W") && _t)then{
             _t=false;
             _v lockCameraTo [AGLtoASL _lockPos,[0]];

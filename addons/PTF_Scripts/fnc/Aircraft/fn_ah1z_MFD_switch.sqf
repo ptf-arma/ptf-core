@@ -34,7 +34,7 @@ private _destroyCam =
 {
     params["_vehicle"];
 
-    _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
+    private _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
     _videoFeedCam cameraeffect ["terminate","back","rhs_ah64_videoFeed"];
     camDestroy _videoFeedCam;
     // Remove Event Handlers
@@ -114,18 +114,24 @@ switch(_nextMode)do
             {
                 ["rhs_ah64_enginePage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
             };
-            private _enginesRPM     = (enginesRpmRTD _vehicle);
-            private _mainRotorSpeed = (rotorsRpmRTD _vehicle) # 0;
-            private _hydraulics     = _vehicle getHitPointDamage "HitHydraulics";
 
-            _vehicle setUserMFDvalue
-            [
-                12,
-                linearConversion [0,315*1.2,_mainRotorSpeed,0,100*1.2,true],
-                linearConversion [0,20000*1.2,_enginesRPM # 0,0,100*1.2,true],
-                linearConversion [0,20000*1.2,_enginesRPM # 1,0,100*1.2,true],
-                linearConversion [0,1,_hydraulics,3000,0,true]
-            ];
+            if(time >= _time)then
+            {
+                _this set [0,time+0.05];
+
+                private _enginesRPM     = (enginesRpmRTD _vehicle);
+                private _mainRotorSpeed = (rotorsRpmRTD _vehicle) # 0;
+                private _hydraulics     = _vehicle getHitPointDamage "HitHydraulics";
+
+                _vehicle setUserMFDvalue
+                [
+                    12,
+                    linearConversion [0,315*1.2,_mainRotorSpeed,0,100*1.2,true],
+                    linearConversion [0,20000*1.2,_enginesRPM # 0,0,100*1.2,true],
+                    linearConversion [0,20000*1.2,_enginesRPM # 1,0,100*1.2,true],
+                    linearConversion [0,1,_hydraulics,3000,0,true]
+                ];
+            };
 
 
         },[0,_vehicle]] call BIS_fnc_addStackedEventHandler;
@@ -152,7 +158,7 @@ switch(_nextMode)do
         _vehicle setObjectTexture [_mfdTextureIndex,"#(argb,512,512,1)r2t(rhs_ah64_videoFeed,1.33)"];
 
         // Try to retrieve existing cam
-        _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
+        private _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
         // If it doesn't exist, create a new one
         if(_videoFeedCam isEqualTo objNull)then
         {
@@ -176,7 +182,7 @@ switch(_nextMode)do
         };
 
         // Add key event handler
-        _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
+        private _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
         {
             // Perform actions only in internal view
             if(cameraView isEqualTo "INTERNAL")then
@@ -229,74 +235,62 @@ switch(_nextMode)do
 
         // Add loop
         ["rhs_ah64_videoFeed_pfh", "onEachFrame", {
-            params["_vehicle","_videoFeedCam","_unit","_prevMode","_prevZoom","_camRestart"];
+            params["_time","_vehicle","_videoFeedCam","_unit","_prevMode","_prevZoom"];
 
-            // Adjust R2T camera
-            if(cameraView isEqualTo "INTERNAL")then
+            if(time >= _time)then
             {
-                // Restart camera
-                /*if(_camRestart)then
-                {
-                    _videoFeedCam cameraeffect ["terminate","back","rhs_ah64_videoFeed"];
-                    _videoFeedCam cameraEffect ["internal", "Back", "rhs_ah64_videoFeed"];
-                };*/
-                // Adjust camera vector
-                _dir =
-                    (_vehicle selectionPosition "gunnerview")
-                        vectorFromTo
-                    (_vehicle selectionPosition "gunnerview_dir");
-                _videoFeedCam setVectorDirAndUp [
-                    _dir,
-                    _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
-                ];
-            };
-            /*else
-            {
-                // Stop R2T operations when not in cockpit view
-                if(!_camRestart)then
-                {
+                _this set [0,time+0.05];
 
-                    _videoFeedCam cameraeffect ["terminate","back","rhs_ah64_videoFeed"];
-                    _this set [5,true];
+                // Adjust R2T camera
+                if(cameraView isEqualTo "INTERNAL")then
+                {
+                    // Adjust camera vector
+                    _dir =
+                        (_vehicle selectionPosition "gunnerview")
+                            vectorFromTo
+                        (_vehicle selectionPosition "gunnerview_dir");
+                    _videoFeedCam setVectorDirAndUp [
+                        _dir,
+                        _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
+                    ];
                 };
-            };*/
 
-
-            // Check for camera changes
-            if(cameraView isEqualTo "GUNNER")then
-            {
-                private _mode = currentVisionMode _unit;
-                private _getZoom = {
-                    (
-                    [0.5,0.5]
-                    distance2D
-                    worldToScreen
-                    positionCameraToWorld
-                    [0,3,4]
-                    ) * (
-                    getResolution
-                    select 5
-                    ) / 2
-                };
-                private _zoom = (round(call _getZoom)) max 1;
-                if(_mode != _prevMode)then
+                // Check for camera changes
+                if(cameraView isEqualTo "GUNNER")then
                 {
-                    switch(_mode)do
-                    {
-                        case 1: { "rhs_ah64_videoFeed" setPiPEffect [1]; _vehicle setUserMFDtext [0,"NVG"]; };
-                        case 2: { "rhs_ah64_videoFeed" setPiPEffect [2]; _vehicle setUserMFDtext [0,"FLIR"]; };
-                        default { "rhs_ah64_videoFeed" setPiPEffect [0]; _vehicle setUserMFDtext [0,"DTV"]; };
+                    private _mode = currentVisionMode _unit;
+                    private _getZoom = {
+                        (
+                        [0.5,0.5]
+                        distance2D
+                        worldToScreen
+                        positionCameraToWorld
+                        [0,3,4]
+                        ) * (
+                        getResolution
+                        select 5
+                        ) / 2
                     };
-                    _this set [3,_mode];
-                };
-                if(_zoom != _prevZoom)then
-                {
-                    _videoFeedCam camSetFov (0.2/_zoom);
-                    _this set [4,_zoom];
-                    _vehicle setUserMFDvalue [9,_zoom];
+                    private _zoom = (round(call _getZoom)) max 1;
+                    if(_mode != _prevMode)then
+                    {
+                        switch(_mode)do
+                        {
+                            case 1: { "rhs_ah64_videoFeed" setPiPEffect [1]; _vehicle setUserMFDtext [0,"NVG"]; };
+                            case 2: { "rhs_ah64_videoFeed" setPiPEffect [2]; _vehicle setUserMFDtext [0,"FLIR"]; };
+                            default { "rhs_ah64_videoFeed" setPiPEffect [0]; _vehicle setUserMFDtext [0,"DTV"]; };
+                        };
+                        _this set [4,_mode];
+                    };
+                    if(_zoom != _prevZoom)then
+                    {
+                        _videoFeedCam camSetFov (0.2/_zoom);
+                        _this set [5,_zoom];
+                        _vehicle setUserMFDvalue [9,_zoom];
+                    };
                 };
             };
-        },[_vehicle,_videoFeedCam,_unit,0,0,false]] call BIS_fnc_addStackedEventHandler;
+        },[0,_vehicle,_videoFeedCam,_unit,0,0]] call BIS_fnc_addStackedEventHandler;
     };
     // Radar page
     case 5:
@@ -308,7 +302,7 @@ switch(_nextMode)do
         };
 
         // Add key event handler
-        _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
+        private _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
         {
             // Perform actions only in internal view
             if(cameraView isEqualTo "INTERNAL")then

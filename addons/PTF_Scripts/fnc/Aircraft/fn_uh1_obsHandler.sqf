@@ -10,7 +10,7 @@ uiNameSpace setVariable ["PTF_UH1_ObsCtrl",_this select 0];
 
 /*
 gunner
-high refresh rate loop [0.1 sec]
+high refresh rate loop [0.07 sec]
 */
 [] spawn
 {
@@ -63,21 +63,7 @@ high refresh rate loop [0.1 sec]
         /*
             time handler
         */
-        _min =  daytime mod 1;
-        _hour = daytime - _min;
-
-        _sec = (60 * _min) mod 1;
-        _msec = (60 * _sec) mod 1;
-
-        _hour = (if (_hour <= 9) then {"0"} else {""}) + str _hour;
-
-        _min = (60 * _min) - ((60 * _min) mod 1);
-        _min = (if (_min <= 9) then {"0"} else {""}) + str _min;
-
-        _sec = (60 * _sec) - ((60 * _sec) mod 1);
-        _sec = (if (_sec <= 9) then {"0"} else {""}) + str _sec;
-
-        _dayString =format["%1 %2 %3",_hour,_min,_sec];
+        private _dayString = [" "] call PTF_fnc_formatDaytime;
         _time ctrlSetText _dayString;
         _time2 ctrlSetText _dayString;
 
@@ -99,7 +85,7 @@ high refresh rate loop [0.1 sec]
 
         _zoomLevel=(if (_zoomLevel <= 99) then {"0"} else {""})+ str _zoomLevel;
         _gridA=toArray _zoomLevel;
-        _gridaA=toString (call compile (format["[%1,%2,32,%3]",_gridA select 0,_gridA select 1,_gridA select 2]));
+        _gridaA=toString [_gridA#0, _gridA#1, 32, _gridA#2];
 
         _zoom ctrlSetText _gridaA;
 
@@ -116,10 +102,10 @@ low refresh rate loop [1 sec]
 [] spawn
 {
     disableSerialization;
-    _p=call rhsusf_fnc_findPlayer;
-    _v=vehicle _p;
+    private _p=call rhsusf_fnc_findPlayer;
+    private _v=vehicle _p;
 
-    _c = uiNamespace getVariable "PTF_UH1_ObsCtrl";
+    private _c = uiNamespace getVariable "PTF_UH1_ObsCtrl";
 
     private _z    = (_c displayCtrl 180);
     private _d    = (_c displayCtrl 151);
@@ -169,7 +155,7 @@ low refresh rate loop [1 sec]
         */
         //visible in gunner cam
         _gridA=toArray (mapGridPosition _p);
-        _gridaA=toString (call compile (format["[%1,32,%2,32,%3,32,32,%4,32,%5,32,%6]",_gridA select 0,_gridA select 1,_gridA select 2,_gridA select 3,_gridA select 4,_gridA select 5]));
+        _gridaA=toString [_gridA#0,32,_gridA#1,32,_gridA#2,32,32,_gridA#3,32,_gridA#4,32,_gridA#5];
         _pos ctrlSetText _gridaA;
 
         //laser part
@@ -179,7 +165,7 @@ low refresh rate loop [1 sec]
         }else{
             _grid2=(mapGridPosition (laserTarget vehicle _p));
             _gridA=toArray _grid2;
-            _gridaA=toString (call compile (format["[%1,32,%2,32,%3,32,32,%4,32,%5,32,%6]",_gridA select 0,_gridA select 1,_gridA select 2,_gridA select 3,_gridA select 4,_gridA select 5]));
+            _gridaA=toString [_gridA#0,32,_gridA#1,32,_gridA#2,32,32,_gridA#3,32,_gridA#4,32,_gridA#5];
             _pos2 ctrlSetText _gridaA;
         };
 

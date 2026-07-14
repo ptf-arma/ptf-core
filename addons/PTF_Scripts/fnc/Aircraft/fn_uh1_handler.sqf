@@ -20,7 +20,7 @@ low refresh rate loop [1 sec]
 {
     sleep 0.1;
 
-    private["_c","_w","_p","_v","_old","_n","_mode","_min","_hour","_sec","_dayString","_nm","_textureList"];
+    private["_c","_w","_p","_v","_old","_n","_mode","_min","_hour","_sec","_dayString","_nm","_textureList","_grid2","_gridaA","_oldZoom","_ehID","_distance","_grid","_zoomLevel","_texCache"];
     disableSerialization;
     _c = uiNamespace getVariable "PTF_UH1_Ctrl";
     _w = (_c displayCtrl 120);
@@ -28,6 +28,9 @@ low refresh rate loop [1 sec]
     _grid2=[];
     _gridaA="";
     _oldZoom=1.05;
+
+    // Per-slot cache of last applied texture so setObjectTexture only fires on change
+    _texCache = [];  // slot(index) -> last applied texture; param/set are pre-2.02 safe
 
     _p = call rhsusf_fnc_findPlayer;
     _v = vehicle _p;
@@ -126,7 +129,14 @@ low refresh rate loop [1 sec]
             _textureList pushBack [_i+24,format["rhsusf\addons\rhsusf_optics\data\tex\digi_num_%1.paa",_nm]];
         };
 
-        {rhs_uh1Flir setObjectTexture _x}foreach _textureList;
+        {
+            _x params ["_slot","_tex"];
+            if((_texCache param [_slot,""]) isNotEqualTo _tex)then
+            {
+                rhs_uh1Flir setObjectTexture _x;
+                _texCache set [_slot,_tex];
+            };
+        }foreach _textureList;
 
         sleep 1;
     };
@@ -143,13 +153,13 @@ low refresh rate loop [1 sec]
 
 /*
 heli
-high refresh rate loop [0.06 sec]
+high refresh rate loop [0.1 sec]
 */
 [] spawn
 {
     sleep 0.2;
 
-    private["_c","_w","_p","_v","_old","_n","_mode","_min","_hour","_sec","_dayString","_nm","_textureList"];
+    private["_c","_w","_p","_v","_old","_n","_mode","_min","_hour","_sec","_dayString","_nm","_textureList","_texCache"];
 
     disableSerialization;
     _c = uiNamespace getVariable "PTF_UH1_Ctrl";
@@ -159,6 +169,9 @@ high refresh rate loop [0.06 sec]
     _v = vehicle _p;
 
     _old=-2;
+
+    // Per-slot cache of last applied texture so setObjectTexture only fires on change
+    _texCache = [];  // slot(index) -> last applied texture; param/set are pre-2.02 safe
 
     while{not(isNull _w)}do
     {
@@ -182,21 +195,7 @@ high refresh rate loop [0.06 sec]
             time handler
         */
 
-        _min =  daytime mod 1;
-        _hour = daytime - _min;
-
-        _sec = (60 * _min) mod 1;
-        _msec = (60 * _sec) mod 1;
-
-        _hour = (if (_hour <= 9) then {"0"} else {""}) + str _hour;
-
-        _min = (60 * _min) - ((60 * _min) mod 1);
-        _min = (if (_min <= 9) then {"0"} else {""}) + str _min;
-
-        _sec = (60 * _sec) - ((60 * _sec) mod 1);
-        _sec = (if (_sec <= 9) then {"0"} else {""}) + str _sec;
-
-        _dayString =format["%1%2%3",_hour,_min,_sec];
+        _dayString = call PTF_fnc_formatDaytime;
         for "_i" from 0 to 5 do
         {
             _nm=_dayString select [_i,1];
@@ -204,7 +203,14 @@ high refresh rate loop [0.06 sec]
         };
 
 
-        {rhs_uh1Flir setObjectTexture _x}foreach _textureList;
+        {
+            _x params ["_slot","_tex"];
+            if((_texCache param [_slot,""]) isNotEqualTo _tex)then
+            {
+                rhs_uh1Flir setObjectTexture _x;
+                _texCache set [_slot,_tex];
+            };
+        }foreach _textureList;
 
 
         sleep 0.1;
