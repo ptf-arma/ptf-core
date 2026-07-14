@@ -21,15 +21,14 @@ git_hash = 0
 [lints.config.file_type]
 options.allow_no_extension = true
 
-# PTF_GCam's config carries quoted math expressions (importance/size) from
-# the original mod; not worth diverging from upstream over a build-time
-# micro-optimization.
+# cfgScopes expresses optics zoom as quoted fractions (e.g. "0.25/3"); these
+# are intentional and not worth diverging from over a build-time micro-opt.
 [lints.config.math_could_be_unquoted]
 enabled = false
 
 # Command casing (e.g. `safezoneH` vs `safeZoneH`) has no runtime effect in
-# SQF — it is case-insensitive. Not worth churning ~140 cosmetic edits
-# across the existing camera/aircraft scripts.
+# SQF — it is case-insensitive. Not worth churning cosmetic edits across the
+# existing scripts.
 [lints.sqf.command_case]
 enabled = false
 
@@ -51,15 +50,8 @@ options.check_prefixes = ["__ptf_no_scope_check__"]
 [lints.config.unused_external]
 enabled = false
 
-# `removeEventHandler ["fired", idx]` is valid ("fired" is a real event);
-# HEMTT flags it as unknown (L-S02UE) — a false positive. NOTE: HEMTT
-# 1.19 has no default_config for the event lints, so this disable is not
-# yet honored; kept here to document intent and take effect once it is.
-[lints.sqf.event_unknown]
-enabled = false
-
 # SQF micro-optimizations / style — no runtime impact, not worth churning
-# the large existing camera and aircraft scripts.
+# the large existing scripts.
 [lints.sqf.if_assign]
 enabled = false
 [lints.sqf.config_of]
