@@ -31,7 +31,7 @@ class PTF_AH1Z : RHS_AH1Z
                   maxweight         = 1200;
                   UIposition[]      = {0.625,0.25};
                   bay               = -1;
-                  hitpoint          = HitPylon1;
+                  hitpoint          = "HitPylon1";
                };
                class pylon2
                {
@@ -42,7 +42,7 @@ class PTF_AH1Z : RHS_AH1Z
                   UIposition[]      = {0.625,0.39};
                   bay               = -1;
                   turret[]          = {0};
-                  hitpoint          = HitPylon2;
+                  hitpoint          = "HitPylon2";
                };
                class pylon3 : pylon2
                {
@@ -50,27 +50,27 @@ class PTF_AH1Z : RHS_AH1Z
                   priority         = 1;
                   attachment         = "rhs_mag_M151_19_green";
                   turret[]          = {};
-                  hitpoint          = HitPylon3;
+                  hitpoint          = "HitPylon3";
                };
                class pylon4 : pylon3
                {
                   UIposition[]      = {0.10,0.44};
                   mirroredMissilePos   = 3;
                   turret[]          = {};
-                  hitpoint          = HitPylon4;
+                  hitpoint          = "HitPylon4";
                };
                class pylon5 : pylon2
                {
                   UIposition[]      = {0.04,0.39};
                   mirroredMissilePos   = 2;
                   turret[]          = {0};
-                  hitpoint          = HitPylon5;
+                  hitpoint          = "HitPylon5";
                };
                class pylonTip6 : pylonTip1
                {
                   UIposition[]      = {0.04,0.25};
                   mirroredMissilePos   = 1;
-                  hitpoint          = HitPylon6;
+                  hitpoint          = "HitPylon6";
                };
                class cmDispenser
                {
@@ -132,9 +132,9 @@ class PTF_AH1Z : RHS_AH1Z
       {
          class Wide
          {
-            hitpoint          = Hit_Optic_TADS;
-            camPos            = GunnerView;
-            camDir            = gunnerview_dir;
+            hitpoint          = "Hit_Optic_TADS";
+            camPos            = "GunnerView";
+            camDir            = "gunnerview_dir";
             opticsDisplayName ="W";
             initAngleX        = 0;
             minAngleX         = -30;

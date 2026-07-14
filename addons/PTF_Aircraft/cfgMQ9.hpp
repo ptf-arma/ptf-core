@@ -49,7 +49,7 @@ class PTF_MQ9 : USAF_MQ9
             {
                displayName = "ER CAS";
                attachment[] = {"PTF_PylonRack_4Rnd_AGM114R","USAF_PylonRack_1Rnd_MQ9FuelTank","USAF_PylonRack_2Rnd_AGM114R","PTF_PylonRack_4Rnd_AGM114R"};
-            }
+            };
             class GroundAttack
             {
                displayName = "Ground Attack";

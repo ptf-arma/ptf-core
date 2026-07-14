@@ -1,0 +1,38 @@
+name = "Paramarine Task Force Mod"
+prefix = "PTF"
+mainprefix = "z"
+author = "Paramarine Task Force"
+
+# Mod folder name in the release zip: "@[PTF] Paramarine Milsim Core",
+# matching the folder the Workshop mod has always shipped as.
+# Signing and archiving are handled by tools/release.ps1, which signs with
+# the community's existing ptf2.1 key (DSSignFile) instead of HEMTT's
+# per-release generated keys, then zips the mod folder.
+[hemtt.release]
+folder = "[PTF] Paramarine Milsim Core"
+sign = false
+archive = false
+
+[version]
+path = "addons/PTF_Main/script_version.hpp"
+git_hash = 0
+
+# Arma allows model paths without an extension (engine appends .p3d)
+[lints.config.file_type]
+options.allow_no_extension = true
+
+# PTF_GCam's config carries quoted math expressions (importance/size) from
+# the original mod; not worth diverging from upstream over a build-time
+# micro-optimization.
+[lints.config.math_could_be_unquoted]
+enabled = false
+
+[files]
+include = [
+    "mod.cpp",
+    "meta.cpp",
+    "credits_and_license.txt",
+]
+exclude = [
+    "**/.gitkeep",
+]

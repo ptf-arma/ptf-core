@@ -8,6 +8,6 @@ class PTF_MAG_Pilot : B_Pilot_F
 	side = 1;
 	author = "Paramarine Task Force";
 	displayName = "MAG Pilot [PTF]";
-}
+};
 
 

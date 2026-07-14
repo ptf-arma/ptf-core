@@ -24,7 +24,7 @@ class PortableHelipadLight_01_blue_F;
 class RoadCone_L_F;
 class Land_TentLamp_01_standing_F;
 class Land_PortableDesk_01_black_F;
-class Land_MultiScreenComputer_01_base_F {}
+class Land_MultiScreenComputer_01_base_F {};
 class Land_MultiScreenComputer_01_black_F : Land_MultiScreenComputer_01_base_F {
 	class Attributes;
 };

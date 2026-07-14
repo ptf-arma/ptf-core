@@ -25,7 +25,7 @@ class cfgMagazines {
 	class PTF_rhs_mag_AGM114M_2 : rhs_mag_AGM114M_2 {
 		hardpoints[] = {"RHS_HP_FFAR_USMC"};
 		pylonWeapon = "PTF_rhs_weap_AGM114M_base_Launcher";
-		ammo = "PTF_ACE_Hellfire_AGM114K"
+		ammo = "PTF_ACE_Hellfire_AGM114K";
 	};
 	class ibr_throwable_stone: HandGrenade
 	{

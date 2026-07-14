@@ -398,12 +398,12 @@ class CAManBase : Man {
             class ccp {
             displayName = "Place CCP Marker";
             Icon = "\A3\ui_f_orange\data\cfgmarkers\redcrystal_ca.paa";
-            statement = "[_player] call PTF_Fnc_ccp"
+            statement = "[_player] call PTF_Fnc_ccp";
             };
             class Dot {
             displayName = "Place Dot Marker";
             icon = "\A3\ui_f\data\map\markers\handdrawn\dot_CA.paa";
-            statement = "call PTF_Fnc_Dot"
+            statement = "call PTF_Fnc_Dot";
          };
       };
    };

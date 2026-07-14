@@ -1,0 +1,4 @@
+# The intro mission's Description.ext uses `db + 0` sound-volume syntax,
+# which is valid for engine-parsed mission files but not rapifiable.
+[rapify]
+exclude = ["**/description.ext"]

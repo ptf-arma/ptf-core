@@ -7,7 +7,7 @@ class PTF_Vest_Rebreather : V_RebreatherB
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -40,7 +40,7 @@ class PTF_Vest_SafetyVest_Short : V_DeckCrew_yellow_F
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -73,7 +73,7 @@ class PTF_Vest_SafetyVest_Long : V_Safety_yellow_F
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -97,7 +97,7 @@ class PTF_Vest_SafetyVest_Long : V_Safety_yellow_F
       };
    };
 };
-class PTF_Vest_LegStrapBag_Coy : V_LegStrapBag_coyote_F
+class PTF_Vest_LegStrapBag_Coy : V_LegStrapBag_Coyote_F
 {
    scope = 2;
    side = 1;
@@ -106,7 +106,7 @@ class PTF_Vest_LegStrapBag_Coy : V_LegStrapBag_coyote_F
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {
@@ -139,7 +139,7 @@ class PTF_Vest_LegStrapBag_Blk : V_LegStrapBag_black_F
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
    {
-      containerClass = Supply250;
+      containerClass = "Supply250";
       mass = 40;
       class HitpointsProtectionInfo
       {

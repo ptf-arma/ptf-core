@@ -1,0 +1,42 @@
+name: HEMTT
+
+on:
+  push:
+    branches: [develop, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint (hemtt check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
+      - name: Check project
+        run: hemtt check
+
+  build:
+    name: Build (hemtt release)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
+      # Linux runners have no Arma 3 Tools, so the seven MLOD models are
+      # packed unbinarized and nothing is signed here — fine for validation
+      # and test artifacts. Workshop releases are built on a Windows machine
+      # with tools/release.ps1, which binarizes and signs with the ptf2.1 key.
+      - name: Build release
+        run: hemtt release
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ptf-core-${{ github.sha }}
+          path: .hemttout/release/
+          if-no-files-found: error

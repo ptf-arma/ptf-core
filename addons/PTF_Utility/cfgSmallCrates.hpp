@@ -148,7 +148,6 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
       item_xx(kat_naloxone, 30);
       item_xx(kat_norepinephrine, 30);
       item_xx(kat_phenylephrine, 30);
-      item_xx(kat_Carbonate, 30);
       item_xx(kat_TXA, 30);
    };
 };

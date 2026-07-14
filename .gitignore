@@ -1,7 +1,22 @@
+# HEMTT build output
+/.hemttout
+/releases
+
+# Legacy SCons junction staging dir (safe to delete; not used anymore)
 /build
-*.pbo
-.sconsign.dblite
-@\[PTF\] Paramarine Milsim Core/
+
+# Signing keys (never commit private keys)
+*.hemttprivatekey
+*.biprivatekey
 *.bisign
-.sconsign.dblite
-.sconsign.dblite
+
+# Built PBOs and release mod folder
+*.pbo
+@\[PTF\] Paramarine Milsim Core/
+
+# ctab is not built from source here; it ships as a prebuilt external PBO
+# merged from the Workshop copy at release time (see BUILDING.md).
+/addons/ctab/
+
+# Local, uncommitted project notes
+CLAUDE.local.md

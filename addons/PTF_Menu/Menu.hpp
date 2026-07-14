@@ -97,7 +97,7 @@
 				class Bootcamp;
 				class CommunityGuides : Bootcamp {
 					y = "(1 *   1.5) *  (pixelH * pixelGrid * 2) +  (pixelH)";
-				}
+				};
 				class Arsenal : Campaigns {
 					idc = 203;
 					text = "$STR_A3_RscDisplayMain_ButtonVirtualArsenal";

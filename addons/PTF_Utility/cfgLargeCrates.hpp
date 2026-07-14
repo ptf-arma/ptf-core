@@ -126,7 +126,7 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
    {
       item_xx(ACE_salineIV_250, 30);
       item_xx(ACE_salineIV_500, 30);
-      item_xx(ACE_salineIV, 30)
+      item_xx(ACE_salineIV, 30);
       item_xx(ACE_tourniquet, 50);
       item_xx(ACE_fieldDressing, 200);
       item_xx(ACE_quikclot, 200);

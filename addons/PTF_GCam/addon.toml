@@ -1,0 +1,7 @@
+# GCam's dialog positions mix #define constants with engine-evaluated
+# SafeZoneW/H tokens (evaluated from the rapified string at runtime).
+# HEMTT's rapifier refuses those bare expressions (invalid_value is a
+# non-downgradable error), so this addon ships a plain-text config.cpp,
+# which the engine parses identically.
+[rapify]
+enabled = false
