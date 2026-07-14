@@ -157,7 +157,7 @@ class Tank_F : Tank
 
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
-               displayName = "1st Platon Flags";
+               displayName = "1st Platoon Flags";
                icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
@@ -284,7 +284,7 @@ class Ship_F : Ship
 
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
-               displayName = "1st Platon Flags";
+               displayName = "1st Platoon Flags";
                icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {

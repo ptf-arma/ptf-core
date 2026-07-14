@@ -37,6 +37,8 @@ case (secondaryWeapon _Object) : {_key = "launcher"};
 case (handgunWeapon _Object) : {_key = "secondary"};
 };
 
+if (_key isEqualTo "") exitWith {};
+
 //_Object removeWeapon _Weapon;
 
 _fakeWeapon = createVehicle ["PTF_DummyHolder", getPosATL _Object, [], 0, "CAN_COLLIDE"];
