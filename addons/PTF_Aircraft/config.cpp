@@ -9,7 +9,10 @@ class CfgPatches
 			"PTF_CH53_Ramp",
 			"PTF_CH53_Cargo",
 			"PTF_UH1Y_Unarmed",
-			"PTF_UH1Y_Medevac",
+			"PTF_UH1Y_HQ",
+			"PTF_UH1Y_SCARFACE",
+			"PTF_UH1Y_SCARFACE_SL",
+			"PTF_UH1Y_GUNFIGHTERS_SL",
 			"PTF_MV22_Ramp",
 			"PTF_MV22_Minigun",
 			"PTF_MV22_Cargo",
@@ -31,10 +34,7 @@ class CfgPatches
 			"PTF_F35B_VIS",
 			"PTF_SuperTucano"
 		};
-		weapons[]=
-		{
-			"PTF_weap_mastersafe"
-		};
+		weapons[]= {};
 		requiredVersion=1.3200001;
 		requiredAddons[]=
 		{

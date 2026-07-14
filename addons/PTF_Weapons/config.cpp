@@ -4,16 +4,13 @@ class CfgPatches
 	{
 		author = "PTF";
 		units[] = {};
-		weapons[] = {
-		"PTF_FIR_Hydra_WP_P_7rnd_M",
-		"PTF_PylonRack_4Rnd_ACE_Hellfire_AGM114K",
-		"PTF_rhs_mag_AGM114M_2",
-		"PTF_rhs_mag_AGM114M_4"
-		};
+		weapons[] = {};
 		requiredVersion = 1.0;
 		magazines[] = {
 		"PTF_12Gauge_Bean8",
-		"PTF_12Gauge_Bean5"
+		"PTF_12Gauge_Bean5",
+		"PTF_FIR_Hydra_WP_P_7rnd_M",
+		"PTF_rhs_mag_AGM114M_2"
 		};
 		requiredAddons[] = {
 		"rhsusf_c_airweapons",

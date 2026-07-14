@@ -33,19 +33,14 @@ class cfgPatches
          "PTF_M977A4_Refuel",
          "PTF_M977A4_Repair",
          "PTF_M977A4_Ammo",
+         "PTF_M977A4_M2",
          "PTF_M1085A1P2",
          "PTF_M1078A1P2",
          "PTF_M1025_tow",
          "PTF_M1151CAT_MK19",
          "PTF_M1151CAT_M2",
-         "PTF_MTVR_Repair",
-         "PTF_MTVR_Ammo",
-         "PTF_MTVR_Refuel",
-         "PTF_TowingTractor",
          "PTF_M1151_M2_LRAS",
          "PTF_Quadbike_6x6",
-         "PTF_AAV",
-         "PTF_AAV_CMD",
          "PTF_SAM_RADAR",
          "PTF_SAM_DEFENDER",
          "PTF_ACV",
@@ -61,14 +56,12 @@ class cfgPatches
          "PTF_MK23T_50"
       };
       weapons[] = {
-          "PTF_weap_mastersafe",
-          "PTF_Vlmg_M240_veh"};
+          "PTF_weap_mastersafe"};
       magazines[] = {"PTF_400rnd_TE1_Red_Tracer_762x51_M240_M"};
       requiredVersion = "0.1";
       requiredAddons[] =
           {
               "A3_Weapons_F",
-              "A3_Armor_F_Tank",
               "PTF_Main",
               "PTF_Textures",
               "PTF_Models",

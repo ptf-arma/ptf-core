@@ -37,10 +37,15 @@ enabled = false
 # These flag style and convention, not bugs. Lints that catch real problems
 # (file_missing, invalid_args, undefined) stay ENABLED on purpose.
 
-# The mod doesn't list every public class in CfgPatches units[]/weapons[].
-# It has shipped for years; retrofitting ~180 declarations isn't worth it.
+# CfgPatches integrity, tuned to catch bugs without the convention noise:
+# - check_cfgpatches (default true) keeps the "units[]/weapons[] lists a
+#   class that doesn't exist" half ON — it catches real phantom-class bugs.
+# - check_prefixes is pointed at a sentinel that matches no class, which
+#   silences the noisy "public class not listed in CfgPatches" convention
+#   half (the mod has shipped for years without exhaustive units[] lists).
 [lints.config.cfgpatches_scope]
-enabled = false
+options.check_cfgpatches = true
+options.check_prefixes = ["__ptf_no_scope_check__"]
 
 # Informational only — external classes declared but not used.
 [lints.config.unused_external]
