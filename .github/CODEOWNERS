@@ -1,0 +1,16 @@
+# Code owners for PTF Core.
+# GitHub auto-requests a review from the owner(s) on every PR touching a matching
+# path. Combined with the branch ruleset's "Require review from Code Owners",
+# this makes maintainer sign-off mandatory before a PR can merge.
+#
+# IMPORTANT: @ptf-arma/maintainers must exist as a team WITH write access to this
+# repo, or the code-owner requirement can never be satisfied and PRs will be
+# unmergeable. If you haven't created the team yet, temporarily replace it with
+# your own handle (e.g. @matthawkins2) until the team exists.
+
+# Everything defaults to the maintainers team.
+*   @ptf-arma/maintainers
+
+# (Optional) Narrow ownership later, e.g.:
+# /addons/PTF_Aircraft/   @ptf-arma/aircraft-team
+# /tools/ /.github/        @ptf-arma/maintainers

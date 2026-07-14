@@ -7,7 +7,7 @@ utility objects, plus a handful of third-party addons reused with the
 original authors' permission. It is used on the PTF's own servers and
 clients.
 
-[![HEMTT](https://github.com/matthawkins2/ptf-core/actions/workflows/hemtt.yml/badge.svg)](https://github.com/matthawkins2/ptf-core/actions/workflows/hemtt.yml)
+[![HEMTT](https://github.com/ptf-arma/ptf-core/actions/workflows/hemtt.yml/badge.svg)](https://github.com/ptf-arma/ptf-core/actions/workflows/hemtt.yml)
 
 > This mod is not general-purpose content — it is built for the PTF and
 > carries a no-derivatives license (see [License](#license)). You are
@@ -85,7 +85,7 @@ Run these from the repo root:
 New to contributing? **[CONTRIBUTING.md](CONTRIBUTING.md)** walks through the
 whole process step by step (setup, branching, checking your work, opening a PR).
 
-The GitHub repo is <https://github.com/matthawkins2/ptf-core>. Issues and
+The GitHub repo is <https://github.com/ptf-arma/ptf-core>. Issues and
 merge requests from before the GitHub migration live in the old GitLab
 archive.
 

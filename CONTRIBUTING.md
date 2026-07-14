@@ -25,7 +25,7 @@ Then clone the repo and turn on the pre-commit check (this runs `hemtt check`
 automatically every time you commit, so you catch mistakes early):
 
 ```
-git clone https://github.com/matthawkins2/ptf-core.git
+git clone https://github.com/ptf-arma/ptf-core.git
 cd ptf-core
 git config core.hooksPath .githooks
 ```
