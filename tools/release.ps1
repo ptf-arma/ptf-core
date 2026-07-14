@@ -7,16 +7,23 @@
 # The private key is never copied anywhere; only the .bisign/.bikey outputs
 # leave the key directory.
 param(
-    [string]$KeyDir  = "C:\A3Mods\Keys",
+    # Folder containing <KeyName>.biprivatekey and <KeyName>.bikey. Defaults
+    # to $env:PTF_KEYS_DIR so no machine-specific path lives in the repo.
+    [string]$KeyDir = $env:PTF_KEYS_DIR,
     [string]$KeyName = "ptf2.1",
     # Folder holding the PBOs that ship with the mod but are not in git
-    # (reuploads / obfuscated third-party addons — see BUILDING.md).
-    # When set, they are merged into the release and signed too.
-    [string]$ExternalAddons = ""
+    # (reuploads / obfuscated third-party addons, incl. ctab — see
+    # BUILDING.md). When set, they are merged into the release and signed.
+    # Defaults to $env:PTF_EXTERNAL_ADDONS.
+    [string]$ExternalAddons = $env:PTF_EXTERNAL_ADDONS
 )
 $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $PSScriptRoot
 
+if (-not $KeyDir) {
+    throw "No signing key directory. Pass -KeyDir <folder> or set `$env:PTF_KEYS_DIR " +
+          "(the folder holding $KeyName.biprivatekey and $KeyName.bikey)."
+}
 $privateKey = Join-Path $KeyDir "$KeyName.biprivatekey"
 $publicKey  = Join-Path $KeyDir "$KeyName.bikey"
 if (-not (Test-Path $privateKey)) { throw "Private key not found: $privateKey" }

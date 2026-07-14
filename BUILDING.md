@@ -22,9 +22,12 @@ Releases are signed with the community's existing `ptf2.1` key (the same
 key the published mod and the outside-repo reupload PBOs use), so servers
 keep working with the bikey they already have. HEMTT cannot reuse a
 `.biprivatekey`, so its own signing is disabled in `project.toml` and
-`tools/release.ps1` signs with DSSignFile from Arma 3 Tools instead. The
-script expects the key at `C:\A3Mods\Keys\ptf2.1.biprivatekey` (override
-with `-KeyDir`/`-KeyName`). The private key is never copied or committed.
+`tools/release.ps1` signs with DSSignFile from Arma 3 Tools instead.
+
+Point the script at the folder holding `ptf2.1.biprivatekey` and
+`ptf2.1.bikey` by setting `PTF_KEYS_DIR` (or passing `-KeyDir`); use a
+different key with `-KeyName`. The private key stays in that folder — it
+is never copied into the repo or committed.
 
 ## External PBOs (not in git)
 
