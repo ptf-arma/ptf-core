@@ -185,31 +185,64 @@ try {
 
     # $version was derived from git before the build (see the version block above).
 
-    # Stage under the Workshop folder name and zip. The folder name contains
-    # PowerShell wildcard characters ([PTF]), so use .NET IO throughout —
-    # it treats paths literally.
-    $staging = Join-Path $env:TEMP "ptf-release-staging"
+    # Zip straight from the build output, writing each entry under the Workshop
+    # mod folder name. Deliberately NOT staging a copy first: the release is
+    # several GB, so copying it to %TEMP% just to zip it doubled the I/O for no
+    # benefit (and Copy-Item's -Destination mangles the "[PTF]" in the folder
+    # name, which PowerShell treats as a wildcard). .NET IO takes paths literally.
     $modFolder = "@[PTF] Paramarine Milsim Core"
-    if (Test-Path -LiteralPath $staging) { Remove-Item -LiteralPath $staging -Recurse -Force }
-    $stagedMod = Join-Path $staging $modFolder
-    [System.IO.Directory]::CreateDirectory($stagedMod) | Out-Null
-    Copy-Item -Path "$out\*" -Destination $stagedMod -Recurse
-
     $releases = Join-Path $repo "releases"
     [System.IO.Directory]::CreateDirectory($releases) | Out-Null
     $zip = Join-Path $releases "PTF-$version.zip"
     if (Test-Path -LiteralPath $zip) {
-        throw "Release $zip already exists - bump the version in addons\PTF_Main\script_version.hpp (or remove the old zip) before re-releasing."
+        throw "Release $zip already exists - delete it (or bump MAJOR in addons\PTF_Main\script_version.hpp) before re-releasing."
     }
+
+    Add-Type -AssemblyName System.IO.Compression
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::CreateFromDirectory($staging, $zip)
-    Remove-Item -LiteralPath $staging -Recurse -Force
+
+    $files = @(Get-ChildItem -LiteralPath $out -Recurse -File)
+    $srcMB = [math]::Round((($files | Measure-Object -Property Length -Sum).Sum / 1MB))
+    Write-Host ""
+    Write-Host "Compressing $($files.Count) files (~$srcMB MB) into $zip"
+    Write-Host "PBOs are already compressed, so this uses Fastest - expect a couple of minutes."
+
+    $sw = [System.Diagnostics.Stopwatch]::StartNew()
+    $archive = [System.IO.Compression.ZipFile]::Open($zip, 'Create')
+    try {
+        $i = 0
+        foreach ($f in $files) {
+            $i++
+            $rel = $f.FullName.Substring($out.Length).TrimStart('\')
+            $entry = "$modFolder/" + ($rel -replace '\\', '/')
+            [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
+                $archive, $f.FullName, $entry,
+                [System.IO.Compression.CompressionLevel]::Fastest) | Out-Null
+            Write-Progress -Activity "Compressing release" -Status "$i of $($files.Count): $rel" `
+                -PercentComplete ([int]($i * 100 / $files.Count))
+            if ($i % 10 -eq 0 -or $i -eq $files.Count) {
+                Write-Host ("  [{0,3}/{1}] {2}s elapsed" -f $i, $files.Count, [int]$sw.Elapsed.TotalSeconds)
+            }
+        }
+    }
+    finally {
+        $archive.Dispose()
+        Write-Progress -Activity "Compressing release" -Completed
+    }
+    $sw.Stop()
 
     if (-not (Test-Path -LiteralPath $zip)) { throw "Zip was not created: $zip" }
+    $zipMB = [math]::Round(((Get-Item -LiteralPath $zip).Length / 1MB))
 
-    Write-Host ""
     $signNote = if ($NoSign) { "UNSIGNED - local dev only" } else { "signed with $KeyName" }
-    Write-Host "Release ready: $zip ($signNote)"
-    Write-Host "Unzipped mod folder: $out"
+    Write-Host ""
+    Write-Host "=============================================================="
+    Write-Host " Release $version ready ($signNote) in $([int]$sw.Elapsed.TotalSeconds)s"
+    Write-Host "   Zip:        $zip (~$zipMB MB)"
+    Write-Host "   Mod folder: $out"
+    Write-Host ""
+    Write-Host " Next: unzip the zip and upload the '$modFolder'"
+    Write-Host "       folder with the Arma 3 Publisher."
+    Write-Host "=============================================================="
 }
 finally { Pop-Location }
