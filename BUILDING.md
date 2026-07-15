@@ -3,15 +3,39 @@
 PTF Core is built with [HEMTT](https://hemtt.dev). Install it once with
 `winget install BrettMayson.HEMTT` (or grab a release from GitHub).
 
+## Building a local copy to test
+
+**`tools\release.ps1` is the main way to build a mod you can actually load in
+Arma.** For local testing:
+
+```
+tools\release.ps1 -NoSign -NoZip
+```
+
+That leaves a complete, loadable mod in **`.hemttout\release`** — point Arma 3
+at that folder as a local mod. No key and no Arma 3 Tools needed.
+
+- `-NoSign` skips signing (unsigned is fine for local/SP testing).
+- `-NoZip` skips the multi-GB compression you don't need locally.
+- Runs are [incremental](#incremental-by-default), so after the first build
+  repeat runs only redo what changed.
+
+> ⚠️ **You must set `PTF_EXTERNAL_ADDONS`** (see [Environment
+> variables](#environment-variables)). This repo builds only 17 of the ~57 PBOs
+> the mod ships — the other ~40 are merged in from that folder. **`hemtt build`
+> on its own is not a testable mod**: it produces the 17 repo PBOs, which are
+> incomplete and won't load correctly on their own.
+
 ## Everyday commands
 
 | Command | What it does |
 | --- | --- |
 | `hemtt check` | Lint and validate every config and SQF file. Fast; run before committing. |
-| `hemtt dev` | Development build (no binarization) into `.hemttout/dev`. |
-| `hemtt launch` | Launch Arma 3 with the dev build and its framework mods (configured in `.hemtt/launch.toml`; `hemtt launch vr` also opens a bare VR mission). |
-| `hemtt build` | Full build with binarization into `.hemttout/build`. |
-| `hemtt release` | Signed release build; produces `releases/PTF-<version>.zip` containing `@[PTF] Paramarine Milsim Core`. |
+| `tools\release.ps1 -NoSign -NoZip` | **Complete, loadable mod** in `.hemttout\release` — the normal local test build. |
+| `tools\release.ps1` | Signed, Workshop-ready release + zip (needs the key and the externals). |
+| `hemtt dev` / `hemtt build` | Repo-only build (17 PBOs) into `.hemttout/dev` / `.hemttout/build`. Fast for config iteration, but **not** a complete mod. |
+| `hemtt launch` | Launch Arma 3 with the *dev* (repo-only) build plus framework mods, per `.hemtt/launch.toml`. Load the published mod alongside it for the external PBOs, or use `release.ps1 -NoSign -NoZip` instead for a self-contained copy. |
+| `hemtt release` | Unsigned build into `.hemttout/release`. `release.ps1` calls this — you rarely run it directly. |
 
 ## Versioning
 
@@ -44,25 +68,34 @@ is never copied into the repo or committed.
 
 ## External PBOs (not in git)
 
-The published mod contains ~57 PBOs but this repo only builds 18. The
+The published mod contains ~57 PBOs but this repo only builds 17. The
 rest (~40: ctab, boxloader, grad_trenches, Peral, Dagger Island, Moe's,
 NDS, sling-load-rigging, ptf_sql, and other reuploads) are kept outside
 git because they cannot be rebuilt (binarized/obfuscated third-party
 PBOs), are too large, or are complex third-party addons that rarely
-change and don't need rebuilding (ctab). They must be merged into every
-release: set `PTF_EXTERNAL_ADDONS` (or pass `-ExternalAddons`) to their
-folder. The release script **requires** this — it refuses to run without
-it, so a release can't silently ship without the ~40 external PBOs. For a
-deliberate repo-only build (dev/testing the 18 tracked PBOs, never for
-the Workshop) pass `-NoExternal`. A future build server needs a canonical
-store for these PBOs (currently the subscribed Workshop copy is the
-de-facto ground truth).
+change and don't need rebuilding (ctab).
+
+They get merged into **every** build — local test builds included, since
+without them the mod is incomplete and won't load correctly. Set
+`PTF_EXTERNAL_ADDONS` (or pass `-ExternalAddons`) to the folder holding them.
+The subscribed Workshop copy of the published mod is the current source of
+truth, so pointing this at that copy's `addons` folder is the easiest setup;
+`release.ps1` copies only the ~40 PBOs this repo doesn't build itself (repo
+builds always win).
+
+`release.ps1` **requires** this — it refuses to run without it, so a release
+can't silently ship missing the ~40 external PBOs. For a deliberate repo-only
+build (fast config iteration on the 17 tracked PBOs, never for the Workshop
+and not a complete mod) pass `-NoExternal`. A future build server needs a
+canonical store for these PBOs.
 
 ## Environment variables
 
-Only `tools/release.ps1` (signed Workshop builds) reads these — **contributors
-don't need any environment variables.** Set them once (Windows → *Edit the
-system environment variables*) or pass the equivalent flag on each run.
+Read by `tools/release.ps1`. Set them once (Windows → *Edit the system
+environment variables*) or pass the equivalent flag on each run.
+
+**If you just want to build a local copy to test, you only need
+`PTF_EXTERNAL_ADDONS`** — `-NoSign` means the signing key is irrelevant.
 
 | Variable | Equivalent flag | Points to |
 | --- | --- | --- |

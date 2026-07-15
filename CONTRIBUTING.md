@@ -28,9 +28,17 @@ page is about the *workflow* around a change.
    `hemtt check` automatically on every commit. Skippable — CI runs the same
    checks on your PR.
 
-> **Do I need environment variables?** No. The `PTF_KEYS_DIR` /
-> `PTF_EXTERNAL_ADDONS` variables are only for **maintainers** building signed
-> Workshop releases — see [BUILDING.md](BUILDING.md). Contributing needs none.
+5. **To build a copy you can load in Arma**, set one environment variable:
+   **`PTF_EXTERNAL_ADDONS`** → the folder holding the ~40 PBOs this repo doesn't
+   build (your subscribed Workshop copy's `addons` folder works). Windows →
+   *Edit the system environment variables*. See [BUILDING.md](BUILDING.md).
+
+> **Why?** This repo only builds 17 of the ~57 PBOs the mod ships. Without those
+> externals merged in, the mod is incomplete and won't load properly — so
+> `hemtt build` alone is *not* a testable mod.
+>
+> You do **not** need `PTF_KEYS_DIR` — that's only for signing real Workshop
+> releases, which maintainers do.
 
 ---
 
@@ -60,10 +68,17 @@ Open the repo folder in your text editor and make your change. Golden rules:
   `build/`, or `releases/` folders — they're generated (`.gitignore` blocks them).
 
 ### e. Check your work (if you installed HEMTT)
-In a terminal opened to the repo folder, run `hemtt check`. Fix anything
-reported as `error`. If you have Arma 3 Tools, also try `hemtt build` and load
-the mod in-game to verify your change (especially anything visual — check it in
-the Arsenal). No HEMTT installed? Skip this — CI will check your PR for you.
+In a terminal opened to the repo folder, run `hemtt check` and fix anything
+reported as `error`. No HEMTT installed? Skip it — CI will check your PR for you.
+
+**To actually test in-game**, build a complete local copy:
+```
+tools\release.ps1 -NoSign -NoZip
+```
+That leaves the full mod in `.hemttout\release` — point Arma 3 at that folder as
+a local mod and verify your change (especially anything visual — check it in the
+Arsenal). It needs `PTF_EXTERNAL_ADDONS` set (step 5 above). The first build
+takes a few minutes; after that it's incremental and much quicker.
 
 ### f. Commit (in GitHub Desktop)
 Your changed files appear on the left. Type a short **Summary** of what you
