@@ -1,16 +1,14 @@
 name: HEMTT
 
 on:
+  # NOTE: deliberately NO paths-ignore. These jobs are *required* status checks
+  # on develop/master, and a skipped job never reports — so a docs-only PR would
+  # hang forever on "Expected — waiting for status". The repo is public, so
+  # Actions minutes are free and there's nothing to save by skipping.
   push:
     branches: [develop, master]
-    # Docs-only changes don't affect the build, so skip CI and save free
-    # Actions minutes. NOTE: if you later mark these jobs as *required* status
-    # checks in branch protection, a docs-only PR will sit "waiting" for a
-    # check that never runs — use a path-filter step instead of skipping then.
-    paths-ignore: ['**/*.md', 'docs/**', '.gitignore', 'LICENSE*']
   pull_request:
     branches: [develop, master]  # only PRs targeting develop/master
-    paths-ignore: ['**/*.md', 'docs/**', '.gitignore', 'LICENSE*']
   workflow_dispatch:
 
 concurrency:
