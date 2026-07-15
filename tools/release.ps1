@@ -17,9 +17,9 @@ param(
     # for a real release (defaults to $env:PTF_EXTERNAL_ADDONS); use
     # -NoExternal for a deliberate repo-only build.
     [string]$ExternalAddons = $env:PTF_EXTERNAL_ADDONS,
-    # Where the finished zip is written. Defaults to $env:PTF_RELEASE_DIR, then
-    # <repo>\releases. (The intermediate build output stays in .hemttout\release —
-    # that path is HEMTT's, configured in .hemtt/project.toml.)
+    # Where the ready-to-use "@[PTF] Paramarine Milsim Core" mod folder is
+    # published. Defaults to $env:PTF_RELEASE_DIR, then <repo>\releases. Point
+    # it at your Arma 3 mods folder and the build lands ready to load.
     [string]$OutputDir = $env:PTF_RELEASE_DIR,
     # Build only the repo-tracked PBOs, skipping the external merge. The
     # resulting mod is incomplete — intended for dev/testing, not release.
@@ -27,9 +27,10 @@ param(
     # Skip signing entirely (no key or Arma 3 Tools needed). For quick local
     # dev builds; the output is UNSIGNED — never upload it to the Workshop.
     [switch]$NoSign,
-    # Skip the zip. .hemttout\release is already the uploadable mod folder, so
-    # this is useful when you just want to point the Publisher at it.
-    [switch]$NoZip,
+    # Also produce a .zip alongside the mod folder. Off by default: Arma and the
+    # Arma 3 Publisher both take a folder, so zipping just means unzipping again.
+    # Useful only for archiving or handing the build to someone else.
+    [switch]$Zip,
     # Full rebuild: wipe the build output, re-copy every external PBO and
     # re-sign everything, and overwrite an existing zip for this version.
     # Default is incremental — externals are copied only when newer/different,
@@ -187,9 +188,10 @@ try {
         Write-Host "External PBOs from ${ExternalAddons}: $copied copied, $current already up to date"
     }
     else {
-        Write-Host "WARNING: -NoExternal set; the zip will contain only the" `
-            "$($built.Count) repo-built PBOs," `
-            "not the full published mod. Do NOT upload this to the Workshop (see BUILDING.md)."
+        Write-Host "WARNING: -NoExternal set; the build has only the" `
+            "$($built.Count) repo-built PBOs, not the full published mod." `
+            "It is incomplete and will not load correctly on its own." `
+            "Do NOT upload this to the Workshop (see BUILDING.md)."
     }
 
     # Prune anything that isn't part of this release — an external PBO that was
@@ -273,13 +275,34 @@ try {
     # benefit (and Copy-Item's -Destination mangles the "[PTF]" in the folder
     # name, which PowerShell treats as a wildcard). .NET IO takes paths literally.
     $modFolder = "@[PTF] Paramarine Milsim Core"
-    if ($NoZip) {
-        Write-Host ""
-        Write-Host "-NoZip set; skipping compression."
-        $zip = $null
-    }
-    else {
     [System.IO.Directory]::CreateDirectory($OutputDir) | Out-Null
+    $modPath = Join-Path $OutputDir $modFolder
+
+    # Publish the mod as a ready-to-use folder. It's a directory junction onto
+    # the build output rather than a copy: the release is several GB, and a copy
+    # would undo the incremental work above (and go stale the moment you rebuild).
+    # Arma and the Arma 3 Publisher read straight through a junction, so
+    # "$OutputDir\@[PTF] Paramarine Milsim Core" behaves exactly like a real
+    # folder — point Arma or the Publisher at it directly.
+    if (Test-Path -LiteralPath $modPath) {
+        $existing = Get-Item -LiteralPath $modPath -Force
+        if ($existing.Attributes -band [System.IO.FileAttributes]::ReparsePoint) {
+            # Remove only the link, never the folder it points at.
+            [System.IO.Directory]::Delete($modPath, $false)
+        }
+        else {
+            Remove-Item -LiteralPath $modPath -Recurse -Force
+        }
+    }
+    # mklink is used over New-Item -ItemType Junction because New-Item's -Path
+    # treats the "[PTF]" in the folder name as a wildcard; cmd takes it literally.
+    cmd /c mklink /J "$modPath" "$out" | Out-Null
+    if (-not (Test-Path -LiteralPath $modPath)) {
+        throw "Could not publish the mod folder at $modPath"
+    }
+
+    $zip = $null
+    if ($Zip) {
     $zip = Join-Path $OutputDir "PTF-$version.zip"
     if (Test-Path -LiteralPath $zip) {
         if (-not $Force) {
@@ -324,7 +347,7 @@ try {
     $timings['Zip'] = $sw.Elapsed
 
     if (-not (Test-Path -LiteralPath $zip)) { throw "Zip was not created: $zip" }
-    }  # end if (-not $NoZip)
+    }  # end if ($Zip)
 
     $swTotal.Stop()
     $signNote = if ($NoSign) { "UNSIGNED - local dev only" } else { "signed with $KeyName" }
@@ -336,15 +359,16 @@ try {
         Write-Host ("   {0,-16} {1,5}s" -f $k, [int]$timings[$k].TotalSeconds)
     }
     Write-Host ""
+    Write-Host "   Mod folder: $modPath"
+    Write-Host "   (build output: $out)"
     if ($zip) {
         $zipMB = [math]::Round(((Get-Item -LiteralPath $zip).Length / 1MB))
         Write-Host "   Zip:        $zip (~$zipMB MB)"
     }
-    Write-Host "   Mod folder: $out"
     Write-Host ""
-    if ($zip) {
-        Write-Host " Next: unzip it and upload the '$modFolder'"
-        Write-Host "       folder with the Arma 3 Publisher."
+    if ($NoSign) {
+        Write-Host " Next: load the mod folder above in Arma 3 to test."
+        Write-Host "       (UNSIGNED - do not upload it to the Workshop.)"
     }
     else {
         Write-Host " Next: point the Arma 3 Publisher at the mod folder above."

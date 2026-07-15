@@ -9,16 +9,26 @@ PTF Core is built with [HEMTT](https://hemtt.dev). Install it once with
 Arma.** For local testing:
 
 ```
-tools\release.ps1 -NoSign -NoZip
+tools\release.ps1 -NoSign
 ```
 
-That leaves a complete, loadable mod in **`.hemttout\release`** — point Arma 3
-at that folder as a local mod. No key and no Arma 3 Tools needed.
+That publishes a ready-to-use **`@[PTF] Paramarine Milsim Core`** folder into
+`releases\` (or wherever `PTF_RELEASE_DIR` / `-OutputDir` points) — load it in
+Arma 3 as a local mod. No key and no Arma 3 Tools needed.
+
+> 💡 Set `PTF_RELEASE_DIR` to your **Arma 3 mods folder** and every build lands
+> straight where Arma can load it — no copying, no unzipping.
 
 - `-NoSign` skips signing (unsigned is fine for local/SP testing).
-- `-NoZip` skips the multi-GB compression you don't need locally.
 - Runs are [incremental](#incremental-by-default), so after the first build
-  repeat runs only redo what changed.
+  repeat runs only redo what changed — usually seconds.
+- No zip is produced: Arma and the Publisher both take a *folder*, so zipping
+  would only mean unzipping again. Pass `-Zip` if you want an archive as well.
+
+The published folder is a **directory junction** onto the build output
+(`.hemttout\release`) rather than a multi-GB copy, so it's instant and always
+reflects the latest build. Arma and the Arma 3 Publisher read straight through
+it — treat it as a normal folder.
 
 > ⚠️ **You must set `PTF_EXTERNAL_ADDONS`** (see [Environment
 > variables](#environment-variables)). This repo builds only 17 of the ~57 PBOs
@@ -31,10 +41,10 @@ at that folder as a local mod. No key and no Arma 3 Tools needed.
 | Command | What it does |
 | --- | --- |
 | `hemtt check` | Lint and validate every config and SQF file. Fast; run before committing. |
-| `tools\release.ps1 -NoSign -NoZip` | **Complete, loadable mod** in `.hemttout\release` — the normal local test build. |
-| `tools\release.ps1` | Signed, Workshop-ready release + zip (needs the key and the externals). |
+| `tools\release.ps1 -NoSign` | **Complete, loadable mod** folder — the normal local test build. |
+| `tools\release.ps1` | Signed, Workshop-ready mod folder (needs the key and the externals). |
 | `hemtt dev` / `hemtt build` | Repo-only build (17 PBOs) into `.hemttout/dev` / `.hemttout/build`. Fast for config iteration, but **not** a complete mod. |
-| `hemtt launch` | Launch Arma 3 with the *dev* (repo-only) build plus framework mods, per `.hemtt/launch.toml`. Load the published mod alongside it for the external PBOs, or use `release.ps1 -NoSign -NoZip` instead for a self-contained copy. |
+| `hemtt launch` | Launch Arma 3 with the *dev* (repo-only) build plus framework mods, per `.hemtt/launch.toml`. Load the published mod alongside it for the external PBOs, or use `release.ps1 -NoSign` instead for a self-contained copy. |
 | `hemtt release` | Unsigned build into `.hemttout/release`. `release.ps1` calls this — you rarely run it directly. |
 
 ## Versioning
@@ -101,7 +111,7 @@ environment variables*) or pass the equivalent flag on each run.
 | --- | --- | --- |
 | `PTF_KEYS_DIR` | `-KeyDir` | Folder holding `ptf2.1.biprivatekey` + `ptf2.1.bikey` (the signing key — never committed). |
 | `PTF_EXTERNAL_ADDONS` | `-ExternalAddons` | Folder holding the ~40 prebuilt external PBOs that get merged into a release. |
-| `PTF_RELEASE_DIR` | `-OutputDir` | Where the finished zip is written. Defaults to `<repo>\releases`. |
+| `PTF_RELEASE_DIR` | `-OutputDir` | Where the ready-to-use `@[PTF] Paramarine Milsim Core` folder is published. Defaults to `<repo>\releases`. Point it at your Arma 3 mods folder to load builds directly. |
 
 ### release.ps1 flags
 
@@ -110,8 +120,8 @@ environment variables*) or pass the equivalent flag on each run.
 | `-KeyName` | Signing key name (default `ptf2.1`). |
 | `-NoExternal` | Repo-only build, skipping the external merge — **never upload it to the Workshop**. |
 | `-NoSign` | Skip signing (no key / Arma 3 Tools needed). Output is UNSIGNED. |
-| `-NoZip` | Skip compression. `.hemttout\release` is already the uploadable mod folder. |
-| `-Force` | Full rebuild: wipe the build output, re-copy every external, re-sign everything, and overwrite an existing zip for this version. |
+| `-Zip` | Also produce a `.zip` next to the mod folder (archiving / handing the build to someone). Off by default. |
+| `-Force` | Full rebuild: wipe the build output, re-copy every external, re-sign everything, and overwrite an existing zip. |
 
 ### Incremental by default
 
@@ -141,10 +151,10 @@ Use `-Force` if you ever want to rule out the cache and rebuild from scratch.
    and `PTF_EXTERNAL_ADDONS` set (or pass `-KeyDir`/`-ExternalAddons`),
    run `tools\release.ps1`. It fetches the tag CI just created, derives the
    matching `X.Y.0` version, runs `hemtt release` (binarizes the MLOD
-   models), merges the external PBOs, signs everything with `ptf2.1`,
-   ships the bikey, and writes `releases/PTF-<version>.zip`.
-3. Unzip and upload the `@[PTF] Paramarine Milsim Core` folder with the
-   Arma 3 Publisher, same as before.
+   models), merges the external PBOs, signs everything with `ptf2.1`, ships
+   the bikey, and publishes the `@[PTF] Paramarine Milsim Core` folder.
+3. Point the Arma 3 Publisher at that folder and upload — no unzipping.
+   (Add `-Zip` if you also want an archive of the release.)
 
 Run `release.ps1` *after* the release workflow has tagged master, so its
 git-derived version matches the tag. For a major overhaul, bump `MAJOR` in

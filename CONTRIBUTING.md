@@ -73,12 +73,16 @@ reported as `error`. No HEMTT installed? Skip it — CI will check your PR for y
 
 **To actually test in-game**, build a complete local copy:
 ```
-tools\release.ps1 -NoSign -NoZip
+tools\release.ps1 -NoSign
 ```
-That leaves the full mod in `.hemttout\release` — point Arma 3 at that folder as
-a local mod and verify your change (especially anything visual — check it in the
-Arsenal). It needs `PTF_EXTERNAL_ADDONS` set (step 5 above). The first build
-takes a few minutes; after that it's incremental and much quicker.
+That publishes a ready-to-use `@[PTF] Paramarine Milsim Core` folder into
+`releases\` — load it in Arma 3 as a local mod and verify your change (especially
+anything visual — check it in the Arsenal). It needs `PTF_EXTERNAL_ADDONS` set
+(step 5 above). The first build takes a few minutes; after that it's incremental
+and much quicker.
+
+> 💡 Set `PTF_RELEASE_DIR` to your Arma 3 mods folder and builds land straight
+> where Arma can load them — no copying.
 
 ### f. Commit (in GitHub Desktop)
 Your changed files appear on the left. Type a short **Summary** of what you

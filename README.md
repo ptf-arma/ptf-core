@@ -57,11 +57,13 @@ signing details live in **[BUILDING.md](BUILDING.md)** — the quick version:
 ### Build a local copy to test
 
 ```
-tools\release.ps1 -NoSign -NoZip
+tools\release.ps1 -NoSign
 ```
 
-Leaves a complete, loadable mod in `.hemttout\release` — point Arma 3 at that
-folder. Runs are incremental, so repeat builds are quick.
+Publishes a ready-to-use `@[PTF] Paramarine Milsim Core` folder into `releases\`
+— load it in Arma 3 as a local mod. Set `PTF_RELEASE_DIR` to your Arma 3 mods
+folder and builds land straight where Arma can load them. Runs are incremental,
+so repeat builds are quick. (No zip — Arma and the Publisher both take a folder.)
 
 ### Common commands
 
@@ -70,8 +72,8 @@ Run these from the repo root:
 | Command | What it does |
 | --- | --- |
 | `hemtt check` | Lint/validate every config and SQF file. Fast — run before committing. |
-| `tools\release.ps1 -NoSign -NoZip` | **Complete, loadable mod** in `.hemttout\release` — the normal local test build. |
-| `tools\release.ps1` | Signed, Workshop-ready release + zip (see [BUILDING.md](BUILDING.md) for env vars). |
+| `tools\release.ps1 -NoSign` | **Complete, loadable mod** folder — the normal local test build. |
+| `tools\release.ps1` | Signed, Workshop-ready mod folder (see [BUILDING.md](BUILDING.md) for env vars). |
 | `hemtt dev` / `hemtt build` | Repo-only build (17 PBOs). Fast for config iteration, but **not** a complete mod. |
 
 `hemtt check` also runs automatically in CI on every pull request.
