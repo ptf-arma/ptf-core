@@ -68,10 +68,34 @@ system environment variables*) or pass the equivalent flag on each run.
 | --- | --- | --- |
 | `PTF_KEYS_DIR` | `-KeyDir` | Folder holding `ptf2.1.biprivatekey` + `ptf2.1.bikey` (the signing key — never committed). |
 | `PTF_EXTERNAL_ADDONS` | `-ExternalAddons` | Folder holding the ~40 prebuilt external PBOs that get merged into a release. |
+| `PTF_RELEASE_DIR` | `-OutputDir` | Where the finished zip is written. Defaults to `<repo>\releases`. |
 
-`release.ps1` also accepts `-KeyName` (default `ptf2.1`), `-NoExternal` (a
-repo-only build — never upload it to the Workshop), and `-NoSign` (skip signing
-for a quick local test).
+### release.ps1 flags
+
+| Flag | Effect |
+| --- | --- |
+| `-KeyName` | Signing key name (default `ptf2.1`). |
+| `-NoExternal` | Repo-only build, skipping the external merge — **never upload it to the Workshop**. |
+| `-NoSign` | Skip signing (no key / Arma 3 Tools needed). Output is UNSIGNED. |
+| `-NoZip` | Skip compression. `.hemttout\release` is already the uploadable mod folder. |
+| `-Force` | Full rebuild: wipe the build output, re-copy every external, re-sign everything, and overwrite an existing zip for this version. |
+
+### Incremental by default
+
+`release.ps1` keeps `.hemttout\release` between runs and only redoes what
+changed:
+
+- **External PBOs** are copied only when missing, a different size, or newer
+  than the copy already in the output.
+- **Signing** re-runs only when a PBO's `.bisign` is missing or older than the
+  PBO. This is safe because `DSCheckSignatures` still verifies *every* PBO
+  against the public key at the end, so a stale or wrong signature is still
+  caught.
+- Anything that isn't part of the current release (e.g. an external PBO removed
+  upstream) is **pruned** from the output, which is what makes it safe to keep
+  the folder between runs.
+
+Use `-Force` if you ever want to rule out the cache and rebuild from scratch.
 
 ## Releasing to the Workshop
 

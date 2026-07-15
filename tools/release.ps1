@@ -17,15 +17,28 @@ param(
     # for a real release (defaults to $env:PTF_EXTERNAL_ADDONS); use
     # -NoExternal for a deliberate repo-only build.
     [string]$ExternalAddons = $env:PTF_EXTERNAL_ADDONS,
+    # Where the finished zip is written. Defaults to $env:PTF_RELEASE_DIR, then
+    # <repo>\releases. (The intermediate build output stays in .hemttout\release —
+    # that path is HEMTT's, configured in .hemtt/project.toml.)
+    [string]$OutputDir = $env:PTF_RELEASE_DIR,
     # Build only the repo-tracked PBOs, skipping the external merge. The
     # resulting mod is incomplete — intended for dev/testing, not release.
     [switch]$NoExternal,
     # Skip signing entirely (no key or Arma 3 Tools needed). For quick local
     # dev builds; the output is UNSIGNED — never upload it to the Workshop.
-    [switch]$NoSign
+    [switch]$NoSign,
+    # Skip the zip. .hemttout\release is already the uploadable mod folder, so
+    # this is useful when you just want to point the Publisher at it.
+    [switch]$NoZip,
+    # Full rebuild: wipe the build output, re-copy every external PBO and
+    # re-sign everything, and overwrite an existing zip for this version.
+    # Default is incremental — externals are copied only when newer/different,
+    # and a PBO is re-signed only when its .bisign is missing or out of date.
+    [switch]$Force
 )
 $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $PSScriptRoot
+if (-not $OutputDir) { $OutputDir = Join-Path $repo "releases" }
 
 if (-not $NoSign -and -not $KeyDir) {
     throw "No signing key directory. Pass -KeyDir <folder> or set `$env:PTF_KEYS_DIR " +
@@ -67,12 +80,22 @@ if (-not $NoSign) {
     ) | Where-Object { Test-Path $_ } | Select-Object -First 1
 }
 
+$timings = [ordered]@{}
+$swTotal = [System.Diagnostics.Stopwatch]::StartNew()
+
 Push-Location $repo
 try {
-    # hemtt does not clean its release output; stale PBOs from previous runs
-    # (e.g. earlier external merges) would otherwise leak into this release.
     $out = Join-Path $repo ".hemttout\release"
-    if (Test-Path -LiteralPath $out) { Remove-Item -LiteralPath $out -Recurse -Force }
+    # hemtt does not clean its release output. Rather than wipe the whole folder
+    # every run (which forced a full multi-GB re-copy and re-sign of the ~40
+    # external PBOs), we keep it and prune precisely: after the external merge
+    # below, anything that isn't part of THIS release is deleted. That kills the
+    # stale-PBO leak just as reliably while letting the copy/sign steps skip work
+    # that's already current. -Force restores the old wipe-everything behaviour.
+    if ($Force -and (Test-Path -LiteralPath $out)) {
+        Write-Host "-Force: wiping $out for a full rebuild"
+        Remove-Item -LiteralPath $out -Recurse -Force
+    }
 
     # Derive the X.Y.Z version from git and write MINOR/PATCH into
     # script_version.hpp BEFORE building, so the PBOs carry the right version.
@@ -110,8 +133,11 @@ try {
     $version = "$major.$minor.$patch"
     Write-Host "Version: $version"
 
+    $swBuild = [System.Diagnostics.Stopwatch]::StartNew()
     & $hemtt release
     if ($LASTEXITCODE -ne 0) { throw "hemtt release failed" }
+    $swBuild.Stop()
+    $timings['hemtt release'] = $swBuild.Elapsed
 
     # HEMTT names PBOs "{prefix}_{folder}.pbo"; strip the added PTF_ so every
     # PBO keeps its historical "<folder>.pbo" name (PTF_PTF_Aircraft.pbo ->
@@ -125,36 +151,92 @@ try {
 
     # Merge the PBOs that ship with the mod but are not built from git.
     # -NoExternal (validated above) is the only way to skip this.
+    $built = @((Get-ChildItem "$out\addons\*.pbo").Name)
+    $expected = [System.Collections.Generic.HashSet[string]]::new(
+        [string[]]$built, [System.StringComparer]::OrdinalIgnoreCase)
     if (-not $NoExternal) {
         if (-not (Test-Path -LiteralPath $ExternalAddons)) {
             throw "External addons folder not found: $ExternalAddons"
         }
-        $built = (Get-ChildItem "$out\addons\*.pbo").Name
-        $external = Get-ChildItem -LiteralPath $ExternalAddons -Filter *.pbo |
-            Where-Object { $built -notcontains $_.Name }
-        $skipped = (Get-ChildItem -LiteralPath $ExternalAddons -Filter *.pbo).Count - $external.Count
-        Write-Host "Merging $($external.Count) external PBOs from $ExternalAddons"
+        $allExternal = @(Get-ChildItem -LiteralPath $ExternalAddons -Filter *.pbo)
+        $external = @($allExternal | Where-Object { $built -notcontains $_.Name })
+        $skipped = $allExternal.Count - $external.Count
         if ($skipped -gt 0) {
             Write-Host "Skipped $skipped external PBO(s) that this repo builds itself - repo builds always win."
         }
-        $external | Copy-Item -Destination "$out\addons"
+
+        # Incremental: only copy an external PBO if it's missing, a different
+        # size, or newer than the copy already in the output. -Force copies all.
+        $swCopy = [System.Diagnostics.Stopwatch]::StartNew()
+        $copied = 0; $current = 0
+        foreach ($src in $external) {
+            [void]$expected.Add($src.Name)
+            $dst = Join-Path "$out\addons" $src.Name
+            $have = Get-Item -LiteralPath $dst -ErrorAction SilentlyContinue
+            if (-not $Force -and $have -and
+                $have.Length -eq $src.Length -and
+                $have.LastWriteTimeUtc -ge $src.LastWriteTimeUtc) {
+                $current++
+                continue
+            }
+            Copy-Item -LiteralPath $src.FullName -Destination $dst -Force
+            $copied++
+        }
+        $swCopy.Stop()
+        $timings['External merge'] = $swCopy.Elapsed
+        Write-Host "External PBOs from ${ExternalAddons}: $copied copied, $current already up to date"
     }
     else {
         Write-Host "WARNING: -NoExternal set; the zip will contain only the" `
-            "$((Get-ChildItem "$out\addons\*.pbo").Count) repo-built PBOs," `
+            "$($built.Count) repo-built PBOs," `
             "not the full published mod. Do NOT upload this to the Workshop (see BUILDING.md)."
     }
+
+    # Prune anything that isn't part of this release — an external PBO that was
+    # removed upstream, or leftovers from a previous run. This is what makes it
+    # safe to keep the output folder between runs (see the -Force note above).
+    $pruned = 0
+    foreach ($stale in @(Get-ChildItem "$out\addons\*.pbo")) {
+        if (-not $expected.Contains($stale.Name)) {
+            Write-Host "  pruning stale PBO: $($stale.Name)"
+            Get-ChildItem "$out\addons\$($stale.Name).*.bisign" -ErrorAction SilentlyContinue |
+                Remove-Item -Force
+            Remove-Item -LiteralPath $stale.FullName -Force
+            $pruned++
+        }
+    }
+    if ($pruned -gt 0) { Write-Host "Pruned $pruned stale PBO(s) from a previous build." }
 
     if ($NoSign) {
         Write-Host "WARNING: -NoSign set; the build is UNSIGNED. Do NOT upload it to the Workshop."
     }
     else {
-        Get-ChildItem "$out\addons\*.bisign" -ErrorAction SilentlyContinue | Remove-Item
+        $swSign = [System.Diagnostics.Stopwatch]::StartNew()
         $pbos = Get-ChildItem "$out\addons\*.pbo"
+        # Drop signatures made with a different key (e.g. -KeyName changed), so a
+        # stale one can never be mistaken for this key's signature.
+        Get-ChildItem "$out\addons\*.bisign" -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -notlike "*.$KeyName.bisign" } | Remove-Item -Force
+
+        # Incremental: re-sign only when the .bisign is missing or older than the
+        # PBO. Safe because DSCheckSignatures below verifies EVERY PBO against the
+        # public key regardless, so a stale/bad signature still gets caught.
+        $signedNow = 0; $sigCurrent = 0
         foreach ($pbo in $pbos) {
+            $sigPath = Join-Path "$out\addons" "$($pbo.Name).$KeyName.bisign"
+            $sig = Get-Item -LiteralPath $sigPath -ErrorAction SilentlyContinue
+            if (-not $Force -and $sig -and $sig.LastWriteTimeUtc -ge $pbo.LastWriteTimeUtc) {
+                $sigCurrent++
+                continue
+            }
+            if ($sig) { Remove-Item -LiteralPath $sigPath -Force }
             & $dsSign $privateKey $pbo.FullName
             if ($LASTEXITCODE -ne 0) { throw "Signing failed: $($pbo.Name)" }
+            $signedNow++
         }
+        $swSign.Stop()
+        $timings['Signing'] = $swSign.Elapsed
+        Write-Host "Signing: $signedNow signed, $sigCurrent already current"
         # Verify a .bisign was actually produced for every PBO — DSSignFile can
         # exit 0 without writing output (e.g. a locked/read-only file), which
         # would otherwise let an unsigned PBO ship undetected.
@@ -191,11 +273,20 @@ try {
     # benefit (and Copy-Item's -Destination mangles the "[PTF]" in the folder
     # name, which PowerShell treats as a wildcard). .NET IO takes paths literally.
     $modFolder = "@[PTF] Paramarine Milsim Core"
-    $releases = Join-Path $repo "releases"
-    [System.IO.Directory]::CreateDirectory($releases) | Out-Null
-    $zip = Join-Path $releases "PTF-$version.zip"
+    if ($NoZip) {
+        Write-Host ""
+        Write-Host "-NoZip set; skipping compression."
+        $zip = $null
+    }
+    else {
+    [System.IO.Directory]::CreateDirectory($OutputDir) | Out-Null
+    $zip = Join-Path $OutputDir "PTF-$version.zip"
     if (Test-Path -LiteralPath $zip) {
-        throw "Release $zip already exists - delete it (or bump MAJOR in addons\PTF_Main\script_version.hpp) before re-releasing."
+        if (-not $Force) {
+            throw "Release $zip already exists - delete it, pass -Force to overwrite, or bump MAJOR in addons\PTF_Main\script_version.hpp."
+        }
+        Write-Host "-Force: overwriting existing $zip"
+        Remove-Item -LiteralPath $zip -Force
     }
 
     Add-Type -AssemblyName System.IO.Compression
@@ -230,19 +321,34 @@ try {
         Write-Progress -Activity "Compressing release" -Completed
     }
     $sw.Stop()
+    $timings['Zip'] = $sw.Elapsed
 
     if (-not (Test-Path -LiteralPath $zip)) { throw "Zip was not created: $zip" }
-    $zipMB = [math]::Round(((Get-Item -LiteralPath $zip).Length / 1MB))
+    }  # end if (-not $NoZip)
 
+    $swTotal.Stop()
     $signNote = if ($NoSign) { "UNSIGNED - local dev only" } else { "signed with $KeyName" }
+
     Write-Host ""
     Write-Host "=============================================================="
-    Write-Host " Release $version ready ($signNote) in $([int]$sw.Elapsed.TotalSeconds)s"
-    Write-Host "   Zip:        $zip (~$zipMB MB)"
+    Write-Host " Release $version ready ($signNote) in $([int]$swTotal.Elapsed.TotalSeconds)s"
+    foreach ($k in $timings.Keys) {
+        Write-Host ("   {0,-16} {1,5}s" -f $k, [int]$timings[$k].TotalSeconds)
+    }
+    Write-Host ""
+    if ($zip) {
+        $zipMB = [math]::Round(((Get-Item -LiteralPath $zip).Length / 1MB))
+        Write-Host "   Zip:        $zip (~$zipMB MB)"
+    }
     Write-Host "   Mod folder: $out"
     Write-Host ""
-    Write-Host " Next: unzip the zip and upload the '$modFolder'"
-    Write-Host "       folder with the Arma 3 Publisher."
+    if ($zip) {
+        Write-Host " Next: unzip it and upload the '$modFolder'"
+        Write-Host "       folder with the Arma 3 Publisher."
+    }
+    else {
+        Write-Host " Next: point the Arma 3 Publisher at the mod folder above."
+    }
     Write-Host "=============================================================="
 }
 finally { Pop-Location }
