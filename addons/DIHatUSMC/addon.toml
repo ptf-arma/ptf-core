@@ -1,3 +1,0 @@
-# Model is already binarized (ODOL); running binarize on it would fail.
-[binarize]
-enabled = false

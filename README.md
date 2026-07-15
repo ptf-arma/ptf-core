@@ -25,8 +25,8 @@ prefix namespace `z\PTF\addons\<name>`. Broadly:
   `PTF_Textures`.
 - **Content** — `PTF_Aircraft`, `PTF_Vehicles`, `PTF_Weapons`,
   `PTF_Clothes`, `PTF_Helmets`, `PTF_Utility`, `PTF_Menu`, `PTF_Smoke`.
-- **Third-party (in-repo, modified with permission)** — `DIHatUSMC`,
-  `PTF_DICoverUSMC`, `drc_custom_billboards`, `riku_class_a`, `BettIR_PTF`.
+- **Third-party (in-repo, modified with permission)** —
+  `drc_custom_billboards`, `riku_class_a`, `BettIR_PTF`.
 
 The mod depends on external framework mods at runtime (RHS USAF/GREF/AFRF,
 ACE3, CBA, TFAR, USAF mod, and others) — those are **not** part of this

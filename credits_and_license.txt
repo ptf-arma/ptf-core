@@ -18,7 +18,6 @@ Source Link: www.Paramarines.net
 License: https://www.bohemia.net/community/licenses/arma-public-license-nd
 License Basics: You can use this on your server, but you cannot reupload to Steam or modify the source, and must attribute it with the following text: "This mod was provided by the Paramarine Task Force Milsim Unit, located at www.Paramarines.com".
 Included PBO files:
-DIHatUSMC.pbo
 PTF_Main.pbo
 PTF_Aircraft.pbo
 PTF_Clothes.pbo

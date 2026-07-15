@@ -41,7 +41,6 @@ class cfgWeapons
 {
 #include "helmets\cfgInfantryHelmets.hpp"
 #include "helmets\cfgAirHelmets.hpp"
-#include "helmets\cfgDIHat.hpp"
 #include "helmets\cfgSpecialHelmets.hpp"
 #include "vests\cfgAirVests.hpp"
 #include "vests\cfgInfantryVests.hpp"

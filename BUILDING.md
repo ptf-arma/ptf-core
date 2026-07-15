@@ -169,7 +169,7 @@ git-derived version matches the tag. For a major overhaul, bump `MAJOR` in
   for `hemtt build`/`dev`. (`hemtt release` renaming is done by
   `tools/release.ps1`, which owns the full release flow.)
 - `addons/<X>/addon.toml` — per-addon overrides:
-  - `DIHatUSMC`, `drc_custom_billboards`, `riku_class_a` ship pre-binarized
+  - `drc_custom_billboards`, `riku_class_a` ship pre-binarized
     (ODOL) models, so binarization is disabled;
     `drc_custom_billboards` also ships a pre-rapified `config.bin` and keeps
     the original flat `drc_custom_billboards` PBO prefix — the Dagger Island
