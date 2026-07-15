@@ -18,15 +18,15 @@ class cfgWeapons
 		weaponPoolAvailable = 1;
 		displayName = "[PTF] DI Cover [http://www.paramarinetaskforce.com/]";
 		author = "Paramarine Task Force";
-		picture = "PTF_DICoverUSMC\UI\DS_UI.paa";
-		model = "PTF_DICoverUSMC\DICover.p3d";
+		picture = "\z\PTF\addons\PTF_DICoverUSMC\UI\DS_UI.paa";
+		model = "\z\PTF\addons\PTF_DICoverUSMC\DICover.p3d";
 		hiddenSelections[] = {""};
 		hiddenSelectionsTextures[] = {""};
 		class ItemInfo : HeadgearItem
 		{
 			mass = 2;
 			allowedSlots[] = {901, 701, 605};
-			uniformModel = "PTF_DICoverUSMC\DICover.p3d";
+			uniformModel = "\z\PTF\addons\PTF_DICoverUSMC\DICover.p3d";
 			modelSides[] = {6};
 			armor = "0*0";
 			passThrough = 0.8;

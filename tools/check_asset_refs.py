@@ -92,20 +92,34 @@ def main():
     prefixes = build_prefix_map()
     ignored = load_ignore()
 
+    # Addon folder names, used to spot references that clearly mean one of our
+    # addons but were written without the PBO prefix (e.g. "\PTF_Main\..."
+    # instead of "\z\PTF\addons\PTF_Main\..."). That resolves to nothing in game.
+    addon_dir = os.path.join(REPO, "addons")
+    addon_names = {n.lower() for n in os.listdir(addon_dir)
+                   if os.path.isdir(os.path.join(addon_dir, n))}
+
+    scan = []
+    for root, _dirs, files in os.walk(addon_dir):
+        scan += [os.path.join(root, f) for f in files
+                 if f.lower().endswith((".cpp", ".hpp", ".rvmat"))]
+    # mod.cpp / meta.cpp sit at the repo root (shipped to the mod folder root via
+    # [files] in .hemtt/project.toml). Their logo/picture paths are real vpaths
+    # into the PBOs, so they need checking too.
+    scan += [os.path.join(REPO, f) for f in ("mod.cpp", "meta.cpp")
+             if os.path.isfile(os.path.join(REPO, f))]
+
     refs = set()
-    for root, _dirs, files in os.walk(os.path.join(REPO, "addons")):
-        for f in files:
-            if not f.lower().endswith((".cpp", ".hpp", ".rvmat")):
-                continue
-            try:
-                with open(os.path.join(root, f), encoding="utf-8", errors="ignore") as fh:
-                    text = fh.read()
-            except OSError:
-                continue
-            for m in ASSET_RE.finditer(text):
-                ref = m.group(1)
-                if not ref.startswith("#"):  # skip procedural textures
-                    refs.add(ref)
+    for path in scan:
+        try:
+            with open(path, encoding="utf-8", errors="ignore") as fh:
+                text = fh.read()
+        except OSError:
+            continue
+        for m in ASSET_RE.finditer(text):
+            ref = m.group(1)
+            if not ref.startswith("#"):  # skip procedural textures
+                refs.add(ref)
 
     missing, misrouted, skipped = [], [], 0
     for ref in sorted(refs, key=str.lower):
@@ -115,7 +129,12 @@ def main():
             continue
         disk = resolve(ref, prefixes)
         if disk is None:
-            if n.startswith("z/ptf/"):
+            # Ours but unroutable: either under z\PTF\ with no matching prefix,
+            # or it names one of our addon folders without the PBO prefix (e.g.
+            # "\PTF_Main\..." instead of "\z\PTF\addons\PTF_Main\..."), which
+            # silently resolves to nothing in game. Anything else is a genuine
+            # external mod — not our problem.
+            if n.startswith("z/ptf/") or n.split("/")[0] in addon_names:
                 misrouted.append(ref)
             continue  # external — not our problem
         if not exists_any_case(disk):
