@@ -5,6 +5,5 @@
 # One reference per line, exactly as the checker prints it. Blank lines and
 # lines starting with # are ignored.
 
-# --- PTF_Helmets references assets that aren't in the repo (need the art):
-\z\PTF\addons\PTF_Models\gear\dihat\dihat.p3d
-\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_lowe.rvmat
+# Currently empty — every known-broken reference has been fixed. Keep it that
+# way: add a line here only as a deliberate, temporary exception.
