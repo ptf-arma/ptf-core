@@ -80,10 +80,12 @@ class PTF_MQ9 : USAF_MQ9
             };
             class pylons3: pylons3
             {
+               hardpoints[] = {"B_USAF_MQ9_FUEL","B_BOMB_GBU12","B_BOMB_GBU38","B_BOMB_GBU39","B_BOMB_GBU49","B_BOMB_GBU53","B_BOMB_GBU54","B_MISSILE_AGM114R","B_MISSILE_AGM114P_2", "B_AIM9X_DUAL_RAIL", "B_BOMB_APKWS7"};
                attachment = "USAF_PylonRack_1Rnd_MQ9FuelTank";
             };
             class pylons4: pylons4
             {
+               hardpoints[] = {"B_USAF_MQ9_FUEL","B_BOMB_GBU12","B_BOMB_GBU38","B_BOMB_GBU39","B_BOMB_GBU49","B_BOMB_GBU53","B_BOMB_GBU54","B_BOMB_APKWS7","B_MISSILE_AGM114P_4","B_MISSILE_AGM114P_2","B_MISSILE_AGM114R", "B_MISSILE_AGM114R_4","B_AIM9X_DUAL_RAIL"};
                attachment = "PTF_PylonRack_4Rnd_AGM114R";
             };
          };
