@@ -32,6 +32,8 @@ class cfgWeapons
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
 	class USP_OPS_FASTXP_CU_TAN;
+	class PTF_Helmet_Air_HMDS;
+	class PTF_Helmet_Air_HMDS_Mask;
 	class PTF_Helmet_FASTXP_TAN: USP_OPS_FASTXP_TAN
 	{
 		scopeArsenal=2;
@@ -787,11 +789,18 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-	class PTF_Goltred_rhsusf_hgu56p_visor_black : rhsusf_hgu56p_visor_black
+	class PTF_Goltred_rhsusf_hgu56p_visor_black : PTF_Helmet_Air_HMDS
 	{
 		displayName = "[MAG] HGU [Personal - F.Goltred] (Black)";
 		hiddenSelectionsTextures[] = {
 			"\z\PTF\addons\PTF_Textures\gear\helmets\MAG_Goltred_blk.paa"
+		};
+	};
+	class PTF_Galvin_rhsusf_hgu56p_mask_black: PTF_Helmet_Air_HMDS_Mask
+	{
+		displayName="[MAG] HGU [Personal - N. Galvin - Mask]";
+		hiddenSelectionsTextures[] = {
+			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Galvin.paa"
 		};
 	};
     class PTF_Gute_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
