@@ -798,7 +798,14 @@ class cfgWeapons
 	};
 	class PTF_Galvin_rhsusf_hgu56p_mask_black: PTF_Helmet_Air_HMDS_Mask
 	{
-		displayName="[MAG] HGU [Personal - N. Galvin - Mask]";
+		displayName="[MAG] HGU [Personal - N. Galvin - Mask] (Black)";
+		hiddenSelectionsTextures[] = {
+			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Galvin.paa"
+		};
+	};
+	class PTF_Galvin_rhsusf_hgu56p_visor_black: PTF_Helmet_Air_HMDS
+	{
+		displayName="[MAG] HGU [Personal - N. Galvin] (Black)";
 		hiddenSelectionsTextures[] = {
 			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Galvin.paa"
 		};

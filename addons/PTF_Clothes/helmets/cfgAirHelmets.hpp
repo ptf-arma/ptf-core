@@ -51,11 +51,6 @@ class PTF_Helmet_Air_USA : PTF_Helmet_Air_Black
 };
 class PTF_Helmet_Air_HMDS : PTF_Helmet_Air_Black
 {
-   tf_encryptionCode = "tf_west_radio_code";
-   tf_dialog = "rt1523g_radio_dialog";
-   tf_subtype = "digital_lr";
-   tf_range = 15000;
-   tf_hasLRradio = 1;
    displayName = "[Air] HMDS (Gen3) [PTF]";
    author = "Paramarine Task Force";
    class ItemInfo : ItemInfo
