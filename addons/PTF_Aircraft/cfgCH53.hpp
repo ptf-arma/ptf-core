@@ -31,8 +31,13 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
       {
          gunnerCompartments = "Compartment2";
       };
+      class GAU21: GAU21
+      {
+         gunnerType = "rhsusf_usmc_marpat_d_helicrew";
+      };
    };
 };
+
 class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
 {
    scope = 2;
