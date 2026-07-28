@@ -116,10 +116,8 @@ class PTF_AH1Z : RHS_AH1Z
                   attachment[] =
                   {
                      "rhs_mag_Sidewinder_heli_2",
-                     "FIR_APKWS_M282_P_7rnd_M",
                      "rhs_mag_M151_19_green",
                      "rhs_mag_M151_19_green",
-                     "FIR_APKWS_M282_P_7rnd_M",
                      "rhs_mag_Sidewinder_heli_2",
                      "rhsusf_ANALE39_CMFlare_Chaff_Magazine_x4"
                   };
