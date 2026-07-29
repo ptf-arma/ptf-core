@@ -94,8 +94,6 @@ class CoDriverTurret;
 class GPK_Turret;
 class M2_Turret;
 
-// Unused sensor-template forward-decl stubs kept for reference if sensor/radar configs are added later.
-
 //Mastersafe
 class Default;
 class US85_LAV25;

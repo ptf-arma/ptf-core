@@ -5,14 +5,11 @@ class CfgPatches
 		requiredAddons[]=
 		{
 			"BettIR_Core",
-			"PTF_Clothes",
-			// The nine CompatibleAttachments entries below key off RHS
-			// attachment classnames; rhsusf_c_weapons is the RHS PBO that
-			// defines rhsusf_acc_anpeq15_top and the wmx/anpeq16a variants.
-			// (Their config parent, BettIR_Config >> CompatibleAttachments >>
-			// rhsusf_acc_anpeq15_top, comes from BettIR_Core, so this is a
-			// correctness/intent declaration rather than a parse-order fix.)
-			"rhsusf_c_weapons"
+			// The CompatibleAttachments entries below are RHS attachment
+			// classnames used as lookup keys; they live under BettIR_Config,
+			// not CfgWeapons, so RHS is not a parse-order dependency here.
+			// PTF_Clothes already requires rhsusf_c_weapons transitively.
+			"PTF_Clothes"
 		};
 		requiredVersion=0.1;
 		units[]={};

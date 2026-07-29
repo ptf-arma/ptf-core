@@ -1,3 +1,9 @@
+// Entry point for the main-menu scene wired up in ..\config.cpp
+// (CfgWorlds >> <world> >> cutscenes[] -> CfgMissions >> Cutscenes >> mymainmenu).
+// The engine runs "initIntro.sqf" by name when a cutscene scene starts; there is
+// no execVM anywhere and no init.sqf involved. Every stock BI menu scene ships the
+// same two files and nothing else (e.g. a3\map_enoch_scenes_f\scenes\
+// Enoch_intro1.Enoch = initIntro.sqf + mission.sqm), so do NOT rename this file.
 private _tracks = ["LeadTrack01_F_Mark","LeadTrack02_F_Mark","LeadTrack02_F_EXP","LeadTrack03_F_EXP","Menu1","Menu2"];
 /////////
 // This is War (Marksmen Remix)
@@ -33,13 +39,24 @@ uiNamespace setVariable ["PTF_MenuMusicEH", addMusicEventHandler ["MusicStop", {
 		_display ctrlSetPosition [safeZoneX, safeZoneY, safeZoneW, safeZoneH];
 		_display ctrlCommit 0;
 
+// PTF_Textures\Backgrounds ships Background1..Background20 with no Background17.
+// The gap cannot be closed by renumbering the files: PTF_Textures\config.cpp names
+// each one individually for its NCA_loadingBackground* loading screens, so a rename
+// would break those. Derive the pool from the range minus the known gaps instead of
+// hand-maintaining a literal list - adding a background means dropping in the next
+// Background<n>.paa and bumping _highest, nothing else.
+private _highest = 20;
+private _gaps = [17];
+private _backgrounds = [];
+for "_i" from 1 to _highest do {
+	if (!(_i in _gaps)) then {_backgrounds pushBack _i};
+};
+
 while {true} do {
-		// PTF_Textures\Backgrounds holds background1..background20 with no
-		// background17. "floor random 20" yielded 0-19 and the 0 -> 1 fix-up
-		// made background1 twice as likely while background20 was unreachable,
-		// so pick evenly from the indices that actually ship.
-		private _count = selectRandom [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20];
-		private _displayBackground = format["\z\PTF\addons\PTF_Textures\Backgrounds\background%1.paa",_count];
+		private _count = selectRandom _backgrounds;
+		// Capital B matches the filenames on disk. A lowercase path still resolves
+		// on Windows but not on a case-sensitive filesystem.
+		private _displayBackground = format["\z\PTF\addons\PTF_Textures\Backgrounds\Background%1.paa",_count];
 		_display ctrlSetText _displayBackground;
 		sleep 10;
 };

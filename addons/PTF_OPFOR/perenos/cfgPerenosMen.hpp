@@ -77,14 +77,16 @@ class PTF_Pereno_base: rhsgref_hidf_base
 
 // --- Rank and file ---------------------------------------------------------
 
-// The bottom of the barrel: a teenager on a checkpoint with a rifle, one
-// spare magazine and a cap. Lowest sensitivity in the faction.
+// The bottom of the barrel: a teenager on a checkpoint with a rifle, two
+// spare magazines and a cap. Lowest sensitivity in the faction.
 //
-// He is the only unit in the campaign with NO load-bearing equipment -- the
-// linkedItems below drop the base class's ALICE webbing, so the OG-107
-// uniform's 40-mass container is his entire carrying capacity. A first aid
-// kit is 8 and a 20-round FAL magazine is 16.5, which leaves room for one.
-// Anything more is silently dropped at spawn.
+// He keeps the base class's ALICE webbing. The brief is ageing equipment, not
+// absent equipment, and stripping the webbing left him with the OG-107
+// uniform's 40 as his whole carrying capacity -- a first aid kit is 8 and a
+// 20-round FAL magazine is 16.5, so exactly one magazine fitted and the rest
+// were dropped at spawn. With the webbing's 120 he carries his three: 8 + 49.5
+// against 160. What marks him out is the cap, the sensitivity and the thin
+// load, not the absence of a belt order.
 class PTF_Pereno_sentry: PTF_Pereno_base
 {
    scope = 2;
@@ -92,10 +94,18 @@ class PTF_Pereno_sentry: PTF_Pereno_base
    displayName = "Centinela";
    sensitivity = 0.8;
    cost = 25000;
-   linkedItems[] = {"rhsgref_hat_M1951", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsgref_hat_M1951", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   magazines[] = {"rhs_mag_20Rnd_762x51_m80_fnfal"};
-   respawnMagazines[] = {"rhs_mag_20Rnd_762x51_m80_fnfal"};
+   magazines[] =
+      {
+         "rhs_mag_20Rnd_762x51_m80_fnfal",
+         "rhs_mag_20Rnd_762x51_m80_fnfal",
+         "rhs_mag_20Rnd_762x51_m80_fnfal"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_mag_20Rnd_762x51_m80_fnfal",
+         "rhs_mag_20Rnd_762x51_m80_fnfal",
+         "rhs_mag_20Rnd_762x51_m80_fnfal"
+      };
 };
 
 class PTF_Pereno_conscript: PTF_Pereno_base

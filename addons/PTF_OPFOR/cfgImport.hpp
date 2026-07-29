@@ -38,6 +38,11 @@ class rhsgref_ins_g_2b14;
 // lets La Guardia wear modern plate carriers.
 class rhsgref_ins_uniform_specter;
 
+// RHS USAF -- Eagle A-III assault pack in coyote, the base for the
+// machinegunner's belt pack. Coyote because every carrier in the faction is a
+// coyote MBAV; nothing else in La Guardia wears a backpack at all.
+class rhsusf_assault_eagleaiii_coy;
+
 class rhsgref_ins_g_uaz_ags;
 class rhsgref_ins_g_uaz_spg9;
 class rhsgref_ins_g_btr70;

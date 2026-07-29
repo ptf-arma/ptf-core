@@ -5,25 +5,13 @@ class  rhs_weap_AGM114M_base_Launcher;
 
 //cfgAmmo
 
-class M_Scalpel_AT;
-class ACE_Hellfire_AGM114K : M_Scalpel_AT {
-	class ace_missileguidance;
-};
-
 class SmokeShell;
-class SmokeShellBlue;
-class SmokeShellGreen;
-class SmokeShellOrange;
-class SmokeShellPurple;
-class SmokeShellRed;
-class SmokeShellYellow;
 
 class B_12Gauge_Slug_NoCartridge;
 
 //cfgMagazines
 class 2Rnd_12Gauge_Slug;
 
-class PylonRack_4Rnd_ACE_Hellfire_AGM114K;
 class FIR_Hydra_WP_P_7rnd_M;
 class VehicleMagazine;
 class rhs_mag_Hellfire_base : VehicleMagazine{};

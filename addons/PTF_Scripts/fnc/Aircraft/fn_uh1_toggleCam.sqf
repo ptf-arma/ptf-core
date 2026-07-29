@@ -16,15 +16,15 @@ if(_p == driver _v)then{
             camera restart
         */
         // Cam is only created once the flir display has been opened, so it can be nil here
-        if(!isNil "rhs_uh1_cam")then{
-            rhs_uh1_cam cameraeffect ["terminate","back"];
-            rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
+        if(!isNil "PTF_uh1_cam")then{
+            PTF_uh1_cam cameraeffect ["terminate","back"];
+            PTF_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
             //mode reset
-            private _mode=_v getVariable ["rhs_uh1_mode",0];
+            private _mode=_v getVariable ["PTF_uh1_mode",0];
             "rendertarget0" setPiPEffect [_mode];
             //zoom reset
-            private _n=(_v getVariable ["rhs_uh1_zoom",42])/40;
-            rhs_uh1_cam camSetFov (0.7/_n);
+            private _n=(_v getVariable ["PTF_uh1_zoom",42])/40;
+            PTF_uh1_cam camSetFov (0.7/_n);
         };
     };
 }else{
@@ -37,15 +37,15 @@ if(_p == driver _v)then{
                 camera restart
             */
             // Cam is only created once the flir display has been opened, so it can be nil here
-            if(!isNil "rhs_uh1_cam")then{
-                rhs_uh1_cam cameraeffect ["terminate","back"];
-                rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
+            if(!isNil "PTF_uh1_cam")then{
+                PTF_uh1_cam cameraeffect ["terminate","back"];
+                PTF_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
                 //mode reset
-                private _mode=_v getVariable ["rhs_uh1_mode",0];
+                private _mode=_v getVariable ["PTF_uh1_mode",0];
                 "rendertarget0" setPiPEffect [_mode];
                 //zoom reset
-                private _n=(_v getVariable ["rhs_uh1_zoom",42])/40;
-                rhs_uh1_cam camSetFov (0.7/_n);
+                private _n=(_v getVariable ["PTF_uh1_zoom",42])/40;
+                PTF_uh1_cam camSetFov (0.7/_n);
             };
         };
     };

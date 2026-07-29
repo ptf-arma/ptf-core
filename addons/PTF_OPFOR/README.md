@@ -83,9 +83,9 @@ statistically harder:
 | Night vision | None, on anyone | Every unit; PVS-15 on the veteran tier |
 | `sensitivity` | 0.8 (sentry) – 3.0 (NCO) | 3.2 – 4.0, no inattentive tier |
 | Rifle | L1A1/FAL, iron sights | AK-103, EOTech or ACOG MDO + PEQ-15 |
-| Magazines | 1–5, steel | 8, polymer |
+| Magazines | 2–5, steel | 8, polymer |
 | Protection | ALICE webbing, M1 steel | MBAV plate carrier, Ops-Core |
-| MG | FN MAG, three belts | PKP Pecheneg, two belts |
+| MG | FN MAG, 7 belts (3 worn, 4 in the pack) | PKP Pecheneg, 5 belts (2 worn, 3 in the pack) |
 | AT | RPG-7, PG-7V | RPG-7 PGO, PG-7VR tandem + thermobaric |
 | Armour | M113, BRDM-2 | BTR-70, BMP-2 |
 
@@ -98,6 +98,12 @@ Notes on specific choices:
   A unit's `weapons[]` array cannot carry attachments, so naming the RHS
   rifle directly would have handed them iron sights. The Zenitco B-33 rail is
   1913/ASDG, which is why Western optics mount on a Russian rifle.
+- **The PKP's five belts are heavier than the MAG's seven.** A 7.62x54R belt
+  is 64.35 mass against 32.34 for the MAG's 7.62 NATO, so La Guardia's
+  machinegunner hauls 321.75 of ammunition against the garrison's 226.38 for
+  fewer rounds. Two belts is everything the MBAV MG carrier's 160 will take —
+  the other three ride in `PTF_B_guardia_pkp`, an Eagle A-III preloaded through
+  `TransportMagazines`, because `magazines[]` never fills a backpack.
 - **No checkpoint group exists for this faction, on purpose.** La Guardia do
   not stand bored roadblocks. Their appearance anywhere other than Presa Alta
   or Tagua is supposed to tell the players something.
@@ -214,14 +220,29 @@ Numbers that matter (all read out of the RHS and vanilla configs):
 | `rhsusf_spc_crewman` / `_light` / `_rifleman` / `_iar` | 80 / 100 / 140 / 160 |
 | ToolKit / Medikit / MineDetector / FirstAidKit | 80 / 80 / 20 / 8 |
 | FAL 20rnd / AK 30rnd polymer / STANAG 30rnd | 16.5 / 11.5 / 9.4 |
-| PKP 100rnd belt / RPG PG-7V / PG-7VR / .50 BMG 10rnd | 64.4 / 31.5 / 64.4 / 41.1 |
+| PKP 100rnd belt / FN MAG 100rnd belt | 64.4 / 32.3 |
+| RPG PG-7V / PG-7VR / .50 BMG 10rnd | 31.5 / 64.4 / 41.1 |
 | FIM-92 round / 9K38 Igla round | 120 / 100 |
+| `rhsusf_assault_eagleaiii_*` / `rhsgref_hidf_alicepack` / `B_Carryall_cbr` | 240 / 320 / 320 |
 
 Consequences worth remembering: no vest in the game holds a MANPADS round
-alongside anything else, which is why the two Kestrel AA specialists carry
-theirs in a backpack loaded by an init handler; and the engine packs in array
-order, which is why `PTF_Guardia_at` lists its rockets before its rifle
-magazines.
+alongside anything else, and no vest holds more than two PKP belts; and the
+engine packs in array order, which is why `PTF_Guardia_at` lists its rockets
+before its rifle magazines.
+
+There are two ways to put gear on a man past what `magazines[]` can reach, and
+they are not interchangeable:
+
+- **`TransportMagazines` on a backpack class.** Declarative, no script, and the
+  right answer for spare ammunition. `PTF_B_guardia_pkp` carries the Guardia
+  machinegunner's other three belts this way, and RHS's own
+  `rhsgref_hidf_alicepack_mg` — which the Pereno machinegunner wears — carries
+  four FN MAG belts by the same mechanism.
+- **A `CBA_Extended_EventHandlers` init calling `addItemToBackpack`.** Used only
+  by the two Kestrel AA specialists, because they also need `addWeaponItem` to
+  seat a round in the launcher tube so the AI does not have to survive a reload
+  cycle before it can engage. Guard it on `local` so it runs once, on the
+  machine that owns the unit.
 
 ## Verify in-game
 
@@ -289,6 +310,11 @@ RHS configs, but the following want eyes on them in the Eden editor:
     Kestrel's Stinger pod + crewed P-37 search radar.
 18. **The P-37 radar mans and dies.** Unlike the SERHAT prop it is a real
     crewed vehicle — confirm a gunner sits in it and that it can be killed.
+19. **Guardia machinegunner's belts.** Open his inventory: two 7.62x54R belts
+    in the MBAV carrier and three more in the Eagle A-III on his back. If the
+    pack spawns empty, `TransportMagazines` on `PTF_B_guardia_pkp` is not
+    taking — nothing else in the addon uses that mechanism, so it is the one
+    thing here worth eyes on.
 
 ## Later passes
 

@@ -3,7 +3,7 @@
     ["LZ marker name list", "Set possibel names for the lz markers"],
     ["Paramarine Task Force", "Markers"],
     "['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']",
-    true, // isGlobal - the marker index (IDLZ) is shared, so the name list has to be too
+    false, // isGlobal - per-player list; the rotation index (IDLZ) is client-local to match
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
@@ -12,7 +12,7 @@
     ["Resupply marker name list", "Set possibel names for the Resupply markers"],
     ["Paramarine Task Force", "Markers"],
     "['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']",
-    true, // isGlobal - the marker index (IDRE) is shared, so the name list has to be too
+    false, // isGlobal - per-player list; the rotation index (IDRE) is client-local to match
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
@@ -55,13 +55,4 @@
     true, // isGlobal
     {},
     true // needRestart
-] call CBA_fnc_addSetting;
-[
-    "PTF_ArsenelExit", "CHECKBOX",
-    ["Auto Set Radios When exiting Arsenal", "Auto the your radioes when you exit the arsenal"],
-    ["Paramarine Task Force", "TFAR Setting"],
-    true,
-    true, // isGlobal
-    {},
-    false // needRestart
 ] call CBA_fnc_addSetting;

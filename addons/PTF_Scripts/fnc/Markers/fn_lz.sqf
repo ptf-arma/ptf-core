@@ -17,8 +17,11 @@ if (_names isEqualTo []) exitwith {
 hint "You addon settings are not set up correctly"
 };
 
-// IDLZ is shared across clients but the filter above can shrink the list, so
-// keep the index in range instead of running off the end of _names
+// PTF_LzNames is a per-player setting, so IDLZ is kept local to this machine -
+// a shared index into a list only this client has is meaningless, and a client
+// with a shorter list than the shared index used to run off the end of _names.
+// Kept as a mod anyway: the filter above can shrink the list. The two empty
+// checks above guarantee count _names > 0, so this cannot divide by zero.
 private _id = (missionNamespace getVariable ["IDLZ", 0]) mod (count _names);
 
 // Marker names have to be unique - createMarker silently returns "" for a
@@ -34,9 +37,10 @@ hint format ["Created lz %1 at %2", _names select _id, mapGridPosition _player];
 
 _str call BIS_fnc_stringToMarker;
 
+// deliberately not publicVariable'd - each player cycles their own name list
 if (_id == count _names - 1 ) then {
-	missionNamespace setVariable ["IDLZ", 0 , true];
+	missionNamespace setVariable ["IDLZ", 0];
 }
 else{
-	missionNamespace setVariable ["IDLZ", _ID + 1, true];
+	missionNamespace setVariable ["IDLZ", _ID + 1];
 };
