@@ -27,7 +27,9 @@ class PTF_Pereno_base: rhsgref_hidf_base
    vehicleClass = "Men";
    editorSubcategory = "EdSubcat_Personnel";
    genericNames = "PTF_ValmeranMen";
-   identityTypes[] = {"LanguageGRE_F", "Head_Euro", "Head_Tanoan"};
+   // Island-born, island-recruited: Tanoan-weighted faces, the island
+   // voice protocol (the closest Arma has to a Caribbean garrison).
+   identityTypes[] = {"LanguageENGFRE_F", "Head_Tanoan", "Head_Tanoan", "Head_African", "Head_Euro"};
    modelSides[] = {0, 1, 2, 3};
 
    // Conscript baseline: slow to identify a target, slow to notice one.

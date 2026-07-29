@@ -35,6 +35,7 @@ class cfgPatches
             "PTF_Pereno_dshkm",
             "PTF_Pereno_spg9",
             "PTF_Pereno_2b14",
+            "PTF_Pereno_d30",
             "PTF_Pereno_pilot",
             "PTF_Pereno_zil131",
             "PTF_Pereno_gaz66_ammo",
@@ -112,7 +113,48 @@ class cfgPatches
             "PTF_Flag_Valmera_F",
             "PTF_Flag_Perenos_F",
             "PTF_Flag_Guardia_F",
-            "PTF_Flag_Kestrel_F"
+            "PTF_Flag_Kestrel_F",
+            "PTF_Flag_Sindicato_F",
+            // El Sindicato
+            "PTF_Sind_miliciano",
+            "PTF_Sind_miliciano_akms",
+            "PTF_Sind_estibador",
+            "PTF_Sind_maderero",
+            "PTF_Sind_cazador",
+            "PTF_Sind_contrabandista",
+            "PTF_Sind_dinamitero",
+            "PTF_Sind_sanitario",
+            "PTF_Sind_enlace",
+            "PTF_Sind_cabecilla",
+            "PTF_Sind_hvt",
+            "PTF_Sind_offroad",
+            "PTF_Sind_technical",
+            "PTF_Sind_van",
+            "PTF_Sind_van_fuel",
+            "PTF_Sind_ural",
+            "PTF_Sind_ural_open",
+            "PTF_Sind_hatchback",
+            "PTF_Sind_boat",
+            "PTF_Sind_canoe",
+            // Valmeran civilians
+            "PTF_Civ_isleno_1",
+            "PTF_Civ_isleno_2",
+            "PTF_Civ_pescador",
+            "PTF_Civ_aldeano_1",
+            "PTF_Civ_aldeano_2",
+            "PTF_Civ_agricultor",
+            "PTF_Civ_comerciante",
+            "PTF_Civ_obrero",
+            "PTF_Civ_anciano",
+            "PTF_Civ_hatchback",
+            "PTF_Civ_suv",
+            "PTF_Civ_van",
+            "PTF_Civ_van_box",
+            "PTF_Civ_offroad",
+            "PTF_Civ_truck_box",
+            "PTF_Civ_fishboat",
+            "PTF_Civ_motorboat",
+            "PTF_Civ_canoe"
          };
       weapons[] =
          {
@@ -128,7 +170,8 @@ class cfgPatches
             "PTF_U_kestrel_dpm",
             "PTF_U_kestrel_lizard",
             "PTF_U_kestrel_desert",
-            "PTF_U_kestrel_olive"
+            "PTF_U_kestrel_olive",
+            "PTF_U_sind_coveralls"
          };
       requiredVersion = "0.1";
       requiredAddons[] =
@@ -154,7 +197,18 @@ class cfgPatches
             "rhs_c_radars",
             "rhsusf_c_statics",
             "rhsusf_c_melb",
-            "rhsusf_c_mrzr"
+            "rhsusf_c_mrzr",
+            // El Sindicato + civilians
+            "A3_Characters_F_Exp",
+            "A3_Characters_F_Exp_Civil",
+            "A3_Soft_F_Offroad_01",
+            "A3_Soft_F_Gamma_Van_01",
+            "A3_Soft_F_Gamma_Hatchback_01",
+            "A3_Soft_F_Gamma_SUV_01",
+            "A3_Soft_F_Gamma_Truck_02",
+            "A3_Soft_F_Exp_Offroad_02",
+            "A3_Boat_F_Exp_Boat_Transport_02",
+            "A3_Boat_F_Gamma_Boat_Civil_01"
          };
    };
 };
@@ -168,6 +222,7 @@ class CfgWeapons
 #include "kestrel\cfgKestrelWeapons.hpp"
 #include "perenos\cfgPerenosUniforms.hpp"
 #include "kestrel\cfgKestrelUniforms.hpp"
+#include "sindicato\cfgSindicatoUniforms.hpp"
 };
 
 class CfgVehicles
@@ -180,6 +235,9 @@ class CfgVehicles
 #include "guardia\cfgGuardiaVehicles.hpp"
 #include "kestrel\cfgKestrelMen.hpp"
 #include "kestrel\cfgKestrelVehicles.hpp"
+#include "sindicato\cfgSindicatoMen.hpp"
+#include "sindicato\cfgSindicatoVehicles.hpp"
+#include "civilians\cfgCivilians.hpp"
 #include "cfgFlags.hpp"
 };
 
@@ -190,5 +248,9 @@ class CfgGroups
 #include "perenos\cfgPerenosGroups.hpp"
 #include "guardia\cfgGuardiaGroups.hpp"
 #include "kestrel\cfgKestrelGroups.hpp"
+   };
+   class Indep
+   {
+#include "sindicato\cfgSindicatoGroups.hpp"
    };
 };

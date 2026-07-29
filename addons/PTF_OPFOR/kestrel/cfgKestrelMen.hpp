@@ -39,7 +39,9 @@ class PTF_Kestrel_base: rhsgref_nat_base
    faction = "PTF_OPFOR_Kestrel";
    vehicleClass = "Men";
    editorSubcategory = "EdSubcat_Personnel";
-   identityTypes[] = {"LanguageENG_F", "Head_Euro"};
+   // Ex-special-forces from four or five countries: NATO, African and
+   // European faces, English and British-English voices.
+   identityTypes[] = {"LanguageENG_F", "LanguageENGB_F", "Head_NATO", "Head_African", "Head_Euro"};
    modelSides[] = {0, 1, 2, 3};
 
    // Best individual soldiers in the campaign. Compare PTF_Pereno_base at
@@ -200,10 +202,10 @@ class PTF_Kestrel_sniper: PTF_Kestrel_base
    camouflage = 0.6;
    uniformClass = "PTF_U_kestrel_lizard";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_altis_lizard_co.paa"};
-   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc_sniper", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc_sniper", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   weapons[] = {"PTF_weap_kestrel_xm2010", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
-   respawnWeapons[] = {"PTF_weap_kestrel_xm2010", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc_sniper", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_M2010S", "rhsusf_acc_harris_bipod"};
+   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc_sniper", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_M2010S", "rhsusf_acc_harris_bipod"};
+   weapons[] = {"rhs_weap_XM2010_wd_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"rhs_weap_XM2010_wd_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
    magazines[] =
       {
          "rhsusf_5Rnd_300winmag_xm2010",
@@ -238,10 +240,10 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
    displayName = "Kestrel Anti-Materiel (M107)";
    cost = 1200000;
    accuracy = 4.0;
-   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   weapons[] = {"PTF_weap_kestrel_m107", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
-   respawnWeapons[] = {"PTF_weap_kestrel_m107", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_LEUPOLDMK4"};
+   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_LEUPOLDMK4"};
+   weapons[] = {"rhs_weap_M107_w_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"rhs_weap_M107_w_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
    magazines[] =
       {
          "rhsusf_mag_10Rnd_STD_50BMG_mk211",

@@ -916,3 +916,22 @@ class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
    };
    textureList[] = {"ptf", 1};
 };
+
+
+// --- Artillery -------------------------------------------------------------
+// The battalion's two D-30s: towed, forty years old, and still the loudest
+// argument on the island. Fired more for effect than accuracy -- but a
+// battery that can range the whole valley changes how players move through
+// it, and silencing the guns is a mission in itself.
+
+class PTF_Pereno_d30: rhsgref_ins_d30
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Perenos";
+   editorSubcategory = "EdSubcat_Artillery";
+   displayName = "Obus D-30 (122mm)";
+   crew = "PTF_Pereno_rifleman";
+};

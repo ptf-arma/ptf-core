@@ -35,7 +35,9 @@ class PTF_Guardia_base: rhsgref_ins_uniform_specter
    vehicleClass = "Men";
    editorSubcategory = "EdSubcat_Personnel";
    genericNames = "PTF_ValmeranMen";
-   identityTypes[] = {"LanguageGRE_F", "Head_Euro", "Head_Tanoan"};
+   // Hand-picked from the whole country, not just the island: a broader
+   // mix than the garrison, same voice protocol.
+   identityTypes[] = {"LanguageENGFRE_F", "Head_Tanoan", "Head_Euro", "Head_African"};
    modelSides[] = {0, 1, 2, 3};
 
    // Professional baseline. Compare PTF_Pereno_base at 1.0 / 1.2.
@@ -50,8 +52,8 @@ class PTF_Guardia_base: rhsgref_ins_uniform_specter
    RespawnItems[] = {"FirstAidKit"};
 
    // ANPVS-14 as the floor. Nobody in this faction fights blind at night.
-   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_rifleman", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_rifleman", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_rifleman", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_eotech_xps3", "rhsusf_acc_anpeq15"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_rifleman", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_eotech_xps3", "rhsusf_acc_anpeq15"};
 
    weapons[] = {"PTF_weap_guardia_ak103", "Throw", "Put"};
    respawnWeapons[] = {"PTF_weap_guardia_ak103", "Throw", "Put"};
@@ -105,8 +107,8 @@ class PTF_Guardia_rifleman_vet: PTF_Guardia_base
    cost = 340000;
    weapons[] = {"PTF_weap_guardia_ak103_mdo", "Throw", "Put"};
    respawnWeapons[] = {"PTF_weap_guardia_ak103_mdo", "Throw", "Put"};
-   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
 };
 
 class PTF_Guardia_grenadier: PTF_Guardia_base

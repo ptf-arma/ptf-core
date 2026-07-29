@@ -278,5 +278,21 @@ class PTF_OPFOR_Perenos
          class Unit1 { side = 0; vehicle = "PTF_Pereno_gaz66_zu23"; rank = "CORPORAL"; position[] = {0, -15, 0}; };
          class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {-10, -10, 0}; };
       };
+   
+      // Two guns, one battery, and the men the battalion trusts to serve
+      // them. Counter-battery is a player problem now.
+      class PTF_grp_Pereno_d30_battery
+      {
+         name = "Bateria de Obuses (D-30)";
+         faction = "PTF_OPFOR_Perenos";
+         side = 0;
+         rarityGroup = 0.2;
+         icon = "\A3\ui_f\data\map\markers\nato\o_art.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_d30";        rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_d30";        rank = "CORPORAL"; position[] = {25, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {10, -10, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {5, -15, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {15, -15, 0}; };
+      };
    };
 };

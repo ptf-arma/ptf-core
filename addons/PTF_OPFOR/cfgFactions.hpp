@@ -36,4 +36,25 @@ class CfgFactionClasses
       icon = "\A3\ui_f\data\map\markers\nato\o_recon.paa";
       flag = "\z\PTF\addons\PTF_OPFOR\data\flag_kestrel_co.paa";
    };
+   // The dockworkers' and timber union -- the only structure on the island
+   // Bastida didn't build. A partner force: genuinely useful, genuinely
+   // inconvenient. INDEPENDENT so missions can set its friendliness per-op.
+   class PTF_IND_Sindicato
+   {
+      displayName = "El Sindicato";
+      priority = 3;
+      side = 2;   // INDEPENDENT
+      icon = "\A3\ui_f\data\map\markers\nato\n_inf.paa";
+      flag = "\z\PTF\addons\PTF_OPFOR\data\flag_sindicato_co.paa";
+   };
+
+   // The people all of this is happening to.
+   class PTF_CIV_Valmera
+   {
+      displayName = "Valmera (Civiles)";
+      priority = 3;
+      side = 3;   // CIVILIAN
+      icon = "\A3\ui_f\data\map\markers\nato\c_unknown.paa";
+      flag = "\z\PTF\addons\PTF_OPFOR\data\flag_valmera_co.paa";
+   };
 };

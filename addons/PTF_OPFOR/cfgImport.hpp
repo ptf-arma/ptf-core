@@ -68,6 +68,7 @@ class rhsgref_ins_gaz66_zu23;
 class rhsgref_ins_ZU23;
 class rhsgref_ins_Mi8amt;
 class rhsgref_ins_zsu234;
+class rhsgref_ins_d30;
 
 // Boats: RHS has NO boats outside the HIDF (BLUFOR) set, so every boat in the
 // campaign is a HIDF hull with side/faction/crew overridden.
@@ -104,3 +105,34 @@ class RHS_MELB_AH6M_L;
 // checkered racing flag and its cloth UV renders the design badly offset.
 class FlagCarrierCore;
 class FlagCarrier;
+
+// --- El Sindicato ----------------------------------------------------------
+// Vanilla FIA guerrilla base (side 2, wears vanilla guerrilla/civ clothing
+// models) and the union's civilian vehicles.
+class I_G_Soldier_base_F;
+class C_Offroad_01_F;
+class I_G_Offroad_01_armed_F;
+class C_Hatchback_01_F;
+class rhsgref_nat_van;
+class rhsgref_nat_van_fuel;
+class RHS_Ural_Civ_01;
+class RHS_Ural_Open_Civ_01;
+class rhsgref_civ_canoe;
+class C_Boat_Transport_02_F;
+
+// --- Valmeran civilians ----------------------------------------------------
+class C_man_sport_1_F_tanoan;
+class C_man_sport_2_F_tanoan;
+class C_man_sport_3_F_tanoan;
+class C_Man_casual_1_F_tanoan;
+class C_Man_casual_2_F_tanoan;
+class C_Man_casual_3_F_tanoan;
+class C_Man_casual_4_F_tanoan;
+class C_Man_casual_5_F_tanoan;
+class C_Man_casual_6_F_tanoan;
+class C_SUV_01_F;
+class C_Van_01_transport_F;
+class C_Van_01_box_F;
+class C_Offroad_02_unarmed_F;
+class C_Truck_02_box_F;
+class C_Boat_Civil_01_F;
