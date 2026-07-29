@@ -77,8 +77,16 @@ class PTF_Pereno_base: rhsgref_hidf_base
 
 // --- Rank and file ---------------------------------------------------------
 
-// The bottom of the barrel: a teenager on a checkpoint with three magazines
-// and a cap. Lowest sensitivity in the faction.
+// The bottom of the barrel: a teenager on a checkpoint with a rifle, two
+// spare magazines and a cap. Lowest sensitivity in the faction.
+//
+// He keeps the base class's ALICE webbing. The brief is ageing equipment, not
+// absent equipment, and stripping the webbing left him with the OG-107
+// uniform's 40 as his whole carrying capacity -- a first aid kit is 8 and a
+// 20-round FAL magazine is 16.5, so exactly one magazine fitted and the rest
+// were dropped at spawn. With the webbing's 120 he carries his three: 8 + 49.5
+// against 160. What marks him out is the cap, the sensitivity and the thin
+// load, not the absence of a belt order.
 class PTF_Pereno_sentry: PTF_Pereno_base
 {
    scope = 2;
@@ -86,8 +94,6 @@ class PTF_Pereno_sentry: PTF_Pereno_base
    displayName = "Centinela";
    sensitivity = 0.8;
    cost = 25000;
-   linkedItems[] = {"rhsgref_hat_M1951", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsgref_hat_M1951", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    magazines[] =
       {
          "rhs_mag_20Rnd_762x51_m80_fnfal",
@@ -222,6 +228,11 @@ class PTF_Pereno_machinegunner_assist: PTF_Pereno_rifleman
    backpack = "rhsgref_hidf_alicepack_mg";
 };
 
+// Two rockets and three magazines. A PG-7V rocket is 31.5 mass against the
+// 160 the uniform (40) and ALICE webbing (120) hold between them, so the
+// third rocket and the fourth rifle magazine had nowhere to go and were
+// being dropped at spawn. The OG-7V went first: the garrison's RPG is a
+// vehicle answer, not a fragmentation one.
 class PTF_Pereno_at: PTF_Pereno_rifleman
 {
    displayName = "Fusilero AT (RPG-7)";
@@ -234,20 +245,16 @@ class PTF_Pereno_at: PTF_Pereno_rifleman
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_OG7V_mag"
+         "rhs_rpg7_PG7V_mag"
       };
    respawnMagazines[] =
       {
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_OG7V_mag"
+         "rhs_rpg7_PG7V_mag"
       };
 };
 
@@ -290,6 +297,12 @@ class PTF_Pereno_medic: PTF_Pereno_rifleman
    backpack = "rhsgref_hidf_alicepack_medic";
 };
 
+// A toolkit is 80 mass and a mine detector 20. With the first aid kit that
+// is 108 of the 160 the uniform and webbing hold, and the engine packs
+// Items[] before magazines[] -- so the rifleman's five magazines simply did
+// not fit and three of them were dropped at spawn. Two is what is left.
+// (The ALICE pack does not help: the engine only fills the uniform and vest
+// when it distributes magazines[].)
 class PTF_Pereno_engineer: PTF_Pereno_rifleman
 {
    displayName = "Zapador";
@@ -300,6 +313,16 @@ class PTF_Pereno_engineer: PTF_Pereno_rifleman
    backpack = "rhsgref_hidf_alicepack";
    Items[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
+   magazines[] =
+      {
+         "rhs_mag_20Rnd_762x51_m80_fnfal",
+         "rhs_mag_20Rnd_762x51_m80_fnfal"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_mag_20Rnd_762x51_m80_fnfal",
+         "rhs_mag_20Rnd_762x51_m80_fnfal"
+      };
 };
 
 class PTF_Pereno_crewman: PTF_Pereno_base
@@ -347,9 +370,10 @@ class PTF_Pereno_teamleader: PTF_Pereno_rifleman
    respawnLinkedItems[] = {"rhsgref_helmet_M1_painted", "rhsgref_chestrig", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_l1a1", "Throw", "Put", "Binocular"};
    respawnWeapons[] = {"rhs_weap_l1a1", "Throw", "Put", "Binocular"};
+   // Five, not six: the chest rig holds 100 and the uniform 40, and a FAL
+   // magazine is 16.5 against a grenade and a smoke at 8.8 and 11.9.
    magazines[] =
       {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
@@ -360,7 +384,6 @@ class PTF_Pereno_teamleader: PTF_Pereno_rifleman
       };
    respawnMagazines[] =
       {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
@@ -380,9 +403,10 @@ class PTF_Pereno_squadleader: PTF_Pereno_teamleader
    headgearList[] = {"rhsgref_helmet_pasgt_erdl", 3, "rhsgref_helmet_pasgt_olive", 1};
    linkedItems[] = {"rhsgref_helmet_pasgt_erdl", "rhsgref_TacVest_ERDL", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsgref_helmet_pasgt_erdl", "rhsgref_TacVest_ERDL", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   // Same 140 of capacity as the Cabo, carrying a second smoke on top: five
+   // magazines is the ceiling.
    magazines[] =
       {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
@@ -394,7 +418,6 @@ class PTF_Pereno_squadleader: PTF_Pereno_teamleader
       };
    respawnMagazines[] =
       {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",
          "rhs_mag_20Rnd_762x51_m80_fnfal",

@@ -385,6 +385,13 @@ class CAManBase : Man {
          displayName = "Markers";
          icon = "\A3\ui_f\data\map\markers\handdrawn\objective_CA.paa";
          priority = 0.9;
+         // This block hangs off CAManBase, so without a condition it was offered
+         // to dead and unconscious players. ACE only expands the children of an
+         // active parent, so gating the category gates all four markers.
+         // The exceptions keep the behaviour that was already relied on: marking
+         // from inside a vehicle (pilots calling an LZ), with the map open, while
+         // seated or while swimming.
+         condition = "[_player, objNull, ['isNotInside', 'notOnMap', 'isNotSitting', 'isNotSwimming']] call ace_common_fnc_canInteractWith";
             class lz {
             displayName = "Place Lz Marker";
             Icon = "\A3\ui_f\data\map\markers\handdrawn\pickup_CA.paa";

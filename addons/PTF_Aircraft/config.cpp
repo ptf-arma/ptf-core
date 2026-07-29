@@ -8,6 +8,7 @@ class CfgPatches
 			"PTF_C130J_Cargo",
 			"PTF_CH53_Ramp",
 			"PTF_CH53_Cargo",
+			"PTF_UH1Y",
 			"PTF_UH1Y_Unarmed",
 			"PTF_UH1Y_HQ",
 			"PTF_UH1Y_SCARFACE",
@@ -18,12 +19,15 @@ class CfgPatches
 			"PTF_MV22_Cargo",
 			"PTF_MD500",
 			"PTF_Cessna_400",
+			"PTF_Cessna_400_Racing",
 			"PTF_MD500_Trainer",
 			"PTF_Cessna_400_Trainer",
 			"PTF_MD500_HQ",
 			"PTF_Cessna_400_HQ",
+			"PTF_AH1Z",
 			"PTF_AH1Z_GUNFIGHTERS",
 			"PTF_AH1Z_HQ",
+			"PTF_MQ9",
 			"PTF_MQ9_SCARFACE",
 			"PTF_MQ9_HQ",
 			"PTF_UH1Y_GUNFIGHTERS",
@@ -51,7 +55,12 @@ class CfgPatches
 			"USAF_MQ9",
 			"usaf_kc135_c",
 			"USAF_RQ4A",
-			"rhsgref_a29"
+			"rhsgref_a29",
+			// FIR_AirWeaponSystem_US: cfgAH1Z uses FIR_APKWS_M282_P_7rnd_M.
+			// ace_cargo: ace_cargo_hasCargo / ace_cargo_space are set on most
+			// aircraft here. Both were used without being declared.
+			"FIR_AirWeaponSystem_US",
+			"ace_cargo"
 		};
 	};
 };

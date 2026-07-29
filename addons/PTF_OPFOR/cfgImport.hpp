@@ -2,6 +2,12 @@
 // Declared inside class CfgVehicles by config.cpp -- these are CfgVehicles
 // subclasses, so declaring them at root scope would not resolve.
 
+// CBA Extended Event Handlers base -- lets the Kestrel AA specialists nest
+// their init handler inside CBA_Extended_EventHandlers rather than replacing
+// the inherited EventHandlers class (which breaks XEH). Same declaration as
+// PTF_Aircraft/cfgIMPORT.hpp and PTF_Utility/cfgImport.hpp.
+class CBA_Extended_EventHandlers_base;
+
 // RHS GREF -- Horizon Islands Defence Force infantry base.
 // Chosen because it is RHS's tropical-island garrison: ERDL/OG-107 fatigues,
 // M1 steel helmets, ALICE webbing and L1A1 rifles on the guerrilla m93 model.
@@ -31,6 +37,11 @@ class rhsgref_ins_g_2b14;
 // integrated webbing of the HIDF model los Perenos are built on. That is what
 // lets La Guardia wear modern plate carriers.
 class rhsgref_ins_uniform_specter;
+
+// RHS USAF -- Eagle A-III assault pack in coyote, the base for the
+// machinegunner's belt pack. Coyote because every carrier in the faction is a
+// coyote MBAV; nothing else in La Guardia wears a backpack at all.
+class rhsusf_assault_eagleaiii_coy;
 
 class rhsgref_ins_g_uaz_ags;
 class rhsgref_ins_g_uaz_spg9;

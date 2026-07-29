@@ -7,16 +7,13 @@ class cfgFunctions {
 			class ccp{};
 			class lz{};
 			class re{};
+			class allocMarkerName{};
 		};
 		class Boxes {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Boxes";
 			class BigVicBox_init {};
 			class SmallVicBox_init {};
 			class Tracks_init {};
-		};
-		class Drone {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\drone";
-			class droneitem {};
 		};
 		class Flags {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\flag";

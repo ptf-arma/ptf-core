@@ -18,8 +18,12 @@ class CfgPatches
 		"ace_missileguidance",
 		"rhsusf_c_weapons",
 		"rhs_c_weapons",
-		"A3_Weapons_F",
-		"ace_hellfire"
+		// ace_hellfire dropped: the only classes it supplied were the
+		// ACE_Hellfire_AGM114K / PylonRack_4Rnd_ACE_Hellfire_AGM114K
+		// forward declarations, which nothing in this addon inherited from.
+		// ace_missileguidance is kept: ACE drives the guidance on the RHS
+		// Hellfire ammo that PTF_rhs_mag_AGM114M_2 feeds.
+		"A3_Weapons_F"
 		};
 	};
 };

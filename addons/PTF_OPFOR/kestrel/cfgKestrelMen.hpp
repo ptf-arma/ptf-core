@@ -244,12 +244,14 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
    respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_LEUPOLDMK4"};
    weapons[] = {"rhs_weap_M107_w_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
    respawnWeapons[] = {"rhs_weap_M107_w_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   // A 10-round .50 BMG box is 41.14 mass, so not one of them will go in the
+   // uniform's 40 -- the plateframe's 160 is his entire magazine capacity and
+   // it holds exactly three. The five declared here before meant two were
+   // dropped at spawn.
    magazines[] =
       {
          "rhsusf_mag_10Rnd_STD_50BMG_mk211",
          "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_M33",
          "rhsusf_mag_10Rnd_STD_50BMG_M33",
          "rhsusf_mag_17Rnd_9x19_JHP"
       };
@@ -257,8 +259,6 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
       {
          "rhsusf_mag_10Rnd_STD_50BMG_mk211",
          "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_M33",
          "rhsusf_mag_10Rnd_STD_50BMG_M33",
          "rhsusf_mag_17Rnd_9x19_JHP"
       };
@@ -274,6 +274,23 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
 // now operated by people who actually know how. Fielding both tells the
 // players that Kestrel did not just arrive, they took something over.
 
+// THE MISSILES ARE NOT IN magazines[], AND MUST NOT BE PUT BACK.
+//
+// A FIM-92 round is 120 mass. When the engine distributes a soldier's
+// magazines[] it fills the UNIFORM and VEST only -- never the backpack --
+// so a 120-mass round has to fit inside a 160-capacity carrier that is
+// already holding the rifle magazines and the first aid kit. It does not,
+// and the engine drops what will not fit silently: this class was spawning
+// with a launcher and no rounds at all, which defeats the entire point of
+// Kestrel's air defence. (Adding a backpack alone does NOT fix this. See
+// PTF_Pereno_engineer, which has had one the whole time and still
+// overflowed.)
+//
+// So the rounds go on in an init handler instead, straight into a 320
+// capacity carryall. Two rounds is 240 of it. The handler also seats a round
+// in the launcher itself, so he does not have to survive an AI reload cycle
+// before he can engage anything. It is guarded on locality, so it runs once,
+// on the machine that owns the unit.
 class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
 {
    scope = 2;
@@ -283,16 +300,22 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
    icon = "iconManAT";
    linkedItems[] = {"rhsusf_opscore_01", "rhsusf_spc_iar", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_spc_iar", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   backpack = "B_Carryall_cbr";
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
+   class EventHandlers: EventHandlers
+   {
+      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
+      {
+         init = "if (local (_this select 0)) then {private _u = _this select 0; _u addItemToBackpack 'rhs_fim92_mag'; _u addItemToBackpack 'rhs_fim92_mag'; _u addWeaponItem ['rhs_weap_fim92', 'rhs_fim92_mag'];};";
+      };
+   };
    magazines[] =
       {
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_fim92_mag",
-         "rhs_fim92_mag",
          "rhsusf_mag_17Rnd_9x19_JHP",
          "rhs_mag_m67"
       };
@@ -302,13 +325,14 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_fim92_mag",
-         "rhs_fim92_mag",
          "rhsusf_mag_17Rnd_9x19_JHP",
          "rhs_mag_m67"
       };
 };
 
+// Same treatment as the Stinger above, and for the same reason: a 9K38
+// round is 100 mass and his SPC Light carrier holds 100 in total. Two rounds
+// in a 320-capacity carryall, added by a locality-guarded init handler.
 class PTF_Kestrel_aa_igla: PTF_Kestrel_base
 {
    scope = 2;
@@ -320,16 +344,22 @@ class PTF_Kestrel_aa_igla: PTF_Kestrel_base
    respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    uniformClass = "PTF_U_kestrel_desert";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_3color_desert_co.paa"};
+   backpack = "B_Carryall_cbr";
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
+   class EventHandlers: EventHandlers
+   {
+      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
+      {
+         init = "if (local (_this select 0)) then {private _u = _this select 0; _u addItemToBackpack 'rhs_mag_9k38_rocket'; _u addItemToBackpack 'rhs_mag_9k38_rocket'; _u addWeaponItem ['rhs_weap_igla', 'rhs_mag_9k38_rocket'];};";
+      };
+   };
    magazines[] =
       {
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_9k38_rocket",
-         "rhs_mag_9k38_rocket",
          "rhsusf_mag_17Rnd_9x19_JHP",
          "rhs_mag_m67"
       };
@@ -339,8 +369,6 @@ class PTF_Kestrel_aa_igla: PTF_Kestrel_base
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_9k38_rocket",
-         "rhs_mag_9k38_rocket",
          "rhsusf_mag_17Rnd_9x19_JHP",
          "rhs_mag_m67"
       };
@@ -360,6 +388,31 @@ class PTF_Kestrel_medic: PTF_Kestrel_base
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_medic", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    Items[] = {"FirstAidKit", "Medikit"};
    RespawnItems[] = {"FirstAidKit", "Medikit"};
+   // Five rifle magazines rather than the operator's seven: the Medikit is
+   // 80 mass, and Items[] are packed into the uniform and carrier before
+   // magazines[] are.
+   magazines[] =
+      {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhsusf_mag_17Rnd_9x19_JHP",
+         "rhs_mag_m67",
+         "rhs_mag_m18_green"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhsusf_mag_17Rnd_9x19_JHP",
+         "rhs_mag_m67",
+         "rhs_mag_m18_green"
+      };
 };
 
 class PTF_Kestrel_breacher: PTF_Kestrel_base
@@ -377,8 +430,33 @@ class PTF_Kestrel_breacher: PTF_Kestrel_base
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_dpm_co.paa"};
    Items[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
+   // Toolkit (80), mine detector (20) and first aid kit (8) are 108 of the
+   // 180 his uniform and radio carrier hold between them, and the engine
+   // packs Items[] first. Four rifle magazines is what is left of seven --
+   // he was losing both pistol magazines, the grenade and the smoke.
+   magazines[] =
+      {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhsusf_mag_17Rnd_9x19_JHP",
+         "rhs_mag_m67"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhsusf_mag_17Rnd_9x19_JHP",
+         "rhs_mag_m67"
+      };
 };
 
+// The SPC Crewman carrier is cut down to fit a vehicle hatch and holds only
+// 80, against 140-160 for the operators' rigs. Four magazines rather than
+// seven; a crewman fights out of a vehicle, not on foot.
 class PTF_Kestrel_crewman: PTF_Kestrel_base
 {
    scope = 2;
@@ -387,6 +465,24 @@ class PTF_Kestrel_crewman: PTF_Kestrel_base
    cost = 800000;
    linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_crewman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_crewman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   magazines[] =
+      {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhsusf_mag_17Rnd_9x19_JHP",
+         "rhs_mag_m67"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhsusf_mag_17Rnd_9x19_JHP",
+         "rhs_mag_m67"
+      };
 };
 
 class PTF_Kestrel_teamleader: PTF_Kestrel_base

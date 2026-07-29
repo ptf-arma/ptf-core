@@ -3,7 +3,15 @@ class cfgPatches
 	class PTF_Helmets
 	{
 		units[]={};
-		weapons[]={};
+		// The remaining helmets in this addon declare no scope of their own;
+		// they inherit it from their PTF_Clothes / RHS / USP parents.
+		weapons[]=
+		{
+			"PTF_Helmet_FASTXP_TAN",
+			"PTF_Helmet_FASTXP_CO_TAN",
+			"PTF_Helmet_FASTXP_CT_TAN",
+			"PTF_Helmet_FASTXP_CU_TAN"
+		};
 		requiredVersion="0.1";
 		requiredAddons[]=
 		{

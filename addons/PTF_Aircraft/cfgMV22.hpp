@@ -20,8 +20,12 @@ class PTF_MV22_Ramp : DEGA_MV22_Infantry_NATO
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,7.5,0.9};
    LESH_WheelOffset[] = {0.35,0};
-   class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   class EventHandlers
+   {
+      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
+      {
+         init = "[(_this select 0)] call PTF_fnc_slingloading";
+      };
    };
    #include "cfgMV22_shared.hpp"
 };
@@ -39,13 +43,17 @@ class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
    ace_cargo_hasCargo = 1;
    author = "Paramarine Task Force";
    displayName = "MV-22 Cargo [MAG36]";
-   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_2_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\mv22_2_co.paa"};
    LESH_canBeTowed = 1;
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,7.5,0.9};
    LESH_WheelOffset[] = {0.35,0};
-   class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   class EventHandlers
+   {
+      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
+      {
+         init = "[(_this select 0)] call PTF_fnc_slingloading";
+      };
    };
    #include "cfgMV22_shared.hpp"
 };
@@ -61,13 +69,17 @@ class PTF_MV22_Minigun : DEGA_MV22_IDWS_NATO
    ace_cargo_hasCargo = 1;
    author = "Paramarine Task Force";
    displayName = "MV-22 Mini [MAG36]";
-   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\cargo\mv22_2_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\aircraft\mv22\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\aircraft\mv22\mv22_2_co.paa"};
    LESH_canBeTowed = 1;
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,7.5,0.9};
    LESH_WheelOffset[] = {0.35,0};
-   class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
+   class EventHandlers
+   {
+      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
+      {
+         init = "[(_this select 0)] call PTF_fnc_slingloading";
+      };
    };
    #include "cfgMV22_shared.hpp"
 };

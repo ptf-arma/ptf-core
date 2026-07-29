@@ -14,6 +14,9 @@ class PTF_ACV : Peral_ACV
     ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
     maximumLoad = 3250;
     side = 1;
+	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
+	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
+	// same values live; uncomment only if the ACVs should be liftable.
 	//SlingloadingWeight = "[2900,2800]";
     author = "Paramarine Task Force";
     displayName = "ACV (M2) [PTF]";
@@ -185,6 +188,9 @@ class PTF_ACV_MK19 : Peral_ACV_MK19
     ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
     maximumLoad = 3250;
     side = 1;
+	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
+	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
+	// same values live; uncomment only if the ACVs should be liftable.
 	//SlingloadingWeight = "[2900,2800]";
     author = "Paramarine Task Force";
     displayName = "ACV (MK19) [PTF]";
@@ -356,6 +362,9 @@ class PTF_ACV_30 : Peral_ACV_30
     ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
     maximumLoad = 3250;
     side = 1;
+	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
+	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
+	// same values live; uncomment only if the ACVs should be liftable.
 	//SlingloadingWeight = "[2900,2800]";
     author = "Paramarine Task Force";
     displayName = "ACV (30MM) [PTF]";

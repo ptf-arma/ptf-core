@@ -28,7 +28,6 @@ class CfgPatches
           "PTF_Standard_Arsenal",
           "PTF_Buiding_RepairDepot",
           "PTF_Cargo_Tiny_Ammo",
-          "PTF_Cargo_Ammo",
           "PTF_Spawner",
           "PTF_Pso_Arsenal",
           "PTF_Standard_Arsenal_No_Ammo"
@@ -55,14 +54,13 @@ class CfgPatches
           "A3_Structures_F_EPA",
           "A3_Structures_F_Heli",
           "A3_Supplies_F_Exp",
-          "tsp_breach",
-          "tsp_breach_block",
-          "tsp_breach_linear",
-          "tsp_breach_package",
-          "tsp_breach_popper",
-          "tsp_breach_shock",
-          "tsp_breach_silhouette",
-          "tsp_breach_stick"};
+          // TSP Breach: only the three charge magazines below are stocked, by
+          // the Explosives crates. tsp_breach, _linear, _shock, _silhouette
+          // and _stick were required but never referenced; tsp_breach itself
+          // is a requiredAddon of all three PBOs kept here, so it still loads.
+          "tsp_breach_block",   // tsp_breach_block_mag
+          "tsp_breach_package", // tsp_breach_package_mag
+          "tsp_breach_popper"}; // tsp_breach_popper_mag
    };
 };
 #include "cfgImport.hpp"
