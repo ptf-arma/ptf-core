@@ -61,9 +61,6 @@ class PTF_Kestrel_radar: rhsgref_serhat_radar
 // The contractor's actual daily driver: fast, unarmoured, and cheap to lose.
 class PTF_Kestrel_mrzr: rhsusf_mrzr4_w
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -83,13 +80,34 @@ class PTF_Kestrel_mrzr: rhsusf_mrzr4_w
          "\rhsusf\addons\rhsusf_mrzr\data\grn_tan_pnt1_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_mrzr_merged_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_mrzr_camo_co.paa",
+            "\rhsusf\addons\rhsusf_mrzr\data\yel_tan_pnt1_co.paa",
+            "\rhsusf\addons\rhsusf_mrzr\data\red_tan_pnt1_co.paa",
+            "\rhsusf\addons\rhsusf_mrzr\data\grn_tan_pnt1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_mrzr_merged_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -116,13 +134,40 @@ class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\A2_parts_WD_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\wheel_wranglermt_b_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_wood_w_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_m998_cargo_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
+            ""
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Kestrel_m1025: rhsusf_m1025_w
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -147,6 +192,35 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\A2_parts_WD_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\wheel_wranglermt_b_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_m1025_body_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
+            ""
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // RHS USAF woodland HMMWV rather than the HIDF green one los Perenos use:
@@ -157,9 +231,6 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
 // custom art involved. See LIVERIES.md.
 class PTF_Kestrel_m1025_m2: rhsusf_m1025_w_m2
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -200,6 +271,35 @@ class PTF_Kestrel_m1025_m2: rhsusf_m1025_w_m2
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\A2_parts_WD_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\wheel_wranglermt_b_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_m1025_body_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
+            ""
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Expanded air defence --------------------------------------------------
@@ -239,9 +339,6 @@ class PTF_Kestrel_p37: rhs_p37_turret_vpvo
 
 class PTF_Kestrel_mh6: RHS_MELB_MH6M
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -259,13 +356,31 @@ class PTF_Kestrel_mh6: RHS_MELB_MH6M
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_melb_ext_co.paa",
          "rhsusf\addons\rhsusf_melb\data\decals\SN\blank_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_melb_ext_co.paa",
+            "rhsusf\addons\rhsusf_melb\data\decals\SN\blank_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -283,4 +398,25 @@ class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_melb_ext_co.paa",
          "rhsusf\addons\rhsusf_melb\data\decals\SN\blank_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_melb_ext_co.paa",
+            "rhsusf\addons\rhsusf_melb\data\decals\SN\blank_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };

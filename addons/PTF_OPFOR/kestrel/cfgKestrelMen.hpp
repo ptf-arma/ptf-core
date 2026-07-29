@@ -28,6 +28,10 @@
 
 class PTF_Kestrel_base: rhsgref_nat_base
 {
+   // rhsgref_nat_base names an editor-preview image that does not exist in
+   // RHS's editorpreviews PBO ("Cannot load texture ... rhsgref_nat_base.paa"
+   // in-game). Blank it; children inherit the blank.
+   editorPreview = "";
    scope = 0;
    scopeCurator = 0;
    author = "Paramarine Task Force";

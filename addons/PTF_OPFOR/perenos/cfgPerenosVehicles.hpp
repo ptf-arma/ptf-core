@@ -17,9 +17,6 @@
 // texture cost.
 class PTF_Pereno_uaz_open: rhsgref_ins_g_uaz_open
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -32,13 +29,30 @@ class PTF_Pereno_uaz_open: rhsgref_ins_g_uaz_open
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_rifleman"};
    // Marked sheet: faded VII on the door panel (built from star-free 002).
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_OPFOR\data\pereno_uaz_co.paa"};
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_uaz_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_uaz_dshkm: rhsgref_ins_g_uaz_dshkm_chdkz
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -55,13 +69,32 @@ class PTF_Pereno_uaz_dshkm: rhsgref_ins_g_uaz_dshkm_chdkz
          "rhsafrf\addons\rhs_a2port_car\UAZ\Data\uaz_mount_co.paa",
          "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_uaz_co.paa",
+            "rhsafrf\addons\rhs_a2port_car\UAZ\Data\uaz_mount_co.paa",
+            "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_ural: rhsgref_ins_g_ural
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -79,6 +112,28 @@ class PTF_Pereno_ural: rhsgref_ins_g_ural
          "rhsafrf\addons\rhs_a2port_car\ural\data\ural_plachta_chdkz_co.paa",
          "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_ural_kabina_co.paa",
+            "rhsafrf\addons\rhs_a2port_car\ural\data\ural_plachta_chdkz_co.paa",
+            "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_ural_open: rhsgref_ins_g_ural_open
@@ -96,9 +151,6 @@ class PTF_Pereno_ural_open: rhsgref_ins_g_ural_open
 
 class PTF_Pereno_gaz66: rhsgref_ins_g_gaz66
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -120,13 +172,35 @@ class PTF_Pereno_gaz66: rhsgref_ins_g_gaz66
          "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa",
          "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_gaz66_cab_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\tent_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_kung_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_ap2kung_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa",
+            "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_m1025: rhsgref_hidf_m1025
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -151,13 +225,39 @@ class PTF_Pereno_m1025: rhsgref_hidf_m1025
          "",
          ""
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_exterior_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_interior_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\A2_parts_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\wheel_wranglermt_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_mainbody_lg_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\tile_exmetal_lg_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_m1025_co.paa",
+            "",
+            ""
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_m1025_m2: rhsgref_hidf_m1025_m2
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -183,15 +283,42 @@ class PTF_Pereno_m1025_m2: rhsgref_hidf_m1025_m2
          "",
          ""
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_exterior_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_interior_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\A2_parts_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\wheel_wranglermt_lg_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_mainbody_lg_co.paa",
+            "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\tile_exmetal_lg_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_m1025_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\mk64mount_lg_co.paa",
+            "",
+            ""
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- The armour ------------------------------------------------------------
 
 class PTF_Pereno_brdm2: rhsgref_BRDM2_ins_g
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -208,13 +335,32 @@ class PTF_Pereno_brdm2: rhsgref_BRDM2_ins_g
          "\rhsgref\addons\rhsgref_a2port_armor\brdm2\data\brdm2_02_camo_co.paa",
          "\rhsgref\addons\rhsgref_a2port_armor\brdm2\data\zbik_04_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_brdm2_01_co.paa",
+            "\rhsgref\addons\rhsgref_a2port_armor\brdm2\data\brdm2_02_camo_co.paa",
+            "\rhsgref\addons\rhsgref_a2port_armor\brdm2\data\zbik_04_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -235,13 +381,34 @@ class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
          "rhsusf\addons\rhsusf_m113\data_new\m113a3_int03_wd_co.paa",
          "rhsusf\addons\rhsusf_m113\data_new\m23_pintle_wd_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_m113_01_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_02_tv_h_90s_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_03_lg_co.paa",
+            "rhsusf\addons\rhsusf_m113\data_new\m113a3_int03_wd_co.paa",
+            "rhsusf\addons\rhsusf_m113\data_new\m23_pintle_wd_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_m113_m2: rhsgref_hidf_m113a3_m2
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -262,6 +429,30 @@ class PTF_Pereno_m113_m2: rhsgref_hidf_m113a3_m2
          "rhsusf\addons\rhsusf_m113\data_new\m113a3_int03_wd_co.paa",
          "rhsusf\addons\rhsusf_m113\data_new\m23_pintle_wd_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_m113_01_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_02_tv_h_90s_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_03_lg_co.paa",
+            "rhsusf\addons\rhsusf_m113\data_new\m113a3_int03_wd_co.paa",
+            "rhsusf\addons\rhsusf_m113\data_new\m23_pintle_wd_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Emplacements ----------------------------------------------------------
@@ -311,9 +502,6 @@ class PTF_Pereno_2b14: rhsgref_ins_g_2b14
 
 class PTF_Pereno_zil131: rhsgref_ins_zil131
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -333,13 +521,34 @@ class PTF_Pereno_zil131: rhsgref_ins_zil131
          "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_wheels_co.paa",
          "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_base_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\rhsgref\addons\rhsgref_vehicles_ret\data\chdkz\rhs_zil131_cargo_CHDKZ_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_zil_cabin_co.paa",
+            "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_interior_co.paa",
+            "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_wheels_co.paa",
+            "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_base_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -361,13 +570,35 @@ class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
          "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa",
          "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_gaz66_cab_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\tent_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_kung_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_ap2kung_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa",
+            "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_kraz_fuel: rhsgref_ins_kraz255b1_fuel
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -385,6 +616,28 @@ class PTF_Pereno_kraz_fuel: rhsgref_ins_kraz255b1_fuel
          "rhsafrf\addons\rhs_kraz255\data\kol255_co.paa",
          "rhsgref\addons\rhsgref_vehicles_ret\data\chdkz\tz8_chdkz_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_kraz_co.paa",
+            "rhsafrf\addons\rhs_kraz255\data\kol255_co.paa",
+            "rhsgref\addons\rhsgref_vehicles_ret\data\chdkz\tz8_chdkz_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Air defence -----------------------------------------------------------
@@ -414,6 +667,35 @@ class PTF_Pereno_ural_zu23: rhsgref_ins_ural_Zu23
    displayName = "Ural (ZU-23)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+
+   // Branded cab; bed stays the stock chdkz open-bed sheet (2-entry, per
+   // rhsgref_ins_ural_Zu23's own array).
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_ural_kabina_co.paa",
+         "rhsafrf\addons\rhs_a2port_car\ural\data\ural_open_chdkz_co.paa"
+      };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_ural_kabina_co.paa",
+            "rhsafrf\addons\rhs_a2port_car\ural\data\ural_open_chdkz_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_gaz66_zu23: rhsgref_ins_gaz66_zu23
@@ -427,6 +709,40 @@ class PTF_Pereno_gaz66_zu23: rhsgref_ins_gaz66_zu23
    displayName = "GAZ-66 (ZU-23)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+
+   // Branded cab; rest per rhsgref_ins_gaz66_zu23's 5-entry array.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_gaz66_cab_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\tent_chdk_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_kung_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_ap2kung_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa"
+      };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_gaz66_cab_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\tent_chdk_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_kung_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_ap2kung_co.paa",
+            "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Boats -----------------------------------------------------------------
@@ -466,9 +782,6 @@ class PTF_Pereno_canoe: rhsgref_hidf_canoe
 
 class PTF_Pereno_mi8: rhsgref_ins_Mi8amt
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -487,13 +800,31 @@ class PTF_Pereno_mi8: rhsgref_ins_Mi8amt
          "\z\PTF\addons\PTF_OPFOR\data\pereno_mi8_body_co.paa",
          "rhsafrf\addons\rhs_a2port_air\mi17\data\mi8_det_g_cdf_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_mi8_body_co.paa",
+            "rhsafrf\addons\rhs_a2port_air\mi17\data\mi8_det_g_cdf_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -514,13 +845,33 @@ class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
          "rhsgref\addons\rhsgref_air\uh1h\data\mlod_hidf_grey_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\pereno_uh1h_decals_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_co.paa",
+            "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_in_co.paa",
+            "rhsgref\addons\rhsgref_air\uh1h\data\mlod_hidf_grey_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_uh1h_decals_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -541,4 +892,27 @@ class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
          "rhsgref\addons\rhsgref_air\uh1h\data\mlod_hidf_grey_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\pereno_uh1h_decals_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Los Perenos";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Perenos"};
+         textures[] =
+            {
+            "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_co.paa",
+            "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_in_co.paa",
+            "rhsgref\addons\rhsgref_air\uh1h\data\mlod_hidf_grey_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\pereno_uh1h_decals_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };

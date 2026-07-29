@@ -27,9 +27,6 @@
 
 class PTF_Guardia_uaz_ags: rhsgref_ins_g_uaz_ags
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -43,13 +40,30 @@ class PTF_Guardia_uaz_ags: rhsgref_ins_g_uaz_ags
    // Single-entry override, exactly as RHS does it -- camo1 is the body; the
    // n*/i* selections are driven by RHS's decal system, not by textures here.
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_OPFOR\data\guardia_uaz_co.paa"};
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_uaz_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Guardia_uaz_spg9: rhsgref_ins_g_uaz_spg9
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -61,13 +75,30 @@ class PTF_Guardia_uaz_spg9: rhsgref_ins_g_uaz_spg9
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman", "PTF_Guardia_crewman"};
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_OPFOR\data\guardia_uaz_co.paa"};
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_uaz_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Guardia_ural: rhsgref_ins_g_ural
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -85,6 +116,28 @@ class PTF_Guardia_ural: rhsgref_ins_g_ural
          "\z\PTF\addons\PTF_OPFOR\data\guardia_ural_plachta_co.paa",
          "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_ural_kabina_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_ural_plachta_co.paa",
+            "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // Guardia dark repaint, and a marking fix in one: the stock insurgent BTR-70
@@ -94,9 +147,6 @@ class PTF_Guardia_ural: rhsgref_ins_g_ural
 // stowage x2. The i*/n* decal slots beyond index 4 are runtime-painted.
 class PTF_Guardia_btr70: rhsgref_ins_g_btr70
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -115,13 +165,34 @@ class PTF_Guardia_btr70: rhsgref_ins_g_btr70
          "rhsafrf\addons\rhs_btr70\habar\data\sa_gear_02_co.paa",
          "rhsafrf\addons\rhs_btr70\habar\data\sa_gear_02_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_btr70_1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_btr70_2_co.paa",
+            "",
+            "rhsafrf\addons\rhs_btr70\habar\data\sa_gear_02_co.paa",
+            "rhsafrf\addons\rhs_btr70\habar\data\sa_gear_02_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Guardia_bmp2: rhsgref_ins_g_bmp2
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -155,6 +226,31 @@ class PTF_Guardia_bmp2: rhsgref_ins_g_bmp2
          "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_5_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_6_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_2_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_3_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_4_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_5_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_6_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Emplacements ----------------------------------------------------------
@@ -191,9 +287,6 @@ class PTF_Guardia_nsv: rhsgref_ins_g_NSV_TriPod
 
 class PTF_Guardia_kamaz: rhs_kamaz5350_msv
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -214,13 +307,34 @@ class PTF_Guardia_kamaz: rhs_kamaz5350_msv
          "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cabin_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cargo_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_base_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -241,13 +355,34 @@ class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
          "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cabin_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cargo_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_base_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -268,6 +403,30 @@ class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
          "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cabin_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cargo_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_base_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Air defence -----------------------------------------------------------
@@ -289,9 +448,6 @@ class PTF_Guardia_ural_zu23: RHS_Ural_Zu23_MSV_01
 // against anything low and slow -- its appearance should mean something.
 class PTF_Guardia_zsu234: rhsgref_ins_zsu234
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -312,6 +468,31 @@ class PTF_Guardia_zsu234: rhsgref_ins_zsu234
          "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa",
          "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_2_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_3_co.paa",
+            "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa",
+            "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa",
+            "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // --- Boats -----------------------------------------------------------------
@@ -334,9 +515,6 @@ class PTF_Guardia_rhib: rhsgref_hidf_rhib
 
 class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -353,14 +531,32 @@ class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
          "\z\PTF\addons\PTF_OPFOR\data\guardia_mi17_body_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_mi17_det_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_mi17_body_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_mi17_det_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
 
 // The escalation ceiling. Field it once, late, and make it the mission.
 class PTF_Guardia_mi35: rhsgref_cdf_Mi35
 {
-   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
-   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
-   textureList[] = {};
 
    author = "Paramarine Task Force";
    scope = 2;
@@ -378,4 +574,26 @@ class PTF_Guardia_mi35: rhsgref_cdf_Mi35
          "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_2_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_det_co.paa"
       };
+
+   // Own the randomization path instead of fighting it: RHS/Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and was wiping these overrides. With a single PTF source and a
+   // single-entry textureList, any randomization that runs can only ever
+   // re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "La Guardia";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Guardia"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_2_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_det_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
 };
