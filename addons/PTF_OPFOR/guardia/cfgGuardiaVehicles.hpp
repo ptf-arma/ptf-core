@@ -27,6 +27,10 @@
 
 class PTF_Guardia_uaz_ags: rhsgref_ins_g_uaz_ags
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -43,6 +47,10 @@ class PTF_Guardia_uaz_ags: rhsgref_ins_g_uaz_ags
 
 class PTF_Guardia_uaz_spg9: rhsgref_ins_g_uaz_spg9
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -57,6 +65,10 @@ class PTF_Guardia_uaz_spg9: rhsgref_ins_g_uaz_spg9
 
 class PTF_Guardia_ural: rhsgref_ins_g_ural
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -82,6 +94,10 @@ class PTF_Guardia_ural: rhsgref_ins_g_ural
 // stowage x2. The i*/n* decal slots beyond index 4 are runtime-painted.
 class PTF_Guardia_btr70: rhsgref_ins_g_btr70
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -103,6 +119,10 @@ class PTF_Guardia_btr70: rhsgref_ins_g_btr70
 
 class PTF_Guardia_bmp2: rhsgref_ins_g_bmp2
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -128,12 +148,12 @@ class PTF_Guardia_bmp2: rhsgref_ins_g_bmp2
    // without touching textures at all.
    hiddenSelectionsTextures[] =
       {
-         "rhsafrf\addons\rhs_bmp\textures\bmp_1_chdkz_co.paa",
-         "rhsafrf\addons\rhs_bmp\textures\bmp_2_chdkz_co.paa",
-         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_hull_co.paa",
-         "rhsafrf\addons\rhs_bmp\textures\bmp_4_chdkz_co.paa",
-         "rhsafrf\addons\rhs_bmp\textures\bmp_5_chdkz_co.paa",
-         "rhsafrf\addons\rhs_bmp\textures\bmp_6_chdkz_co.paa"
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_1_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_2_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_3_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_4_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_5_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_bmp2_6_co.paa"
       };
 };
 
@@ -171,6 +191,10 @@ class PTF_Guardia_nsv: rhsgref_ins_g_NSV_TriPod
 
 class PTF_Guardia_kamaz: rhs_kamaz5350_msv
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -194,6 +218,10 @@ class PTF_Guardia_kamaz: rhs_kamaz5350_msv
 
 class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -217,6 +245,10 @@ class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
 
 class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -257,6 +289,10 @@ class PTF_Guardia_ural_zu23: RHS_Ural_Zu23_MSV_01
 // against anything low and slow -- its appearance should mean something.
 class PTF_Guardia_zsu234: rhsgref_ins_zsu234
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -272,6 +308,8 @@ class PTF_Guardia_zsu234: rhsgref_ins_zsu234
          "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_1_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_2_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_3_co.paa",
+         "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa",
+         "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa",
          "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa"
       };
 };
@@ -296,6 +334,10 @@ class PTF_Guardia_rhib: rhsgref_hidf_rhib
 
 class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -316,6 +358,10 @@ class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
 // The escalation ceiling. Field it once, late, and make it the mission.
 class PTF_Guardia_mi35: rhsgref_cdf_Mi35
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;

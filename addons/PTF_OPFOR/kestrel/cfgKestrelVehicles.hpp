@@ -61,6 +61,10 @@ class PTF_Kestrel_radar: rhsgref_serhat_radar
 // The contractor's actual daily driver: fast, unarmoured, and cheap to lose.
 class PTF_Kestrel_mrzr: rhsusf_mrzr4_w
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -77,12 +81,16 @@ class PTF_Kestrel_mrzr: rhsusf_mrzr4_w
          "\rhsusf\addons\rhsusf_mrzr\data\yel_tan_pnt1_co.paa",
          "\rhsusf\addons\rhsusf_mrzr\data\red_tan_pnt1_co.paa",
          "\rhsusf\addons\rhsusf_mrzr\data\grn_tan_pnt1_co.paa",
-         "\rhsusf\addons\rhsusf_mrzr\data\merged\orng_grn_co.paa"
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_mrzr_merged_co.paa"
       };
 };
 
 class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -103,7 +111,7 @@ class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
          "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_wood_w_co.paa",
-         "rhsusf\addons\rhsusf_hmmwv\textures\m998_4drcargo_w_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_m998_cargo_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
@@ -112,6 +120,10 @@ class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
 
 class PTF_Kestrel_m1025: rhsusf_m1025_w
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -131,7 +143,7 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
          "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
-         "rhsusf\addons\rhsusf_hmmwv\textures\m1025_w_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_m1025_body_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
       };
@@ -145,6 +157,10 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
 // custom art involved. See LIVERIES.md.
 class PTF_Kestrel_m1025_m2: rhsusf_m1025_w_m2
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -180,7 +196,7 @@ class PTF_Kestrel_m1025_m2: rhsusf_m1025_w_m2
          "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
          "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
-         "rhsusf\addons\rhsusf_hmmwv\textures\m1025_w_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_m1025_body_co.paa",
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
       };
@@ -223,6 +239,10 @@ class PTF_Kestrel_p37: rhs_p37_turret_vpvo
 
 class PTF_Kestrel_mh6: RHS_MELB_MH6M
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -243,6 +263,10 @@ class PTF_Kestrel_mh6: RHS_MELB_MH6M
 
 class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;

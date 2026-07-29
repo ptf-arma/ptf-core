@@ -17,6 +17,10 @@
 // texture cost.
 class PTF_Pereno_uaz_open: rhsgref_ins_g_uaz_open
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -32,6 +36,10 @@ class PTF_Pereno_uaz_open: rhsgref_ins_g_uaz_open
 
 class PTF_Pereno_uaz_dshkm: rhsgref_ins_g_uaz_dshkm_chdkz
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -51,6 +59,10 @@ class PTF_Pereno_uaz_dshkm: rhsgref_ins_g_uaz_dshkm_chdkz
 
 class PTF_Pereno_ural: rhsgref_ins_g_ural
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -84,6 +96,10 @@ class PTF_Pereno_ural_open: rhsgref_ins_g_ural_open
 
 class PTF_Pereno_gaz66: rhsgref_ins_g_gaz66
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -108,6 +124,10 @@ class PTF_Pereno_gaz66: rhsgref_ins_g_gaz66
 
 class PTF_Pereno_m1025: rhsgref_hidf_m1025
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -135,6 +155,10 @@ class PTF_Pereno_m1025: rhsgref_hidf_m1025
 
 class PTF_Pereno_m1025_m2: rhsgref_hidf_m1025_m2
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -165,6 +189,10 @@ class PTF_Pereno_m1025_m2: rhsgref_hidf_m1025_m2
 
 class PTF_Pereno_brdm2: rhsgref_BRDM2_ins_g
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -184,6 +212,10 @@ class PTF_Pereno_brdm2: rhsgref_BRDM2_ins_g
 
 class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -207,6 +239,10 @@ class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
 
 class PTF_Pereno_m113_m2: rhsgref_hidf_m113a3_m2
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -275,6 +311,10 @@ class PTF_Pereno_2b14: rhsgref_ins_g_2b14
 
 class PTF_Pereno_zil131: rhsgref_ins_zil131
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -297,6 +337,10 @@ class PTF_Pereno_zil131: rhsgref_ins_zil131
 
 class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -321,6 +365,10 @@ class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
 
 class PTF_Pereno_kraz_fuel: rhsgref_ins_kraz255b1_fuel
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -418,6 +466,10 @@ class PTF_Pereno_canoe: rhsgref_hidf_canoe
 
 class PTF_Pereno_mi8: rhsgref_ins_Mi8amt
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -439,6 +491,10 @@ class PTF_Pereno_mi8: rhsgref_ins_Mi8amt
 
 class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
@@ -462,6 +518,10 @@ class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
 
 class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
 {
+   // Kill RHS texture randomization -- textureList re-rolls a stock skin at
+   // spawn and silently wipes hiddenSelectionsTextures (the M113 M2 bug).
+   textureList[] = {};
+
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
