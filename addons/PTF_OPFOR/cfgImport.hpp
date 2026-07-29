@@ -57,8 +57,50 @@ class rhsgref_serhat_radar;
 // still suiting a tropical island.
 class rhsusf_m1025_w_m2;
 
+// --- Roster expansion ------------------------------------------------------
+// los Perenos: more trucks, gun-only AA, boats and old utility helicopters.
+// rhsgref_ins_* (no _g) is the EAST/ChDKZ set -- natively side = 0.
+class rhsgref_ins_zil131;
+class rhsgref_ins_kraz255b1_fuel;
+class rhsgref_ins_gaz66_ammo;
+class rhsgref_ins_ural_Zu23;
+class rhsgref_ins_gaz66_zu23;
+class rhsgref_ins_ZU23;
+class rhsgref_ins_Mi8amt;
+class rhsgref_ins_zsu234;
+
+// Boats: RHS has NO boats outside the HIDF (BLUFOR) set, so every boat in the
+// campaign is a HIDF hull with side/faction/crew overridden.
+class rhsgref_hidf_assault_boat;
+class rhsgref_hidf_rhib;
+class rhsgref_hidf_canoe;
+
+// GREF Hueys -- ex-US aid, exactly what a poor island garrison would fly.
+class rhs_uh1h_hidf_unarmed;
+class rhs_uh1h_hidf_gunship;
+
+// La Guardia: modern Soviet logistics and air.
+class rhs_kamaz5350_msv;
+class rhs_kamaz5350_ammo_msv;
+class rhs_kamaz5350_open_msv;
+class RHS_Ural_Zu23_MSV_01;
+class rhsgref_cdf_reg_Mi17Sh;
+class rhsgref_cdf_Mi35;
+
+// Kestrel: US contractor kit -- MRZR, cargo HMMWVs, little birds, and their
+// own air-defence layer (Stinger pod + a manned P-37 search radar).
+class rhsusf_mrzr4_w;
+class rhsusf_m998_w_4dr_fulltop;
+class rhsusf_m1025_w;
+class RHS_Stinger_AA_pod_WD;
+class rhs_p37_turret_vpvo;
+class RHS_MELB_MH6M;
+class RHS_MELB_AH6M_L;
+
 // --- Flags -----------------------------------------------------------------
-// Vanilla flagpole. Inheriting it gives us the pole model and the flag proxy;
-// we only override the init handler that calls setFlagTexture.
+// Vanilla military flag mast (Mast_F.p3d), the base every Flag_*_F class
+// inherits. Gives us the pole model and the flag proxy; we only override the
+// init handler that calls setFlagTexture. NOT FlagChecked_F -- that is the
+// checkered racing flag and its cloth UV renders the design badly offset.
 class FlagCarrierCore;
-class FlagChecked_F;
+class FlagCarrier;

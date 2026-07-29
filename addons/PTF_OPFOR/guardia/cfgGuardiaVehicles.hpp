@@ -151,3 +151,121 @@ class PTF_Guardia_nsv: rhsgref_ins_g_NSV_TriPod
    displayName = "NSV";
    crew = "PTF_Guardia_rifleman";
 };
+
+// --- Logistics -------------------------------------------------------------
+// KamAZ-5350s, bought new. The garrison drives thirty-year-old ZiLs; the
+// difference is the point.
+
+class PTF_Guardia_kamaz: rhs_kamaz5350_msv
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "KamAZ-5350 (Transporte)";
+   crew = "PTF_Guardia_crewman";
+   typicalCargo[] = {"PTF_Guardia_crewman"};
+};
+
+class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "KamAZ-5350 (Municiones)";
+   crew = "PTF_Guardia_crewman";
+   typicalCargo[] = {"PTF_Guardia_crewman"};
+};
+
+class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "KamAZ-5350 (Abierto)";
+   crew = "PTF_Guardia_crewman";
+   typicalCargo[] = {"PTF_Guardia_crewman"};
+};
+
+// --- Air defence -----------------------------------------------------------
+
+class PTF_Guardia_ural_zu23: RHS_Ural_Zu23_MSV_01
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "Ural (ZU-23)";
+   crew = "PTF_Guardia_crewman";
+   typicalCargo[] = {"PTF_Guardia_crewman", "PTF_Guardia_crewman"};
+};
+
+// The campaign's only self-propelled AA. Radar-laid, mobile, and murderous
+// against anything low and slow -- its appearance should mean something.
+class PTF_Guardia_zsu234: rhsgref_ins_zsu234
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_APCs";
+   displayName = "ZSU-23-4 (Shilka)";
+   crew = "PTF_Guardia_crewman";
+   typicalCargo[] = {"PTF_Guardia_crewman", "PTF_Guardia_crewman"};
+};
+
+// --- Boats -----------------------------------------------------------------
+// Presa Alta is a dam. Somebody has to patrol the reservoir.
+
+class PTF_Guardia_rhib: rhsgref_hidf_rhib
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Boats";
+   displayName = "RHIB";
+   crew = "PTF_Guardia_crewman";
+   typicalCargo[] = {"PTF_Guardia_crewman", "PTF_Guardia_rifleman"};
+};
+
+// --- Helicopters -----------------------------------------------------------
+
+class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Helicopters";
+   displayName = "Mi-17Sh (Transporte)";
+   crew = "PTF_Guardia_pilot";
+   typicalCargo[] = {"PTF_Guardia_pilot"};
+};
+
+// The escalation ceiling. Field it once, late, and make it the mission.
+class PTF_Guardia_mi35: rhsgref_cdf_Mi35
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Guardia";
+   editorSubcategory = "EdSubcat_Helicopters";
+   displayName = "Mi-35";
+   crew = "PTF_Guardia_pilot";
+   typicalCargo[] = {"PTF_Guardia_pilot"};
+};

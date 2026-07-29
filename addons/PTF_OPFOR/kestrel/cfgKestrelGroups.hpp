@@ -71,6 +71,20 @@ class PTF_OPFOR_Kestrel
          class Unit5 { side = 0; vehicle = "PTF_Kestrel_medic";            rank = "CORPORAL"; position[] = {20, -10, 0}; };
       };
 
+      // The contract manager and his close protection. Killing him does not
+      // end the contract -- but the paperwork he carries might.
+      class PTF_grp_Kestrel_hvt_detail
+      {
+         name = "HVT - Contract Manager + PSD";
+         faction = "PTF_OPFOR_Kestrel";
+         side = 0;
+         rarityGroup = 0.2;
+         icon = "\A3\ui_f\data\map\markers\nato\o_hq.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_hvt";          rank = "COLONEL";  position[] = {0, 5, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_teamleader";   rank = "SERGEANT"; position[] = {-5, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Kestrel_operator_dpm"; rank = "CORPORAL"; position[] = {5, 0, 0}; };
+      };
+
       class PTF_grp_Kestrel_command
       {
          name = "Kestrel Site Command";
@@ -129,6 +143,34 @@ class PTF_OPFOR_Kestrel
          class Unit2 { side = 0; vehicle = "PTF_Kestrel_teamleader"; rank = "SERGEANT"; position[] = {-5, -10, 0}; };
          class Unit3 { side = 0; vehicle = "PTF_Kestrel_aa_stinger"; rank = "CORPORAL"; position[] = {5, -10, 0}; };
          class Unit4 { side = 0; vehicle = "PTF_Kestrel_operator";   rank = "CORPORAL"; position[] = {10, -15, 0}; };
+      };
+
+      // The radar site the campaign is meant to attack -- crewed, defended,
+      // and worth a mission on its own.
+      class PTF_grp_Kestrel_radar_site
+      {
+         name = "Air Search Site (P-37)";
+         faction = "PTF_OPFOR_Kestrel";
+         side = 0;
+         rarityGroup = 0.3;
+         icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_p37";             rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_stinger_pod";     rank = "CORPORAL"; position[] = {-15, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Kestrel_teamleader";      rank = "SERGEANT"; position[] = {-5, -10, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Kestrel_operator";        rank = "CORPORAL"; position[] = {5, -10, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Kestrel_operator_desert"; rank = "CORPORAL"; position[] = {10, -15, 0}; };
+      };
+
+      class PTF_grp_Kestrel_manpads_mobile
+      {
+         name = "MANPADS Overwatch (MRZR)";
+         faction = "PTF_OPFOR_Kestrel";
+         side = 0;
+         rarityGroup = 0.4;
+         icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_mrzr";         rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_aa_stinger";   rank = "CORPORAL"; position[] = {-10, -10, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Kestrel_operator_dpm"; rank = "CORPORAL"; position[] = {10, -10, 0}; };
       };
    };
 

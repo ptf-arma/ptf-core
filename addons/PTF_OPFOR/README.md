@@ -227,8 +227,10 @@ RHS configs, but the following want eyes on them in the Eden editor:
    `Batería AA` in particular should be checked with both the ZU-23-2 and the
    Igla pod manned.
 
-10. **Flags render.** Place each of the four flagpoles and confirm the cloth
-    shows the right texture rather than vanilla checker.
+10. **Flags render.** Place each of the four flagpoles and confirm the design
+    fills the cloth. (First playtest caught these offset ~40% — the base class
+    was `FlagChecked_F`, the checkered racing flag, whose cloth UV differs.
+    Now on `FlagCarrier`, the proper mast.)
 11. **Guardia UAZ / Ural repaint.** Park a `PTF_Guardia_uaz_ags` next to a
     `PTF_Pereno_uaz_open` and confirm they are tellable apart at distance —
     Guardia should be visibly darker. Check the Ural cab *and* tarp both took
@@ -240,6 +242,25 @@ RHS configs, but the following want eyes on them in the Eden editor:
     carries Kestrel chevrons and `KESTREL GROUP` rather than RHS's stock 101st
     Airborne 2/502 decals — and that the rest of the vehicle is still normally
     textured, not white. White anywhere means a selection index is off.
+
+14. **Kestrel sniper glass.** The XM2010 should carry its M2010 day scope and
+    a Harris bipod, the M107 a Leupold Mk4. (First playtest caught the sniper
+    on bare irons — same weapons[]-cannot-carry-attachments trap as the
+    Guardia AK-103s, fixed the same way in `kestrel/cfgKestrelWeapons.hpp`.)
+15. **Kestrel vest variety.** A Kestrel fireteam should show a different
+    carrier on every man — plateframe/SPC variants per role, not four copies
+    of the base MBAV.
+16. **HVTs.** Each faction has one (`... (HVT)` in the name) plus an escort
+    group. Pereño HVT is deliberately soft; Guardia HVT keeps veteran kit;
+    Kestrel HVT is a civilian silhouette among operators.
+17. **New vehicles spawn with correct crews.** Boats (HIDF hulls rebadged),
+    helicopters (Mi-8/UH-1H for the garrison, Mi-17Sh/Mi-35 for La Guardia,
+    MH-6/AH-6 little birds for Kestrel), trucks (ZiL/KrAZ/GAZ vs KamAZ),
+    and the AA layer: gun-only for the garrison (ZU-23 static and truck-
+    mounted), the campaign's only SPAAG for La Guardia (ZSU-23-4), and
+    Kestrel's Stinger pod + crewed P-37 search radar.
+18. **The P-37 radar mans and dies.** Unlike the SERHAT prop it is a real
+    crewed vehicle — confirm a gunner sits in it and that it can be killed.
 
 ## Later passes
 

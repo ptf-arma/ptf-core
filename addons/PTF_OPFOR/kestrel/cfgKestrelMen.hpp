@@ -54,8 +54,11 @@ class PTF_Kestrel_base: rhsgref_nat_base
    Items[] = {"FirstAidKit"};
    RespawnItems[] = {"FirstAidKit"};
 
-   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   // Every role below overrides this with its own carrier. Kestrel are
+   // individually equipped rather than issued as a unit, so a fireteam should
+   // show four different rigs, not four copies of one.
+   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_rifleman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_rifleman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
 
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhsusf_weap_glock17g4", "Throw", "Put"};
@@ -109,8 +112,8 @@ class PTF_Kestrel_operator_dpm: PTF_Kestrel_base
    displayName = "Kestrel Operator (DPM)";
    uniformClass = "rhsgref_uniform_dpm";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_dpm_co.paa"};
-   linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
 };
 
 class PTF_Kestrel_operator_lizard: PTF_Kestrel_base
@@ -120,8 +123,8 @@ class PTF_Kestrel_operator_lizard: PTF_Kestrel_base
    displayName = "Kestrel Operator (Lizard)";
    uniformClass = "rhsgref_uniform_altis_lizard";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_altis_lizard_co.paa"};
-   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
 };
 
 class PTF_Kestrel_operator_desert: PTF_Kestrel_base
@@ -131,8 +134,8 @@ class PTF_Kestrel_operator_desert: PTF_Kestrel_base
    displayName = "Kestrel Operator (3-Color Desert)";
    uniformClass = "rhsgref_uniform_3color_desert";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_3color_desert_co.paa"};
-   linkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   linkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_rifleman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_rifleman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
 };
 
 // --- Specialists -----------------------------------------------------------
@@ -143,6 +146,8 @@ class PTF_Kestrel_machinegunner: PTF_Kestrel_base
    scopeCurator = 2;
    displayName = "Kestrel Machinegunner";
    cost = 900000;
+   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_machinegunner", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_machinegunner", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    uniformClass = "rhsgref_uniform_dpm";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_dpm_co.paa"};
    weapons[] = {"rhs_weap_m249_light_L_elcan", "rhsusf_weap_glock17g4", "Throw", "Put"};
@@ -174,6 +179,8 @@ class PTF_Kestrel_marksman: PTF_Kestrel_base
    displayName = "Kestrel Marksman";
    cost = 950000;
    accuracy = 4.0;
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_mk18_SU230", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_SU230", "rhsusf_weap_glock17g4", "Throw", "Put"};
 };
@@ -189,10 +196,10 @@ class PTF_Kestrel_sniper: PTF_Kestrel_base
    camouflage = 0.6;
    uniformClass = "rhsgref_uniform_altis_lizard";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_altis_lizard_co.paa"};
-   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   weapons[] = {"rhs_weap_XM2010", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
-   respawnWeapons[] = {"rhs_weap_XM2010", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc_sniper", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_spc_sniper", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   weapons[] = {"PTF_weap_kestrel_xm2010", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"PTF_weap_kestrel_xm2010", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
    magazines[] =
       {
          "rhsusf_5Rnd_300winmag_xm2010",
@@ -227,8 +234,10 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
    displayName = "Kestrel Anti-Materiel (M107)";
    cost = 1200000;
    accuracy = 4.0;
-   weapons[] = {"rhs_weap_M107_w", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
-   respawnWeapons[] = {"rhs_weap_M107_w", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   weapons[] = {"PTF_weap_kestrel_m107", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"PTF_weap_kestrel_m107", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
    magazines[] =
       {
          "rhsusf_mag_10Rnd_STD_50BMG_mk211",
@@ -266,6 +275,8 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
    displayName = "Kestrel AA Specialist (FIM-92)";
    cost = 1400000;
    icon = "iconManAT";
+   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_spc_iar", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_spc_iar", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
    magazines[] =
@@ -299,6 +310,8 @@ class PTF_Kestrel_aa_igla: PTF_Kestrel_base
    displayName = "Kestrel AA Specialist (Igla)";
    cost = 1300000;
    icon = "iconManAT";
+   linkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    uniformClass = "rhsgref_uniform_3color_desert";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_3color_desert_co.paa"};
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
@@ -337,6 +350,8 @@ class PTF_Kestrel_medic: PTF_Kestrel_base
    cost = 900000;
    attendant = 1;
    icon = "iconManMedic";
+   linkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_medic", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_medic", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    Items[] = {"FirstAidKit", "Medikit"};
    RespawnItems[] = {"FirstAidKit", "Medikit"};
 };
@@ -347,6 +362,8 @@ class PTF_Kestrel_breacher: PTF_Kestrel_base
    scopeCurator = 2;
    displayName = "Kestrel Breacher";
    cost = 950000;
+   linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless_radio", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless_radio", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    engineer = 1;
    canDeactivateMines = 1;
    icon = "iconManEngineer";
@@ -362,6 +379,8 @@ class PTF_Kestrel_crewman: PTF_Kestrel_base
    scopeCurator = 2;
    displayName = "Kestrel Crewman";
    cost = 800000;
+   linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_crewman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_crewman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
 };
 
 class PTF_Kestrel_teamleader: PTF_Kestrel_base
@@ -373,6 +392,8 @@ class PTF_Kestrel_teamleader: PTF_Kestrel_base
    accuracy = 4.0;
    sensitivity = 4.5;
    icon = "iconManLeader";
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_plateframe_teamleader", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_plateframe_teamleader", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    uniformClass = "rhsgref_uniform_dpm";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_dpm_co.paa"};
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
@@ -387,6 +408,35 @@ class PTF_Kestrel_commander: PTF_Kestrel_teamleader
    cost = 1600000;
    uniformClass = "rhsgref_uniform_3color_desert";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_3color_desert_co.paa"};
-   linkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   linkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_squadleader", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_squadleader", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+};
+
+// --- HVT -------------------------------------------------------------------
+//
+// Not a soldier -- the man who administers the contract. Kestrel are defeated
+// by economics, and he is the paperwork made flesh: the one carrying the terms
+// the players are meant to find in Op 3. Civilian-ish silhouette on purpose,
+// so he reads as out of place among the operators guarding him.
+class PTF_Kestrel_hvt: PTF_Kestrel_commander
+{
+   displayName = "Kestrel Contract Manager (HVT)";
+   cost = 1500000;
+   accuracy = 2.4;
+   sensitivity = 3.4;
+   icon = "iconManLeader";
+   uniformClass = "rhsgref_uniform_olive";
+   hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_olive_co.paa"};
+   linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   weapons[] = {"rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
+   magazines[] = {"rhsusf_mag_17Rnd_9x19_JHP", "rhsusf_mag_17Rnd_9x19_JHP", "rhs_mag_m18_green"};
+   respawnMagazines[] = {"rhsusf_mag_17Rnd_9x19_JHP", "rhsusf_mag_17Rnd_9x19_JHP", "rhs_mag_m18_green"};
+};
+
+class PTF_Kestrel_pilot: PTF_Kestrel_crewman
+{
+   displayName = "Kestrel Pilot";
+   cost = 1000000;
 };

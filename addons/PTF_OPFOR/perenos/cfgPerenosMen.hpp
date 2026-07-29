@@ -437,3 +437,45 @@ class PTF_Pereno_officer: PTF_Pereno_squadleader
          "rhs_mag_m18_purple"
       };
 };
+
+// --- HVT -------------------------------------------------------------------
+//
+// Deliberately readable at a distance so players can pick him out of a group:
+// no helmet, a distinct cap, a pistol instead of a rifle, and binoculars.
+// The garrison is defeated by fracture, and this is the man whose loss starts
+// it -- taking him should feel like it changed something.
+class PTF_Pereno_hvt: PTF_Pereno_officer
+{
+   displayName = "Comandante de Batallon (HVT)";
+   cost = 900000;
+   accuracy = 2.2;
+   sensitivity = 3.0;
+   icon = "iconManLeader";
+   headgearList[] = {"rhsgref_hat_M1951", 1};
+   linkedItems[] = {"rhsgref_hat_M1951", "rhsgref_chestrig", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsgref_hat_M1951", "rhsgref_chestrig", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   weapons[] = {"rhsusf_weap_m1911a1", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"rhsusf_weap_m1911a1", "Throw", "Put", "Binocular"};
+   magazines[] =
+      {
+         "rhsusf_mag_7x45acp_MHP",
+         "rhsusf_mag_7x45acp_MHP",
+         "rhsusf_mag_7x45acp_MHP",
+         "rhs_mag_m18_red"
+      };
+   respawnMagazines[] =
+      {
+         "rhsusf_mag_7x45acp_MHP",
+         "rhsusf_mag_7x45acp_MHP",
+         "rhsusf_mag_7x45acp_MHP",
+         "rhs_mag_m18_red"
+      };
+};
+
+// A crewman who flies. No flight suit, no survival vest -- the battalion's
+// pilots dress like everyone else because they are everyone else.
+class PTF_Pereno_pilot: PTF_Pereno_crewman
+{
+   displayName = "Piloto";
+   cost = 150000;
+};

@@ -1,10 +1,17 @@
 // ---------------------------------------------------------------------------
 // Placeable flagpoles for the Valmeran campaign.
 //
+// Base class matters here. These originally inherited FlagChecked_F, which is
+// the small CHECKERED RACING flag -- a different model with different cloth
+// geometry and UV mapping, which made every design render offset and cropped
+// on the pole. FlagCarrier is the proper military mast (Mast_F.p3d) and is
+// what every vanilla Flag_*_F class inherits; its cloth maps the texture
+// edge to edge, as the 512x256 vanilla flag textures do.
+//
 // Flag cloth on a FlagCarrier is a proxy, not a hiddenSelection, so the
-// texture is applied with setFlagTexture in an init handler -- the same way
-// vanilla FlagChecked_F does it. Setting hiddenSelectionsTextures here would
-// paint the pole, not the flag.
+// texture is applied with setFlagTexture in an init handler -- exactly the
+// way vanilla Flag_NATO_F does it. Setting hiddenSelectionsTextures here
+// would paint the pole, not the flag.
 //
 // These are for mission dressing: a Valmeran national flag over a town hall,
 // the battalion colour over the Pereno barracks, La Guardia's over Presa
@@ -12,7 +19,7 @@
 // what before a shot is fired.
 // ---------------------------------------------------------------------------
 
-class PTF_Flag_Valmera_F: FlagChecked_F
+class PTF_Flag_Valmera_F: FlagCarrier
 {
    author = "Paramarine Task Force";
    scope = 2;
@@ -25,7 +32,7 @@ class PTF_Flag_Valmera_F: FlagChecked_F
    };
 };
 
-class PTF_Flag_Perenos_F: FlagChecked_F
+class PTF_Flag_Perenos_F: FlagCarrier
 {
    author = "Paramarine Task Force";
    scope = 2;
@@ -38,7 +45,7 @@ class PTF_Flag_Perenos_F: FlagChecked_F
    };
 };
 
-class PTF_Flag_Guardia_F: FlagChecked_F
+class PTF_Flag_Guardia_F: FlagCarrier
 {
    author = "Paramarine Task Force";
    scope = 2;
@@ -51,7 +58,7 @@ class PTF_Flag_Guardia_F: FlagChecked_F
    };
 };
 
-class PTF_Flag_Kestrel_F: FlagChecked_F
+class PTF_Flag_Kestrel_F: FlagCarrier
 {
    author = "Paramarine Task Force";
    scope = 2;

@@ -111,6 +111,20 @@ class PTF_OPFOR_Guardia
          class Unit3 { side = 0; vehicle = "PTF_Guardia_marksman";     rank = "CORPORAL"; position[] = {10, -5, 0}; };
       };
 
+      // Bastida's senior officer moves with veterans only.
+      class PTF_grp_Guardia_hvt_detail
+      {
+         name = "HVT - Oficial Superior y Escolta";
+         faction = "PTF_OPFOR_Guardia";
+         side = 0;
+         rarityGroup = 0.2;
+         icon = "\A3\ui_f\data\map\markers\nato\o_hq.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Guardia_hvt";          rank = "COLONEL";  position[] = {0, 5, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Guardia_rifleman_vet"; rank = "CORPORAL"; position[] = {-5, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Guardia_rifleman_vet"; rank = "CORPORAL"; position[] = {5, 0, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Guardia_machinegunner"; rank = "PRIVATE"; position[] = {10, -5, 0}; };
+      };
+
       class PTF_grp_Guardia_command
       {
          name = "Destacamento de Mando";
@@ -153,6 +167,20 @@ class PTF_OPFOR_Guardia
          class Unit1 { side = 0; vehicle = "PTF_Guardia_teamleader"; rank = "CORPORAL"; position[] = {-10, -10, 0}; };
          class Unit2 { side = 0; vehicle = "PTF_Guardia_at";         rank = "PRIVATE";  position[] = {10, -10, 0}; };
       };
+
+      // La Guardia's resupply moves with a gun truck, because Bastida's own
+      // convoys are the one thing he will not let travel unescorted.
+      class PTF_grp_Guardia_kamaz_convoy
+      {
+         name = "Convoy (KamAZ)";
+         faction = "PTF_OPFOR_Guardia";
+         side = 0;
+         rarityGroup = 0.4;
+         icon = "\A3\ui_f\data\map\markers\nato\o_motor_inf.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Guardia_kamaz";      rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Guardia_kamaz_ammo"; rank = "PRIVATE";  position[] = {0, -15, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Guardia_uaz_ags";    rank = "CORPORAL"; position[] = {0, -30, 0}; };
+      };
    };
 
    class Mechanized
@@ -189,6 +217,27 @@ class PTF_OPFOR_Guardia
          class Unit3 { side = 0; vehicle = "PTF_Guardia_at";            rank = "PRIVATE";  position[] = {10, -10, 0}; };
          class Unit4 { side = 0; vehicle = "PTF_Guardia_rifleman_vet";  rank = "CORPORAL"; position[] = {15, -10, 0}; };
          class Unit5 { side = 0; vehicle = "PTF_Guardia_rifleman_vet";  rank = "CORPORAL"; position[] = {20, -15, 0}; };
+      };
+   };
+
+   class Support
+   {
+      name = "Apoyo";
+      aliveCategory = "Support";
+
+      // The Shilka is the campaign's only self-propelled AA -- when it shows
+      // up, the air plan changes. Its appearance should mean something.
+      class PTF_grp_Guardia_aa_battery_mobile
+      {
+         name = "Bateria AA Movil";
+         faction = "PTF_OPFOR_Guardia";
+         side = 0;
+         rarityGroup = 0.3;
+         icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Guardia_zsu234";       rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Guardia_ural_zu23";    rank = "CORPORAL"; position[] = {0, -15, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Guardia_teamleader";   rank = "CORPORAL"; position[] = {-10, -10, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Guardia_rifleman_vet"; rank = "CORPORAL"; position[] = {10, -10, 0}; };
       };
    };
 };

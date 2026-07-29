@@ -358,3 +358,27 @@ class PTF_Guardia_officer: PTF_Guardia_teamleader
    accuracy = 3.0;
    sensitivity = 3.9;
 };
+
+// --- HVT -------------------------------------------------------------------
+//
+// Bastida's senior man on the ground. La Guardia are defeated by killing them,
+// so unlike the Pereno HVT this one is not a soft target -- he keeps the
+// veteran optic and night vision. What marks him out is the beret instead of
+// a helmet, and the sidearm.
+class PTF_Guardia_hvt: PTF_Guardia_officer
+{
+   displayName = "Oficial Superior (HVT)";
+   cost = 1100000;
+   accuracy = 3.2;
+   sensitivity = 4.0;
+   icon = "iconManLeader";
+   headgearList[] = {"rhsgref_patrolcap_specter", 1};
+   linkedItems[] = {"rhsgref_patrolcap_specter", "rhsgref_TacVest_ERDL", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsgref_patrolcap_specter", "rhsgref_TacVest_ERDL", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+};
+
+class PTF_Guardia_pilot: PTF_Guardia_crewman
+{
+   displayName = "Piloto";
+   cost = 350000;
+};

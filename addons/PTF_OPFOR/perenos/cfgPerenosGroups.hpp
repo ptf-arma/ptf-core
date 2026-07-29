@@ -117,6 +117,22 @@ class PTF_OPFOR_Perenos
          class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {10, -10, 0}; };
       };
 
+      // The battalion commander and the men who die for him. Place at a
+      // headquarters and give the players a reason to come.
+      class PTF_grp_Pereno_hvt_detail
+      {
+         name = "HVT - Comandante y Escolta";
+         faction = "PTF_OPFOR_Perenos";
+         side = 0;
+         rarityGroup = 0.2;
+         icon = "\A3\ui_f\data\map\markers\nato\o_hq.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_hvt";         rank = "COLONEL";  position[] = {0, 5, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_squadleader"; rank = "SERGEANT"; position[] = {-5, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_rifleman";    rank = "PRIVATE";  position[] = {5, 0, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_rifleman";    rank = "PRIVATE";  position[] = {10, -5, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_machinegunner"; rank = "PRIVATE"; position[] = {-10, -5, 0}; };
+      };
+
       class PTF_grp_Pereno_command
       {
          name = "Plana Mayor";
@@ -178,6 +194,21 @@ class PTF_OPFOR_Perenos
          class Unit7 { side = 0; vehicle = "PTF_Pereno_rifleman";             rank = "PRIVATE";  position[] = {25, -15, 0}; };
          class Unit8 { side = 0; vehicle = "PTF_Pereno_conscript";            rank = "PRIVATE";  position[] = {30, -20, 0}; };
       };
+
+      // The garrison's supply run: cargo, ammo and fuel with one UAZ riding
+      // shotgun. Slow, predictable and worth ambushing.
+      class PTF_grp_Pereno_logistics_convoy
+      {
+         name = "Convoy Logistico";
+         faction = "PTF_OPFOR_Perenos";
+         side = 0;
+         rarityGroup = 0.5;
+         icon = "\A3\ui_f\data\map\markers\nato\o_motor_inf.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_zil131";     rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_gaz66_ammo"; rank = "PRIVATE";  position[] = {0, -15, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_kraz_fuel";  rank = "PRIVATE";  position[] = {0, -30, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_uaz_open";   rank = "CORPORAL"; position[] = {0, -45, 0}; };
+      };
    };
 
    class Mechanized
@@ -211,6 +242,41 @@ class PTF_OPFOR_Perenos
          class Unit4 { side = 0; vehicle = "PTF_Pereno_machinegunner_assist"; rank = "PRIVATE";  position[] = {15, -10, 0}; };
          class Unit5 { side = 0; vehicle = "PTF_Pereno_at";                   rank = "PRIVATE";  position[] = {5, -15, 0}; };
          class Unit6 { side = 0; vehicle = "PTF_Pereno_rifleman";             rank = "PRIVATE";  position[] = {20, -15, 0}; };
+      };
+   };
+
+   // The garrison's air defence is guns only -- no missiles. Anything that
+   // locks and launches on the island belongs to Kestrel, and the difference
+   // is meant to be felt from the cockpit.
+   class Support
+   {
+      name = "Apoyo";
+      aliveCategory = "Support";
+
+      class PTF_grp_Pereno_zu23_section
+      {
+         name = "Seccion AA (ZU-23)";
+         faction = "PTF_OPFOR_Perenos";
+         side = 0;
+         rarityGroup = 0.4;
+         icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_zu23";       rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_zu23";       rank = "CORPORAL"; position[] = {-15, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {-5, -10, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {5, -10, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {10, -15, 0}; };
+      };
+
+      class PTF_grp_Pereno_aa_mobile
+      {
+         name = "AA Movil (Ural ZU-23)";
+         faction = "PTF_OPFOR_Perenos";
+         side = 0;
+         rarityGroup = 0.4;
+         icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_ural_zu23";  rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_gaz66_zu23"; rank = "CORPORAL"; position[] = {0, -15, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {-10, -10, 0}; };
       };
    };
 };

@@ -56,6 +56,48 @@ class PTF_Kestrel_radar: rhsgref_serhat_radar
    armor = 250;
 };
 
+// --- Light vehicles --------------------------------------------------------
+
+// The contractor's actual daily driver: fast, unarmoured, and cheap to lose.
+class PTF_Kestrel_mrzr: rhsusf_mrzr4_w
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "MRZR-4";
+   crew = "PTF_Kestrel_crewman";
+   typicalCargo[] = {"PTF_Kestrel_crewman", "PTF_Kestrel_operator"};
+};
+
+class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "M998 (Carga)";
+   crew = "PTF_Kestrel_crewman";
+   typicalCargo[] = {"PTF_Kestrel_crewman"};
+};
+
+class PTF_Kestrel_m1025: rhsusf_m1025_w
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_Cars";
+   displayName = "M1025 (Desarmado)";
+   crew = "PTF_Kestrel_crewman";
+   typicalCargo[] = {"PTF_Kestrel_crewman", "PTF_Kestrel_operator"};
+};
+
 // RHS USAF woodland HMMWV rather than the HIDF green one los Perenos use:
 // still visibly a brought-in US-pattern vehicle rather than something drawn
 // from the island's motor pool, but in a scheme that suits a tropical island.
@@ -103,4 +145,65 @@ class PTF_Kestrel_m1025_m2: rhsusf_m1025_w_m2
          "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
          ""
       };
+};
+
+// --- Expanded air defence --------------------------------------------------
+
+// Kestrel's own procurement, next to the island's inherited Igla pod: the
+// contract bought Stingers.
+class PTF_Kestrel_stinger_pod: RHS_Stinger_AA_pod_WD
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_AAs";
+   displayName = "Stinger AA Pod";
+   crew = "PTF_Kestrel_aa_stinger";
+};
+
+// A crewed, working search radar -- unlike the SERHAT prop, this is a vehicle
+// with a gunner seat, so it can be manned, suppressed and destroyed like any
+// other position. This is the radar the campaign should be fought over; the
+// SERHAT stays as set dressing.
+class PTF_Kestrel_p37: rhs_p37_turret_vpvo
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_AAs";
+   displayName = "P-37 Search Radar (Manned)";
+   crew = "PTF_Kestrel_crewman";
+};
+
+// --- Helicopters -----------------------------------------------------------
+// Little birds: the definitive contractor airframe. One lifts, one shoots.
+
+class PTF_Kestrel_mh6: RHS_MELB_MH6M
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_Helicopters";
+   displayName = "MH-6M (Bancos)";
+   crew = "PTF_Kestrel_pilot";
+   typicalCargo[] = {"PTF_Kestrel_pilot"};
+};
+
+class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_Helicopters";
+   displayName = "AH-6M (Ligero)";
+   crew = "PTF_Kestrel_pilot";
+   typicalCargo[] = {"PTF_Kestrel_pilot"};
 };
