@@ -27,6 +27,10 @@
 
 class PTF_Guardia_base: rhsgref_ins_uniform_specter
 {
+   // rhsgref_ins_uniform_specter names an editor-preview image RHS never
+   // shipped ("Cannot load texture ... rhsgref_ins_uniform_specter.paa").
+   // Blank it; children inherit the blank. Same fix as PTF_Kestrel_base.
+   editorPreview = "";
    scope = 0;
    scopeCurator = 0;
    author = "Paramarine Task Force";
