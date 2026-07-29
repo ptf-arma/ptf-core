@@ -101,6 +101,14 @@ class PTF_Guardia_rifleman: PTF_Guardia_base
 // The escalation tier. Dual-tube night vision, a ranged optic and noticeably
 // better skill. Field these when a meeting is supposed to be worse than the
 // last one.
+//
+// The carrier is rhsusf_mbav_light, not rhsusf_mbav. RHS's plain
+// rhsusf_mbav is the bare plate carrier with no pouches on it -- it holds
+// 20, against 140 for the mbav_rifleman the standard trooper wears. The
+// veteran tier was silently spawning with three magazines instead of eight
+// because of it. mbav_light holds 100, which with the uniform's 40 carries
+// the full eight-magazine load and still reads as a leaner rig than the
+// line trooper's.
 class PTF_Guardia_rifleman_vet: PTF_Guardia_base
 {
    scope = 2;
@@ -111,8 +119,8 @@ class PTF_Guardia_rifleman_vet: PTF_Guardia_base
    cost = 340000;
    weapons[] = {"PTF_weap_guardia_ak103_mdo", "Throw", "Put"};
    respawnWeapons[] = {"PTF_weap_guardia_ak103_mdo", "Throw", "Put"};
-   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
 };
 
 class PTF_Guardia_grenadier: PTF_Guardia_base
@@ -153,8 +161,11 @@ class PTF_Guardia_grenadier: PTF_Guardia_base
       };
 };
 
-// PKP Pecheneg with a 1P78. The garrison's FN MAG is a good gun with three
-// belts; this is a better one with more.
+// PKP Pecheneg with a 1P78. A better gun than the garrison's FN MAG, and a
+// much heavier one to feed: a 100-round 7.62x54R belt is 64.35 mass against
+// 32.34 for the MAG's 7.62 NATO belt. Two is all the MBAV MG carrier's 160
+// will hold, and nothing that big fits the uniform's 40 -- the five belts
+// this class used to declare meant three were dropped at spawn.
 class PTF_Guardia_machinegunner: PTF_Guardia_base
 {
    scope = 2;
@@ -169,16 +180,10 @@ class PTF_Guardia_machinegunner: PTF_Guardia_base
       {
          "rhs_100Rnd_762x54mmR_green",
          "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
          "rhs_mag_rgd5"
       };
    respawnMagazines[] =
       {
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
          "rhs_100Rnd_762x54mmR_green",
          "rhs_100Rnd_762x54mmR_green",
          "rhs_mag_rgd5"
@@ -187,6 +192,13 @@ class PTF_Guardia_machinegunner: PTF_Guardia_base
 
 // Tandem warheads. The garrison's RPG is a threat to a truck; this one is a
 // threat to whatever the players actually arrived in.
+//
+// A PG-7VR tandem and a TBG-7V thermobaric are 64.35 mass each -- twice the
+// garrison's PG-7V and far too big for the uniform's 40, so both have to go
+// in the MBAV rifleman carrier's 140 and they leave 11 of it. The rockets
+// are therefore listed FIRST: the engine fills containers in array order,
+// and a rifle magazine seated in the carrier ahead of them would push a
+// rocket out. Three rockets never fitted at all; one of each warhead does.
 class PTF_Guardia_at: PTF_Guardia_base
 {
    scope = 2;
@@ -197,27 +209,17 @@ class PTF_Guardia_at: PTF_Guardia_base
    respawnWeapons[] = {"PTF_weap_guardia_ak103", "rhs_weap_rpg7_pgo", "Throw", "Put"};
    magazines[] =
       {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_rpg7_PG7VR_mag",
          "rhs_rpg7_PG7VR_mag",
          "rhs_rpg7_TBG7V_mag",
-         "rhs_mag_rgd5"
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer"
       };
    respawnMagazines[] =
       {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_rpg7_PG7VR_mag",
          "rhs_rpg7_PG7VR_mag",
          "rhs_rpg7_TBG7V_mag",
-         "rhs_mag_rgd5"
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer"
       };
 };
 
@@ -229,8 +231,10 @@ class PTF_Guardia_marksman: PTF_Guardia_base
    cost = 400000;
    accuracy = 3.4;
    sensitivity = 4.0;
-   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   // mbav_light (100), not the pouchless rhsusf_mbav (20) -- see the
+   // veteran class above. Eight SVD magazines and a sidearm do not fit 20.
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_svds_pso1", "rhs_weap_pya", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_svds_pso1", "rhs_weap_pya", "Throw", "Put"};
    magazines[] =
@@ -261,6 +265,9 @@ class PTF_Guardia_marksman: PTF_Guardia_base
       };
 };
 
+// Six magazines rather than the standard eight: the Medikit is 80 mass on
+// its own, which is 40% of what his uniform and medic carrier hold between
+// them, and Items[] are packed before magazines[].
 class PTF_Guardia_medic: PTF_Guardia_base
 {
    scope = 2;
@@ -273,10 +280,36 @@ class PTF_Guardia_medic: PTF_Guardia_base
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_medic", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    Items[] = {"FirstAidKit", "Medikit"};
    RespawnItems[] = {"FirstAidKit", "Medikit"};
+   magazines[] =
+      {
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_mag_rgd5",
+         "rhs_mag_rgd5"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_mag_rgd5",
+         "rhs_mag_rgd5"
+      };
 };
 
 // La Guardia does the work the garrison will not. That includes demolitions,
 // and it included the village near Cacao.
+//
+// Toolkit (80), mine detector (20) and first aid kit (8) come to 108 of the
+// 180 his uniform and carrier hold, and the engine packs Items[] before
+// magazines[]. Four magazines is what is left of the standard eight.
 class PTF_Guardia_engineer: PTF_Guardia_base
 {
    scope = 2;
@@ -288,6 +321,22 @@ class PTF_Guardia_engineer: PTF_Guardia_base
    icon = "iconManEngineer";
    Items[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
+   magazines[] =
+      {
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_mag_rgd5"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_mag_rgd5"
+      };
 };
 
 class PTF_Guardia_crewman: PTF_Guardia_base

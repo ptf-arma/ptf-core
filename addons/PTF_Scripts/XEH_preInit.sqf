@@ -3,7 +3,7 @@
     ["LZ marker name list", "Set possibel names for the lz markers"],
     ["Paramarine Task Force", "Markers"],
     "['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']",
-    false, // isGlobal
+    true, // isGlobal - the marker index (IDLZ) is shared, so the name list has to be too
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
@@ -12,10 +12,14 @@
     ["Resupply marker name list", "Set possibel names for the Resupply markers"],
     ["Paramarine Task Force", "Markers"],
     "['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']",
-    false, // isGlobal
+    true, // isGlobal - the marker index (IDRE) is shared, so the name list has to be too
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
+// The ticket sliders below are the configured maximum only - CBA resets a
+// setting to its configured value on any settings refresh, so the live count is
+// kept in a matching <setting>Current missionNamespace variable instead.
+// Do not write these from script.
 [
     "PTF_Uh1yTickets", "SLIDER",
     ["Armed Uh1y Tickets", "Set Ticket Pool for Helicopters"],

@@ -2,6 +2,12 @@
 // Declared inside class CfgVehicles by config.cpp -- these are CfgVehicles
 // subclasses, so declaring them at root scope would not resolve.
 
+// CBA Extended Event Handlers base -- lets the Kestrel AA specialists nest
+// their init handler inside CBA_Extended_EventHandlers rather than replacing
+// the inherited EventHandlers class (which breaks XEH). Same declaration as
+// PTF_Aircraft/cfgIMPORT.hpp and PTF_Utility/cfgImport.hpp.
+class CBA_Extended_EventHandlers_base;
+
 // RHS GREF -- Horizon Islands Defence Force infantry base.
 // Chosen because it is RHS's tropical-island garrison: ERDL/OG-107 fatigues,
 // M1 steel helmets, ALICE webbing and L1A1 rifles on the guerrilla m93 model.

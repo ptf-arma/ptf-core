@@ -11,18 +11,50 @@ if (!isServer) exitWith {
     [_vehicle, _markers, _ticket, clientOwner] remoteExec ["PTF_fnc_SpawnFunction", 2];
 };
 
-private _id = missionNamespace getVariable [_markers, 0];
 private _name = _markers;
-private _cnt = { _markers in _x } count allMapMarkers;
+// The rotation index gets its own key: _markers is also the marker-name prefix,
+// so storing the index under that name shares one variable with two meanings.
+private _idVar = "PTF_spawnIdx_" + _markers;
 
-if (_ticket != "" && {(missionNamespace getVariable [_ticket, 0]) <= 0}) exitWith {
+// _ticket names a CBA setting, which is the configured maximum and is reset to
+// its configured value on any CBA settings refresh. Track the live pool in a
+// separate variable, seeded from the setting the first time it is touched.
+private _liveTicket = "";
+if (_ticket != "") then {
+    _liveTicket = _ticket + "Current";
+    if (isNil _liveTicket) then {
+        missionNamespace setVariable [_liveTicket, missionNamespace getVariable [_ticket, 0], true];
+    };
+};
+
+if (_liveTicket != "" && {(missionNamespace getVariable [_liveTicket, 0]) <= 0}) exitWith {
     ["There are no more tickets"] remoteExec ["hint", _caller];
 };
 
-private _markersA = [_name];
-for "_i" from 1 to _cnt - 1 do {
-    _markersA pushBack format ["%1_%2", _name, _i];
+// Build the ring from the exact marker names this function uses ("Name",
+// "Name_1", "Name_2", ...). The old test was `_markers in _x`, which is a
+// substring match, so a base name of "Vic" also counted "Vicinity".
+// Matched case-insensitively, as the old substring test was.
+private _allMarkers = allMapMarkers;
+private _lowerMarkers = _allMarkers apply {toLower _x};
+private _markersA = [];
+private _n = 0;
+private _wanted = _name;
+private _idx = _lowerMarkers find (toLower _wanted);
+while {_idx > -1} do {
+    _markersA pushBack (_allMarkers select _idx);
+    _n = _n + 1;
+    _wanted = format ["%1_%2", _name, _n];
+    _idx = _lowerMarkers find (toLower _wanted);
 };
+
+if (_markersA isEqualTo []) exitWith {
+    [format ["No spawn marker named %1 was found", _name]] remoteExec ["hint", _caller];
+};
+
+// getMarkerPos on a marker that doesn't exist returns [0,0,0], and a stored
+// index can outlive a mission that has fewer markers, so keep it in range.
+private _id = (missionNamespace getVariable [_idVar, 0]) mod (count _markersA);
 
 // find if an object is blocking the pad
 private _check = nearestObjects [getMarkerPos [_markersA select _id], ["LandVehicle", "Air", "Ship"], 7];
@@ -42,17 +74,17 @@ if (_vH isKindOf "UAV") then {
 };
 
 // decrement the ticket pool (server-authoritative, so no race)
-if (_ticket != "") then {
-    private _t = (missionNamespace getVariable [_ticket, 0]) - 1;
-    missionNamespace setVariable [_ticket, _t, true];
+if (_liveTicket != "") then {
+    private _t = (missionNamespace getVariable [_liveTicket, 0]) - 1;
+    missionNamespace setVariable [_liveTicket, _t, true];
     [format ["You have %1 tickets remaining", _t]] remoteExec ["hint", _caller];
 };
 
 // advance the spawn location to the next marker in the ring
 if (_id == count _markersA - 1) then {
-    missionNamespace setVariable [_markers, 0, true];
+    missionNamespace setVariable [_idVar, 0, true];
 } else {
-    missionNamespace setVariable [_markers, _id + 1, true];
+    missionNamespace setVariable [_idVar, _id + 1, true];
 };
 
 if (_vehicle == "PTF_MV22_Cargo") then {

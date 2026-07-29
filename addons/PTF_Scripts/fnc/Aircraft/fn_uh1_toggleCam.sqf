@@ -4,8 +4,8 @@ toggle flir cam in UH1
 
 a: reyhard (RHS Original), A.Nilsen (PTF Modifications)
 */
-_p = call rhsusf_fnc_findPlayer;
-_v = vehicle _p;
+private _p = call rhsusf_fnc_findPlayer;
+private _v = vehicle _p;
 
 if(_p == driver _v)then{
     if(_v animationPhase "pip2_on" >0)then{
@@ -15,14 +15,17 @@ if(_p == driver _v)then{
         /*
             camera restart
         */
-        rhs_uh1_cam cameraeffect ["terminate","back"];
-        rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
-        //mode reset
-        _mode=_v getVariable ["rhs_uh1_mode",0];
-        "rendertarget0" setPiPEffect [_mode];
-        //zoom reset
-        _n=(_v getVariable ["rhs_uh1_zoom",42])/40;
-        rhs_uh1_cam camSetFov (0.7/_n);
+        // Cam is only created once the flir display has been opened, so it can be nil here
+        if(!isNil "rhs_uh1_cam")then{
+            rhs_uh1_cam cameraeffect ["terminate","back"];
+            rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
+            //mode reset
+            private _mode=_v getVariable ["rhs_uh1_mode",0];
+            "rendertarget0" setPiPEffect [_mode];
+            //zoom reset
+            private _n=(_v getVariable ["rhs_uh1_zoom",42])/40;
+            rhs_uh1_cam camSetFov (0.7/_n);
+        };
     };
 }else{
     if(_p == _v turretUnit [0])then{
@@ -30,19 +33,20 @@ if(_p == driver _v)then{
             _v animate ["pip1_on",0];
         }else{
             _v animate ["pip1_on",1];
-            rhs_uh1_cam cameraeffect ["terminate","back"];
-            rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
             /*
                 camera restart
             */
-            rhs_uh1_cam cameraeffect ["terminate","back"];
-            rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
-            //mode reset
-            _mode=_v getVariable ["rhs_uh1_mode",0];
-            "rendertarget0" setPiPEffect [_mode];
-            //zoom reset
-            _n=(_v getVariable ["rhs_uh1_zoom",42])/40;
-            rhs_uh1_cam camSetFov (0.7/_n);
+            // Cam is only created once the flir display has been opened, so it can be nil here
+            if(!isNil "rhs_uh1_cam")then{
+                rhs_uh1_cam cameraeffect ["terminate","back"];
+                rhs_uh1_cam cameraEffect ["internal", "Back", "rendertarget0"];
+                //mode reset
+                private _mode=_v getVariable ["rhs_uh1_mode",0];
+                "rendertarget0" setPiPEffect [_mode];
+                //zoom reset
+                private _n=(_v getVariable ["rhs_uh1_zoom",42])/40;
+                rhs_uh1_cam camSetFov (0.7/_n);
+            };
         };
     };
 };

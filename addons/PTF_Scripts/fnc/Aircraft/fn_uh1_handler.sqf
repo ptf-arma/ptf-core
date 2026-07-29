@@ -39,7 +39,13 @@ low refresh rate loop [1 sec]
         core r2t handling
     */
     rhs_uh1Flir=_v;
-    //rhs_zoom_param=40;
+    // Shared singleton across every UH1Y - if the display is re-created before the
+    // loop below exits we would orphan the old render to texture camera
+    if(!isNil "rhs_uh1_cam")then
+    {
+        rhs_uh1_cam cameraeffect ["terminate","back"];
+        camDestroy rhs_uh1_cam;
+    };
     rhs_uh1_cam = "camera" camCreate [0,0,0];
     rhs_uh1_cam cameraEffect ["Internal", "Back", "rendertarget0"];
 
@@ -47,7 +53,17 @@ low refresh rate loop [1 sec]
     rhs_uh1_cam camSetFov (0.7/_oldZoom);
 
     _ehID = addMissionEventHandler ["Draw3D", {
-        if(isNil "rhs_uh1_cam")exitWith{};
+        // Self removal - the loop below only unhooks this if it exits cleanly, and this
+        // runs every frame. Id is shared through uiNamespace so it is only removed once
+        if(isNil "rhs_uh1_cam" || {isNil "rhs_uh1Flir"} || {isNull (uiNamespace getVariable ["PTF_UH1_Ctrl",displayNull])})exitWith
+        {
+            private _drawEH = uiNamespace getVariable ["PTF_UH1_DrawEH",-1];
+            if(_drawEH >= 0)then
+            {
+                removeMissionEventHandler ["Draw3D",_drawEH];
+                uiNamespace setVariable ["PTF_UH1_DrawEH",-1];
+            };
+        };
         _dir =
             (rhs_uh1Flir selectionPosition "gun_begin")
                 vectorFromTo
@@ -57,6 +73,7 @@ low refresh rate loop [1 sec]
             _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
         ];
     }];
+    uiNamespace setVariable ["PTF_UH1_DrawEH",_ehID];
 
     while{not(isNull _w)}do
     {
@@ -121,8 +138,10 @@ low refresh rate loop [1 sec]
             cam zoom handler
         */
         //visible in internal cam
-        _zoomLevel= _v getVariable ["rhs_uh1_zoom",42];
-        _zoomLevel=(if (_zoomLevel <= 99) then {"0"} else {""})+ str _zoomLevel;
+        _zoomLevel= str (_v getVariable ["rhs_uh1_zoom",42]);
+        // Always pad to 3 chars - a single digit zoom left index 2 empty, which asked
+        // for a digi_num_.paa that does not exist on every pass
+        while{count (toArray _zoomLevel) < 3}do{_zoomLevel="0"+_zoomLevel};
         for "_i" from 0 to 2 do
         {
             _nm=_zoomLevel select [_i,1];
@@ -142,11 +161,22 @@ low refresh rate loop [1 sec]
     };
 
     uiNameSpace setVariable ["PTF_UH1_Ctrl",displayNull];
-    removeMissionEventHandler ["Draw3D",_ehID];
-    rhs_uh1_cam cameraeffect ["terminate","back"];
-    camDestroy rhs_uh1_cam;
-    rhs_uh1_cam = nil;
-    rhs_uh1_flir = nil;
+    // Only remove our own handler - it may already have taken itself down, and mission
+    // event handler ids are reused, so a blind remove could kill somebody else's
+    if((uiNamespace getVariable ["PTF_UH1_DrawEH",-1]) isEqualTo _ehID)then
+    {
+        removeMissionEventHandler ["Draw3D",_ehID];
+        uiNamespace setVariable ["PTF_UH1_DrawEH",-1];
+    };
+    if(!isNil "rhs_uh1_cam")then
+    {
+        rhs_uh1_cam cameraeffect ["terminate","back"];
+        camDestroy rhs_uh1_cam;
+        rhs_uh1_cam = nil;
+    };
+    // rhs_uh1_flir was a typo - the variable set above is rhs_uh1Flir, so the reference
+    // to the heli was never released. Only clear it if no newer display has claimed it
+    if(!isNil "rhs_uh1Flir" && {rhs_uh1Flir isEqualTo _v})then{rhs_uh1Flir = nil};
 };
 
 
@@ -175,7 +205,9 @@ high refresh rate loop [0.1 sec]
 
     while{not(isNull _w)}do
     {
-
+        // The 1 sec loop owns the shared cam and clears it on exit - without this we
+        // would throw on every pass once it is gone
+        if(isNil "rhs_uh1_cam" || {isNil "rhs_uh1Flir"})exitWith{};
 
         /*
             camera mode handler

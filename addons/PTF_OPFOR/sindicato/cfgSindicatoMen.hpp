@@ -205,6 +205,12 @@ class PTF_Sind_contrabandista: PTF_Sind_base
 
 // Dockyard dynamite, union-audited. What he does to a culvert is nobody's
 // business but the union's.
+//
+// Two magazines, not four. The toolkit alone is 80 mass and the mine
+// detector another 20, against 140 for the coveralls (40) and tac vest (100)
+// together -- and the engine packs Items[] before magazines[], so the last
+// two magazines and the grenade were being dropped at spawn. He does his
+// real work with what is in the demo pack anyway.
 class PTF_Sind_dinamitero: PTF_Sind_base
 {
    scope = 2;
@@ -222,6 +228,16 @@ class PTF_Sind_dinamitero: PTF_Sind_base
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    weapons[] = {"rhs_weap_akms", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_akms", "Throw", "Put"};
+   magazines[] =
+      {
+         "rhs_30Rnd_762x39mm_bakelite",
+         "rhs_30Rnd_762x39mm_bakelite"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_30Rnd_762x39mm_bakelite",
+         "rhs_30Rnd_762x39mm_bakelite"
+      };
 };
 
 class PTF_Sind_sanitario: PTF_Sind_base

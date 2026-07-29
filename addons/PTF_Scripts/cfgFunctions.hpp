@@ -14,10 +14,6 @@ class cfgFunctions {
 			class SmallVicBox_init {};
 			class Tracks_init {};
 		};
-		class Drone {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\drone";
-			class droneitem {};
-		};
 		class Flags {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\flag";
 			class FlagRaise {};

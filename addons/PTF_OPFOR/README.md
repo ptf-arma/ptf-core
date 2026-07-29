@@ -83,9 +83,9 @@ statistically harder:
 | Night vision | None, on anyone | Every unit; PVS-15 on the veteran tier |
 | `sensitivity` | 0.8 (sentry) – 3.0 (NCO) | 3.2 – 4.0, no inattentive tier |
 | Rifle | L1A1/FAL, iron sights | AK-103, EOTech or ACOG MDO + PEQ-15 |
-| Magazines | 3–6, steel | 8, polymer |
+| Magazines | 1–5, steel | 8, polymer |
 | Protection | ALICE webbing, M1 steel | MBAV plate carrier, Ops-Core |
-| MG | FN MAG, three belts | PKP Pecheneg, five belts |
+| MG | FN MAG, three belts | PKP Pecheneg, two belts |
 | AT | RPG-7, PG-7V | RPG-7 PGO, PG-7VR tandem + thermobaric |
 | Armour | M113, BRDM-2 | BTR-70, BMP-2 |
 
@@ -194,6 +194,34 @@ texture is applied with `setFlagTexture` in an init handler — the same way
 vanilla `FlagChecked_F` does it.
 
 For vehicle liveries see **LIVERIES.md**.
+
+## Carrying capacity — read this before adding magazines
+
+The engine fills a soldier's **uniform and vest only** when it distributes
+`magazines[]`. It never uses the backpack for that, and anything that does not
+fit is dropped silently at spawn (`Some of magazines weren't stored in soldier
+Vest or Uniform?` in the RPT). `Items[]` and `linkedItems[]` are packed first,
+so a toolkit or a Medikit comes straight off the magazine budget.
+
+Numbers that matter (all read out of the RHS and vanilla configs):
+
+| | capacity / mass |
+|---|---|
+| Every PTF uniform in this addon | 40 |
+| ALICE webbing / chest rig / ERDL tac vest | 120 / 100 / 100 |
+| `rhsusf_mbav` (bare carrier — **not** the rifleman one) | 20 |
+| `rhsusf_mbav_light` / `_rifleman` / `_mg` | 100 / 140 / 160 |
+| `rhsusf_spc_crewman` / `_light` / `_rifleman` / `_iar` | 80 / 100 / 140 / 160 |
+| ToolKit / Medikit / MineDetector / FirstAidKit | 80 / 80 / 20 / 8 |
+| FAL 20rnd / AK 30rnd polymer / STANAG 30rnd | 16.5 / 11.5 / 9.4 |
+| PKP 100rnd belt / RPG PG-7V / PG-7VR / .50 BMG 10rnd | 64.4 / 31.5 / 64.4 / 41.1 |
+| FIM-92 round / 9K38 Igla round | 120 / 100 |
+
+Consequences worth remembering: no vest in the game holds a MANPADS round
+alongside anything else, which is why the two Kestrel AA specialists carry
+theirs in a backpack loaded by an init handler; and the engine packs in array
+order, which is why `PTF_Guardia_at` lists its rockets before its rifle
+magazines.
 
 ## Verify in-game
 

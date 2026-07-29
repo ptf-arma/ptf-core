@@ -79,7 +79,15 @@ class cfgPatches
               // declarations resolve to nothing, and each "edit" silently
               // creates a parentless root class instead.
               "Peral_Airfield_Logistics",
-              "slr_slingload"
+              "slr_slingload",
+              // Same hazard for the external classes this addon INHERITS FROM:
+              // cfg6x6.hpp, cfgMTVR.hpp and cfgLCAC.hpp derive from these, and
+              // without the load-order guarantee the cfgIMPORT.hpp forward
+              // declarations resolve to nothing and PTF_Quadbike_6x6 /
+              // PTF_MK23* / PTF_LCAC become parentless root classes.
+              "NDS_6x6_ATV",     // NDS_6x6_ATV_MIL
+              "Peral_USMC_Gear", // Peral_MK23, Peral_MK23_50, Peral_MK23T(_50)
+              "Peral_LCAC"       // Peral_LCAC
               };
    };
 };

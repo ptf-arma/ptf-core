@@ -39,10 +39,16 @@ private _destroyCam =
     camDestroy _videoFeedCam;
     // Remove Event Handlers
     (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable ["rhs_ah64d_videoKey_eh",-1]];
+    // Clear the id as well, otherwise a later removal could hit a recycled handler
+    uiNameSpace setVariable ["rhs_ah64d_videoKey_eh",-1];
     ["rhs_ah64_videoFeed_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
 };
 
-private _nextMode =  [1,2,3,4,5,0] # ((getUserMFDvalue _vehicle) # _mfd);
+// getUserMFDvalue can be shorter than _mfd+1 (fresh vehicle, and _mfd is 6/7 for the
+// gunner), which used to make the lookup below index nil and throw
+private _currentMode = (getUserMFDvalue _vehicle) param [_mfd,0,[0]];
+if(_currentMode < 0 || _currentMode > 5)then{_currentMode = 0};
+private _nextMode =  [1,2,3,4,5,0] # _currentMode;
 _vehicle setUserMFDvalue [_mfd,_nextMode];
 private _mfdValues = getUserMFDvalue _vehicle;
 
@@ -68,6 +74,13 @@ switch(_nextMode)do
         ["rhs_ah64_flightPage_pfh", "onEachFrame", {
 
             params["_time","_vehicle","_vehicleDirPrev"];
+
+            // Nothing takes this down when the player dismounts, so it would keep
+            // hammering the (possibly deleted) vehicle for the rest of the mission
+            if(isNull _vehicle || {!alive _vehicle} || {!((call rhs_fnc_findPlayer) in _vehicle)})exitWith
+            {
+                ["rhs_ah64_flightPage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+            };
 
             if(time >= _time)then
             {
@@ -110,7 +123,9 @@ switch(_nextMode)do
         ["rhs_ah64_enginePage_pfh", "onEachFrame", {
             params["_time","_vehicle"];
 
-            if(!alive _vehicle)exitWith
+            // Also bail out once the player is out of the aircraft - leaving the seat
+            // used to leave this running for the rest of the mission
+            if(isNull _vehicle || {!alive _vehicle} || {!((call rhs_fnc_findPlayer) in _vehicle)})exitWith
             {
                 ["rhs_ah64_enginePage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
             };
@@ -181,9 +196,21 @@ switch(_nextMode)do
             (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "rhs_ah64d_videoKey_eh"];
         };
 
+        // Handler code cannot capture _vehicle, so stash it for the self removal check
+        uiNameSpace setVariable ["rhs_ah64d_videoKey_veh",_vehicle];
+
         // Add key event handler
         private _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
         {
+            // Nothing removed this on dismount, so it fired on every key release for the
+            // rest of the mission - unhook once the player is out of the aircraft
+            private _ownerVehicle = uiNameSpace getVariable ["rhs_ah64d_videoKey_veh",objNull];
+            if(isNull _ownerVehicle || {!((call rhs_fnc_findPlayer) in _ownerVehicle)})exitWith
+            {
+                (_this # 0) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable ["rhs_ah64d_videoKey_eh",-1]];
+                uiNameSpace setVariable ["rhs_ah64d_videoKey_eh",-1];
+            };
+
             // Perform actions only in internal view
             if(cameraView isEqualTo "INTERNAL")then
             {
@@ -236,6 +263,13 @@ switch(_nextMode)do
         // Add loop
         ["rhs_ah64_videoFeed_pfh", "onEachFrame", {
             params["_time","_vehicle","_videoFeedCam","_unit","_prevMode","_prevZoom"];
+
+            // Only _destroyCam took this down before, and that is only reached from the
+            // radar page, so dismounting left it running every frame
+            if(isNull _vehicle || {!alive _vehicle} || {!((call rhs_fnc_findPlayer) in _vehicle)})exitWith
+            {
+                ["rhs_ah64_videoFeed_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+            };
 
             if(time >= _time)then
             {
@@ -301,9 +335,21 @@ switch(_nextMode)do
             (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "rhs_ah64d_radarPage_eh"];
         };
 
+        // Handler code cannot capture _vehicle, so stash it for the self removal check
+        uiNameSpace setVariable ["rhs_ah64d_radarPage_veh",_vehicle];
+
         // Add key event handler
         private _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
         {
+            // Nothing removed this on dismount, so it fired on every key release for the
+            // rest of the mission - unhook once the player is out of the aircraft
+            private _ownerVehicle = uiNameSpace getVariable ["rhs_ah64d_radarPage_veh",objNull];
+            if(isNull _ownerVehicle || {!((call rhs_fnc_findPlayer) in _ownerVehicle)})exitWith
+            {
+                (_this # 0) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable ["rhs_ah64d_radarPage_eh",-1]];
+                uiNameSpace setVariable ["rhs_ah64d_radarPage_eh",-1];
+            };
+
             // Perform actions only in internal view
             if(cameraView isEqualTo "INTERNAL")then
             {
