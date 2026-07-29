@@ -10,23 +10,81 @@
 # mods you subscribe to. For a full-fidelity test, also load the published
 # "@[PTF] Paramarine Milsim Core" mod alongside this launch.
 
+# The workshop list mirrors the published mod's Required Items
+# (steamcommunity.com/sharedfiles/filedetails/?id=2314277189), so a test
+# launch loads the same modset players do and no requires-addon warnings fire.
+
 [default]
 workshop = [
+    # --- framework / core ---
     "450814997",   # CBA_A3
     "463939057",   # ACE3
+    "894678801",   # Task Force Arrowhead Radio (BETA)
+    "2526965189",  # TFAR - ACE Radio Setter - Extended
+    "3283642267",  # Speshal Core
+    "2333743487",  # RKSL Studios Common Library
+
+    # --- RHS family ---
     "843577117",   # RHSUSAF
     "843425103",   # RHSAFRF
     "843593391",   # RHSGREF
-    "894678801",   # Task Force Arrowhead Radio (BETA)
+    "843632231",   # RHSSAF
+    "2288691268",  # RHSTERRACORE
+    "3496189944",  # RHSUSAF - M72 LAW and M136 AT4 variants
+
+    # --- USAF mod ---
     "2397360831",  # USAF Mod - Main
     "2397371875",  # USAF Mod - Fighters
     "2397376046",  # USAF Mod - Utility
+
+    # --- gear / weapons ---
     "1795825073",  # USP Gear & Uniforms AIO
-    "3048131698",  # Airfield Logistics (Lala Peral)
     "1875281645",  # ILBE Assault Pack - Rewrite
-    "1779063631",  # Zeus Enhanced
-    "735566597",   # Project OPFOR (PTF_Menu loads after po_main to delete its menu tile)
+    "2372036642",  # BackpackOnChest - Redux
+    "366425329",   # FIR AWS (AirWeaponSystem)
+    "3308808194",  # Modular Handgun System (Sig M17 & M18)
+    "3609592136",  # LOT - M1014
+    "3095804211",  # GOLD Optics bikey fix
     "3283645995",  # Breach - Rewrite / TSP Breach (PTF_Utility crates stock its charges)
+
+    # --- factions / content ---
+    "735566597",   # Project OPFOR (PTF_Menu loads after po_main to delete its menu tile)
+
+    # --- vehicles / air ---
+    "3048131698",  # Airfield Logistics (Lala Peral)
+    "3083512801",  # Lala Peral - Vehicle Interaction System
+    "3546703780",  # AH-1Z Viper
+    "3517620967",  # F-35B Lightning
+    "3596653038",  # LHA
+    "3606509232",  # RKSL Studios - RQ7 Shadow 200 Tactical UAV
+    "3045129955",  # FPV Drone Crocus
+
+    # --- terrains ---
+    "583496184",   # CUP Terrains - Core
+    "583544987",   # CUP Terrains - Maps
+
+    # --- AI / gameplay ---
+    "1858075458",  # LAMBS_Danger.fsm
+    "1808238502",  # LAMBS_Suppression
+    "333310405",   # Enhanced Movement
+    "1987414574",  # VS ACE Static Line Jump
+    "2515887728",  # Crows Electronic Warfare
+    # "KAT - Advanced Medical" is in the mod's Required Items but is NOT
+    # subscribed on this machine -- subscribe, find its workshop ID, and add
+    # it here. hemtt launch fails hard on unsubscribed entries.
+
+    # --- UI / QoL ---
+    "1779063631",  # Zeus Enhanced
+    "1638341685",  # DUI - Squad Radar
+    "837729515",   # CH View Distance
+    "2791403093",  # Better Inventory
+    "3283635033",  # Animate - Radio
+    "3522519386",  # Hate's Blank Map Marker for GRG
+    "2041057379",  # A3 Thermal Improvement
+
+    # --- sound ---
+    "3407948300",  # JSRS SOUNDMOD 2025
+    "1428076716",  # Radium's Awesome Soundpack
 ]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-debug", "-noPause"]
 executable = "arma3_x64"
