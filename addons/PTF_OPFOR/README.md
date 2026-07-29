@@ -216,7 +216,7 @@ Numbers that matter (all read out of the RHS and vanilla configs):
 | Every PTF uniform in this addon | 40 |
 | ALICE webbing / chest rig / ERDL tac vest | 120 / 100 / 100 |
 | `rhsusf_mbav` (bare carrier — **not** the rifleman one) | 20 |
-| `rhsusf_mbav_light` / `_rifleman` / `_mg` | 100 / 140 / 160 |
+| `rhsusf_mbav_light` / `_rifleman` / `_grenadier` / `_mg` / `_medic` | 100 / 140 / 150 / 160 / 160 |
 | `rhsusf_spc_crewman` / `_light` / `_rifleman` / `_iar` | 80 / 100 / 140 / 160 |
 | ToolKit / Medikit / MineDetector / FirstAidKit | 80 / 80 / 20 / 8 |
 | FAL 20rnd / AK 30rnd polymer / STANAG 30rnd | 16.5 / 11.5 / 9.4 |

@@ -102,13 +102,14 @@ class PTF_Guardia_rifleman: PTF_Guardia_base
 // better skill. Field these when a meeting is supposed to be worse than the
 // last one.
 //
-// The carrier is rhsusf_mbav_light, not rhsusf_mbav. RHS's plain
-// rhsusf_mbav is the bare plate carrier with no pouches on it -- it holds
-// 20, against 140 for the mbav_rifleman the standard trooper wears. The
-// veteran tier was silently spawning with three magazines instead of eight
-// because of it. mbav_light holds 100, which with the uniform's 40 carries
-// the full eight-magazine load and still reads as a leaner rig than the
-// line trooper's.
+// The carrier is rhsusf_mbav_grenadier. RHS's plain rhsusf_mbav is the bare
+// plate carrier with no pouches on it -- it holds 20, against 140 for the
+// mbav_rifleman PTF_Guardia_base wears, and the veteran tier was silently
+// spawning with three magazines instead of eight because of it. The
+// grenadier rig holds 150 and is the most heavily pouched carrier in the
+// MBAV family short of the MG and medic rigs, so the veteran now reads as
+// better equipped than the line trooper rather than worse -- which is the
+// whole point of the tier.
 class PTF_Guardia_rifleman_vet: PTF_Guardia_base
 {
    scope = 2;
@@ -119,8 +120,8 @@ class PTF_Guardia_rifleman_vet: PTF_Guardia_base
    cost = 340000;
    weapons[] = {"PTF_weap_guardia_ak103_mdo", "Throw", "Put"};
    respawnWeapons[] = {"PTF_weap_guardia_ak103_mdo", "Throw", "Put"};
-   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_grenadier", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_grenadier", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_ACOG_MDO", "rhsusf_acc_anpeq15"};
 };
 
 class PTF_Guardia_grenadier: PTF_Guardia_base
@@ -270,10 +271,12 @@ class PTF_Guardia_marksman: PTF_Guardia_base
    cost = 400000;
    accuracy = 3.4;
    sensitivity = 4.0;
-   // mbav_light (100), not the pouchless rhsusf_mbav (20) -- see the
+   // mbav_rifleman (140), not the pouchless rhsusf_mbav (20) -- see the
    // veteran class above. Eight SVD magazines and a sidearm do not fit 20.
-   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   // Same rig as the line trooper: the magazine pouches suit a DMR and it
+   // keeps him from being the worst-equipped man in the platoon.
+   linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_rifleman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_mbav_rifleman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_svds_pso1", "rhs_weap_pya", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_svds_pso1", "rhs_weap_pya", "Throw", "Put"};
    magazines[] =
