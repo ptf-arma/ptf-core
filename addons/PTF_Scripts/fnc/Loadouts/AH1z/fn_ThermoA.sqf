@@ -9,7 +9,7 @@ if (
     {
         [
             "ace_pylons_setPylonLoadOutEvent",
-            [_target, _foreachindex + 1, _x, [], (getPylonMagazines _target) select _foreachindex + 1]
+            [_target, _foreachindex + 1, _x, [], (getPylonMagazines _target) select _foreachindex]
         ] call CBA_fnc_globalEvent;
     } forEach _attachments;
 } else {

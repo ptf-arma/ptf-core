@@ -37,8 +37,6 @@ class cfgPatches
          "PTF_M1085A1P2",
          "PTF_M1078A1P2",
          "PTF_M1025_tow",
-         "PTF_M1151CAT_MK19",
-         "PTF_M1151CAT_M2",
          "PTF_M1151_M2_LRAS",
          "PTF_Quadbike_6x6",
          "PTF_SAM_RADAR",
@@ -75,7 +73,13 @@ class cfgPatches
               "A3_Data_F_Oldman_Loadorder",
               "A3_Soft_F_Exp",
               "A3_Boat_F_Beta",
-              "Peral_ACV"
+              "Peral_ACV",
+              // Load-order dependencies for the classes this addon EDITS.
+              // Without these, PTF_Vehicles parses first, the forward
+              // declarations resolve to nothing, and each "edit" silently
+              // creates a parentless root class instead.
+              "Peral_Airfield_Logistics",
+              "slr_slingload"
               };
    };
 };

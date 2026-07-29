@@ -28,7 +28,6 @@ class CfgPatches
           "PTF_Standard_Arsenal",
           "PTF_Buiding_RepairDepot",
           "PTF_Cargo_Tiny_Ammo",
-          "PTF_Cargo_Ammo",
           "PTF_Spawner",
           "PTF_Pso_Arsenal",
           "PTF_Standard_Arsenal_No_Ammo"

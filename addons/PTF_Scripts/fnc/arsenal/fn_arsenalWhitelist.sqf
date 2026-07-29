@@ -1,5 +1,11 @@
 // Rifles, Pistols, Launchers, Attachments
 
+// Cached. This function allocates ~950 string literals across 16 sub-arrays
+// and then concatenates them all, and it is called from the init of every
+// arsenal and crate on the map. The contents are static, so build it once per
+// machine and hand out copies after that.
+if (!isNil "PTF_arsenalWhitelistCache") exitWith {+PTF_arsenalWhitelistCache};
+
 _rifles = [
 	"rhsusf_acc_g33_xps3",
 	"rhs_weap_m4a1_blockII_wd",
@@ -945,6 +951,6 @@ _standardArsenal = _rifles + _launchers + _pistols + _attachments + _backpacks +
 
 _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
-_return = [_standardArsenal, _psoArsenal];
+PTF_arsenalWhitelistCache = [_standardArsenal, _psoArsenal];
 
-_return
++PTF_arsenalWhitelistCache

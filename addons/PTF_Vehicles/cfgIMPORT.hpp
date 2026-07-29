@@ -129,5 +129,12 @@ class Peral_MK23_50;
 class Peral_MK23T;
 class Peral_MK23T_50;
 
+//Peral Airfield Logistics tractors (edited in cfgTractors.hpp -- these
+//declarations are what make those edits inherit instead of creating new
+//parentless root classes)
+class Peral_AS32A_35;
+class Peral_Helidolly_14x14;
+class Peral_Helidolly_16x16;
+
 //SlingLoading
 class slr_slingload_wreckDummy;

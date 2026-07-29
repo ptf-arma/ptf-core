@@ -84,18 +84,26 @@ class PTF_Tractor : boxloader_tractor_build
 };
 //Towing Tractor
 
-// Include Peral Airfield Logistics in Zeus menu
-class Peral_AS32A_35
+// Include Peral Airfield Logistics in Zeus menu.
+//
+// These MUST inherit from themselves (`class X: X`) with a matching forward
+// declaration in cfgIMPORT.hpp. Written bare (`class X { ... }`) they are not
+// edits to Peral's classes -- they are brand-new parentless root classes that
+// erase the whole inheritance chain: model, simulation, crew, cargo and
+// CBA_Extended_EventHandlers all vanish. That produced thousands of
+// "'/' is not a value" and "No entry ....scope/.transportAmmo" warnings per
+// session and cost these vehicles XEH support.
+class Peral_AS32A_35: Peral_AS32A_35
 {
    faction = "BLU_F";
    side = 1;
 };
-class Peral_Helidolly_14x14
+class Peral_Helidolly_14x14: Peral_Helidolly_14x14
 {
    faction = "BLU_F";
    side = 1;
 };
-class Peral_Helidolly_16x16
+class Peral_Helidolly_16x16: Peral_Helidolly_16x16
 {
    faction = "BLU_F";
    side = 1;
