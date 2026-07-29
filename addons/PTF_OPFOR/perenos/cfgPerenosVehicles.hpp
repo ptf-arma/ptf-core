@@ -26,7 +26,8 @@ class PTF_Pereno_uaz_open: rhsgref_ins_g_uaz_open
    displayName = "UAZ (Abierto)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_rifleman"};
-   hiddenSelectionsTextures[] = {"rhsafrf\addons\rhs_a2port_car\uaz\data\uaz_main_002_co.paa"};
+   // Marked sheet: faded VII on the door panel (built from star-free 002).
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_OPFOR\data\pereno_uaz_co.paa"};
 };
 
 class PTF_Pereno_uaz_dshkm: rhsgref_ins_g_uaz_dshkm_chdkz
@@ -40,7 +41,12 @@ class PTF_Pereno_uaz_dshkm: rhsgref_ins_g_uaz_dshkm_chdkz
    displayName = "UAZ (DShKM)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
-   hiddenSelectionsTextures[] = {"rhsafrf\addons\rhs_a2port_car\uaz\data\uaz_main_002_co.paa"};
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_uaz_co.paa",
+         "rhsafrf\addons\rhs_a2port_car\UAZ\Data\uaz_mount_co.paa",
+         "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+      };
 };
 
 class PTF_Pereno_ural: rhsgref_ins_g_ural
@@ -54,6 +60,13 @@ class PTF_Pereno_ural: rhsgref_ins_g_ural
    displayName = "Ural (Transporte)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
+   // Faded BI-7 stencil on the cab door.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_ural_kabina_co.paa",
+         "rhsafrf\addons\rhs_a2port_car\ural\data\ural_plachta_chdkz_co.paa",
+         "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+      };
 };
 
 class PTF_Pereno_ural_open: rhsgref_ins_g_ural_open
@@ -80,6 +93,17 @@ class PTF_Pereno_gaz66: rhsgref_ins_g_gaz66
    displayName = "GAZ-66";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
+   // 6-entry order inherited from rhs_truck: cab, tent, kung, ap2kung,
+   // repkung, decal-blank.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_gaz66_cab_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\tent_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_kung_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_ap2kung_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa",
+         "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+      };
 };
 
 class PTF_Pereno_m1025: rhsgref_hidf_m1025
@@ -93,6 +117,20 @@ class PTF_Pereno_m1025: rhsgref_hidf_m1025
    displayName = "M1025";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_rifleman"};
+   // 10-entry HIDF array; index 7 is the marked body sheet.
+   hiddenSelectionsTextures[] =
+      {
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_exterior_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_interior_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\A2_parts_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\wheel_wranglermt_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_mainbody_lg_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\tile_exmetal_lg_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_m1025_co.paa",
+         "",
+         ""
+      };
 };
 
 class PTF_Pereno_m1025_m2: rhsgref_hidf_m1025_m2
@@ -106,6 +144,21 @@ class PTF_Pereno_m1025_m2: rhsgref_hidf_m1025_m2
    displayName = "M1025 (M2)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+   // 11-entry m2 variant: adds the mk64 mount before the trailing empties.
+   hiddenSelectionsTextures[] =
+      {
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_exterior_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_interior_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\A2_parts_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\wheel_wranglermt_lg_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\m998_mainbody_lg_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\tile_exmetal_lg_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_m1025_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\hmmwv\mk64mount_lg_co.paa",
+         "",
+         ""
+      };
 };
 
 // --- The armour ------------------------------------------------------------
@@ -121,6 +174,12 @@ class PTF_Pereno_brdm2: rhsgref_BRDM2_ins_g
    displayName = "BRDM-2";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_brdm2_01_co.paa",
+         "\rhsgref\addons\rhsgref_a2port_armor\brdm2\data\brdm2_02_camo_co.paa",
+         "\rhsgref\addons\rhsgref_a2port_armor\brdm2\data\zbik_04_co.paa"
+      };
 };
 
 class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
@@ -134,6 +193,16 @@ class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
    displayName = "M113A3 (Desarmado)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+   // Faded VII on both flanks (UV runs vertical -- placement proven against
+   // the RHS medevac variant's red crosses), BI-7 stencil on the ramp door.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_m113_01_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_02_tv_h_90s_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_03_lg_co.paa",
+         "rhsusf\addons\rhsusf_m113\data_new\m113a3_int03_wd_co.paa",
+         "rhsusf\addons\rhsusf_m113\data_new\m23_pintle_wd_co.paa"
+      };
 };
 
 class PTF_Pereno_m113_m2: rhsgref_hidf_m113a3_m2
@@ -147,6 +216,16 @@ class PTF_Pereno_m113_m2: rhsgref_hidf_m113a3_m2
    displayName = "M113A3 (M2)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+   // Faded VII on both flanks (UV runs vertical -- placement proven against
+   // the RHS medevac variant's red crosses), BI-7 stencil on the ramp door.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_m113_01_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_02_tv_h_90s_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\hidf\m113a3_03_lg_co.paa",
+         "rhsusf\addons\rhsusf_m113\data_new\m113a3_int03_wd_co.paa",
+         "rhsusf\addons\rhsusf_m113\data_new\m23_pintle_wd_co.paa"
+      };
 };
 
 // --- Emplacements ----------------------------------------------------------
@@ -205,6 +284,15 @@ class PTF_Pereno_zil131: rhsgref_ins_zil131
    displayName = "ZiL-131 (Transporte)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
+   // 5-entry order per the chdkz ZiL classes: cargo, cabin, interior, wheels, base.
+   hiddenSelectionsTextures[] =
+      {
+         "\rhsgref\addons\rhsgref_vehicles_ret\data\chdkz\rhs_zil131_cargo_CHDKZ_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_zil_cabin_co.paa",
+         "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_interior_co.paa",
+         "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_wheels_co.paa",
+         "\rhsafrf\addons\rhs_zil131\data\rhs_zil131_base_co.paa"
+      };
 };
 
 class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
@@ -218,6 +306,17 @@ class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
    displayName = "GAZ-66 (Municiones)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
+   // 6-entry order inherited from rhs_truck: cab, tent, kung, ap2kung,
+   // repkung, decal-blank.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_gaz66_cab_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\tent_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_kung_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_ap2kung_co.paa",
+         "\rhsafrf\addons\rhs_gaz66\data\rhs_gaz66_repkung_co.paa",
+         "rhsafrf\addons\RHS_Decals\Data\Labels\Misc\no_ca.paa"
+      };
 };
 
 class PTF_Pereno_kraz_fuel: rhsgref_ins_kraz255b1_fuel
@@ -231,6 +330,13 @@ class PTF_Pereno_kraz_fuel: rhsgref_ins_kraz255b1_fuel
    displayName = "KrAZ-255 (Combustible)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
+   // 3-entry order per the chdkz KrAZ fuel class: cab, wheels, tank.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_kraz_co.paa",
+         "rhsafrf\addons\rhs_kraz255\data\kol255_co.paa",
+         "rhsgref\addons\rhsgref_vehicles_ret\data\chdkz\tz8_chdkz_co.paa"
+      };
 };
 
 // --- Air defence -----------------------------------------------------------
@@ -321,6 +427,14 @@ class PTF_Pereno_mi8: rhsgref_ins_Mi8amt
    displayName = "Mi-8AMT (Transporte)";
    crew = "PTF_Pereno_pilot";
    typicalCargo[] = {"PTF_Pereno_pilot"};
+   // Roundel painted directly over the old ChDKZ star position (RHS puts
+   // national insignia at the same UV spot across factions), faded VII under
+   // each boom-side rotor warning. Index 1 (detail sheet) stays stock.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_mi8_body_co.paa",
+         "rhsafrf\addons\rhs_a2port_air\mi17\data\mi8_det_g_cdf_co.paa"
+      };
 };
 
 class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
@@ -334,6 +448,16 @@ class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
    displayName = "UH-1H (Desarmado)";
    crew = "PTF_Pereno_pilot";
    typicalCargo[] = {"PTF_Pereno_pilot"};
+   // Only the dedicated DECAL layer changes -- hull, interior and LOD sheets
+   // stay stock HIDF grey, so there is no distance-pop. The decal sheet swaps
+   // "HORIZON ISLANDS AIR FORCE" boom text for the Valmeran roundel + VII.
+   hiddenSelectionsTextures[] =
+      {
+         "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_co.paa",
+         "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_in_co.paa",
+         "rhsgref\addons\rhsgref_air\uh1h\data\mlod_hidf_grey_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_uh1h_decals_ca.paa"
+      };
 };
 
 class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
@@ -347,4 +471,14 @@ class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
    displayName = "UH-1H (Artillado)";
    crew = "PTF_Pereno_pilot";
    typicalCargo[] = {"PTF_Pereno_pilot", "PTF_Pereno_crewman", "PTF_Pereno_crewman"};
+   // Only the dedicated DECAL layer changes -- hull, interior and LOD sheets
+   // stay stock HIDF grey, so there is no distance-pop. The decal sheet swaps
+   // "HORIZON ISLANDS AIR FORCE" boom text for the Valmeran roundel + VII.
+   hiddenSelectionsTextures[] =
+      {
+         "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_co.paa",
+         "rhsgref\addons\rhsgref_air\uh1h\data\uh1h_hidf_grey_in_co.paa",
+         "rhsgref\addons\rhsgref_air\uh1h\data\mlod_hidf_grey_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\pereno_uh1h_decals_ca.paa"
+      };
 };

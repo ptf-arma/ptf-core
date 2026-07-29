@@ -70,6 +70,15 @@ class PTF_Kestrel_mrzr: rhsusf_mrzr4_w
    displayName = "MRZR-4";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman", "PTF_Kestrel_operator"};
+   // Emblem on the front clip (slot 0); other four sheets stock.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_mrzr_camo_co.paa",
+         "\rhsusf\addons\rhsusf_mrzr\data\yel_tan_pnt1_co.paa",
+         "\rhsusf\addons\rhsusf_mrzr\data\red_tan_pnt1_co.paa",
+         "\rhsusf\addons\rhsusf_mrzr\data\grn_tan_pnt1_co.paa",
+         "\rhsusf\addons\rhsusf_mrzr\data\merged\orng_grn_co.paa"
+      };
 };
 
 class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
@@ -83,6 +92,22 @@ class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
    displayName = "M998 (Carga)";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman"};
+   // Full 11-entry array from rhsusf_m998_w_4dr; only index 9 changes -- the
+   // stock 101st Airborne decal sheet becomes Kestrel's.
+   hiddenSelectionsTextures[] =
+      {
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\A2_parts_WD_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\wheel_wranglermt_b_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_wood_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_4drcargo_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
+         ""
+      };
 };
 
 class PTF_Kestrel_m1025: rhsusf_m1025_w
@@ -96,6 +121,20 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
    displayName = "M1025 (Desarmado)";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman", "PTF_Kestrel_operator"};
+   // 10-entry array from rhsusf_m1025_w; index 8 swaps 101st decals for ours.
+   hiddenSelectionsTextures[] =
+      {
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_exterior_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_interior_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\A2_parts_WD_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\wheel_wranglermt_b_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m998_mainbody_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\gratting_w_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\tile_exmetal_co.paa",
+         "rhsusf\addons\rhsusf_hmmwv\textures\m1025_w_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_decals_co.paa",
+         ""
+      };
 };
 
 // RHS USAF woodland HMMWV rather than the HIDF green one los Perenos use:
@@ -193,6 +232,13 @@ class PTF_Kestrel_mh6: RHS_MELB_MH6M
    displayName = "MH-6M (Bancos)";
    crew = "PTF_Kestrel_pilot";
    typicalCargo[] = {"PTF_Kestrel_pilot"};
+   // US ARMY boom text patched out; kestrel emblem, wordmark and callsign on
+   // the boom band. Shared sheet -- both little birds brand identically.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_melb_ext_co.paa",
+         "rhsusf\addons\rhsusf_melb\data\decals\SN\blank_ca.paa"
+      };
 };
 
 class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
@@ -206,4 +252,11 @@ class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
    displayName = "AH-6M (Ligero)";
    crew = "PTF_Kestrel_pilot";
    typicalCargo[] = {"PTF_Kestrel_pilot"};
+   // US ARMY boom text patched out; kestrel emblem, wordmark and callsign on
+   // the boom band. Shared sheet -- both little birds brand identically.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_melb_ext_co.paa",
+         "rhsusf\addons\rhsusf_melb\data\decals\SN\blank_ca.paa"
+      };
 };
