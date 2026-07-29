@@ -40,7 +40,7 @@ class PTF_Pereno_base: rhsgref_hidf_base
    // replace them -- the headgear randomiser below hangs off this.
    class EventHandlers;
 
-   uniformClass = "rhsgref_uniform_og107";
+   uniformClass = "PTF_U_pereno_og107";
    hiddenSelections[] = {"Camo"};
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_tanoa\m93_og107_co.paa"};
 
@@ -130,7 +130,7 @@ class PTF_Pereno_rifleman: PTF_Pereno_base
    scope = 2;
    scopeCurator = 2;
    displayName = "Fusilero";
-   uniformClass = "rhsgref_uniform_og107_erdl";
+   uniformClass = "PTF_U_pereno_og107_erdl";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_tanoa\m93_og107_erdl_co.paa"};
    class EventHandlers: EventHandlers
    {
@@ -338,7 +338,7 @@ class PTF_Pereno_teamleader: PTF_Pereno_rifleman
    accuracy = 1.8;
    sensitivity = 2.6;
    icon = "iconManLeader";
-   uniformClass = "rhsgref_uniform_ERDL";
+   uniformClass = "PTF_U_pereno_erdl";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_tanoa\m93_erdl_co.paa"};
    headgearList[] = {"rhsgref_helmet_M1_painted", 2, "rhsgref_helmet_M1_painted_alt01", 1};
    linkedItems[] = {"rhsgref_helmet_M1_painted", "rhsgref_chestrig", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};

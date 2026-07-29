@@ -75,6 +75,11 @@ class PTF_Guardia_ural: rhsgref_ins_g_ural
       };
 };
 
+// Guardia dark repaint, and a marking fix in one: the stock insurgent BTR-70
+// wears ChDKZ red stripes (the old faction, same disease as the UAZ star), so
+// this repaint is built from RHS's CLEAN base textures instead. Texture order
+// mirrors rhsgref_ins_btr70's own 5-entry override: camo1, camo2, blank,
+// stowage x2. The i*/n* decal slots beyond index 4 are runtime-painted.
 class PTF_Guardia_btr70: rhsgref_ins_g_btr70
 {
    author = "Paramarine Task Force";
@@ -86,6 +91,14 @@ class PTF_Guardia_btr70: rhsgref_ins_g_btr70
    displayName = "BTR-70";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman", "PTF_Guardia_crewman"};
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_btr70_1_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_btr70_2_co.paa",
+         "",
+         "rhsafrf\addons\rhs_btr70\habar\data\sa_gear_02_co.paa",
+         "rhsafrf\addons\rhs_btr70\habar\data\sa_gear_02_co.paa"
+      };
 };
 
 class PTF_Guardia_bmp2: rhsgref_ins_g_bmp2
@@ -167,6 +180,16 @@ class PTF_Guardia_kamaz: rhs_kamaz5350_msv
    displayName = "KamAZ-5350 (Transporte)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
+   // Same 5-entry order as rhs_kamaz5350: cabin, cargo, base, bed, cover.
+   // Selections beyond index 4 are RHS's runtime decal slots.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cabin_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cargo_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_base_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
+      };
 };
 
 class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
@@ -180,6 +203,16 @@ class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
    displayName = "KamAZ-5350 (Municiones)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
+   // Same 5-entry order as rhs_kamaz5350: cabin, cargo, base, bed, cover.
+   // Selections beyond index 4 are RHS's runtime decal slots.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cabin_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cargo_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_base_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
+      };
 };
 
 class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
@@ -193,6 +226,16 @@ class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
    displayName = "KamAZ-5350 (Abierto)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
+   // Same 5-entry order as rhs_kamaz5350: cabin, cargo, base, bed, cover.
+   // Selections beyond index 4 are RHS's runtime decal slots.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cabin_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cargo_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_base_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_bed_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_kamaz_cover_co.paa"
+      };
 };
 
 // --- Air defence -----------------------------------------------------------
@@ -223,6 +266,14 @@ class PTF_Guardia_zsu234: rhsgref_ins_zsu234
    displayName = "ZSU-23-4 (Shilka)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman", "PTF_Guardia_crewman"};
+   // 4-entry order mirrors rhsgref_ins_zsu234: three hull sheets + blank decal.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_1_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_2_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_zsu_3_co.paa",
+         "rhsafrf\addons\rhs_decals\Data\Labels\Misc\no_ca.paa"
+      };
 };
 
 // --- Boats -----------------------------------------------------------------
@@ -254,6 +305,12 @@ class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
    displayName = "Mi-17Sh (Transporte)";
    crew = "PTF_Guardia_pilot";
    typicalCargo[] = {"PTF_Guardia_pilot"};
+   // 2-entry order mirrors rhsgref_cdf_reg_Mi17Sh: body camo + detail sheet.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_mi17_body_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_mi17_det_co.paa"
+      };
 };
 
 // The escalation ceiling. Field it once, late, and make it the mission.
@@ -268,4 +325,11 @@ class PTF_Guardia_mi35: rhsgref_cdf_Mi35
    displayName = "Mi-35";
    crew = "PTF_Guardia_pilot";
    typicalCargo[] = {"PTF_Guardia_pilot"};
+   // 3-entry order mirrors rhsgref_cdf_Mi35: two hull sheets + detail sheet.
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_1_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_2_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\guardia_mi35_det_co.paa"
+      };
 };

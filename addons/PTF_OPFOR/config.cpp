@@ -120,7 +120,15 @@ class cfgPatches
             "PTF_weap_guardia_ak103_mdo",
             "PTF_weap_guardia_ak103_gp25",
             "PTF_weap_kestrel_xm2010",
-            "PTF_weap_kestrel_m107"
+            "PTF_weap_kestrel_m107",
+            "PTF_U_pereno_og107",
+            "PTF_U_pereno_og107_erdl",
+            "PTF_U_pereno_erdl",
+            "PTF_U_kestrel_wdl",
+            "PTF_U_kestrel_dpm",
+            "PTF_U_kestrel_lizard",
+            "PTF_U_kestrel_desert",
+            "PTF_U_kestrel_olive"
          };
       requiredVersion = "0.1";
       requiredAddons[] =
@@ -158,6 +166,8 @@ class CfgWeapons
 {
 #include "guardia\cfgGuardiaWeapons.hpp"
 #include "kestrel\cfgKestrelWeapons.hpp"
+#include "perenos\cfgPerenosUniforms.hpp"
+#include "kestrel\cfgKestrelUniforms.hpp"
 };
 
 class CfgVehicles
