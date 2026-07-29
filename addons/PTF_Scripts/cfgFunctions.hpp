@@ -7,6 +7,7 @@ class cfgFunctions {
 			class ccp{};
 			class lz{};
 			class re{};
+			class allocMarkerName{};
 		};
 		class Boxes {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Boxes";

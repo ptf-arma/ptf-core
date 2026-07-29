@@ -3,7 +3,9 @@
     ["LZ marker name list", "Set possibel names for the lz markers"],
     ["Paramarine Task Force", "Markers"],
     "['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']",
-    false, // isGlobal - per-player list; the rotation index (IDLZ) is client-local to match
+    true,  // isGlobal - the SERVER reads this list to allocate callsigns from one
+           // canonical pool, so every client must agree on it. Per-player lists
+           // and unique unit-wide callsigns are mutually exclusive.
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
@@ -12,7 +14,9 @@
     ["Resupply marker name list", "Set possibel names for the Resupply markers"],
     ["Paramarine Task Force", "Markers"],
     "['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu']",
-    false, // isGlobal - per-player list; the rotation index (IDRE) is client-local to match
+    true,  // isGlobal - the SERVER reads this list to allocate callsigns from one
+           // canonical pool, so every client must agree on it. Per-player lists
+           // and unique unit-wide callsigns are mutually exclusive.
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
