@@ -25,6 +25,8 @@ workshop = [
     "3048131698",  # Airfield Logistics (Lala Peral)
     "1875281645",  # ILBE Assault Pack - Rewrite
     "1779063631",  # Zeus Enhanced
+    "735566597",   # Project OPFOR (PTF_Menu loads after po_main to delete its menu tile)
+    "3283645995",  # Breach - Rewrite / TSP Breach (PTF_Utility crates stock its charges)
 ]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-debug", "-noPause"]
 executable = "arma3_x64"
