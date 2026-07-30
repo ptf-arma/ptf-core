@@ -86,24 +86,27 @@ class PTF_Tractor : boxloader_tractor_build
 
 // Include Peral Airfield Logistics in Zeus menu.
 //
-// These MUST inherit from themselves (`class X: X`) with a matching forward
-// declaration in cfgIMPORT.hpp. Written bare (`class X { ... }`) they are not
-// edits to Peral's classes -- they are brand-new parentless root classes that
-// erase the whole inheritance chain: model, simulation, crew, cargo and
-// CBA_Extended_EventHandlers all vanish. That produced thousands of
-// "'/' is not a value" and "No entry ....scope/.transportAmmo" warnings per
-// session and cost these vehicles XEH support.
-class Peral_AS32A_35: Peral_AS32A_35
+// Written bare, with no parent. That is deliberate and it is the correct
+// idiom: config classes merge by path, so this adds two properties to Peral's
+// existing class and leaves its parent, model, simulation, crew and cargo
+// intact. What makes the merge safe is the load-order guarantee -- the
+// "Peral_Airfield_Logistics" entry in config.cpp requiredAddons[] -- not any
+// inheritance written here.
+//
+// Do NOT "fix" these into `class X: X`. A class cannot inherit from itself;
+// that is a circular reference which Arma dumps to the RPT on every lookup.
+// It is what filled a 221 MB log in ninety seconds and hung the game on load.
+class Peral_AS32A_35
 {
    faction = "BLU_F";
    side = 1;
 };
-class Peral_Helidolly_14x14: Peral_Helidolly_14x14
+class Peral_Helidolly_14x14
 {
    faction = "BLU_F";
    side = 1;
 };
-class Peral_Helidolly_16x16: Peral_Helidolly_16x16
+class Peral_Helidolly_16x16
 {
    faction = "BLU_F";
    side = 1;

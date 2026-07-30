@@ -74,12 +74,22 @@ class cfgPatches
               "A3_Soft_F_Exp",
               "A3_Boat_F_Beta",
               "Peral_ACV",
-              // Load-order dependencies for the classes this addon EDITS.
-              // Without these, PTF_Vehicles parses first, the forward
-              // declarations resolve to nothing, and each "edit" silently
-              // creates a parentless root class instead.
-              "Peral_Airfield_Logistics",
-              "slr_slingload",
+              // NOTE: deliberately absent -- "Peral_Airfield_Logistics" and
+              // "slr_slingload", the two mods whose classes this addon EDITS
+              // (cfgTractors.hpp, and slr_slingload_wreckDummy below).
+              //
+              // Adding them was tried and reverted. Forcing those PBOs to load
+              // BEFORE this one makes the self-referential
+              // `class slr_slingload_wreckDummy : slr_slingload_wreckDummy`
+              // actually resolve, and Arma then walks that circular chain on
+              // every lookup: a 335 MB RPT and a load that never finishes.
+              // With them absent the edits are late-binding and quiet (one
+              // warning line per session, measured).
+              //
+              // If you ever want these dependencies declared properly, the
+              // self-inheritance below has to become a bare merge FIRST, and
+              // the result has to be measured in-game -- the two changes are
+              // not independent.
               // Same hazard for the external classes this addon INHERITS FROM:
               // cfg6x6.hpp, cfgMTVR.hpp and cfgLCAC.hpp derive from these, and
               // without the load-order guarantee the cfgIMPORT.hpp forward
@@ -135,6 +145,14 @@ class cfgVehicles
    #include "cfgLCAC.hpp"
    #include "cfgMTVR.hpp"
 
+   // Forward-declared in cfgIMPORT.hpp and then re-declared with the same name
+   // as its own base. That pairing is what makes this an EDIT of Sling Load
+   // Rigging's class rather than a new one -- the declaration names the
+   // external class, and the inheritance resolves against it.
+   //
+   // Measured, do not "simplify": written as a bare `class X { ... }` (with or
+   // without the declaration) this class loses its parent and the RPT goes from
+   // one warning line per session to ~364.
    class slr_slingload_wreckDummy : slr_slingload_wreckDummy {
       SlingloadingWeight = "[2900,2800]";
    };

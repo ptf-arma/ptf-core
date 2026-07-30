@@ -182,9 +182,6 @@ class cfgPatches
             // B_Carryall_cbr -- the MANPADS specialists' rocket pack.
             "A3_Weapons_F_Ammoboxes",
             "A3_Structures_F_Mil_Flags",
-            // CBA_Extended_EventHandlers_base, used by the Kestrel AA
-            // specialists to load their rounds into that pack.
-            "cba_xeh",
             "rhsgref_c_troops",
             "rhsgref_c_weapons",
             "rhsgref_c_vehicles_ret",

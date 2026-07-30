@@ -1,8 +1,3 @@
-// CBA Extended Event Handlers base -- required so vehicle classes can
-// nest their init handler inside CBA_Extended_EventHandlers instead of
-// replacing the inherited EventHandlers class (which breaks XEH).
-class CBA_Extended_EventHandlers_base;
-
 //Super Tucano
 class rhsgref_c_a29;
 //AH-1Z
