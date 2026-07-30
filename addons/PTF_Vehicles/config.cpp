@@ -4,9 +4,6 @@ class cfgPatches
    class PTF_Vehicles
    {
       units[] = {
-         "Peral_AS32A_35",
-         "Peral_Helidolly_14x14",
-         "Peral_Helidolly_16x16",
          "PTF_M1151_MK19",
          "PTF_M1151_M240",
          "PTF_M1151_M2",

@@ -84,31 +84,24 @@ class PTF_Tractor : boxloader_tractor_build
 };
 //Towing Tractor
 
-// Include Peral Airfield Logistics in Zeus menu.
+// REMOVED: the Peral Airfield Logistics tractors (Peral_AS32A_35,
+// Peral_Helidolly_14x14, Peral_Helidolly_16x16) used to be given
+// faction = "BLU_F" and side = 1 here to surface them in the editor.
 //
-// Written bare, with no parent. That is deliberate and it is the correct
-// idiom: config classes merge by path, so this adds two properties to Peral's
-// existing class and leaves its parent, model, simulation, crew and cargo
-// intact. What makes the merge safe is the load-order guarantee -- the
-// "Peral_Airfield_Logistics" entry in config.cpp requiredAddons[] -- not any
-// inheritance written here.
+// They never actually showed up, and the attempt was expensive. Those classes
+// derive from thingX -- static props. Exposing a prop as placeable makes the
+// engine classify it as a land vehicle and query the whole vehicle property
+// set on it: soundEngine, fuelCapacity, armor, transportAmmo, PilotSpec and
+// about a hundred more that a prop has no reason to define. Measured, per
+// session:
 //
-// Do NOT "fix" these into `class X: X`. A class cannot inherit from itself;
-// that is a circular reference which Arma dumps to the RPT on every lookup.
-// It is what filled a 221 MB log in ninety seconds and hung the game on load.
-class Peral_AS32A_35
-{
-   faction = "BLU_F";
-   side = 1;
-};
-class Peral_Helidolly_14x14
-{
-   faction = "BLU_F";
-   side = 1;
-};
-class Peral_Helidolly_16x16
-{
-   faction = "BLU_F";
-   side = 1;
-};
-// Peral Airfield Logistics
+//   with the edit        370 Peral_* lines, 106 "'/' is not a value"
+//   without              2                  15
+//
+// scopeCurator = 2 instead of side was tried and is no better (378 lines) --
+// any mechanism that makes them placeable triggers the same scan.
+//
+// If these are wanted in the editor, the fix is a real PTF wrapper class that
+// inherits from a vehicle base and sets editorCategory/editorSubcategory --
+// see PTF_Tractor at the top of this file for the pattern -- not two
+// properties merged onto someone else's prop.
