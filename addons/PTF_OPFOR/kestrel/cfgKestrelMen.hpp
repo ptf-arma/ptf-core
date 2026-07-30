@@ -26,6 +26,50 @@
 // grind down and obviously finite, so that attrition reads as the wrong tool.
 // ---------------------------------------------------------------------------
 
+
+// Preloaded missile packs for the two AA specialists.
+//
+// magazines[] reaches the uniform and vest only, and a Stinger/Igla round is
+// far too large for either -- so the rounds have to live in a container the
+// engine fills for us. TransportMagazines does exactly that, declaratively.
+//
+// An earlier attempt used a CBA_Extended_EventHandlers init calling
+// addItemToBackpack. It worked, but declaring CBA_Extended_EventHandlers_base
+// in this addon cost ~375 RPT warning lines per session against a baseline of
+// one, so it was replaced with the same TransportMagazines approach the
+// Guardia machinegunner uses for his spare belts.
+class PTF_B_kestrel_fim92: B_Carryall_cbr
+{
+   author = "Paramarine Task Force";
+   scope = 1;
+   scopeCurator = 0;
+   displayName = "Carryall (FIM-92)";
+   class TransportMagazines
+   {
+      class _xx_rhs_fim92_mag
+      {
+         magazine = "rhs_fim92_mag";
+         count = 2;
+      };
+   };
+};
+
+class PTF_B_kestrel_igla: B_Carryall_cbr
+{
+   author = "Paramarine Task Force";
+   scope = 1;
+   scopeCurator = 0;
+   displayName = "Carryall (9K38)";
+   class TransportMagazines
+   {
+      class _xx_rhs_mag_9k38_rocket
+      {
+         magazine = "rhs_mag_9k38_rocket";
+         count = 2;
+      };
+   };
+};
+
 class PTF_Kestrel_base: rhsgref_nat_base
 {
    // rhsgref_nat_base names an editor-preview image that does not exist in
@@ -300,16 +344,9 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
    icon = "iconManAT";
    linkedItems[] = {"rhsusf_opscore_01", "rhsusf_spc_iar", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_spc_iar", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   backpack = "B_Carryall_cbr";
+   backpack = "PTF_B_kestrel_fim92";
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
-   class EventHandlers: EventHandlers
-   {
-      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
-      {
-         init = "if (local (_this select 0)) then {private _u = _this select 0; _u addItemToBackpack 'rhs_fim92_mag'; _u addItemToBackpack 'rhs_fim92_mag'; _u addWeaponItem ['rhs_weap_fim92', 'rhs_fim92_mag'];};";
-      };
-   };
    magazines[] =
       {
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -344,16 +381,9 @@ class PTF_Kestrel_aa_igla: PTF_Kestrel_base
    respawnLinkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_light", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    uniformClass = "PTF_U_kestrel_desert";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_3color_desert_co.paa"};
-   backpack = "B_Carryall_cbr";
+   backpack = "PTF_B_kestrel_igla";
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
-   class EventHandlers: EventHandlers
-   {
-      class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base
-      {
-         init = "if (local (_this select 0)) then {private _u = _this select 0; _u addItemToBackpack 'rhs_mag_9k38_rocket'; _u addItemToBackpack 'rhs_mag_9k38_rocket'; _u addWeaponItem ['rhs_weap_igla', 'rhs_mag_9k38_rocket'];};";
-      };
-   };
    magazines[] =
       {
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
