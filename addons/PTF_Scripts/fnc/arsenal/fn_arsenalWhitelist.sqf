@@ -1,10 +1,10 @@
 // Rifles, Pistols, Launchers, Attachments
 
-// Cached. This function allocates ~950 string literals across 16 sub-arrays
-// and then concatenates them all, and it is called from the init of every
-// arsenal and crate on the map. The contents are static, so build it once per
-// machine and hand out copies after that.
-if (!isNil "PTF_arsenalWhitelistCache") exitWith {+PTF_arsenalWhitelistCache};
+// PURE DATA. Keep it that way: every quoted string in this file is read as a
+// classname by tools/check-arsenal.sh, and the whole file is interpreted by
+// sqflint in tests/ (which implements neither `isNil` nor unary `+`). A cache
+// guard here breaks both. The result is cached by the callers instead --
+// see fn_arsenal_init.sqf.
 
 private _rifles = [
 	"rhsusf_acc_g33_xps3",
@@ -951,6 +951,4 @@ private _standardArsenal = _rifles + _launchers + _pistols + _attachments + _bac
 
 private _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
-PTF_arsenalWhitelistCache = [_standardArsenal, _psoArsenal];
-
-+PTF_arsenalWhitelistCache
+[_standardArsenal, _psoArsenal]
