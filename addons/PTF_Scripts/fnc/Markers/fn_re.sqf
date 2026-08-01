@@ -1,24 +1,19 @@
-params ["_player"];
-_markername = random 1000000;
-_id = missionNamespace getVariable ["IDRE", 0];
-_names = call compile PTF_ReNames;
+params ["_player", ["_caller", clientOwner]];
+//_player = the unit placing the marker
+//_caller = owner id to send feedback hints to (set automatically)
 
-if (_names isEqualTo [])
-exitwith {
-hint "You addon settings are not set up correctly" };
-_names = _names select {_x isEqualType ""};
-if (_names isEqualTo []) exitwith {
-hint "You addon settings are not set up correctly"
+// See fn_lz.sqf - same server-authoritative allocation, different pool.
+if (!isServer) exitWith {
+   [_player, clientOwner] remoteExec ["PTF_fnc_re", 2];
 };
-_str = format ["|_USER_DEFINED%1|%2|loc_rearm|ICON|[1.5,1.5]|0|Solid|ColorGreen|1|Resupply Point %3", _markername, position _player, _names select _id];
-hint format ["Created resupply point %1 at %2", _names select _id, mapGridPosition _player];
 
+private _alloc = ["PTF_re", "PTF_ReNames"] call PTF_fnc_allocMarkerName;
+if (_alloc isEqualTo []) exitWith {
+   ["Your addon settings are not set up correctly"] remoteExec ["hint", _caller];
+};
+_alloc params ["_markername", "_callsign"];
 
+private _str = format ["|_USER_DEFINED%1|%2|loc_rearm|ICON|[1.5,1.5]|0|Solid|ColorGreen|1|Resupply Point %3", _markername, position _player, _callsign];
 _str call BIS_fnc_stringToMarker;
 
-if (_id == count _names - 1 ) then {
-	missionNamespace setVariable ["IDRE", 0 , true];
-}
-else{
-	missionNamespace setVariable ["IDRE", _ID + 1, true];
-};
+[format ["Created resupply point %1 at %2", _callsign, mapGridPosition _player]] remoteExec ["hint", _caller];

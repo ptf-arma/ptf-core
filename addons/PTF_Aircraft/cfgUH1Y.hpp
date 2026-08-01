@@ -1,5 +1,4 @@
 //UH-1Y
-#include "cfgMacro.hpp"
 class PTF_UH1Y : RHS_UH1Y_d
 {
    scope = 2;
@@ -51,7 +50,7 @@ class PTF_UH1Y : RHS_UH1Y_d
                minAngleY = -100;
                maxAngleY = 100;
                initFov = 0.466;
-               minFov = 0.0218;
+               minFov = 0.0018;
                maxFov = 0.466;
                visionMode[] = {"Normal","NVG","Ti"};
                directionStabilized = 1;
@@ -59,6 +58,7 @@ class PTF_UH1Y : RHS_UH1Y_d
                gunnerOpticsModel = "\rhsusf\addons\rhsusf_optics\data\rhs_uh1_flir";
             };
          };
+         gunnerCompartments = "Compartment2";
       };
       class MainTurret : MainTurret
       {
@@ -112,7 +112,7 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 {
    scope = 2;
    editorCategory = "PTF";
-   editorSubcategory = "PTF_AIR";
+   editorSubcategory = "PTF_Air";
    side = 1;
    faction = "BLU_F";
    ace_cargo_space = 20;

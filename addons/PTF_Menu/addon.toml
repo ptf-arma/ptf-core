@@ -1,0 +1,7 @@
+# The intro mission's Description.ext uses `db + 0` sound-volume syntax,
+# which is valid for engine-parsed mission files but not rapifiable.
+# Both spellings are listed because the file on disk is "Description.ext" and
+# glob matching is case-sensitive on Linux - a lowercase-only pattern would miss
+# it there and the CI build would try to rapify it.
+[rapify]
+exclude = ["**/description.ext", "**/Description.ext"]

@@ -1,0 +1,9 @@
+# Known-broken asset references, tolerated by tools/check_asset_refs.py so it
+# can gate on NEW breakage without failing on this pre-existing tech debt.
+# Burn these down as the art/paths get fixed, then delete the line.
+#
+# One reference per line, exactly as the checker prints it. Blank lines and
+# lines starting with # are ignored.
+
+# Currently empty — every known-broken reference has been fixed. Keep it that
+# way: add a line here only as a deliberate, temporary exception.

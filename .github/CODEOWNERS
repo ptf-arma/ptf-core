@@ -1,0 +1,13 @@
+# Code owners for PTF Core.
+# GitHub auto-requests a review from the owner(s) on every PR touching a matching
+# path. The branch ruleset on `master` has "require code owner review" enabled,
+# so the owner listed here MUST be a valid user/team with write access — an
+# unknown owner makes the requirement unsatisfiable and blocks every PR.
+#
+# TODO: once an @ptf-arma/maintainers team exists AND has write access to this
+# repo, swap the line below to `*   @ptf-arma/maintainers` so review duty spreads
+# across the S4 team instead of one person. Verify afterwards with:
+#   gh api repos/ptf-arma/ptf-core/codeowners/errors
+
+# Everything defaults to the repo owner.
+*   @matthawkins2

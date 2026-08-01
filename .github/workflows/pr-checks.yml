@@ -1,0 +1,76 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches: [develop, master]  # only PRs targeting develop/master
+  push:
+    branches: [develop, master]
+
+permissions:
+  contents: read
+  pull-requests: write  # Danger posts/updates one PR comment
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Hard gate: build artifacts and — above all — the private signing key must
+  # never enter the repo. This blocks the merge if they do.
+  guard:
+    name: No secrets or build artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Scan tracked files
+        run: |
+          fail=0
+
+          bad=$(git ls-files | grep -iE '\.(pbo|biprivatekey)$' || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Build artifacts / private keys must not be committed:"
+            printf '%s\n' "$bad" | sed 's/^/  /'
+            fail=1
+          fi
+
+          # NB: steps run under `bash -eo pipefail`. Ending the loop body on a
+          # bare `[ ] && printf` makes the last (small) file's false test exit
+          # non-zero, which pipefail+errexit turn into a spurious job failure —
+          # use if/then/fi so the loop always ends 0.
+          big=$(git ls-files | while IFS= read -r f; do
+            [ -f "$f" ] || continue
+            sz=$(wc -c < "$f")
+            if [ "$sz" -gt 94371840 ]; then printf '%s (%sMB)\n' "$f" "$((sz / 1048576))"; fi
+          done)
+          if [ -n "$big" ]; then
+            echo "::error::Files over 90MB (GitHub rejects >100MB) — keep large assets out of git:"
+            printf '%s\n' "$big" | sed 's/^/  /'
+            fail=1
+          fi
+
+          markers=$(git grep -nE '^(<{7}|>{7})( |$)' -- ':!*.md' || true)
+          if [ -n "$markers" ]; then
+            echo "::error::Unresolved merge conflict markers found:"
+            printf '%s\n' "$markers" | sed 's/^/  /'
+            fail=1
+          fi
+
+          [ "$fail" -eq 0 ] && echo "guard: clean."
+          exit "$fail"
+
+  # Soft, friendly reminders on the PR (never blocks). See dangerfile.js.
+  hygiene:
+    name: PR hygiene
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # Danger needs the base ref to diff the PR
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+      - name: Danger
+        run: npx --yes danger ci
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}

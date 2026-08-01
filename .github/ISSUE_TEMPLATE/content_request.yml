@@ -1,0 +1,44 @@
+name: Content request
+description: Request a new uniform, helmet, vehicle, aircraft, or other content
+title: "[Content] "
+labels: [content]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What content do you want added?
+      placeholder: e.g. "A named helmet for <member>", "MARPAT variant of the M1151"
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference images / source
+      description: Links or attachments showing what it should look like.
+    validations:
+      required: true
+  - type: dropdown
+    id: addon
+    attributes:
+      label: Which addon should it live in?
+      options:
+        - Not sure
+        - PTF_Aircraft
+        - PTF_Vehicles
+        - PTF_Weapons
+        - PTF_Clothes
+        - PTF_Helmets
+        - PTF_Utility
+        - Other / new addon
+    validations:
+      required: true
+  - type: dropdown
+    id: assets
+    attributes:
+      label: Do you have the assets?
+      options:
+        - I have the textures / model needed
+        - I need someone to make them
+        - Reusing existing PTF / RHS / vanilla assets
+    validations:
+      required: true

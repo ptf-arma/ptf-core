@@ -7,6 +7,7 @@ class cfgFunctions {
 			class ccp{};
 			class lz{};
 			class re{};
+			class allocMarkerName{};
 		};
 		class Boxes {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Boxes";
@@ -14,27 +15,9 @@ class cfgFunctions {
 			class SmallVicBox_init {};
 			class Tracks_init {};
 		};
-		class Drone {
-			file = "\z\PTF\addons\PTF_Scripts\fnc\drone";
-			class droneitem {};
-		};
 		class Flags {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\flag";
-			class PTFFlagRaise {};
-			class USMCFlagRaise {};
-			class 11FlagRaise {};
-			class 12FlagRaise {}; 
-			class 13FlagRaise {};
-			class 14FlagRaise {};
-			class 3flagRaise {};
-			class 3AflagRaise {};
-			class 3BflagRaise {};
-			class 3CflagRaise {};  
-			class 3EflagRaise {};
-			class MAG36FlagRaise {};
-			class scarFlagRaise {};
-			class gunFlagRaise {};
-			class FlagRemove {};
+			class FlagRaise {};
     	};
 		class arsenal {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\arsenal";
@@ -54,6 +37,7 @@ class cfgFunctions {
 			class uh1_handler {};
 			class uh1_obsHandler {};
 			class uh1_toggleCam {};
+			class formatDaytime {};
 		};
 		class AH1zLoadoutFunctions {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\AH1z";

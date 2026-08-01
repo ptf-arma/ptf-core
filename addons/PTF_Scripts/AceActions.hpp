@@ -16,7 +16,7 @@ class Car : LandVehicle
                displayName = "Raise PTF Flag";
                distance = 3;
                condition = "alive _target && ((getForcedFlagTexture _target) == '')";
-               statement = "0 = _target call PTF_fnc_PTFflagRaise";
+               statement = "0 = [_target, ""ptfflag.paa""] call PTF_fnc_FlagRaise";
                showDisabled = 0;
                priority = 1.1;
                enableInside = 1;
@@ -25,7 +25,7 @@ class Car : LandVehicle
             class USMC_Flag_Raise : PTF_Flag_Raise
             {
                displayName = "Raise USMC Flag";
-               statement = "0 = _target call PTF_fnc_USMCFlagRaise";
+               statement = "0 = [_target, ""usmcflag.paa""] call PTF_fnc_FlagRaise";
             };
 
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
@@ -35,22 +35,22 @@ class Car : LandVehicle
                class 11_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-1 Flag";
-                  statement = "0 = _target call PTF_fnc_11FlagRaise";
+                  statement = "0 = [_target, ""11flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 12_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-2 Flag";
-                  statement = "0 = _target call PTF_fnc_12FlagRaise";
+                  statement = "0 = [_target, ""12flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 13_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-3 Flag";
-                  statement = "0 = _target call PTF_fnc_13FlagRaise";
+                  statement = "0 = [_target, ""13flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 14_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-4 Flag";
-                  statement = "0 = _target call PTF_fnc_14FlagRaise";
+                  statement = "0 = [_target, ""14flag.paa""] call PTF_fnc_FlagRaise";
                };
             };
 
@@ -61,29 +61,29 @@ class Car : LandVehicle
                class 3_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3rd Platoon Flag";
-                  statement = "0 = _target call PTF_fnc_3flagRaise";
+                  statement = "0 = [_target, ""3flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3A_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-A Flag";
-                  statement = "0 = _target call PTF_fnc_3AflagRaise";
+                  statement = "0 = [_target, ""3Aflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3B_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-B Flag";
-                  statement = "0 = _target call PTF_fnc_3BflagRaise";
+                  statement = "0 = [_target, ""3Bflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3C_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-C Flag";
-                  statement = "0 = _target call PTF_fnc_3CflagRaise";
+                  statement = "0 = [_target, ""3Cflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3E_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-E Flag";
-                  statement = "0 = _target call PTF_fnc_3EflagRaise";
+                  statement = "0 = [_target, ""3Eflag.paa""] call PTF_fnc_FlagRaise";
                };
-               
+
             };
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
@@ -95,17 +95,17 @@ class Car : LandVehicle
                class MAG36_Flag_Raise : PTF_Flag_Raise
                {
                displayName = "Raise MAG36 Flag";
-               statement = "0 = _target call PTF_fnc_MAG36FlagRaise";
+               statement = "0 = [_target, ""mag36flag.paa""] call PTF_fnc_FlagRaise";
                };
                class Scarface_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise Scarface Flag";
-                  statement = "0 = _target call PTF_fnc_scarFlagRaise";
+                  statement = "0 = [_target, ""scarflag.paa""] call PTF_fnc_FlagRaise";
                };
                class Gunfighters_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise Gunfighters Flag";
-                  statement = "0 = _target call PTF_fnc_gunFlagRaise";
+                  statement = "0 = [_target, ""gunflag.paa""] call PTF_fnc_FlagRaise";
                };
             };
          };
@@ -115,7 +115,7 @@ class Car : LandVehicle
             displayName = "Lower PTF Flag";
             distance = 3;
             condition = "alive _target && ((getForcedFlagTexture _target) != '')";
-            statement = "0 = _target call PTF_fnc_flagRemove";
+            statement = "0 = [_target, """"] call PTF_fnc_FlagRaise";
             showDisabled = 0;
             priority = 1.1;
             enableInside = 1;
@@ -143,7 +143,7 @@ class Tank_F : Tank
                displayName = "Raise PTF Flag";
                distance = 3;
                condition = "alive _target && ((getForcedFlagTexture _target) == '')";
-               statement = "0 = _target call PTF_fnc_PTFflagRaise";
+               statement = "0 = [_target, ""ptfflag.paa""] call PTF_fnc_FlagRaise";
                showDisabled = 0;
                priority = 1.1;
                enableInside = 1;
@@ -152,32 +152,32 @@ class Tank_F : Tank
             class USMC_Flag_Raise : PTF_Flag_Raise
             {
                displayName = "Raise USMC Flag";
-               statement = "0 = _target call PTF_fnc_USMCFlagRaise";
+               statement = "0 = [_target, ""usmcflag.paa""] call PTF_fnc_FlagRaise";
             };
 
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
-               displayName = "1st Platon Flags";
+               displayName = "1st Platoon Flags";
                icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-1 Flag";
-                  statement = "0 = _target call PTF_fnc_11FlagRaise";
+                  statement = "0 = [_target, ""11flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 12_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-2 Flag";
-                  statement = "0 = _target call PTF_fnc_12FlagRaise";
+                  statement = "0 = [_target, ""12flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 13_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-3 Flag";
-                  statement = "0 = _target call PTF_fnc_13FlagRaise";
+                  statement = "0 = [_target, ""13flag.paa""] call PTF_fnc_FlagRaise";
                };
                 class 14_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-4 Flag";
-                  statement = "0 = _target call PTF_fnc_14FlagRaise";
+                  statement = "0 = [_target, ""14flag.paa""] call PTF_fnc_FlagRaise";
                };
             };
 
@@ -188,31 +188,31 @@ class Tank_F : Tank
                class 3_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3rd Platoon Flag";
-                  statement = "0 = _target call PTF_fnc_3flagRaise";
+                  statement = "0 = [_target, ""3flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3A_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-A Flag";
-                  statement = "0 = _target call PTF_fnc_3AflagRaise";
+                  statement = "0 = [_target, ""3Aflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3B_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-B Flag";
-                  statement = "0 = _target call PTF_fnc_3BflagRaise";
+                  statement = "0 = [_target, ""3Bflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3C_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-C Flag";
-                  statement = "0 = _target call PTF_fnc_3CflagRaise";
+                  statement = "0 = [_target, ""3Cflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3E_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-E Flag";
-                  statement = "0 = _target call PTF_fnc_3EflagRaise";
+                  statement = "0 = [_target, ""3Eflag.paa""] call PTF_fnc_FlagRaise";
                };
-               
+
             };
-         
+
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";
@@ -222,17 +222,17 @@ class Tank_F : Tank
                class MAG36_Flag_Raise : PTF_Flag_Raise
                {
                displayName = "Raise MAG36 Flag";
-               statement = "0 = _target call PTF_fnc_MAG36FlagRaise";
+               statement = "0 = [_target, ""mag36flag.paa""] call PTF_fnc_FlagRaise";
                };
                class Scarface_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise Scarface Flag";
-                  statement = "0 = _target call PTF_fnc_scarFlagRaise";
+                  statement = "0 = [_target, ""scarflag.paa""] call PTF_fnc_FlagRaise";
                };
                class Gunfighters_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise Gunfighters Flag";
-                  statement = "0 = _target call PTF_fnc_gunFlagRaise";
+                  statement = "0 = [_target, ""gunflag.paa""] call PTF_fnc_FlagRaise";
                };
             };
          };
@@ -242,7 +242,7 @@ class Tank_F : Tank
             displayName = "Lower PTF Flag";
             distance = 3;
             condition = "alive _target && ((getForcedFlagTexture _target) != '')";
-            statement = "0 = _target call PTF_fnc_flagRemove";
+            statement = "0 = [_target, """"] call PTF_fnc_FlagRaise";
             showDisabled = 0;
             priority = 1.1;
             enableInside = 1;
@@ -270,7 +270,7 @@ class Ship_F : Ship
                displayName = "Raise PTF Flag";
                distance = 3;
                condition = "alive _target && ((getForcedFlagTexture _target) == '')";
-               statement = "0 = _target call PTF_fnc_PTFflagRaise";
+               statement = "0 = [_target, ""ptfflag.paa""] call PTF_fnc_FlagRaise";
                showDisabled = 0;
                priority = 1.1;
                enableInside = 1;
@@ -279,35 +279,35 @@ class Ship_F : Ship
             class USMC_Flag_Raise : PTF_Flag_Raise
             {
                displayName = "Raise USMC Flag";
-               statement = "0 = _target call PTF_fnc_USMCFlagRaise";
+               statement = "0 = [_target, ""usmcflag.paa""] call PTF_fnc_FlagRaise";
             };
 
             class PTF_1st_Squad_Flags : PTF_Flag_Raise
             {
-               displayName = "1st Platon Flags";
+               displayName = "1st Platoon Flags";
                icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
                class 11_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-1 Flag";
-                  statement = "0 = _target call PTF_fnc_11FlagRaise";
+                  statement = "0 = [_target, ""11flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 12_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-2 Flag";
-                  statement = "0 = _target call PTF_fnc_12FlagRaise";
+                  statement = "0 = [_target, ""12flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 13_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-3 Flag";
-                  statement = "0 = _target call PTF_fnc_13FlagRaise";
+                  statement = "0 = [_target, ""13flag.paa""] call PTF_fnc_FlagRaise";
                };
                 class 14_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 1-4 Flag";
-                  statement = "0 = _target call PTF_fnc_14FlagRaise";
+                  statement = "0 = [_target, ""14flag.paa""] call PTF_fnc_FlagRaise";
                };
             };
-            
+
             class PTF_3rd_Flags : PTF_Flag_Raise
             {
                displayName = "3rd Platoon Flags";
@@ -315,29 +315,29 @@ class Ship_F : Ship
                class 3_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3rd Platoon Flag";
-                  statement = "0 = _target call PTF_fnc_3flagRaise";
+                  statement = "0 = [_target, ""3flag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3A_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-A Flag";
-                  statement = "0 = _target call PTF_fnc_3AflagRaise";
+                  statement = "0 = [_target, ""3Aflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3B_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-B Flag";
-                  statement = "0 = _target call PTF_fnc_3BflagRaise";
+                  statement = "0 = [_target, ""3Bflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3C_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-C Flag";
-                  statement = "0 = _target call PTF_fnc_3CflagRaise";
+                  statement = "0 = [_target, ""3Cflag.paa""] call PTF_fnc_FlagRaise";
                };
                class 3E_flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise 3-E Flag";
-                  statement = "0 = _target call PTF_fnc_3EflagRaise";
+                  statement = "0 = [_target, ""3Eflag.paa""] call PTF_fnc_FlagRaise";
                };
-               
+
             };
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
@@ -348,17 +348,17 @@ class Ship_F : Ship
                class MAG36_Flag_Raise : PTF_Flag_Raise
                {
                displayName = "Raise MAG36 Flag";
-               statement = "0 = _target call PTF_fnc_MAG36FlagRaise";
+               statement = "0 = [_target, ""mag36flag.paa""] call PTF_fnc_FlagRaise";
                };
                class Scarface_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise Scarface Flag";
-                  statement = "0 = _target call PTF_fnc_scarFlagRaise";
+                  statement = "0 = [_target, ""scarflag.paa""] call PTF_fnc_FlagRaise";
                };
                class Gunfighters_Flag_Raise : PTF_Flag_Raise
                {
                   displayName = "Raise Gunfighters Flag";
-                  statement = "0 = _target call PTF_fnc_gunFlagRaise";
+                  statement = "0 = [_target, ""gunflag.paa""] call PTF_fnc_FlagRaise";
                };
             };
          };
@@ -368,7 +368,7 @@ class Ship_F : Ship
             displayName = "Lower PTF Flag";
             distance = 3;
             condition = "alive _target && ((getForcedFlagTexture _target) != '')";
-            statement = "0 = _target call PTF_fnc_flagRemove";
+            statement = "0 = [_target, """"] call PTF_fnc_FlagRaise";
             showDisabled = 0;
             priority = 1.1;
             enableInside = 1;
@@ -385,6 +385,13 @@ class CAManBase : Man {
          displayName = "Markers";
          icon = "\A3\ui_f\data\map\markers\handdrawn\objective_CA.paa";
          priority = 0.9;
+         // This block hangs off CAManBase, so without a condition it was offered
+         // to dead and unconscious players. ACE only expands the children of an
+         // active parent, so gating the category gates all four markers.
+         // The exceptions keep the behaviour that was already relied on: marking
+         // from inside a vehicle (pilots calling an LZ), with the map open, while
+         // seated or while swimming.
+         condition = "[_player, objNull, ['isNotInside', 'notOnMap', 'isNotSitting', 'isNotSwimming']] call ace_common_fnc_canInteractWith";
             class lz {
             displayName = "Place Lz Marker";
             Icon = "\A3\ui_f\data\map\markers\handdrawn\pickup_CA.paa";
@@ -398,12 +405,12 @@ class CAManBase : Man {
             class ccp {
             displayName = "Place CCP Marker";
             Icon = "\A3\ui_f_orange\data\cfgmarkers\redcrystal_ca.paa";
-            statement = "[_player] call PTF_Fnc_ccp"
+            statement = "[_player] call PTF_Fnc_ccp";
             };
             class Dot {
             displayName = "Place Dot Marker";
             icon = "\A3\ui_f\data\map\markers\handdrawn\dot_CA.paa";
-            statement = "call PTF_Fnc_Dot"
+            statement = "call PTF_Fnc_Dot";
          };
       };
    };

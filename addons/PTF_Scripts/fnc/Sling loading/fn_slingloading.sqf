@@ -1,6 +1,6 @@
 params ["_Heli"];
 
-_Heli addEventHandler ["RopeAttach", { 
+_Heli addEventHandler ["RopeAttach", {
  params ["_Heli", "_rope", "_Object"];
 private _RopesAttached = _Object getVariable ["PTF_RopesAttached", 0];
 if (_RopesAttached >= 1) exitwith {};
@@ -18,16 +18,16 @@ Private _selectHash = createHashMapFromArray [
 ];
 if(isNil{parseSimpleArray ([configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry)}) exitwith {};
 Private _setmass = parseSimpleArray ([configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry);
-_Object setMass [_setmass select (_selectHash get _HeliCheck)];
+_Object setMass (_setmass select (_selectHash get _HeliCheck));
 _Object setVariable ["PTF_RopesAttached", 1, true];
 }
 }];
 
 _Heli addEventHandler ["RopeBreak", {
 params ["_object1", "_rope", "_object2"];
-_RopesAttached = _object2 getVariable "PTF_RopesAttached";
-_Defultmass = _object2 getVariable "PTF_ObjectMass";
+private _RopesAttached = _object2 getVariable ["PTF_RopesAttached", 0];
+private _Defultmass = _object2 getVariable ["PTF_ObjectMass", -1];
 if (_RopesAttached == 0) exitwith {};
-_object2 setmass [_Defultmass];
+_object2 setmass _Defultmass;
 _object2 setVariable ["PTF_RopesAttached", 0, true];
 }];

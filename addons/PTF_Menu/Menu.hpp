@@ -1,6 +1,6 @@
 	enableDisplay = 1;
 	delete Spotlight;
-	class controls 
+	class controls
 	{
 		delete Spotlight1;
 		delete ACE_news_apex;
@@ -97,7 +97,7 @@
 				class Bootcamp;
 				class CommunityGuides : Bootcamp {
 					y = "(1 *   1.5) *  (pixelH * pixelGrid * 2) +  (pixelH)";
-				}
+				};
 				class Arsenal : Campaigns {
 					idc = 203;
 					text = "$STR_A3_RscDisplayMain_ButtonVirtualArsenal";
@@ -114,7 +114,7 @@
 				};
 			};
 		};
-		 
+
 		class GroupMultiplayer : GroupSingleplayer {
 			h="(4 * 	1.5) * 	(pixelH * pixelGrid * 2)";
 			class Controls: Controls {
@@ -133,7 +133,7 @@
 					tooltip = "";
 					y = "(1 * 	1.5) * 	(pixelH * pixelGrid * 2) + 	(pixelH)";
 					onbuttonclick = "_display = ctrlParent (_this # 0) createDisplay 'RscDisplayPassword';_password = _display displayCtrl 101;_buttonok = _display displayCtrl 1;_buttonCancle = _display displayCtrl 2;_passwordText = profileNamespace getVariable ['PTF_serverPassword',''];_password ctrlSetText _passwordText;_display displayAddEventHandler ['KeyDown',{if(_this select 1 == 28) then {_passwordText = profileNamespace getVariable ['PTF_serverPassword',''];connectToServer ['69.67.175.25', 2308,_passwordText];}}];_password ctrlAddEventHandler ['EditChanged',{private _password = _this # 0;profileNamespace setVariable ['PTF_serverPassword',(ctrlText _password)];saveProfileNamespace;}];_ButtonOk ctrlAddEventHandler  ['MouseButtonUp',{_passwordText = profileNamespace getVariable ['PTF_serverPassword',''];connectToServer ['69.67.175.25', 2308,_passwordText];_display = ctrlParent (_this # 0);_display closeDisplay 1;}];_buttonCancle ctrlAddEventHandler  ['MouseButtonUp',{_passwordText = profileNamespace setVariable ['PTF_serverPassword',''];_display = ctrlParent (_this # 0);_display closeDisplay 1;}];";
-				};				
+				};
 				class JoinSideserver : Campaigns {
 					idc = 123987;
 					text = "Join Side Op Server";

@@ -5,7 +5,6 @@ class PTF_Infantry_Weapon_Scope_M8541A : rhsusf_acc_premier_mrds
    scopeCurator = 2;
    scopeArsenal = 2;
    displayName = "M8541A SSDS (MRDS) [PTF]";
-   baseWeapon = "M8541A SSDS (MRDS) [PTF]";
    author = "Paramarine Task Force";
    editorCategory = "EdCat_WeaponAttachments";
    editorSubcategory = "EdSubcat_TopSlot_Optics";

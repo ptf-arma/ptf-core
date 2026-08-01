@@ -4,16 +4,13 @@ class CfgPatches
 	{
 		author = "PTF";
 		units[] = {};
-		weapons[] = {
-		"PTF_FIR_Hydra_WP_P_7rnd_M",
-		"PTF_PylonRack_4Rnd_ACE_Hellfire_AGM114K",
-		"PTF_rhs_mag_AGM114M_2",
-		"PTF_rhs_mag_AGM114M_4"
-		};
+		weapons[] = {};
 		requiredVersion = 1.0;
 		magazines[] = {
 		"PTF_12Gauge_Bean8",
-		"PTF_12Gauge_Bean5"
+		"PTF_12Gauge_Bean5",
+		"PTF_FIR_Hydra_WP_P_7rnd_M",
+		"PTF_rhs_mag_AGM114M_2"
 		};
 		requiredAddons[] = {
 		"rhsusf_c_airweapons",
@@ -21,8 +18,12 @@ class CfgPatches
 		"ace_missileguidance",
 		"rhsusf_c_weapons",
 		"rhs_c_weapons",
-		"A3_Weapons_F",
-		"ace_hellfire"
+		// ace_hellfire dropped: the only classes it supplied were the
+		// ACE_Hellfire_AGM114K / PylonRack_4Rnd_ACE_Hellfire_AGM114K
+		// forward declarations, which nothing in this addon inherited from.
+		// ace_missileguidance is kept: ACE drives the guidance on the RHS
+		// Hellfire ammo that PTF_rhs_mag_AGM114M_2 feeds.
+		"A3_Weapons_F"
 		};
 	};
 };

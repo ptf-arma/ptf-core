@@ -1,4 +1,4 @@
-#include "CfgFunctions.hpp"
+#include "cfgFunctions.hpp"
 
 class CfgPatches
 {
@@ -6,7 +6,7 @@ class CfgPatches
    {
       units[] = {};
       weapons[] = {};
-      requiredVersion = 1.0;
+      requiredVersion = 1.60;
       requiredAddons[] = {
           "PTF_Main",
           "ace_pylons",
@@ -16,9 +16,48 @@ class CfgPatches
    };
 };
 
+/*
+    CfgRemoteExec - deliberately NOT defined here. See README.md.
+
+    PTF_fnc_SpawnFunction and PTF_fnc_Salvage forward themselves to the server
+    with remoteExec, and both report back with remoteExec ["hint", _caller]. If a
+    mission whitelists remote execution, those three entries have to be in the
+    MISSION's description.ext - an addon config cannot supply them:
+
+      - Lookup order is missionConfigFile > campaignConfigFile > configFile, and
+        an addon config.cpp only reaches configFile. A description.ext
+        CfgRemoteExec replaces the lot wholesale rather than merging with it.
+      - With no mission definition the game default already permits these calls,
+        so an addon-level entry would add nothing in that case either.
+      - Worse, every addon's CfgRemoteExec merges into the one configFile tree
+        and "mode" is taken from the last parsed config, so a mode set here could
+        silently loosen or break remote execution for every other mod in the
+        repack.
+
+    Entries missions need (paste into description.ext):
+
+    class CfgRemoteExec {
+        class Functions {
+            mode = 1;
+            class PTF_fnc_SpawnFunction { allowedTargets = 2; }; // server only
+            class PTF_fnc_Salvage       { allowedTargets = 2; }; // server only
+        };
+        class Commands {
+            mode = 1;
+            class hint { allowedTargets = 1; };                  // clients only
+        };
+    };
+*/
+
 class Extended_PreInit_EventHandlers {
     class W41_PreInit {
         init = "call compile preprocessFileLineNumbers '\z\PTF\addons\PTF_Scripts\XEH_preInit.sqf'";
+    };
+};
+
+class Extended_PostInit_EventHandlers {
+    class W41_PostInit {
+        init = "call compile preprocessFileLineNumbers '\z\PTF\addons\PTF_Scripts\XEH_postInit.sqf'";
     };
 };
 

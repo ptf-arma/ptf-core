@@ -15,7 +15,7 @@ class PTF_MRAP {
 				class PTF_MK19_MRAP {
 				statement = "['PTF_MRAP_M1232_MK19', 'Vic'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn MK19 MRAP";
-            	icon = "rhsusf\addons\rhsusf_rg33l\pictures\rhs_rg33l_armed_pic_ca.paa"; 
+            	icon = "rhsusf\addons\rhsusf_rg33l\pictures\rhs_rg33l_armed_pic_ca.paa";
 				};
 		};
 	};

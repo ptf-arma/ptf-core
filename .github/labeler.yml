@@ -1,0 +1,47 @@
+# Auto-applied PR labels by changed path (actions/labeler v5 format).
+# Labels are created automatically the first time they're applied.
+
+aircraft:
+  - changed-files:
+      - any-glob-to-any-file: 'addons/PTF_Aircraft/**'
+vehicles:
+  - changed-files:
+      - any-glob-to-any-file: 'addons/PTF_Vehicles/**'
+weapons:
+  - changed-files:
+      - any-glob-to-any-file: 'addons/PTF_Weapons/**'
+clothing:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'addons/PTF_Clothes/**'
+          - 'addons/PTF_Helmets/**'
+          - 'addons/riku_class_a/**'
+textures:
+  - changed-files:
+      - any-glob-to-any-file: 'addons/PTF_Textures/**'
+models:
+  - changed-files:
+      - any-glob-to-any-file: 'addons/PTF_Models/**'
+scripts:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'addons/PTF_Scripts/**'
+          - 'addons/ctab/**'
+utility:
+  - changed-files:
+      - any-glob-to-any-file: 'addons/PTF_Utility/**'
+build:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.hemtt/**'
+          - 'tools/**'
+          - 'SConstruct'
+          - '.github/workflows/**'
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+          - 'docs/**'
+tests:
+  - changed-files:
+      - any-glob-to-any-file: 'tests/**'

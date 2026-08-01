@@ -3,7 +3,6 @@ class CfgPatches
     class PTF_Aircraft_F35B_VIS
     {
         units[]={
-            "FIR_F35B_Blank1",
             "PTF_F35B_VIS"
         };
         skipWhenMissingDependencies = 1;

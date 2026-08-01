@@ -5,6 +5,10 @@ class CfgPatches
 		requiredAddons[]=
 		{
 			"BettIR_Core",
+			// The CompatibleAttachments entries below are RHS attachment
+			// classnames used as lookup keys; they live under BettIR_Config,
+			// not CfgWeapons, so RHS is not a parse-order dependency here.
+			// PTF_Clothes already requires rhsusf_c_weapons transitively.
 			"PTF_Clothes"
 		};
 		requiredVersion=0.1;

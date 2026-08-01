@@ -1,0 +1,12 @@
+# Third-party asset pack shipping a pre-rapified config.bin, pre-rapified
+# rvmats, and ODOL models — nothing here can be preprocessed from source.
+# Its PBO prefix is the flat `drc_custom_billboards` (NOT z\PTF\addons\...)
+# because the Dagger Island terrain and the pack's own config reference
+# \DRC_custom_billboards\... paths baked by the original author.
+ignore_pboprefix = true
+
+[binarize]
+enabled = false
+
+[rapify]
+enabled = false

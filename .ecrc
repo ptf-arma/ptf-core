@@ -1,0 +1,6 @@
+{
+  "_comment": "editorconfig-checker config. Line endings are owned by .gitattributes (text=auto normalises to LF in the repo), so don't double-check them here — it only creates noise on Windows working copies.",
+  "Disable": {
+    "EndOfLine": true
+  }
+}

@@ -1,6 +1,6 @@
-class PTF_Helicopters{ 
+class PTF_Helicopters{
     displayName = "Transport";
-    condition = "_target getVariable ['TransportHelicoptersSpawnable', false]";    
+    condition = "_target getVariable ['TransportHelicoptersSpawnable', false]";
     distance = 1.5;
     enableInside = 1;
     icon = "ca\ui\data\iconhelicopter_ca.paa";

@@ -10,7 +10,7 @@ class PTF_Supplys {
 				class PTF_SAmmo {
 				statement = "['PTF_Cargo_Small_Ammo', 'SmSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Small Ammo";
-            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa"; 
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa";
 				};
 				class PTF_SMed {
 				statement = "['PTF_Cargo_Small_Medical', 'SmSupplys'] call PTF_fnc_SpawnFunction";
@@ -59,12 +59,12 @@ class PTF_Supplys {
 				class PTF_Ammo {
 				statement = "['PTF_Cargo_Large_Ammo', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Ammo";
-            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa"; 
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\Ammobox.paa";
 				};
 				class PTF_Med {
 				statement = "['PTF_Cargo_Large_Medical', 'LgSupplys'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn Medical";
-            	icon = "\z\PTF\addons\PTF_Textures\Icons\MedBox.paa"; 
+            	icon = "\z\PTF\addons\PTF_Textures\Icons\MedBox.paa";
 				};
 				class PTF_Launcher {
 				statement = "['PTF_Cargo_Large_Launcher', 'LgSupplys'] call PTF_fnc_SpawnFunction";

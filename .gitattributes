@@ -1,1 +1,54 @@
+# Normalize line endings: store LF in the repo, check out native per platform
+# (Windows working copies stay CRLF, Linux CI gets LF). Stops the recurring
+# "LF will be replaced by CRLF" warnings and spurious whole-file diffs.
+* text=auto
 
+# Source / text files
+*.cpp    text
+*.hpp    text
+*.h      text
+*.sqf    text
+*.sqs    text
+*.ext    text
+*.fsm    text
+*.cfg    text
+*.inc    text
+*.txt    text
+*.md     text
+*.json   text
+*.toml   text
+*.rhai   text
+*.yml    text
+*.yaml   text
+*.xml    text
+*.ps1    text
+# Shell scripts must stay LF even when committed from Windows — they run on
+# the Linux CI runners, where CRLF would break the shebang / `set` lines.
+*.sh     text eol=lf
+*.py     text eol=lf
+
+# rvmats are usually text material definitions (normalize them), but
+# drc_custom_billboards ships pre-rapified BINARY rvmats — protect those.
+# (text=auto already detects the NUL-prefixed binaries; this is explicit.)
+addons/drc_custom_billboards/data/*.rvmat binary
+
+# Binary assets — never munge line endings or attempt text diffs
+*.paa    binary
+*.p3d    binary
+*.rtm    binary
+*.wss    binary
+*.ogg    binary
+*.wav    binary
+*.jpg    binary
+*.jpeg   binary
+*.png    binary
+*.pbo    binary
+*.bin    binary
+*.bikey  binary
+*.biprivatekey binary
+*.bisign binary
+*.dblite binary
+*.lip    binary
+*.shp    binary
+*.shx    binary
+*.dbf    binary
