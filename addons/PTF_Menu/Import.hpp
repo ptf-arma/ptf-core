@@ -9,7 +9,7 @@ class RscPictureKeepAspect;
 class RscVideo;
 class RscButton;
 class RscText;
-class RscStructuredText; 
+class RscStructuredText;
 class RscButtonMenuMain;
 class ace_arsenal_display;
 class GroupSingleplayer : RscControlsGroupNoScrollbars {

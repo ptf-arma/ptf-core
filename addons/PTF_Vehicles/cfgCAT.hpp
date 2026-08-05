@@ -12,7 +12,7 @@ class PTF_M1151CAT_M2 : rhsusf_m1151_m2_v3_usmc_wd
    displayName = "M1151 (M2) [CAT]";
    driverCompartments = "Compartment1";
    cargoCompartments[] = {"Compartment1"};
-   // class for slinglaoding weight [53,22]
+   // PTF_fnc_slingloading mass override: [mass under CH-53, mass under MV-22]
    SlingloadingWeight = "[2900,2800]";
    hiddenSelections[] = {"camo", "camo1", "camo2", "camo3", "camo4", "camo5", "camo6", "camo7", "camo8", "camo19", "BFT_screen"};
    hiddenSelectionTextures[] = {
@@ -128,8 +128,8 @@ class PTF_M1151CAT_M2 : rhsusf_m1151_m2_v3_usmc_wd
 		class TransportWeapons
 		{
             class _xx_rhs_weap_M136_hp {
-                weapon="rhs_weap_M136_hp"
-                count = 1
+                weapon="rhs_weap_M136_hp";
+                count = 1;
             };
 		};
    class textureSources
@@ -170,7 +170,7 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
    ace_cargo_hasCargo = 1;
    maximumLoad = 750;
    side = 1;
-   // class for slinglaoding weight [53,22]
+   // PTF_fnc_slingloading mass override: [mass under CH-53, mass under MV-22]
    SlingloadingWeight = "[2900,2800]";
    author = "Paramarine Task Force";
    displayName = "M1151 (Mk19) [CAT]";
@@ -322,8 +322,8 @@ class PTF_M1151CAT_MK19 : rhsusf_m1151_mk19_v3_usmc_wd
 		class TransportWeapons
 		{
             class _xx_rhs_weap_M136_hp {
-                weapon="rhs_weap_M136_hp"
-                count = 1
+                weapon="rhs_weap_M136_hp";
+                count = 1;
             };
 		};
    class VehicleTransport
@@ -365,10 +365,10 @@ class PTF_M1025_tow : rhsusf_m966_w
    ace_dragging_canDrag = 0;
    maximumLoad = 750;
    side = 1;
-   // class for slinglaoding weight [53,22]
+   // PTF_fnc_slingloading mass override: [mass under CH-53, mass under MV-22]
    SlingloadingWeight = "[2900,2800]";
    author = "Paramarine Task Force";
-   displayName = "M1151 (TOW) [CAT]";
+   displayName = "M966 (TOW) [CAT]";
    driverCompartments = "Compartment1";
    cargoCompartments[] = {"Compartment1"};
    hiddenSelections[]=
@@ -508,8 +508,8 @@ class PTF_M1025_tow : rhsusf_m966_w
 		class TransportWeapons
 		{
             class _xx_rhs_weap_M136_hp {
-                weapon="rhs_weap_M136_hp"
-                count = 1
+                weapon="rhs_weap_M136_hp";
+                count = 1;
             };
 		};
    class VehicleTransport

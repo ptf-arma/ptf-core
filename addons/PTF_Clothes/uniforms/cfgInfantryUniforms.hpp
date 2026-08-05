@@ -61,7 +61,7 @@ class PTF_Uniform_Infantry_G3_Green : rhs_uniform_g3_tan
    faction = "BLU_F";
    displayName = "[Inf] G3 (Green) [PTF]";
    author = "Paramarine Task Force";
-   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_Green_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa","rhsusf\addons\rhsusf_infantry2\data\Mechanix_green_co.paa"};
+   hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_green_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa","rhsusf\addons\rhsusf_infantry2\data\Mechanix_green_co.paa"};
    class ItemInfo : UniformItem
    {
       uniformClass = "PTFInfantry_Inf_3rd_Tan";
@@ -82,7 +82,7 @@ class PTF_Uniform_MSOT_G3C_M81 : USP_G3C_M81
       containerClass = "Supply60";
       mass = 20;
    };
-}
+};
 
 class PTF_Uniform_MSOT_G3C_RS2_M81 : USP_G3C_RS2_M81
 {
@@ -96,7 +96,7 @@ class PTF_Uniform_MSOT_G3C_RS2_M81 : USP_G3C_RS2_M81
       containerClass = "Supply60";
       mass = 20;
    };
-}
+};
 
 class PTF_Uniform_MSOT_G3F_G3C_MX_M81 : USP_G3F_G3C_MX_M81
 {
@@ -110,7 +110,7 @@ class PTF_Uniform_MSOT_G3F_G3C_MX_M81 : USP_G3F_G3C_MX_M81
       containerClass = "Supply60";
       mass = 20;
    };
-}
+};
 
 class PTF_Uniform_MSOT_RUGBY_G3C_KP2_MX_RGR_M81 : USP_RUGBY_G3C_KP2_MX_RGR_M81
 {
@@ -124,7 +124,7 @@ class PTF_Uniform_MSOT_RUGBY_G3C_KP2_MX_RGR_M81 : USP_RUGBY_G3C_KP2_MX_RGR_M81
       containerClass = "Supply60";
       mass = 20;
    };
-}
+};
 
 class PTF_Uniform_MSOT_SOFTSHELL_G3C_MX_RGR_M81 : USP_SOFTSHELL_G3C_MX_RGR_M81
 {
@@ -138,7 +138,7 @@ class PTF_Uniform_MSOT_SOFTSHELL_G3C_MX_RGR_M81 : USP_SOFTSHELL_G3C_MX_RGR_M81
       containerClass = "Supply60";
       mass = 20;
    };
-}
+};
 
 class PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81 : USP_TSHIRT2_G3C_MX_GRN_M81
 {
@@ -152,4 +152,4 @@ class PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81 : USP_TSHIRT2_G3C_MX_GRN_M81
       containerClass = "Supply60";
       mass = 20;
    };
-}
+};

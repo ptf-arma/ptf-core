@@ -46,7 +46,7 @@ class rhsusf_m1025_w : rhsusf_m998_w_4dr_fulltop {
 };
 class rhsusf_m966_w : rhsusf_m1025_w {
     class turrets : turrets {
-    class TOW_Turret;  
+    class TOW_Turret;
  };
 };
 class rhsusf_mrzr4_d;
@@ -94,18 +94,6 @@ class CoDriverTurret;
 class GPK_Turret;
 class M2_Turret;
 
-// class B_APC_Wheeled_01_cannon_F;
-// class Components;
-// class SensorTemplatePassiveRadar;
-// class SensorTemplateAntiRadiation;
-// class SensorTemplateActiveRadar;
-// class SensorTemplateIR;
-// class SensorTemplateVisual;
-// class SensorTemplateMan;
-// class SensorTemplateLaser;
-// class SensorTemplateNV;
-// class SensorTemplateDataLink;
-
 //Mastersafe
 class Default;
 class US85_LAV25;
@@ -139,5 +127,12 @@ class Peral_MK23_50;
 class Peral_MK23T;
 class Peral_MK23T_50;
 
+// The three Peral_* tractors are deliberately NOT declared here. They are
+// edited in cfgTractors.hpp as bare `class X { ... }` blocks, which is how
+// this repo has always done it and which measures clean.
+
 //SlingLoading
+// Needed: config.cpp re-declares slr_slingload_wreckDummy with itself as base
+// to edit Sling Load Rigging's class. Remove this and the class loses its
+// parent -- measured at ~364 extra RPT warning lines per session.
 class slr_slingload_wreckDummy;

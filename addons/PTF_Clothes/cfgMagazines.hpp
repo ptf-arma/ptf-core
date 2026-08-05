@@ -101,7 +101,7 @@ class PTF_Mag_762x51_20Rnd_SCAR_m118_special_bk: rhs_mag_20Rnd_SCAR_762x51_m118_
    displayName = "20rnd SCAR M118 Ball (Black)";
    displayNameShort = "M118 Ball (Black)";
    mass = 12;
-}
+};
 
 class PTF_Mag_762x51_20Rnd_SCAR_m61_ap: rhs_mag_20Rnd_SCAR_762x51_m61_ap
 {

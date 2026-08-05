@@ -1,6 +1,6 @@
 class PTF_Helicopters_Supply {
     displayName = "Supply";
-    condition = "_target getVariable ['SupplyHelicoptersSpawnable', false]";    
+    condition = "_target getVariable ['SupplyHelicoptersSpawnable', false]";
     distance = 1.5;
     enableInside = 1;
     icon = "a3\air_f_heli\heli_transport_04\data\ui\map_heli_transport_04_box_ca.paa";

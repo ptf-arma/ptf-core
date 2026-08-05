@@ -1,6 +1,6 @@
 class PTF_Helicopters_Attack {
     displayName = "Attack";
-    condition = "_target getVariable ['AttackHelicoptersSpawnable', false]";    
+    condition = "_target getVariable ['AttackHelicoptersSpawnable', false]";
     distance = 1.5;
     enableInside = 1;
     icon = "a3\ui_f\data\gui\cfg\communicationmenu\casheli_ca.paa";

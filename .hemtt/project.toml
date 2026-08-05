@@ -1,0 +1,74 @@
+name = "Paramarine Task Force Mod"
+prefix = "PTF"
+mainprefix = "z"
+author = "Paramarine Task Force"
+
+# Mod folder name in the release zip: "@[PTF] Paramarine Milsim Core",
+# matching the folder the Workshop mod has always shipped as.
+# Signing and archiving are handled by tools/release.ps1, which signs with
+# the community's existing ptf2.1 key (DSSignFile) instead of HEMTT's
+# per-release generated keys, then zips the mod folder.
+[hemtt.release]
+folder = "[PTF] Paramarine Milsim Core"
+sign = false
+archive = false
+
+[version]
+path = "addons/PTF_Main/script_version.hpp"
+git_hash = 0
+
+# Arma allows model paths without an extension (engine appends .p3d)
+[lints.config.file_type]
+options.allow_no_extension = true
+
+# cfgScopes expresses optics zoom as quoted fractions (e.g. "0.25/3"); these
+# are intentional and not worth diverging from over a build-time micro-opt.
+[lints.config.math_could_be_unquoted]
+enabled = false
+
+# Command casing (e.g. `safezoneH` vs `safeZoneH`) has no runtime effect in
+# SQF — it is case-insensitive. Not worth churning cosmetic edits across the
+# existing scripts.
+[lints.sqf.command_case]
+enabled = false
+
+# --- Convention / style lints this mod opts out of --------------------------
+# These flag style and convention, not bugs. Lints that catch real problems
+# (file_missing, invalid_args, undefined) stay ENABLED on purpose.
+
+# CfgPatches integrity, tuned to catch bugs without the convention noise:
+# - check_cfgpatches (default true) keeps the "units[]/weapons[] lists a
+#   class that doesn't exist" half ON — it catches real phantom-class bugs.
+# - check_prefixes is pointed at a sentinel that matches no class, which
+#   silences the noisy "public class not listed in CfgPatches" convention
+#   half (the mod has shipped for years without exhaustive units[] lists).
+[lints.config.cfgpatches_scope]
+options.check_cfgpatches = true
+options.check_prefixes = ["__ptf_no_scope_check__"]
+
+# Informational only — external classes declared but not used.
+[lints.config.unused_external]
+enabled = false
+
+# SQF micro-optimizations / style — no runtime impact, not worth churning
+# the large existing scripts.
+[lints.sqf.if_assign]
+enabled = false
+[lints.sqf.config_of]
+enabled = false
+[lints.sqf.in_vehicle_check]
+enabled = false
+[lints.sqf.count_array_comp]
+enabled = false
+[lints.sqf.reimplementing_command]
+enabled = false
+
+[files]
+include = [
+    "mod.cpp",
+    "meta.cpp",
+    "credits_and_license.txt",
+]
+exclude = [
+    "**/.gitkeep",
+]

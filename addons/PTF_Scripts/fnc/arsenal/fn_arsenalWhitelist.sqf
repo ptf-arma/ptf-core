@@ -1,6 +1,12 @@
 // Rifles, Pistols, Launchers, Attachments
 
-_rifles = [
+// PURE DATA. Keep it that way: every quoted string in this file is read as a
+// classname by tools/check-arsenal.sh, and the whole file is interpreted by
+// sqflint in tests/ (which implements neither `isNil` nor unary `+`). A cache
+// guard here breaks both. The result is cached by the callers instead --
+// see fn_arsenal_init.sqf.
+
+private _rifles = [
 	"rhsusf_acc_g33_xps3",
 	"rhs_weap_m4a1_blockII_wd",
 	"rhs_weap_m4a1_blockII_M203_wd",
@@ -80,16 +86,17 @@ _rifles = [
 	"rhs_weap_XM2010_d",
 	"rhsusf_acc_m2010s_sa",
 	"rhs_weap_M107",
-	"rhs_weap_m32",
 	"lot_m1014",
 	"lot_m1014_olive",
 	"lot_m1014_sand",
 	"lot_m1014_cqb",
 	"lot_m1014_cqb_olive",
-	"lot_m1014_cqb_sand"
+	"lot_m1014_cqb_sand",
+	"Peral_M4A1_SOPMOD",
+	"Peral_M4A1_Magpul"
 ];
 
-_launchers = [
+private _launchers = [
 	"rhs_weap_M136",
 	"rhs_weap_M136_hedp",
 	"rhs_weap_M136_hp",
@@ -114,7 +121,7 @@ _launchers = [
 	"JPSP_weap_m72a9"
 ];
 
-_pistols = [
+private _pistols = [
 	"MHS_RomeoM17",
 	"MHS_M45A1",
 	"MHS_M17",
@@ -124,7 +131,7 @@ _pistols = [
 	"hgun_esd_01_F"
 ];
 
-_attachments = [
+private _attachments = [
 	"rhsusf_acc_su230",
 	"PTF_Infantry_Weapon_Scope_Accu",
 	"PTF_Infantry_Weapon_Scope_Accu_RMR",
@@ -244,9 +251,9 @@ _attachments = [
 	"scout_pro_flashlight"
 ];
 
-// Backpacks, Uniforms, Vests, Helmets, Glasses, 
+// Backpacks, Uniforms, Vests, Helmets, Glasses,
 
-_backpacks = [
+private _backpacks = [
 	"PTF_Backpack_Infantry_Corpsman_Kitbag_Black",
 	"PTF_Backpack_Infantry_Corpsman_Kitbag_Red",
 	"PTF_Backpack_Infantry_Crye_Zipon",
@@ -289,7 +296,7 @@ _backpacks = [
 	"B_UGV_02_Demining_backpack_F"
 ];
 
-_uniforms = [
+private _uniforms = [
 	"PTF_Uniform_Infantry_FROG_D",
 	"PTF_Uniform_Infantry_FROG_S",
 	"PTF_Uniform_Infantry_FROG_WD",
@@ -315,7 +322,7 @@ _uniforms = [
 	"PTF_Uniform_Infantry_G3_Tan"
 ];
 
-_vests = [
+private _vests = [
 	"PTF_Vest_Air_CMU33P_D",
 	"PTF_Vest_Air_CMU33P_WD",
 	"PTF_Vest_Air_SafetyVest_Long",
@@ -357,7 +364,7 @@ _vests = [
 	"PTF_Vest_Infantry_JPC_SL_Tan"
 ];
 
-_helmets = [
+private _helmets = [
 	"FIR_GroundCrew_Headset2",
 	"FIR_JHMCS",
 	"FIR_JHMCS_II",
@@ -422,6 +429,9 @@ _helmets = [
 	"PTF_Helmet_Wolff_Infantry_Mich2000_WD",
 	"PTF_Helmet_Wolff_Infantry_Mich2000_D",
 	"PTF_Helmet_Wolff_Infantry_Mich2000_S",
+	"PTF_Helmet_Stroh_Infantry_Mich2000_WD",
+	"PTF_Helmet_Stroh_Infantry_Mich2000_D",
+	"PTF_Helmet_Stroh_Infantry_Mich2000_S",
 	"PTF_Helmet_Adams_Infantry_Mich2000_WD",
 	"PTF_Helmet_Adams_Infantry_Mich2000_D",
 	"PTF_Helmet_Adams_Infantry_Mich2000_S",
@@ -496,6 +506,8 @@ _helmets = [
 	"rhsusf_mich_bare_alt",
 	"rhsusf_mich_bare_headset",
 	"PTF_Goltred_rhsusf_hgu56p_visor_black",
+	"PTF_Galvin_rhsusf_hgu56p_mask_black",
+	"PTF_Galvin_rhsusf_hgu56p_visor_black",
 	"PTF_Gute_rhsusf_hgu56p_mask_black",
 	"PTF_Gustav_rhsusf_hgu56p_mask_black",
 	"PTF_David_rhsusf_hgu56p_mask_black",
@@ -525,7 +537,7 @@ _helmets = [
 	"PTF_ACV_David_Green"
 ];
 
-_glasses = [
+private _glasses = [
 	"G_AirPurifyingRespirator_01_F",
 	"G_Aviator",
 	"rhs_googles_black",
@@ -608,7 +620,7 @@ _glasses = [
 
 // ammo, Throwables, Medical, Demolition
 
-_ammo = [
+private _ammo = [
 	"avm224_M_6Rnd_60mm_HE_0_csw",
 	"avm224_M_6Rnd_60mm_HE_csw",
 	"X26_Cartridge",
@@ -743,7 +755,7 @@ _ammo = [
 	"lot_8Rnd_12Gauge_Slug"
 ];
 
-_throwables = [
+private _throwables = [
 	"ACE_Chemlight_HiBlue",
 	"ACE_Chemlight_HiGreen",
 	"ACE_Chemlight_HiRed",
@@ -766,7 +778,7 @@ _throwables = [
 	"rhs_mag_mk3a2"
 ];
 
-_medical = [
+private _medical = [
 	"ACE_fieldDressing",
 	"ACE_elasticBandage",
 	"ACE_packingBandage",
@@ -804,7 +816,7 @@ _medical = [
 	"kat_atropine"
 ];
 
-_demolition = [
+private _demolition = [
 	"ClaymoreDirectionalMine_Remote_Mag",
 	"tsp_breach_popper_mag",
 	"tsp_breach_package_mag",
@@ -816,7 +828,7 @@ _demolition = [
 
 // Equipment, Binoculars, Nightvision
 
-_equipment = [
+private _equipment = [
 	"TFAR_anprc152",
 	"ItemcTab",
 	"B_UavTerminal",
@@ -889,7 +901,7 @@ _equipment = [
 	"ace_marker_flags_black"
 ];
 
-_binoculars = [
+private _binoculars = [
 	"ACE_VectorDay",
 	"ACE_Vector",
 	"Rangefinder",
@@ -898,7 +910,7 @@ _binoculars = [
 	"Binocular"
 ];
 
-_nightvision = [
+private _nightvision = [
 	"USP_PVS14",
 	"USP_PVS15",
 	"USP_PVS31_COMPACT",
@@ -910,9 +922,9 @@ _nightvision = [
 	"USP_PVS31_WP_MID"
 ];
 
-// PSO Additional items 
+// PSO Additional items
 
-_helmetsPSO = [
+private _helmetsPSO = [
 	"PTF_MSO_FASTMTC_M81_MGSW",
 	"PTF_MSO_FASTMTC_M81_MSW",
 	"PTF_MSO_FASTMTC_M81_CMGSW",
@@ -921,7 +933,7 @@ _helmetsPSO = [
 	"PTF_MSO_FASTMTC_M81_CS"
 ];
 
-_uniformsPSO = [
+private _uniformsPSO = [
 	"PTF_Uniform_MSOT_G3C_M81",
 	"PTF_Uniform_MSOT_G3C_RS2_M81",
 	"PTF_Uniform_MSOT_G3F_G3C_MX_M81",
@@ -930,15 +942,13 @@ _uniformsPSO = [
 	"PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81"
 ];
 
-_nightvisionPSO = [
+private _nightvisionPSO = [
 	"USP_GPNVG18_BLK",
 	"USP_GPNVG18_WP_BLK"
 ];
 
-_standardArsenal = _rifles + _launchers + _pistols + _attachments + _backpacks + _uniforms + _vests + _helmets + _glasses + _ammo + _throwables + _medical + _demolition + _equipment + _binoculars + _nightvision;
+private _standardArsenal = _rifles + _launchers + _pistols + _attachments + _backpacks + _uniforms + _vests + _helmets + _glasses + _ammo + _throwables + _medical + _demolition + _equipment + _binoculars + _nightvision;
 
-_psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
+private _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
-_return = [_standardArsenal, _psoArsenal];
-
-_return
+[_standardArsenal, _psoArsenal]

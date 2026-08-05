@@ -1,9 +1,17 @@
 class cfgPatches
 {
-	class PTF_Clothes
+	class PTF_Helmets
 	{
 		units[]={};
-		weapons[]={};
+		// The remaining helmets in this addon declare no scope of their own;
+		// they inherit it from their PTF_Clothes / RHS / USP parents.
+		weapons[]=
+		{
+			"PTF_Helmet_FASTXP_TAN",
+			"PTF_Helmet_FASTXP_CO_TAN",
+			"PTF_Helmet_FASTXP_CT_TAN",
+			"PTF_Helmet_FASTXP_CU_TAN"
+		};
 		requiredVersion="0.1";
 		requiredAddons[]=
 		{
@@ -22,7 +30,6 @@ class cfgWeapons
 	class rhsusf_hgu56p_mask_black;
 	class rhsusf_hgu56p_visor_mask_black;
 	class rhsusf_hgu56p_visor_black;
-	class PTF_Helmet_Air_Smiley;
 	class PTF_Helmet_Infantry_Mich2000_S;
 	class PTF_Helmet_Infantry_Mich2000_WD;
 	class PTF_Helmet_Infantry_Mich2000_Headset_WD;
@@ -33,6 +40,8 @@ class cfgWeapons
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
 	class USP_OPS_FASTXP_CU_TAN;
+	class PTF_Helmet_Air_HMDS;
+	class PTF_Helmet_Air_HMDS_Mask;
 	class PTF_Helmet_FASTXP_TAN: USP_OPS_FASTXP_TAN
 	{
 		scopeArsenal=2;
@@ -671,7 +680,7 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-		class PTF_Helmet_Wolff_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	class PTF_Helmet_Wolff_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName="[Inf] MICH 2000 (WD) [Personal - B.Wolff]";
 		hiddenSelectionsTextures[]=
@@ -680,7 +689,7 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-		class PTF_Helmet_Wolff_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	class PTF_Helmet_Wolff_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName="[Inf] MICH 2000 (D) [Personal - B.Wolff]";
 		hiddenSelectionsTextures[]=
@@ -689,12 +698,39 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-		class PTF_Helmet_Wolff_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	class PTF_Helmet_Wolff_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName="[Inf] MICH 2000 (S) [Personal - B.Wolff]";
 		hiddenSelectionsTextures[]=
 		{
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_wolff.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Stroh_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (WD) [Personal - A.Stroh]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_stroh.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Stroh_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (D) [Personal - A.Stroh]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_stroh.paa",
+			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
+		};
+	};
+	class PTF_Helmet_Stroh_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
+	{
+		displayName="[Inf] MICH 2000 (S) [Personal - A.Stroh]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_stroh.paa",
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
@@ -761,11 +797,25 @@ class cfgWeapons
 			"rhsusf\addons\rhsusf_infantry\gear\head\data\ach_acc_tan_co.paa"
 		};
 	};
-	class PTF_Goltred_rhsusf_hgu56p_visor_black : rhsusf_hgu56p_visor_black
+	class PTF_Goltred_rhsusf_hgu56p_visor_black : PTF_Helmet_Air_HMDS
 	{
 		displayName = "[MAG] HGU [Personal - F.Goltred] (Black)";
 		hiddenSelectionsTextures[] = {
 			"\z\PTF\addons\PTF_Textures\gear\helmets\MAG_Goltred_blk.paa"
+		};
+	};
+	class PTF_Galvin_rhsusf_hgu56p_mask_black: PTF_Helmet_Air_HMDS_Mask
+	{
+		displayName="[MAG] HGU [Personal - N. Galvin - Mask] (Black)";
+		hiddenSelectionsTextures[] = {
+			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Galvin.paa"
+		};
+	};
+	class PTF_Galvin_rhsusf_hgu56p_visor_black: PTF_Helmet_Air_HMDS
+	{
+		displayName="[MAG] HGU [Personal - N. Galvin] (Black)";
+		hiddenSelectionsTextures[] = {
+			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Galvin.paa"
 		};
 	};
     class PTF_Gute_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
@@ -851,7 +901,7 @@ class cfgWeapons
 		};
 	};
 };
-	
+
 class cfgMods
 {
 	author="Hawkins";

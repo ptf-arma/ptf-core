@@ -17,7 +17,7 @@ class PTF_Tools_Toolbox : boxloader_tool_cart
 class PTF_Tools_PalletJack : boxloader_pallet_jack
 {
    scope = 2;
-   side = 1;
+   side = 8;
    faction = "BLU_F";
    ace_cargo_space = 0;
    ace_cargo_hasCargo = 0;

@@ -1,0 +1,20 @@
+# Baseline formatting so editors stay consistent across the team.
+# See https://editorconfig.org — most editors apply this automatically.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Windows-only PowerShell keeps CRLF (matches .gitattributes).
+[*.ps1]
+end_of_line = crlf
+
+# Binary/asset formats: don't touch (also declared binary in .gitattributes).
+[*.{paa,p3d,rvmat,wss,ogg,wav,jpg,png,bin,rtm,bikey,bisign}]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset

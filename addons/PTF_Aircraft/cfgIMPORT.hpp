@@ -13,16 +13,27 @@ class RHS_AH1Z : RHS_AH1Z_base
  class MainTurret;
  };
  class ACE_Actions {
-		class ACE_MainActions {};
-	};
+  class ACE_MainActions {};
+ };
 };
 //C-130J
 class RHS_C130J;
 class RHS_C130J_Cargo;
 //CH-53E
-class rhsusf_CH53E_USMC_D;
-class rhsusf_CH53E_USMC_GAU21_D;
-class rhsusf_CH53e_USMC_D_cargo;
+class rhsusf_CH53E_USMC_D {
+ class Turrets;
+};
+class rhsusf_CH53E_USMC_GAU21_D {
+ class Turrets {
+  class CopilotTurret;
+  class GAU21;
+ };
+};
+class rhsusf_CH53e_USMC_D_cargo {
+ class Turrets {
+  class CopilotTurret;
+ };
+};
 //MD-500
 class C_Heli_Light_01_civil_F;
 //Cessna TTx
@@ -106,9 +117,20 @@ class UserActions;
 class ViewPilot;
 
 class USAF_MQ9 {
-	class ACE_Actions {
-		class ACE_MainActions {};
-	};
+ class ACE_Actions {
+  class ACE_MainActions {};
+ };
+
+ class Components {
+  class TransportPylonsComponent {
+   class pylons {
+    class pylons1 {};
+    class pylons2 {};
+    class pylons3 {};
+    class pylons4 {};
+   };
+  };
+ };
 };
 class USAF_C17;
 class usaf_kc135;

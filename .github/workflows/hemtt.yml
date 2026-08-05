@@ -1,0 +1,108 @@
+name: HEMTT
+
+on:
+  # NOTE: deliberately NO paths-ignore. These jobs are *required* status checks
+  # on develop/master, and a skipped job never reports — so a docs-only PR would
+  # hang forever on "Expected — waiting for status". The repo is public, so
+  # Actions minutes are free and there's nothing to save by skipping.
+  push:
+    branches: [develop, master]
+  pull_request:
+    branches: [develop, master]  # only PRs targeting develop/master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint (hemtt check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
+        env:
+          # Authenticate the release lookup so it isn't throttled by the 60/hr
+          # unauthenticated API limit (which fails Dependabot/concurrent runs).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check project
+        run: hemtt check
+      # Gating: these fail the build so dead assets / duplicate or broken
+      # whitelist entries can't merge. The repo is currently clean of both.
+      - name: Unused assets
+        run: sh tools/find-unused-assets.sh --strict
+      - name: Arsenal whitelist
+        run: sh tools/check-arsenal.sh --strict
+      # Advisory: dependency resolution can't fully verify external addons, so
+      # it reports without failing — eyeball any new findings (see the script).
+      - name: Dependency resolution
+        run: sh tools/check-dependencies.sh
+      # Gating: broken/misrouted in-repo asset paths (known-broken ones are
+      # listed in tools/asset-refs-ignore.txt so this fails only on NEW breakage).
+      - name: Asset references
+        run: python3 tools/check_asset_refs.py --strict
+      # Gating: same game-asset class defined in two addons (silent override).
+      - name: Class collisions
+        run: python3 tools/check_class_collisions.py --strict
+      # Gating on empty displayName; advisory on arsenal-visible-but-unnamed.
+      - name: Display names
+        run: python3 tools/check_display_names.py --strict
+
+  test:
+    name: SQF unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+      - name: Install sqflint
+        run: pip install sqflint
+      - name: Run tests
+        run: python tests/run_tests.py
+
+  format:
+    name: Formatting (advisory)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Advisory only: the tree has pre-existing trailing-whitespace, so this
+      # reports issues (honouring .editorconfig / .ecrc) but never blocks. Drop
+      # the "|| true" once the tree is clean to make it gating.
+      - name: editorconfig-checker
+        run: |
+          pip install editorconfig-checker
+          ec || true
+
+  build:
+    name: Build (hemtt release)
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # full history + tags so gen-version.sh can count them
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
+        env:
+          # Authenticate the release lookup so it isn't throttled by the 60/hr
+          # unauthenticated API limit (which fails Dependabot/concurrent runs).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate version
+        run: sh tools/gen-version.sh
+      # Linux runners have no Arma 3 Tools, so the seven MLOD models are
+      # packed unbinarized and nothing is signed here — fine for validation
+      # and test artifacts. Workshop releases are built on a Windows machine
+      # with tools/release.ps1, which binarizes and signs with the ptf2.1 key.
+      - name: Build release
+        run: hemtt release
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ptf-core-${{ github.sha }}
+          path: .hemttout/release/
+          if-no-files-found: error
+          retention-days: 7

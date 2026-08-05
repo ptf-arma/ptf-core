@@ -10,15 +10,11 @@ uiNameSpace setVariable ["PTF_UH1_ObsCtrl",_this select 0];
 
 /*
 gunner
-high refresh rate loop [0.1 sec]
+high refresh rate loop [0.07 sec]
 */
 [] spawn
 {
-    private _RHS_TV_ppEffect = ppEffectCreate ["FilmGrain", 1400];
-    _RHS_TV_ppEffect ppEffectAdjust [0.15,1,1,0.45,1, false];
-    _RHS_TV_ppEffect ppEffectCommit 0;
-
-
+    private _RHS_TV_ppEffect = [];
     disableSerialization;
     private _p = call rhsusf_fnc_findPlayer;
     private _v = vehicle _p;
@@ -36,7 +32,7 @@ high refresh rate loop [0.1 sec]
 
     private _turPos=[26.29 *   (0.01875 *    Safezoneh),31.8*   (0.025 *    SafezoneH),0.8 *   (0.01875 * SafezoneH),0.8 *   (0.025 * SafezoneH)];
     private _turMid=26.29*   (0.01875 *    Safezoneh);
-    private _turMax=-(14 *   (0.01875 *    Safezoneh)) /3.14159;
+    private _turMax=-(14 *   (0.01875 *    Safezoneh)) /pi;
 
     private _gunPos=[10.65 *   (0.01875 *    Safezoneh),10.8*   (0.025 *    SafezoneH),0.8 *   (0.01875 * SafezoneH),0.8 *   (0.025 * SafezoneH)];
     private _gunMid=10.8*   (0.025 *    SafezoneH);
@@ -56,35 +52,18 @@ high refresh rate loop [0.1 sec]
         if(cameraView == "gunner")then
         {
             private _visionMode        = currentVisionMode _p;
-            private _previousMode    = _v getVariable ["rhs_uh1_mode",-1];
+            private _previousMode    = _v getVariable ["PTF_uh1_mode",-1];
             if(_visionMode != _previousMode)then
             {
-                _v setVariable ["rhs_uh1_mode",_visionMode,true];
+                _v setVariable ["PTF_uh1_mode",_visionMode,true];
             };
-            {_x ppEffectEnable true}foreach [_RHS_TV_ppEffect];
-        }else{
-            {_x ppEffectEnable false}foreach [_RHS_TV_ppEffect];
         };
 
 
         /*
             time handler
         */
-        _min =  daytime mod 1;
-        _hour = daytime - _min;
-
-        _sec = (60 * _min) mod 1;
-        _msec = (60 * _sec) mod 1;
-
-        _hour = (if (_hour <= 9) then {"0"} else {""}) + str _hour;
-
-        _min = (60 * _min) - ((60 * _min) mod 1);
-        _min = (if (_min <= 9) then {"0"} else {""}) + str _min;
-
-        _sec = (60 * _sec) - ((60 * _sec) mod 1);
-        _sec = (if (_sec <= 9) then {"0"} else {""}) + str _sec;
-
-        _dayString =format["%1 %2 %3",_hour,_min,_sec];
+        private _dayString = [" "] call PTF_fnc_formatDaytime;
         _time ctrlSetText _dayString;
         _time2 ctrlSetText _dayString;
 
@@ -102,18 +81,17 @@ high refresh rate loop [0.1 sec]
         /*
             cam zoom handler - gui part
         */
-        _zoomLevel=(parseNumber  (ctrlText _z))*70;
+        private _zoomLevel=(parseNumber  (ctrlText _z))*70;
 
         _zoomLevel=(if (_zoomLevel <= 99) then {"0"} else {""})+ str _zoomLevel;
-        _gridA=toArray _zoomLevel;
-        _gridaA=toString (call compile (format["[%1,%2,32,%3]",_gridA select 0,_gridA select 1,_gridA select 2]));
+        private _gridA=toArray _zoomLevel;
+        _gridaA=toString [_gridA#0, _gridA#1, 32, _gridA#2];
 
         _zoom ctrlSetText _gridaA;
 
 
         sleep 0.07;
     };
-    ppEffectDestroy _RHS_TV_ppEffect;
     uiNameSpace setVariable ["PTF_UH1_ObsCtrl",displayNull];
 };
 
@@ -124,10 +102,10 @@ low refresh rate loop [1 sec]
 [] spawn
 {
     disableSerialization;
-    _p=call rhsusf_fnc_findPlayer;
-    _v=vehicle _p;
+    private _p=call rhsusf_fnc_findPlayer;
+    private _v=vehicle _p;
 
-    _c = uiNamespace getVariable "PTF_UH1_ObsCtrl";
+    private _c = uiNamespace getVariable "PTF_UH1_ObsCtrl";
 
     private _z    = (_c displayCtrl 180);
     private _d    = (_c displayCtrl 151);
@@ -142,11 +120,13 @@ low refresh rate loop [1 sec]
     private _distance        = "0000";
     private _oldDistance    = "";
     private _oldZoom        = 0;
-    rhs_laserReady            = true;
+    PTF_laserReady            = true;
 
     _range ctrlSetText _distance;
 
-    rhs_key_lase_tgt_GLB    = (profileNamespace getVariable ["rhs_key_lase_tgt","LockTarget"]);
+    PTF_key_lase_tgt_GLB    = (profileNamespace getVariable ["rhs_key_lase_tgt","LockTarget"]);
+    // Keeps the RHS name on purpose - rhsusf_fnc_autoTrack (spawned below) reads
+    // rhs_key_dmp_lead_GLB, and in a UH1Y only session this is its sole initializer
     rhs_key_dmp_lead_GLB    = (profileNamespace getVariable ["rhs_key_dmp_lead","Throw"]);
 
     while{not(isNull _d)}do
@@ -154,7 +134,7 @@ low refresh rate loop [1 sec]
         /*
             lrf distance handler
         */
-        if(inputAction rhs_key_lase_tgt_GLB > 0 AND {rhs_laserReady})then{
+        if(inputAction PTF_key_lase_tgt_GLB > 0 AND {PTF_laserReady})then{
             _distance=(ctrlText _d);
             if(_distance isEqualTo "")then{
                     _distance="0000";
@@ -162,12 +142,12 @@ low refresh rate loop [1 sec]
             [_v,"PTF_UH1_ObsCtrl","CopilotTurret"] spawn rhsusf_fnc_autoTrack;
 
             _range ctrlSetText _distance;
-            rhs_laserReady=false;
+            PTF_laserReady=false;
 
             [] spawn
             {
                 sleep 2.5;
-                rhs_laserReady = true;
+                PTF_laserReady = true;
             };
         };
 
@@ -176,8 +156,8 @@ low refresh rate loop [1 sec]
             map grid handler - first one is player pos, second one is laser target pos
         */
         //visible in gunner cam
-        _gridA=toArray (mapGridPosition _p);
-        _gridaA=toString (call compile (format["[%1,32,%2,32,%3,32,32,%4,32,%5,32,%6]",_gridA select 0,_gridA select 1,_gridA select 2,_gridA select 3,_gridA select 4,_gridA select 5]));
+        private _gridA=toArray (mapGridPosition _p);
+        _gridaA=toString [_gridA#0,32,_gridA#1,32,_gridA#2,32,32,_gridA#3,32,_gridA#4,32,_gridA#5];
         _pos ctrlSetText _gridaA;
 
         //laser part
@@ -187,7 +167,7 @@ low refresh rate loop [1 sec]
         }else{
             _grid2=(mapGridPosition (laserTarget vehicle _p));
             _gridA=toArray _grid2;
-            _gridaA=toString (call compile (format["[%1,32,%2,32,%3,32,32,%4,32,%5,32,%6]",_gridA select 0,_gridA select 1,_gridA select 2,_gridA select 3,_gridA select 4,_gridA select 5]));
+            _gridaA=toString [_gridA#0,32,_gridA#1,32,_gridA#2,32,32,_gridA#3,32,_gridA#4,32,_gridA#5];
             _pos2 ctrlSetText _gridaA;
         };
 
@@ -195,16 +175,17 @@ low refresh rate loop [1 sec]
             cam zoom handler - gui part
         */
         //visible in gunner cam
-        _zoomLevel=(parseNumber (ctrlText _z))*70;
+        private _zoomLevel=(parseNumber (ctrlText _z))*70;
 
         /*
             zoom is refreshed at low rate to avoid excessive mp traffic + data is transfered only in case of change
         */
 
-        if(_oldDistance != _distance)then{_v setVariable ["rhs_uh1_range",_distance,true];_oldDistance=_distance;};
-        if(_oldZoom != _zoomLevel)then{_v setVariable ["rhs_uh1_zoom",_zoomLevel,true];_oldZoom=_zoomLevel;};
+        if(_oldDistance != _distance)then{_v setVariable ["PTF_uh1_range",_distance,true];_oldDistance=_distance;};
+        if(_oldZoom != _zoomLevel)then{_v setVariable ["PTF_uh1_zoom",_zoomLevel,true];_oldZoom=_zoomLevel;};
 
         sleep 1;
     };
+    // Keeps the RHS name on purpose - this is the stop flag rhsusf_fnc_autoTrack loops on
     rhs_trackActive=false;
 };

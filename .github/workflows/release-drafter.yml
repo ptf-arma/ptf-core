@@ -1,0 +1,19 @@
+name: Release Drafter
+
+# Updates the rolling "Next release (draft)" notes as PRs merge into develop.
+# Draft-only — it never publishes; release.yml cuts the real release on master.
+on:
+  push:
+    branches: [develop]
+
+permissions:
+  contents: write      # write the draft release
+  pull-requests: read
+
+jobs:
+  update_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

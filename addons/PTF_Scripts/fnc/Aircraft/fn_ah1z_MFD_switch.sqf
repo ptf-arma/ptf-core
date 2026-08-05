@@ -30,19 +30,36 @@ if((driver _vehicle) isEqualTo _unit)then
     _mfdCheck = [6,7];
 };
 
+/*
+    rhs_ah64d_videoKey_eh and rhs_ah64_videoFeed_pfh deliberately keep the RHS names:
+    PTF_AH1Z inherits unitInfoType RHSUSF_RscUnitInfoAir_AH64, so rhs_fnc_ah64_mainLoop
+    runs on our aircraft too and removes both of them by those exact names when the
+    pilot display closes. Renaming them would drop that teardown path.
+*/
 private _destroyCam =
 {
-    params["_vehicle"];
+    // Optional camera argument - callers that still hold the vehicle can omit it, but the
+    // video feed loop may be tearing down a vehicle that is already deleted, and a deleted
+    // object no longer answers getVariable
+    params["_vehicle",["_videoFeedCam",objNull]];
 
-    _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
+    if(isNull _videoFeedCam)then{_videoFeedCam = _vehicle getVariable ["PTF_ah64_cam",objNull]};
     _videoFeedCam cameraeffect ["terminate","back","rhs_ah64_videoFeed"];
     camDestroy _videoFeedCam;
+    // Drop the stored handle so nothing later dereferences a destroyed camera
+    _vehicle setVariable ["PTF_ah64_cam",objNull];
     // Remove Event Handlers
     (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable ["rhs_ah64d_videoKey_eh",-1]];
+    // Clear the id as well, otherwise a later removal could hit a recycled handler
+    uiNameSpace setVariable ["rhs_ah64d_videoKey_eh",-1];
     ["rhs_ah64_videoFeed_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
 };
 
-private _nextMode =  [1,2,3,4,5,0] # ((getUserMFDvalue _vehicle) # _mfd);
+// getUserMFDvalue can be shorter than _mfd+1 (fresh vehicle, and _mfd is 6/7 for the
+// gunner), which used to make the lookup below index nil and throw
+private _currentMode = (getUserMFDvalue _vehicle) param [_mfd,0,[0]];
+if(_currentMode < 0 || _currentMode > 5)then{_currentMode = 0};
+private _nextMode =  [1,2,3,4,5,0] # _currentMode;
 _vehicle setUserMFDvalue [_mfd,_nextMode];
 private _mfdValues = getUserMFDvalue _vehicle;
 
@@ -52,22 +69,31 @@ switch(_nextMode)do
     case 0:
     {
         // Deinitalization of radar page
+        // Same short array risk as the lookup above - # would yield nil and nil != 5 throws,
+        // which would abort before the old page's handler is removed
         if(
-            ( _mfdValues # (_mfdCheck # 0) != 5) &&
-            ( _mfdValues # (_mfdCheck # 1) != 5)
+            ( _mfdValues param [(_mfdCheck # 0),0,[0]] != 5) &&
+            ( _mfdValues param [(_mfdCheck # 1),0,[0]] != 5)
         )then
         {
             // Check if EH already exist. If yes, then remove it
-            if( not ( (uiNameSpace getVariable ["rhs_ah64d_radarPage_eh",-1]) isEqualTo -1))then
+            if( not ( (uiNameSpace getVariable ["PTF_ah64d_radarPage_eh",-1]) isEqualTo -1))then
             {
-                (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "rhs_ah64d_radarPage_eh"];
+                (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "PTF_ah64d_radarPage_eh"];
             };
         };
 
         // Add loop
-        ["rhs_ah64_flightPage_pfh", "onEachFrame", {
+        ["PTF_ah64_flightPage_pfh", "onEachFrame", {
 
             params["_time","_vehicle","_vehicleDirPrev"];
+
+            // Nothing takes this down when the player dismounts, so it would keep
+            // hammering the (possibly deleted) vehicle for the rest of the mission
+            if(isNull _vehicle || {!alive _vehicle} || {!((call rhs_fnc_findPlayer) in _vehicle)})exitWith
+            {
+                ["PTF_ah64_flightPage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+            };
 
             if(time >= _time)then
             {
@@ -89,13 +115,14 @@ switch(_nextMode)do
     // Weapons page
     case 1:
     {
-        // Deinitalization of flight page
+        // Deinitalization of flight page - short array defaults to 0, i.e. assume the other
+        // MFD is still on the flight page and leave its loop alone
         if(
-            ( _mfdValues # (_mfdCheck # 0) != 0) &&
-            ( _mfdValues # (_mfdCheck # 1) != 0)
+            ( _mfdValues param [(_mfdCheck # 0),0,[0]] != 0) &&
+            ( _mfdValues param [(_mfdCheck # 1),0,[0]] != 0)
         )then
         {
-            ["rhs_ah64_flightPage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+            ["PTF_ah64_flightPage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
         };
     };
     // Fuel page
@@ -107,25 +134,33 @@ switch(_nextMode)do
     {
         if(!difficultyEnabledRTD)exitWith{};
         // Add loop
-        ["rhs_ah64_enginePage_pfh", "onEachFrame", {
+        ["PTF_ah64_enginePage_pfh", "onEachFrame", {
             params["_time","_vehicle"];
 
-            if(!alive _vehicle)exitWith
+            // Also bail out once the player is out of the aircraft - leaving the seat
+            // used to leave this running for the rest of the mission
+            if(isNull _vehicle || {!alive _vehicle} || {!((call rhs_fnc_findPlayer) in _vehicle)})exitWith
             {
-                ["rhs_ah64_enginePage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+                ["PTF_ah64_enginePage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
             };
-            private _enginesRPM     = (enginesRpmRTD _vehicle);
-            private _mainRotorSpeed = (rotorsRpmRTD _vehicle) # 0;
-            private _hydraulics     = _vehicle getHitPointDamage "HitHydraulics";
 
-            _vehicle setUserMFDvalue
-            [
-                12,
-                linearConversion [0,315*1.2,_mainRotorSpeed,0,100*1.2,true],
-                linearConversion [0,20000*1.2,_enginesRPM # 0,0,100*1.2,true],
-                linearConversion [0,20000*1.2,_enginesRPM # 1,0,100*1.2,true],
-                linearConversion [0,1,_hydraulics,3000,0,true]
-            ];
+            if(time >= _time)then
+            {
+                _this set [0,time+0.05];
+
+                private _enginesRPM     = (enginesRpmRTD _vehicle);
+                private _mainRotorSpeed = (rotorsRpmRTD _vehicle) # 0;
+                private _hydraulics     = _vehicle getHitPointDamage "HitHydraulics";
+
+                _vehicle setUserMFDvalue
+                [
+                    12,
+                    linearConversion [0,315*1.2,_mainRotorSpeed,0,100*1.2,true],
+                    linearConversion [0,20000*1.2,_enginesRPM # 0,0,100*1.2,true],
+                    linearConversion [0,20000*1.2,_enginesRPM # 1,0,100*1.2,true],
+                    linearConversion [0,1,_hydraulics,3000,0,true]
+                ];
+            };
 
 
         },[0,_vehicle]] call BIS_fnc_addStackedEventHandler;
@@ -136,12 +171,13 @@ switch(_nextMode)do
         // Deinitalization of Engine page if RTD is enabled
         if(isObjectRTD _vehicle)then
         {
+            // Short array would index nil here as well
             if(
-                ( _mfdValues # (_mfdCheck # 0) != 3) &&
-                ( _mfdValues # (_mfdCheck # 1) != 3)
+                ( _mfdValues param [(_mfdCheck # 0),0,[0]] != 3) &&
+                ( _mfdValues param [(_mfdCheck # 1),0,[0]] != 3)
             )then
             {
-                ["rhs_ah64_enginePage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+                ["PTF_ah64_enginePage_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
             };
         };
 
@@ -152,7 +188,7 @@ switch(_nextMode)do
         _vehicle setObjectTexture [_mfdTextureIndex,"#(argb,512,512,1)r2t(rhs_ah64_videoFeed,1.33)"];
 
         // Try to retrieve existing cam
-        _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
+        private _videoFeedCam = _vehicle getVariable ["PTF_ah64_cam",objNull];
         // If it doesn't exist, create a new one
         if(_videoFeedCam isEqualTo objNull)then
         {
@@ -163,7 +199,7 @@ switch(_nextMode)do
             _videoFeedCam camSetFov (0.7/24);
         };
 
-        _vehicle setVariable ["rhs_ah64_cam",_videoFeedCam];
+        _vehicle setVariable ["PTF_ah64_cam",_videoFeedCam];
 
         // Set default view mode of R2T camera
         "rhs_ah64_videoFeed" setPiPEffect [0];
@@ -175,9 +211,21 @@ switch(_nextMode)do
             (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "rhs_ah64d_videoKey_eh"];
         };
 
+        // Handler code cannot capture _vehicle, so stash it for the self removal check
+        uiNameSpace setVariable ["PTF_ah64d_videoKey_veh",_vehicle];
+
         // Add key event handler
-        _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
+        private _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
         {
+            // Nothing removed this on dismount, so it fired on every key release for the
+            // rest of the mission - unhook once the player is out of the aircraft
+            private _ownerVehicle = uiNameSpace getVariable ["PTF_ah64d_videoKey_veh",objNull];
+            if(isNull _ownerVehicle || {!((call rhs_fnc_findPlayer) in _ownerVehicle)})exitWith
+            {
+                (_this # 0) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable ["rhs_ah64d_videoKey_eh",-1]];
+                uiNameSpace setVariable ["rhs_ah64d_videoKey_eh",-1];
+            };
+
             // Perform actions only in internal view
             if(cameraView isEqualTo "INTERNAL")then
             {
@@ -186,7 +234,7 @@ switch(_nextMode)do
                 {
                     private _p            = call rhs_fnc_findPlayer;
                     private _vehicle      = vehicle _p;
-                    private _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
+                    private _videoFeedCam = _vehicle getVariable ["PTF_ah64_cam",objNull];
                     private _zoom         = (getUserMFDvalue _vehicle) # 9;
                     switch(_zoom)do
                     {
@@ -200,7 +248,7 @@ switch(_nextMode)do
                 {
                     private _p            = call rhs_fnc_findPlayer;
                     private _vehicle      = vehicle _p;
-                    private _videoFeedCam = _vehicle getVariable ["rhs_ah64_cam",objNull];
+                    private _videoFeedCam = _vehicle getVariable ["PTF_ah64_cam",objNull];
                     private _zoom         = (getUserMFDvalue _vehicle) # 9;
                     switch(_zoom)do
                     {
@@ -229,87 +277,99 @@ switch(_nextMode)do
 
         // Add loop
         ["rhs_ah64_videoFeed_pfh", "onEachFrame", {
-            params["_vehicle","_videoFeedCam","_unit","_prevMode","_prevZoom","_camRestart"];
+            params["_time","_vehicle","_videoFeedCam","_unit","_prevMode","_prevZoom","_destroyCam"];
 
-            // Adjust R2T camera
-            if(cameraView isEqualTo "INTERNAL")then
+            // Only _destroyCam took this down before, and that is only reached from the
+            // radar page, so dismounting left it running every frame
+            if(isNull _vehicle || {!alive _vehicle} || {!((call rhs_fnc_findPlayer) in _vehicle)})exitWith
             {
-                // Restart camera
-                /*if(_camRestart)then
-                {
-                    _videoFeedCam cameraeffect ["terminate","back","rhs_ah64_videoFeed"];
-                    _videoFeedCam cameraEffect ["internal", "Back", "rhs_ah64_videoFeed"];
-                };*/
-                // Adjust camera vector
-                _dir =
-                    (_vehicle selectionPosition "gunnerview")
-                        vectorFromTo
-                    (_vehicle selectionPosition "gunnerview_dir");
-                _videoFeedCam setVectorDirAndUp [
-                    _dir,
-                    _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
-                ];
+                // Stepping out keeps the R2T camera alive on purpose so re-entry reuses it,
+                // but a deleted or destroyed aircraft is never coming back - tear it down
+                // instead of leaving a camera attached to a wreck for the rest of the mission
+                if(isNull _vehicle || {!alive _vehicle})exitWith{[_vehicle,_videoFeedCam] call _destroyCam};
+                ["rhs_ah64_videoFeed_pfh", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
             };
-            /*else
+
+            if(time >= _time)then
             {
-                // Stop R2T operations when not in cockpit view
-                if(!_camRestart)then
+                _this set [0,time+0.05];
+
+                // Adjust R2T camera
+                if(cameraView isEqualTo "INTERNAL")then
                 {
-
-                    _videoFeedCam cameraeffect ["terminate","back","rhs_ah64_videoFeed"];
-                    _this set [5,true];
+                    // Adjust camera vector
+                    private _dir =
+                        (_vehicle selectionPosition "gunnerview")
+                            vectorFromTo
+                        (_vehicle selectionPosition "gunnerview_dir");
+                    _videoFeedCam setVectorDirAndUp [
+                        _dir,
+                        _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
+                    ];
                 };
-            };*/
 
-
-            // Check for camera changes
-            if(cameraView isEqualTo "GUNNER")then
-            {
-                private _mode = currentVisionMode _unit;
-                private _getZoom = {
-                    (
-                    [0.5,0.5]
-                    distance2D
-                    worldToScreen
-                    positionCameraToWorld
-                    [0,3,4]
-                    ) * (
-                    getResolution
-                    select 5
-                    ) / 2
-                };
-                private _zoom = (round(call _getZoom)) max 1;
-                if(_mode != _prevMode)then
+                // Check for camera changes
+                if(cameraView isEqualTo "GUNNER")then
                 {
-                    switch(_mode)do
-                    {
-                        case 1: { "rhs_ah64_videoFeed" setPiPEffect [1]; _vehicle setUserMFDtext [0,"NVG"]; };
-                        case 2: { "rhs_ah64_videoFeed" setPiPEffect [2]; _vehicle setUserMFDtext [0,"FLIR"]; };
-                        default { "rhs_ah64_videoFeed" setPiPEffect [0]; _vehicle setUserMFDtext [0,"DTV"]; };
+                    private _mode = currentVisionMode _unit;
+                    private _getZoom = {
+                        (
+                        [0.5,0.5]
+                        distance2D
+                        worldToScreen
+                        positionCameraToWorld
+                        [0,3,4]
+                        ) * (
+                        getResolution
+                        select 5
+                        ) / 2
                     };
-                    _this set [3,_mode];
-                };
-                if(_zoom != _prevZoom)then
-                {
-                    _videoFeedCam camSetFov (0.2/_zoom);
-                    _this set [4,_zoom];
-                    _vehicle setUserMFDvalue [9,_zoom];
+                    private _zoom = (round(call _getZoom)) max 1;
+                    if(_mode != _prevMode)then
+                    {
+                        switch(_mode)do
+                        {
+                            case 1: { "rhs_ah64_videoFeed" setPiPEffect [1]; _vehicle setUserMFDtext [0,"NVG"]; };
+                            case 2: { "rhs_ah64_videoFeed" setPiPEffect [2]; _vehicle setUserMFDtext [0,"FLIR"]; };
+                            default { "rhs_ah64_videoFeed" setPiPEffect [0]; _vehicle setUserMFDtext [0,"DTV"]; };
+                        };
+                        _this set [4,_mode];
+                    };
+                    if(_zoom != _prevZoom)then
+                    {
+                        _videoFeedCam camSetFov (0.2/_zoom);
+                        _this set [5,_zoom];
+                        _vehicle setUserMFDvalue [9,_zoom];
+                    };
                 };
             };
-        },[_vehicle,_videoFeedCam,_unit,0,0,false]] call BIS_fnc_addStackedEventHandler;
+        // _destroyCam is passed in - handler code runs in its own scope and cannot see it
+        },[0,_vehicle,_videoFeedCam,_unit,0,0,_destroyCam]] call BIS_fnc_addStackedEventHandler;
     };
     // Radar page
     case 5:
     {
         // Check if EH already exist. If yes, then remove it
-        if( not ( (uiNameSpace getVariable ["rhs_ah64d_radarPage_eh",-1]) isEqualTo -1))then
+        if( not ( (uiNameSpace getVariable ["PTF_ah64d_radarPage_eh",-1]) isEqualTo -1))then
         {
-            (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "rhs_ah64d_radarPage_eh"];
+            (findDisplay 46) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable "PTF_ah64d_radarPage_eh"];
         };
 
+        // Handler code cannot capture _vehicle, so stash it for the self removal check
+        uiNameSpace setVariable ["PTF_ah64d_radarPage_veh",_vehicle];
+
         // Add key event handler
-        _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
+        private _id = (findDisplay 46) displayAddEventHandler ["KeyUp",
         {
+            // Nothing removed this on dismount, so it fired on every key release for the
+            // rest of the mission - unhook once the player is out of the aircraft
+            private _ownerVehicle = uiNameSpace getVariable ["PTF_ah64d_radarPage_veh",objNull];
+            if(isNull _ownerVehicle || {!((call rhs_fnc_findPlayer) in _ownerVehicle)})exitWith
+            {
+                (_this # 0) displayRemoveEventHandler ["KeyUp", uiNameSpace getVariable ["PTF_ah64d_radarPage_eh",-1]];
+                uiNameSpace setVariable ["PTF_ah64d_radarPage_eh",-1];
+            };
+
             // Perform actions only in internal view
             if(cameraView isEqualTo "INTERNAL")then
             {
@@ -332,7 +392,7 @@ switch(_nextMode)do
                 };
             };
         }];
-        uiNameSpace setVariable ["rhs_ah64d_radarPage_eh",_id];
+        uiNameSpace setVariable ["PTF_ah64d_radarPage_eh",_id];
 
         // Exit if picture in picture is disabled
         if(!isPipEnabled)exitWith{};

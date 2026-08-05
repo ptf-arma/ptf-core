@@ -1,0 +1,3 @@
+# Models are already binarized (ODOL); running binarize on them would fail.
+[binarize]
+enabled = false
