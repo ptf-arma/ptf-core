@@ -55,7 +55,9 @@ private _startBroadcast = {
 			private _distance = _logic getVariable ["PTF_Sound_distance", 0];
 			if (_distance <= 0) then {_distance = _cfgDistance};
 			private _pos = if (isNull _speaker) then {getPosASL _logic} else {getPosASL _speaker};
-			[_path, objNull, false, _pos, _volume, 1, _distance] remoteExec ["playSound3D", 0];
+			// Nested array: remoteExec reads the outer array as the command's
+			// argument list, and playSound3D is unary - it takes one array.
+			[[_path, objNull, false, _pos, _volume, 1, _distance]] remoteExec ["playSound3D", 0];
 			sleep _period;
 		};
 		if (!isNull _logic) then {deleteVehicle _logic};

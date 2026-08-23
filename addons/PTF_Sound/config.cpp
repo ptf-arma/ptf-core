@@ -2,7 +2,7 @@ class cfgPatches
 {
 	class PTF_Sound
 	{
-		units[]={};
+		#include "cfgPatchesUnits.hpp"
 		weapons[]={};
 		requiredVersion=0.1;
 		requiredAddons[]=

@@ -7,6 +7,7 @@ chain, and writes into addons/PTF_Sound:
   sounds/<category>/<name>.ogg   the audio, foldered generic vs campaign
   cfgSounds.hpp                  CfgSounds classes (Eden trigger effects, say3D)
   cfgModules.hpp                 one Zeus/Eden loudspeaker module per sound
+  cfgPatchesUnits.hpp            CfgPatches units[] - needed for Zeus visibility
 
 Requires:  python -m pip install edge-tts imageio-ffmpeg
 Usage:     python tools/generate-sounds.py
@@ -35,6 +36,11 @@ SOUNDS = ADDON / "sounds"
 RAW_CACHE = Path(tempfile.gettempdir()) / "ptf_sound_raw"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 PBO_PREFIX = "z\\PTF\\addons\\PTF_Sound\\sounds"
+
+# Arma will not play sample rates above 48 kHz - it fails silently. ffmpeg's
+# loudnorm (first link in SPEAKER_FILTER/MUSIC_FILTER) resamples to 192 kHz,
+# so the output rate is pinned explicitly on every encode.
+SAMPLE_RATE = 44100
 
 # Horn-speaker simulation: steep bandpass into the horn's telephone-band
 # range, a honky mid resonance, hard clipping for the overdriven PA crunch
@@ -143,7 +149,7 @@ async def main():
             ).save(str(raw))
         out = SOUNDS / line["category"] / f"{line['name']}.ogg"
         out.parent.mkdir(parents=True, exist_ok=True)
-        run_ffmpeg(["-i", str(raw), "-af", SPEAKER_FILTER, "-c:a", "libvorbis", "-q:a", "4", str(out)])
+        run_ffmpeg(["-i", str(raw), "-af", SPEAKER_FILTER, "-c:a", "libvorbis", "-q:a", "4", "-ar", str(SAMPLE_RATE), str(out)])
         items.append((line, out))
         print(f"  {line['category']}/{out.name}  ({out.stat().st_size // 1024} KB)")
 
@@ -168,9 +174,9 @@ async def main():
                 f"[a0][a1]concat=n=2:v=0:a=1,{MUSIC_FILTER}[out]"
             )
             run_ffmpeg(["-i", str(wav), "-i", str(tag), "-filter_complex", graph,
-                        "-map", "[out]", "-c:a", "libvorbis", "-q:a", "4", str(out)])
+                        "-map", "[out]", "-c:a", "libvorbis", "-q:a", "4", "-ar", str(SAMPLE_RATE), str(out)])
         else:
-            run_ffmpeg(["-i", str(wav), "-af", MUSIC_FILTER, "-c:a", "libvorbis", "-q:a", "4", str(out)])
+            run_ffmpeg(["-i", str(wav), "-af", MUSIC_FILTER, "-c:a", "libvorbis", "-q:a", "4", "-ar", str(SAMPLE_RATE), str(out)])
         items.append((piece, out))
         print(f"  {piece['category']}/{out.name}  ({out.stat().st_size // 1024} KB)")
 
@@ -178,7 +184,7 @@ async def main():
         out = SOUNDS / tone["category"] / f"{tone['name']}.ogg"
         out.parent.mkdir(parents=True, exist_ok=True)
         src = f"aevalsrc='{SYNTH_EXPR[tone['type']]}':s=44100:d={tone['duration']}"
-        run_ffmpeg(["-f", "lavfi", "-i", src, "-af", SIREN_FILTER, "-c:a", "libvorbis", "-q:a", "4", str(out)])
+        run_ffmpeg(["-f", "lavfi", "-i", src, "-af", SIREN_FILTER, "-c:a", "libvorbis", "-q:a", "4", "-ar", str(SAMPLE_RATE), str(out)])
         items.append((tone, out))
         print(f"  {tone['category']}/{out.name}  ({out.stat().st_size // 1024} KB)")
 
@@ -197,8 +203,16 @@ async def main():
     (ADDON / "cfgSounds.hpp").write_text(sounds_hpp, encoding="utf-8", newline="\n")
     (ADDON / "cfgModules.hpp").write_text(modules_hpp, encoding="utf-8", newline="\n")
 
+    # Zeus builds its asset list from CfgPatches units[], not from CfgVehicles:
+    # a module missing here has working classes but never shows up in the Zeus
+    # Modules tab. Generated alongside cfgModules.hpp so the two cannot drift.
+    units = "".join(f'\t\t"PTF_Sound_Module_{i["name"]}",\n' for i, _ in items)
+    (ADDON / "cfgPatchesUnits.hpp").write_text(
+        header + "units[] =\n\t{\n" + units.rstrip(",\n") + "\n\t};\n",
+        encoding="utf-8", newline="\n")
+
     categories = sorted({i["category"] for i, _ in items})
-    print(f"Wrote {len(items)} sounds ({', '.join(categories)}), cfgSounds.hpp, cfgModules.hpp")
+    print(f"Wrote {len(items)} sounds ({', '.join(categories)}), cfgSounds.hpp, cfgModules.hpp, cfgPatchesUnits.hpp")
     print("Module categories referenced: "
           + ", ".join(f"PTF_Sound_{c}" for c in categories)
           + " - each needs a CfgFactionClasses entry in config.cpp.")
