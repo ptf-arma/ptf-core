@@ -59,6 +59,7 @@ class CfgVehicles
 	{
 		scope=1;
 		scopeCurator=1;
+		curatorCanAttach=1;
 		isGlobal=0;
 		isTriggerActivated=0;
 		isDisposable=0;

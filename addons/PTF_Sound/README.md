@@ -15,8 +15,16 @@ range circle on the terrain; confirm or cancel to start the broadcast. It
 repeats until the module is **deleted**. The range can also be changed
 mid-broadcast by setting the `PTF_Sound_distance` variable on the module —
 each repeat re-reads it. ZEN is a soft dependency: without it the module
-broadcasts at the sound's default range. Place a vanilla loudspeaker/mast
-prop under the module if you want something visible.
+broadcasts at the sound's default range.
+
+The broadcast binds to a physical speaker where one exists: **drop the
+module onto a prop or vehicle** to attach it, or place it within 5 m of one
+to auto-bind to the nearest. Destroying the bound object kills the broadcast
+(after the current play finishes — a started `playSound3D` can't be cut
+short) and cleans up the module. A module attached to a vehicle broadcasts
+from the vehicle as it moves — a PSYOP van is just a module dropped on a
+truck. With nothing nearby the module broadcasts unbound, and only deleting
+it stops it.
 
 **Eden:** the same modules under Systems — the module's *Broadcast range (m)*
 attribute overrides the default (0 = default). Or classic trigger effects —
@@ -82,6 +90,10 @@ chain stay the same either way.
    loop runs on the machine that placed it, so a Zeus disconnect mid-loop
    orphans the broadcast (known limitation — reassess if it bites).
 5. CfgSounds entries show up in Eden trigger effects and work via `say3D`.
+6. Speaker binding: drop a module onto a prop — confirm it attaches (Zeus
+   highlights the object), that destroying the prop stops the broadcast
+   after the current line, and that a module on a moving vehicle broadcasts
+   from the vehicle's position each repeat.
 
 ## Later passes
 
@@ -89,6 +101,4 @@ chain stay the same either way.
   an XEH init) so the speaker itself is placeable/destroyable in one step.
 - ACE interaction on placed speakers (start/stop/choose broadcast) for
   non-Zeus use.
-- Sound-source destruction: stop the loop when a linked speaker prop dies.
-- More material: ambient street audio, regime radio jingles, additional
-  campaigns.
+- More material: ambient street audio, additional campaigns.

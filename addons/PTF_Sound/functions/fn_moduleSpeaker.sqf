@@ -16,6 +16,14 @@
 	ZEN radius-slider dialog (with terrain circle preview) asks for the range
 	on placement. Without ZEN the module still works at the default range —
 	soft dependency only.
+
+	The broadcast binds to a physical speaker where one exists: the object the
+	module was dropped onto in Zeus (curator attach), else the nearest prop or
+	vehicle within 5 m. Destroying the bound object ends the broadcast after
+	the current play (playSound3D cannot be cut short) and removes the module.
+	The position is re-read from the bound object each repeat, so a module
+	attached to a vehicle broadcasts on the move. With no object nearby the
+	module broadcasts unbound and only deletion stops it.
 */
 params ["_logic", "_units", "_activated"];
 
@@ -31,16 +39,26 @@ if (_path isEqualTo "") exitWith {
 	diag_log format ["PTF_Sound: %1 has no PTF_sound configured", typeOf _logic];
 };
 
+private _speaker = attachedTo _logic;
+if (isNull _speaker) then {
+	private _near = (nearestObjects [_logic, ["Static", "Thing", "LandVehicle", "Ship", "Air"], 5]) select {alive _x};
+	if (_near isNotEqualTo []) then {_speaker = _near select 0};
+};
+_logic setVariable ["PTF_Sound_speaker", _speaker, true];
+
 private _startBroadcast = {
 	params ["_logic", "_path", "_volume", "_distance", "_period"];
 	[_logic, _path, _volume, _distance, _period] spawn {
 		params ["_logic", "_path", "_volume", "_cfgDistance", "_period"];
-		while {!isNull _logic} do {
+		private _speaker = _logic getVariable ["PTF_Sound_speaker", objNull];
+		while {!isNull _logic && {isNull _speaker || {alive _speaker}}} do {
 			private _distance = _logic getVariable ["PTF_Sound_distance", 0];
 			if (_distance <= 0) then {_distance = _cfgDistance};
-			[_path, objNull, false, getPosASL _logic, _volume, 1, _distance] remoteExec ["playSound3D", 0];
+			private _pos = if (isNull _speaker) then {getPosASL _logic} else {getPosASL _speaker};
+			[_path, objNull, false, _pos, _volume, 1, _distance] remoteExec ["playSound3D", 0];
 			sleep _period;
 		};
+		if (!isNull _logic) then {deleteVehicle _logic};
 	};
 };
 
