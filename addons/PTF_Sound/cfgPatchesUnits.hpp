@@ -24,5 +24,7 @@ units[] =
 		"PTF_Sound_Module_radio_jingle",
 		"PTF_Sound_Module_tone_attention",
 		"PTF_Sound_Module_siren_airraid",
-		"PTF_Sound_Module_siren_twotone"
+		"PTF_Sound_Module_siren_twotone",
+		"PTF_Sound_Module_playlist_radio_nacional",
+		"PTF_Sound_Module_playlist_guardia_psyop"
 	};

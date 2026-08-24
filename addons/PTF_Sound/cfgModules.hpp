@@ -6,6 +6,7 @@ class PTF_Sound_Module_guardia_loyalty: PTF_Sound_Module_base
 	displayName = "Guardia: Loyalty Broadcast";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_loyalty.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_loyalty";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 25.4;
@@ -18,6 +19,7 @@ class PTF_Sound_Module_guardia_curfew: PTF_Sound_Module_base
 	displayName = "Guardia: Curfew Order";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_curfew.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_curfew";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 18.8;
@@ -30,6 +32,7 @@ class PTF_Sound_Module_guardia_checkpoint: PTF_Sound_Module_base
 	displayName = "Guardia: Checkpoint Warning";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_checkpoint.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_checkpoint";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 20.7;
@@ -42,6 +45,7 @@ class PTF_Sound_Module_guardia_reward: PTF_Sound_Module_base
 	displayName = "Guardia: Reward Offer";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_reward.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_reward";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 21.9;
@@ -54,6 +58,7 @@ class PTF_Sound_Module_guardia_weapons: PTF_Sound_Module_base
 	displayName = "Guardia: Weapons Amnesty";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_weapons.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_weapons";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 17.3;
@@ -66,6 +71,7 @@ class PTF_Sound_Module_regime_rations: PTF_Sound_Module_base
 	displayName = "Regime: Ration Notice";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\regime_rations.ogg";
+	PTF_soundClass = "PTF_Sound_regime_rations";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 17.7;
@@ -78,6 +84,7 @@ class PTF_Sound_Module_regime_evacuation: PTF_Sound_Module_base
 	displayName = "Regime: Evacuation Order";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\regime_evacuation.ogg";
+	PTF_soundClass = "PTF_Sound_regime_evacuation";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 18.5;
@@ -90,6 +97,7 @@ class PTF_Sound_Module_regime_victory: PTF_Sound_Module_base
 	displayName = "Regime: Victory Bulletin";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\regime_victory.ogg";
+	PTF_soundClass = "PTF_Sound_regime_victory";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 18.0;
@@ -102,6 +110,7 @@ class PTF_Sound_Module_bastida_address: PTF_Sound_Module_base
 	displayName = "Bastida: Address to the Nation";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\bastida_address.ogg";
+	PTF_soundClass = "PTF_Sound_bastida_address";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 26.2;
@@ -114,6 +123,7 @@ class PTF_Sound_Module_sindicato_radio: PTF_Sound_Module_base
 	displayName = "Sindicato: Pirate Radio";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\sindicato_radio.ogg";
+	PTF_soundClass = "PTF_Sound_sindicato_radio";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 23.3;
@@ -126,6 +136,7 @@ class PTF_Sound_Module_sindicato_warning: PTF_Sound_Module_base
 	displayName = "Sindicato: Warning";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\sindicato_warning.ogg";
+	PTF_soundClass = "PTF_Sound_sindicato_warning";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 19.4;
@@ -138,6 +149,7 @@ class PTF_Sound_Module_regime_morning: PTF_Sound_Module_base
 	displayName = "Regime: Morning Bulletin";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\regime_morning.ogg";
+	PTF_soundClass = "PTF_Sound_regime_morning";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 20.7;
@@ -150,6 +162,7 @@ class PTF_Sound_Module_regime_martyrs: PTF_Sound_Module_base
 	displayName = "Regime: Martyrs Tribute";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\regime_martyrs.ogg";
+	PTF_soundClass = "PTF_Sound_regime_martyrs";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 21.4;
@@ -162,6 +175,7 @@ class PTF_Sound_Module_regime_referendum: PTF_Sound_Module_base
 	displayName = "Regime: Referendum Appeal";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\regime_referendum.ogg";
+	PTF_soundClass = "PTF_Sound_regime_referendum";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 14.9;
@@ -174,6 +188,7 @@ class PTF_Sound_Module_guardia_informants: PTF_Sound_Module_base
 	displayName = "Guardia: Report Strangers";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_informants.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_informants";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 20.3;
@@ -186,6 +201,7 @@ class PTF_Sound_Module_guardia_sindicato: PTF_Sound_Module_base
 	displayName = "Guardia: Anti-Sindicato Warning";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_sindicato.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_sindicato";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 18.2;
@@ -198,6 +214,7 @@ class PTF_Sound_Module_pereno_muster: PTF_Sound_Module_base
 	displayName = "Perenos: Battalion Muster";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\pereno_muster.ogg";
+	PTF_soundClass = "PTF_Sound_pereno_muster";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 14.7;
@@ -210,6 +227,7 @@ class PTF_Sound_Module_sindicato_business: PTF_Sound_Module_base
 	displayName = "Sindicato: Open for Business";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\sindicato_business.ogg";
+	PTF_soundClass = "PTF_Sound_sindicato_business";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 15.2;
@@ -222,6 +240,7 @@ class PTF_Sound_Module_anthem_valmera: PTF_Sound_Module_base
 	displayName = "Music: Himno de la Republica";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\anthem_valmera.ogg";
+	PTF_soundClass = "PTF_Sound_anthem_valmera";
 	PTF_volume = 5.62;
 	PTF_distance = 900;
 	PTF_duration = 49.4;
@@ -234,6 +253,7 @@ class PTF_Sound_Module_march_guardia: PTF_Sound_Module_base
 	displayName = "Music: Marcha de la Guardia";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\march_guardia.ogg";
+	PTF_soundClass = "PTF_Sound_march_guardia";
 	PTF_volume = 5.62;
 	PTF_distance = 900;
 	PTF_duration = 51.4;
@@ -246,6 +266,7 @@ class PTF_Sound_Module_radio_jingle: PTF_Sound_Module_base
 	displayName = "Radio Nacional: Station Ident";
 	category = "PTF_Sound_valmera";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\radio_jingle.ogg";
+	PTF_soundClass = "PTF_Sound_radio_jingle";
 	PTF_volume = 5.62;
 	PTF_distance = 700;
 	PTF_duration = 12.8;
@@ -258,6 +279,7 @@ class PTF_Sound_Module_tone_attention: PTF_Sound_Module_base
 	displayName = "Tone: Attention Chime";
 	category = "PTF_Sound_generic";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\generic\tone_attention.ogg";
+	PTF_soundClass = "PTF_Sound_tone_attention";
 	PTF_volume = 5.62;
 	PTF_distance = 500;
 	PTF_duration = 6.1;
@@ -270,6 +292,7 @@ class PTF_Sound_Module_siren_airraid: PTF_Sound_Module_base
 	displayName = "Siren: Air Raid";
 	category = "PTF_Sound_generic";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\generic\siren_airraid.ogg";
+	PTF_soundClass = "PTF_Sound_siren_airraid";
 	PTF_volume = 10;
 	PTF_distance = 1800;
 	PTF_duration = 22.1;
@@ -282,8 +305,50 @@ class PTF_Sound_Module_siren_twotone: PTF_Sound_Module_base
 	displayName = "Siren: Two-Tone Alert";
 	category = "PTF_Sound_generic";
 	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\generic\siren_twotone.ogg";
+	PTF_soundClass = "PTF_Sound_siren_twotone";
 	PTF_volume = 10;
 	PTF_distance = 1500;
 	PTF_duration = 12.1;
 	PTF_pause = 5;
+};
+class PTF_Sound_Module_playlist_radio_nacional: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Radio Nacional (programming)";
+	category = "PTF_Sound_valmera";
+	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\radio_jingle.ogg";
+	PTF_soundClass = "PTF_Sound_radio_jingle";
+	PTF_playlist[] =
+	{
+		"radio_jingle",
+		"regime_morning",
+		"anthem_valmera",
+		"regime_victory",
+		"regime_referendum",
+		"march_guardia"
+	};
+	PTF_volume = 5.62;
+	PTF_distance = 900;
+	PTF_pause = 4;
+};
+class PTF_Sound_Module_playlist_guardia_psyop: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Guardia PA (rotation)";
+	category = "PTF_Sound_valmera";
+	PTF_sound = "z\PTF\addons\PTF_Sound\sounds\valmera\guardia_loyalty.ogg";
+	PTF_soundClass = "PTF_Sound_guardia_loyalty";
+	PTF_playlist[] =
+	{
+		"guardia_loyalty",
+		"guardia_informants",
+		"guardia_curfew",
+		"guardia_sindicato",
+		"guardia_weapons"
+	};
+	PTF_volume = 5.62;
+	PTF_distance = 700;
+	PTF_pause = 15;
 };

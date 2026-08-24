@@ -7,17 +7,24 @@
 
 	Modes:
 	  preview   play the sound locally at the curator's camera - no other
-	            machine gets a remoteExec, so only this curator hears it
-	  pause     hold the broadcast (current play still finishes)
-	  resume    lift the hold and allow a play as soon as the schedule does
-	  playnow   skip the remaining pause and play at the next tick
+	            machine hears it
+	  pause     mute: cut the current play instantly and hold the broadcast
+	  resume    lift the hold and play at the next tick
+	  playnow   cut the current play and start the next one immediately
 	  adjust    reopen the range/pause/muted dialog (applies live)
+
+	Bumping PTF_Sound_cut makes the server loop delete its say3D emitter,
+	which kills the in-flight audio mid-play.
 */
 params ["_logic", "_mode"];
 
 if (!(_logic isKindOf "PTF_Sound_Module_base")) exitWith {};
 private _cfg = configFile >> "CfgVehicles" >> typeOf _logic;
 private _name = getText (_cfg >> "displayName");
+private _cut = {
+	params ["_logic"];
+	_logic setVariable ["PTF_Sound_cut", (_logic getVariable ["PTF_Sound_cut", 0]) + 1, true];
+};
 
 switch (_mode) do {
 	case "preview": {
@@ -28,6 +35,7 @@ switch (_mode) do {
 	};
 	case "pause": {
 		_logic setVariable ["PTF_Sound_paused", true, true];
+		[_logic] call _cut;
 		hintSilent format ["Muted: %1", _name];
 	};
 	case "resume": {
@@ -36,6 +44,7 @@ switch (_mode) do {
 		hintSilent format ["Broadcasting: %1", _name];
 	};
 	case "playnow": {
+		[_logic] call _cut;
 		_logic setVariable ["PTF_Sound_next", serverTime, true];
 		hintSilent format ["Broadcast queued: %1", _name];
 	};

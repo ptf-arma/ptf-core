@@ -177,6 +177,37 @@
       "pause": 30
     }
   ],
+  "playlists": [
+    {
+      "name": "radio_nacional",
+      "display": "Radio Nacional (programming)",
+      "category": "valmera",
+      "distance": 900,
+      "pause": 4,
+      "items": [
+        "radio_jingle",
+        "regime_morning",
+        "anthem_valmera",
+        "regime_victory",
+        "regime_referendum",
+        "march_guardia"
+      ]
+    },
+    {
+      "name": "guardia_psyop",
+      "display": "Guardia PA (rotation)",
+      "category": "valmera",
+      "distance": 700,
+      "pause": 15,
+      "items": [
+        "guardia_loyalty",
+        "guardia_informants",
+        "guardia_curfew",
+        "guardia_sindicato",
+        "guardia_weapons"
+      ]
+    }
+  ],
   "synth": [
     {
       "name": "tone_attention",

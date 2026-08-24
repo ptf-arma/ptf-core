@@ -124,6 +124,7 @@ def sound_entry(item, defaults, duration):
         f'\tdisplayName = "{item["display"]}";\n'
         f'\tcategory = "PTF_Sound_{cat}";\n'
         f'\tPTF_sound = "{path}";\n'
+        f'\tPTF_soundClass = "PTF_Sound_{name}";\n'
         f"\tPTF_volume = {vol};\n"
         f"\tPTF_distance = {dist};\n"
         f"\tPTF_duration = {duration};\n"
@@ -131,6 +132,31 @@ def sound_entry(item, defaults, duration):
         "};\n"
     )
     return sound, module
+
+
+def playlist_entry(pl, by_name, defaults):
+    # Playlist modules rotate through existing sounds; the server loop reads
+    # each item's class/duration from that item's module config at runtime.
+    unknown = [n for n in pl["items"] if n not in by_name]
+    if unknown:
+        sys.exit(f"playlist {pl['name']}: unknown items {unknown}")
+    first = pl["items"][0]
+    items = "".join(f'\t\t"{n}",\n' for n in pl["items"]).rstrip(",\n")
+    return (
+        f"class PTF_Sound_Module_playlist_{pl['name']}: PTF_Sound_Module_base\n"
+        "{\n"
+        "\tscope = 2;\n"
+        "\tscopeCurator = 2;\n"
+        f'\tdisplayName = "{pl["display"]}";\n'
+        f'\tcategory = "PTF_Sound_{pl["category"]}";\n'
+        f'\tPTF_sound = "{PBO_PREFIX}\\{by_name[first]["category"]}\\{first}.ogg";\n'
+        f'\tPTF_soundClass = "PTF_Sound_{first}";\n'
+        "\tPTF_playlist[] =\n\t{\n" + items + "\n\t};\n"
+        f"\tPTF_volume = {pl.get('volume', defaults['volume'])};\n"
+        f"\tPTF_distance = {pl.get('distance', defaults['distance'])};\n"
+        f"\tPTF_pause = {pl.get('pause', defaults['pause'])};\n"
+        "};\n"
+    )
 
 
 async def main():
@@ -200,6 +226,10 @@ async def main():
         sound, module = sound_entry(item, defaults, ogg_duration(out))
         sounds_hpp += sound
         modules_hpp += module
+    by_name = {i["name"]: i for i, _ in items}
+    playlists = data.get("playlists", [])
+    for pl in playlists:
+        modules_hpp += playlist_entry(pl, by_name, defaults)
     (ADDON / "cfgSounds.hpp").write_text(sounds_hpp, encoding="utf-8", newline="\n")
     (ADDON / "cfgModules.hpp").write_text(modules_hpp, encoding="utf-8", newline="\n")
 
@@ -207,6 +237,7 @@ async def main():
     # a module missing here has working classes but never shows up in the Zeus
     # Modules tab. Generated alongside cfgModules.hpp so the two cannot drift.
     units = "".join(f'\t\t"PTF_Sound_Module_{i["name"]}",\n' for i, _ in items)
+    units += "".join(f'\t\t"PTF_Sound_Module_playlist_{p["name"]}",\n' for p in playlists)
     (ADDON / "cfgPatchesUnits.hpp").write_text(
         header + "units[] =\n\t{\n" + units.rstrip(",\n") + "\n\t};\n",
         encoding="utf-8", newline="\n")

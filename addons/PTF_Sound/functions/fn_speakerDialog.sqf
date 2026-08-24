@@ -14,7 +14,8 @@ params ["_logic", ["_onClose", {}]];
 private _cfg = configFile >> "CfgVehicles" >> typeOf _logic;
 private _distance = _logic getVariable ["PTF_Sound_distance", 0];
 if (_distance <= 0) then {_distance = getNumber (_cfg >> "PTF_distance")};
-private _pause = _logic getVariable ["PTF_Sound_pause", getNumber (_cfg >> "PTF_pause")];
+private _pause = _logic getVariable ["PTF_Sound_pause", -1];
+if (_pause < 0) then {_pause = getNumber (_cfg >> "PTF_pause")};
 private _paused = _logic getVariable ["PTF_Sound_paused", false];
 
 [

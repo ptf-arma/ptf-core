@@ -36,8 +36,15 @@ class CfgFunctions
 		{
 			file="\z\PTF\addons\PTF_Sound\functions";
 			class moduleSpeaker{};
+			class serverLoop{};
 			class speakerDialog{};
 			class speakerAction{};
+			class addCutAction{};
+			class browseDialog{};
+			class initZeus
+			{
+				postInit=1;
+			};
 		};
 	};
 };
@@ -104,6 +111,7 @@ class CfgVehicles
 		{
 			class Default;
 			class Edit;
+			class Checkbox;
 		};
 		class ModuleDescription;
 	};
@@ -130,6 +138,22 @@ class CfgVehicles
 				tooltip="Radius in metres the broadcast is audible out to. 0 = use this sound's default range.";
 				typeName="NUMBER";
 				defaultValue="0";
+			};
+			class PTF_Sound_pause: Edit
+			{
+				property="PTF_Sound_pause";
+				displayName="Pause between repeats (s)";
+				tooltip="Seconds of silence between plays. -1 = use this sound's default pause.";
+				typeName="NUMBER";
+				defaultValue="-1";
+			};
+			class PTF_Sound_paused: Checkbox
+			{
+				property="PTF_Sound_paused";
+				displayName="Start muted";
+				tooltip="Hold the broadcast until resumed (Zeus right-click menu, or set PTF_Sound_paused to false).";
+				typeName="BOOL";
+				defaultValue="false";
 			};
 			class ModuleDescription: ModuleDescription{};
 		};
