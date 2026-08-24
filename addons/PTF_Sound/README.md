@@ -10,12 +10,25 @@ Additional campaigns get their own folder and module category.
 
 **Zeus:** Modules → *PTF Loudspeakers (Generic)* / *PTF Loudspeakers
 (Valmera)* → place a module where the speaker should be. With Zeus Enhanced
-loaded (it's in the modpack) a radius slider opens on placement, drawing the
-range circle on the terrain; confirm or cancel to start the broadcast. It
-repeats until the module is **deleted**. The range can also be changed
-mid-broadcast by setting the `PTF_Sound_distance` variable on the module —
-each repeat re-reads it. ZEN is a soft dependency: without it the module
-broadcasts at the sound's default range.
+loaded (it's in the modpack) a configuration dialog opens on placement:
+broadcast range (radius slider with a terrain circle), pause between
+repeats, and a **Muted** checkbox — place muted to position and preview in
+peace, then go live when ready. It repeats until the module is **deleted**.
+ZEN is a soft dependency: without it the module broadcasts at the sound's
+defaults.
+
+**Right-click a placed module** (ZEN context menu → *Loudspeaker*) for:
+*Preview (only you)* — plays the sound locally at your camera, no one else
+hears it; *Broadcast now* — skip the remaining pause; *Mute* / *Resume
+broadcast*; *Adjust range & pause* — reopens the dialog, applied live to the
+running broadcast.
+
+**Moving the module does not restart the audio.** The play schedule is
+state on the module, not in the loop, so a Zeus move/edit re-activation
+just resumes the existing cadence (and re-binds to whatever prop it now
+sits on). Range and pause can also be changed by script via the
+`PTF_Sound_distance` / `PTF_Sound_pause` / `PTF_Sound_paused` variables —
+everything is re-read live.
 
 The broadcast binds to a physical speaker where one exists: **drop the
 module onto a prop or vehicle** to attach it, or place it within 5 m of one
@@ -94,6 +107,13 @@ chain stay the same either way.
    highlights the object), that destroying the prop stops the broadcast
    after the current line, and that a module on a moving vehicle broadcasts
    from the vehicle's position each repeat.
+7. Move without restart: while a line is playing, drag the module — the
+   audio must NOT restart or double up, and the next repeat should come on
+   the original cadence. The placement dialog must not reopen on move.
+8. Context menu: right-click a placed module → *Loudspeaker* — Preview is
+   audible only to the acting curator (verify with a second client),
+   Mute/Resume swap correctly with state, Broadcast now plays within a
+   second or two, Adjust applies without interrupting the loop.
 
 ## Later passes
 
