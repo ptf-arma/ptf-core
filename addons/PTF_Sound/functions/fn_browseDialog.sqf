@@ -1,14 +1,14 @@
 /*
 	ZEN custom module: browse every loudspeaker sound (and playlist) in one
-	list and place the chosen module, pre-configured, at the clicked
-	position. Placement runs the normal module flow with PTF_Sound_noDialog
-	set, so the per-module dialog does not open a second time.
+	list and place the chosen module pre-configured at the clicked position.
+	Placement itself happens server-side (PTF_Sound_fnc_placeSpeaker), which
+	sidesteps client-object races and keeps the module Zeus-editable on
+	dedicated servers.
 
 	Called by ZEN custom modules with [position ASL, attached object].
 */
 params ["_posASL", "_attached"];
 
-private _base = configFile >> "CfgVehicles" >> "PTF_Sound_Module_base";
 private _entries = [];
 {
 	if (getNumber (_x >> "scope") == 2) then {
@@ -24,21 +24,14 @@ _entries sort true;
 		["LIST", ["Sound", "Broadcast to place. Preview it after placing via the right-click Loudspeaker menu."], [_entries apply {_x select 2}, _entries apply {format ["%1  -  %2", _x select 1, _x select 0]}, 0, 10], true],
 		["SLIDER", ["Broadcast Range", "Metres. 0 = the sound's default range."], [0, 3000, 0, 0], true],
 		["SLIDER", ["Pause Between Repeats", "Seconds. -1 = the sound's default pause."], [-1, 300, -1, 0], true],
+		["CHECKBOX", ["Spawn Speaker Prop", "Create a visible loudspeaker prop and bind the broadcast to it - players can find, shoot, or ACE-cut it."], true, true],
 		["CHECKBOX", ["Muted", "Place silent - position and preview it, then Resume from the right-click Loudspeaker menu."], false, true]
 	],
 	{
 		params ["_values", "_args"];
 		_args params ["_posASL"];
-		_values params ["_class", "_distance", "_pause", "_muted"];
-		private _logic = (createGroup sideLogic) createUnit [_class, ASLToAGL _posASL, [], 0, "CAN_COLLIDE"];
-		_logic setPosASL _posASL;
-		if (_distance > 0) then {_logic setVariable ["PTF_Sound_distance", _distance, true]};
-		if (_pause >= 0) then {_logic setVariable ["PTF_Sound_pause", _pause, true]};
-		_logic setVariable ["PTF_Sound_paused", _muted, true];
-		_logic setVariable ["PTF_Sound_noDialog", true];
-		private _curator = getAssignedCuratorLogic player;
-		if (!isNull _curator) then {_curator addCuratorEditableObjects [[_logic], false]};
-		[_logic, [], true] call PTF_Sound_fnc_moduleSpeaker;
+		_values params ["_class", "_distance", "_pause", "_spawnProp", "_muted"];
+		[_class, _posASL, _distance, _pause, _muted, _spawnProp, getAssignedCuratorLogic player] remoteExec ["PTF_Sound_fnc_placeSpeaker", 2];
 	},
 	{},
 	[_posASL, _attached]

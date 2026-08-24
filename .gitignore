@@ -22,5 +22,9 @@
 __pycache__/
 *.pyc
 
+# PTF_Sound raw audio cache (TTS fetches, synthesized music) - regenerable,
+# but kept out of temp so regeneration is deterministic across runs
+/tools/.sound_cache/
+
 # Local, uncommitted project notes
 CLAUDE.local.md

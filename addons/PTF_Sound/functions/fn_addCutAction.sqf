@@ -1,19 +1,24 @@
 /*
-	Adds the ACE "Cut loudspeaker power" interaction to the physical speaker
-	object a broadcast is bound to. The server loop remoteExecs this to all
-	machines (JIP-queued, so late joiners get it too); ACE interaction
+	Adds the ACE "Cut loudspeaker power" interaction to a physical speaker
+	object. remoteExec'd (JIP-queued per speaker) by the server loop; ACE
 	actions are local to each machine.
 
-	Five seconds of interaction, then the module is deleted where it is
-	local - the server loop notices, kills the say3D emitter, and the audio
-	stops mid-play. A quiet alternative to shooting the speaker.
+	The action reads the CURRENTLY bound module live from the speaker's
+	PTF_Sound_logic variable (maintained by the server loop), so one action
+	per speaker serves every module that ever binds to it, hides itself
+	whenever nothing is bound, and can never cut a module that has moved to
+	a different prop.
 
-	[_speaker, _logic] call PTF_Sound_fnc_addCutAction;
+	Five seconds of interaction, then the module is deleted where it is
+	local - the server loop notices and the say3D emitter dies with the
+	audio mid-play. The quiet alternative to shooting the speaker.
+
+	[_speaker] call PTF_Sound_fnc_addCutAction;
 */
-params ["_speaker", "_logic"];
+params ["_speaker"];
 
 if (!hasInterface) exitWith {};
-if (isNull _speaker || {isNull _logic}) exitWith {};
+if (isNull _speaker) exitWith {};
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 if (_speaker getVariable ["PTF_Sound_cutAction", false]) exitWith {};
 _speaker setVariable ["PTF_Sound_cutAction", true];
@@ -23,8 +28,9 @@ private _action = [
 	"Cut loudspeaker power",
 	"",
 	{
-		params ["_target", "_player", "_args"];
-		_args params ["_logic"];
+		params ["_target", "_player"];
+		private _logic = _target getVariable ["PTF_Sound_logic", objNull];
+		if (isNull _logic) exitWith {};
 		[
 			5,
 			[_logic],
@@ -40,11 +46,9 @@ private _action = [
 		] call ace_common_fnc_progressBar;
 	},
 	{
-		params ["_target", "_player", "_args"];
-		!isNull (_args select 0)
-	},
-	{},
-	[_logic]
+		params ["_target", "_player"];
+		!isNull (_target getVariable ["PTF_Sound_logic", objNull])
+	}
 ] call ace_interact_menu_fnc_createAction;
 
 [_speaker, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;

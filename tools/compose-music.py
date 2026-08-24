@@ -21,14 +21,13 @@ Usage:     python tools/compose-music.py   (generate-sounds.py runs it
                                             automatically when needed)
 """
 
-import tempfile
 import wave
 from pathlib import Path
 
 import numpy as np
 
 SR = 44100
-RAW_CACHE = Path(tempfile.gettempdir()) / "ptf_sound_raw"
+RAW_CACHE = Path(__file__).resolve().parent / ".sound_cache"
 RNG = np.random.default_rng(1936)
 
 NOTES = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}

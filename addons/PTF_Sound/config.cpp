@@ -41,6 +41,7 @@ class CfgFunctions
 			class speakerAction{};
 			class addCutAction{};
 			class browseDialog{};
+			class placeSpeaker{};
 			class initZeus
 			{
 				postInit=1;
@@ -94,7 +95,7 @@ class zen_context_menu_actions
 		};
 		class PTF_Sound_Adjust
 		{
-			displayName="Adjust range && pause";
+			displayName="Adjust range / pause";
 			icon="\a3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa";
 			condition="_hoveredEntity isKindOf 'PTF_Sound_Module_base'";
 			statement="[_hoveredEntity, 'adjust'] call PTF_Sound_fnc_speakerAction";
@@ -124,8 +125,7 @@ class CfgVehicles
 		isTriggerActivated=0;
 		isDisposable=0;
 		function="PTF_Sound_fnc_moduleSpeaker";
-		PTF_sound="";
-		PTF_volume=5;
+		PTF_soundClass="";
 		PTF_distance=700;
 		PTF_duration=30;
 		PTF_pause=20;

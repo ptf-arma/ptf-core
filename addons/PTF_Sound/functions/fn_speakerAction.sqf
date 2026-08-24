@@ -29,8 +29,11 @@ private _cut = {
 switch (_mode) do {
 	case "preview": {
 		// At the camera, not the module - the module may be beyond earshot.
-		private _pos = getPosASL curatorCamera;
-		playSound3D [getText (_cfg >> "PTF_sound"), objNull, false, _pos, getNumber (_cfg >> "PTF_volume"), 1, 500];
+		// File path and volume come from the CfgSounds entry itself, so
+		// preview always matches what the broadcast will play.
+		private _class = getText (_cfg >> "PTF_soundClass");
+		(getArray (configFile >> "CfgSounds" >> _class >> "sound")) params ["_file", "_volume"];
+		playSound3D [_file select [1], objNull, false, getPosASL curatorCamera, _volume, 1, 500];
 		hintSilent format ["Previewing: %1\n(only you can hear this)", _name];
 	};
 	case "pause": {

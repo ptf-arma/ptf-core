@@ -11,13 +11,18 @@ Additional campaigns get their own folder and module category.
 **Zeus:** Modules → *PTF Loudspeakers (Generic)* / *PTF Loudspeakers
 (Valmera)* → place a module where the speaker should be, or use **Place
 Loudspeaker...** (under *PTF Loudspeakers* in ZEN's custom modules) to
-browse every sound in one list and place it pre-configured. With Zeus
-Enhanced loaded (it's in the modpack) a configuration dialog opens on
-placement: broadcast range (radius slider with a terrain circle), pause
-between repeats, and a **Muted** checkbox — place muted to position and
-preview in peace, then go live when ready. It repeats until the module is
-**deleted**. ZEN is a soft dependency: without it the module broadcasts at
-the sound's defaults.
+browse every sound in one list and place it pre-configured — with **Spawn
+Speaker Prop** ticked (the default) it also creates a visible loudspeaker
+prop and binds the broadcast to it, so one placement gives players
+something to find, shoot, or ACE-cut. With Zeus Enhanced loaded (it's in
+the modpack) a configuration dialog opens on placement: broadcast range
+(radius slider with a terrain circle), pause between repeats, and a
+**Muted** checkbox — place muted to position and preview in peace, then go
+live when ready. In every range/pause control, **0 range / -1 pause means
+"use this sound's default"** (the same convention as the Eden attributes),
+so a module keeps tracking config defaults unless you choose a concrete
+value. It repeats until the module is **deleted**. ZEN is a soft
+dependency: without it the module broadcasts at the sound's defaults.
 
 **Playlist modules** (*Radio Nacional (programming)*, *Guardia PA
 (rotation)*) rotate through a curated sequence of sounds instead of looping
@@ -34,26 +39,39 @@ broadcast*; *Adjust range & pause* — reopens the dialog, applied live.
 **Audio stops instantly.** Broadcasts are emitted with `say3D` from an
 invisible emitter object owned by the **server** (so a curator
 disconnecting no longer kills their loudspeakers). `say3D` dies with its
-emitter, so muting, deleting the module, or destroying the bound speaker
-cuts the sound mid-word — no more waiting for the line to finish.
+emitter, so muting, deleting the module, or destroying **or deleting** the
+bound speaker cuts the sound mid-word — no more waiting for the line to
+finish.
 
 **Moving the module does not restart the audio.** The play schedule is
 state on the module, not in the loop, and the emitter survives
 re-activations, so a Zeus move/edit resumes the existing cadence without
 interrupting the current play (and re-binds to whatever prop it now sits
-on). Range/pause/mute can also be driven by script via the
+on — releasing the old prop's ACE action). Each module schedules
+independently: two speakers with the same sound play on their own
+cadences. Range/pause/mute can also be driven by script via the
 `PTF_Sound_distance` / `PTF_Sound_pause` / `PTF_Sound_paused` variables —
-everything is re-read live.
+everything is re-read live. One accepted edge: if a Zeus client's move
+outright *recreates* the module object (wiping its variables), the old
+broadcast cuts within a second and the module starts over as a fresh
+placement — that path cannot preserve state and is not papered over.
 
 The broadcast binds to a physical speaker where one exists: **drop the
 module onto a prop or vehicle** to attach it, or place it within 5 m of one
-to auto-bind to the nearest. Destroying the bound object cuts the broadcast
-instantly and cleans up the module. A module attached to a vehicle
-broadcasts from the vehicle as it moves — a PSYOP van is just a module
-dropped on a truck. With ACE loaded, players can also **ACE-interact with
-the bound speaker → "Cut loudspeaker power"** (5 s) to kill it quietly —
-the stealth alternative to shooting it. With nothing nearby the module
-broadcasts unbound, and only deleting it stops it.
+to auto-bind to the nearest. Destroying or deleting the bound object cuts
+the broadcast instantly and cleans up the module. A module attached to a
+vehicle broadcasts from the vehicle as it moves — a PSYOP van is just a
+module dropped on a truck. With ACE loaded, players can also **ACE-interact
+with the bound speaker → "Cut loudspeaker power"** (5 s) to kill it
+quietly — the stealth alternative to shooting it. With nothing nearby the
+module broadcasts unbound, and only deleting it stops it.
+
+**Mission compatibility (CfgRemoteExec):** missions that harden remote
+execution with `class CfgRemoteExec { class Functions { mode = 1; }; }`
+must whitelist `PTF_Sound_fnc_serverLoop`, `PTF_Sound_fnc_placeSpeaker`,
+and `PTF_Sound_fnc_addCutAction` (and the `deleteVehicle` command), or
+Zeus-placed speakers will silently never broadcast. Missions without a
+CfgRemoteExec class are unaffected (the engine default allows everything).
 
 **Eden:** the same modules under Systems — attributes for *Broadcast range*
 (0 = default), *Pause between repeats* (-1 = default), and *Start muted*.
@@ -85,10 +103,13 @@ JSON, so a forgotten regeneration fails the build instead of shipping.
 
 Accents come from Microsoft's Latin American Spanish neural voices reading
 English text (Cuban, Venezuelan, Dominican, Puerto Rican). Everything is run
-through a horn-speaker effect chain (bandpass, overdrive, slapback echo), so
-replacement audio from any source will match: drop a member VA recording as
-`<name>.mp3` into `%TEMP%\ptf_sound_raw\` and regenerate — a cached/manual
-raw file always wins over TTS.
+through a horn-speaker effect chain (bandpass, light overdrive, slapback
+echo — tuned so the lines stay intelligible), so replacement audio from any
+source will match: drop a member VA recording as `<name>.mp3` into
+`tools\.sound_cache\` and regenerate — a cached/manual raw file always wins
+over TTS. The cache is gitignored but deliberately lives in the repo, and
+encodes run with `-bitexact`, so regenerating with unchanged inputs
+produces byte-identical OGGs instead of dirtying every binary in git.
 
 The music (Himno de la República, Marcha de la Guardia, the Radio Nacional
 ident) is **original composition**, synthesized by
@@ -123,31 +144,39 @@ chain stay the same either way.
    loop lives on the server now).
 5. CfgSounds entries show up in Eden trigger effects and work via `say3D`.
 6. Speaker binding: drop a module onto a prop — confirm it attaches (Zeus
-   highlights the object), that destroying the prop cuts the broadcast
-   instantly, and that a module on a moving vehicle broadcasts from the
-   vehicle continuously (the emitter is attached to it).
+   highlights the object), that destroying the prop AND deleting the prop
+   in Zeus both cut the broadcast instantly, and that a module on a moving
+   vehicle broadcasts from the vehicle continuously (the emitter is
+   attached to it).
 7. Move without restart: while a line is playing, drag the module — the
    audio must NOT stop, restart, or double up, and the next repeat should
-   come on the original cadence. The placement dialog must not reopen.
+   come on the original cadence; the placement dialog must not reopen. (If
+   it DOES restart with the dialog, the engine recreated the logic on move
+   — that is the accepted fresh-start path; report it so the docs can say
+   which behavior Zeus actually has.)
 8. Context menu: right-click a placed module → *Loudspeaker* — Preview is
    audible only to the acting curator (verify with a second client),
-   Mute cuts instantly and Resume restarts, Broadcast now cuts and replays,
-   Adjust applies without interrupting the loop.
+   Mute cuts instantly, Resume plays within a second or two, Broadcast now
+   cuts the current line and replays IMMEDIATELY (no dead air), Adjust
+   applies without interrupting the loop.
 9. ACE: interact with a bound speaker prop → *Cut loudspeaker power* —
-   5 s progress bar, then the audio cuts and the module disappears. Confirm
-   a JIP client also gets the action.
+   5 s progress bar, then the audio cuts and the module disappears. Then:
+   bind a NEW module to the same prop and confirm the action works again;
+   and drag a module from prop A to prop B and confirm prop A no longer
+   offers the cut. Confirm a JIP client also gets the action.
 10. Browse placement: ZEN custom modules → *PTF Loudspeakers* → *Place
-    Loudspeaker...* — list shows all sounds and playlists, the placed
-    module starts configured, is Zeus-editable (movable/deletable), and
-    does not open a second dialog.
+    Loudspeaker...* — list shows all sounds and playlists; with Spawn
+    Speaker Prop ticked a visible loudspeaker appears and shooting/cutting
+    it kills the broadcast; the placed module and prop are Zeus-editable
+    (movable/deletable) **on a dedicated server**; no second dialog opens.
 11. Playlists: place *Radio Nacional (programming)* — items rotate in
     order with the configured gap, and the rotation position survives a
     module move.
-12. Eden attributes: all three (range, pause, start muted) apply on a
+12. Independence: place TWO modules of the same sound in different towns —
+    both must broadcast on their own cadence, neither waiting on the other.
+13. Eden attributes: all three (range, pause, start muted) apply on a
     dedicated server.
 
 ## Later passes
 
-- A visible loudspeaker *object* variant (inherit a vanilla speaker prop with
-  an XEH init) so the speaker itself is placeable/destroyable in one step.
 - More material: ambient street audio, additional campaigns.
