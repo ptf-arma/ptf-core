@@ -29,6 +29,23 @@ params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
 
+// Every loop remoteExecs playSound3D to ALL machines, so a second loop
+// anywhere means every client hears the broadcast twice. isGlobal = 0 is
+// meant to confine this to the machine where the logic is local, but that
+// was never enforced here. Both guards are needed: the locality check stops
+// a second machine (another curator, or the server) starting its own loop,
+// the flag stops a repeated init on this one - including ZEN firing both the
+// confirm and cancel callbacks, which both call _startBroadcast.
+private _who = format ["srv=%1 owner=%2 local=%3", isServer, clientOwner, local _logic];
+if (!local _logic) exitWith {
+	diag_log format ["PTF_Sound: %1 skipped, not local (%2)", typeOf _logic, _who];
+};
+if (_logic getVariable ["PTF_Sound_started", false]) exitWith {
+	diag_log format ["PTF_Sound: %1 skipped, already started (%2)", typeOf _logic, _who];
+};
+_logic setVariable ["PTF_Sound_started", true];
+diag_log format ["PTF_Sound: %1 starting broadcast (%2)", typeOf _logic, _who];
+
 private _cfg = configFile >> "CfgVehicles" >> typeOf _logic;
 private _path = getText (_cfg >> "PTF_sound");
 private _volume = getNumber (_cfg >> "PTF_volume");
