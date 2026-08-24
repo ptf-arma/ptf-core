@@ -24,7 +24,7 @@ class PTF_Pereno_uaz_open: rhsgref_ins_g_uaz_open
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "UAZ (Abierto)";
+   displayName = "UAZ (Open)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_rifleman"};
    // Marked sheet: faded VII on the door panel (built from star-free 002).
@@ -102,7 +102,7 @@ class PTF_Pereno_ural: rhsgref_ins_g_ural
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Ural (Transporte)";
+   displayName = "Ural (Transport)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
    // Faded BI-7 stencil on the cab door.
@@ -144,7 +144,7 @@ class PTF_Pereno_ural_open: rhsgref_ins_g_ural_open
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Ural (Abierto)";
+   displayName = "Ural (Open)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
 };
@@ -368,7 +368,7 @@ class PTF_Pereno_m113_unarmed: rhsgref_hidf_m113a3_unarmed
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_APCs";
-   displayName = "M113A3 (Desarmado)";
+   displayName = "M113A3 (Unarmed)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_crewman"};
    // Faded VII on both flanks (UV runs vertical -- placement proven against
@@ -492,7 +492,7 @@ class PTF_Pereno_2b14: rhsgref_ins_g_2b14
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Artillery";
-   displayName = "Mortero 2B14 (82mm)";
+   displayName = "2B14 Mortar (82mm)";
    crew = "PTF_Pereno_rifleman";
 };
 
@@ -509,7 +509,7 @@ class PTF_Pereno_zil131: rhsgref_ins_zil131
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "ZiL-131 (Transporte)";
+   displayName = "ZiL-131 (Transport)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
    // 5-entry order per the chdkz ZiL classes: cargo, cabin, interior, wheels, base.
@@ -556,7 +556,7 @@ class PTF_Pereno_gaz66_ammo: rhsgref_ins_gaz66_ammo
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "GAZ-66 (Municiones)";
+   displayName = "GAZ-66 (Ammo)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
    // 6-entry order inherited from rhs_truck: cab, tent, kung, ap2kung,
@@ -606,7 +606,7 @@ class PTF_Pereno_kraz_fuel: rhsgref_ins_kraz255b1_fuel
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "KrAZ-255 (Combustible)";
+   displayName = "KrAZ-255 (Fuel)";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman"};
    // 3-entry order per the chdkz KrAZ fuel class: cab, wheels, tank.
@@ -757,7 +757,7 @@ class PTF_Pereno_boat: rhsgref_hidf_assault_boat
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Boats";
-   displayName = "Lancha de Asalto";
+   displayName = "Assault Boat";
    crew = "PTF_Pereno_crewman";
    typicalCargo[] = {"PTF_Pereno_crewman", "PTF_Pereno_rifleman"};
 };
@@ -772,7 +772,7 @@ class PTF_Pereno_canoe: rhsgref_hidf_canoe
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Boats";
-   displayName = "Canoa";
+   displayName = "Canoe";
    crew = "PTF_Pereno_rifleman";
 };
 
@@ -789,7 +789,7 @@ class PTF_Pereno_mi8: rhsgref_ins_Mi8amt
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "Mi-8AMT (Transporte)";
+   displayName = "Mi-8AMT (Transport)";
    crew = "PTF_Pereno_pilot";
    typicalCargo[] = {"PTF_Pereno_pilot"};
    // Roundel painted directly over the old ChDKZ star position (RHS puts
@@ -832,7 +832,7 @@ class PTF_Pereno_uh1h: rhs_uh1h_hidf_unarmed
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "UH-1H (Desarmado)";
+   displayName = "UH-1H (Unarmed)";
    crew = "PTF_Pereno_pilot";
    typicalCargo[] = {"PTF_Pereno_pilot"};
    // Only the dedicated DECAL layer changes -- hull, interior and LOD sheets
@@ -879,7 +879,7 @@ class PTF_Pereno_uh1h_gunship: rhs_uh1h_hidf_gunship
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "UH-1H (Artillado)";
+   displayName = "UH-1H (Gunship)";
    crew = "PTF_Pereno_pilot";
    typicalCargo[] = {"PTF_Pereno_pilot", "PTF_Pereno_crewman", "PTF_Pereno_crewman"};
    // Only the dedicated DECAL layer changes -- hull, interior and LOD sheets
@@ -932,6 +932,6 @@ class PTF_Pereno_d30: rhsgref_ins_d30
    side = 0;
    faction = "PTF_OPFOR_Perenos";
    editorSubcategory = "EdSubcat_Artillery";
-   displayName = "Obus D-30 (122mm)";
+   displayName = "D-30 Howitzer (122mm)";
    crew = "PTF_Pereno_rifleman";
 };

@@ -9,20 +9,26 @@
 // squad is built around one FN MAG and one RPG, the checkpoint detail is
 // mostly sentries with a single NCO holding it together, and every group has
 // exactly one leader worth killing.
+//
+// Mission feedback said the battalion read as short of machine guns, so the
+// MAG is fielded wider now: it walks with the foot patrol, the MG section
+// carries two guns, and the static gun and howitzer positions keep one for
+// local defence. The checkpoint stays without one on purpose -- bored
+// sentries do not get a belt-fed weapon.
 // ---------------------------------------------------------------------------
 
 class PTF_OPFOR_Perenos
 {
-   name = "BI-7 ""Pera"" (los Perenos)";
+   name = "los Perenos (7th Infantry Battalion ""Pera"")";
 
    class Infantry
    {
-      name = "Infanteria";
+      name = "Infantry";
       aliveCategory = "Infantry";
 
       class PTF_grp_Pereno_squad
       {
-         name = "Escuadra de Fusileros";
+         name = "Rifle Squad";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.8;
@@ -40,7 +46,7 @@ class PTF_OPFOR_Perenos
 
       class PTF_grp_Pereno_fireteam
       {
-         name = "Equipo de Fuego";
+         name = "Fire Team";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.9;
@@ -55,7 +61,7 @@ class PTF_OPFOR_Perenos
       // attention. Three sentries and one corporal doing all the work.
       class PTF_grp_Pereno_checkpoint
       {
-         name = "Puesto de Control";
+         name = "Checkpoint";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 1.0;
@@ -66,35 +72,43 @@ class PTF_OPFOR_Perenos
          class Unit3 { side = 0; vehicle = "PTF_Pereno_sentry";     rank = "PRIVATE";  position[] = {10, -5, 0}; };
       };
 
+      // Five men walking out is enough to justify carrying the MAG -- the
+      // rifleman slot holds the gun now, mission feedback having found too
+      // few machine guns in the field.
       class PTF_grp_Pereno_patrol
       {
-         name = "Patrulla a Pie";
+         name = "Foot Patrol";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 1.0;
          icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
-         class Unit0 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {0, 5, 0}; };
-         class Unit1 { side = 0; vehicle = "PTF_Pereno_rifleman";   rank = "PRIVATE";  position[] = {-5, 0, 0}; };
-         class Unit2 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {5, 0, 0}; };
-         class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {10, -5, 0}; };
-         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {15, -5, 0}; };
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_teamleader";    rank = "CORPORAL"; position[] = {0, 5, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_machinegunner"; rank = "PRIVATE";  position[] = {-5, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {5, 0, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {10, -5, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {15, -5, 0}; };
       };
 
+      // Two guns, up from one on mission feedback. A single MAG made the
+      // "machine gun team" one kill away from being a rifle team; a pair
+      // gives it the interlocking fire the name promises.
       class PTF_grp_Pereno_mg_team
       {
-         name = "Equipo de Ametralladora";
+         name = "Machine Gun Section";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.6;
          icon = "\A3\ui_f\data\map\markers\nato\o_support.paa";
          class Unit0 { side = 0; vehicle = "PTF_Pereno_teamleader";           rank = "CORPORAL"; position[] = {0, 5, 0}; };
          class Unit1 { side = 0; vehicle = "PTF_Pereno_machinegunner";        rank = "PRIVATE";  position[] = {-5, 0, 0}; };
-         class Unit2 { side = 0; vehicle = "PTF_Pereno_machinegunner_assist"; rank = "PRIVATE";  position[] = {5, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_machinegunner_assist"; rank = "PRIVATE";  position[] = {-10, -5, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_machinegunner";        rank = "PRIVATE";  position[] = {5, 0, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_machinegunner_assist"; rank = "PRIVATE";  position[] = {10, -5, 0}; };
       };
 
       class PTF_grp_Pereno_at_team
       {
-         name = "Equipo Contracarro";
+         name = "AT Team";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.5;
@@ -106,7 +120,7 @@ class PTF_OPFOR_Perenos
 
       class PTF_grp_Pereno_mortar_crew
       {
-         name = "Equipo de Mortero";
+         name = "Mortar Team";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.4;
@@ -121,7 +135,7 @@ class PTF_OPFOR_Perenos
       // headquarters and give the players a reason to come.
       class PTF_grp_Pereno_hvt_detail
       {
-         name = "HVT - Comandante y Escolta";
+         name = "HVT - Commander and Escort";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.2;
@@ -135,7 +149,7 @@ class PTF_OPFOR_Perenos
 
       class PTF_grp_Pereno_command
       {
-         name = "Plana Mayor";
+         name = "Command Staff";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.3;
@@ -149,12 +163,12 @@ class PTF_OPFOR_Perenos
 
    class Motorized
    {
-      name = "Motorizada";
+      name = "Motorized";
       aliveCategory = "Motorized";
 
       class PTF_grp_Pereno_uaz_patrol
       {
-         name = "Patrulla Motorizada (UAZ)";
+         name = "Motorized Patrol (UAZ)";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.8;
@@ -179,7 +193,7 @@ class PTF_OPFOR_Perenos
 
       class PTF_grp_Pereno_truck_squad
       {
-         name = "Escuadra en Camion";
+         name = "Truck-Mounted Squad";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.5;
@@ -199,7 +213,7 @@ class PTF_OPFOR_Perenos
       // shotgun. Slow, predictable and worth ambushing.
       class PTF_grp_Pereno_logistics_convoy
       {
-         name = "Convoy Logistico";
+         name = "Logistics Convoy";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.5;
@@ -213,12 +227,12 @@ class PTF_OPFOR_Perenos
 
    class Mechanized
    {
-      name = "Blindada";
+      name = "Mechanized";
       aliveCategory = "Mechanized";
 
       class PTF_grp_Pereno_brdm_recon
       {
-         name = "Reconocimiento (BRDM-2)";
+         name = "Recon (BRDM-2)";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.4;
@@ -230,7 +244,7 @@ class PTF_OPFOR_Perenos
 
       class PTF_grp_Pereno_m113_section
       {
-         name = "Seccion Mecanizada (M113)";
+         name = "Mechanized Section (M113)";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.3;
@@ -250,26 +264,29 @@ class PTF_OPFOR_Perenos
    // is meant to be felt from the cockpit.
    class Support
    {
-      name = "Apoyo";
+      name = "Support";
       aliveCategory = "Support";
 
       class PTF_grp_Pereno_zu23_section
       {
-         name = "Seccion AA (ZU-23)";
+         name = "AA Section (ZU-23)";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.4;
          icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
-         class Unit0 { side = 0; vehicle = "PTF_Pereno_zu23";       rank = "SERGEANT"; position[] = {0, 0, 0}; };
-         class Unit1 { side = 0; vehicle = "PTF_Pereno_zu23";       rank = "CORPORAL"; position[] = {-15, 0, 0}; };
-         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {-5, -10, 0}; };
-         class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {5, -10, 0}; };
-         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {10, -15, 0}; };
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_zu23";          rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_zu23";          rank = "CORPORAL"; position[] = {-15, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader";    rank = "CORPORAL"; position[] = {-5, -10, 0}; };
+         // The guns cannot depress into their own perimeter. One MAG for
+         // local defence -- part of the wider fix for too few machine guns.
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_machinegunner"; rank = "PRIVATE";  position[] = {15, -10, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {5, -10, 0}; };
+         class Unit5 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {10, -15, 0}; };
       };
 
       class PTF_grp_Pereno_aa_mobile
       {
-         name = "AA Movil (Ural ZU-23)";
+         name = "Mobile AA (Ural ZU-23)";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.4;
@@ -283,16 +300,19 @@ class PTF_OPFOR_Perenos
       // them. Counter-battery is a player problem now.
       class PTF_grp_Pereno_d30_battery
       {
-         name = "Bateria de Obuses (D-30)";
+         name = "Howitzer Battery (D-30)";
          faction = "PTF_OPFOR_Perenos";
          side = 0;
          rarityGroup = 0.2;
          icon = "\A3\ui_f\data\map\markers\nato\o_art.paa";
-         class Unit0 { side = 0; vehicle = "PTF_Pereno_d30";        rank = "SERGEANT"; position[] = {0, 0, 0}; };
-         class Unit1 { side = 0; vehicle = "PTF_Pereno_d30";        rank = "CORPORAL"; position[] = {25, 0, 0}; };
-         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader"; rank = "CORPORAL"; position[] = {10, -10, 0}; };
-         class Unit3 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {5, -15, 0}; };
-         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";  rank = "PRIVATE";  position[] = {15, -15, 0}; };
+         class Unit0 { side = 0; vehicle = "PTF_Pereno_d30";           rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Pereno_d30";           rank = "CORPORAL"; position[] = {25, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Pereno_teamleader";    rank = "CORPORAL"; position[] = {10, -10, 0}; };
+         // A battery the players are meant to raid gets one MAG watching
+         // the approach, same reasoning as the ZU-23 section.
+         class Unit3 { side = 0; vehicle = "PTF_Pereno_machinegunner"; rank = "PRIVATE";  position[] = {20, -10, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {5, -15, 0}; };
+         class Unit5 { side = 0; vehicle = "PTF_Pereno_conscript";     rank = "PRIVATE";  position[] = {15, -15, 0}; };
       };
    };
 };

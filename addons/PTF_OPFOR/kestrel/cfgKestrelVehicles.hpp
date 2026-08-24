@@ -115,7 +115,7 @@ class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "M998 (Carga)";
+   displayName = "M998 (Cargo)";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman"};
    // Full 11-entry array from rhsusf_m998_w_4dr; only index 9 changes -- the
@@ -175,7 +175,7 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "M1025 (Desarmado)";
+   displayName = "M1025 (Unarmed)";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman", "PTF_Kestrel_operator"};
    // 10-entry array from rhsusf_m1025_w; index 8 swaps 101st decals for ours.
@@ -346,7 +346,7 @@ class PTF_Kestrel_mh6: RHS_MELB_MH6M
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "MH-6M (Bancos)";
+   displayName = "MH-6M (Benches)";
    crew = "PTF_Kestrel_pilot";
    typicalCargo[] = {"PTF_Kestrel_pilot"};
    // US ARMY boom text patched out; kestrel emblem, wordmark and callsign on
@@ -388,7 +388,7 @@ class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "AH-6M (Ligero)";
+   displayName = "AH-6M (Light)";
    crew = "PTF_Kestrel_pilot";
    typicalCargo[] = {"PTF_Kestrel_pilot"};
    // US ARMY boom text patched out; kestrel emblem, wordmark and callsign on

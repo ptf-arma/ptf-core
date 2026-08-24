@@ -10,13 +10,13 @@ class PTF_IND_Sindicato
 
    class Infantry
    {
-      name = "Cuadrillas";
+      name = "Work Crews";
       aliveCategory = "Infantry";
 
       // A work gang that picked up its guns on the way out the gate.
       class PTF_grp_Sind_cuadrilla
       {
-         name = "Cuadrilla";
+         name = "Work Crew";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 0.8;
@@ -27,9 +27,11 @@ class PTF_IND_Sindicato
          class Unit3 { side = 2; vehicle = "PTF_Sind_estibador";  rank = "PRIVATE";  position[] = {10, -5, 0}; };
       };
 
+      // The closest thing the union has to a line platoon, so it gets the
+      // union's one belt-fed gun.
       class PTF_grp_Sind_milicia
       {
-         name = "Milicia del Puerto";
+         name = "Port Militia";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 0.5;
@@ -41,12 +43,13 @@ class PTF_IND_Sindicato
          class Unit4 { side = 2; vehicle = "PTF_Sind_contrabandista";  rank = "PRIVATE";  position[] = {-10, -5, 0}; };
          class Unit5 { side = 2; vehicle = "PTF_Sind_cazador";         rank = "PRIVATE";  position[] = {15, -10, 0}; };
          class Unit6 { side = 2; vehicle = "PTF_Sind_sanitario";       rank = "PRIVATE";  position[] = {-15, -10, 0}; };
+         class Unit7 { side = 2; vehicle = "PTF_Sind_ametrallador";    rank = "PRIVATE";  position[] = {20, -15, 0}; };
       };
 
       // Three men who watch a road the way only locals can.
       class PTF_grp_Sind_piquete
       {
-         name = "Piquete";
+         name = "Picket";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 1.0;
@@ -59,7 +62,7 @@ class PTF_IND_Sindicato
       // The demolition detail. Union-audited dynamite, union-decided targets.
       class PTF_grp_Sind_demolicion
       {
-         name = "Equipo de Demolicion";
+         name = "Demolition Team";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 0.4;
@@ -73,7 +76,7 @@ class PTF_IND_Sindicato
       // has known for twenty years.
       class PTF_grp_Sind_hvt_detail
       {
-         name = "HVT - El Capataz y Escolta";
+         name = "HVT - El Capataz and Escort";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 0.2;
@@ -86,12 +89,12 @@ class PTF_IND_Sindicato
 
    class Motorized
    {
-      name = "Transporte";
+      name = "Transport";
       aliveCategory = "Motorized";
 
       class PTF_grp_Sind_technical
       {
-         name = "Camioneta Armada";
+         name = "Armed Pickup";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 0.5;
@@ -105,7 +108,7 @@ class PTF_IND_Sindicato
       // the third truck.
       class PTF_grp_Sind_convoy
       {
-         name = "Convoy del Sindicato";
+         name = "Sindicato Convoy";
          faction = "PTF_IND_Sindicato";
          side = 2;
          rarityGroup = 0.4;

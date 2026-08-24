@@ -106,7 +106,7 @@ class PTF_Guardia_ural: rhsgref_ins_g_ural
    side = 0;
    faction = "PTF_OPFOR_Guardia";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Ural (Transporte)";
+   displayName = "Ural (Transport)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
    // camo1 = cab, camo2 = tarp, third entry is RHS's blank decal label.
@@ -294,7 +294,7 @@ class PTF_Guardia_kamaz: rhs_kamaz5350_msv
    side = 0;
    faction = "PTF_OPFOR_Guardia";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "KamAZ-5350 (Transporte)";
+   displayName = "KamAZ-5350 (Transport)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
    // Same 5-entry order as rhs_kamaz5350: cabin, cargo, base, bed, cover.
@@ -342,7 +342,7 @@ class PTF_Guardia_kamaz_ammo: rhs_kamaz5350_ammo_msv
    side = 0;
    faction = "PTF_OPFOR_Guardia";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "KamAZ-5350 (Municiones)";
+   displayName = "KamAZ-5350 (Ammo)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
    // Same 5-entry order as rhs_kamaz5350: cabin, cargo, base, bed, cover.
@@ -390,7 +390,7 @@ class PTF_Guardia_kamaz_open: rhs_kamaz5350_open_msv
    side = 0;
    faction = "PTF_OPFOR_Guardia";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "KamAZ-5350 (Abierto)";
+   displayName = "KamAZ-5350 (Open)";
    crew = "PTF_Guardia_crewman";
    typicalCargo[] = {"PTF_Guardia_crewman"};
    // Same 5-entry order as rhs_kamaz5350: cabin, cargo, base, bed, cover.
@@ -522,7 +522,7 @@ class PTF_Guardia_mi17: rhsgref_cdf_reg_Mi17Sh
    side = 0;
    faction = "PTF_OPFOR_Guardia";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "Mi-17Sh (Transporte)";
+   displayName = "Mi-17Sh (Transport)";
    crew = "PTF_Guardia_pilot";
    typicalCargo[] = {"PTF_Guardia_pilot"};
    // 2-entry order mirrors rhsgref_cdf_reg_Mi17Sh: body camo + detail sheet.

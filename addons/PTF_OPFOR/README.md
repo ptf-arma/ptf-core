@@ -10,8 +10,8 @@ faction mods are used, so nothing new has to be added to the repack.
 
 | Layer | Faction | Class | Status |
 |-------|---------|-------|--------|
-| 1 | Batallón de Infantería No. 7 "Pera" (los Pereños) | `PTF_OPFOR_Perenos` | Implemented |
-| 2 | La Guardia (Destacamento Especial Bastida) | `PTF_OPFOR_Guardia` | Implemented |
+| 1 | los Pereños (7th Infantry Battalion "Pera") | `PTF_OPFOR_Perenos` | Implemented |
+| 2 | La Guardia (Bastida Special Detachment) | `PTF_OPFOR_Guardia` | Implemented |
 | 3 | Kestrel Group | `PTF_OPFOR_Kestrel` | Implemented |
 
 **All three layers sit on EAST (OPFOR).** Kestrel included — its "defeated by
@@ -55,8 +55,11 @@ units inherit from `rhsgref_hidf_base` and are rebadged onto EAST.
 - **Kit reads rank at a glance.** Conscripts in OG-107 with a field cap,
   riflemen in mixed OG-107/ERDL under randomised M1 shells, NCOs in full ERDL
   with a PASGT. Players should be able to see who matters before they shoot.
-- **Thin ammunition loads.** They fight hard for about four minutes; they do
-  not carry the magazines for a long engagement.
+- **Thin ammunition loads.** Thin against La Guardia's eight polymer
+  magazines, not starvation: line troops carry five or six, after unit
+  feedback that three or four read as a bug rather than as poverty. The tier
+  gap is held by La Guardia carrying eight, not by the garrison running dry
+  at first contact.
 - **Local names.** `PTF_ValmeranMen` in `cfgNames.hpp` supplies a Spanish name
   pool so the dead have names that belong to the towns the players walk
   through next week.
@@ -83,7 +86,7 @@ statistically harder:
 | Night vision | None, on anyone | Every unit; PVS-15 on the veteran tier |
 | `sensitivity` | 0.8 (sentry) – 3.0 (NCO) | 3.2 – 4.0, no inattentive tier |
 | Rifle | L1A1/FAL, iron sights | AK-103, EOTech or ACOG MDO + PEQ-15 |
-| Magazines | 2–5, steel | 8, polymer |
+| Magazines | 3–6, steel | 8, polymer |
 | Protection | ALICE webbing, M1 steel | MBAV plate carrier, Ops-Core |
 | MG | FN MAG, 7 belts (3 worn, 4 in the pack) | PKP Pecheneg, 5 belts (2 worn, 3 in the pack) |
 | AT | RPG-7, PG-7V | RPG-7 PGO, PG-7VR tandem + thermobaric |
@@ -107,8 +110,8 @@ Notes on specific choices:
 - **No checkpoint group exists for this faction, on purpose.** La Guardia do
   not stand bored roadblocks. Their appearance anywhere other than Presa Alta
   or Tagua is supposed to tell the players something.
-- **Escalation is a ladder, not a buff.** `Equipo de Asalto` → `Sección de
-  Asalto` → `Sección Reforzada` (veterans throughout), plus the BMP-2 section
+- **Escalation is a ladder, not a buff.** `Assault Team` → `Assault
+  Section` → `Reinforced Section` (veterans throughout), plus the BMP-2 section
   held back for when the campaign is meant to get hard. Escalate by fielding
   higher tiers, not by editing skill values.
 
@@ -160,7 +163,7 @@ This is the layer that changes how players *plan* rather than how they shoot.
 Two MANPADS flavours is deliberate. Fielding both tells the players Kestrel
 did not simply arrive with kit — they took something over.
 
-There are three AA groups: two MANPADS teams and `Batería AA
+There are three AA groups: two MANPADS teams and `AA Battery
 (ZU-23-2 / Igla)`, which pairs a gun and a launcher with the men who service
 them. That last group is what an airfield approach should cost.
 
@@ -214,7 +217,10 @@ Numbers that matter (all read out of the RHS and vanilla configs):
 | | capacity / mass |
 |---|---|
 | Every PTF uniform in this addon | 40 |
+| `U_I_C_Soldier_Bandit_2_F` / `_5_F` (borrowed vanilla) | 30 / 30 |
+| `U_BG_Guerilla2_1` / `U_BG_Guerilla3_1` / `U_BG_leader` | 30 / 50 / 40 |
 | ALICE webbing / chest rig / ERDL tac vest | 120 / 100 / 100 |
+| `V_TacChestrig_grn_F` | 140 |
 | `rhsusf_mbav` (bare carrier — **not** the rifleman one) | 20 |
 | `rhsusf_mbav_light` / `_rifleman` / `_grenadier` / `_mg` / `_medic` | 100 / 140 / 150 / 160 / 160 |
 | `rhsusf_spc_crewman` / `_light` / `_rifleman` / `_iar` | 80 / 100 / 140 / 160 |
@@ -230,19 +236,20 @@ alongside anything else, and no vest holds more than two PKP belts; and the
 engine packs in array order, which is why `PTF_Guardia_at` lists its rockets
 before its rifle magazines.
 
-There are two ways to put gear on a man past what `magazines[]` can reach, and
-they are not interchangeable:
+Past what `magazines[]` can reach there is one mechanism in use:
+**`TransportMagazines` on a backpack class**, declarative, no script, and the
+engine fills the pack at spawn. Every preloaded pack in the addon uses it (see
+verify item 19 for the full list), as does RHS's own
+`rhsgref_hidf_alicepack_mg` (which the Pereño machinegunner wears) with four
+FN MAG belts in it.
 
-- **`TransportMagazines` on a backpack class.** Declarative, no script, and the
-  right answer for spare ammunition. `PTF_B_guardia_pkp` carries the Guardia
-  machinegunner's other three belts this way, and RHS's own
-  `rhsgref_hidf_alicepack_mg` — which the Pereno machinegunner wears — carries
-  four FN MAG belts by the same mechanism.
-- **A `CBA_Extended_EventHandlers` init calling `addItemToBackpack`.** Used only
-  by the two Kestrel AA specialists, because they also need `addWeaponItem` to
-  seat a round in the launcher tube so the AI does not have to survive a reload
-  cycle before it can engage. Guard it on `local` so it runs once, on the
-  machine that owns the unit.
+A second route was tried and retired: a `CBA_Extended_EventHandlers` init
+calling `addItemToBackpack`, used by the two Kestrel AA specialists to seat
+their missile rounds. It worked, but declaring
+`CBA_Extended_EventHandlers_base` in this addon cost ~375 RPT warning lines
+per session against a baseline of one, so the rounds now ride in preloaded
+carryalls (`PTF_B_kestrel_fim92` / `PTF_B_kestrel_igla`) like everyone else's
+spare ammunition.
 
 ## Verify in-game
 
@@ -273,7 +280,7 @@ RHS configs, but the following want eyes on them in the Eden editor:
    most likely thing in layer 3 to not work as intended.
 9. **MANPADS engage.** Fly something over a `MANPADS Team` and confirm they
    actually launch. AI MANPADS behaviour is sensitive to engagement rules and
-   `Batería AA` in particular should be checked with both the ZU-23-2 and the
+   `AA Battery` in particular should be checked with both the ZU-23-2 and the
    Igla pod manned.
 
 10. **Flags render.** Place each of the four flagpoles and confirm the design
@@ -310,11 +317,27 @@ RHS configs, but the following want eyes on them in the Eden editor:
     Kestrel's Stinger pod + crewed P-37 search radar.
 18. **The P-37 radar mans and dies.** Unlike the SERHAT prop it is a real
     crewed vehicle — confirm a gunner sits in it and that it can be killed.
-19. **Guardia machinegunner's belts.** Open his inventory: two 7.62x54R belts
-    in the MBAV carrier and three more in the Eagle A-III on his back. If the
-    pack spawns empty, `TransportMagazines` on `PTF_B_guardia_pkp` is not
-    taking — nothing else in the addon uses that mechanism, so it is the one
-    thing here worth eyes on.
+19. **Every preloaded pack spawns full.** Seven backpacks are filled through
+    `TransportMagazines`, and a failure is silent: the man just spawns with
+    an empty bag. Open each wearer's inventory and check the pack:
+    - Guardia Machine Gunner: Eagle A-III with three 100rnd 7.62x54R belts
+      (`PTF_B_guardia_pkp`); two more belts worn in the MBAV.
+    - Guardia AT Gunner: Eagle A-III with two PG-7VR and one TBG-7V
+      (`PTF_B_guardia_rpg`); one of each worn.
+    - Pereño AT Rifleman: ALICE pack with two PG-7V (`PTF_B_pereno_rpg`);
+      two more worn.
+    - Kestrel Machine Gunner (M249): Eagle A-III with four 100rnd 5.56 soft
+      pouches (`PTF_B_kestrel_m249`); four more worn.
+    - Kestrel AA Specialist (FIM-92): carryall with two Stinger rounds
+      (`PTF_B_kestrel_fim92`).
+    - Kestrel AA Specialist (Igla): carryall with two 9K38 rounds
+      (`PTF_B_kestrel_igla`).
+    - Sindicato Machine Gunner: canvas holdall with two 100rnd 7.62x54R belts
+      (`PTF_B_sind_pkm`); two more worn.
+
+    The Pereño machinegunner's `rhsgref_hidf_alicepack_mg` is RHS's own
+    preloaded pack and ships with four FN MAG belts, worth a glance while
+    you are there.
 
 ## Later passes
 

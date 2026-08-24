@@ -37,7 +37,7 @@ class PTF_Flag_Perenos_F: FlagCarrier
    author = "Paramarine Task Force";
    scope = 2;
    scopeCurator = 2;
-   displayName = "Flag - BI-7 ""Pera""";
+   displayName = "Flag - los Perenos";
    editorSubcategory = "EdSubcat_Flags";
    class EventHandlers
    {

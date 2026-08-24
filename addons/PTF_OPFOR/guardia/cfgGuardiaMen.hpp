@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// La Guardia -- Destacamento Especial Bastida
+// La Guardia -- Bastida Special Detachment
 //
 // Design intent (campaign layer 2): Bastida's praetorians. Hand-picked, paid
 // in hard currency, loyal to the man rather than to any flag or state.
@@ -95,7 +95,7 @@ class PTF_Guardia_rifleman: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Guardia";
+   displayName = "Guardia Rifleman";
 };
 
 // The escalation tier. Dual-tube night vision, a ranged optic and noticeably
@@ -114,7 +114,7 @@ class PTF_Guardia_rifleman_vet: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Guardia Veterano";
+   displayName = "Guardia Veteran";
    accuracy = 3.0;
    sensitivity = 3.8;
    cost = 340000;
@@ -128,7 +128,7 @@ class PTF_Guardia_grenadier: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Granadero (GP-25)";
+   displayName = "Grenadier (GP-25)";
    cost = 300000;
    linkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_grenadier", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_grenadier", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -162,7 +162,8 @@ class PTF_Guardia_grenadier: PTF_Guardia_base
       };
 };
 
-// The machinegunner's belt pack, and the only backpack in the faction.
+// The machinegunner's belt pack. The AT gunner's rocket pack below works the
+// same way, and together they are the faction's only backpacks.
 //
 // It exists because magazines[] can only reach the uniform and the vest, and
 // a 100-round 7.62x54R belt is 64.35 mass: the MBAV MG carrier's 160 holds
@@ -172,9 +173,10 @@ class PTF_Guardia_grenadier: PTF_Guardia_base
 // Preloaded through TransportMagazines rather than through a CBA init handler.
 // Belts are ordinary magazines and need no runtime help; this is how RHS's own
 // ammo-bearer packs do it, including rhsgref_hidf_alicepack_mg, which the
-// Pereno machinegunner already wears with four FN MAG belts in it. The init
-// handlers on the two Kestrel AA specialists exist because those men also have
-// to have a round seated in the launcher tube -- nothing here does.
+// Pereno machinegunner already wears with four FN MAG belts in it. Even the
+// two Kestrel AA specialists, who once seated their missile rounds through CBA
+// init handlers, now use this same mechanism -- declaring the CBA base class
+// cost ~375 RPT warning lines per session (see the top of cfgKestrelMen.hpp).
 //
 // Eagle A-III holds 240. Three belts is 193.05 of it; a fourth would be 257.4
 // and would not fit.
@@ -209,8 +211,9 @@ class PTF_Guardia_machinegunner: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Ametrallador (PKP)";
+   displayName = "Machine Gunner (PKP)";
    cost = 380000;
+   icon = "iconManMG";
    backpack = "PTF_B_guardia_pkp";
    linkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_mg", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_mbav_mg", "rhsusf_ANPVS_14", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -230,6 +233,38 @@ class PTF_Guardia_machinegunner: PTF_Guardia_base
       };
 };
 
+// The AT gunner's rocket pack. Same mechanism as PTF_B_guardia_pkp above,
+// and it exists for the same reason: a PG-7VR or TBG-7V is 64.35 mass, the
+// MBAV rifleman carrier's 140 takes exactly two, and unit feedback after
+// missions was that the AT gunner died with nothing left to shoot.
+//
+// Eagle A-III holds 240. Three rockets is 193.05 of it; a fourth would be
+// 257.4 and would not fit. The mix is two tandems and one thermobaric,
+// weighted toward the armour-killing round because the worn pair on his
+// chest already carries one of each.
+class PTF_B_guardia_rpg: rhsusf_assault_eagleaiii_coy
+{
+   author = "Paramarine Task Force";
+   // Hidden for the same reason as the belt pack: a loadout component, not
+   // something to place.
+   scope = 1;
+   scopeCurator = 0;
+   displayName = "Eagle A-III (RPG)";
+   class TransportMagazines
+   {
+      class _xx_rhs_rpg7_PG7VR_mag
+      {
+         magazine = "rhs_rpg7_PG7VR_mag";
+         count = 2;
+      };
+      class _xx_rhs_rpg7_TBG7V_mag
+      {
+         magazine = "rhs_rpg7_TBG7V_mag";
+         count = 1;
+      };
+   };
+};
+
 // Tandem warheads. The garrison's RPG is a threat to a truck; this one is a
 // threat to whatever the players actually arrived in.
 //
@@ -238,13 +273,17 @@ class PTF_Guardia_machinegunner: PTF_Guardia_base
 // in the MBAV rifleman carrier's 140 and they leave 11 of it. The rockets
 // are therefore listed FIRST: the engine fills containers in array order,
 // and a rifle magazine seated in the carrier ahead of them would push a
-// rocket out. Three rockets never fitted at all; one of each warhead does.
+// rocket out. A third rocket never fits anywhere on his torso -- rounds one
+// and two ride in the carrier, and the other three ride in PTF_B_guardia_rpg
+// on his back, exactly as the machinegunner's third through fifth belts do.
 class PTF_Guardia_at: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Contracarro (RPG-7 PGO)";
+   displayName = "AT Gunner (RPG-7 PGO)";
    cost = 360000;
+   icon = "iconManAT";
+   backpack = "PTF_B_guardia_rpg";
    weapons[] = {"PTF_weap_guardia_ak103", "rhs_weap_rpg7_pgo", "Throw", "Put"};
    respawnWeapons[] = {"PTF_weap_guardia_ak103", "rhs_weap_rpg7_pgo", "Throw", "Put"};
    magazines[] =
@@ -267,10 +306,11 @@ class PTF_Guardia_marksman: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Tirador (SVDS)";
+   displayName = "Marksman (SVDS)";
    cost = 400000;
    accuracy = 3.4;
    sensitivity = 4.0;
+   icon = "iconManRecon";
    // mbav_rifleman (140), not the pouchless rhsusf_mbav (20) -- see the
    // veteran class above. Eight SVD magazines and a sidearm do not fit 20.
    // Same rig as the line trooper: the magazine pouches suit a DMR and it
@@ -314,7 +354,7 @@ class PTF_Guardia_medic: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Sanitario";
+   displayName = "Medic";
    cost = 320000;
    attendant = 1;
    icon = "iconManMedic";
@@ -356,7 +396,7 @@ class PTF_Guardia_engineer: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Zapador";
+   displayName = "Engineer";
    cost = 330000;
    engineer = 1;
    canDeactivateMines = 1;
@@ -385,7 +425,7 @@ class PTF_Guardia_crewman: PTF_Guardia_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Tripulante";
+   displayName = "Crewman";
    cost = 260000;
    magazines[] =
       {
@@ -409,7 +449,7 @@ class PTF_Guardia_crewman: PTF_Guardia_base
 
 class PTF_Guardia_teamleader: PTF_Guardia_rifleman_vet
 {
-   displayName = "Jefe de Equipo";
+   displayName = "Team Leader";
    cost = 420000;
    icon = "iconManLeader";
    weapons[] = {"PTF_weap_guardia_ak103_mdo", "rhs_weap_pya", "Throw", "Put", "Binocular"};
@@ -442,7 +482,7 @@ class PTF_Guardia_teamleader: PTF_Guardia_rifleman_vet
 
 class PTF_Guardia_squadleader: PTF_Guardia_teamleader
 {
-   displayName = "Jefe de Seccion";
+   displayName = "Squad Leader";
    cost = 520000;
    accuracy = 3.2;
    sensitivity = 4.0;
@@ -450,8 +490,9 @@ class PTF_Guardia_squadleader: PTF_Guardia_teamleader
 
 class PTF_Guardia_officer: PTF_Guardia_teamleader
 {
-   displayName = "Comandante";
+   displayName = "Commander";
    cost = 600000;
+   icon = "iconManOfficer";
    accuracy = 3.0;
    sensitivity = 3.9;
 };
@@ -464,11 +505,10 @@ class PTF_Guardia_officer: PTF_Guardia_teamleader
 // a helmet, and the sidearm.
 class PTF_Guardia_hvt: PTF_Guardia_officer
 {
-   displayName = "Oficial Superior (HVT)";
+   displayName = "Senior Officer (HVT)";
    cost = 1100000;
    accuracy = 3.2;
    sensitivity = 4.0;
-   icon = "iconManLeader";
    headgearList[] = {"rhsgref_patrolcap_specter", 1};
    linkedItems[] = {"rhsgref_patrolcap_specter", "rhsgref_TacVest_ERDL", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsgref_patrolcap_specter", "rhsgref_TacVest_ERDL", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -476,6 +516,6 @@ class PTF_Guardia_hvt: PTF_Guardia_officer
 
 class PTF_Guardia_pilot: PTF_Guardia_crewman
 {
-   displayName = "Piloto";
+   displayName = "Pilot";
    cost = 350000;
 };

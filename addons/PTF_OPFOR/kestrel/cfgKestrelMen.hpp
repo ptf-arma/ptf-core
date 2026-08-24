@@ -190,12 +190,44 @@ class PTF_Kestrel_operator_desert: PTF_Kestrel_base
 
 // --- Specialists -----------------------------------------------------------
 
+// The machinegunner's belt pack -- same mechanism as the AA carryalls above
+// and PTF_B_guardia_pkp: magazines[] only reaches the uniform and vest, so
+// the sustainment belts ride in a pack the engine preloads for us.
+//
+// Eagle A-III holds 240; four 100-round soft pouches at 26.9 each is 107.6
+// of it. Four worn plus four in the pack is 800 rounds -- the tier-3 answer
+// to the Pereno gunner's 700 of 7.62 NATO and the Guardia gunner's 500 of
+// 7.62x54R. A Kestrel gun going quiet first would read as wrong.
+class PTF_B_kestrel_m249: rhsusf_assault_eagleaiii_coy
+{
+   author = "Paramarine Task Force";
+   // Hidden: a loadout component, not something to place. The empty Eagle
+   // A-III is already in the arsenal if a mission maker wants one.
+   scope = 1;
+   scopeCurator = 0;
+   displayName = "Eagle A-III (M249)";
+   class TransportMagazines
+   {
+      class _xx_rhsusf_100Rnd_556x45_soft_pouch
+      {
+         magazine = "rhsusf_100Rnd_556x45_soft_pouch";
+         count = 4;
+      };
+   };
+};
+
+// Worn load: the MG plateframe's 160 plus the uniform's 40 hold the first
+// aid kit (8), four belts (4 x 26.9 = 107.6), a pistol magazine (6) and the
+// M67 (8.8) -- 130.4 of 200, no overflow. The other four belts are in the
+// pack above.
 class PTF_Kestrel_machinegunner: PTF_Kestrel_base
 {
    scope = 2;
    scopeCurator = 2;
-   displayName = "Kestrel Machinegunner";
+   displayName = "Kestrel Machine Gunner (M249)";
    cost = 900000;
+   icon = "iconManMG";
+   backpack = "PTF_B_kestrel_m249";
    linkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_machinegunner", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_machinegunner", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    uniformClass = "PTF_U_kestrel_dpm";
@@ -229,6 +261,7 @@ class PTF_Kestrel_marksman: PTF_Kestrel_base
    displayName = "Kestrel Marksman";
    cost = 950000;
    accuracy = 4.0;
+   icon = "iconManRecon";
    linkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_opscore_01_tan", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_mk18_SU230", "rhsusf_weap_glock17g4", "Throw", "Put"};
@@ -242,6 +275,7 @@ class PTF_Kestrel_sniper: PTF_Kestrel_base
    displayName = "Kestrel Sniper (XM2010)";
    cost = 1100000;
    accuracy = 4.2;
+   icon = "iconManRecon";
    sensitivity = 4.5;
    camouflage = 0.6;
    uniformClass = "PTF_U_kestrel_lizard";
@@ -284,6 +318,7 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
    displayName = "Kestrel Anti-Materiel (M107)";
    cost = 1200000;
    accuracy = 4.0;
+   icon = "iconManRecon";
    linkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_LEUPOLDMK4"};
    respawnLinkedItems[] = {"rhsgref_Booniehat_alpen", "rhsusf_plateframe_marksman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio", "rhsusf_acc_LEUPOLDMK4"};
    weapons[] = {"rhs_weap_M107_w_leu", "rhsusf_weap_glock17g4", "Throw", "Put", "Binocular"};
@@ -330,11 +365,15 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
 // PTF_Pereno_engineer, which has had one the whole time and still
 // overflowed.)
 //
-// So the rounds go on in an init handler instead, straight into a 320
-// capacity carryall. Two rounds is 240 of it. The handler also seats a round
-// in the launcher itself, so he does not have to survive an AI reload cycle
-// before he can engage anything. It is guarded on locality, so it runs once,
-// on the machine that owns the unit.
+// So the rounds ride in a 320-capacity carryall instead, preloaded through
+// TransportMagazines -- see PTF_B_kestrel_fim92 at the top of this file.
+// Two rounds is 240 of it, and the AI feeds the launcher from the pack.
+//
+// Six rifle magazines, up from four: the SPC IAR's 160 plus the uniform's
+// 40 hold the first aid kit (8), six Stanags (6 x 9.35 = 56.1), a pistol
+// magazine (6) and the M67 (8.8) -- 78.9 of 200, no overflow. Four was a
+// self-defence ration, and the feedback said these men die with dry rifles
+// long before anyone gets to use the launcher argument.
 class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
 {
    scope = 2;
@@ -353,11 +392,15 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhsusf_mag_17Rnd_9x19_JHP",
          "rhs_mag_m67"
       };
    respawnMagazines[] =
       {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -369,7 +412,12 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
 
 // Same treatment as the Stinger above, and for the same reason: a 9K38
 // round is 100 mass and his SPC Light carrier holds 100 in total. Two rounds
-// in a 320-capacity carryall, added by a locality-guarded init handler.
+// in a 320-capacity carryall, preloaded through TransportMagazines
+// (PTF_B_kestrel_igla).
+//
+// Six rifle magazines, up from four, same as the Stinger man: first aid kit
+// (8), six Stanags (56.1), a pistol magazine (6) and the M67 (8.8) is 78.9
+// of the 140 his uniform and SPC Light hold between them.
 class PTF_Kestrel_aa_igla: PTF_Kestrel_base
 {
    scope = 2;
@@ -390,11 +438,15 @@ class PTF_Kestrel_aa_igla: PTF_Kestrel_base
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhsusf_mag_17Rnd_9x19_JHP",
          "rhs_mag_m67"
       };
    respawnMagazines[] =
       {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -418,11 +470,14 @@ class PTF_Kestrel_medic: PTF_Kestrel_base
    respawnLinkedItems[] = {"rhsusf_opscore_01", "rhsusf_plateframe_medic", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    Items[] = {"FirstAidKit", "Medikit"};
    RespawnItems[] = {"FirstAidKit", "Medikit"};
-   // Five rifle magazines rather than the operator's seven: the Medikit is
+   // Six rifle magazines rather than the operator's seven: the Medikit is
    // 80 mass, and Items[] are packed into the uniform and carrier before
-   // magazines[] are.
+   // magazines[] are. The budget still clears -- kits (88) plus six Stanags
+   // (56.1), a pistol magazine (6), the M67 (8.8) and the smoke (11.88) is
+   // 170.78 of the 200 his uniform and medic plateframe hold.
    magazines[] =
       {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -434,6 +489,7 @@ class PTF_Kestrel_medic: PTF_Kestrel_base
       };
    respawnMagazines[] =
       {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -462,10 +518,15 @@ class PTF_Kestrel_breacher: PTF_Kestrel_base
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    // Toolkit (80), mine detector (20) and first aid kit (8) are 108 of the
    // 180 his uniform and radio carrier hold between them, and the engine
-   // packs Items[] first. Four rifle magazines is what is left of seven --
-   // he was losing both pistol magazines, the grenade and the smoke.
+   // packs Items[] first. Five rifle magazines is the per-container ceiling:
+   // the toolkit has to go in the carrier (140), which then takes four
+   // Stanags (37.4), the pistol magazine (6) and the M67 (8.8) for 132.2,
+   // while the uniform holds the kit (8), the detector (20) and the fifth
+   // Stanag (9.35). A sixth Stanag would push the M67 past 140 and the
+   // engine would drop it silently.
    magazines[] =
       {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -475,6 +536,7 @@ class PTF_Kestrel_breacher: PTF_Kestrel_base
       };
    respawnMagazines[] =
       {
+         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
          "rhs_mag_30Rnd_556x45_Mk318_Stanag",
@@ -538,6 +600,7 @@ class PTF_Kestrel_commander: PTF_Kestrel_teamleader
 {
    displayName = "Kestrel Site Commander";
    cost = 1600000;
+   icon = "iconManOfficer";
    uniformClass = "PTF_U_kestrel_desert";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_3color_desert_co.paa"};
    linkedItems[] = {"rhsusf_patrolcap_ocp", "rhsusf_spc_squadleader", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -556,7 +619,9 @@ class PTF_Kestrel_hvt: PTF_Kestrel_commander
    cost = 1500000;
    accuracy = 2.4;
    sensitivity = 3.4;
-   icon = "iconManLeader";
+   // Plain silhouette, overriding the commander's officer icon: he is not a
+   // soldier, and the map should say so before the players' optics do.
+   icon = "iconMan";
    uniformClass = "PTF_U_kestrel_olive";
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_olive_co.paa"};
    linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_patchless", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
