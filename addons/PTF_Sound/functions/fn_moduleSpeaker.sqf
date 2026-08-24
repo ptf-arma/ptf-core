@@ -46,7 +46,7 @@ if (isNull _speaker) then {
 	if (_near isNotEqualTo []) then {_speaker = _near select 0};
 };
 private _oldSpeaker = _logic getVariable ["PTF_Sound_speaker", objNull];
-if (!isNull _oldSpeaker && {!(_oldSpeaker isEqualTo _speaker)}) then {
+if (!isNull _oldSpeaker && {_oldSpeaker isNotEqualTo _speaker}) then {
 	// Moved to a different prop: the old one no longer controls this module.
 	_oldSpeaker setVariable ["PTF_Sound_logic", objNull, true];
 };

@@ -98,7 +98,7 @@ _logic setVariable ["PTF_Sound_gen", _gen];
 		};
 		if (!_wasBound) then {
 			private _pos = getPosATL _logic;
-			if (!(_pos isEqualTo _lastPos)) then {
+			if (_pos isNotEqualTo _lastPos) then {
 				_lastPos = _pos;
 				_emitter setPos _pos;
 			};
