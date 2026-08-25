@@ -224,12 +224,24 @@ Numbers that matter (all read out of the RHS and vanilla configs):
 | `rhsusf_mbav` (bare carrier — **not** the rifleman one) | 20 |
 | `rhsusf_mbav_light` / `_rifleman` / `_grenadier` / `_mg` / `_medic` | 100 / 140 / 150 / 160 / 160 |
 | `rhsusf_spc_crewman` / `_light` / `_rifleman` / `_iar` | 80 / 100 / 140 / 160 |
+| `rhsusf_spc_sniper` / `_patchless` / `_patchless_radio` / `_squadleader` | 80 / 100 / 140 / 140 |
+| `rhsusf_plateframe_rifleman` / `_marksman` / `_mg` / `_medic` / `_teamleader` | 160 each |
 | ToolKit / Medikit / MineDetector / FirstAidKit | 80 / 80 / 20 / 8 |
 | FAL 20rnd / AK 30rnd polymer / STANAG 30rnd | 16.5 / 11.5 / 9.4 |
+| M14 20rnd M118 / .45 ACP 30rnd SMG / 7.92x33 30rnd StG | 16.2 / 17.5 / 11.7 |
 | PKP 100rnd belt / FN MAG 100rnd belt | 64.4 / 32.3 |
 | RPG PG-7V / PG-7VR / .50 BMG 10rnd | 31.5 / 64.4 / 41.1 |
 | FIM-92 round / 9K38 Igla round | 120 / 100 |
+| RGD-5 / M67 / F1 / Mk 2 pineapple | 6.8 / 8.8 / 13.2 / 13.1 |
+| AN-M8 HC / M18 smoke | 9.0 / 11.9 |
+| RDG-2 / NSP-D (inherited mass, see the note below) | 10 / 10 |
 | `rhsusf_assault_eagleaiii_*` / `rhsgref_hidf_alicepack` / `B_Carryall_cbr` | 240 / 320 / 320 |
+
+The RDG-2 and the NSP-D declare no `mass` of their own, so they inherit
+vanilla `HandGrenade`'s 10. That is the trap: they look like smoke and they
+are read as smoke, but vanilla `SmokeShell` is 4, so budgeting either of them
+at a smoke grenade's weight underestimates it by six, which is most of a
+STANAG. Budget them as frags.
 
 Consequences worth remembering: no vest in the game holds a MANPADS round
 alongside anything else, and no vest holds more than two PKP belts; and the

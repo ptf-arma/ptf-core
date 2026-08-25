@@ -117,9 +117,15 @@ class PTF_Sind_estibador: PTF_Sind_base
    weapons[] = {"rhs_weap_Izh18", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_Izh18", "Throw", "Put"};
    // Sixteen shells, not ten. A single-shot gun eats its pocketful fast, and
-   // shells are what a bandolier is for. Sixteen singles (a couple of mass
-   // each) plus the first aid kit are under 45 against the 120 the coveralls
-   // (40) and bandolier (80) hold.
+   // shells are what a bandolier is for. Sixteen singles (1 mass each) plus
+   // the first aid kit are 24 against the 120 the coveralls (40) and bandolier
+   // (80) hold.
+   //
+   // One RGD-5 on the end. The uniform is tried first for every entry, so
+   // what actually happens is that all sixteen shells, the first aid kit and
+   // the grenade go into the coveralls at 30.82 of 40 and the bandolier
+   // spawns empty at 0 of 80. He has that much slack, so the grenade is one
+   // because a docker carries one, not because a second would not fit.
    magazines[] =
       {
          "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
@@ -127,7 +133,8 @@ class PTF_Sind_estibador: PTF_Sind_base
          "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
          "rhsgref_1Rnd_00Buck",
          "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
-         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug"
+         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
+         "rhs_mag_rgd5"
       };
    respawnMagazines[] =
       {
@@ -136,7 +143,8 @@ class PTF_Sind_estibador: PTF_Sind_base
          "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
          "rhsgref_1Rnd_00Buck",
          "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
-         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug"
+         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
+         "rhs_mag_rgd5"
       };
 };
 
@@ -156,6 +164,13 @@ class PTF_Sind_maderero: PTF_Sind_base
    // come to 89.18 against the 110 the guerrilla shirt (30, a vanilla one,
    // not the 40 a PTF uniform holds) and bandolier (80) hold. A seventh fits
    // in neither container and would be dropped at spawn; he does not get one.
+   //
+   // He does get an RGD-5, listed last so it cannot displace a magazine. Per
+   // container the shirt takes the aid kit and one magazine (21.53 of 30) and
+   // the bandolier the other five (67.65 of 80), leaving 8.47 and 12.35 free.
+   // The grenade at 6.82 fits either of those; a seventh magazine at 13.53
+   // fits neither. That is the whole argument for giving him a grenade rather
+   // than more ammunition.
    magazines[] =
       {
          "rhs_30Rnd_762x39mm",
@@ -163,7 +178,8 @@ class PTF_Sind_maderero: PTF_Sind_base
          "rhs_30Rnd_762x39mm",
          "rhs_30Rnd_762x39mm",
          "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm"
+         "rhs_30Rnd_762x39mm",
+         "rhs_mag_rgd5"
       };
    respawnMagazines[] =
       {
@@ -172,7 +188,8 @@ class PTF_Sind_maderero: PTF_Sind_base
          "rhs_30Rnd_762x39mm",
          "rhs_30Rnd_762x39mm",
          "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm"
+         "rhs_30Rnd_762x39mm",
+         "rhs_mag_rgd5"
       };
 };
 
@@ -197,19 +214,29 @@ class PTF_Sind_cazador: PTF_Sind_base
    // (2.64 each) and the first aid kit come to 34.4 against the 130 the shirt
    // (50) and bandolier (80) hold, so capacity is nowhere near the reason he
    // carries ten.
+   //
+   // Which is why he is the man to hang the odd extra off. An RGD-5 (6.82) and
+   // one of the three smokes in the faction, an RDG-2 (10): the shirt takes
+   // the aid kit, all ten clips and the grenade (41.22 of 50) and the
+   // bandolier takes the smoke (10 of 80). Nobody issued him either. He is the
+   // reason the union has any.
    magazines[] =
       {
          "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
          "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
          "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38"
+         "rhsgref_5Rnd_762x54_m38",
+         "rhs_mag_rgd5",
+         "rhs_mag_rdg2_white"
       };
    respawnMagazines[] =
       {
          "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
          "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
          "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38"
+         "rhsgref_5Rnd_762x54_m38",
+         "rhs_mag_rgd5",
+         "rhs_mag_rdg2_white"
       };
 };
 
@@ -230,6 +257,12 @@ class PTF_Sind_contrabandista: PTF_Sind_base
    // the shirt (30, a vanilla one, not the 40 a PTF uniform holds) and tac
    // vest (100) hold. A seventh stick fits in neither container and would be
    // dropped at spawn, so six is the ceiling.
+   //
+   // One RGD-5, and it has to be listed last. Per container the shirt carries
+   // the aid kit and one stick (25.47 of 30) and the tac vest the other five
+   // (87.35 of 100), so the grenade at 6.82 goes into the vest (94.17 of 100).
+   // It will not fit the shirt's remaining 4.53 -- put it earlier in the array
+   // and it takes a stick's place instead of its own.
    magazines[] =
       {
          "rhsgref_30rnd_1143x23_M1911B_SMG",
@@ -237,7 +270,8 @@ class PTF_Sind_contrabandista: PTF_Sind_base
          "rhsgref_30rnd_1143x23_M1911B_SMG",
          "rhsgref_30rnd_1143x23_M1911B_SMG",
          "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG"
+         "rhsgref_30rnd_1143x23_M1911B_SMG",
+         "rhs_mag_rgd5"
       };
    respawnMagazines[] =
       {
@@ -246,7 +280,8 @@ class PTF_Sind_contrabandista: PTF_Sind_base
          "rhsgref_30rnd_1143x23_M1911B_SMG",
          "rhsgref_30rnd_1143x23_M1911B_SMG",
          "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG"
+         "rhsgref_30rnd_1143x23_M1911B_SMG",
+         "rhs_mag_rgd5"
       };
 };
 
@@ -293,6 +328,12 @@ class PTF_B_sind_pkm: B_Carryall_cbr
 // against the 180 the coveralls (40) and chest rig (140) hold. Per container,
 // which is how the engine actually packs, that is 128.70 of 140 in the rig
 // and 14.82 of 40 in the coveralls, so all of it goes on.
+//
+// An RDG-2 (10) goes on the end after the grenade. The rig has only 11.30
+// left under the two belts, so the smoke rides in the coveralls with the aid
+// kit and the RGD-5 -- 24.82 of 40, still less than two thirds of them. He is
+// the man whose position gets found first, and smoke is how he moves after it
+// does.
 class PTF_Sind_ametrallador: PTF_Sind_base
 {
    scope = 2;
@@ -310,13 +351,15 @@ class PTF_Sind_ametrallador: PTF_Sind_base
       {
          "rhs_100Rnd_762x54mmR",
          "rhs_100Rnd_762x54mmR",
-         "rhs_mag_rgd5"
+         "rhs_mag_rgd5",
+         "rhs_mag_rdg2_white"
       };
    respawnMagazines[] =
       {
          "rhs_100Rnd_762x54mmR",
          "rhs_100Rnd_762x54mmR",
-         "rhs_mag_rgd5"
+         "rhs_mag_rgd5",
+         "rhs_mag_rdg2_white"
       };
 };
 
@@ -328,6 +371,18 @@ class PTF_Sind_ametrallador: PTF_Sind_base
 // together -- and the engine packs Items[] before magazines[], so the last
 // two magazines and the grenade were being dropped at spawn. He does his
 // real work with what is in the demo pack anyway.
+//
+// The grenade comes back, and it is the last thing that will fit. The toolkit
+// has to sit in the vest (80 of 100) because nothing else holds it, which
+// leaves 60 free across both containers for the aid kit (8), the mine
+// detector (20), two magazines (23.40) and the RGD-5 (6.82): 58.22 of 60,
+// whichever way round the engine puts the detector. A second grenade fits
+// nowhere on him.
+//
+// Which is fine, because the explosives are not in magazines[] and never
+// could be. He wears RHS's rhsgref_ins_pack_demo, preloaded with a demolition
+// charge, a TM-62M and three PMN-2s -- more bang than anyone else in the
+// faction carries, just not in a throwing hand.
 class PTF_Sind_dinamitero: PTF_Sind_base
 {
    scope = 2;
@@ -348,12 +403,14 @@ class PTF_Sind_dinamitero: PTF_Sind_base
    magazines[] =
       {
          "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
+         "rhs_30Rnd_762x39mm_bakelite",
+         "rhs_mag_rgd5"
       };
    respawnMagazines[] =
       {
          "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
+         "rhs_30Rnd_762x39mm_bakelite",
+         "rhs_mag_rgd5"
       };
 };
 
@@ -414,6 +471,20 @@ class PTF_Sind_cabecilla: PTF_Sind_base
    // the first one dry. With the two Tokarev magazines and the first aid kit
    // the lot is under 100 mass, comfortably inside the shirt (40) and chest
    // rig (140).
+   //
+   // Per container it is not comfortable at all, which is why the smoke is
+   // listed last. The shirt fills to 39.98 of 40 -- the aid kit (8), two rifle
+   // magazines (23.40) and both Tokarev magazines (8.58) -- and the other four
+   // rifle magazines go to the rig (46.80 of 140). The RDG-2 (10) cannot fit
+   // the 0.02 left in the shirt, so it lands in the rig (56.80). Anywhere
+   // earlier in the array and it displaces a magazine instead of taking the
+   // space nothing else wants.
+   //
+   // Smoke and no frag, deliberately. A union boss has an obvious use for
+   // smoke: marking a pickup, telling a crane driver two streets away that it
+   // is time to go. Handing him the matched frag-and-smoke pair his men do not
+   // have would make him look like somebody's soldier, which is the one thing
+   // he is not.
    magazines[] =
       {
          "rhs_30Rnd_762x39mm_bakelite",
@@ -423,7 +494,8 @@ class PTF_Sind_cabecilla: PTF_Sind_base
          "rhs_30Rnd_762x39mm_bakelite",
          "rhs_30Rnd_762x39mm_bakelite",
          "rhs_mag_762x25_8",
-         "rhs_mag_762x25_8"
+         "rhs_mag_762x25_8",
+         "rhs_mag_rdg2_white"
       };
    respawnMagazines[] =
       {
@@ -434,7 +506,8 @@ class PTF_Sind_cabecilla: PTF_Sind_base
          "rhs_30Rnd_762x39mm_bakelite",
          "rhs_30Rnd_762x39mm_bakelite",
          "rhs_mag_762x25_8",
-         "rhs_mag_762x25_8"
+         "rhs_mag_762x25_8",
+         "rhs_mag_rdg2_white"
       };
 };
 
