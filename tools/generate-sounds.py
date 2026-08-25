@@ -24,7 +24,6 @@ import json
 import re
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 import edge_tts
@@ -33,7 +32,9 @@ import imageio_ffmpeg
 REPO = Path(__file__).resolve().parent.parent
 ADDON = REPO / "addons" / "PTF_Sound"
 SOUNDS = ADDON / "sounds"
-RAW_CACHE = Path(tempfile.gettempdir()) / "ptf_sound_raw"
+# Stable, gitignored cache: OS temp gets cleaned, which forced TTS refetches
+# and made regeneration nondeterministic.
+RAW_CACHE = REPO / "tools" / ".sound_cache"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 PBO_PREFIX = "z\\PTF\\addons\\PTF_Sound\\sounds"
 
@@ -42,30 +43,30 @@ PBO_PREFIX = "z\\PTF\\addons\\PTF_Sound\\sounds"
 # so the output rate is pinned explicitly on every encode.
 SAMPLE_RATE = 44100
 
-# Horn-speaker simulation: steep bandpass into the horn's telephone-band
-# range, a honky mid resonance, hard clipping for the overdriven PA crunch
-# (then a low-pass to tame the clip harmonics), and a double outdoor
-# slapback off distant buildings. Mono.
+# Horn-speaker simulation, tuned for intelligibility: a gentler (2nd-order)
+# bandpass than a real horn, a modest mid resonance, light clipping for the
+# PA character, and a single short slapback. Earlier, more aggressive
+# settings sounded the part but made the lines hard to understand.
 SPEAKER_FILTER = (
     "loudnorm=I=-16:TP=-1.5,"
-    "highpass=f=500,highpass=f=500,"
-    "lowpass=f=2700,lowpass=f=2700,"
-    "equalizer=f=1100:t=q:w=1.5:g=7,"
-    "aeval='min(max(val(0)*4,-0.75),0.75)',"
-    "lowpass=f=3000,"
-    "aecho=0.8:0.45:110|230:0.3|0.14,"
+    "highpass=f=400,"
+    "lowpass=f=3200,"
+    "equalizer=f=1100:t=q:w=1.5:g=4,"
+    "aeval='min(max(val(0)*2.5,-0.85),0.85)',"
+    "lowpass=f=3600,"
+    "aecho=0.8:0.4:90:0.2,"
     "volume=-2dB,"
     "pan=mono|c0=c0"
 )
-# Music keeps a wider band and a lighter clip than speech so the bass line
-# and percussion survive, but still reads as an overdriven PA.
+# Music keeps a wider band and an even lighter clip than speech so the bass
+# line and percussion survive, but still reads as PA audio.
 MUSIC_FILTER = (
     "loudnorm=I=-16:TP=-1.5,"
-    "highpass=f=250,lowpass=f=4200,"
-    "equalizer=f=1000:t=q:w=1.5:g=4,"
-    "aeval='min(max(val(0)*2.5,-0.8),0.8)',"
-    "lowpass=f=4500,"
-    "aecho=0.8:0.45:110|230:0.25|0.12,"
+    "highpass=f=200,lowpass=f=5000,"
+    "equalizer=f=1000:t=q:w=1.5:g=3,"
+    "aeval='min(max(val(0)*2,-0.85),0.85)',"
+    "lowpass=f=5200,"
+    "aecho=0.8:0.35:90:0.15,"
     "volume=-2dB,"
     "pan=mono|c0=c0"
 )
@@ -87,7 +88,12 @@ SYNTH_EXPR = {
 
 
 def run_ffmpeg(args):
-    proc = subprocess.run([FFMPEG, "-y", *args], capture_output=True, text=True)
+    # -bitexact keeps the Ogg muxer from stamping a random stream serial into
+    # every output, so an unchanged input re-encodes to identical bytes and
+    # regeneration stops dirtying all committed OGGs.
+    args = list(args)
+    out = args.pop()
+    proc = subprocess.run([FFMPEG, "-y", *args, "-bitexact", out], capture_output=True, text=True)
     if proc.returncode != 0:
         sys.exit(f"ffmpeg failed:\n{proc.stderr[-2000:]}")
     return proc
@@ -123,14 +129,36 @@ def sound_entry(item, defaults, duration):
         "\tscopeCurator = 2;\n"
         f'\tdisplayName = "{item["display"]}";\n'
         f'\tcategory = "PTF_Sound_{cat}";\n'
-        f'\tPTF_sound = "{path}";\n'
-        f"\tPTF_volume = {vol};\n"
+        f'\tPTF_soundClass = "PTF_Sound_{name}";\n'
         f"\tPTF_distance = {dist};\n"
         f"\tPTF_duration = {duration};\n"
         f"\tPTF_pause = {pause};\n"
         "};\n"
     )
     return sound, module
+
+
+def playlist_entry(pl, by_name, defaults):
+    # Playlist modules rotate through existing sounds; the server loop reads
+    # each item's class/duration from that item's module config at runtime.
+    unknown = [n for n in pl["items"] if n not in by_name]
+    if unknown:
+        sys.exit(f"playlist {pl['name']}: unknown items {unknown}")
+    first = pl["items"][0]
+    items = "".join(f'\t\t"{n}",\n' for n in pl["items"]).rstrip(",\n")
+    return (
+        f"class PTF_Sound_Module_playlist_{pl['name']}: PTF_Sound_Module_base\n"
+        "{\n"
+        "\tscope = 2;\n"
+        "\tscopeCurator = 2;\n"
+        f'\tdisplayName = "{pl["display"]}";\n'
+        f'\tcategory = "PTF_Sound_{pl["category"]}";\n'
+        f'\tPTF_soundClass = "PTF_Sound_{first}";\n'
+        "\tPTF_playlist[] =\n\t{\n" + items + "\n\t};\n"
+        f"\tPTF_distance = {pl.get('distance', defaults['distance'])};\n"
+        f"\tPTF_pause = {pl.get('pause', defaults['pause'])};\n"
+        "};\n"
+    )
 
 
 async def main():
@@ -200,6 +228,10 @@ async def main():
         sound, module = sound_entry(item, defaults, ogg_duration(out))
         sounds_hpp += sound
         modules_hpp += module
+    by_name = {i["name"]: i for i, _ in items}
+    playlists = data.get("playlists", [])
+    for pl in playlists:
+        modules_hpp += playlist_entry(pl, by_name, defaults)
     (ADDON / "cfgSounds.hpp").write_text(sounds_hpp, encoding="utf-8", newline="\n")
     (ADDON / "cfgModules.hpp").write_text(modules_hpp, encoding="utf-8", newline="\n")
 
@@ -207,6 +239,7 @@ async def main():
     # a module missing here has working classes but never shows up in the Zeus
     # Modules tab. Generated alongside cfgModules.hpp so the two cannot drift.
     units = "".join(f'\t\t"PTF_Sound_Module_{i["name"]}",\n' for i, _ in items)
+    units += "".join(f'\t\t"PTF_Sound_Module_playlist_{p["name"]}",\n' for p in playlists)
     (ADDON / "cfgPatchesUnits.hpp").write_text(
         header + "units[] =\n\t{\n" + units.rstrip(",\n") + "\n\t};\n",
         encoding="utf-8", newline="\n")

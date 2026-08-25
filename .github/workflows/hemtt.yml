@@ -49,6 +49,10 @@ jobs:
       # Gating on empty displayName; advisory on arsenal-visible-but-unnamed.
       - name: Display names
         run: python3 tools/check_display_names.py --strict
+      # Gating: PTF_Sound generated OGGs/configs must match sound_lines.json
+      # (catches "edited the JSON, forgot to regenerate").
+      - name: Sound data
+        run: python3 tools/check_sound_data.py --strict
 
   test:
     name: SQF unit tests

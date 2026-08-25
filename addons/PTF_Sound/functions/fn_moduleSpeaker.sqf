@@ -1,105 +1,73 @@
 /*
-	Loudspeaker broadcast module.
+	Loudspeaker broadcast module - entry point on the machine where the
+	module is local (server for Eden and browse placement, the curator's
+	machine for Zeus placement).
 
-	Runs where the module is local (server for Eden placement, the curator's
-	machine for Zeus placement). Repeats the configured sound at the module's
-	position until the module is deleted. playSound3D has local effect, so
-	each play is remoteExec'd to every machine; the distance parameter caps
-	the audible range.
+	Resolves the speaker binding, optionally shows the ZEN configuration
+	dialog (once per module - PTF_Sound_configured), then hands the
+	broadcast to the server (PTF_Sound_fnc_serverLoop), which owns the
+	activation generation and all scheduling. A Zeus move/edit re-runs this
+	function; the server-side generation bump retires the old loop and the
+	new one resumes the schedule preserved on the logic, so a move never
+	restarts the audio. (If Zeus recreates the logic outright, its state is
+	gone - the old broadcast cuts within a second and the module starts
+	fresh; that path is accepted rather than papered over.)
 
-	Range resolution order (checked every repeat, so it can be changed live):
-	  1. PTF_Sound_distance variable on the module, if > 0 — set by the ZEN
-	     placement dialog, the Eden attribute, or script
-	  2. the sound's PTF_distance config default
+	Runtime variables on the logic (all public, read live by the server):
+	  PTF_Sound_distance   audible radius, 0/unset = config default
+	  PTF_Sound_pause      seconds between repeats, negative/unset = default
+	  PTF_Sound_paused     true = hold the broadcast
+	  PTF_Sound_next       serverTime before which the loop must not play
+	  PTF_Sound_cut        change to cut the current play instantly
+	  PTF_Sound_noDialog   set before calling to skip the placement dialog
 
-	When Zeus Enhanced is loaded and the placer has the curator camera open, a
-	ZEN radius-slider dialog (with terrain circle preview) asks for the range
-	on placement. Without ZEN the module still works at the default range —
-	soft dependency only.
-
-	The broadcast binds to a physical speaker where one exists: the object the
-	module was dropped onto in Zeus (curator attach), else the nearest prop or
-	vehicle within 5 m. Destroying the bound object ends the broadcast after
-	the current play (playSound3D cannot be cut short) and removes the module.
-	The position is re-read from the bound object each repeat, so a module
-	attached to a vehicle broadcasts on the move. With no object nearby the
-	module broadcasts unbound and only deletion stops it.
+	Speaker binding: the object the module was dropped onto in Zeus
+	(curator attach), else the nearest prop or vehicle within 5 m -
+	re-resolved on every activation, so dragging the module onto a
+	different prop rebinds it and releases the old prop's ACE cut action.
+	The server broadcasts with say3D from an invisible emitter attached to
+	the bound object, so destroying OR deleting the speaker, muting, or
+	deleting the module cuts the audio mid-play.
 */
 params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
-
-// Every loop remoteExecs playSound3D to ALL machines, so a second loop
-// anywhere means every client hears the broadcast twice. isGlobal = 0 is
-// meant to confine this to the machine where the logic is local, but that
-// was never enforced here. Both guards are needed: the locality check stops
-// a second machine (another curator, or the server) starting its own loop,
-// the flag stops a repeated init on this one - including ZEN firing both the
-// confirm and cancel callbacks, which both call _startBroadcast.
-private _who = format ["srv=%1 owner=%2 local=%3", isServer, clientOwner, local _logic];
-if (!local _logic) exitWith {
-	diag_log format ["PTF_Sound: %1 skipped, not local (%2)", typeOf _logic, _who];
-};
-if (_logic getVariable ["PTF_Sound_started", false]) exitWith {
-	diag_log format ["PTF_Sound: %1 skipped, already started (%2)", typeOf _logic, _who];
-};
-_logic setVariable ["PTF_Sound_started", true];
-diag_log format ["PTF_Sound: %1 starting broadcast (%2)", typeOf _logic, _who];
+if (!local _logic) exitWith {};
 
 private _cfg = configFile >> "CfgVehicles" >> typeOf _logic;
-private _path = getText (_cfg >> "PTF_sound");
-private _volume = getNumber (_cfg >> "PTF_volume");
-private _distance = getNumber (_cfg >> "PTF_distance");
-private _period = getNumber (_cfg >> "PTF_duration") + getNumber (_cfg >> "PTF_pause");
-
-if (_path isEqualTo "") exitWith {
-	diag_log format ["PTF_Sound: %1 has no PTF_sound configured", typeOf _logic];
+if (getText (_cfg >> "PTF_soundClass") isEqualTo "") exitWith {
+	diag_log format ["PTF_Sound: %1 has no PTF_soundClass configured", typeOf _logic];
 };
 
+// (Re)resolve the physical speaker on every activation.
 private _speaker = attachedTo _logic;
 if (isNull _speaker) then {
 	private _near = (nearestObjects [_logic, ["Static", "Thing", "LandVehicle", "Ship", "Air"], 5]) select {alive _x};
 	if (_near isNotEqualTo []) then {_speaker = _near select 0};
 };
+private _oldSpeaker = _logic getVariable ["PTF_Sound_speaker", objNull];
+if (!isNull _oldSpeaker && {_oldSpeaker isNotEqualTo _speaker}) then {
+	// Moved to a different prop: the old one no longer controls this module.
+	_oldSpeaker setVariable ["PTF_Sound_logic", objNull, true];
+};
 _logic setVariable ["PTF_Sound_speaker", _speaker, true];
 
 private _startBroadcast = {
-	params ["_logic", "_path", "_volume", "_distance", "_period"];
-	[_logic, _path, _volume, _distance, _period] spawn {
-		params ["_logic", "_path", "_volume", "_cfgDistance", "_period"];
-		private _speaker = _logic getVariable ["PTF_Sound_speaker", objNull];
-		while {!isNull _logic && {isNull _speaker || {alive _speaker}}} do {
-			private _distance = _logic getVariable ["PTF_Sound_distance", 0];
-			if (_distance <= 0) then {_distance = _cfgDistance};
-			private _pos = if (isNull _speaker) then {getPosASL _logic} else {getPosASL _speaker};
-			// Nested array: remoteExec reads the outer array as the command's
-			// argument list, and playSound3D is unary - it takes one array.
-			[[_path, objNull, false, _pos, _volume, 1, _distance]] remoteExec ["playSound3D", 0];
-			sleep _period;
-		};
-		if (!isNull _logic) then {deleteVehicle _logic};
-	};
+	params ["_logic", "_speaker"];
+	// The speaker rides along in the call itself, so the server never
+	// depends on publicVariable traffic arriving before the remoteExec.
+	[_logic, _speaker] remoteExec ["PTF_Sound_fnc_serverLoop", 2];
 };
 
-private _args = [_logic, _path, _volume, _distance, _period];
-
-if (!isNull curatorCamera && {isClass (configFile >> "CfgPatches" >> "zen_dialog")}) exitWith {
-	[
-		format ["%1 - Range", getText (_cfg >> "displayName")],
-		[
-			["SLIDER:RADIUS", ["Broadcast Range", "Radius in metres the broadcast is audible out to."], [100, 3000, _distance, 0, _logic, [1, 0.5, 0, 0.6]], true]
-		],
-		{
-			params ["_values", "_args"];
-			(_args select 0) setVariable ["PTF_Sound_distance", _values select 0, true];
-			_args call (_args select 5);
-		},
-		{
-			params ["", "_args"];
-			_args call (_args select 5);
-		},
-		_args + [_startBroadcast]
-	] call zen_dialog_fnc_create;
+// Configuration dialog once per module; re-activations (Zeus move/edit) go
+// straight back to broadcasting.
+if (
+	!(_logic getVariable ["PTF_Sound_configured", false])
+	&& {!(_logic getVariable ["PTF_Sound_noDialog", false])}
+	&& {!isNull curatorCamera} && {isClass (configFile >> "CfgPatches" >> "zen_dialog")}
+) exitWith {
+	_logic setVariable ["PTF_Sound_configured", true, true];
+	[_logic, _startBroadcast] call PTF_Sound_fnc_speakerDialog;
 };
 
-_args call _startBroadcast;
+[_logic, _speaker] call _startBroadcast;

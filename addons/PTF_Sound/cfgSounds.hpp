@@ -65,6 +65,42 @@ class PTF_Sound_sindicato_warning
 	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\sindicato_warning.ogg", 5.62, 1, 700};
 	titles[] = {};
 };
+class PTF_Sound_regime_hurricane
+{
+	name = "PTF PA - Regime: Hurricane Warning";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\regime_hurricane.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_regime_blackout
+{
+	name = "PTF PA - Regime: Power Rationing";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\regime_blackout.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_regime_boilwater
+{
+	name = "PTF PA - Regime: Water Advisory";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\regime_boilwater.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_regime_anthem_intro
+{
+	name = "PTF PA - Regime: Anthem Introduction";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\regime_anthem_intro.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_pereno_recruitment
+{
+	name = "PTF PA - Perenos: Recruitment Ad";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\pereno_recruitment.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_sindicato_numbers
+{
+	name = "PTF PA - Sindicato: Numbers Game";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\sindicato_numbers.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
 class PTF_Sound_regime_morning
 {
 	name = "PTF PA - Regime: Morning Bulletin";
@@ -123,6 +159,30 @@ class PTF_Sound_radio_jingle
 {
 	name = "PTF PA - Radio Nacional: Station Ident";
 	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\radio_jingle.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_son_valmera
+{
+	name = "PTF PA - Music: Son Valmerano";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\generic\son_valmera.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_merengue_bocachico
+{
+	name = "PTF PA - Music: Merengue de Bocachico";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\generic\merengue_bocachico.ogg", 5.62, 1, 700};
+	titles[] = {};
+};
+class PTF_Sound_bolero_valmera
+{
+	name = "PTF PA - Music: Bolero (slow)";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\generic\bolero_valmera.ogg", 5.62, 1, 600};
+	titles[] = {};
+};
+class PTF_Sound_bells_church
+{
+	name = "PTF PA - Bells: Church";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\generic\bells_church.ogg", 5.62, 1, 1000};
 	titles[] = {};
 };
 class PTF_Sound_tone_attention
