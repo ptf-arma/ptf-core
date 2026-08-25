@@ -120,6 +120,72 @@ class PTF_Sound_Module_sindicato_warning: PTF_Sound_Module_base
 	PTF_duration = 19.3;
 	PTF_pause = 20;
 };
+class PTF_Sound_Module_regime_hurricane: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Regime: Hurricane Warning";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_regime_hurricane";
+	PTF_distance = 700;
+	PTF_duration = 20.9;
+	PTF_pause = 20;
+};
+class PTF_Sound_Module_regime_blackout: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Regime: Power Rationing";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_regime_blackout";
+	PTF_distance = 700;
+	PTF_duration = 19.1;
+	PTF_pause = 20;
+};
+class PTF_Sound_Module_regime_boilwater: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Regime: Water Advisory";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_regime_boilwater";
+	PTF_distance = 700;
+	PTF_duration = 17.4;
+	PTF_pause = 20;
+};
+class PTF_Sound_Module_regime_anthem_intro: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Regime: Anthem Introduction";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_regime_anthem_intro";
+	PTF_distance = 700;
+	PTF_duration = 7.5;
+	PTF_pause = 20;
+};
+class PTF_Sound_Module_pereno_recruitment: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Perenos: Recruitment Ad";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_pereno_recruitment";
+	PTF_distance = 700;
+	PTF_duration = 18.1;
+	PTF_pause = 20;
+};
+class PTF_Sound_Module_sindicato_numbers: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Sindicato: Numbers Game";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_sindicato_numbers";
+	PTF_distance = 700;
+	PTF_duration = 22.6;
+	PTF_pause = 20;
+};
 class PTF_Sound_Module_regime_morning: PTF_Sound_Module_base
 {
 	scope = 2;
@@ -230,6 +296,50 @@ class PTF_Sound_Module_radio_jingle: PTF_Sound_Module_base
 	PTF_duration = 12.7;
 	PTF_pause = 30;
 };
+class PTF_Sound_Module_son_valmera: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Music: Son Valmerano";
+	category = "PTF_Sound_generic";
+	PTF_soundClass = "PTF_Sound_son_valmera";
+	PTF_distance = 700;
+	PTF_duration = 72.1;
+	PTF_pause = 8;
+};
+class PTF_Sound_Module_merengue_bocachico: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Music: Merengue de Bocachico";
+	category = "PTF_Sound_generic";
+	PTF_soundClass = "PTF_Sound_merengue_bocachico";
+	PTF_distance = 700;
+	PTF_duration = 57.3;
+	PTF_pause = 8;
+};
+class PTF_Sound_Module_bolero_valmera: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Music: Bolero (slow)";
+	category = "PTF_Sound_generic";
+	PTF_soundClass = "PTF_Sound_bolero_valmera";
+	PTF_distance = 600;
+	PTF_duration = 60.8;
+	PTF_pause = 10;
+};
+class PTF_Sound_Module_bells_church: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Bells: Church";
+	category = "PTF_Sound_generic";
+	PTF_soundClass = "PTF_Sound_bells_church";
+	PTF_distance = 1000;
+	PTF_duration = 22.1;
+	PTF_pause = 600;
+};
 class PTF_Sound_Module_tone_attention: PTF_Sound_Module_base
 {
 	scope = 2;
@@ -274,13 +384,54 @@ class PTF_Sound_Module_playlist_radio_nacional: PTF_Sound_Module_base
 	{
 		"radio_jingle",
 		"regime_morning",
-		"anthem_valmera",
+		"son_valmera",
 		"regime_victory",
+		"merengue_bocachico",
 		"regime_referendum",
+		"bolero_valmera",
+		"regime_anthem_intro",
+		"anthem_valmera",
+		"regime_blackout",
 		"march_guardia"
 	};
 	PTF_distance = 900;
 	PTF_pause = 4;
+};
+class PTF_Sound_Module_playlist_cantina: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Cantina Radio (music only)";
+	category = "PTF_Sound_generic";
+	PTF_soundClass = "PTF_Sound_son_valmera";
+	PTF_playlist[] =
+	{
+		"son_valmera",
+		"bolero_valmera",
+		"merengue_bocachico"
+	};
+	PTF_distance = 500;
+	PTF_pause = 6;
+};
+class PTF_Sound_Module_playlist_sindicato_radio: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "Sindicato: Pirate Radio (rotation)";
+	category = "PTF_Sound_valmera";
+	PTF_soundClass = "PTF_Sound_sindicato_radio";
+	PTF_playlist[] =
+	{
+		"sindicato_radio",
+		"merengue_bocachico",
+		"sindicato_numbers",
+		"son_valmera",
+		"sindicato_business",
+		"bolero_valmera",
+		"sindicato_warning"
+	};
+	PTF_distance = 600;
+	PTF_pause = 8;
 };
 class PTF_Sound_Module_playlist_guardia_psyop: PTF_Sound_Module_base
 {

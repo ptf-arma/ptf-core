@@ -96,6 +96,54 @@
       "text": "A friendly message from El Sindicato to everyone listening. The roads at night are ours. Soldiers: stay in your barracks. Foreigners: stay in your camps. Do not touch our cargo, and nobody has a problem. Touch our cargo, and we will find you."
     },
     {
+      "name": "regime_hurricane",
+      "display": "Regime: Hurricane Warning",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-3%",
+      "text": "Civil defense warning. A tropical storm is approaching the northern coast. Secure your homes, your boats, and your animals. Fill containers with clean water. Residents of low ground near the Presa Alta dam should move to higher ground tonight. The Republic will protect its people."
+    },
+    {
+      "name": "regime_blackout",
+      "display": "Regime: Power Rationing",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Attention. Electricity in Bocachico will be rationed between six and eleven o'clock this evening. This is a temporary measure caused by foreign sabotage of the national grid. Conserve fuel. Conserve water. The President thanks you for your patience."
+    },
+    {
+      "name": "regime_boilwater",
+      "display": "Regime: Water Advisory",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Public health notice. Water from the municipal supply must be boiled before drinking until further notice. Report any illness to your local clinic. Do not listen to rumors about the reservoir. The water is safe once boiled."
+    },
+    {
+      "name": "regime_anthem_intro",
+      "display": "Regime: Anthem Introduction",
+      "category": "valmera",
+      "voice": "es-VE-SebastianNeural",
+      "rate": "-10%",
+      "text": "Citizens of Valmera. Stand, and remove your hats, for the national anthem of the Republic."
+    },
+    {
+      "name": "pereno_recruitment",
+      "display": "Perenos: Recruitment Ad",
+      "category": "valmera",
+      "voice": "es-CO-GonzaloNeural",
+      "rate": "-3%",
+      "text": "Young men of Valmera! The Seventh Infantry Battalion is accepting volunteers. Three meals a day. Boots that fit. Pay sent home to your mother every month. Serve the Republic, and the Republic will serve you. Ask at any army post."
+    },
+    {
+      "name": "sindicato_numbers",
+      "display": "Sindicato: Numbers Game",
+      "category": "valmera",
+      "voice": "es-DO-EmilioNeural",
+      "rate": "+5%",
+      "text": "And now, the numbers. Today's winners: fourteen. Twenty-two. Six. Thirty-one. Congratulations to our friends in Bocachico. Collect your winnings at the usual place. And remember: the lottery of the state pays in paper. Ours pays in dollars."
+    },
+    {
       "name": "regime_morning",
       "display": "Regime: Morning Bulletin",
       "category": "valmera",
@@ -175,6 +223,34 @@
       "rate": "-5%",
       "text": "This is Radio Nacional de Valmera. The voice of the Republic. The voice of the people.",
       "pause": 30
+    },
+    {
+      "name": "son_valmera",
+      "display": "Music: Son Valmerano",
+      "category": "generic",
+      "distance": 700,
+      "pause": 8
+    },
+    {
+      "name": "merengue_bocachico",
+      "display": "Music: Merengue de Bocachico",
+      "category": "generic",
+      "distance": 700,
+      "pause": 8
+    },
+    {
+      "name": "bolero_valmera",
+      "display": "Music: Bolero (slow)",
+      "category": "generic",
+      "distance": 600,
+      "pause": 10
+    },
+    {
+      "name": "bells_church",
+      "display": "Bells: Church",
+      "category": "generic",
+      "distance": 1000,
+      "pause": 600
     }
   ],
   "playlists": [
@@ -187,10 +263,43 @@
       "items": [
         "radio_jingle",
         "regime_morning",
-        "anthem_valmera",
+        "son_valmera",
         "regime_victory",
+        "merengue_bocachico",
         "regime_referendum",
+        "bolero_valmera",
+        "regime_anthem_intro",
+        "anthem_valmera",
+        "regime_blackout",
         "march_guardia"
+      ]
+    },
+    {
+      "name": "cantina",
+      "display": "Cantina Radio (music only)",
+      "category": "generic",
+      "distance": 500,
+      "pause": 6,
+      "items": [
+        "son_valmera",
+        "bolero_valmera",
+        "merengue_bocachico"
+      ]
+    },
+    {
+      "name": "sindicato_radio",
+      "display": "Sindicato: Pirate Radio (rotation)",
+      "category": "valmera",
+      "distance": 600,
+      "pause": 8,
+      "items": [
+        "sindicato_radio",
+        "merengue_bocachico",
+        "sindicato_numbers",
+        "son_valmera",
+        "sindicato_business",
+        "bolero_valmera",
+        "sindicato_warning"
       ]
     },
     {

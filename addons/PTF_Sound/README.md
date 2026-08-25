@@ -2,9 +2,16 @@
 
 Loudspeaker / PA audio library with Zeus-placeable broadcast modules. Sounds
 are foldered by scope — `sounds/generic/` for campaign-agnostic material
-(sirens, tones) and `sounds/valmera/` for the Valmeran campaign (Bastida
-regime announcements, La Guardia orders, El Sindicato pirate radio).
-Additional campaigns get their own folder and module category.
+(sirens, tones, church bells, Latin/Caribbean music) and `sounds/valmera/`
+for the Valmeran campaign (Bastida regime announcements, La Guardia orders,
+El Sindicato pirate radio). Additional campaigns get their own folder and
+module category.
+
+**Playlists** rotate through curated sequences instead of looping one line:
+*Radio Nacional (programming)* (regime bulletins interleaved with music and
+the anthem), *Sindicato: Pirate Radio (rotation)* (ads, the numbers game
+and music), *Guardia PA (rotation)*, and *Cantina Radio (music only)* — a
+music-only list for bar and street ambience on any map.
 
 ## Using it
 
@@ -111,11 +118,16 @@ over TTS. The cache is gitignored but deliberately lives in the repo, and
 encodes run with `-bitexact`, so regenerating with unchanged inputs
 produces byte-identical OGGs instead of dirtying every binary in git.
 
-The music (Himno de la República, Marcha de la Guardia, the Radio Nacional
-ident) is **original composition**, synthesized by
+The music is **original composition**, synthesized by
 [`tools/compose-music.py`](../../tools/compose-music.py) — no recording
-rights, and the anthem belongs to Valmera alone. `generate-sounds.py` runs
-the composer automatically when the WAVs are missing from the raw cache. The
+rights, and the anthem belongs to Valmera alone. Seven pieces: the anthem
+and Guardia march, a **son cubano** (clave, conga tumbao, montuno vamp), a
+**merengue** (güira, tambora, accordion runs, horn riff), a slow **bolero**
+(nylon guitar, muted trumpet), church bells, and the station ident. The
+Caribbean pieces are rhythm-forward by design — percussion and syncopation
+synthesize convincingly where long lyrical melodies do not, and through the
+PA chain they read as real radio music. `generate-sounds.py` runs the
+composer automatically when the WAVs are missing from the raw cache. The
 music entries in `sound_lines.json` support an optional `text`/`voice` pair,
 which appends a spoken tag after the music (that's how the radio ident is
 built). To use a real, properly licensed recording instead, drop it over the
