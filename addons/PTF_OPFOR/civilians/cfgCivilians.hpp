@@ -22,55 +22,55 @@ class PTF_Civ_isleno_1: C_man_sport_1_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Isleno";
+   displayName = "Islander";
 };
 class PTF_Civ_isleno_2: C_man_sport_2_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Isleno (Camisa)";
+   displayName = "Islander (Shirt)";
 };
 class PTF_Civ_pescador: C_man_sport_3_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Pescador";
+   displayName = "Fisherman";
 };
 class PTF_Civ_aldeano_1: C_Man_casual_1_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Aldeano";
+   displayName = "Villager";
 };
 class PTF_Civ_aldeano_2: C_Man_casual_2_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Aldeano (Guayabera)";
+   displayName = "Villager (Guayabera)";
 };
 class PTF_Civ_agricultor: C_Man_casual_3_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Agricultor";
+   displayName = "Farmer";
 };
 class PTF_Civ_comerciante: C_Man_casual_4_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Comerciante";
+   displayName = "Shopkeeper";
 };
 class PTF_Civ_obrero: C_Man_casual_5_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Obrero";
+   displayName = "Laborer";
 };
 class PTF_Civ_anciano: C_Man_casual_6_F_tanoan
 {
    PTF_CIV_COMMON;
    scope = 2; scopeCurator = 2;
-   displayName = "Anciano";
+   displayName = "Elder";
 };
 
 // --- Vehicles --------------------------------------------------------------
@@ -85,42 +85,42 @@ class PTF_Civ_hatchback: C_Hatchback_01_F
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Coche Viejo";
+   displayName = "Old Car";
 };
 class PTF_Civ_suv: C_SUV_01_F
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Todoterreno";
+   displayName = "SUV";
 };
 class PTF_Civ_van: C_Van_01_transport_F
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Furgoneta (Pasajeros)";
+   displayName = "Van (Passenger)";
 };
 class PTF_Civ_van_box: C_Van_01_box_F
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Furgoneta (Carga)";
+   displayName = "Van (Cargo)";
 };
 class PTF_Civ_offroad: C_Offroad_02_unarmed_F
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Camioneta del Campo";
+   displayName = "Farm Pickup";
 };
 class PTF_Civ_truck_box: C_Truck_02_box_F
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "Camion de Reparto";
+   displayName = "Delivery Truck";
 };
 
 // The island lives off the water.
@@ -129,19 +129,19 @@ class PTF_Civ_fishboat: C_Boat_Transport_02_F
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Boats";
-   displayName = "Bote Pesquero";
+   displayName = "Fishing Boat";
 };
 class PTF_Civ_motorboat: C_Boat_Civil_01_F
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Boats";
-   displayName = "Lancha";
+   displayName = "Motorboat";
 };
 class PTF_Civ_canoe: rhsgref_civ_canoe
 {
    PTF_CIVVEH_COMMON;
    scope = 2; scopeCurator = 2;
    editorSubcategory = "EdSubcat_Boats";
-   displayName = "Canoa";
+   displayName = "Canoe";
 };

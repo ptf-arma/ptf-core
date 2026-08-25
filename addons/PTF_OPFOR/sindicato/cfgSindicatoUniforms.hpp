@@ -9,7 +9,7 @@ class PTF_U_sind_coveralls: U_C_WorkerCoveralls
 {
    author = "Paramarine Task Force";
    scope = 2;
-   displayName = "Mono de Trabajo (Sindicato)";
+   displayName = "Work Coveralls (Sindicato)";
    class ItemInfo: UniformItem
    {
       uniformModel = "-";

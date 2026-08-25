@@ -4,16 +4,21 @@ class cfgPatches
    {
       units[] =
          {
-            // Batallon de Infanteria No. 7 "Pera" -- infantry
+            // los Perenos (7th Infantry Battalion "Pera") -- infantry
             "PTF_Pereno_sentry",
+            "PTF_Pereno_sentry_m3a1",
             "PTF_Pereno_conscript",
+            "PTF_Pereno_conscript_mp44",
             "PTF_Pereno_rifleman",
             "PTF_Pereno_rifleman_akm",
+            "PTF_Pereno_rifleman_m70",
+            "PTF_Pereno_rifleman_m70b1",
             "PTF_Pereno_grenadier",
             "PTF_Pereno_machinegunner",
             "PTF_Pereno_machinegunner_assist",
             "PTF_Pereno_at",
             "PTF_Pereno_marksman",
+            "PTF_Pereno_marksman_m14",
             "PTF_Pereno_medic",
             "PTF_Pereno_engineer",
             "PTF_Pereno_crewman",
@@ -21,7 +26,7 @@ class cfgPatches
             "PTF_Pereno_squadleader",
             "PTF_Pereno_officer",
             "PTF_Pereno_hvt",
-            // Batallon de Infanteria No. 7 "Pera" -- vehicles and emplacements
+            // los Perenos (7th Infantry Battalion "Pera") -- vehicles and emplacements
             "PTF_Pereno_uaz_open",
             "PTF_Pereno_uaz_dshkm",
             "PTF_Pereno_ural",
@@ -48,7 +53,7 @@ class cfgPatches
             "PTF_Pereno_mi8",
             "PTF_Pereno_uh1h",
             "PTF_Pereno_uh1h_gunship",
-            // La Guardia (Destacamento Especial Bastida) -- infantry
+            // La Guardia (Bastida Special Detachment) -- infantry
             "PTF_Guardia_rifleman",
             "PTF_Guardia_rifleman_vet",
             "PTF_Guardia_grenadier",
@@ -122,6 +127,7 @@ class cfgPatches
             "PTF_Sind_maderero",
             "PTF_Sind_cazador",
             "PTF_Sind_contrabandista",
+            "PTF_Sind_ametrallador",
             "PTF_Sind_dinamitero",
             "PTF_Sind_sanitario",
             "PTF_Sind_enlace",
@@ -179,7 +185,8 @@ class cfgPatches
             "PTF_Main",
             "A3_Characters_F",
             "A3_Weapons_F",
-            // B_Carryall_cbr -- the MANPADS specialists' rocket pack.
+            // B_Carryall_cbr -- the base for the MANPADS specialists' rocket
+            // pack and for the Sindicato machine gunner's belt holdall.
             "A3_Weapons_F_Ammoboxes",
             "A3_Structures_F_Mil_Flags",
             "rhsgref_c_troops",

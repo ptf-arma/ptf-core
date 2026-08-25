@@ -5,7 +5,7 @@ class CfgFactionClasses
    // vision. Defeated by fracture rather than attrition.
    class PTF_OPFOR_Perenos
    {
-      displayName = "BI-7 ""Pera"" (los Perenos)";
+      displayName = "los Perenos (7th Infantry Battalion ""Pera"")";
       priority = 3;
       side = 0;   // EAST
       icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
@@ -17,7 +17,7 @@ class CfgFactionClasses
    // two places. Defeated by killing them.
    class PTF_OPFOR_Guardia
    {
-      displayName = "La Guardia (Destacamento Especial Bastida)";
+      displayName = "La Guardia (Bastida Special Detachment)";
       priority = 4;
       side = 0;   // EAST
       icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
@@ -51,7 +51,7 @@ class CfgFactionClasses
    // The people all of this is happening to.
    class PTF_CIV_Valmera
    {
-      displayName = "Valmera (Civiles)";
+      displayName = "Valmera (Civilians)";
       priority = 3;
       side = 3;   // CIVILIAN
       icon = "\A3\ui_f\data\map\markers\nato\c_unknown.paa";

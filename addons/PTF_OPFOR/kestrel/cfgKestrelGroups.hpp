@@ -32,6 +32,20 @@ class PTF_OPFOR_Kestrel
          class Unit3 { side = 0; vehicle = "PTF_Kestrel_operator_lizard"; rank = "CORPORAL"; position[] = {10, -5, 0}; };
       };
 
+      // A gun and a spotter, in the sniper-pair mould. Kestrel's answer to
+      // "not enough machine guns" is not more men, it is the two-man element
+      // that turns a treeline into a problem.
+      class PTF_grp_Kestrel_gun_team
+      {
+         name = "Kestrel Gun Team";
+         faction = "PTF_OPFOR_Kestrel";
+         side = 0;
+         rarityGroup = 0.4;
+         icon = "\A3\ui_f\data\map\markers\nato\o_inf.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_machinegunner";   rank = "SERGEANT"; position[] = {0, 5, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_operator_lizard"; rank = "CORPORAL"; position[] = {-5, 0, 0}; };
+      };
+
       class PTF_grp_Kestrel_sniper_pair
       {
          name = "Kestrel Sniper Pair";
@@ -102,7 +116,7 @@ class PTF_OPFOR_Kestrel
 
    class Support
    {
-      name = "Defensa Aerea";
+      name = "Air Defence";
       aliveCategory = "Support";
 
       class PTF_grp_Kestrel_manpads_stinger
@@ -133,16 +147,18 @@ class PTF_OPFOR_Kestrel
       // airfield approach costs.
       class PTF_grp_Kestrel_aa_battery
       {
-         name = "Bateria AA (ZU-23-2 / Igla)";
+         name = "AA Battery (ZU-23-2 / Igla)";
          faction = "PTF_OPFOR_Kestrel";
          side = 0;
          rarityGroup = 0.2;
          icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
-         class Unit0 { side = 0; vehicle = "PTF_Kestrel_zu23";       rank = "SERGEANT"; position[] = {0, 0, 0}; };
-         class Unit1 { side = 0; vehicle = "PTF_Kestrel_igla_pod";   rank = "CORPORAL"; position[] = {-15, 0, 0}; };
-         class Unit2 { side = 0; vehicle = "PTF_Kestrel_teamleader"; rank = "SERGEANT"; position[] = {-5, -10, 0}; };
-         class Unit3 { side = 0; vehicle = "PTF_Kestrel_aa_stinger"; rank = "CORPORAL"; position[] = {5, -10, 0}; };
-         class Unit4 { side = 0; vehicle = "PTF_Kestrel_operator";   rank = "CORPORAL"; position[] = {10, -15, 0}; };
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_zu23";          rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_igla_pod";      rank = "CORPORAL"; position[] = {-15, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Kestrel_teamleader";    rank = "SERGEANT"; position[] = {-5, -10, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Kestrel_aa_stinger";    rank = "CORPORAL"; position[] = {5, -10, 0}; };
+         // A machinegunner, not a fourth rifle: a battery that cannot stop
+         // infantry closing on foot is a battery the players walk up to.
+         class Unit4 { side = 0; vehicle = "PTF_Kestrel_machinegunner"; rank = "CORPORAL"; position[] = {10, -15, 0}; };
       };
 
       // The radar site the campaign is meant to attack -- crewed, defended,
@@ -157,7 +173,9 @@ class PTF_OPFOR_Kestrel
          class Unit0 { side = 0; vehicle = "PTF_Kestrel_p37";             rank = "SERGEANT"; position[] = {0, 0, 0}; };
          class Unit1 { side = 0; vehicle = "PTF_Kestrel_stinger_pod";     rank = "CORPORAL"; position[] = {-15, 0, 0}; };
          class Unit2 { side = 0; vehicle = "PTF_Kestrel_teamleader";      rank = "SERGEANT"; position[] = {-5, -10, 0}; };
-         class Unit3 { side = 0; vehicle = "PTF_Kestrel_operator";        rank = "CORPORAL"; position[] = {5, -10, 0}; };
+         // The ground defence carries the belt-fed gun -- a radar worth a
+         // mission should not be walkable behind two carbines.
+         class Unit3 { side = 0; vehicle = "PTF_Kestrel_machinegunner";   rank = "CORPORAL"; position[] = {5, -10, 0}; };
          class Unit4 { side = 0; vehicle = "PTF_Kestrel_operator_desert"; rank = "CORPORAL"; position[] = {10, -15, 0}; };
       };
 
@@ -186,9 +204,12 @@ class PTF_OPFOR_Kestrel
          side = 0;
          rarityGroup = 0.4;
          icon = "\A3\ui_f\data\map\markers\nato\o_motor_inf.paa";
-         class Unit0 { side = 0; vehicle = "PTF_Kestrel_m1025_m2";     rank = "SERGEANT"; position[] = {0, 0, 0}; };
-         class Unit1 { side = 0; vehicle = "PTF_Kestrel_teamleader";   rank = "SERGEANT"; position[] = {-10, -10, 0}; };
-         class Unit2 { side = 0; vehicle = "PTF_Kestrel_operator_dpm"; rank = "CORPORAL"; position[] = {10, -10, 0}; };
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_m1025_m2";      rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_teamleader";    rank = "SERGEANT"; position[] = {-10, -10, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Kestrel_operator_dpm";  rank = "CORPORAL"; position[] = {10, -10, 0}; };
+         // The dismount element carries its own gun. The M2 dies with the
+         // truck; the patrol should not.
+         class Unit3 { side = 0; vehicle = "PTF_Kestrel_machinegunner"; rank = "CORPORAL"; position[] = {15, -15, 0}; };
       };
    };
 };

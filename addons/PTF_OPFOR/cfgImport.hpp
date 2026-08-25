@@ -8,6 +8,10 @@
 // M1 steel helmets, ALICE webbing and L1A1 rifles on the guerrilla m93 model.
 class rhsgref_hidf_base;
 
+// RHS GREF -- the plain HIDF ALICE pack, base of the AT gunner's preloaded
+// rocket pack (PTF_B_pereno_rpg).
+class rhsgref_hidf_alicepack;
+
 // RHS GREF -- soft-skin and armour we rebadge for the garrison motor pool.
 class rhsgref_ins_g_uaz_open;
 class rhsgref_ins_g_uaz_dshkm_chdkz;
@@ -34,8 +38,10 @@ class rhsgref_ins_g_2b14;
 class rhsgref_ins_uniform_specter;
 
 // RHS USAF -- Eagle A-III assault pack in coyote, the base for the
-// machinegunner's belt pack. Coyote because every carrier in the faction is a
-// coyote MBAV; nothing else in La Guardia wears a backpack at all.
+// machinegunner's belt pack and the AT gunner's rocket pack (and the Kestrel
+// machinegunner's belt pack, over in cfgKestrelMen.hpp). Coyote because every
+// carrier in the faction is a coyote MBAV; those two packs are the only
+// backpacks La Guardia wears.
 class rhsusf_assault_eagleaiii_coy;
 
 class rhsgref_ins_g_uaz_ags;

@@ -8,24 +8,24 @@
 // something important.
 //
 // The three assault groups form the escalation ladder the brief asks for:
-//   Equipo de Asalto      -- first contact, a nasty surprise in a routine op
-//   Seccion de Asalto     -- the mid-campaign standard
-//   Seccion Reforzada     -- veterans throughout, by which point they should
+//   Assault Team          -- first contact, a nasty surprise in a routine op
+//   Assault Section       -- the mid-campaign standard
+//   Reinforced Section    -- veterans throughout, by which point they should
 //                            be the reason the campaign is hard
 // ---------------------------------------------------------------------------
 
 class PTF_OPFOR_Guardia
 {
-   name = "La Guardia (Destacamento Especial Bastida)";
+   name = "La Guardia (Bastida Special Detachment)";
 
    class Infantry
    {
-      name = "Infanteria";
+      name = "Infantry";
       aliveCategory = "Infantry";
 
       class PTF_grp_Guardia_fireteam
       {
-         name = "Equipo de Asalto";
+         name = "Assault Team";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.8;
@@ -38,7 +38,7 @@ class PTF_OPFOR_Guardia
 
       class PTF_grp_Guardia_squad
       {
-         name = "Seccion de Asalto";
+         name = "Assault Section";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.6;
@@ -57,7 +57,7 @@ class PTF_OPFOR_Guardia
       // vision and ranged optics on every man in the group.
       class PTF_grp_Guardia_squad_reinforced
       {
-         name = "Seccion Reforzada";
+         name = "Reinforced Section";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.3;
@@ -76,7 +76,7 @@ class PTF_OPFOR_Guardia
 
       class PTF_grp_Guardia_sniper_team
       {
-         name = "Equipo de Tiradores";
+         name = "Marksman Team";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.4;
@@ -87,7 +87,7 @@ class PTF_OPFOR_Guardia
 
       class PTF_grp_Guardia_at_team
       {
-         name = "Equipo Contracarro";
+         name = "AT Team";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.4;
@@ -100,7 +100,7 @@ class PTF_OPFOR_Guardia
       // Night vision on every man is the whole point of this group.
       class PTF_grp_Guardia_night_patrol
       {
-         name = "Patrulla Nocturna";
+         name = "Night Patrol";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.6;
@@ -114,7 +114,7 @@ class PTF_OPFOR_Guardia
       // Bastida's senior officer moves with veterans only.
       class PTF_grp_Guardia_hvt_detail
       {
-         name = "HVT - Oficial Superior y Escolta";
+         name = "HVT - Senior Officer and Escort";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.2;
@@ -127,7 +127,7 @@ class PTF_OPFOR_Guardia
 
       class PTF_grp_Guardia_command
       {
-         name = "Destacamento de Mando";
+         name = "Command Detachment";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.2;
@@ -141,7 +141,7 @@ class PTF_OPFOR_Guardia
 
    class Motorized
    {
-      name = "Motorizada";
+      name = "Motorized";
       aliveCategory = "Motorized";
 
       class PTF_grp_Guardia_technical_ags
@@ -185,12 +185,12 @@ class PTF_OPFOR_Guardia
 
    class Mechanized
    {
-      name = "Blindada";
+      name = "Mechanized";
       aliveCategory = "Mechanized";
 
       class PTF_grp_Guardia_btr_section
       {
-         name = "Seccion Mecanizada (BTR-70)";
+         name = "Mechanized Section (BTR-70)";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.4;
@@ -206,7 +206,7 @@ class PTF_OPFOR_Guardia
       // The one that changes how a fight feels.
       class PTF_grp_Guardia_bmp_section
       {
-         name = "Seccion Mecanizada (BMP-2)";
+         name = "Mechanized Section (BMP-2)";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.2;
@@ -222,14 +222,14 @@ class PTF_OPFOR_Guardia
 
    class Support
    {
-      name = "Apoyo";
+      name = "Support";
       aliveCategory = "Support";
 
       // The Shilka is the campaign's only self-propelled AA -- when it shows
       // up, the air plan changes. Its appearance should mean something.
       class PTF_grp_Guardia_aa_battery_mobile
       {
-         name = "Bateria AA Movil";
+         name = "Mobile AA Battery";
          faction = "PTF_OPFOR_Guardia";
          side = 0;
          rarityGroup = 0.3;
