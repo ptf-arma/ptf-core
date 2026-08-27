@@ -293,7 +293,9 @@ private _backpacks = [
 	"ACE_TacticalLadder_Pack",
 	"rhs_M252_Gun_Bag",
 	"rhs_M252_bipod_Bag",
-	"B_UGV_02_Demining_backpack_F"
+	"B_UGV_02_Demining_backpack_F",
+	"B_Crocus_AP_Bag",
+	"B_Crocus_AT_Bag"
 ];
 
 private _uniforms = [
