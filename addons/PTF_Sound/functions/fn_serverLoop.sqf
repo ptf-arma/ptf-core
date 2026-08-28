@@ -8,11 +8,14 @@
 	[_logic, _speaker] call PTF_Sound_fnc_serverLoop;   // (on the server)
 
 	Sound is emitted with say3D from an invisible helper attached to the
-	bound speaker, or sat at the module when unbound. say3D dies with its
-	emitter: Mute / Broadcast now (a PTF_Sound_cut bump), destroying OR
-	deleting the bound speaker, and module deletion all cut the audio
-	mid-play. The emitter is stored on the logic and reused across
-	activations, so a Zeus move never interrupts the play in progress.
+	bound speaker, or sat at the module when unbound. say3D has local
+	effect, so the server tells every machine to run it on that shared
+	emitter (a dedicated server playing it itself is heard by nobody).
+	say3D dies with its emitter: Mute / Broadcast now (a PTF_Sound_cut
+	bump), destroying OR deleting the bound speaker, and module deletion
+	all cut the audio mid-play on every client at once. The emitter is
+	stored on the logic and reused across activations, so a Zeus move
+	never interrupts the play in progress.
 
 	Scheduling is strictly per module: play when serverTime reaches the
 	module's own PTF_Sound_next and it is not paused. Playlist modules
@@ -68,6 +71,10 @@ _logic setVariable ["PTF_Sound_gen", _gen];
 	// Reused across activations so a Zeus move never interrupts the
 	// current play; re-seated on whatever the module is now bound to.
 	private _emitter = [_logic, _speaker] call _seatEmitter;
+	// Give the emitter's creation time to reach clients before the first
+	// say3D references it; a client that has not seen the object yet would
+	// resolve objNull and silently play nothing.
+	sleep 0.5;
 
 	// ACE "cut the power" on the physical speaker: one generic action per
 	// speaker (JIP-queued per speaker) reading the bound module live.
@@ -115,8 +122,12 @@ _logic setVariable ["PTF_Sound_gen", _gen];
 			if (_distance <= 0) then {_distance = _cfgDistance};
 			private _pause = _logic getVariable ["PTF_Sound_pause", -1];
 			if (_pause < 0) then {_pause = _cfgPause};
-			// say3D on the server has global effect and follows the emitter.
-			_emitter say3D [_class, _distance];
+			// say3D has LOCAL effect: a dedicated server executing it is
+			// silent for everyone (the server has no sound engine and
+			// nothing propagates). Each machine must run it itself, on the
+			// server-owned emitter every machine already knows, so the
+			// audio still dies when the server deletes that emitter.
+			[_emitter, [_class, _distance]] remoteExec ["say3D", 0];
 			_logic setVariable ["PTF_Sound_next", _now + _duration + _pause, true];
 			_logic setVariable ["PTF_Sound_index", _idx + 1];
 		};
