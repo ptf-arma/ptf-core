@@ -158,7 +158,19 @@ This is the layer that changes how players *plan* rather than how they shoot.
 | ZU-23-2 | `PTF_Kestrel_zu23` | Static AA autocannon |
 | Igla AA pod | `PTF_Kestrel_igla_pod` | Static SAM |
 | Air search radar | `PTF_Kestrel_radar` | See caveat below |
+| R-750 Cronus | `PTF_Kestrel_r750` | Vanilla sensor radar, repainted plain olive |
+| S-750 Rhea | `PTF_Kestrel_s750` | Vanilla long-range SAM, repainted plain olive |
 | M107 (Mk211) | `PTF_Kestrel_antimateriel` | Makes airframes unflyable on the ground |
+
+The R-750 / S-750 pair is the top of the ladder and works as a system: the
+radar broadcasts its 16 km air picture over datalink
+(`reportRemoteTargets = 1`) and the launcher has no meaningful search sensor
+of its own, only a datalink receiver (`receiveRemoteTargets = 1`). Killing
+the radar degrades the launcher from area denial to self-defence — that
+choice is the mission, and it is encoded in the vanilla sensor config rather
+than scripted. Both are autonomous statics crewed by `O_UAV_AI` (inherited),
+not by Kestrel men. `SAM Site (R-750 / S-750)` in CfgGroups pairs them with
+a ground-defence element.
 
 Two MANPADS flavours is deliberate. Fielding both tells the players Kestrel
 did not simply arrive with kit — they took something over.
@@ -329,6 +341,15 @@ RHS configs, but the following want eyes on them in the Eden editor:
     Kestrel's Stinger pod + crewed P-37 search radar.
 18. **The P-37 radar mans and dies.** Unlike the SERHAT prop it is a real
     crewed vehicle — confirm a gunner sits in it and that it can be killed.
+
+20. **The R-750 / S-750 pair.** Place `SAM Site (R-750 / S-750)` (or both
+    vehicles separately), fly something at altitude, and confirm the S-750
+    launches on tracks the radar feeds it. Then kill the radar and confirm
+    the launcher goes quiet at range. Check both wear the plain olive skin —
+    hex camo anywhere means Eden's appearance randomization re-applied a
+    stock texture source, and the `textureList` override needs a second look.
+    They spawn with UAV AI crew; confirm Zeus shows them under Kestrel and
+    that they read as EAST to BLUFOR sensors.
 19. **Every preloaded pack spawns full.** Seven backpacks are filled through
     `TransportMagazines`, and a failure is silent: the man just spawns with
     an empty bag. Open each wearer's inventory and check the pack:

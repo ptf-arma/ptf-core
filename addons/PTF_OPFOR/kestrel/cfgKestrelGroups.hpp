@@ -179,6 +179,24 @@ class PTF_OPFOR_Kestrel
          class Unit4 { side = 0; vehicle = "PTF_Kestrel_operator_desert"; rank = "CORPORAL"; position[] = {10, -15, 0}; };
       };
 
+      // The top of the ladder: the sensor, the shooter, and the men who keep
+      // infantry off both. The R-750 feeds the S-750 over datalink, so the
+      // site presents a choice -- kill the radar and blind the launcher, or
+      // kill the launcher and fly under a radar that can only watch.
+      class PTF_grp_Kestrel_sam_site
+      {
+         name = "SAM Site (R-750 / S-750)";
+         faction = "PTF_OPFOR_Kestrel";
+         side = 0;
+         rarityGroup = 0.2;
+         icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+         class Unit0 { side = 0; vehicle = "PTF_Kestrel_r750";            rank = "SERGEANT"; position[] = {0, 0, 0}; };
+         class Unit1 { side = 0; vehicle = "PTF_Kestrel_s750";            rank = "CORPORAL"; position[] = {-25, 0, 0}; };
+         class Unit2 { side = 0; vehicle = "PTF_Kestrel_teamleader";      rank = "SERGEANT"; position[] = {-10, -10, 0}; };
+         class Unit3 { side = 0; vehicle = "PTF_Kestrel_machinegunner";   rank = "CORPORAL"; position[] = {0, -15, 0}; };
+         class Unit4 { side = 0; vehicle = "PTF_Kestrel_operator_lizard"; rank = "CORPORAL"; position[] = {10, -15, 0}; };
+      };
+
       class PTF_grp_Kestrel_manpads_mobile
       {
          name = "MANPADS Overwatch (MRZR)";
