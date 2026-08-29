@@ -110,6 +110,13 @@ class rhs_p37_turret_vpvo;
 class RHS_MELB_MH6M;
 class RHS_MELB_AH6M_L;
 
+// Vanilla (Encore) long-range air defence -- the R-750 sensor radar and the
+// S-750 SAM launcher. UAV-crewed autonomous statics; datalink-connected, so
+// the radar genuinely feeds the launcher. Repainted plain olive (the stock
+// skins are CSAT hex camo) -- see LIVERIES.md.
+class O_Radar_System_02_F;
+class O_SAM_System_04_F;
+
 // --- Flags -----------------------------------------------------------------
 // Vanilla military flag mast (Mast_F.p3d), the base every Flag_*_F class
 // inherits. Gives us the pole model and the flag proxy; we only override the

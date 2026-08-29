@@ -112,6 +112,8 @@ class cfgPatches
             "PTF_Kestrel_m1025",
             "PTF_Kestrel_stinger_pod",
             "PTF_Kestrel_p37",
+            "PTF_Kestrel_r750",
+            "PTF_Kestrel_s750",
             "PTF_Kestrel_mh6",
             "PTF_Kestrel_ah6",
             // Flags
@@ -207,6 +209,9 @@ class cfgPatches
             "rhsusf_c_statics",
             "rhsusf_c_melb",
             "rhsusf_c_mrzr",
+            // Kestrel R-750 / S-750 (vanilla Encore SAM set)
+            "A3_Static_F_Sams_Radar_System_02",
+            "A3_Static_F_Sams_SAM_System_04",
             // El Sindicato + civilians
             "A3_Characters_F_Exp",
             "A3_Characters_F_Exp_Civil",
