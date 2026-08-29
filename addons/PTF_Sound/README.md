@@ -45,10 +45,12 @@ broadcast*; *Adjust range & pause* — reopens the dialog, applied live.
 
 **Audio stops instantly.** Broadcasts are emitted with `say3D` from an
 invisible emitter object owned by the **server** (so a curator
-disconnecting no longer kills their loudspeakers). `say3D` dies with its
-emitter, so muting, deleting the module, or destroying **or deleting** the
-bound speaker cuts the sound mid-word — no more waiting for the line to
-finish.
+disconnecting no longer kills their loudspeakers). `say3D` has *local*
+effect — a dedicated server playing it itself is heard by nobody — so the
+server tells every machine to run it on that shared emitter. `say3D` dies
+with its emitter, so muting, deleting the module, or destroying **or
+deleting** the bound speaker cuts the sound mid-word on every client at
+once — no more waiting for the line to finish.
 
 **Moving the module does not restart the audio.** The play schedule is
 state on the module, not in the loop, and the emitter survives
@@ -76,9 +78,11 @@ module broadcasts unbound, and only deleting it stops it.
 **Mission compatibility (CfgRemoteExec):** missions that harden remote
 execution with `class CfgRemoteExec { class Functions { mode = 1; }; }`
 must whitelist `PTF_Sound_fnc_serverLoop`, `PTF_Sound_fnc_placeSpeaker`,
-and `PTF_Sound_fnc_addCutAction` (and the `deleteVehicle` command), or
-Zeus-placed speakers will silently never broadcast. Missions without a
-CfgRemoteExec class are unaffected (the engine default allows everything).
+and `PTF_Sound_fnc_addCutAction`; a `class Commands { mode = 1; }` must
+also whitelist **`say3D`** (every broadcast goes out that way) and
+`deleteVehicle`. Otherwise speakers silently never play. Missions without
+a CfgRemoteExec class are unaffected (the engine default allows
+everything).
 
 **Eden:** the same modules under Systems — attributes for *Broadcast range*
 (0 = default), *Pause between repeats* (-1 = default), and *Start muted*.
@@ -147,8 +151,11 @@ chain stay the same either way.
    line is playing — the audio must cut mid-word, everywhere. Mute from the
    context menu must do the same. This is the whole say3D-emitter design;
    if it doesn't hold, everything else needs rethinking.
-2. Broadcast is audible to *other* players, not just the placing Zeus
-   (`say3D` runs on the server; global effect is the thing to check).
+2. **Broadcast is audible to other players on a DEDICATED server** — the
+   regression that shipped once already. `say3D` has local effect, so the
+   server broadcasts it to every machine; a server-side `say3D` alone is
+   silent for everyone. Test with a second client connected, not just
+   hosted/SP, which masks it because the host has a sound engine.
 3. The chosen range actually applies: place with a small radius, walk out
    past it, confirm silence; the Eden attribute path too.
 4. **Curator disconnect resilience:** place a speaker as Zeus from a
