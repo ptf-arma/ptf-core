@@ -865,7 +865,7 @@ class cfgWeapons
 		displayName=" [ACV] Crewman Helmet [Team - 3-A]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3A.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3A.paa"
 		};
 	};
 	class PTF_LAV_3B: rhsusf_cvc_green_alt_helmet
@@ -873,7 +873,7 @@ class cfgWeapons
 		displayName=" [ACV] Crewman Helmet [Team - 3-B]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3B.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3B.paa"
 		};
 	};
 	class PTF_LAV_3C: rhsusf_cvc_green_alt_helmet
@@ -881,7 +881,7 @@ class cfgWeapons
 		displayName=" [ACV] Crewman Helmet [Team - 3-C]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3C.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3C.paa"
 		};
 	};
 	class PTF_LAV_3E: rhsusf_cvc_green_alt_helmet
@@ -889,15 +889,23 @@ class cfgWeapons
 		displayName=" [ACV] Crewman Helmet [Team - 3-E]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3E.paa"
 		};
 	};
-	class PTF_ACV_David_Green: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_David_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
 	{
-		displayName=" [ACV] David Personal Helmet ";
+		displayName=" [ACV] Crewman Helmet [Personal - J.David]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ACV_David_Green.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_david.paa"
+		};
+	};
+	class PTF_ACV_Chmielewski_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
+	{
+		displayName=" [ACV] Crewman Helmet [Personal - B.Chmielewski]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_chmielewski.paa"
 		};
 	};
 };

@@ -534,7 +534,8 @@ private _helmets = [
 	"PTF_Helmet_1_3_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_2_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_1_Infantry_Mich2000_DES",
-	"PTF_ACV_David_Green"
+	"PTF_ACV_David_rhsusf_cvc_green_alt",
+	"PTF_ACV_Chmielewski_rhsusf_cvc_green_alt"
 ];
 
 private _glasses = [
