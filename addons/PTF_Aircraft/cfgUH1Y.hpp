@@ -94,6 +94,31 @@ class PTF_UH1Y : RHS_UH1Y_d
       class CargoTurret_05 : CargoTurret_05{};
       class CargoTurret_06 : CargoTurret_06{};
    };
+   class Components : Components
+   {
+      class TransportPylonsComponent: TransportPylonsComponent
+      {
+         class pylons
+         {
+            class pylon1
+            {
+               hardpoints[] = {"RHS_HP_FFAR_USMC", "RHS_HP_MELB", "DAGR", "DAR"};
+               UIposition[] = {0.573,0.44};
+               maxweight = 1200;
+               priority = 1;
+               attachment = "rhs_mag_M151_7_green";
+               bay = -1;
+               hitpoint = "HitPylon1";
+            };
+            class pylon2: pylon1
+            {
+               UIposition[] = {0.1,0.44};
+               mirroredMissilePos = 1;
+               hitpoint = "HitPylon2";
+            };
+         };
+      };
+   };
    class UserActions: UserActions
    {
       class TogglePIP
