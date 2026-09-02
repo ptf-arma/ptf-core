@@ -117,6 +117,8 @@ class B_APC_Wheeled_01_cannon_F;
 class Peral_ACV;
 class Peral_ACV_MK19;
 class Peral_ACV_30;
+class Peral_ACV_E;
+class Peral_ACV_R;
 
 class rhsusf_m998_d_s_2dr_fulltop;
 
