@@ -908,6 +908,14 @@ class cfgWeapons
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_chmielewski.paa"
 		};
 	};
+	class PTF_ACV_Brown_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
+	{
+		displayName=" [ACV] Crewman Helmet [Personal - B.Brown]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_brown.paa"
+		};
+	};
 };
 
 class cfgMods
