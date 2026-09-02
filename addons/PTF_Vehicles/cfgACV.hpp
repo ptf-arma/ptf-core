@@ -570,7 +570,7 @@ class PTF_ACV_E : Peral_ACV_E
 	class TransportBackpacks
 	{
 		backpack_xx(PTF_SSO_Backpack,1);
-		backpack_xx(ED_1D_UGV_Bag,1);
+		backpack_xx(B_UGV_02_Demining_backpack_F,1);
 		backpack_xx(MD_APOBS_backpack,3);
 	};
 };
