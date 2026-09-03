@@ -41,6 +41,8 @@ class cfgPatches
          "PTF_ACV",
          "PTF_ACV_MK19",
          "PTF_ACV_30",
+         "PTF_ACV_E",
+         "PTF_ACV_R",
          "PTF_Badger",
          "PTF_Badger_D",
          "PTF_M1123",
@@ -120,6 +122,9 @@ class cfgMagazines
       tracersEvery = 1;
    };
 };
+
+#include "\z\PTF\addons\PTF_Utility\CfgDefinitions.hpp"
+
 //Defines Vehicles
 class cfgVehicles
 {
