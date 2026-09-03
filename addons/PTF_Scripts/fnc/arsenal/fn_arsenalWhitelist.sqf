@@ -809,6 +809,7 @@ private _medical = [
 	"kat_nitroglycerin",
 	"kat_norepinephrine",
 	"kat_phenylephrine",
+	"kat_phenylephrineAuto",
 	"kat_TXA",
 	"kat_Carbonate",
 	"kat_Painkiller",
