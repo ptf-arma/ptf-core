@@ -82,3 +82,89 @@ Ticket sliders (`PTF_Uh1yTickets`, `PTF_Ah1zTickets`, `PTF_PlaneTickets`,
 its configured value on any settings refresh, so the live count lives in a
 matching `<setting>Current` variable in `missionNamespace`. Do not write the
 settings themselves from script.
+
+## Respawn loadout
+
+Arma does not restore a unit on respawn, it builds a **new** one from the config
+of whatever class the mission's playable slot uses. Gear applied in Eden, at
+mission start, or out of an arsenal is not part of that class, so the player
+comes back in whatever the class itself declares — and PTF Core defines no
+BLUFOR man classes (`PTF_OPFOR` bakes kit into config; nothing equivalent exists
+for players), so that is a vanilla or stock RHS kit.
+
+Two server-forced CBA settings under **Paramarine Task Force → Respawn** override
+that:
+
+| Setting | Type | Default | Effect |
+|---------|------|---------|--------|
+| `PTF_RespawnLoadoutEnabled` | CHECKBOX | **off** | Master switch. Off means respawn behaves exactly as it always has. |
+| `PTF_RespawnLoadoutName` | LIST | `Rifleman D` | Which kit from `defaultloadouts.hpp` respawning players get. |
+
+Both are `isGlobal` — one server-wide rule, and a client must not be able to
+opt itself into a better kit than everyone else.
+
+### How it is wired
+
+`XEH_postInit.sqf` adds an `EntityRespawned` mission EH on machines with an
+interface, filters it to the local player, and calls `PTF_fnc_respawnLoadout`
+via `CBA_fnc_execNextFrame`. Two deliberate choices there:
+
+- **`EntityRespawned`, not an init EH.** It fires only on an actual respawn,
+  never on initial spawn or JIP, so a mission maker's Eden loadout is never
+  touched. Only the vanilla-kit-on-death case is.
+- **A frame late.** ACE's own respawn gear handling (`ace_respawn_savePreDeathGear`)
+  and any mission-side `onPlayerRespawn.sqf` run on the respawn frame, and the
+  last write to the unit's loadout wins. Going next frame makes PTF Core that
+  last write instead of a coin toss.
+
+The kit is applied with `[_unit, _loadout, true] call CBA_fnc_setLoadout` — the
+`true` refills partially-loaded magazines, so a forced respawn kit never starts
+dry.
+
+### Missions that own their own respawn gear
+
+A mission that already handles respawn loadouts — an `onPlayerRespawn.sqf`,
+`respawnTemplates[] = {"MenuInventory"}` with a `CfgRespawnInventory`, or a
+training map that wants the Eden slot's kit — opts out in `init.sqf`:
+
+```sqf
+PTF_RespawnLoadoutDisabled = true;
+```
+
+This matters because the setting is server-wide: without an opt-out, turning it
+on would silently overwrite the respawn handling of **every** mission on the
+server, side ops and training included.
+
+### Interaction with ACE
+
+ACE ships `ace_respawn_savePreDeathGear`, which restores the gear a player died
+in (depleted magazines and all). It solves an overlapping problem from the other
+direction. Pick one — with both on, PTF Core's fixed kit lands a frame later and
+wins, which makes the ACE setting look broken.
+
+## Default loadouts
+
+`fnc/arsenal/defaultloadouts.hpp` is the 50 PTF role kits. It is **pure data** —
+a bare array of `[name, loadout]` pairs with no engine calls — so `tests/` can
+interpret it with sqflint (see `tests/test_default_loadouts.py`). Each `loadout`
+is either a bare 10-element `getUnitLoadout` array or ACE's
+`[loadout, extendedInfo]` pair; `ace_arsenal_fnc_addDefaultLoadout` and
+`CBA_fnc_setLoadout` both accept either.
+
+It is built **once per machine** in `XEH_preInit.sqf` into `PTF_defaultLoadouts`
+(ordered array) and `PTF_defaultLoadoutsMap` (name → loadout HashMap). An
+`#include` rather than a function call, because the `PTF_RespawnLoadoutName`
+LIST setting needs the kit names while CBA settings are still being registered,
+and that is earlier than any assumption about CfgFunctions compilation order is
+worth making.
+
+`PTF_fnc_registerDefaultLoadouts` hands the kits to ACE, guarded so it only runs
+for the first arsenal on the map. Until 2026-08 the data file was `#include`d
+into all three arsenal init functions instead, which re-pushed all 50 kits
+through `ace_arsenal_fnc_addDefaultLoadout` for every arsenal and crate placed —
+harmless (ACE overwrites by name) but 30 KB of array literal evaluated dozens of
+times to no effect.
+
+Kit names are user-visible twice over: in the arsenal's loadout list and in the
+`PTF_RespawnLoadoutName` setting. Renaming one silently resets any server that
+had it selected, and `Rifleman D` in particular is the setting's default index.
