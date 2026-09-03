@@ -524,17 +524,19 @@ private _helmets = [
 	"rhs_8point_marpatd",
 	"rhs_8point",
 	"rhs_8point_marpatwd",
-	"PTF_LAV_3A",
-	"PTF_LAV_3B",
-	"PTF_LAV_3C",
-	"PTF_LAV_3E",
+	"PTF_ACV_3_1",
+	"PTF_ACV_3_2",
+	"PTF_ACV_3_3",
+	"PTF_ACV_3_4",
 	"PTF_Helmet_HQ_Infantry_Mich2000_DES",
 	"PTF_Helmet_1st_plt_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_4_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_3_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_2_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_1_Infantry_Mich2000_DES",
-	"PTF_ACV_David_Green"
+	"PTF_ACV_David_rhsusf_cvc_green_alt",
+	"PTF_ACV_Chmielewski_rhsusf_cvc_green_alt",
+	"PTF_ACV_Brown_rhsusf_cvc_green_alt"
 ];
 
 private _glasses = [

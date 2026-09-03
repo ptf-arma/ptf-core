@@ -860,44 +860,60 @@ class cfgWeapons
 		displayName="[MAG] HGU [Personal - W. Halstead - Mask]";
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
 	};
-	class PTF_LAV_3A: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_3_4: rhsusf_cvc_green_alt_helmet
 	{
-		displayName=" [ACV] Crewman Helmet [Team - 3-A]";
+		displayName=" [ACV] Crewman Helmet [Team - 3-4]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3A.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3-4.paa"
 		};
 	};
-	class PTF_LAV_3B: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_3_2: rhsusf_cvc_green_alt_helmet
 	{
-		displayName=" [ACV] Crewman Helmet [Team - 3-B]";
+		displayName=" [ACV] Crewman Helmet [Team - 3-2]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3B.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3-2.paa"
 		};
 	};
-	class PTF_LAV_3C: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_3_3: rhsusf_cvc_green_alt_helmet
 	{
-		displayName=" [ACV] Crewman Helmet [Team - 3-C]";
+		displayName=" [ACV] Crewman Helmet [Team - 3-3]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3C.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3-3.paa"
 		};
 	};
-	class PTF_LAV_3E: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_3_1: rhsusf_cvc_green_alt_helmet
 	{
-		displayName=" [ACV] Crewman Helmet [Team - 3-E]";
+		displayName=" [ACV] Crewman Helmet [Team - 3-1]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_LAV_3E.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3-1.paa"
 		};
 	};
-	class PTF_ACV_David_Green: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_David_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
 	{
-		displayName=" [ACV] David Personal Helmet ";
+		displayName=" [ACV] Crewman Helmet [Personal - J.David]";
 		hiddenSelectionsTextures[]=
 		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\ACV_David_Green.paa"
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_david.paa"
+		};
+	};
+	class PTF_ACV_Chmielewski_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
+	{
+		displayName=" [ACV] Crewman Helmet [Personal - B.Chmielewski]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_chmielewski.paa"
+		};
+	};
+	class PTF_ACV_Brown_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
+	{
+		displayName=" [ACV] Crewman Helmet [Personal - B.Brown]";
+		hiddenSelectionsTextures[]=
+		{
+			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_brown.paa"
 		};
 	};
 };
