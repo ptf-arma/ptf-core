@@ -365,9 +365,6 @@ private _vests = [
 ];
 
 private _helmets = [
-	"FIR_GroundCrew_Headset2",
-	"FIR_JHMCS",
-	"FIR_JHMCS_II",
 	"PTF_Helmet_Infantry_Mich2000_norotos_WD",
 	"PTF_Helmet_Infantry_Mich2000_norotos_S",
 	"PTF_Helmet_Infantry_Mich2000_norotos_D",
