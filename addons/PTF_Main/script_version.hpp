@@ -4,5 +4,5 @@
 // tools/release.ps1 (Workshop build) at build time; the committed values below
 // are just a placeholder default.
 #define MAJOR 1
-#define MINOR 1
-#define PATCH 3
+#define MINOR 0
+#define PATCH 324
