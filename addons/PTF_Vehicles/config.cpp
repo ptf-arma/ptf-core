@@ -42,6 +42,7 @@ class cfgPatches
          "PTF_ACV_MK19",
          "PTF_ACV_30",
          "PTF_ACV_E",
+         "PTF_ACV_R",
          "PTF_Badger",
          "PTF_Badger_D",
          "PTF_M1123",
