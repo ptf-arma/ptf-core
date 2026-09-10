@@ -147,7 +147,13 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
       item_xx(kat_naloxone,30);
       item_xx(kat_norepinephrine,30);
       item_xx(kat_phenylephrine,30);
+      item_xx(kat_phenylephrineAuto,30);
       item_xx(kat_TXA,30);
+      item_xx(kat_guedel,40);
+      item_xx(kat_larynx,75);
+      item_xx(kat_suction,35);
+      item_xx(kat_accuvac,10);
+      item_xx(kat_Pulseoximeter,25);
    };
 };
 
