@@ -36,6 +36,7 @@ class cfgWeapons
 	class PTF_Helmet_Infantry_Mich2000_D;
 	class rhsusf_cvc_green_helmet;
 	class rhsusf_cvc_green_alt_helmet;
+	class rhsusf_cvc_green_ess;
 	class USP_OPS_FASTXP_TAN;
 	class USP_OPS_FASTXP_CO_TAN;
 	class USP_OPS_FASTXP_CT_TAN;
@@ -892,7 +893,7 @@ class cfgWeapons
 			"\z\PTF\addons\PTF_Textures\gear\helmets\ptf_cvc_green_alt_co_3-1.paa"
 		};
 	};
-	class PTF_ACV_David_rhsusf_cvc_green_alt: rhsusf_cvc_green_alt_helmet
+	class PTF_ACV_David_rhsusf_cvc_green_ess: rhsusf_cvc_green_ess
 	{
 		displayName=" [ACV] Crewman Helmet [Personal - J.David]";
 		hiddenSelectionsTextures[]=
