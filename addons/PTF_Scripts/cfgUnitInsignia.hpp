@@ -173,3 +173,59 @@ class insignia26
    texture = "\z\PTF\addons\PTF_Textures\patches\USMC-E8-A.paa";
    textureVehicle = "\z\PTF\addons\PTF_Textures\patches\USMC-E8-A.paa";
 };
+class PTF_Insignia_HA
+{
+   displayName = "USMC HA";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HA.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HA.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HA.rvmat";
+};
+class PTF_Insignia_HM1
+{
+   displayName = "USMC HM1";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HM1.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HM1.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HM1.rvmat";
+};
+class PTF_Insignia_HM2
+{
+   displayName = "USMC HM2";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HM2.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HM2.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HM2.rvmat";
+};
+class PTF_Insignia_HM3
+{
+   displayName = "USMC HM3";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HM3.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HM3.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HM3.rvmat";
+};
+class PTF_Insignia_HMC
+{
+   displayName = "USMC HMC";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HMC.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HMC.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HMC.rvmat";
+};
+class PTF_Insignia_HN
+{
+   displayName = "USMC HN";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HN.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HN.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HN.rvmat";
+};
+class PTF_Insignia_HR
+{
+   displayName = "USMC HR";
+   author = "Paramarine Task Force";
+   texture = "\z\PTF\addons\PTF_Textures\patches\HR.paa";
+   textureVehicle = "\z\PTF\addons\PTF_Textures\patches\HR.paa";
+   material = "\z\PTF\addons\PTF_Textures\patches\HR.rvmat";
+};
