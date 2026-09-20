@@ -56,10 +56,6 @@ class CfgPatches
 			"usaf_kc135_c",
 			"USAF_RQ4A",
 			"rhsgref_a29",
-			// FIR_AirWeaponSystem_US: cfgAH1Z uses FIR_APKWS_M282_P_7rnd_M.
-			// ace_cargo: ace_cargo_hasCargo / ace_cargo_space are set on most
-			// aircraft here. Both were used without being declared.
-			"FIR_AirWeaponSystem_US",
 			"ace_cargo"
 		};
 	};

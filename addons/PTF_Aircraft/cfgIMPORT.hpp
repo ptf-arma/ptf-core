@@ -64,6 +64,17 @@ class RHS_UH1Y_d : RHS_UH1Y // "UH-1Y (FFAR/MG) [MAG36]"
  class CargoTurret_07;
  class CargoTurret_08;
  };
+ class Components
+ {
+  class TransportPylonsComponent
+  {
+   class pylons
+   {
+    class pylon1 {};
+    class pylon2 {};
+   };
+  };
+ };
 };
 class RHS_UH1Y_FFAR;
 class RHS_UH1Y_UNARMED : RHS_UH1Y_FFAR

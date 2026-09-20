@@ -25,7 +25,7 @@ tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 
 # Prefixes/names of external framework addons we ship against but don't build.
 # Anything a requiredAddons[] entry starts with here is treated as resolved.
-EXTERNAL='^(A3_|ace_|acex_|cba_|rhs_|rhsusf_|rhsgref_|rhsafrf_|RHS_|USAF_|usaf_|Peral_|dega_|task_force_|tfar|TFAR|usp_|USP_|po_|boxloader|grad_|tsp_|TSP_|nds_|moe_|simunition|dagger|rhicc|drc_|ILBE|zen_|BettIR|FIR_)'
+EXTERNAL='^(A3_|ace_|acex_|cba_|rhs_|rhsusf_|rhsgref_|rhsafrf_|RHS_|USAF_|usaf_|Peral_|dega_|task_force_|tfar|TFAR|usp_|USP_|po_|boxloader|grad_|tsp_|TSP_|nds_|moe_|simunition|dagger|rhicc|drc_|ILBE|zen_|BettIR)'
 
 # (a) Every config class defined anywhere in the repo — the superset that
 #     includes every CfgPatches addon name, so a real internal dep always

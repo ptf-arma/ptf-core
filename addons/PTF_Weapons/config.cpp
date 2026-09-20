@@ -9,12 +9,10 @@ class CfgPatches
 		magazines[] = {
 		"PTF_12Gauge_Bean8",
 		"PTF_12Gauge_Bean5",
-		"PTF_FIR_Hydra_WP_P_7rnd_M",
 		"PTF_rhs_mag_AGM114M_2"
 		};
 		requiredAddons[] = {
 		"rhsusf_c_airweapons",
-		"FIR_AirWeaponSystem_US",
 		"ace_missileguidance",
 		"rhsusf_c_weapons",
 		"rhs_c_weapons",

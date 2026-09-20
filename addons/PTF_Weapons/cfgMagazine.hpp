@@ -17,11 +17,6 @@ class cfgMagazines {
 		modelSpecial = "";
 	};
 
-	class PTF_FIR_Hydra_WP_P_7rnd_M : FIR_Hydra_WP_P_7rnd_M {
-		hardpoints[] = {"RHS_HP_FFAR_USMC"};
-		pylonWeapon = "PTF_FIR_RKT_Launcher";
-	};
-
 	class PTF_rhs_mag_AGM114M_2 : rhs_mag_AGM114M_2 {
 		hardpoints[] = {"RHS_HP_FFAR_USMC"};
 		pylonWeapon = "PTF_rhs_weap_AGM114M_base_Launcher";
