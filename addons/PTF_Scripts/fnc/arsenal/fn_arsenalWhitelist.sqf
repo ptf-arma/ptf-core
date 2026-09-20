@@ -816,7 +816,12 @@ private _medical = [
 	"kat_Carbonate",
 	"kat_Painkiller",
 	"kat_sealant",
-	"kat_atropine"
+	"kat_atropine",
+	"kat_guedel",
+	"kat_larynx",
+	"kat_suction",
+	"kat_accuvac",
+	"kat_Pulseoximeter"
 ];
 
 private _demolition = [
