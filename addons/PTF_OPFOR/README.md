@@ -214,28 +214,53 @@ or hostile intent.
   polo shirt with a radio, binoculars and a pocket pistol — `sensitivity`
   3.6 against `accuracy` 0.6. He is not a fight; he is the reason the fight
   arrives ten minutes later. `Lookout Post` is the faction's most common
-  group, and one rides along in the checkpoint and drone groups.
+  group, and one rides along in the checkpoint, garrison and drone groups.
+  His wheels are the `Courier Car`, which looks exactly like every other
+  hatchback in town.
 - **Big groups, cheap men.** The line squad is nine strong (`Cartel
-  Section`) at 80k a man — the exact inverse of Kestrel's four at 800k+.
-  The cartel can always hire more.
-- **Rivers and crossings.** `River Checkpoint` (DShKM + boss + lookout) is
-  the bridge group the deck demands; `River Patrol` pairs the two hulls
-  (`PTF_Corr_lancha` fast boat, `PTF_Corr_bote` — the HIDF hull rebadged to
-  Independent, since RHS still has no other boats).
+  Section`) at 80k a man, and `Village Garrison` runs ten — the exact
+  inverse of Kestrel's four at 800k+. The cartel can always hire more.
+- **Rivers and crossings.** `River Checkpoint` (DShKM + boss + lookout) and
+  `Road Checkpoint` (technical + lookout) are the crossings the deck
+  demands, with `Crossing Defence (SPG-9)` for the ones the cartel expects
+  to be attacked. `River Patrol` and `River Convoy` field the three hulls
+  (`PTF_Corr_lancha` fast boat; `PTF_Corr_bote` — the HIDF hull rebadged to
+  Independent, since RHS still has no other boats; `PTF_Corr_canoe` for the
+  dry-season channels the fast boat grounds in). The `Fuel Run` group
+  exists because the boats do not run on goodwill, and a fuel van is a
+  better mission objective than any gun truck.
 - **"AKs and Galils."** No installed RHS mod ships a Galil (GREF/AFRF/USAF
   all checked), so the captured-army-rifle tier is `PTF_Corr_fusilero` with
   an AK-74M — deliberately 5.45, a different ammunition family from the
   cartel's 7.62x39, the same picked-up-magazine lesson as the Pereño
   FAL/AKM split. If a Galil ever enters the content base, swap it in there.
+- **Kestrel's fingerprints: the sicario.** The deck says Kestrel pays the
+  cartel in "training, drones, air transport and cash", and
+  `PTF_Corr_sicario` is what that buys: a new AK-103 with polymer
+  magazines — La Guardia's rifle, because the same money bought it — on
+  **iron sights**, with six magazines to the Guardia's eight and no armour.
+  Kestrel sells rifles and a month of drills, not EOTechs. `Sicario Cell`
+  is the faction's only group without a lookout attached, because sicarios
+  are not sent to watch.
 - **"Cheap FPV drones"** has no attack-drone equivalent in vanilla or RHS.
   `PTF_Corr_dronero` flies a vanilla AR-2 Darter (with the Independent-side
   `I_UavTerminal`), and `PTF_Corr_darter` is placeable on its own — the
   overwatch half of the threat, which is the half that changes how players
   move. If an FPV/loitering munition mod ever joins the repack, it slots in
   here.
-- **"Machete"** — the deck's one named box on the cartel org chart — is the
-  HVT (`PTF_Corr_machete`), balaclava'd because nobody has a face to put on
-  the name.
+- **"Pushing toward the coast"** needs more than rifles: the SPG-9
+  technical and tripod for the NAC's light armour, and one 2B14 mortar
+  tube (`Mortar Team`) — a statement, not a fire plan. Where the mortar
+  appears, the cartel is softening something up, not defending.
+- **Two HVTs, matching the deck's two unknown boxes.** "Machete"
+  (`PTF_Corr_machete`), the field commander, balaclava'd because nobody has
+  a face to put on the name; and the River Boss (`PTF_Corr_patron`),
+  the answer to "who controls the boats and river checkpoints?" — a
+  businessman with a pocket pistol whose value is what he knows.
+- **Headgear randomises on the rank and file** (gunmen, rifleman, boatman,
+  halcón) via the same `headgearList` + `BIS_fnc_unitHeadgear` mechanism as
+  the Pereño riflemen: a coalition must not spawn ten identical men.
+  Specialists and leaders keep fixed headgear — kit reads rank at a glance.
 
 ## Flags
 
@@ -420,6 +445,14 @@ RHS configs, but the following want eyes on them in the Eden editor:
     an AI test) confirm the placeable `Scout Drone (AR-2)` flies with its UAV
     AI crew and shows under La Corriente. Confirm the SPG-9 technical's
     gunner mans the gun.
+
+24. **Corriente headgear randomises.** Spawn a `Village Garrison` and
+    confirm the gunmen wear a mix of shemags, caps and bandanas rather than
+    ten copies of the same hat (same mechanism as the Pereño M1 shells —
+    item 3). While it is placed: the two lookouts should read as civilians
+    at a glance, the sicario's balaclava should show under his shemag, and
+    the 2B14 / SPG-9 / DShKM statics in the Support groups should spawn
+    manned by cartel gunmen, not RHS insurgents.
 19. **Every preloaded pack spawns full.** Seven backpacks are filled through
     `TransportMagazines`, and a failure is silent: the man just spawns with
     an empty bag. Open each wearer's inventory and check the pack:

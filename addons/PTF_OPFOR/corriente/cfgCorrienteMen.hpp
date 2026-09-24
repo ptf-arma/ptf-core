@@ -104,6 +104,19 @@ class PTF_Corr_halcon: PTF_Corr_base
    sensitivity = 3.6;
    camouflage = 0.6;
    cost = 20000;
+   class EventHandlers: EventHandlers
+   {
+      init = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;}";
+   };
+   // All ballcaps, different ballcaps: two lookouts on the same corner must
+   // not be wearing the same hat.
+   headgearList[] =
+      {
+         "H_Cap_blk", 2,
+         "H_Cap_oli", 1,
+         "H_Cap_red", 1,
+         "H_Cap_blu", 1
+      };
    uniformClass = "U_C_Poloshirt_blue";
    linkedItems[] = {"H_Cap_blk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"H_Cap_blk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -114,12 +127,30 @@ class PTF_Corr_halcon: PTF_Corr_base
 };
 
 // --- The gunmen --------------------------------------------------------------
+// Headgear is randomised per spawn on the rank and file, the same
+// headgearList + BIS_fnc_unitHeadgear mechanism as the Pereno riflemen: a
+// coalition hires whoever shows up, and ten men under ten identical shemags
+// read as an army, which is the one thing the cartel must not read as.
+// Specialists and leaders keep fixed headgear -- kit reads rank at a glance,
+// per the house style.
 
 class PTF_Corr_miliciano: PTF_Corr_base
 {
    scope = 2;
    scopeCurator = 2;
    displayName = "Gunman (AKM)";
+   class EventHandlers: EventHandlers
+   {
+      init = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;}";
+   };
+   headgearList[] =
+      {
+         "H_ShemagOpen_tan", 2,
+         "H_Shemag_olive", 1,
+         "H_Cap_blk", 2,
+         "H_Bandanna_gry", 2,
+         "H_Booniehat_tan", 1
+      };
 };
 
 class PTF_Corr_miliciano_akms: PTF_Corr_base
@@ -127,6 +158,17 @@ class PTF_Corr_miliciano_akms: PTF_Corr_base
    scope = 2;
    scopeCurator = 2;
    displayName = "Gunman (AKMS)";
+   class EventHandlers: EventHandlers
+   {
+      init = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;}";
+   };
+   headgearList[] =
+      {
+         "H_Bandanna_gry", 2,
+         "H_Cap_blk", 2,
+         "H_ShemagOpen_tan", 1,
+         "H_Cap_oli", 1
+      };
    uniformClass = "U_I_C_Soldier_Bandit_3_F";
    linkedItems[] = {"H_Bandanna_gry", "V_TacVest_brn", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"H_Bandanna_gry", "V_TacVest_brn", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -162,6 +204,17 @@ class PTF_Corr_fusilero: PTF_Corr_base
    scope = 2;
    scopeCurator = 2;
    displayName = "Rifleman (AK-74M)";
+   class EventHandlers: EventHandlers
+   {
+      init = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;}";
+   };
+   headgearList[] =
+      {
+         "H_Booniehat_tan", 2,
+         "H_ShemagOpen_tan", 1,
+         "H_Bandanna_gry", 1,
+         "H_Shemag_olive", 1
+      };
    uniformClass = "U_BG_Guerilla2_2";
    linkedItems[] = {"H_Booniehat_tan", "V_Chestrig_khk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"H_Booniehat_tan", "V_Chestrig_khk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -358,6 +411,57 @@ class PTF_Corr_tirador: PTF_Corr_base
       };
 };
 
+// --- The bought tier ---------------------------------------------------------
+
+// The sicario: what Kestrel's "training, drones, air transport and cash"
+// looks like when it walks. A new AK-103 with polymer magazines -- the same
+// rifle La Guardia carries, because the same money bought it -- but on IRON
+// SIGHTS, deliberately. Kestrel sells rifles and a month of drills; it does
+// not sell EOTechs to a cartel. The tier gap between a sicario (2.4 / 3.2,
+// six magazines, no optic, no armour) and a Guardia veteran (glass, plates,
+// eight magazines, night vision) is the campaign's proof that money spent on
+// men beats money spent on gear only up to a point.
+class PTF_Corr_sicario: PTF_Corr_base
+{
+   scope = 2;
+   scopeCurator = 2;
+   displayName = "Sicario (AK-103)";
+   accuracy = 2.4;
+   sensitivity = 3.2;
+   cost = 300000;
+   uniformClass = "U_BG_Guerilla2_1";
+   linkedItems[] = {"H_Shemag_olive", "V_TacChestrig_cbr_F", "G_Balaclava_blk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"H_Shemag_olive", "V_TacChestrig_cbr_F", "G_Balaclava_blk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   weapons[] = {"rhs_weap_ak103", "Throw", "Put"};
+   respawnWeapons[] = {"rhs_weap_ak103", "Throw", "Put"};
+   // Six polymer magazines, a frag and a smoke: 6 x 11.5 + 6.82 + 10 + 8 =
+   // 93.82 against the 170 the guerrilla shirt (30) and chest rig (140)
+   // hold. Not eight magazines -- eight is La Guardia's number, and the
+   // sicario is not La Guardia.
+   magazines[] =
+      {
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_mag_rgd5",
+         "rhs_mag_rdg2_white"
+      };
+   respawnMagazines[] =
+      {
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_30Rnd_762x39mm_polymer",
+         "rhs_mag_rgd5",
+         "rhs_mag_rdg2_white"
+      };
+};
+
 // --- Specialists -------------------------------------------------------------
 
 // The deck's "cheap FPV drones", as close as the content base gets: a
@@ -402,6 +506,16 @@ class PTF_Corr_lanchero: PTF_Corr_base
    displayName = "Boatman";
    cost = 70000;
    camouflage = 1.0;
+   class EventHandlers: EventHandlers
+   {
+      init = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;}";
+   };
+   headgearList[] =
+      {
+         "H_Bandanna_gry", 2,
+         "H_Cap_blk", 1,
+         "H_Booniehat_tan", 1
+      };
    uniformClass = "U_C_Poloshirt_salmon";
    linkedItems[] = {"H_Bandanna_gry", "V_BandollierB_cbr", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"H_Bandanna_gry", "V_BandollierB_cbr", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
@@ -502,4 +616,29 @@ class PTF_Corr_machete: PTF_Corr_jefe
    respawnLinkedItems[] = {"H_ShemagOpen_tan", "V_TacChestrig_cbr_F", "G_Balaclava_blk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_akms", "rhs_weap_tt33", "Throw", "Put", "Binocular"};
    respawnWeapons[] = {"rhs_weap_akms", "rhs_weap_tt33", "Throw", "Put", "Binocular"};
+};
+
+// The river boss -- the deck's second unknown box: "Who controls the boats
+// and river checkpoints?" This is who. A businessman, not a fighter: a
+// pocket pistol, binoculars, and the best sensitivity in the faction short
+// of Machete, because he has spent twenty years reading the river for
+// customs launches. He dies easily; the intelligence he represents does not
+// arrive twice.
+class PTF_Corr_patron: PTF_Corr_base
+{
+   scope = 2;
+   scopeCurator = 2;
+   displayName = "River Boss (HVT)";
+   icon = "iconManLeader";
+   accuracy = 1.2;
+   sensitivity = 3.4;
+   camouflage = 0.9;
+   cost = 500000;
+   uniformClass = "U_I_G_resistanceLeader_F";
+   linkedItems[] = {"H_Cap_blk", "V_I_G_resistanceLeader_F", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   respawnLinkedItems[] = {"H_Cap_blk", "V_I_G_resistanceLeader_F", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
+   weapons[] = {"rhs_weap_tt33", "Throw", "Put", "Binocular"};
+   respawnWeapons[] = {"rhs_weap_tt33", "Throw", "Put", "Binocular"};
+   magazines[] = {"rhs_mag_762x25_8", "rhs_mag_762x25_8"};
+   respawnMagazines[] = {"rhs_mag_762x25_8", "rhs_mag_762x25_8"};
 };
