@@ -48,6 +48,20 @@ class CfgFactionClasses
       flag = "\z\PTF\addons\PTF_OPFOR\data\flag_sindicato_co.paa";
    };
 
+   // Operation Undertow (mainland Colombia): the cartel coalition holding
+   // most of the region and pushing toward the coast. NOT DECLARED HOSTILE
+   // per the campaign ROE -- INDEPENDENT, so each mission sets its relations
+   // with setFriend. Do not move it to EAST; the config must not start a war
+   // the ROE says the PTF is not in.
+   class PTF_IND_Corriente
+   {
+      displayName = "La Corriente";
+      priority = 4;
+      side = 2;   // INDEPENDENT
+      icon = "\A3\ui_f\data\map\markers\nato\n_inf.paa";
+      flag = "\z\PTF\addons\PTF_OPFOR\data\flag_corriente_co.paa";
+   };
+
    // The people all of this is happening to.
    class PTF_CIV_Valmera
    {

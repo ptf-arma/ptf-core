@@ -122,6 +122,38 @@ class cfgPatches
             "PTF_Flag_Guardia_F",
             "PTF_Flag_Kestrel_F",
             "PTF_Flag_Sindicato_F",
+            "PTF_Flag_Corriente_F",
+            // La Corriente (Operation Undertow)
+            "PTF_Corr_halcon",
+            "PTF_Corr_miliciano",
+            "PTF_Corr_miliciano_akms",
+            "PTF_Corr_fusilero",
+            "PTF_Corr_granadero",
+            "PTF_Corr_ametrallador",
+            "PTF_Corr_rpg",
+            "PTF_Corr_tirador",
+            "PTF_Corr_dronero",
+            "PTF_Corr_lanchero",
+            "PTF_Corr_sanitario",
+            "PTF_Corr_sicario",
+            "PTF_Corr_jefe",
+            "PTF_Corr_machete",
+            "PTF_Corr_patron",
+            "PTF_Corr_offroad",
+            "PTF_Corr_technical",
+            "PTF_Corr_technical_at",
+            "PTF_Corr_van",
+            "PTF_Corr_van_fuel",
+            "PTF_Corr_hatchback",
+            "PTF_Corr_ural",
+            "PTF_Corr_ural_open",
+            "PTF_Corr_lancha",
+            "PTF_Corr_bote",
+            "PTF_Corr_canoe",
+            "PTF_Corr_dshkm",
+            "PTF_Corr_spg9",
+            "PTF_Corr_2b14",
+            "PTF_Corr_darter",
             // El Sindicato
             "PTF_Sind_miliciano",
             "PTF_Sind_miliciano_akms",
@@ -222,7 +254,13 @@ class cfgPatches
             "A3_Soft_F_Gamma_Truck_02",
             "A3_Soft_F_Exp_Offroad_02",
             "A3_Boat_F_Exp_Boat_Transport_02",
-            "A3_Boat_F_Gamma_Boat_Civil_01"
+            "A3_Boat_F_Gamma_Boat_Civil_01",
+            // La Corriente: the vanilla Darter quadcopter, its backpack and
+            // the Independent UAV terminal. The SPG-9 offroad is covered by
+            // A3_Soft_F_Offroad_01 above.
+            "A3_Drones_F_Air_F_Gamma_UAV_01",
+            "A3_Drones_F_Weapons_F_Gamma_Items",
+            "A3_Drones_F_Weapons_F_Gamma_Ammoboxes"
          };
    };
 };
@@ -251,6 +289,8 @@ class CfgVehicles
 #include "kestrel\cfgKestrelVehicles.hpp"
 #include "sindicato\cfgSindicatoMen.hpp"
 #include "sindicato\cfgSindicatoVehicles.hpp"
+#include "corriente\cfgCorrienteMen.hpp"
+#include "corriente\cfgCorrienteVehicles.hpp"
 #include "civilians\cfgCivilians.hpp"
 #include "cfgFlags.hpp"
 };
@@ -266,5 +306,6 @@ class CfgGroups
    class Indep
    {
 #include "sindicato\cfgSindicatoGroups.hpp"
+#include "corriente\cfgCorrienteGroups.hpp"
    };
 };
