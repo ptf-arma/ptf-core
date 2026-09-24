@@ -83,3 +83,16 @@ class PTF_Flag_Sindicato_F: FlagCarrier
       init = "(_this select 0) setFlagTexture '\z\PTF\addons\PTF_OPFOR\data\flag_sindicato_co.paa';";
    };
 };
+
+class PTF_Flag_Corriente_F: FlagCarrier
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   displayName = "Flag - La Corriente";
+   editorSubcategory = "EdSubcat_Flags";
+   class EventHandlers
+   {
+      init = "(_this select 0) setFlagTexture '\z\PTF\addons\PTF_OPFOR\data\flag_corriente_co.paa';";
+   };
+};

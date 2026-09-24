@@ -139,6 +139,14 @@ class RHS_Ural_Open_Civ_01;
 class rhsgref_civ_canoe;
 class C_Boat_Transport_02_F;
 
+// --- La Corriente (Operation Undertow) ---------------------------------------
+// The cartel adds only two base classes the addon does not already declare:
+// the SPG-9 gun truck and the vanilla Darter quadcopter. Everything else it
+// fields (armed offroad, civilian trucks, HIDF boat hull, DShKM) is declared
+// above for the Valmeran factions.
+class I_G_Offroad_01_AT_F;
+class I_UAV_01_F;
+
 // --- Valmeran civilians ----------------------------------------------------
 class C_man_sport_1_F_tanoan;
 class C_man_sport_2_F_tanoan;

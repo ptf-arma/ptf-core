@@ -18,6 +18,12 @@ faction mods are used, so nothing new has to be added to the repack.
 economics" condition is campaign scripting, not a side assignment. Do not move
 any of these to Independent.
 
+Beyond the three OPFOR layers the addon carries El Sindicato
+(`PTF_IND_Sindicato`, Independent) and the Valmeran civilians
+(`PTF_CIV_Valmera`), and — for **Operation Undertow**, the mainland campaign
+that follows Stillwater — the cartel coalition La Corriente
+(`PTF_IND_Corriente`, Independent, documented below).
+
 ## Layer 1 — los Pereños
 
 The design brief calls for conscripts and long-service NCOs, island-born,
@@ -189,9 +195,51 @@ not be enough, and the fallback is a mission-side trigger on a satchel placed
 at the site. The radar does not actually feed the AA either way; it is an
 objective and a set piece, not a sensor.
 
+## La Corriente — Operation Undertow
+
+The cartel coalition of the mainland campaign (UMB Colombia), built from the
+Road to War deck. The deck's brief: *large and spread across the region,
+controls most river crossings, AKs and Galils, technicals, fast river boats
+and cheap FPV drones, pays civilians to act as lookouts* — and, decisively,
+**not declared hostile**. PTF ROE engages La Corriente only on a hostile act
+or hostile intent.
+
+### How the brief is encoded
+
+- **INDEPENDENT (side 2), like El Sindicato.** The ROE line is a side
+  assignment: the config must not start a war the PTF is not in. Mission
+  makers set the cartel's relations per-op with `setFriend`. Do not move
+  this faction to EAST.
+- **The halcón is the signature unit.** `PTF_Corr_halcon`: a lookout in a
+  polo shirt with a radio, binoculars and a pocket pistol — `sensitivity`
+  3.6 against `accuracy` 0.6. He is not a fight; he is the reason the fight
+  arrives ten minutes later. `Lookout Post` is the faction's most common
+  group, and one rides along in the checkpoint and drone groups.
+- **Big groups, cheap men.** The line squad is nine strong (`Cartel
+  Section`) at 80k a man — the exact inverse of Kestrel's four at 800k+.
+  The cartel can always hire more.
+- **Rivers and crossings.** `River Checkpoint` (DShKM + boss + lookout) is
+  the bridge group the deck demands; `River Patrol` pairs the two hulls
+  (`PTF_Corr_lancha` fast boat, `PTF_Corr_bote` — the HIDF hull rebadged to
+  Independent, since RHS still has no other boats).
+- **"AKs and Galils."** No installed RHS mod ships a Galil (GREF/AFRF/USAF
+  all checked), so the captured-army-rifle tier is `PTF_Corr_fusilero` with
+  an AK-74M — deliberately 5.45, a different ammunition family from the
+  cartel's 7.62x39, the same picked-up-magazine lesson as the Pereño
+  FAL/AKM split. If a Galil ever enters the content base, swap it in there.
+- **"Cheap FPV drones"** has no attack-drone equivalent in vanilla or RHS.
+  `PTF_Corr_dronero` flies a vanilla AR-2 Darter (with the Independent-side
+  `I_UavTerminal`), and `PTF_Corr_darter` is placeable on its own — the
+  overwatch half of the threat, which is the half that changes how players
+  move. If an FPV/loitering munition mod ever joins the repack, it slots in
+  here.
+- **"Machete"** — the deck's one named box on the cartel org chart — is the
+  HVT (`PTF_Corr_machete`), balaclava'd because nobody has a face to put on
+  the name.
+
 ## Flags
 
-Four flags live in `data/`, generated as flat geometry and converted with
+The campaign flags live in `data/`, generated as flat geometry and converted with
 Arma 3 Tools' `ImageToPAA` (the generator is
 `scratchpad/Make-Flags.ps1`, kept out of the repo — regenerate from there if a
 design needs changing):
@@ -202,12 +250,15 @@ design needs changing):
 | BI-7 "Pera" | `flag_perenos_co.paa` | Olive field, blood-red base band, gold `VII` — a regimental colour, plain and cheap |
 | La Guardia | `flag_guardia_co.paa` | Black field, crimson hoist bar, silver device — no national colours at all, because they are loyal to a man |
 | Kestrel Group | `flag_kestrel_co.paa` | Charcoal and amber chevrons with a wordmark — a logo, not a flag |
+| El Sindicato | `flag_sindicato_co.paa` | Union red, cream gear with crossed tools and a wordmark — a banner painted for marches |
+| La Corriente | `flag_corriente_co.paa` | Deep river-green field, one broad white current band with a dark-water line inside it (`Make-CorrienteFlag.ps1`, session scratchpad) |
 
 Each is wired two ways:
 
 - **As the faction flag** — `flag = ...` on each `CfgFactionClasses` entry.
 - **As placeable flagpoles** — `PTF_Flag_Valmera_F`, `PTF_Flag_Perenos_F`,
-  `PTF_Flag_Guardia_F`, `PTF_Flag_Kestrel_F` under Signs → Flags in Eden.
+  `PTF_Flag_Guardia_F`, `PTF_Flag_Kestrel_F`, `PTF_Flag_Sindicato_F`,
+  `PTF_Flag_Corriente_F` under Signs → Flags in Eden.
   Useful for telling players who holds what before a shot is fired.
 
 Flag cloth on a `FlagCarrier` is a proxy rather than a hidden selection, so the
@@ -350,6 +401,25 @@ RHS configs, but the following want eyes on them in the Eden editor:
     stock texture source, and the `textureList` override needs a second look.
     They spawn with UAV AI crew; confirm Zeus shows them under Kestrel and
     that they read as EAST to BLUFOR sensors.
+
+21. **La Corriente places as INDEPENDENT and obeys setFriend.** Place a
+    `Cartel Patrol` next to a BLUFOR unit with Independent set friendly to
+    everyone and confirm nobody shoots; flip Independent hostile to BLUFOR
+    and confirm they fight. This side behaviour *is* the faction's ROE — if
+    it is wrong, nothing else about the faction matters.
+
+22. **Corriente uniforms actually dress.** The faction leans on vanilla
+    civilian and guerrilla clothing (polo shirts, bandit shirts, `U_BG_*`
+    variants) on the FIA base. A unit spawning in underwear means a uniform
+    class is side-locked away from Independent — the halcón's and boatman's
+    civilian polos are the likeliest offenders. Check Machete's balaclava
+    (a facewear `linkedItems` entry) actually shows too.
+
+23. **The drone layer works.** The `Drone Team`'s operator should carry an
+    assembled-Darter backpack and the Independent UAV terminal; have Zeus (or
+    an AI test) confirm the placeable `Scout Drone (AR-2)` flies with its UAV
+    AI crew and shows under La Corriente. Confirm the SPG-9 technical's
+    gunner mans the gun.
 19. **Every preloaded pack spawns full.** Seven backpacks are filled through
     `TransportMagazines`, and a failure is silent: the man just spawns with
     an empty bag. Open each wearer's inventory and check the pack:
