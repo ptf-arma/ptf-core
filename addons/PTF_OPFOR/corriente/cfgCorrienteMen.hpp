@@ -122,6 +122,15 @@ class PTF_Corr_halcon: PTF_Corr_base
    respawnLinkedItems[] = {"H_Cap_blk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_makarov_pm", "Throw", "Put", "Binocular"};
    respawnWeapons[] = {"rhs_weap_makarov_pm", "Throw", "Put", "Binocular"};
+   // THE TIGHTEST BUDGET IN THE ADDON -- read before adding anything to him.
+   // The polo is Supply20 and he wears NO vest, and a Makarov magazine is a
+   // deceptive 7.49. Counting everything (aid kit 8 + two magazines 14.98 =
+   // 22.98) he is over -- what saves him is that the engine loads the first
+   // magazine into the pistol, so the stored load is 8 + 7.49 = 15.49 of 20.
+   // He is the only unit here whose budget leans on the chambered magazine;
+   // one more item (a grenade, a second aid kit) drops silently at spawn.
+   // The remaining 4.51 of slack fits nothing he should be carrying anyway:
+   // a lookout owns a phone, a hat and a reason to be standing there.
    magazines[] = {"rhs_mag_9x18_8_57N181S", "rhs_mag_9x18_8_57N181S"};
    respawnMagazines[] = {"rhs_mag_9x18_8_57N181S", "rhs_mag_9x18_8_57N181S"};
 };
