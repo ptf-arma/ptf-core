@@ -292,9 +292,9 @@ private _refreshActions = {
 [
     "GLT_MarkerOverlayMode",
     "LIST",
-    ["Overlay Mode", "What the camera view shows. Declutter: nothing. No markers: only friendly lasers. My markers / All map markers: markers + friendly lasers. The 'Cycle Camera Overlay' key (Options > Controls, default SHIFT+7) and the 'Camera Overlay' scroll-menu action cycle through the modes the server allows."],
+    ["Overlay Mode", "What the camera view shows. Declutter: nothing. No markers: only friendly lasers and unit icons. My markers / All map markers: markers + friendly lasers and unit icons. The 'Cycle Camera Overlay' key (Options > Controls, default SHIFT+7) and the 'Camera Overlay' scroll-menu action cycle through the modes the server allows."],
     [GLT_MOD_NAME, "Camera Overlay"],
-    [[3, 0, 1, 2], ["Declutter (nothing)", "No markers (lasers only)", "My markers", "All map markers"], 2],
+    [[3, 0, 1, 2], ["Declutter (nothing)", "No markers", "My markers", "All map markers"], 2],
     nil,
     {if (!isNil "GLT_fnc_buildOverlayList") then {call GLT_fnc_buildOverlayList}}
 ] call CBA_Settings_fnc_init;
@@ -375,3 +375,49 @@ private _refreshActions = {
     [1, 0.15, 0.15, 1]
 ] call CBA_Settings_fnc_init;
 
+
+// ===================== Friendly Units (NATO icons for datalinked vehicles in the camera view) =====================
+
+[
+    "GLT_UnitOverlayAllow",
+    "CHECKBOX",
+    ["Allow Friendly Unit Icons in Camera View", "Server-wide. Players may see vehicles on their side's data link marked with their NATO symbol in the turret / UAV camera view."],
+    [GLT_MOD_NAME, "Friendly Units"],
+    true,
+    1,
+    {if (!isNil "GLT_fnc_buildOverlayList") then {call GLT_fnc_buildOverlayList}}
+] call CBA_Settings_fnc_init;
+
+[
+    "GLT_UnitOverlayShow",
+    "CHECKBOX",
+    ["Show Friendly Unit Icons", "Mark vehicles that share their position on your side's data link with their NATO symbol (armor, mechanized, motorized, air, artillery, support...) in the camera view, in their side's colour. Which vehicles are on the data link is set up by the mission (Eden Data Link attributes). Hidden in Declutter mode (Cycle Camera Overlay key)."],
+    [GLT_MOD_NAME, "Friendly Units"],
+    true,
+    nil,
+    {if (!isNil "GLT_fnc_buildOverlayList") then {call GLT_fnc_buildOverlayList}}
+] call CBA_Settings_fnc_init;
+
+[
+    "GLT_UnitOverlayRange",
+    "SLIDER",
+    ["Max Distance (m)", "Friendly units further than this from your camera are not marked."],
+    [GLT_MOD_NAME, "Friendly Units"],
+    [500, 10000, 4000, 0]
+] call CBA_Settings_fnc_init;
+
+[
+    "GLT_UnitOverlayIconSize",
+    "SLIDER",
+    ["Icon Size", "Size of the NATO symbols in the camera view (markers use 0.8)."],
+    [GLT_MOD_NAME, "Friendly Units"],
+    [0.3, 1.5, 0.7, 2]
+] call CBA_Settings_fnc_init;
+
+[
+    "GLT_UnitOverlayLabels",
+    "CHECKBOX",
+    ["Show Group Names", "Show the group name under each friendly unit icon."],
+    [GLT_MOD_NAME, "Friendly Units"],
+    true
+] call CBA_Settings_fnc_init;

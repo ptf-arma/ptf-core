@@ -1,3 +1,4 @@
+// GLT: expression values (x, y, w, h, sizeEx) quoted - required by the HEMTT config parser, same result in game
 #include "CustomControlClasses.h"
 class changeLoiter
 {

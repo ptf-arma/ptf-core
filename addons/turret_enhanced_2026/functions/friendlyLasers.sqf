@@ -30,6 +30,9 @@ if (!((call GLT_fnc_overlayModes) select 3)) exitWith {};
 private _camVeh = call GLT_fnc_getISRVehicle;
 if (isNull _camVeh) exitWith {};
 
+// Only the vehicle whose camera you are looking through is skipped (that camera already shows its own
+// laser). Your own soldier / your own aircraft ARE shown when you look through another camera, e.g. your
+// F-35's targeting-pod laser while you fly a Darter, or the designator you left on before taking a UAV.
 private _own = [_camVeh];
 private _found = [];	// laser objects already listed (one laser can be reported by vehicle and crew)
 

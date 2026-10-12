@@ -4,40 +4,44 @@
 
 	Modes (in cycle order):
 		3 = Declutter                - nothing drawn: no markers, no friendly lasers
-		0 = No markers (lasers only) - only friendly lasers
-		1 = My markers               - + friendly lasers
-		2 = All map markers          - + friendly lasers
+		0 = No markers               - only friendly lasers / friendly unit icons
+		1 = My markers               - + friendly lasers / unit icons
+		2 = All map markers          - + friendly lasers / unit icons
 
 	Server-wide settings (CBA isGlobal = 1, players can't change them):
 		GLT_MarkerOverlayShow      - markers allowed at all
 		GLT_MarkerOverlayAllowMine - mode 1 allowed
 		GLT_MarkerOverlayAllowAll  - mode 2 allowed
 		GLT_LaserOverlayAllow      - friendly lasers allowed (+ player setting GLT_LaserOverlayShow)
+		GLT_UnitOverlayAllow       - friendly unit icons allowed (+ player setting GLT_UnitOverlayShow)
 	Player setting: GLT_MarkerOverlayMode - the chosen mode (also set by the cycle key / scroll action).
 
-	Declutter is always available. "No markers" is only offered when lasers are on (otherwise it would look
-	the same as Declutter). A chosen marker mode that isn't allowed falls back to the other allowed marker
+	Declutter is always available. "No markers" is only offered when lasers or unit icons are on (otherwise it
+	would look the same as Declutter). A chosen marker mode that isn't allowed falls back to the other allowed marker
 	mode, else to No markers / Declutter.
 
-	Returns: [_effectiveMode, _allowedModes (cycle order), _markerMode (0/1/2 for the marker list), _lasersShown]
+	Returns: [_effectiveMode, _allowedModes (cycle order), _markerMode (0/1/2 for the marker list), _lasersShown,
+	          _unitsShown]
 */
 
 if (isNil "GLT_overlayModeNames") then
 {
 	// index = mode
-	GLT_overlayModeNames = ["No markers (lasers only)", "My markers", "All map markers", "Declutter"];
+	GLT_overlayModeNames = ["No markers", "My markers", "All map markers", "Declutter"];
 };
 
 private _markersOn = missionNamespace getVariable ["GLT_MarkerOverlayShow", true];
 private _lasersOn = (missionNamespace getVariable ["GLT_LaserOverlayAllow", true]) && {missionNamespace getVariable ["GLT_LaserOverlayShow", true]};
+private _unitsOn = (missionNamespace getVariable ["GLT_UnitOverlayAllow", true]) && {missionNamespace getVariable ["GLT_UnitOverlayShow", true]};
+private _extrasOn = _lasersOn || _unitsOn;
 
 private _allowed = [3];
-if (_lasersOn) then {_allowed pushBack 0};
+if (_extrasOn) then {_allowed pushBack 0};
 if (_markersOn && {missionNamespace getVariable ["GLT_MarkerOverlayAllowMine", true]}) then {_allowed pushBack 1};
 if (_markersOn && {missionNamespace getVariable ["GLT_MarkerOverlayAllowAll", true]}) then {_allowed pushBack 2};
 
 private _chosen = missionNamespace getVariable ["GLT_MarkerOverlayMode", 1];
-private _fallback = [3, 0] select _lasersOn;
+private _fallback = [3, 0] select _extrasOn;
 private _effective = switch (true) do
 {
 	case (_chosen in _allowed): {_chosen};
@@ -45,4 +49,4 @@ private _effective = switch (true) do
 	default {_fallback};
 };
 
-[_effective, _allowed, [0, _effective] select (_effective in [1, 2]), _lasersOn && {_effective != 3}]
+[_effective, _allowed, [0, _effective] select (_effective in [1, 2]), _lasersOn && {_effective != 3}, _unitsOn && {_effective != 3}]

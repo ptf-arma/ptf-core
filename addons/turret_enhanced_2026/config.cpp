@@ -25,7 +25,7 @@ class CfgPatches
 		weapons[] = {};
 		requiredVersion = 2.14;	// GLT: hashmaps, lockCameraTo "temporary", mission EH arguments
 		requiredAddons[] = {"A3_Data_F_Sams_LoadOrder","cba_main"};
-		version = "0.2.0";	// GLT: keep in sync with script_version.hpp (read by HEMTT)
+		version = "0.3.0";	// GLT: keep in sync with script_version.hpp (read by HEMTT)
 		author = "Goltred";
 		name = GLT_MOD_NAME;	// GLT: display name
 	};
@@ -187,8 +187,10 @@ class CfgFunctions
 			class cycleMarkerOverlay {file = GLT_QPATH(functions\cycleMarkerOverlay.sqf);};
 			class drawLaserOverlay {file = GLT_QPATH(functions\drawLaserOverlay.sqf);};
 			class drawLaserMap {file = GLT_QPATH(functions\drawLaserMap.sqf);};
+			class drawUnitOverlay {file = GLT_QPATH(functions\drawUnitOverlay.sqf);};
 			class drawMarkerOverlay {file = GLT_QPATH(functions\drawMarkerOverlay.sqf);};
 			class friendlyLasers {file = GLT_QPATH(functions\friendlyLasers.sqf);};
+			class friendlyUnits {file = GLT_QPATH(functions\friendlyUnits.sqf);};
 			class getISRVehicle {file = GLT_QPATH(functions\getISRVehicle.sqf);};
 			class isEnabledFor {file = GLT_QPATH(functions\isEnabledFor.sqf);};
 			class isMQ9 {file = GLT_QPATH(functions\isMQ9.sqf);};
@@ -632,7 +634,7 @@ class CfgUserActions
 	class GLT_cycleMarkerOverlay: GLT_markSlot1
 	{
 		displayName = "Cycle Camera Overlay (declutter / lasers / markers)";
-		tooltip = "Cycles what the camera view shows: Declutter (nothing), No markers (lasers only), My markers, All map markers. Modes the server doesn't allow are skipped";
+		tooltip = "Cycles what the camera view shows: Declutter (nothing), No markers (only friendly lasers / unit icons), My markers, All map markers. Modes the server doesn't allow are skipped";
 	};
 };
 

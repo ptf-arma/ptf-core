@@ -2,14 +2,15 @@
 	GLT_fnc_cycleMarkerOverlay  [GLT] Goltred update - not part of the original Turret Enhanced by Fat_Lurch.
 	Controls action "Cycle Camera Overlay" (GLT_cycleMarkerOverlay, default SHIFT+7) and the
 	"Camera Overlay: <mode>" scroll-menu action (fatlurch_fnc_MPaddaction):
-		Declutter -> No markers (lasers only) -> My markers -> All map markers -> Declutter ...
+		Declutter -> No markers -> My markers -> All map markers -> Declutter ...
+	Friendly lasers and friendly unit icons show in every mode except Declutter.
 	skipping every mode the server doesn't allow (GLT_fnc_overlayModes).
 
 	The key changes the player's own (client) value of GLT_MarkerOverlayMode and saves it to the profile, so
 	Addon Options always shows the same choice.
 
 	Server control:
-		- markers / "My Markers" / "All Map Markers" / friendly lasers switched off (server-wide) -> those
+		- markers / "My Markers" / "All Map Markers" / friendly lasers / unit icons switched off -> those
 		  modes are skipped; Declutter is always available
 		- "Overlay Mode" forced by the server / mission (CBA force) -> the key does nothing (only a notice)
 	The settings are read at every press, so a change made by an admin mid-mission applies immediately.
@@ -43,6 +44,7 @@ private _next = _allowed select ((_index + 1) mod (count _allowed));
 ["GLT_MarkerOverlayMode", _next, 0, "client", true] call CBA_settings_fnc_set;
 call GLT_fnc_buildOverlayList;
 call GLT_fnc_friendlyLasers;
+call GLT_fnc_friendlyUnits;
 
 // Report what is actually in effect now
 private _now = (call GLT_fnc_overlayModes) select 0;

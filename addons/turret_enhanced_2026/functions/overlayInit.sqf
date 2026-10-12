@@ -11,7 +11,8 @@
 			  "Skip MQ-9" is on) and the ones currently lasing
 			* hooks the laser map drawing into the main map and UAV terminal map
 			* friendly laser spots for the camera view (GLT_fnc_friendlyLasers)
-		- a single Draw3D handler for the camera overlay (markers + friendly lasers)
+			* friendly vehicles / groups with NATO icons for the camera view (GLT_fnc_friendlyUnits)
+		- a single Draw3D handler for the camera overlay (markers + friendly lasers + friendly unit icons)
 */
 
 if (!hasInterface) exitWith {};
@@ -44,6 +45,9 @@ GLT_lasingCache = [];
 	// --- Other friendly lasers for the camera overlay (drawn every frame from this list)
 	call GLT_fnc_friendlyLasers;
 
+	// --- Friendly vehicles / groups with NATO icons for the camera overlay (drawn every frame from this list)
+	call GLT_fnc_friendlyUnits;
+
 	// --- Attach the laser map drawing to any map control that exists and isn't hooked yet
 	{
 		private _ctrl = (findDisplay _x) displayCtrl 51;
@@ -58,4 +62,5 @@ GLT_lasingCache = [];
 addMissionEventHandler ["Draw3D", {
 	call GLT_fnc_drawMarkerOverlay;
 	call GLT_fnc_drawLaserOverlay;
+	call GLT_fnc_drawUnitOverlay;
 }];
