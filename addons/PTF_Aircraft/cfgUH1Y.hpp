@@ -132,7 +132,29 @@ class PTF_UH1Y : RHS_UH1Y_d
          onlyForPlayer = 1;
       };
    };
+   class EventHandlers {
+      class EquipFries {
+         init = "[_this select 0] call ace_fastroping_fnc_equipFRIES;";
+      };
+   };
+   class TransportBackpacks
+   {
+      backpack_xx(B_Parachute,6);
+   };
+   class TransportItems
+	{
+		item_xx(ACE_elasticBandage,15);
+		item_xx(ACE_packingBandage,15);
+		item_xx(ACE_quikclot,15);
+		item_xx(ACE_plasmaIV,3);
+		item_xx(ToolKit,1);
+		item_xx(ACE_rope36,4);
+		item_xx(ACE_splint,4);
+      item_xx(ACE_bodyBag,15);
+      item_xx(ACE_Banana,4);
+	};
 };
+
 class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 {
    scope = 2;
@@ -210,7 +232,29 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
          onlyForPlayer = 1;
       };
    };
+   class EventHandlers {
+      class EquipFries {
+         init = "[_this select 0] call ace_fastroping_fnc_equipFRIES;";
+      };
+   };
+   class TransportBackpacks
+   {
+      backpack_xx(B_Parachute,6);
+   };
+   class TransportItems
+	{
+		item_xx(ACE_elasticBandage,15);
+		item_xx(ACE_packingBandage,15);
+		item_xx(ACE_quikclot,15);
+		item_xx(ACE_plasmaIV,3);
+		item_xx(ToolKit,1);
+		item_xx(ACE_rope36,4);
+		item_xx(ACE_splint,4);
+      item_xx(ACE_bodyBag,16);
+      item_xx(ACE_Banana,4);
+	};
 };
+
 class PTF_UH1Y_HQ : PTF_UH1Y
 {
    displayName = "UH-1Y (MAG36 HQ) [MAG36]";

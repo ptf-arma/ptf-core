@@ -61,6 +61,7 @@ class CfgPatches
 	};
 };
 #include "cfgIMPORT.hpp"
+#include "\z\PTF\addons\PTF_Utility\CfgDefinitions.hpp"
 class cfgVehicles
 {
 #include "cfgAH1Z.hpp"
