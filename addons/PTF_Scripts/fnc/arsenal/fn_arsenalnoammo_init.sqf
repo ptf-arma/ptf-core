@@ -8,4 +8,5 @@ private _standardNoAmmoWhitelist = ["tsp_breach_block_mag","tsp_breach_package_m
 
 [_arsenal, _standardNoAmmoWhitelist, true] call ace_arsenal_fnc_initBox;
 
-#include "\z\PTF\addons\PTF_Scripts\fnc\arsenal\defaultloadouts.hpp"
+// Registers the PTF role kits with ACE once per machine, not once per box.
+call PTF_fnc_registerDefaultLoadouts;
