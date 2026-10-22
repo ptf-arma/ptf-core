@@ -46,7 +46,6 @@ class cfgPatches
          "PTF_Badger",
          "PTF_Badger_D",
          "PTF_M1123",
-         "PTF_LCAC",
          "PTF_MK23",
          "PTF_MK23_50",
          "PTF_MK23T",
@@ -90,13 +89,12 @@ class cfgPatches
               // the result has to be measured in-game -- the two changes are
               // not independent.
               // Same hazard for the external classes this addon INHERITS FROM:
-              // cfg6x6.hpp, cfgMTVR.hpp and cfgLCAC.hpp derive from these, and
+              // cfg6x6.hpp and cfgMTVR.hpp derive from these, and
               // without the load-order guarantee the cfgIMPORT.hpp forward
               // declarations resolve to nothing and PTF_Quadbike_6x6 /
-              // PTF_MK23* / PTF_LCAC become parentless root classes.
+              // PTF_MK23* become parentless root classes.
               "NDS_6x6_ATV",     // NDS_6x6_ATV_MIL
-              "Peral_USMC_Gear", // Peral_MK23, Peral_MK23_50, Peral_MK23T(_50)
-              "Peral_LCAC"       // Peral_LCAC
+              "Peral_USMC_Gear"  // Peral_MK23, Peral_MK23_50, Peral_MK23T(_50)
               };
    };
 };
@@ -144,7 +142,6 @@ class cfgVehicles
    #include "cfg6x6.hpp"
    #include "cfgSAM.hpp"
    #include "cfgCAT.hpp"
-   #include "cfgLCAC.hpp"
    #include "cfgMTVR.hpp"
 
    // Forward-declared in cfgIMPORT.hpp and then re-declared with the same name

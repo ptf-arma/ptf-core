@@ -123,7 +123,6 @@ class Peral_ACV_R;
 class rhsusf_m998_d_s_2dr_fulltop;
 
 //Peral's Vehicles
-class Peral_LCAC;
 class Peral_MK23;
 class Peral_MK23_50;
 class Peral_MK23T;
