@@ -148,7 +148,13 @@ class PTF_Cargo_Small_Medical : PTF_Cargo_Small
       item_xx(kat_naloxone,30);
       item_xx(kat_norepinephrine,30);
       item_xx(kat_phenylephrine,30);
+      item_xx(kat_phenylephrineAuto,30);
       item_xx(kat_TXA,30);
+      item_xx(kat_guedel,20);
+      item_xx(kat_larynx,20);
+      item_xx(kat_suction,20);
+      item_xx(kat_accuvac,20);
+      item_xx(kat_Pulseoximeter,25);
    };
 };
 class PTF_Cargo_Small_Humanitarian : PTF_Cargo_Small
