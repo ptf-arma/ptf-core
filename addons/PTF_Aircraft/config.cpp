@@ -56,11 +56,14 @@ class CfgPatches
 			"usaf_kc135_c",
 			"USAF_RQ4A",
 			"rhsgref_a29",
-			"ace_cargo"
+			"ace_cargo",
+			"ace_fastroping",
+			"cba_xeh"
 		};
 	};
 };
 #include "cfgIMPORT.hpp"
+#include "CfgEventHandlers.hpp"
 #include "\z\PTF\addons\PTF_Utility\CfgDefinitions.hpp"
 class cfgVehicles
 {
