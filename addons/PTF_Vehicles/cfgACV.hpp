@@ -12,7 +12,10 @@ class PTF_ACV : Peral_ACV
 	ace_dragging_canCarry = 0;
 	ace_dragging_canDrag = 0;
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
-	maximumLoad = 3250;
+	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
+	// load cut 20% from the previous 3250.
+	maxSpeed = 105;
+	maximumLoad = 2600;
 	side = 1;
 	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
 	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
@@ -74,7 +77,10 @@ class PTF_ACV_MK19 : Peral_ACV_MK19
 	ace_dragging_canCarry = 0;
 	ace_dragging_canDrag = 0;
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
-	maximumLoad = 3250;
+	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
+	// load cut 20% from the previous 3250.
+	maxSpeed = 105;
+	maximumLoad = 2600;
 	side = 1;
 	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
 	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
@@ -136,7 +142,10 @@ class PTF_ACV_30 : Peral_ACV_30
 	ace_dragging_canCarry = 0;
 	ace_dragging_canDrag = 0;
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
-	maximumLoad = 3250;
+	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
+	// load cut 20% from the previous 3250.
+	maxSpeed = 105;
+	maximumLoad = 2600;
 	side = 1;
 	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
 	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
@@ -197,7 +206,10 @@ class PTF_ACV_E : Peral_ACV_E
 	ace_dragging_canCarry = 0;
 	ace_dragging_canDrag = 0;
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
-	maximumLoad = 3250;
+	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
+	// load cut 20% from the previous 3250.
+	maxSpeed = 105;
+	maximumLoad = 2600;
 	side = 1;
 	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
 	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the
@@ -252,7 +264,10 @@ class PTF_ACV_R : Peral_ACV_R
 	ace_dragging_canCarry = 0;
 	ace_dragging_canDrag = 0;
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
-	maximumLoad = 3250;
+	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
+	// load cut 20% from the previous 3250.
+	maxSpeed = 105;
+	maximumLoad = 2600;
 	side = 1;
 	// Sling-load mass override read by PTF_fnc_slingloading ([mass under CH-53,
 	// mass under MV-22]). Left disabled deliberately -- cfgBadger.hpp sets the

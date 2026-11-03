@@ -22,6 +22,7 @@ class cfgFunctions {
 		class arsenal {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\arsenal";
 			class arsenal_init {};
+			class arsenalLimited_init {};
 			class arsenalnoammo_init {};
 			class arsenalPSO_init {};
 			class arsenalWhitelist {};

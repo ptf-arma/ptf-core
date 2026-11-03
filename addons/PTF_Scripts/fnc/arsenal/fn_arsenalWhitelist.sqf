@@ -885,7 +885,6 @@ private _equipment = [
 	"ace_marker_flags_red",
 	"ItemMap",
 	"ItemCompass",
-	"rhsusf_acc_premier_anpvs27",
 	"acex_intelitems_notepad",
 	"ACE_PlottingBoard",
 	"ACE_Altimeter",
@@ -924,7 +923,10 @@ private _nightvision = [
 	"PTF_Nightvision_PVS15_WP",
 	"PTF_Nightvision_PVS15_GN",
 	"USP_PVS31_WP_MID_TAN",
-	"USP_PVS31_WP_MID"
+	"USP_PVS31_WP_MID",
+	// Clip-on night weapon sight rather than head-mounted goggles, but
+	// grouped here so the Limited Arsenal drops it along with the NVGs.
+	"rhsusf_acc_premier_anpvs27"
 ];
 
 // PSO Additional items
@@ -956,4 +958,10 @@ private _standardArsenal = _rifles + _launchers + _pistols + _attachments + _bac
 
 private _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
-[_standardArsenal, _psoArsenal]
+// Standard minus head-mounted night vision, for the Limited Arsenal.
+// Derived by subtraction rather than a second hand-kept sum, so anything
+// added to the sub-arrays above is picked up here automatically and only
+// _nightvision has to be maintained to keep this list correct.
+private _limitedArsenal = _standardArsenal - _nightvision;
+
+[_standardArsenal, _psoArsenal, _limitedArsenal]
