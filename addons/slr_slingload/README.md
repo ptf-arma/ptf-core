@@ -37,6 +37,12 @@ Version is 1.1.17.1. Changes, all for multiplayer locality:
   warning, not a block. The pilot also gets a hint when an overloaded hook-up
   lands on their aircraft. `checkLoad` computes it, using PTF Core's
   sling-mass rule when present; PTF's "Sling info" readout uses it too.
+- **Dual-point hook-up**: on aircraft with forward and aft hooks (CH-53,
+  MV-22, CH-47 and the rest of `slr_customHooks`), "Attach Cargo" has a
+  "Dual Point (Forward + Aft)" child for loads rigged with two or more lift
+  points. The points nearer the aircraft's nose go to the forward hook and
+  the rest to the aft hook, so long loads hang lined up with the aircraft and
+  don't spin. Releasing one hook leaves the load on the other.
 - **Public `slr_slingload_fnc_getHookPositions`** `[heli]` returns the
   aircraft's cargo hook positions in model space (`[main, forward, aft]` from
   `slr_customHooks`, else the config sling point). SLR's own attach code uses

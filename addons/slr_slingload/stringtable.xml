@@ -21,6 +21,9 @@
             <English>Attach Cargo</English>
             <Chinesesimp>挂载货物</Chinesesimp>
         </Key>
+        <Key ID="STR_SLR_SlingLoad_AttachCargoDual">
+            <English>Dual Point (Forward + Aft)</English>
+        </Key>
         <Key ID="STR_SLR_SlingLoad_AutoRig">
             <English>Auto Rig</English>
             <Chinesesimp>自动安装吊钩</Chinesesimp>
