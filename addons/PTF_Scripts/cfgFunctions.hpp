@@ -26,6 +26,7 @@ class cfgFunctions {
 			class arsenalnoammo_init {};
 			class arsenalPSO_init {};
 			class arsenalWhitelist {};
+			class registerDefaultLoadouts {};
 		};
 		class Spawners {
 			File = "\z\PTF\addons\PTF_Scripts\fnc\spawners";
@@ -62,6 +63,10 @@ class cfgFunctions {
 			class slingWeightFor {};
 			class slingMassFor {};
 			class slingInfo {};
+		};
+		class Respawn {
+			file = "\z\PTF\addons\PTF_Scripts\fnc\Respawn";
+			class respawnLoadout {};
 		};
 		class BeanBag {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\BeanBag";
