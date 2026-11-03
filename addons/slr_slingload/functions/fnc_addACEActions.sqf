@@ -56,4 +56,16 @@ private _hookPositions = [_heli] call FUNC(getHookPositions);
     [_heli, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
 } forEach _hookPositions;
 
+// PTF fork: aircraft with forward and aft hooks get "Dual Point" under the
+// main hook's action, for loads rigged with two or more lift points.
+_hookPositions params [["_mainHook", []], ["_forwardHook", []], ["_aftHook", []]];
+if (_mainHook isNotEqualTo [] && {_forwardHook isNotEqualTo []} && {_aftHook isNotEqualTo []}) then {
+    private _dualCondition = {
+        [_target, _player] call FUNC(canAttachCargo)
+        && {count ((_player getVariable ["slr_slingload_heldFitting", objNull]) getVariable ["slr_slingload_points4Fitting", []]) > 1}
+    };
+    _action = ["slr_slingload_attachCargoDual", localize LSTRING(AttachCargoDual), _icon, _statement, _dualCondition, {}, -1, [], _distance, _flags, _modifier] call ace_interact_menu_fnc_createAction;
+    [_heli, 0, ["slr_slingload_attachCargo0"], _action] call ace_interact_menu_fnc_addActionToObject;
+};
+
 _hookPositions isNotEqualTo []
