@@ -71,6 +71,7 @@ class cfgPatches
               "A3_Data_F_Oldman_Loadorder",
               "A3_Soft_F_Exp",
               "A3_Boat_F_Beta",
+              "cba_xeh",
               "Peral_ACV",
               // NOTE: deliberately absent -- "Peral_Airfield_Logistics", whose
               // tractor classes this addon EDITS (cfgTractors.hpp).
@@ -122,6 +123,7 @@ class cfgMagazines
 //Defines Vehicles
 class cfgVehicles
 {
+   #include "cfgXEHCompat.hpp"
    #include "cfgACV.hpp"
    #include "cfgBadger.hpp"
    #include "cfgBoats.hpp"
