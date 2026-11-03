@@ -45,6 +45,12 @@
             <English>Manual Rig</English>
             <Chinesesimp>手动安装吊钩</Chinesesimp>
         </Key>
+        <Key ID="STR_SLR_SlingLoad_Overload">
+            <English>OVERLOAD</English>
+        </Key>
+        <Key ID="STR_SLR_SlingLoad_OverloadHint">
+            <English>Sling load over rating: %1 t on the ropes, rated %2 t.</English>
+        </Key>
         <Key ID="STR_SLR_SlingLoad_ReleaseCargo">
             <English>Release Cargo</English>
             <Chinesesimp>卸载货物</Chinesesimp>

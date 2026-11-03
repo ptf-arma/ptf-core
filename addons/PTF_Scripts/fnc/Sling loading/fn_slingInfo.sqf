@@ -25,21 +25,11 @@ if (_capacity > 0 && {alive _target}) then {
     // Aircraft: rating and current load
     _lines pushBack format ["Rated sling capacity: %1", [_capacity] call _fnc_mass];
 
-    // SLR records each rope's load on the rope; vanilla sling loading has one.
-    private _slung = [];
-    {
-        private _load = _x getVariable ["slr_slingload_target4Rope", objNull];
-        if (!isNull _load) then {_slung pushBackUnique _load};
-    } forEach ropes _target;
-    private _vanillaLoad = getSlingLoad _target;
-    if (!isNull _vanillaLoad) then {_slung pushBackUnique _vanillaLoad};
-
-    if (_slung isEqualTo []) then {
+    // Same check SLR's overload warning on "Attach Cargo" uses
+    private _load = ([_target] call slr_slingload_fnc_checkLoad) select 0;
+    if (_load <= 0) then {
         _lines pushBack "Slung now: nothing";
     } else {
-        private _heliType = typeOf _target;
-        private _load = 0;
-        {_load = _load + ([_x, _heliType] call PTF_fnc_slingMassFor)} forEach _slung;
         _lines pushBack format [
             "Slung now: <t color='%1'>%2</t> (%3 spare)",
             [_red, _green] select (_load <= _capacity),
