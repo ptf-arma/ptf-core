@@ -21,9 +21,6 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,12,-3.5};
    LESH_WheelOffset[] = {0,4};
-    class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
-   };
 
    class Turrets: Turrets
    {
@@ -60,9 +57,6 @@ class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,12,-3.5};
    LESH_WheelOffset[] = {0,4};
-    class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
-   };
 
    class Turrets: Turrets
    {

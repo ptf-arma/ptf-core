@@ -82,3 +82,27 @@ Ticket sliders (`PTF_Uh1yTickets`, `PTF_Ah1zTickets`, `PTF_PlaneTickets`,
 its configured value on any settings refresh, so the live count lives in a
 matching `<setting>Current` variable in `missionNamespace`. Do not write the
 settings themselves from script.
+
+## Sling-load mass
+
+The PTF CH-53s and MV-22s can lift some vehicles on Sling Load Rigging ropes
+only because those vehicles are lightened while they hang. A cargo class opts in
+with `SlingloadingWeight = "[<under a CH-53>, <under an MV-22>]"` (currently the
+Badger, the CAT HMMWVs, the M1025 TOW and SLR's wreck dummy). Rope loads are
+plain physics, so `slingLoadMaxCargoMass` on the aircraft does nothing for them.
+
+`setMass` only takes effect on the machine that owns the object, and a slung load
+changes owner: SLR (forked in `addons/slr_slingload`) moves it to the pilot's
+machine before the ropes go on, and again if the aircraft changes pilot. So:
+
+- the aircraft's rope handlers (`PTF_fnc_slingMassUpdate`) only decide the mass,
+  and send it to the cargo's owner as the CBA event `PTF_slingMass_apply`;
+- the owner applies it (`PTF_fnc_slingMassApply`), records the real mass once in
+  `PTF_ObjectMass`, and stores the decision in `PTF_SlingMass`;
+- a `Local` class handler (`XEH_postInit.sqf`) applies it again on whichever
+  machine takes ownership next.
+
+The real mass comes back only when no rope ties the cargo to the aircraft, not
+on the first rope to break (or when SLR swaps a rope for a new one); the cargo's
+owner, which also owns the ropes, makes that call a frame after the break. Everything goes through CBA events, so nothing here
+needs a `CfgRemoteExec` entry.

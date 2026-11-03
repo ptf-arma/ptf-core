@@ -131,9 +131,3 @@ class Peral_MK23T_50;
 // The three Peral_* tractors are deliberately NOT declared here. They are
 // edited in cfgTractors.hpp as bare `class X { ... }` blocks, which is how
 // this repo has always done it and which measures clean.
-
-//SlingLoading
-// Needed: config.cpp re-declares slr_slingload_wreckDummy with itself as base
-// to edit Sling Load Rigging's class. Remove this and the class loses its
-// parent -- measured at ~364 extra RPT warning lines per session.
-class slr_slingload_wreckDummy;

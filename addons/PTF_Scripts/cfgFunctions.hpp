@@ -57,6 +57,8 @@ class cfgFunctions {
 		class PTFSlingLoading {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Sling loading";
 			class slingloading {};
+			class slingMassUpdate {};
+			class slingMassApply {};
 		};
 		class BeanBag {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\BeanBag";

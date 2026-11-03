@@ -132,11 +132,6 @@ class PTF_UH1Y : RHS_UH1Y_d
          onlyForPlayer = 1;
       };
    };
-   class EventHandlers {
-      class EquipFries {
-         init = "[_this select 0] call ace_fastroping_fnc_equipFRIES;";
-      };
-   };
    class TransportBackpacks
    {
       backpack_xx(B_Parachute,6);
@@ -230,11 +225,6 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
          position = "zamerny";
          radius = 1;
          onlyForPlayer = 1;
-      };
-   };
-   class EventHandlers {
-      class EquipFries {
-         init = "[_this select 0] call ace_fastroping_fnc_equipFRIES;";
       };
    };
    class TransportBackpacks

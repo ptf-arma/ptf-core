@@ -95,8 +95,12 @@ class Car : LandVehicle
    };
 };
 
-class Tank;
-class Tank_F : Tank
+// On Tank, not Tank_F: ACE defines ACE_Actions (no parent) on Car, Tank and
+// Ship_F, and Tank_F only inherits it (ace_logistics_uavbattery declares
+// `ACE_Actions: ACE_Actions` there). A bare ACE_Actions on Tank_F reset that
+// parent and stripped ACE's repair/rearm/tow/passenger actions from every
+// tracked vehicle. These blocks must stay parentless and on these classes.
+class Tank : LandVehicle
 {
    class ACE_Actions
    {

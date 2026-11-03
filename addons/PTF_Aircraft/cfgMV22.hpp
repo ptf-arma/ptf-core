@@ -20,9 +20,6 @@ class PTF_MV22_Ramp : DEGA_MV22_Infantry_NATO
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,7.5,0.9};
    LESH_WheelOffset[] = {0.35,0};
-   class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
-   };
    #include "cfgMV22_shared.hpp"
 };
 class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
@@ -44,9 +41,6 @@ class PTF_MV22_Cargo : DEGA_MV22_Vehicle_NATO
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,7.5,0.9};
    LESH_WheelOffset[] = {0.35,0};
-   class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
-   };
    #include "cfgMV22_shared.hpp"
 };
 class PTF_MV22_Minigun : DEGA_MV22_IDWS_NATO
@@ -66,8 +60,5 @@ class PTF_MV22_Minigun : DEGA_MV22_IDWS_NATO
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,7.5,0.9};
    LESH_WheelOffset[] = {0.35,0};
-   class EventHandlers {
-      init = "[(_this select 0)] call PTF_fnc_slingloading";
-   };
    #include "cfgMV22_shared.hpp"
 };

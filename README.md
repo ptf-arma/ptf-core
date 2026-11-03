@@ -18,15 +18,18 @@ clients.
 ## What's in here
 
 Each folder under [`addons/`](addons/) is one PBO. Everything uses the
-prefix namespace `z\PTF\addons\<name>`. Broadly:
+prefix namespace `z\PTF\addons\<name>` (except `drc_custom_billboards` and the
+SLR fork, which keep their original prefixes). Broadly:
 
 - **Framework** — `PTF_Main` (editor categories, root of the dependency
   tree), `PTF_Scripts` (SQF: healing/gestures/XEH handlers), `PTF_Models`,
-  `PTF_Textures`.
+  `PTF_Textures`, `PTF_Compat` (fixes for config mistakes in the third-party
+  PBOs the mod ships).
 - **Content** — `PTF_Aircraft`, `PTF_Vehicles`, `PTF_Weapons`,
   `PTF_Clothes`, `PTF_Helmets`, `PTF_Utility`, `PTF_Menu`, `PTF_Smoke`.
 - **Third-party (in-repo, modified with permission)** —
-  `drc_custom_billboards`, `riku_class_a`, `BettIR_PTF`.
+  `drc_custom_billboards`, `riku_class_a`, `BettIR_PTF`, and a fork of Sling
+  Load Rigging (`slr_main`, `slr_slingload`; MIT) with multiplayer fixes.
 
 The mod depends on external framework mods at runtime (RHS USAF/GREF/AFRF,
 ACE3, CBA, TFAR, USAF mod, and others) — those are **not** part of this
@@ -48,7 +51,7 @@ signing details live in **[BUILDING.md](BUILDING.md)** — the quick version:
 ### Prerequisites
 
 - [HEMTT](https://hemtt.dev): `winget install BrettMayson.HEMTT`
-- **`PTF_EXTERNAL_ADDONS`** — this repo builds only 17 of the ~57 PBOs the mod
+- **`PTF_EXTERNAL_ADDONS`** — this repo builds only 20 of the ~57 PBOs the mod
   ships; point this at the folder holding the rest (the subscribed Workshop
   copy's `addons` folder works). Required for a complete, loadable mod.
 - **Arma 3 Tools** (from Steam) — only needed for signing a real release.
@@ -74,7 +77,7 @@ Run these from the repo root:
 | `hemtt check` | Lint/validate every config and SQF file. Fast — run before committing. |
 | `tools\release.ps1 -NoSign` | **Complete, loadable mod** folder — the normal local test build. |
 | `tools\release.ps1` | Signed, Workshop-ready mod folder (see [BUILDING.md](BUILDING.md) for env vars). |
-| `hemtt dev` / `hemtt build` | Repo-only build (17 PBOs). Fast for config iteration, but **not** a complete mod. |
+| `hemtt dev` / `hemtt build` | Repo-only build (20 PBOs). Fast for config iteration, but **not** a complete mod. |
 
 `hemtt check` also runs automatically in CI on every pull request.
 
