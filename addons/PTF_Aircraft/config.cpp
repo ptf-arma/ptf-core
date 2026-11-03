@@ -64,6 +64,7 @@ class CfgPatches
 };
 #include "cfgIMPORT.hpp"
 #include "CfgEventHandlers.hpp"
+#include "CfgPTFSlingFleet.hpp"
 #include "\z\PTF\addons\PTF_Utility\CfgDefinitions.hpp"
 class cfgVehicles
 {
