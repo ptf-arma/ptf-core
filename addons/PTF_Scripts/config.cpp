@@ -10,6 +10,7 @@ class CfgPatches
       requiredAddons[] = {
           "PTF_Main",
           "ace_pylons",
+          "ace_interaction",
           "cba_main"
           };
       author = "Paramarine Task Force";
