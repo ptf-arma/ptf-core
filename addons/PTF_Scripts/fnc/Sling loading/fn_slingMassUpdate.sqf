@@ -8,20 +8,13 @@
 // _attached - true for RopeAttach, false for RopeBreak
 params ["_heli", "_rope", "_cargo", "_attached"];
 
-private _weights = getText (configOf _cargo >> "SlingloadingWeight");
-if (_weights isEqualTo "") exitWith {};
-
-private _index = ["PTF_CH53", "PTF_MV22"] find ((typeOf _heli) select [0, 8]);
-if (_index < 0) exitWith {};
+private _slingMass = [_cargo, typeOf _heli] call PTF_fnc_slingWeightFor;
+if (_slingMass < 0) exitWith {};
 
 // Which machines raise rope events is not something to depend on, so only a
 // machine that owns one of the three parties speaks. That is at most three
 // identical messages, and applying the same mass twice is harmless.
 if !(local _heli || {local _rope} || {local _cargo}) exitWith {};
-
-private _masses = parseSimpleArray _weights;
-if (isNil "_masses") exitWith {};
-private _slingMass = _masses param [_index, -1, [0]];
 
 if (_attached) exitWith {
     ["PTF_slingMass_apply", [_cargo, _slingMass], _cargo] call CBA_fnc_targetEvent;

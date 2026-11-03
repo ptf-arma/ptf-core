@@ -106,3 +106,23 @@ The real mass comes back only when no rope ties the cargo to the aircraft, not
 on the first rope to break (or when SLR swaps a rope for a new one); the cargo's
 owner, which also owns the ropes, makes that call a frame after the break. Everything goes through CBA events, so nothing here
 needs a `CfgRemoteExec` entry.
+
+### Sling info readout
+
+An ACE **Sling info** action (registered in `XEH_postInit.sqf`, shown by
+`PTF_fnc_slingInfo`) answers "will this fly?" without trial and error:
+
+- **On cargo** (anything Sling Load Rigging can rig): its mass, and for each
+  aircraft in `CfgPTFSlingFleet` (`PTF_Aircraft/CfgPTFSlingFleet.hpp`) what it
+  would weigh on that aircraft's ropes against the aircraft's rating, as OK / NO.
+- **On an aircraft** (outside, or as a self-action from inside): its rated sling
+  capacity and what it is carrying right now.
+
+"On the ropes" uses the same rule as the sling-mass script
+(`PTF_fnc_slingMassFor`: the real mass, or the `SlingloadingWeight` for that
+aircraft if lighter), and both read `SlingloadingWeight` through
+`PTF_fnc_slingWeightFor`, so the readout can't disagree with what is actually
+applied. Ratings are each aircraft's `slingLoadMaxCargoMass`; SLR's rope
+physics don't enforce them, so they are the numbers to fly by, not hard
+limits. To add an aircraft to the cargo readout, add an entry to
+`CfgPTFSlingFleet`.

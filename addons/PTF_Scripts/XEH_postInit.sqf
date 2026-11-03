@@ -31,3 +31,26 @@ if (!isNil "ace_pylons_aircraftWithPylons") then {
         [_object] call PTF_fnc_slingMassApply;
     };
 }] call CBA_fnc_addClassEventHandler;
+
+// "Sling info" (PTF_fnc_slingInfo): on anything slingable, its mass and which
+// fleet aircraft can lift it; on aircraft, rated capacity and current load. The
+// cargo test mirrors Sling Load Rigging's canRigCargo, minus its sling item.
+if (hasInterface) then {
+    private _icon = "\a3\ui_f\data\igui\cfg\vehicletoggles\slingloadropeiconon2_ca.paa";
+    private _action = ["PTF_slingInfo", "Sling info", _icon, {[_target] call PTF_fnc_slingInfo}, {
+        !(_target isKindOf "CAManBase")
+        && {!(_target isKindOf "slr_slingload_apexFitting")}
+        && {
+            _target isKindOf "LandVehicle" || {_target isKindOf "Air"} || {_target isKindOf "Ship"}
+            || {_target getVariable ["slr_slingload_isRiggingEnabled", false]}
+            || {getArray (configOf _target >> "slingLoadCargoMemoryPoints") isNotEqualTo []}
+        }
+    }] call ace_interact_menu_fnc_createAction;
+    ["All", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
+    // Aircrew can't interact with their own aircraft from outside
+    private _selfAction = ["PTF_slingInfoSelf", "Sling info", _icon, {[_target] call PTF_fnc_slingInfo}, {
+        getNumber (configOf _target >> "slingLoadMaxCargoMass") > 0
+    }] call ace_interact_menu_fnc_createAction;
+    ["Air", 1, ["ACE_SelfActions"], _selfAction, true] call ace_interact_menu_fnc_addActionToClass;
+};
