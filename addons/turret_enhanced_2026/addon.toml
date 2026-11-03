@@ -1,0 +1,9 @@
+# The addon uses its own prefix from $PBOPREFIX$ (Turret_Enhanced_2026), not HEMTT's generated one.
+# config.cpp builds its paths from GLT_PREFIX in script_name.hpp - keep the two in sync.
+ignore_pboprefix = true
+
+[files]
+exclude = [
+    "data/*.png",      # source images for the .paa files
+    "images/*.png",
+]
