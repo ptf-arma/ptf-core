@@ -16,6 +16,7 @@ PREP(checkLoad);
 PREP(createHookRopes);
 PREP(destroyRope);
 PREP(getCargoLiftPoints);
+PREP(getHookPositions);
 PREP(handleScrollWheel);
 PREP(pickUpFitting);
 PREP(releaseCargo);

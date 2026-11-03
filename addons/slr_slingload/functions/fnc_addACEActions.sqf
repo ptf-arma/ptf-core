@@ -47,31 +47,13 @@ private _modifier = {
     };
 };
 
-private _heliConfig = configOf _heli;
-private _heliModel = getText (_heliConfig >> "model");
-private _customHooksInfo = slr_customHooks getOrDefaultCall [_heliModel, {
-    private _heliType = typeOf _heli;
-    slr_customHooks getOrDefault [_heliType, []];
-}];
-if (_customHooksInfo isNotEqualTo []) exitWith {
-    // Custom hook info
-    //["model.p3d",[main, forward, aft]],
-    {
-        if (_x isEqualTo []) then { continue; };
+// [main, forward, aft] from slr_customHooks, else just the config sling point
+private _hookPositions = [_heli] call FUNC(getHookPositions);
+{
+    if (_x isEqualTo []) then { continue; };
 
-        _action = [format ["slr_slingload_attachCargo%1", _forEachIndex], _displayName, _icon, _statement, _condition, {}, _forEachIndex, _x, _distance, _flags, _modifier] call ace_interact_menu_fnc_createAction;
-        [_heli, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
-    } forEach _customHooksInfo;
-
-    true
-};
-
-private _slingLoadPosition = _heli selectionPosition getText (_heliConfig >> "slingLoadMemoryPoint");
-if (_slingLoadPosition isNotEqualTo [0, 0, 0]) exitWith {
-    _action = ["slr_slingload_attachCargo0", _displayName, _icon, _statement, _condition, {}, CARGOHOOKINDEX_MAIN, _slingLoadPosition, _distance, _flags, _modifier] call ace_interact_menu_fnc_createAction;
+    _action = [format ["slr_slingload_attachCargo%1", _forEachIndex], _displayName, _icon, _statement, _condition, {}, _forEachIndex, _x, _distance, _flags, _modifier] call ace_interact_menu_fnc_createAction;
     [_heli, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
+} forEach _hookPositions;
 
-    true
-};
-
-false
+_hookPositions isNotEqualTo []

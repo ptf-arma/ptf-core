@@ -37,6 +37,10 @@ Version is 1.1.17.1. Changes, all for multiplayer locality:
   warning, not a block. The pilot also gets a hint when an overloaded hook-up
   lands on their aircraft. `checkLoad` computes it, using PTF Core's
   sling-mass rule when present; PTF's "Sling info" readout uses it too.
+- **Public `slr_slingload_fnc_getHookPositions`** `[heli]` returns the
+  aircraft's cargo hook positions in model space (`[main, forward, aft]` from
+  `slr_customHooks`, else the config sling point). SLR's own attach code uses
+  it, so other mods (e.g. a hook camera) find exactly the same points.
 - The server only moves apex fittings on a client's `claimObject` request.
 - `Plane_Base_F` is forward-declared instead of redefined (upstream's empty
   body reset every plane's parent class).
