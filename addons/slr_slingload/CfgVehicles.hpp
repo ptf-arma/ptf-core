@@ -1,5 +1,8 @@
 class CfgVehicles {
-    class Plane_Base_F {};
+    // PTF fork: forward declaration only. Upstream's `class Plane_Base_F {};`
+    // has a body, which resets Plane_Base_F's parent ('Plane' -> '') for
+    // every fixed-wing aircraft ("Updating base class" in the RPT).
+    class Plane_Base_F;
     class VTOL_Base_F: Plane_Base_F {
         slingLoadMaxCargoMass = 13000;
     };
