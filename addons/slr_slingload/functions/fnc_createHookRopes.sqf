@@ -52,6 +52,15 @@ private _ropes4Cargo = _cargo getVariable [QGVAR(ropes4Cargo), []];
 _heli setVariable [_cargoHookName, _ropes4Hook - [objNull], true];
 _cargo setVariable [QGVAR(ropes4Cargo), _ropes4Cargo - [objNull], true];
 
+// This runs on the aircraft's owner, so when it's player-flown that is the
+// pilot: tell them if what is now hanging off the aircraft is over its rating.
+if (hasInterface && {driver _heli isEqualTo player}) then {
+    ([_heli] call FUNC(checkLoad)) params ["_total", "_rated"];
+    if (_rated > 0 && {_total > _rated}) then {
+        hint format [localize LSTRING(OverloadHint), (_total / 1000) toFixed 1, (_rated / 1000) toFixed 1];
+    };
+};
+
 // If the aircraft changed owner while these ropes were still reaching the
 // network, the new owner's Local event may have seen no SLR ropes and done
 // nothing. Check again once they have propagated.
