@@ -51,3 +51,13 @@ private _ropes4Cargo = _cargo getVariable [QGVAR(ropes4Cargo), []];
 
 _heli setVariable [_cargoHookName, _ropes4Hook - [objNull], true];
 _cargo setVariable [QGVAR(ropes4Cargo), _ropes4Cargo - [objNull], true];
+
+// If the aircraft changed owner while these ropes were still reaching the
+// network, the new owner's Local event may have seen no SLR ropes and done
+// nothing. Check again once they have propagated.
+[{
+    params ["_heli"];
+    if (!isNull _heli && {!local _heli} && {(ropes _heli) findIf {local _x} > -1}) then {
+        [QGVAR(claimCargo), [_heli]] call CBA_fnc_serverEvent;
+    };
+}, [_heli], 2] call CBA_fnc_waitAndExecute;

@@ -34,13 +34,15 @@ private _lengths = _fittingRopes apply {_x getVariable ["slr_slingload_ropeLengt
 private _riggedObject = _apexFitting getVariable ["slr_slingload_cargo4Fitting", objNull];
 private _riggedRopes = _riggedObject getVariable ["slr_slingload_ropes4Cargo", []];
 _riggedObject setVariable ["slr_slingload_ropes4Cargo", _riggedRopes - _fittingRopes - [objNull], true];
-{
-    [_x] call FUNC(destroyRope);
-} forEach _fittingRopes;
 
 private _liftPoints = _apexFitting getVariable ["slr_slingload_points4Fitting", []];
 
+// Unlink the fitting before its ropes go: if a RopeBreak deletes it first,
+// its Deleted handler would otherwise wipe the cargo's rope list.
 _apexFitting setVariable ["slr_slingload_cargo4Fitting", objNull, true];
+{
+    [_x] call FUNC(destroyRope);
+} forEach _fittingRopes;
 deleteVehicle _apexFitting;
 
 private _cargoHookName = [

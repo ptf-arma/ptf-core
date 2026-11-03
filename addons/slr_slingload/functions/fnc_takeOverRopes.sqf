@@ -28,8 +28,29 @@ private _ropeEnd = [[0,0,-11], [0,0,-1]] select (_source isKindOf "slr_slingload
     private _target = _oldRope getVariable [QGVAR(target4Rope), objNull];
     private _sourcePoint = _oldRope getVariable QGVAR(sourcePoint4Rope);
     private _targetPoint = _oldRope getVariable QGVAR(targetPoint4Rope);
-    // Already ours, or not an SLR rope (vanilla sling load, ACE fast rope)
-    if (local _oldRope || {isNull _target} || {isNil "_sourcePoint"} || {isNil "_targetPoint"}) then {continue};
+    // Already ours, already replaced (its destroy is still in flight), or not
+    // an SLR rope (vanilla sling load, ACE fast rope)
+    if (
+        local _oldRope
+        || {_oldRope getVariable [QGVAR(replaced), false]}
+        || {isNull _target} || {isNil "_sourcePoint"} || {isNil "_targetPoint"}
+    ) then {continue};
+
+    // A quick double hand-over (B -> C -> D) can leave both the original and
+    // its first replacement hanging here; once one of them has a local twin
+    // on the same point, the other is stale.
+    private _hookName = _oldRope getVariable [QGVAR(hook4Rope), ""];
+    private _twin = (ropes _source) findIf {
+        local _x
+        && {(_x getVariable [QGVAR(target4Rope), objNull]) isEqualTo _target}
+        && {(_x getVariable [QGVAR(targetPoint4Rope), []]) isEqualTo _targetPoint}
+        && {(_x getVariable [QGVAR(hook4Rope), ""]) isEqualTo _hookName}
+    };
+    if (_twin > -1) then {
+        _oldRope setVariable [QGVAR(replaced), true];
+        [_oldRope] call FUNC(destroyRope);
+        continue;
+    };
 
     private _length = _oldRope getVariable [QGVAR(ropeLength), ropeLength _oldRope];
     private _newRope = ropeCreate [_source, _sourcePoint, _target, _targetPoint, _length, ["", [0,0,-1]], ["RopeEnd", _ropeEnd]];
@@ -63,5 +84,8 @@ private _ropeEnd = [[0,0,-11], [0,0,-1]] select (_source isKindOf "slr_slingload
     // New rope first, then the old one, so the cargo is never left hanging
     // from nothing (that would also make the PTF sling-mass script restore
     // the cargo's full weight mid-flight).
+    // Local flag only: stops a second takeover on this machine re-creating
+    // the same rope before the destroy lands
+    _oldRope setVariable [QGVAR(replaced), true];
     [_oldRope] call FUNC(destroyRope);
 } forEach ropes _source;

@@ -20,7 +20,7 @@ params ["_af", "_unit"];
 // its ropes. Move it here; its Local event then recreates the ropes on this
 // machine (see eventHandlers.hpp).
 if (!local _af) then {
-    [QGVAR(claimObject), [_af, _unit]] call CBA_fnc_serverEvent;
+    [QGVAR(claimObject), [_af, clientOwner]] call CBA_fnc_serverEvent;
 };
 
 [_unit, "blockThrow", "slr_slingload_pickUpFitting", true] call ace_common_fnc_statusEffect_set;

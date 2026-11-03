@@ -93,7 +93,9 @@ _action = ["slr_slingload_removeRigging", _displayName, _icon, _statement, _cond
 ///////////////////////////////////////////////////////////////////////////////
 _displayName = localize "STR_ACE_Explosives_Pickup";
 _statement = slr_slingload_fnc_pickUpFitting;
-_condition = {isNull (_player getVariable ["slr_slingload_heldFitting", objNull])};
+// PTF fork: not off someone else's head (both holders' handlers would fight
+// over it, and the per-frame check detaches it globally)
+_condition = {isNull (_player getVariable ["slr_slingload_heldFitting", objNull]) && {isNull attachedTo _target}};
 _icon = "\A3\ui_f\data\IGUI\Cfg\Actions\Obsolete\ui_action_takemine_ca.paa";
 _action = ["slr_slingload_pickup", _displayName, _icon, _statement, _condition] call ace_interact_menu_fnc_createAction;
 ["slr_slingload_apexFitting", 0, [], _action, true] call ace_interact_menu_fnc_addActionToClass;

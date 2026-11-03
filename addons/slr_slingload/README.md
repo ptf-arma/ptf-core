@@ -26,6 +26,14 @@ Version is 1.1.17.1. Changes, all for multiplayer locality:
 - **Adjusting rope length tracks the target length.** Upstream read
   `ropeLength` straight after sending `ropeUnwind` to the rope's owner, so the
   readout, and the length reused when hooking to an aircraft, were stale.
+- **Rope takeover is idempotent and re-checked**: a replaced rope is never
+  recreated twice, and the machine that created hook ropes checks two seconds
+  later that it still owns the aircraft (if not, it asks for a takeover).
+- **The release keybind runs the same permission check as the ACE action**,
+  and you can't pick up a fitting someone else is holding.
+- The server only moves apex fittings on a client's `claimObject` request.
+- `Plane_Base_F` is forward-declared instead of redefined (upstream's empty
+  body reset every plane's parent class).
 - The fitting's `RopeBreak` handler only acts on the fitting's owner; the
   per-machine `RopeAttach` handler that flooded the server with `localise`
   events is gone (the hook-up handles ownership itself).

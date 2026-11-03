@@ -50,12 +50,13 @@
     }, FUNC(takeOverRopes), _this, 3, FUNC(takeOverRopes)] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
 
-// Server: move an object (a picked-up apex fitting) to a unit's machine.
+// Server: move a picked-up apex fitting to the picker's machine. Only
+// fittings: this is a client request, so don't let it move anything else.
 [QGVAR(claimObject), {
-    params ["_object", "_unit"];
-    if (isNull _object || {isNull _unit} || {!isMultiplayer}) exitWith {};
-    if (owner _object != owner _unit) then {
-        _object setOwner owner _unit;
+    params ["_object", "_clientOwner"];
+    if (isNull _object || {!isMultiplayer} || {!(_object isKindOf "slr_slingload_apexFitting")}) exitWith {};
+    if (owner _object != _clientOwner) then {
+        _object setOwner _clientOwner;
     };
 }] call CBA_fnc_addEventHandler;
 

@@ -34,6 +34,13 @@ if (!isNull _heli) exitWith {
 
 if (isNil "_slingMass") then {
     _slingMass = _cargo getVariable ["PTF_SlingMass", -1];
+    // Re-applying a stored decision: if no rope holds the cargo any more (the
+    // aircraft was deleted mid-lift, so no RopeBreak came), restore instead of
+    // keeping it light for good.
+    if (_slingMass > 0 && {isNull ropeAttachedTo _cargo}) then {
+        _slingMass = -1;
+        _cargo setVariable ["PTF_SlingMass", -1, true];
+    };
 } else {
     _cargo setVariable ["PTF_SlingMass", _slingMass, true];
 };
@@ -42,7 +49,10 @@ if (_slingMass > 0) exitWith {
     if (isNil {_cargo getVariable "PTF_ObjectMass"}) then {
         _cargo setVariable ["PTF_ObjectMass", getMass _cargo, true];
     };
-    _cargo setMass _slingMass;
+    // Only ever lighten: SlingloadingWeight is an absolute mass, and a load
+    // already lighter than it (a small wreck on the wreck dummy) must not
+    // get heavier.
+    _cargo setMass (_slingMass min (_cargo getVariable ["PTF_ObjectMass", _slingMass]));
 };
 
 private _objectMass = _cargo getVariable ["PTF_ObjectMass", -1];
