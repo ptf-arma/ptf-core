@@ -1,0 +1,85 @@
+#include "script_component.hpp"
+/*
+ * Author: Ampersand
+ * Rig cargo with hooks, ropes, and fitting. Have player ACE carry fitting.
+ *
+ * Arguments:
+ * 0: Cargo <OBJECT>
+ * 1: Unit <OBJECT>
+ * 2: Lift Points <ARRAY> <OPTIONAL>
+ *     Array of model space positions
+ *
+ * Return Value:
+ * 0: Success <BOOLEAN>
+ *
+ * Example:
+ * [_cargo, _unit] call slr_slingload_fnc_rigCargo
+ * [cursorObject, player] call slr_slingload_fnc_rigCargo
+ */
+
+params ["_cargo", "_unit", ["_liftPoints", [], [[]]]];
+
+if (_liftPoints isEqualTo []) then {
+    _liftPoints = _cargo getVariable ["slr_slingload_liftPoints", []];
+};
+if (_liftPoints isEqualTo []) then {
+    _liftPoints = [_cargo] call slr_slingload_fnc_getCargoLiftPoints;
+};
+if (_liftPoints isEqualTo []) exitWith {hint "Use Manual Rig"; false};
+
+// Wrecks
+private _ropeAttachedObject = _cargo;
+if (damage _cargo == 1) then {
+    private _wreckDummy = createVehicle ["slr_slingload_wreckDummy", [0,0,0], [], 0, "CAN_COLLIDE"];
+    _wreckDummy allowDamage false;
+    _wreckDummy disableCollisionWith _cargo;
+    _cargo disableCollisionWith _wreckDummy;
+    _wreckDummy setDir getDir _cargo;
+    _wreckDummy setPosASL getPosASL _cargo;
+    _cargo attachTo [_wreckDummy];
+    _wreckDummy setMass getMass _cargo;
+    _cargo setVariable [QGVAR(wreckDummy), _wreckDummy, true];
+    _ropeAttachedObject = _wreckDummy;
+};
+
+private _apexFitting = createVehicle ["slr_slingload_apexFitting", [0,0,0], [], 0, "CAN_COLLIDE"];
+_apexFitting attachTo [_ropeAttachedObject, boundingBoxReal _cargo # 1];
+detach _apexFitting;
+_apexFitting allowDamage false;
+_apexFitting disableCollisionWith _cargo;
+_apexFitting disableCollisionWith _unit;
+
+private _ropeLength = 10 max (sizeOf typeOf _cargo);
+private _ropes = [];
+{
+    private _liftPoint = _x;
+    if (_ropeAttachedObject != _cargo) then {
+        _liftPoint = _ropeAttachedObject worldToModelVisual (_cargo modelToWorldVisual _liftPoint);
+    };
+    private _rope = ropeCreate [_apexFitting, "slingload0", _ropeAttachedObject, _liftPoint, _ropeLength, ["", [0,0,-1]], ["RopeEnd", [0,0,-1]]];
+    _rope setVariable ["slr_slingload_point4Rope", _x, true];
+    _rope setVariable ["slr_slingload_ropeLength", _ropeLength, true];
+    // PTF fork: what takeOverRopes needs to recreate the rope on whoever
+    // picks the fitting up next
+    _rope setVariable [QGVAR(target4Rope), _ropeAttachedObject, true];
+    _rope setVariable [QGVAR(sourcePoint4Rope), "slingload0", true];
+    _rope setVariable [QGVAR(targetPoint4Rope), _liftPoint, true];
+    _rope setVariable [QGVAR(cargo4Rope), _cargo, true];
+    //_rope disableCollisionWith _unit;
+    //_rope disableCollisionWith _cargo;
+    {
+        _rope disableCollisionWith _x;
+    } forEach _ropes;
+    _ropes pushBack _rope;
+} forEach _liftPoints;
+
+_apexFitting setVariable ["ace_dragging_carryPosition", [0, 0.5, 1], true];
+_apexFitting setVariable ["slr_slingload_cargo4Fitting", _cargo, true];
+_apexFitting setVariable ["slr_slingload_points4Fitting", _liftPoints, true];
+
+_ropes = _ropes + (_cargo getVariable ["slr_slingload_ropes4Cargo", []]) - [objNull];
+_cargo setVariable ["slr_slingload_ropes4Cargo", _ropes - [objNull], true];
+
+[{
+    [_this, ACE_Player] call slr_slingload_fnc_pickUpFitting;
+}, _apexFitting, 0.1] call CBA_fnc_waitAndExecute;

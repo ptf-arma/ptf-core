@@ -33,7 +33,7 @@ page is about the *workflow* around a change.
    build (your subscribed Workshop copy's `addons` folder works). Windows →
    *Edit the system environment variables*. See [BUILDING.md](BUILDING.md).
 
-> **Why?** This repo only builds 17 of the ~57 PBOs the mod ships. Without those
+> **Why?** This repo only builds 19 of the ~57 PBOs the mod ships. Without those
 > externals merged in, the mod is incomplete and won't load properly — so
 > `hemtt build` alone is *not* a testable mod.
 >
