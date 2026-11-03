@@ -31,7 +31,7 @@ reflects the latest build. Arma and the Arma 3 Publisher read straight through
 it — treat it as a normal folder.
 
 > ⚠️ **You must set `PTF_EXTERNAL_ADDONS`** (see [Environment
-> variables](#environment-variables)). This repo builds only 19 of the ~57 PBOs
+> variables](#environment-variables)). This repo builds only 20 of the ~57 PBOs
 > the mod ships — the other ~40 are merged in from that folder. **`hemtt build`
 > on its own is not a testable mod**: it produces the 17 repo PBOs, which are
 > incomplete and won't load correctly on their own.
@@ -43,7 +43,7 @@ it — treat it as a normal folder.
 | `hemtt check` | Lint and validate every config and SQF file. Fast; run before committing. |
 | `tools\release.ps1 -NoSign` | **Complete, loadable mod** folder — the normal local test build. |
 | `tools\release.ps1` | Signed, Workshop-ready mod folder (needs the key and the externals). |
-| `hemtt dev` / `hemtt build` | Repo-only build (19 PBOs) into `.hemttout/dev` / `.hemttout/build`. Fast for config iteration, but **not** a complete mod. |
+| `hemtt dev` / `hemtt build` | Repo-only build (20 PBOs) into `.hemttout/dev` / `.hemttout/build`. Fast for config iteration, but **not** a complete mod. |
 | `hemtt launch` | Launch Arma 3 with the *dev* (repo-only) build plus framework mods, per `.hemtt/launch.toml`. Load the published mod alongside it for the external PBOs, or use `release.ps1 -NoSign` instead for a self-contained copy. |
 | `hemtt release` | Unsigned build into `.hemttout/release`. `release.ps1` calls this — you rarely run it directly. |
 
@@ -78,7 +78,7 @@ is never copied into the repo or committed.
 
 ## External PBOs (not in git)
 
-The published mod contains ~57 PBOs but this repo only builds 19. The
+The published mod contains ~57 PBOs but this repo only builds 20. The
 rest (~40: ctab, boxloader, grad_trenches, Peral, Dagger Island, Moe's,
 NDS, ptf_sql, and other reuploads) are kept outside
 git because they cannot be rebuilt (binarized/obfuscated third-party

@@ -131,6 +131,3 @@ class Peral_MK23T_50;
 // The three Peral_* tractors are deliberately NOT declared here. They are
 // edited in cfgTractors.hpp as bare `class X { ... }` blocks, which is how
 // this repo has always done it and which measures clean.
-
-// CBA (cfgXEHCompat.hpp)
-class CBA_Extended_EventHandlers_base;
