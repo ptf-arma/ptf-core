@@ -71,11 +71,7 @@ class CfgVehicles
 		model = "\z\PTF\addons\riku_class_a\riku_CA.p3d";
 		hiddenSelections[] = {"camo","camo2","rank","insignia"};
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\riku_class_a\data\CA_co_3.paa","\z\PTF\addons\riku_class_a\data\prewar lapels\CO_AB_INF_2.paa","\z\PTF\addons\riku_class_a\data\ranks\13) 2lt.paa",""};
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = {"a3\characters_f\heads\data\hl_white_bald_muscular.rvmat","a3\characters_f\heads\data\hl_white_bald_muscular_injury.rvmat","a3\characters_f\heads\data\hl_white_bald_muscular_injury.rvmat","a3\characters_f\heads\data\hl_black_bald_muscular.rvmat","a3\characters_f\heads\data\hl_black_bald_muscular_injury.rvmat","a3\characters_f\heads\data\hl_black_bald_muscular_injury.rvmat","a3\characters_f\heads\data\hl_white_hairy_muscular.rvmat","a3\characters_f\heads\data\hl_white_hairy_muscular_injury.rvmat","a3\characters_f\heads\data\hl_white_hairy_muscular_injury.rvmat","a3\characters_f\heads\data\hl_white_old.rvmat","a3\characters_f\heads\data\hl_white_old_injury.rvmat","a3\characters_f\heads\data\hl_white_old_injury.rvmat","a3\characters_f\heads\data\hl_asian_bald_muscular.rvmat","a3\characters_f\heads\data\hl_asian_bald_muscular_injury.rvmat","a3\characters_f\heads\data\hl_asian_bald_muscular_injury.rvmat"};
-		};
+		hiddenSelectionsMaterials[] = {"\z\ptf\addons\riku_class_a\data\ca.rvmat"};
 	};
 	class riku_class_a_ab_inf_FirstLT: riku_class_a_ab_inf_SecondLT
 	{

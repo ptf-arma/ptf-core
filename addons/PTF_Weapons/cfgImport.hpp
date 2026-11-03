@@ -1,6 +1,4 @@
 //cfgWeapons
-class FIR_RKT_Launcher;
-
 class  rhs_weap_AGM114M_base_Launcher;
 
 //cfgAmmo
@@ -12,7 +10,6 @@ class B_12Gauge_Slug_NoCartridge;
 //cfgMagazines
 class 2Rnd_12Gauge_Slug;
 
-class FIR_Hydra_WP_P_7rnd_M;
 class VehicleMagazine;
 class rhs_mag_Hellfire_base : VehicleMagazine{};
 class rhs_mag_AGM114K : rhs_mag_Hellfire_base{};

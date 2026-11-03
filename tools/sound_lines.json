@@ -1,0 +1,351 @@
+{
+  "_comment": "Source scripts for PTF_Sound. Edit text/voices here, then run tools/generate-sounds.py to regenerate the OGGs, cfgSounds.hpp and cfgModules.hpp. Voice names are Microsoft neural TTS voices (python -m edge_tts --list-voices); Latin American Spanish voices reading English text produce the accented English the Valmeran factions use. 'category' selects the sounds/ subfolder and the Zeus module category - 'generic' for campaign-agnostic sounds, or a campaign name (e.g. 'valmera').",
+  "defaults": {
+    "volume": 5.62,
+    "pitch": 1,
+    "distance": 700,
+    "pause": 20
+  },
+  "lines": [
+    {
+      "name": "guardia_loyalty",
+      "display": "Guardia: Loyalty Broadcast",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-10%",
+      "text": "Citizens of Valmera! Do not listen to the lies of the foreign invaders. They bring chaos. They bring hunger. President Bastida brings order! Report all suspicious activity to your local Guardia post. Loyalty is safety. Silence is betrayal."
+    },
+    {
+      "name": "guardia_curfew",
+      "display": "Guardia: Curfew Order",
+      "category": "valmera",
+      "voice": "es-VE-SebastianNeural",
+      "rate": "-8%",
+      "text": "Attention! Attention! By order of the President, a curfew is in effect from sunset until dawn. Anyone found on the streets will be detained. Anyone assisting the foreign soldiers will be punished. Stay in your homes. La Guardia is watching."
+    },
+    {
+      "name": "guardia_checkpoint",
+      "display": "Guardia: Checkpoint Warning",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-10%",
+      "text": "Attention! You are approaching a security checkpoint of La Guardia. Reduce your speed. Turn on your interior lights. Have your documents ready. Vehicles that fail to stop will be fired upon without warning."
+    },
+    {
+      "name": "guardia_reward",
+      "display": "Guardia: Reward Offer",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-10%",
+      "text": "By decree of the President: the Republic of Valmera offers a reward of one hundred thousand pesos for information leading to the capture of any foreign soldier. Speak to any officer of La Guardia. Your name will be protected. Your loyalty will be rewarded."
+    },
+    {
+      "name": "guardia_weapons",
+      "display": "Guardia: Weapons Amnesty",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-10%",
+      "text": "All civilian firearms must be surrendered to the nearest Guardia post before Friday. After Friday, possession of a weapon will be treated as collaboration with the enemy. There will be no second warning."
+    },
+    {
+      "name": "regime_rations",
+      "display": "Regime: Ration Notice",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "People of Bocachico: food distribution begins at noon at the municipal market. One ration per family. Bring your registration card. The President provides for his people. There is no shortage. There is no crisis."
+    },
+    {
+      "name": "regime_evacuation",
+      "display": "Regime: Evacuation Order",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Attention, residents. For your own safety, this area is now a restricted military zone. Collect your documents and essential belongings, and proceed calmly to the designated assembly point. Cooperate with the soldiers. This is for your protection."
+    },
+    {
+      "name": "regime_victory",
+      "display": "Regime: Victory Bulletin",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Glorious news from the front! The heroic soldiers of the Republic have won a great victory against the foreign invaders. The enemy is retreating. Total victory is near. Long live the Republic! Long live President Bastida!"
+    },
+    {
+      "name": "bastida_address",
+      "display": "Bastida: Address to the Nation",
+      "category": "valmera",
+      "voice": "es-VE-SebastianNeural",
+      "rate": "-15%",
+      "text": "People of Valmera. I speak to you tonight not as your President, but as your protector. The foreigners call this a liberation. I call it what it is: an invasion. We did not invite them. We do not want them. And we will not kneel. Valmera stands. Valmera endures. Valmera does not surrender."
+    },
+    {
+      "name": "sindicato_radio",
+      "display": "Sindicato: Pirate Radio",
+      "category": "valmera",
+      "voice": "es-DO-EmilioNeural",
+      "rate": "+3%",
+      "text": "You are listening to the free voice of Valmera. The only station Bastida cannot silence. The President says there is no crisis. Brother, if there is no crisis, why is there no fuel in Bocachico? Why is there no medicine in Presa Alta? Stay smart. Stay alive. We will be here."
+    },
+    {
+      "name": "sindicato_warning",
+      "display": "Sindicato: Warning",
+      "category": "valmera",
+      "voice": "es-DO-EmilioNeural",
+      "rate": "+3%",
+      "text": "A friendly message from El Sindicato to everyone listening. The roads at night are ours. Soldiers: stay in your barracks. Foreigners: stay in your camps. Do not touch our cargo, and nobody has a problem. Touch our cargo, and we will find you."
+    },
+    {
+      "name": "regime_hurricane",
+      "display": "Regime: Hurricane Warning",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-3%",
+      "text": "Civil defense warning. A tropical storm is approaching the northern coast. Secure your homes, your boats, and your animals. Fill containers with clean water. Residents of low ground near the Presa Alta dam should move to higher ground tonight. The Republic will protect its people."
+    },
+    {
+      "name": "regime_blackout",
+      "display": "Regime: Power Rationing",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Attention. Electricity in Bocachico will be rationed between six and eleven o'clock this evening. This is a temporary measure caused by foreign sabotage of the national grid. Conserve fuel. Conserve water. The President thanks you for your patience."
+    },
+    {
+      "name": "regime_boilwater",
+      "display": "Regime: Water Advisory",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Public health notice. Water from the municipal supply must be boiled before drinking until further notice. Report any illness to your local clinic. Do not listen to rumors about the reservoir. The water is safe once boiled."
+    },
+    {
+      "name": "regime_anthem_intro",
+      "display": "Regime: Anthem Introduction",
+      "category": "valmera",
+      "voice": "es-VE-SebastianNeural",
+      "rate": "-10%",
+      "text": "Citizens of Valmera. Stand, and remove your hats, for the national anthem of the Republic."
+    },
+    {
+      "name": "pereno_recruitment",
+      "display": "Perenos: Recruitment Ad",
+      "category": "valmera",
+      "voice": "es-CO-GonzaloNeural",
+      "rate": "-3%",
+      "text": "Young men of Valmera! The Seventh Infantry Battalion is accepting volunteers. Three meals a day. Boots that fit. Pay sent home to your mother every month. Serve the Republic, and the Republic will serve you. Ask at any army post."
+    },
+    {
+      "name": "sindicato_numbers",
+      "display": "Sindicato: Numbers Game",
+      "category": "valmera",
+      "voice": "es-DO-EmilioNeural",
+      "rate": "+5%",
+      "text": "And now, the numbers. Today's winners: fourteen. Twenty-two. Six. Thirty-one. Congratulations to our friends in Bocachico. Collect your winnings at the usual place. And remember: the lottery of the state pays in paper. Ours pays in dollars."
+    },
+    {
+      "name": "regime_morning",
+      "display": "Regime: Morning Bulletin",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "Good morning, Valmera! Today, the President inaugurated a new school in Presa Alta. Sugar production has risen for the third month. The harbor of Bocachico welcomes two new fishing boats. Every day, the Republic grows stronger. Every day, Valmera rises."
+    },
+    {
+      "name": "regime_martyrs",
+      "display": "Regime: Martyrs Tribute",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-15%",
+      "text": "Citizens. Today we honor the martyrs who gave their lives defending the Republic. Their sacrifice will not be forgotten. Their names are written in the soil of Valmera. Glory to the fallen! Glory to the Republic!"
+    },
+    {
+      "name": "regime_referendum",
+      "display": "Regime: Referendum Appeal",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "This Sunday, Valmera votes. Vote yes for peace. Vote yes for order. Vote yes for the President. One nation. One people. One Valmera."
+    },
+    {
+      "name": "guardia_informants",
+      "display": "Guardia: Report Strangers",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-10%",
+      "text": "The enemy hides among us. If a stranger comes to your village, if a neighbor asks too many questions, if you see lights on the water at night: report it to your block warden or to any Guardia post. Your name stays secret. Your duty is sacred."
+    },
+    {
+      "name": "guardia_sindicato",
+      "display": "Guardia: Anti-Sindicato Warning",
+      "category": "valmera",
+      "voice": "es-CU-ManuelNeural",
+      "rate": "-10%",
+      "text": "The criminals of El Sindicato are enemies of the Republic. Smuggling is treason. Whoever buys from them, whoever sells to them, whoever hides them, will share their punishment. The Guardia does not forget."
+    },
+    {
+      "name": "pereno_muster",
+      "display": "Perenos: Battalion Muster",
+      "category": "valmera",
+      "voice": "es-CO-GonzaloNeural",
+      "rate": "-5%",
+      "text": "Attention all personnel of the Seventh Infantry Battalion. Report to your posts immediately. All leave is cancelled by order of the commander. This is not a drill. Repeat: this is not a drill."
+    },
+    {
+      "name": "sindicato_business",
+      "display": "Sindicato: Open for Business",
+      "category": "valmera",
+      "voice": "es-DO-EmilioNeural",
+      "rate": "+3%",
+      "text": "El Sindicato reminds you: we buy fuel, medicine, and information. We pay in dollars, not in promises. You know how to find us. Do not come with problems. Come with product."
+    }
+  ],
+  "music": [
+    {
+      "name": "anthem_valmera",
+      "display": "Music: Himno de la Republica",
+      "category": "valmera",
+      "distance": 900,
+      "pause": 25
+    },
+    {
+      "name": "march_guardia",
+      "display": "Music: Marcha de la Guardia",
+      "category": "valmera",
+      "distance": 900,
+      "pause": 25
+    },
+    {
+      "name": "radio_jingle",
+      "display": "Radio Nacional: Station Ident",
+      "category": "valmera",
+      "voice": "es-CU-BelkysNeural",
+      "rate": "-5%",
+      "text": "This is Radio Nacional de Valmera. The voice of the Republic. The voice of the people.",
+      "pause": 30
+    },
+    {
+      "name": "son_valmera",
+      "display": "Music: Son Valmerano",
+      "category": "generic",
+      "distance": 700,
+      "pause": 8
+    },
+    {
+      "name": "merengue_bocachico",
+      "display": "Music: Merengue de Bocachico",
+      "category": "generic",
+      "distance": 700,
+      "pause": 8
+    },
+    {
+      "name": "bolero_valmera",
+      "display": "Music: Bolero (slow)",
+      "category": "generic",
+      "distance": 600,
+      "pause": 10
+    },
+    {
+      "name": "bells_church",
+      "display": "Bells: Church",
+      "category": "generic",
+      "distance": 1000,
+      "pause": 600
+    }
+  ],
+  "playlists": [
+    {
+      "name": "radio_nacional",
+      "display": "Radio Nacional (programming)",
+      "category": "valmera",
+      "distance": 900,
+      "pause": 4,
+      "items": [
+        "radio_jingle",
+        "regime_morning",
+        "son_valmera",
+        "regime_victory",
+        "merengue_bocachico",
+        "regime_referendum",
+        "bolero_valmera",
+        "regime_anthem_intro",
+        "anthem_valmera",
+        "regime_blackout",
+        "march_guardia"
+      ]
+    },
+    {
+      "name": "cantina",
+      "display": "Cantina Radio (music only)",
+      "category": "generic",
+      "distance": 500,
+      "pause": 6,
+      "items": [
+        "son_valmera",
+        "bolero_valmera",
+        "merengue_bocachico"
+      ]
+    },
+    {
+      "name": "sindicato_radio",
+      "display": "Sindicato: Pirate Radio (rotation)",
+      "category": "valmera",
+      "distance": 600,
+      "pause": 8,
+      "items": [
+        "sindicato_radio",
+        "merengue_bocachico",
+        "sindicato_numbers",
+        "son_valmera",
+        "sindicato_business",
+        "bolero_valmera",
+        "sindicato_warning"
+      ]
+    },
+    {
+      "name": "guardia_psyop",
+      "display": "Guardia PA (rotation)",
+      "category": "valmera",
+      "distance": 700,
+      "pause": 15,
+      "items": [
+        "guardia_loyalty",
+        "guardia_informants",
+        "guardia_curfew",
+        "guardia_sindicato",
+        "guardia_weapons"
+      ]
+    }
+  ],
+  "synth": [
+    {
+      "name": "tone_attention",
+      "display": "Tone: Attention Chime",
+      "category": "generic",
+      "type": "chime",
+      "duration": 6,
+      "distance": 500,
+      "pause": 10
+    },
+    {
+      "name": "siren_airraid",
+      "display": "Siren: Air Raid",
+      "category": "generic",
+      "type": "airraid",
+      "duration": 22,
+      "volume": 10,
+      "distance": 1800,
+      "pause": 5
+    },
+    {
+      "name": "siren_twotone",
+      "display": "Siren: Two-Tone Alert",
+      "category": "generic",
+      "type": "twotone",
+      "duration": 12,
+      "volume": 10,
+      "distance": 1500,
+      "pause": 5
+    }
+  ]
+}

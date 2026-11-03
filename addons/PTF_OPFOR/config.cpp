@@ -4,16 +4,21 @@ class cfgPatches
    {
       units[] =
          {
-            // Batallon de Infanteria No. 7 "Pera" -- infantry
+            // los Perenos (7th Infantry Battalion "Pera") -- infantry
             "PTF_Pereno_sentry",
+            "PTF_Pereno_sentry_m3a1",
             "PTF_Pereno_conscript",
+            "PTF_Pereno_conscript_mp44",
             "PTF_Pereno_rifleman",
             "PTF_Pereno_rifleman_akm",
+            "PTF_Pereno_rifleman_m70",
+            "PTF_Pereno_rifleman_m70b1",
             "PTF_Pereno_grenadier",
             "PTF_Pereno_machinegunner",
             "PTF_Pereno_machinegunner_assist",
             "PTF_Pereno_at",
             "PTF_Pereno_marksman",
+            "PTF_Pereno_marksman_m14",
             "PTF_Pereno_medic",
             "PTF_Pereno_engineer",
             "PTF_Pereno_crewman",
@@ -21,7 +26,7 @@ class cfgPatches
             "PTF_Pereno_squadleader",
             "PTF_Pereno_officer",
             "PTF_Pereno_hvt",
-            // Batallon de Infanteria No. 7 "Pera" -- vehicles and emplacements
+            // los Perenos (7th Infantry Battalion "Pera") -- vehicles and emplacements
             "PTF_Pereno_uaz_open",
             "PTF_Pereno_uaz_dshkm",
             "PTF_Pereno_ural",
@@ -48,7 +53,7 @@ class cfgPatches
             "PTF_Pereno_mi8",
             "PTF_Pereno_uh1h",
             "PTF_Pereno_uh1h_gunship",
-            // La Guardia (Destacamento Especial Bastida) -- infantry
+            // La Guardia (Bastida Special Detachment) -- infantry
             "PTF_Guardia_rifleman",
             "PTF_Guardia_rifleman_vet",
             "PTF_Guardia_grenadier",
@@ -107,6 +112,8 @@ class cfgPatches
             "PTF_Kestrel_m1025",
             "PTF_Kestrel_stinger_pod",
             "PTF_Kestrel_p37",
+            "PTF_Kestrel_r750",
+            "PTF_Kestrel_s750",
             "PTF_Kestrel_mh6",
             "PTF_Kestrel_ah6",
             // Flags
@@ -115,6 +122,38 @@ class cfgPatches
             "PTF_Flag_Guardia_F",
             "PTF_Flag_Kestrel_F",
             "PTF_Flag_Sindicato_F",
+            "PTF_Flag_Corriente_F",
+            // La Corriente (Operation Undertow)
+            "PTF_Corr_halcon",
+            "PTF_Corr_miliciano",
+            "PTF_Corr_miliciano_akms",
+            "PTF_Corr_fusilero",
+            "PTF_Corr_granadero",
+            "PTF_Corr_ametrallador",
+            "PTF_Corr_rpg",
+            "PTF_Corr_tirador",
+            "PTF_Corr_dronero",
+            "PTF_Corr_lanchero",
+            "PTF_Corr_sanitario",
+            "PTF_Corr_sicario",
+            "PTF_Corr_jefe",
+            "PTF_Corr_machete",
+            "PTF_Corr_patron",
+            "PTF_Corr_offroad",
+            "PTF_Corr_technical",
+            "PTF_Corr_technical_at",
+            "PTF_Corr_van",
+            "PTF_Corr_van_fuel",
+            "PTF_Corr_hatchback",
+            "PTF_Corr_ural",
+            "PTF_Corr_ural_open",
+            "PTF_Corr_lancha",
+            "PTF_Corr_bote",
+            "PTF_Corr_canoe",
+            "PTF_Corr_dshkm",
+            "PTF_Corr_spg9",
+            "PTF_Corr_2b14",
+            "PTF_Corr_darter",
             // El Sindicato
             "PTF_Sind_miliciano",
             "PTF_Sind_miliciano_akms",
@@ -122,6 +161,7 @@ class cfgPatches
             "PTF_Sind_maderero",
             "PTF_Sind_cazador",
             "PTF_Sind_contrabandista",
+            "PTF_Sind_ametrallador",
             "PTF_Sind_dinamitero",
             "PTF_Sind_sanitario",
             "PTF_Sind_enlace",
@@ -179,7 +219,8 @@ class cfgPatches
             "PTF_Main",
             "A3_Characters_F",
             "A3_Weapons_F",
-            // B_Carryall_cbr -- the MANPADS specialists' rocket pack.
+            // B_Carryall_cbr -- the base for the MANPADS specialists' rocket
+            // pack and for the Sindicato machine gunner's belt holdall.
             "A3_Weapons_F_Ammoboxes",
             "A3_Structures_F_Mil_Flags",
             "rhsgref_c_troops",
@@ -200,6 +241,9 @@ class cfgPatches
             "rhsusf_c_statics",
             "rhsusf_c_melb",
             "rhsusf_c_mrzr",
+            // Kestrel R-750 / S-750 (vanilla Encore SAM set)
+            "A3_Static_F_Sams_Radar_System_02",
+            "A3_Static_F_Sams_SAM_System_04",
             // El Sindicato + civilians
             "A3_Characters_F_Exp",
             "A3_Characters_F_Exp_Civil",
@@ -210,7 +254,13 @@ class cfgPatches
             "A3_Soft_F_Gamma_Truck_02",
             "A3_Soft_F_Exp_Offroad_02",
             "A3_Boat_F_Exp_Boat_Transport_02",
-            "A3_Boat_F_Gamma_Boat_Civil_01"
+            "A3_Boat_F_Gamma_Boat_Civil_01",
+            // La Corriente: the vanilla Darter quadcopter, its backpack and
+            // the Independent UAV terminal. The SPG-9 offroad is covered by
+            // A3_Soft_F_Offroad_01 above.
+            "A3_Drones_F_Air_F_Gamma_UAV_01",
+            "A3_Drones_F_Weapons_F_Gamma_Items",
+            "A3_Drones_F_Weapons_F_Gamma_Ammoboxes"
          };
    };
 };
@@ -239,6 +289,8 @@ class CfgVehicles
 #include "kestrel\cfgKestrelVehicles.hpp"
 #include "sindicato\cfgSindicatoMen.hpp"
 #include "sindicato\cfgSindicatoVehicles.hpp"
+#include "corriente\cfgCorrienteMen.hpp"
+#include "corriente\cfgCorrienteVehicles.hpp"
 #include "civilians\cfgCivilians.hpp"
 #include "cfgFlags.hpp"
 };
@@ -254,5 +306,6 @@ class CfgGroups
    class Indep
    {
 #include "sindicato\cfgSindicatoGroups.hpp"
+#include "corriente\cfgCorrienteGroups.hpp"
    };
 };

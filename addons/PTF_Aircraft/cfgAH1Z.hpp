@@ -35,7 +35,7 @@ class PTF_AH1Z : RHS_AH1Z
                };
                class pylon2
                {
-                  hardpoints[]      = {"RHS_HP_HELLFIRE_RACK","RHS_HP_FFAR_USMC"};
+                  hardpoints[]      = {"RHS_HP_HELLFIRE_RACK","RHS_HP_FFAR_USMC","RHS_LONGBOW_RACK","RHS_HP_MELB","DAGR","DAR"};
                   priority          = 2;
                   attachment        = "ace_compat_rhs_usf3_pylon_mag_4rnd_hellfire_k";
                   maxweight         = 1200;
@@ -116,10 +116,10 @@ class PTF_AH1Z : RHS_AH1Z
                   attachment[] =
                   {
                      "rhs_mag_Sidewinder_heli_2",
-                     "FIR_APKWS_M282_P_7rnd_M",
+                     "PylonRack_24Rnd_ACE_DAGR",
                      "rhs_mag_M151_19_green",
                      "rhs_mag_M151_19_green",
-                     "FIR_APKWS_M282_P_7rnd_M",
+                     "PylonRack_24Rnd_ACE_DAGR",
                      "rhs_mag_Sidewinder_heli_2",
                      "rhsusf_ANALE39_CMFlare_Chaff_Magazine_x4"
                   };

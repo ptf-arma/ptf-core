@@ -86,7 +86,3 @@ if (_id == count _markersA - 1) then {
 } else {
     missionNamespace setVariable [_idVar, _id + 1, true];
 };
-
-if (_vehicle == "PTF_MV22_Cargo") then {
-    [_vH] call PTF_Fnc_slingloading;
-};

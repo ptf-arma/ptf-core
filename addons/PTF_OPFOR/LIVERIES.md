@@ -173,6 +173,41 @@ chains: RHS's own faction subclasses override **only**
 We mirror each class's own array exactly (KamAZ 5 entries, ZSU 4, Mi-17 2,
 Mi-35 3, BTR-70 5) and never touch selections.
 
+### Kestrel R-750 / S-750 — de-hexed plain olive
+
+`data/kestrel_r750_1/2_co.paa`, `data/kestrel_s750_1/2_co.paa` — the vanilla
+Encore SAM set (`O_Radar_System_02_F`, `O_SAM_System_04_F`) ships only in
+CSAT arid hex and jungle hex. Neither belongs on a contractor-run site, so
+both sheets of each vehicle are repainted plain olive drab.
+
+Built from the **ghex** (jungle hex) sheets, not the arid ones — their flat
+body areas are already olive, which reduced the problem to flattening the
+hex-patterned regions to match. Automated (`DeHex.cs`, session scratchpad),
+different tool from the Guardia ColorMatrix because a global matrix cannot
+remove a pattern:
+
+1. **Detect** the tan/brown hex cells by hue — the pattern's warm cells sit
+   at hue 20–50° against the olive body's 55–90°.
+2. **Blur** that detection into a wide-reach density field (128 px cells on
+   the 4096² sheet) → soft region mask. Mask overreach is harmless because
+   the fill matches the surrounding paint.
+3. **Veto** pixels that must never repaint: neutrals (metal, rubber,
+   glass — sat < 0.14), near-black (val < 0.08), reds, blues, and vivid
+   decals (the yellow warning triangles survive).
+4. **Fill** masked pixels with the sheet's own sampled olive (~67,69,50),
+   modulated by the high-pass luminance band so bolts, panel lines and
+   weathering survive while the hex cells flatten out.
+
+The lesson from iterating: the dark hex cells are *nearly neutral*
+(sat ≈ 0.2, val ≈ 0.15–0.19), so both the "protect metal" and "protect
+black" vetoes will silently keep them unless thresholds are set exactly as
+above — the first two passes left a ghost pattern for that reason.
+
+Shipped at 2048² (~1.4–1.8 MB each, ~6.5 MB total) rather than the source
+4096² (~11 MB each, ~45 MB total): these are statics seen at range, and RHS
+paints whole tanks at 2048. Regenerate at 4096 if close-up inspection ever
+argues for it.
+
 ### Faction paint language (settled)
 
 - **los Pereños — stock RHS, deliberately.** A "sun-bleached" matrix was

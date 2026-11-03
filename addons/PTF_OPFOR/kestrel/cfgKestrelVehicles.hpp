@@ -115,7 +115,7 @@ class PTF_Kestrel_m998: rhsusf_m998_w_4dr_fulltop
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "M998 (Carga)";
+   displayName = "M998 (Cargo)";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman"};
    // Full 11-entry array from rhsusf_m998_w_4dr; only index 9 changes -- the
@@ -175,7 +175,7 @@ class PTF_Kestrel_m1025: rhsusf_m1025_w
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Cars";
-   displayName = "M1025 (Desarmado)";
+   displayName = "M1025 (Unarmed)";
    crew = "PTF_Kestrel_crewman";
    typicalCargo[] = {"PTF_Kestrel_crewman", "PTF_Kestrel_operator"};
    // 10-entry array from rhsusf_m1025_w; index 8 swaps 101st decals for ours.
@@ -334,6 +334,95 @@ class PTF_Kestrel_p37: rhs_p37_turret_vpvo
    crew = "PTF_Kestrel_crewman";
 };
 
+// --- The high tier: a real integrated air defence -------------------------
+//
+// Vanilla Encore SAM set, and the only long-range SAM in the campaign's
+// content base. The R-750 is the sensor: 16 km active radar that broadcasts
+// what it sees over datalink (reportRemoteTargets). The S-750 is the shooter:
+// no search radar of its own worth the name, but it receives datalink tracks
+// (receiveRemoteTargets) -- kill the radar and the launcher goes from
+// area-denial to self-defence. That dependency is the mission design, encoded
+// in the vanilla sensor config; nothing here needs to script it.
+//
+// Both are UAV-crewed autonomous statics (crew O_UAV_AI, inherited). Stock
+// they wear CSAT arid hex; both sheets are repainted plain olive drab from
+// the ghex set, with the digital pattern flattened out -- contractors run
+// surplus hardware, not another army's parade scheme. See LIVERIES.md.
+
+class PTF_Kestrel_r750: O_Radar_System_02_F
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_AAs";
+   displayName = "R-750 Cronus Sensor Radar";
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_r750_1_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_r750_2_co.paa"
+      };
+
+   // Own the randomization path instead of fighting it: Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and would wipe these overrides with the stock hex sets. With a single
+   // PTF source and a single-entry textureList, any randomization that runs
+   // can only ever re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_r750_1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_r750_2_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
+};
+
+class PTF_Kestrel_s750: O_SAM_System_04_F
+{
+   author = "Paramarine Task Force";
+   scope = 2;
+   scopeCurator = 2;
+   side = 0;
+   faction = "PTF_OPFOR_Kestrel";
+   editorSubcategory = "EdSubcat_AAs";
+   displayName = "S-750 Rhea SAM System";
+   hiddenSelectionsTextures[] =
+      {
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_s750_1_co.paa",
+         "\z\PTF\addons\PTF_OPFOR\data\kestrel_s750_2_co.paa"
+      };
+
+   // Own the randomization path instead of fighting it: Eden appearance
+   // randomization (textureSources + textureList) re-skins vehicles at spawn
+   // and would wipe these overrides with the stock hex sets. With a single
+   // PTF source and a single-entry textureList, any randomization that runs
+   // can only ever re-apply OUR textures.
+   class TextureSources
+   {
+      class ptf
+      {
+         displayName = "Kestrel Group";
+         author = "Paramarine Task Force";
+         factions[] = {"PTF_OPFOR_Kestrel"};
+         textures[] =
+            {
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_s750_1_co.paa",
+            "\z\PTF\addons\PTF_OPFOR\data\kestrel_s750_2_co.paa"
+            };
+      };
+   };
+   textureList[] = {"ptf", 1};
+};
+
 // --- Helicopters -----------------------------------------------------------
 // Little birds: the definitive contractor airframe. One lifts, one shoots.
 
@@ -346,7 +435,7 @@ class PTF_Kestrel_mh6: RHS_MELB_MH6M
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "MH-6M (Bancos)";
+   displayName = "MH-6M (Benches)";
    crew = "PTF_Kestrel_pilot";
    typicalCargo[] = {"PTF_Kestrel_pilot"};
    // US ARMY boom text patched out; kestrel emblem, wordmark and callsign on
@@ -388,7 +477,7 @@ class PTF_Kestrel_ah6: RHS_MELB_AH6M_L
    side = 0;
    faction = "PTF_OPFOR_Kestrel";
    editorSubcategory = "EdSubcat_Helicopters";
-   displayName = "AH-6M (Ligero)";
+   displayName = "AH-6M (Light)";
    crew = "PTF_Kestrel_pilot";
    typicalCargo[] = {"PTF_Kestrel_pilot"};
    // US ARMY boom text patched out; kestrel emblem, wordmark and callsign on

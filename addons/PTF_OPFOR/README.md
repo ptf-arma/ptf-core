@@ -10,13 +10,19 @@ faction mods are used, so nothing new has to be added to the repack.
 
 | Layer | Faction | Class | Status |
 |-------|---------|-------|--------|
-| 1 | Batallón de Infantería No. 7 "Pera" (los Pereños) | `PTF_OPFOR_Perenos` | Implemented |
-| 2 | La Guardia (Destacamento Especial Bastida) | `PTF_OPFOR_Guardia` | Implemented |
+| 1 | los Pereños (7th Infantry Battalion "Pera") | `PTF_OPFOR_Perenos` | Implemented |
+| 2 | La Guardia (Bastida Special Detachment) | `PTF_OPFOR_Guardia` | Implemented |
 | 3 | Kestrel Group | `PTF_OPFOR_Kestrel` | Implemented |
 
 **All three layers sit on EAST (OPFOR).** Kestrel included — its "defeated by
 economics" condition is campaign scripting, not a side assignment. Do not move
 any of these to Independent.
+
+Beyond the three OPFOR layers the addon carries El Sindicato
+(`PTF_IND_Sindicato`, Independent) and the Valmeran civilians
+(`PTF_CIV_Valmera`), and — for **Operation Undertow**, the mainland campaign
+that follows Stillwater — the cartel coalition La Corriente
+(`PTF_IND_Corriente`, Independent, documented below).
 
 ## Layer 1 — los Pereños
 
@@ -55,8 +61,11 @@ units inherit from `rhsgref_hidf_base` and are rebadged onto EAST.
 - **Kit reads rank at a glance.** Conscripts in OG-107 with a field cap,
   riflemen in mixed OG-107/ERDL under randomised M1 shells, NCOs in full ERDL
   with a PASGT. Players should be able to see who matters before they shoot.
-- **Thin ammunition loads.** They fight hard for about four minutes; they do
-  not carry the magazines for a long engagement.
+- **Thin ammunition loads.** Thin against La Guardia's eight polymer
+  magazines, not starvation: line troops carry five or six, after unit
+  feedback that three or four read as a bug rather than as poverty. The tier
+  gap is held by La Guardia carrying eight, not by the garrison running dry
+  at first contact.
 - **Local names.** `PTF_ValmeranMen` in `cfgNames.hpp` supplies a Spanish name
   pool so the dead have names that belong to the towns the players walk
   through next week.
@@ -83,7 +92,7 @@ statistically harder:
 | Night vision | None, on anyone | Every unit; PVS-15 on the veteran tier |
 | `sensitivity` | 0.8 (sentry) – 3.0 (NCO) | 3.2 – 4.0, no inattentive tier |
 | Rifle | L1A1/FAL, iron sights | AK-103, EOTech or ACOG MDO + PEQ-15 |
-| Magazines | 2–5, steel | 8, polymer |
+| Magazines | 3–6, steel | 8, polymer |
 | Protection | ALICE webbing, M1 steel | MBAV plate carrier, Ops-Core |
 | MG | FN MAG, 7 belts (3 worn, 4 in the pack) | PKP Pecheneg, 5 belts (2 worn, 3 in the pack) |
 | AT | RPG-7, PG-7V | RPG-7 PGO, PG-7VR tandem + thermobaric |
@@ -107,8 +116,8 @@ Notes on specific choices:
 - **No checkpoint group exists for this faction, on purpose.** La Guardia do
   not stand bored roadblocks. Their appearance anywhere other than Presa Alta
   or Tagua is supposed to tell the players something.
-- **Escalation is a ladder, not a buff.** `Equipo de Asalto` → `Sección de
-  Asalto` → `Sección Reforzada` (veterans throughout), plus the BMP-2 section
+- **Escalation is a ladder, not a buff.** `Assault Team` → `Assault
+  Section` → `Reinforced Section` (veterans throughout), plus the BMP-2 section
   held back for when the campaign is meant to get hard. Escalate by fielding
   higher tiers, not by editing skill values.
 
@@ -155,12 +164,24 @@ This is the layer that changes how players *plan* rather than how they shoot.
 | ZU-23-2 | `PTF_Kestrel_zu23` | Static AA autocannon |
 | Igla AA pod | `PTF_Kestrel_igla_pod` | Static SAM |
 | Air search radar | `PTF_Kestrel_radar` | See caveat below |
+| R-750 Cronus | `PTF_Kestrel_r750` | Vanilla sensor radar, repainted plain olive |
+| S-750 Rhea | `PTF_Kestrel_s750` | Vanilla long-range SAM, repainted plain olive |
 | M107 (Mk211) | `PTF_Kestrel_antimateriel` | Makes airframes unflyable on the ground |
+
+The R-750 / S-750 pair is the top of the ladder and works as a system: the
+radar broadcasts its 16 km air picture over datalink
+(`reportRemoteTargets = 1`) and the launcher has no meaningful search sensor
+of its own, only a datalink receiver (`receiveRemoteTargets = 1`). Killing
+the radar degrades the launcher from area denial to self-defence — that
+choice is the mission, and it is encoded in the vanilla sensor config rather
+than scripted. Both are autonomous statics crewed by `O_UAV_AI` (inherited),
+not by Kestrel men. `SAM Site (R-750 / S-750)` in CfgGroups pairs them with
+a ground-defence element.
 
 Two MANPADS flavours is deliberate. Fielding both tells the players Kestrel
 did not simply arrive with kit — they took something over.
 
-There are three AA groups: two MANPADS teams and `Batería AA
+There are three AA groups: two MANPADS teams and `AA Battery
 (ZU-23-2 / Igla)`, which pairs a gun and a launcher with the men who service
 them. That last group is what an airfield approach should cost.
 
@@ -174,9 +195,76 @@ not be enough, and the fallback is a mission-side trigger on a satchel placed
 at the site. The radar does not actually feed the AA either way; it is an
 objective and a set piece, not a sensor.
 
+## La Corriente — Operation Undertow
+
+The cartel coalition of the mainland campaign (UMB Colombia), built from the
+Road to War deck. The deck's brief: *large and spread across the region,
+controls most river crossings, AKs and Galils, technicals, fast river boats
+and cheap FPV drones, pays civilians to act as lookouts* — and, decisively,
+**not declared hostile**. PTF ROE engages La Corriente only on a hostile act
+or hostile intent.
+
+### How the brief is encoded
+
+- **INDEPENDENT (side 2), like El Sindicato.** The ROE line is a side
+  assignment: the config must not start a war the PTF is not in. Mission
+  makers set the cartel's relations per-op with `setFriend`. Do not move
+  this faction to EAST.
+- **The halcón is the signature unit.** `PTF_Corr_halcon`: a lookout in a
+  polo shirt with a radio, binoculars and a pocket pistol — `sensitivity`
+  3.6 against `accuracy` 0.6. He is not a fight; he is the reason the fight
+  arrives ten minutes later. `Lookout Post` is the faction's most common
+  group, and one rides along in the checkpoint, garrison and drone groups.
+  His wheels are the `Courier Car`, which looks exactly like every other
+  hatchback in town.
+- **Big groups, cheap men.** The line squad is nine strong (`Cartel
+  Section`) at 80k a man, and `Village Garrison` runs ten — the exact
+  inverse of Kestrel's four at 800k+. The cartel can always hire more.
+- **Rivers and crossings.** `River Checkpoint` (DShKM + boss + lookout) and
+  `Road Checkpoint` (technical + lookout) are the crossings the deck
+  demands, with `Crossing Defence (SPG-9)` for the ones the cartel expects
+  to be attacked. `River Patrol` and `River Convoy` field the three hulls
+  (`PTF_Corr_lancha` fast boat; `PTF_Corr_bote` — the HIDF hull rebadged to
+  Independent, since RHS still has no other boats; `PTF_Corr_canoe` for the
+  dry-season channels the fast boat grounds in). The `Fuel Run` group
+  exists because the boats do not run on goodwill, and a fuel van is a
+  better mission objective than any gun truck.
+- **"AKs and Galils."** No installed RHS mod ships a Galil (GREF/AFRF/USAF
+  all checked), so the captured-army-rifle tier is `PTF_Corr_fusilero` with
+  an AK-74M — deliberately 5.45, a different ammunition family from the
+  cartel's 7.62x39, the same picked-up-magazine lesson as the Pereño
+  FAL/AKM split. If a Galil ever enters the content base, swap it in there.
+- **Kestrel's fingerprints: the sicario.** The deck says Kestrel pays the
+  cartel in "training, drones, air transport and cash", and
+  `PTF_Corr_sicario` is what that buys: a new AK-103 with polymer
+  magazines — La Guardia's rifle, because the same money bought it — on
+  **iron sights**, with six magazines to the Guardia's eight and no armour.
+  Kestrel sells rifles and a month of drills, not EOTechs. `Sicario Cell`
+  is the faction's only group without a lookout attached, because sicarios
+  are not sent to watch.
+- **"Cheap FPV drones"** has no attack-drone equivalent in vanilla or RHS.
+  `PTF_Corr_dronero` flies a vanilla AR-2 Darter (with the Independent-side
+  `I_UavTerminal`), and `PTF_Corr_darter` is placeable on its own — the
+  overwatch half of the threat, which is the half that changes how players
+  move. If an FPV/loitering munition mod ever joins the repack, it slots in
+  here.
+- **"Pushing toward the coast"** needs more than rifles: the SPG-9
+  technical and tripod for the NAC's light armour, and one 2B14 mortar
+  tube (`Mortar Team`) — a statement, not a fire plan. Where the mortar
+  appears, the cartel is softening something up, not defending.
+- **Two HVTs, matching the deck's two unknown boxes.** "Machete"
+  (`PTF_Corr_machete`), the field commander, balaclava'd because nobody has
+  a face to put on the name; and the River Boss (`PTF_Corr_patron`),
+  the answer to "who controls the boats and river checkpoints?" — a
+  businessman with a pocket pistol whose value is what he knows.
+- **Headgear randomises on the rank and file** (gunmen, rifleman, boatman,
+  halcón) via the same `headgearList` + `BIS_fnc_unitHeadgear` mechanism as
+  the Pereño riflemen: a coalition must not spawn ten identical men.
+  Specialists and leaders keep fixed headgear — kit reads rank at a glance.
+
 ## Flags
 
-Four flags live in `data/`, generated as flat geometry and converted with
+The campaign flags live in `data/`, generated as flat geometry and converted with
 Arma 3 Tools' `ImageToPAA` (the generator is
 `scratchpad/Make-Flags.ps1`, kept out of the repo — regenerate from there if a
 design needs changing):
@@ -187,12 +275,15 @@ design needs changing):
 | BI-7 "Pera" | `flag_perenos_co.paa` | Olive field, blood-red base band, gold `VII` — a regimental colour, plain and cheap |
 | La Guardia | `flag_guardia_co.paa` | Black field, crimson hoist bar, silver device — no national colours at all, because they are loyal to a man |
 | Kestrel Group | `flag_kestrel_co.paa` | Charcoal and amber chevrons with a wordmark — a logo, not a flag |
+| El Sindicato | `flag_sindicato_co.paa` | Union red, cream gear with crossed tools and a wordmark — a banner painted for marches |
+| La Corriente | `flag_corriente_co.paa` | Deep river-green field, one broad white current band with a dark-water line inside it (`Make-CorrienteFlag.ps1`, session scratchpad) |
 
 Each is wired two ways:
 
 - **As the faction flag** — `flag = ...` on each `CfgFactionClasses` entry.
 - **As placeable flagpoles** — `PTF_Flag_Valmera_F`, `PTF_Flag_Perenos_F`,
-  `PTF_Flag_Guardia_F`, `PTF_Flag_Kestrel_F` under Signs → Flags in Eden.
+  `PTF_Flag_Guardia_F`, `PTF_Flag_Kestrel_F`, `PTF_Flag_Sindicato_F`,
+  `PTF_Flag_Corriente_F` under Signs → Flags in Eden.
   Useful for telling players who holds what before a shot is fired.
 
 Flag cloth on a `FlagCarrier` is a proxy rather than a hidden selection, so the
@@ -214,35 +305,51 @@ Numbers that matter (all read out of the RHS and vanilla configs):
 | | capacity / mass |
 |---|---|
 | Every PTF uniform in this addon | 40 |
+| `U_I_C_Soldier_Bandit_2_F` / `_5_F` (borrowed vanilla) | 30 / 30 |
+| `U_BG_Guerilla2_1` / `U_BG_Guerilla3_1` / `U_BG_leader` | 30 / 50 / 40 |
 | ALICE webbing / chest rig / ERDL tac vest | 120 / 100 / 100 |
+| `V_TacChestrig_grn_F` | 140 |
 | `rhsusf_mbav` (bare carrier — **not** the rifleman one) | 20 |
 | `rhsusf_mbav_light` / `_rifleman` / `_grenadier` / `_mg` / `_medic` | 100 / 140 / 150 / 160 / 160 |
 | `rhsusf_spc_crewman` / `_light` / `_rifleman` / `_iar` | 80 / 100 / 140 / 160 |
+| `rhsusf_spc_sniper` / `_patchless` / `_patchless_radio` / `_squadleader` | 80 / 100 / 140 / 140 |
+| `rhsusf_plateframe_rifleman` / `_marksman` / `_mg` / `_medic` / `_teamleader` | 160 each |
 | ToolKit / Medikit / MineDetector / FirstAidKit | 80 / 80 / 20 / 8 |
 | FAL 20rnd / AK 30rnd polymer / STANAG 30rnd | 16.5 / 11.5 / 9.4 |
+| M14 20rnd M118 / .45 ACP 30rnd SMG / 7.92x33 30rnd StG | 16.2 / 17.5 / 11.7 |
 | PKP 100rnd belt / FN MAG 100rnd belt | 64.4 / 32.3 |
 | RPG PG-7V / PG-7VR / .50 BMG 10rnd | 31.5 / 64.4 / 41.1 |
 | FIM-92 round / 9K38 Igla round | 120 / 100 |
+| RGD-5 / M67 / F1 / Mk 2 pineapple | 6.8 / 8.8 / 13.2 / 13.1 |
+| AN-M8 HC / M18 smoke | 9.0 / 11.9 |
+| RDG-2 / NSP-D (inherited mass, see the note below) | 10 / 10 |
 | `rhsusf_assault_eagleaiii_*` / `rhsgref_hidf_alicepack` / `B_Carryall_cbr` | 240 / 320 / 320 |
+
+The RDG-2 and the NSP-D declare no `mass` of their own, so they inherit
+vanilla `HandGrenade`'s 10. That is the trap: they look like smoke and they
+are read as smoke, but vanilla `SmokeShell` is 4, so budgeting either of them
+at a smoke grenade's weight underestimates it by six, which is most of a
+STANAG. Budget them as frags.
 
 Consequences worth remembering: no vest in the game holds a MANPADS round
 alongside anything else, and no vest holds more than two PKP belts; and the
 engine packs in array order, which is why `PTF_Guardia_at` lists its rockets
 before its rifle magazines.
 
-There are two ways to put gear on a man past what `magazines[]` can reach, and
-they are not interchangeable:
+Past what `magazines[]` can reach there is one mechanism in use:
+**`TransportMagazines` on a backpack class**, declarative, no script, and the
+engine fills the pack at spawn. Every preloaded pack in the addon uses it (see
+verify item 19 for the full list), as does RHS's own
+`rhsgref_hidf_alicepack_mg` (which the Pereño machinegunner wears) with four
+FN MAG belts in it.
 
-- **`TransportMagazines` on a backpack class.** Declarative, no script, and the
-  right answer for spare ammunition. `PTF_B_guardia_pkp` carries the Guardia
-  machinegunner's other three belts this way, and RHS's own
-  `rhsgref_hidf_alicepack_mg` — which the Pereno machinegunner wears — carries
-  four FN MAG belts by the same mechanism.
-- **A `CBA_Extended_EventHandlers` init calling `addItemToBackpack`.** Used only
-  by the two Kestrel AA specialists, because they also need `addWeaponItem` to
-  seat a round in the launcher tube so the AI does not have to survive a reload
-  cycle before it can engage. Guard it on `local` so it runs once, on the
-  machine that owns the unit.
+A second route was tried and retired: a `CBA_Extended_EventHandlers` init
+calling `addItemToBackpack`, used by the two Kestrel AA specialists to seat
+their missile rounds. It worked, but declaring
+`CBA_Extended_EventHandlers_base` in this addon cost ~375 RPT warning lines
+per session against a baseline of one, so the rounds now ride in preloaded
+carryalls (`PTF_B_kestrel_fim92` / `PTF_B_kestrel_igla`) like everyone else's
+spare ammunition.
 
 ## Verify in-game
 
@@ -273,7 +380,7 @@ RHS configs, but the following want eyes on them in the Eden editor:
    most likely thing in layer 3 to not work as intended.
 9. **MANPADS engage.** Fly something over a `MANPADS Team` and confirm they
    actually launch. AI MANPADS behaviour is sensitive to engagement rules and
-   `Batería AA` in particular should be checked with both the ZU-23-2 and the
+   `AA Battery` in particular should be checked with both the ZU-23-2 and the
    Igla pod manned.
 
 10. **Flags render.** Place each of the four flagpoles and confirm the design
@@ -310,11 +417,63 @@ RHS configs, but the following want eyes on them in the Eden editor:
     Kestrel's Stinger pod + crewed P-37 search radar.
 18. **The P-37 radar mans and dies.** Unlike the SERHAT prop it is a real
     crewed vehicle — confirm a gunner sits in it and that it can be killed.
-19. **Guardia machinegunner's belts.** Open his inventory: two 7.62x54R belts
-    in the MBAV carrier and three more in the Eagle A-III on his back. If the
-    pack spawns empty, `TransportMagazines` on `PTF_B_guardia_pkp` is not
-    taking — nothing else in the addon uses that mechanism, so it is the one
-    thing here worth eyes on.
+
+20. **The R-750 / S-750 pair.** Place `SAM Site (R-750 / S-750)` (or both
+    vehicles separately), fly something at altitude, and confirm the S-750
+    launches on tracks the radar feeds it. Then kill the radar and confirm
+    the launcher goes quiet at range. Check both wear the plain olive skin —
+    hex camo anywhere means Eden's appearance randomization re-applied a
+    stock texture source, and the `textureList` override needs a second look.
+    They spawn with UAV AI crew; confirm Zeus shows them under Kestrel and
+    that they read as EAST to BLUFOR sensors.
+
+21. **La Corriente places as INDEPENDENT and obeys setFriend.** Place a
+    `Cartel Patrol` next to a BLUFOR unit with Independent set friendly to
+    everyone and confirm nobody shoots; flip Independent hostile to BLUFOR
+    and confirm they fight. This side behaviour *is* the faction's ROE — if
+    it is wrong, nothing else about the faction matters.
+
+22. **Corriente uniforms actually dress.** The faction leans on vanilla
+    civilian and guerrilla clothing (polo shirts, bandit shirts, `U_BG_*`
+    variants) on the FIA base. A unit spawning in underwear means a uniform
+    class is side-locked away from Independent — the halcón's and boatman's
+    civilian polos are the likeliest offenders. Check Machete's balaclava
+    (a facewear `linkedItems` entry) actually shows too.
+
+23. **The drone layer works.** The `Drone Team`'s operator should carry an
+    assembled-Darter backpack and the Independent UAV terminal; have Zeus (or
+    an AI test) confirm the placeable `Scout Drone (AR-2)` flies with its UAV
+    AI crew and shows under La Corriente. Confirm the SPG-9 technical's
+    gunner mans the gun.
+
+24. **Corriente headgear randomises.** Spawn a `Village Garrison` and
+    confirm the gunmen wear a mix of shemags, caps and bandanas rather than
+    ten copies of the same hat (same mechanism as the Pereño M1 shells —
+    item 3). While it is placed: the two lookouts should read as civilians
+    at a glance, the sicario's balaclava should show under his shemag, and
+    the 2B14 / SPG-9 / DShKM statics in the Support groups should spawn
+    manned by cartel gunmen, not RHS insurgents.
+19. **Every preloaded pack spawns full.** Seven backpacks are filled through
+    `TransportMagazines`, and a failure is silent: the man just spawns with
+    an empty bag. Open each wearer's inventory and check the pack:
+    - Guardia Machine Gunner: Eagle A-III with three 100rnd 7.62x54R belts
+      (`PTF_B_guardia_pkp`); two more belts worn in the MBAV.
+    - Guardia AT Gunner: Eagle A-III with two PG-7VR and one TBG-7V
+      (`PTF_B_guardia_rpg`); one of each worn.
+    - Pereño AT Rifleman: ALICE pack with two PG-7V (`PTF_B_pereno_rpg`);
+      two more worn.
+    - Kestrel Machine Gunner (M249): Eagle A-III with four 100rnd 5.56 soft
+      pouches (`PTF_B_kestrel_m249`); four more worn.
+    - Kestrel AA Specialist (FIM-92): carryall with two Stinger rounds
+      (`PTF_B_kestrel_fim92`).
+    - Kestrel AA Specialist (Igla): carryall with two 9K38 rounds
+      (`PTF_B_kestrel_igla`).
+    - Sindicato Machine Gunner: canvas holdall with two 100rnd 7.62x54R belts
+      (`PTF_B_sind_pkm`); two more worn.
+
+    The Pereño machinegunner's `rhsgref_hidf_alicepack_mg` is RHS's own
+    preloaded pack and ships with four FN MAG belts, worth a glance while
+    you are there.
 
 ## Later passes
 

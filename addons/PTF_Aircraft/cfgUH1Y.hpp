@@ -94,6 +94,31 @@ class PTF_UH1Y : RHS_UH1Y_d
       class CargoTurret_05 : CargoTurret_05{};
       class CargoTurret_06 : CargoTurret_06{};
    };
+   class Components : Components
+   {
+      class TransportPylonsComponent: TransportPylonsComponent
+      {
+         class pylons
+         {
+            class pylon1
+            {
+               hardpoints[] = {"RHS_HP_FFAR_USMC", "RHS_HP_MELB", "DAGR", "DAR"};
+               UIposition[] = {0.573,0.44};
+               maxweight = 1200;
+               priority = 1;
+               attachment = "rhs_mag_M151_7_green";
+               bay = -1;
+               hitpoint = "HitPylon1";
+            };
+            class pylon2: pylon1
+            {
+               UIposition[] = {0.1,0.44};
+               mirroredMissilePos = 1;
+               hitpoint = "HitPylon2";
+            };
+         };
+      };
+   };
    class UserActions: UserActions
    {
       class TogglePIP
@@ -107,7 +132,24 @@ class PTF_UH1Y : RHS_UH1Y_d
          onlyForPlayer = 1;
       };
    };
+   class TransportBackpacks
+   {
+      backpack_xx(B_Parachute,6);
+   };
+   class TransportItems
+	{
+		item_xx(ACE_elasticBandage,15);
+		item_xx(ACE_packingBandage,15);
+		item_xx(ACE_quikclot,15);
+		item_xx(ACE_plasmaIV,3);
+		item_xx(ToolKit,1);
+		item_xx(ACE_rope36,4);
+		item_xx(ACE_splint,4);
+      item_xx(ACE_bodyBag,15);
+      item_xx(ACE_Banana,4);
+	};
 };
+
 class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
 {
    scope = 2;
@@ -185,7 +227,24 @@ class PTF_UH1Y_Unarmed : RHS_UH1Y_UNARMED_d
          onlyForPlayer = 1;
       };
    };
+   class TransportBackpacks
+   {
+      backpack_xx(B_Parachute,6);
+   };
+   class TransportItems
+	{
+		item_xx(ACE_elasticBandage,15);
+		item_xx(ACE_packingBandage,15);
+		item_xx(ACE_quikclot,15);
+		item_xx(ACE_plasmaIV,3);
+		item_xx(ToolKit,1);
+		item_xx(ACE_rope36,4);
+		item_xx(ACE_splint,4);
+      item_xx(ACE_bodyBag,16);
+      item_xx(ACE_Banana,4);
+	};
 };
+
 class PTF_UH1Y_HQ : PTF_UH1Y
 {
    displayName = "UH-1Y (MAG36 HQ) [MAG36]";

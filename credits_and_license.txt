@@ -40,7 +40,10 @@ riku_class_a.pbo
 Mod: Sling Load Rigging
 Author: Ampersand
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2128676112
+Source Code: https://github.com/ampersand38/sling-load-rigging
 License: MIT
+Modified: forked into this repo (addons/slr_main, addons/slr_slingload) with
+multiplayer locality fixes; see addons/slr_slingload/README.md.
 Includes PBO files:
 slr_main.pbo
 slr_slingload.pbo

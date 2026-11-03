@@ -59,3 +59,14 @@ class PTF_Pso_Arsenal : PTF_Standard_Arsenal
       };
    };
 };
+class PTF_Limited_Arsenal : PTF_Standard_Arsenal
+{
+   displayname = "Limited Arsenal [PTF]";
+   class EventHandlers
+   {
+      class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
+      {
+       init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalLimited_init', 0, true]";
+      };
+   };
+};

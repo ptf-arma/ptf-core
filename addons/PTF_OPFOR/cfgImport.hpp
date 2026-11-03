@@ -8,6 +8,10 @@
 // M1 steel helmets, ALICE webbing and L1A1 rifles on the guerrilla m93 model.
 class rhsgref_hidf_base;
 
+// RHS GREF -- the plain HIDF ALICE pack, base of the AT gunner's preloaded
+// rocket pack (PTF_B_pereno_rpg).
+class rhsgref_hidf_alicepack;
+
 // RHS GREF -- soft-skin and armour we rebadge for the garrison motor pool.
 class rhsgref_ins_g_uaz_open;
 class rhsgref_ins_g_uaz_dshkm_chdkz;
@@ -34,8 +38,10 @@ class rhsgref_ins_g_2b14;
 class rhsgref_ins_uniform_specter;
 
 // RHS USAF -- Eagle A-III assault pack in coyote, the base for the
-// machinegunner's belt pack. Coyote because every carrier in the faction is a
-// coyote MBAV; nothing else in La Guardia wears a backpack at all.
+// machinegunner's belt pack and the AT gunner's rocket pack (and the Kestrel
+// machinegunner's belt pack, over in cfgKestrelMen.hpp). Coyote because every
+// carrier in the faction is a coyote MBAV; those two packs are the only
+// backpacks La Guardia wears.
 class rhsusf_assault_eagleaiii_coy;
 
 class rhsgref_ins_g_uaz_ags;
@@ -104,6 +110,13 @@ class rhs_p37_turret_vpvo;
 class RHS_MELB_MH6M;
 class RHS_MELB_AH6M_L;
 
+// Vanilla (Encore) long-range air defence -- the R-750 sensor radar and the
+// S-750 SAM launcher. UAV-crewed autonomous statics; datalink-connected, so
+// the radar genuinely feeds the launcher. Repainted plain olive (the stock
+// skins are CSAT hex camo) -- see LIVERIES.md.
+class O_Radar_System_02_F;
+class O_SAM_System_04_F;
+
 // --- Flags -----------------------------------------------------------------
 // Vanilla military flag mast (Mast_F.p3d), the base every Flag_*_F class
 // inherits. Gives us the pole model and the flag proxy; we only override the
@@ -125,6 +138,14 @@ class RHS_Ural_Civ_01;
 class RHS_Ural_Open_Civ_01;
 class rhsgref_civ_canoe;
 class C_Boat_Transport_02_F;
+
+// --- La Corriente (Operation Undertow) ---------------------------------------
+// The cartel adds only two base classes the addon does not already declare:
+// the SPG-9 gun truck and the vanilla Darter quadcopter. Everything else it
+// fields (armed offroad, civilian trucks, HIDF boat hull, DShKM) is declared
+// above for the Valmeran factions.
+class I_G_Offroad_01_AT_F;
+class I_UAV_01_F;
 
 // --- Valmeran civilians ----------------------------------------------------
 class C_man_sport_1_F_tanoan;
