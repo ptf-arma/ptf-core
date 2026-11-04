@@ -20,11 +20,9 @@
  */
 #define PREFIX "PTF_Uniform_Dress_USMC_A_"
 // Bottom centre of the rack, 1/8 inch above the wearer's left pocket and centred on it,
-// in the frame of the chest bone. tools/dress-review/plate_test logs the bone's axes,
-// which turn a position in the unit's own coordinates into these.
 #define PLATE_BONE "spine3"
-#define PLATE_OFFSET [-0.1032, 0.1484, 0.0319]
-#define PLATE_DIR [0.1625, -0.9836, -0.0831]
+#define PLATE_OFFSET [-0.1056, 0.1148, 0.0321]
+#define PLATE_DIR [0.4116, -0.9081, -0.0793]
 #define PLATE_UP [0.0094, -0.0824, 0.9968]
 // Metres across the plate, which the rack fills. Under the real 4 1/8 inches, because
 // the model's pocket is narrower than a real one and the rack has to keep its proportion.
