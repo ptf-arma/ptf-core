@@ -12,9 +12,10 @@
  */
 params ["_display", ["_rack", "", [""]]];
 
-// Only our own: the stock display has a vignette that must be left alone.
 {ctrlDelete _x} forEach (_display getVariable ["PTF_Dress_pictures", []]);
 private _pictures = [];
+// The stock display's vignette would otherwise show on the plate as a faint square.
+{_x ctrlSetTextColor [0, 0, 0, 0]; _x ctrlSetFade 1; _x ctrlCommit 0} forEach allControls _display;
 
 private _config = configFile >> "CfgPTFDressRibbons";
 private _slots = [];
