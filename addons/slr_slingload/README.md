@@ -26,6 +26,10 @@ Version is 1.1.17.1. Changes, all for multiplayer locality:
 - **Adjusting rope length tracks the target length.** Upstream read
   `ropeLength` straight after sending `ropeUnwind` to the rope's owner, so the
   readout, and the length reused when hooking to an aircraft, were stale.
+- **New ropes can't snap the load into the aircraft.** Hook ropes and ropes
+  recreated on a change of owner go through `createRope`. A rope created
+  shorter than the gap between its ends snaps tight at once, so it starts just
+  long enough to reach, then winds in to its target length at 1 m/s.
 - **Rope takeover is idempotent and re-checked**: a replaced rope is never
   recreated twice, and the machine that created hook ropes checks two seconds
   later that it still owns the aircraft (if not, it asks for a takeover).

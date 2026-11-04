@@ -8,8 +8,15 @@
 // _attached - true for RopeAttach, false for RopeBreak
 params ["_heli", "_rope", "_cargo", "_attached"];
 
-private _slingMass = [_cargo, typeOf _heli] call PTF_fnc_slingWeightFor;
-if (_slingMass < 0) exitWith {};
+// Cargo that opts in has its own tuned weight. Anything else is only touched
+// under an aircraft with an AFM lift factor (see PTF_fnc_slingMassApply).
+private _heliType = typeOf _heli;
+private _optedIn = ([_cargo, _heliType] call PTF_fnc_slingWeightFor) >= 0;
+private _afmFactor = getNumber (configOf _heli >> "PTF_slingMassFactorAFM");
+if (!_optedIn && {_afmFactor <= 0}) exitWith {};
+if (_optedIn) then {_afmFactor = 1};
+
+private _slingMass = [_cargo, _heliType] call PTF_fnc_slingMassFor;
 
 // Which machines raise rope events is not something to depend on, so only a
 // machine that owns one of the three parties speaks. That is at most three
@@ -17,7 +24,7 @@ if (_slingMass < 0) exitWith {};
 if !(local _heli || {local _rope} || {local _cargo}) exitWith {};
 
 if (_attached) exitWith {
-    ["PTF_slingMass_apply", [_cargo, _slingMass], _cargo] call CBA_fnc_targetEvent;
+    ["PTF_slingMass_apply", [_cargo, _slingMass, objNull, _afmFactor], _cargo] call CBA_fnc_targetEvent;
 };
 
 // One rope breaking is not a release: Sling Load Rigging hangs a load on several
