@@ -6,7 +6,7 @@ class CfgPatches
       author = "Paramarine Task Force";
       units[] = {};
       weapons[] = {};
-      requiredVersion = "0.1";
+      requiredVersion = 2.18; // findDisplay by name, displayUpdate, hash maps
       requiredAddons[] =
       {
          "PTF_Main",
@@ -17,6 +17,22 @@ class CfgPatches
       };
    };
 };
+
+class CfgFunctions
+{
+   class PTF_Dress
+   {
+      tag = "PTF_Dress";
+      class Rack
+      {
+         file = "\z\PTF\addons\PTF_Dress\fnc";
+         class rackInit { postInit = 1; };
+         class rackDraw {};
+      };
+   };
+};
+
+#include "cfgRibbons.hpp"
 
 class CfgVehicles
 {
@@ -30,6 +46,8 @@ class CfgVehicles
       model = "\a3\Characters_F_AoW\Uniforms\ParadeUniform_Decorated_01_F";
    };
    #include "cfgRankVehicles.hpp"
+   class Static;
+   #include "cfgRackVehicle.hpp"
 };
 
 class CfgWeapons

@@ -26,6 +26,13 @@ See `credits_and_license.txt` for the terms.
 `ui/` holds the Arsenal icons, made from in-game shots by
 `tools/dress-review/make_icons.py`. Rerun it after changing how a rank looks.
 
-The uniforms have no ribbon rack by default: a rack should only ever be the wearer's
-own. `tools/dress-review/rack_test` shows that one can be drawn per wearer at runtime
-on the same uniform.
+The uniforms have no ribbon rack by default: a rack is only ever the wearer's own. It
+appears when the server runs billet-link 0.13.7 or later and Billet can match them to
+a member (`fnc/fn_rackInit.sqf`).
+
+The rack is a small generated model attached to the chest, shaped to it and sized and placed
+to the order's rule, because the uniform's own ribbon surface is too small and off-centre.
+`tools/dress-review/chest_map` measures the chest it is shaped to.
+
+The ribbon art comes from Billet. After adding an award or changing its art, run
+`tools/fetch-dress-ribbons.py` and then `tools/generate-dress-uniforms.py`.
