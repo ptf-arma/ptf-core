@@ -1,0 +1,90 @@
+[
+  {
+    "id": "9a647efc-1524-4cd4-a8f8-6756ad84be16",
+    "name": "Distinguished Service Medal",
+    "size": [
+      169,
+      56
+    ]
+  },
+  {
+    "id": "4a631871-2418-46e1-a8f1-4651ce1df711",
+    "name": "Silver Star",
+    "size": [
+      200,
+      54
+    ]
+  },
+  {
+    "id": "8acb3af5-2e0e-48b6-aee0-98a5c664cfcc",
+    "name": "Distinguished Flying Cross",
+    "size": [
+      200,
+      55
+    ]
+  },
+  {
+    "id": "7be38b14-e210-4a35-8491-b981bb7f9054",
+    "name": "Navy and Marine Corps Medal",
+    "size": [
+      200,
+      54
+    ]
+  },
+  {
+    "id": "e2c9fdd5-805a-462b-b1d5-e637dc67eb9f",
+    "name": "Bronze Star",
+    "size": [
+      200,
+      54
+    ]
+  },
+  {
+    "id": "112914ec-5171-43ca-824e-5f5c960b2531",
+    "name": "Meritorious Service Medal",
+    "size": [
+      169,
+      56
+    ]
+  },
+  {
+    "id": "169f1a68-a2f6-4ef1-b11d-bd0e07b614d5",
+    "name": "Air Medal",
+    "size": [
+      200,
+      55
+    ]
+  },
+  {
+    "id": "ef358cdf-ad58-4870-a6dc-04eefb5f56c6",
+    "name": "Navy and Marine Corps Commendation Medal",
+    "size": [
+      169,
+      56
+    ]
+  },
+  {
+    "id": "9d7adc44-b9fe-43e3-8ebb-dd03acbbabe5",
+    "name": "Navy and Marine Corps Achievement Medal",
+    "size": [
+      200,
+      54
+    ]
+  },
+  {
+    "id": "7f1b24ce-e616-424b-9bcb-ed026c10c223",
+    "name": "Combat Action Ribbon",
+    "size": [
+      169,
+      56
+    ]
+  },
+  {
+    "id": "26c452af-b3c5-49ef-b48d-56fa895f87c0",
+    "name": "Good Conduct Medal",
+    "size": [
+      200,
+      54
+    ]
+  }
+]

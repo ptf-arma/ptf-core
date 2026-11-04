@@ -26,6 +26,10 @@ See `credits_and_license.txt` for the terms.
 `ui/` holds the Arsenal icons, made from in-game shots by
 `tools/dress-review/make_icons.py`. Rerun it after changing how a rank looks.
 
-Ribbon racks are fixed per grade group, in `RIBBON_RACKS`, and show a plausible set
-rather than anyone's real record. `tools/dress-review/rack_test` shows that a rack can
-instead be drawn per wearer at runtime on the same uniform.
+Ribbon racks show the wearer's real ribbons when the server runs billet-link 0.13.7 or
+later and Billet can match them to a member (`fnc/fn_rackInit.sqf`). Otherwise the
+uniform keeps a default rack, fixed per grade group in `RIBBON_RACKS`, which is a
+plausible set rather than anyone's record.
+
+The ribbon art comes from Billet. After adding an award or changing its art, run
+`tools/fetch-dress-ribbons.py` and then `tools/generate-dress-uniforms.py`.
