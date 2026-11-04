@@ -297,6 +297,31 @@ private _backpacks = [
 ];
 
 private _uniforms = [
+	"PTF_Uniform_Dress_USMC_A_Pvt",
+	"PTF_Uniform_Dress_USMC_A_PFC",
+	"PTF_Uniform_Dress_USMC_A_LCpl",
+	"PTF_Uniform_Dress_USMC_A_Cpl",
+	"PTF_Uniform_Dress_USMC_A_Sgt",
+	"PTF_Uniform_Dress_USMC_A_SSgt",
+	"PTF_Uniform_Dress_USMC_A_GySgt",
+	"PTF_Uniform_Dress_USMC_A_HR",
+	"PTF_Uniform_Dress_USMC_A_HA",
+	"PTF_Uniform_Dress_USMC_A_HN",
+	"PTF_Uniform_Dress_USMC_A_HM3",
+	"PTF_Uniform_Dress_USMC_A_HM2",
+	"PTF_Uniform_Dress_USMC_A_HM1",
+	"PTF_Uniform_Dress_USMC_A_HMC",
+	"PTF_Uniform_Dress_USMC_A_WO1",
+	"PTF_Uniform_Dress_USMC_A_CWO2",
+	"PTF_Uniform_Dress_USMC_A_CWO3",
+	"PTF_Uniform_Dress_USMC_A_CWO4",
+	"PTF_Uniform_Dress_USMC_A_CWO5",
+	"PTF_Uniform_Dress_USMC_A_2ndLt",
+	"PTF_Uniform_Dress_USMC_A_1stLt",
+	"PTF_Uniform_Dress_USMC_A_Capt",
+	"PTF_Uniform_Dress_USMC_A_Maj",
+	"PTF_Uniform_Dress_USMC_A_LtCol",
+	"PTF_Uniform_Dress_USMC_A_Col",
 	"PTF_Uniform_Infantry_FROG_D",
 	"PTF_Uniform_Infantry_FROG_S",
 	"PTF_Uniform_Infantry_FROG_WD",
@@ -365,6 +390,9 @@ private _vests = [
 ];
 
 private _helmets = [
+	"PTF_Headgear_Dress_USMC_Cover",
+	"PTF_Headgear_Dress_USMC_Cover_Officer",
+	"PTF_Headgear_Dress_USMC_Cover_Field",
 	"PTF_Helmet_Infantry_Mich2000_norotos_WD",
 	"PTF_Helmet_Infantry_Mich2000_norotos_S",
 	"PTF_Helmet_Infantry_Mich2000_norotos_D",
