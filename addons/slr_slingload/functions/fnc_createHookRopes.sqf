@@ -33,7 +33,7 @@ private _ropes4Hook = _heli getVariable [_cargoHookName, []];
 private _ropes4Cargo = _cargo getVariable [QGVAR(ropes4Cargo), []];
 {
     private _length = _lengths param [_forEachIndex, 10];
-    private _rope = ropeCreate [_heli, _cargoHookPosition, _cargo, _x, _length, ["", [0,0,-1]], ["RopeEnd", [0,0,-11]]];
+    private _rope = [_heli, _cargoHookPosition, _cargo, _x, _length, [0,0,-11]] call FUNC(createRope);
     if (isNull _rope) then {continue};
 
     _rope setVariable [QGVAR(point4Rope), _x, true];

@@ -2,7 +2,15 @@
 class Box_NATO_Equip_F;
 //Boxloader
 class Boxloader_SmallPallet_Ammo;
-class Boxloader_Ammo_West;
+class ReammoBox_F;
+class Slingload_base_F: ReammoBox_F {
+	class ACE_Actions;
+};
+class Boxloader_Ammo_West: Slingload_base_F {
+	class ACE_Actions: ACE_Actions {
+		class ACE_MainActions;
+	};
+};
 //Huron Containers
 class B_Slingload_01_Ammo_F;
 class B_Slingload_01_Cargo_F;

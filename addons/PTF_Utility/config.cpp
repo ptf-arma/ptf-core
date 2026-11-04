@@ -48,6 +48,7 @@ class CfgPatches
           "boxloader_tractor",
           "ace_main",
           "ace_arsenal",
+          "ace_interaction", // ACE_Actions on the large crates
           "A3_Supplies_F_Heli",
           "A3_Props_F_Enoch",
           "boxloader_fort",
