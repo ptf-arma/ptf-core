@@ -57,8 +57,9 @@ def daylight(*rgb, gain=GAIN_COAT):
     return np.array(rgb, float) / gain
 
 
-# Shade picked by eye in game from three candidates.
-GREEN = daylight(80, 78, 58)
+# Darkened from the shade first picked by eye (80, 78, 58): the coats in the order's
+# photographs measure 60 to 75, against 100 to 130 in game.
+GREEN = daylight(60, 58.5, 43.5)
 KHAKI = daylight(190, 165, 135)
 # Metal and saturated cloth did not follow the fabric's gain, so these were set
 # from what earlier builds rendered as rather than from the formula.
@@ -950,9 +951,9 @@ def build_decor(tools: Tools):
     xy = upscale(nohq[..., :2] - 128.0, size)
     spec = upscale(smdi, size)
 
-    # Measured beside the buckle in game: the same value rendered about 8% darker and
-    # a little greyer here than on the coat.
-    cloth = GREEN * np.array((1.08, 1.08, 1.03))
+    # Measured beside the buckle in game: the same value renders darker and greener here
+    # than on the coat.
+    cloth = GREEN * np.array((1.2, 1.1, 1.08))
     grain = cloth_grain(size, 2040)
     height = np.zeros(size)
     h, w = size
