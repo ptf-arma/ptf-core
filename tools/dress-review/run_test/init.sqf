@@ -19,8 +19,8 @@ private _start = getPosATL player;
 _start set [2, 0];
 
 // An AI, because a player with no input drops straight out of a run. fn_rackInit only
-// handles players, so this makes the same plate with the same values, and the mod's own
-// functions draw the rack on it. Keep these in step with fn_rackInit.
+// handles players, so this attaches the same model the same way, and the mod's own function
+// fills it.
 private _group = createGroup [west, true];
 dress_subject = _group createUnit ["B_Soldier_F", _start, [], 0, "CAN_COLLIDE"];
 dress_subject setPosATL _start;
@@ -43,11 +43,10 @@ private _ids = ("true" configClasses (configFile >> "CfgPTFDressRibbons")) apply
     (((configName _x) select [2]) splitString "_") joinString "-"
 };
 private _rack = ([0, 1, 2, 4, 8, 10] apply {format ["%1:1", _ids select _x]}) joinString ",";
-private _plate = createVehicleLocal ["UserTexture1m_F", _start];
-_plate attachTo [dress_subject, [-0.1056, 0.1148, 0.0321], "spine3", true];
-_plate setVectorDirAndUp [[0.4116, -0.9081, -0.0793], [0.0094, -0.0824, 0.9968]];
-_plate setObjectScale 0.092;
-_plate setObjectTexture [0, [_rack] call PTF_Dress_fnc_rackTexture];
+private _plate = createVehicleLocal ["PTF_Dress_Rack", _start];
+_plate attachTo [dress_subject, getArray (configFile >> "CfgPTFDressRibbons" >> "offset"), "spine3", true];
+_plate setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
+[_plate, _rack] call PTF_Dress_fnc_rackDraw;
 
 dress_cam = "camera" camCreate _start;
 dress_cam cameraEffect ["internal", "back"];

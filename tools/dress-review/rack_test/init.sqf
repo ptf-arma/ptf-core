@@ -69,7 +69,9 @@ private _shot = {
     ["two", ([[8, 1], [10, 1]] apply {_x call _pair}) joinString ","],
     ["four", ([[1, 1], [4, 1], [8, 1], [10, 1]] apply {_x call _pair}) joinString ","],
     ["devices", ([[4, 2], [8, 3], [10, 7]] apply {_x call _pair}) joinString ","],
-    ["six", ([[0, 1], [1, 1], [2, 1], [4, 1], [8, 1], [10, 1]] apply {_x call _pair}) joinString ","]
+    ["six", ([[0, 1], [1, 1], [2, 1], [4, 1], [8, 1], [10, 1]] apply {_x call _pair}) joinString ","],
+    ["all", ((_ids apply {[_ids find _x, 1]}) apply {_x call _pair}) joinString ","],
+    ["six2", ([[0, 1], [1, 1], [2, 1], [4, 1], [8, 1], [10, 1]] apply {_x call _pair}) joinString ","]
 ];
 
 // Where it sits, from the side and front, in poses and light it has to survive.

@@ -96,6 +96,7 @@ def main():
     ap.add_argument("--settle", type=float, default=1.5)
     ap.add_argument("--no-build", action="store_true", help="reuse the last hemtt build")
     ap.add_argument("--timeout", type=int, default=420)
+    ap.add_argument("--extra-mod", help="another mod folder to load, such as billet-link")
     ap.add_argument("--script", help="run tools/dress-review/<name>/init.sqf as the mission")
     ap.add_argument("--icons", action="store_true", help="shoot the Arsenal icon source images, needs --cap")
     ap.add_argument("--demo", action="store_true", help="run the posed lineup mission instead of the rank review")
@@ -112,7 +113,7 @@ def main():
 
     started = time.time()
     proc = subprocess.Popen(
-        [str(GAME / "arma3_x64.exe"), f"-mod={WORK / '@ptf_dress_review'}", f"-autotest={cfg}",
+        [str(GAME / "arma3_x64.exe"), f"-mod={WORK / '@ptf_dress_review'}" + (f";{args.extra_mod}" if args.extra_mod else ""), f"-autotest={cfg}",
          "-skipIntro", "-noSplash", "-world=empty", "-noPause", "-showScriptErrors",
          "-window", "-posX=0", "-posY=0"],
         cwd=GAME)

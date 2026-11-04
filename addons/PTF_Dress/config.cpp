@@ -27,7 +27,6 @@ class CfgFunctions
       {
          file = "\z\PTF\addons\PTF_Dress\fnc";
          class rackInit { postInit = 1; };
-         class rackTexture {};
          class rackDraw {};
       };
    };
@@ -47,6 +46,8 @@ class CfgVehicles
       model = "\a3\Characters_F_AoW\Uniforms\ParadeUniform_Decorated_01_F";
    };
    #include "cfgRankVehicles.hpp"
+   class Static;
+   #include "cfgRackVehicle.hpp"
 };
 
 class CfgWeapons
