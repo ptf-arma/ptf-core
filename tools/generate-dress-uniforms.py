@@ -50,8 +50,10 @@ SS = 4  # insignia supersampling
 # lot by map and time of day, so judge colour only in daylight on real terrain.
 GAIN_COAT = 2.75
 # Direct sun washes cloth out at full strength, far more than the shaded side, so
-# the cloth materials respond less to it. Lower means flatter light and shade.
-CLOTH_DIFFUSE = 0.6
+# the cloth materials respond less to it. Lower means flatter light and shade. The model's
+# coat front has a hard edge down its centre, which higher values turn into two halves of
+# visibly different colour.
+CLOTH_DIFFUSE = 0.3
 
 
 def daylight(*rgb, gain=GAIN_COAT):
@@ -66,10 +68,11 @@ KHAKI = daylight(190, 165, 135)
 # Metal and saturated cloth did not follow the fabric's gain, so these were set
 # from what earlier builds rendered as rather than from the formula.
 BRASS = (78, 66, 38)
-SCARLET = (48, 10, 12)
-INSIGNIA_GREEN = (18, 19, 12)
-SILVER = (50, 51, 52)
-GOLD = (88, 72, 36)
+# Scarlet and green are set well apart in brightness. Hue alone blurs away at a distance.
+SCARLET = (88, 13, 15)
+INSIGNIA_GREEN = (11, 13, 7)
+SILVER = (70, 71, 73)
+GOLD = (112, 90, 42)
 PIN_BLACK = (9, 9, 9)
 # Navy grade insignia on the Marine service coat is blue on green (para 8000). Very
 # low and barely saturated, since the game brightens saturated colours a long way.
@@ -974,7 +977,7 @@ def build_decor(tools: Tools):
 
     # Measured beside the buckle in game: the same value renders darker and greener here
     # than on the coat.
-    cloth = GREEN * np.array((1.2, 1.1, 1.08))
+    cloth = GREEN * np.array((1.2, 1.1, 1.115))
     grain = cloth_grain(size, 2040)
     height = np.zeros(size)
     h, w = size
@@ -1057,8 +1060,8 @@ def build_decor(tools: Tools):
     # Black plastic buttons, near matte. Vanilla's relief is the Army's Great Seal, so
     # it is replaced with a domed face, a rim and the emblem.
     bdisc = upscale(disc.astype(float), size) > 0.5
-    spec[bdisc, 1] = 5
-    spec[bdisc, 2] = 30
+    spec[bdisc, 1] = 1
+    spec[bdisc, 2] = 12
     cx, cy, rx, ry = (v * k for v in COAT_BUTTON)
     gy_b, gx_b = np.mgrid[cy - ry:cy + ry, cx - rx:cx + rx]
     d2 = ((gx_b - cx) / rx) ** 2 + ((gy_b - cy) / ry) ** 2
@@ -1156,7 +1159,7 @@ def build_caps(tools: Tools):
     s_arr = np.asarray(spray, float)
     field = officer.copy()
     s_alpha = s_arr[..., 3:] / 255
-    field[vy0:vy1, vx0:vx1] = field[vy0:vy1, vx0:vx1] * (1 - s_alpha) + s_arr[..., :3] * 0.36 * s_alpha
+    field[vy0:vy1, vx0:vx1] = field[vy0:vy1, vx0:vx1] * (1 - s_alpha) + s_arr[..., :3] * np.array([0.27, 0.24, 0.22]) * s_alpha
 
     colours = {"": np.dstack([colour, alpha]), "_officer": np.dstack([officer, alpha]), "_field": np.dstack([field, alpha])}
     return colours, {"": normals_from(xy), "_officer": normals_from(officer_xy)}, spec
