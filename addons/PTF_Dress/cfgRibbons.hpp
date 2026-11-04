@@ -2,6 +2,7 @@
 class CfgPTFDressRibbons
 {
    background[] = {0.2640, 0.2620, 0.2100, 1};
+   material = "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat";
    device_gold = "\z\PTF\addons\PTF_Dress\data\ptf_dress_device_gold_ca.paa";
    device_silver = "\z\PTF\addons\PTF_Dress\data\ptf_dress_device_silver_ca.paa";
    class r_9a647efc_1524_4cd4_a8f8_6756ad84be16

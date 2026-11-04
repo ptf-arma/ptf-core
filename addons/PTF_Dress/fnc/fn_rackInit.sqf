@@ -11,7 +11,7 @@
  * that can't be observed for other players.
  *
  * With no billet-link, or for anyone Billet can't match to a member, nothing is
- * published and the uniform keeps its config's default rack.
+ * published and the uniform shows no rack: a rack is only ever the wearer's own.
  */
 #define PREFIX "PTF_Uniform_Dress_USMC_A_"
 #define RIBBON_SELECTION 3
@@ -44,13 +44,16 @@ if (hasInterface) then {
             {
                 private _rack = missionNamespace getVariable ("blk_rack_" + getPlayerUID _x);
                 if (!isNil "_rack" && {(uniform _x find PREFIX) == 0}) then {
-                    // Grades with no default rack have the selection hidden by config,
-                    // which is what someone with no ribbons should look like anyway.
-                    private _default = (getArray (configFile >> "CfgVehicles" >> getText (configFile >> "CfgWeapons" >> uniform _x >> "ItemInfo" >> "uniformClass") >> "hiddenSelectionsTextures")) param [RIBBON_SELECTION, ""];
-                    if (_rack != "" || {_default != ""}) then {
+                    // Nobody with no ribbons needs anything done: config hides the rack.
+                    // Someone whose last ribbon was removed is drawn as bare cloth.
+                    private _current = (getObjectTextures _x) param [RIBBON_SELECTION, ""];
+                    if (_rack != "" || {_current != ""}) then {
                         private _texture = [_rack] call PTF_Dress_fnc_rackTexture;
-                        if ((getObjectTextures _x) param [RIBBON_SELECTION, ""] != _texture) then {
+                        if (_current != _texture) then {
                             _x setObjectTexture [RIBBON_SELECTION, _texture];
+                            // Set only here: on the config, a material alone brings back
+                            // the model's vanilla ribbons on a hidden rack.
+                            _x setObjectMaterial [RIBBON_SELECTION, getText (configFile >> "CfgPTFDressRibbons" >> "material")];
                         };
                     };
                 };
