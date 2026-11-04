@@ -26,6 +26,6 @@ See `credits_and_license.txt` for the terms.
 `ui/` holds the Arsenal icons, made from in-game shots by
 `tools/dress-review/make_icons.py`. Rerun it after changing how a rank looks.
 
-Ribbon racks are fixed per grade group, in `RIBBON_RACKS`, and show a plausible set
-rather than anyone's real record. `tools/dress-review/rack_test` shows that a rack can
-instead be drawn per wearer at runtime on the same uniform.
+The uniforms have no ribbon rack by default: a rack should only ever be the wearer's
+own. `tools/dress-review/rack_test` shows that one can be drawn per wearer at runtime
+on the same uniform.

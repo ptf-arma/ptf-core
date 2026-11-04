@@ -141,86 +141,43 @@ CAP_CROWN = (256, 265, 248)  # centre and radius of the crown's top
 CAP_CROWN_ROTATION = -12
 CAP_VISOR = (505, 340, 890, 535)
 
-# Ribbons, as (colour, width) stripes left-to-right. NDSM, Sea Service Deployment and
-# Marine Good Conduct take their colours and widths from the diagrams on Wikimedia
-# Commons. GWOT has the right colours and approximate widths. Navy Good Conduct is
-# all red by written description. Commendation and Achievement are from memory, as
-# their diagrams could not be fetched. Checked against no SECNAV reference.
-_SC, _WH, _NV, _YL = (186, 12, 47), (255, 255, 255), (1, 33, 105), (255, 205, 0)
-_DN, _GD, _TL, _LB = (4, 30, 66), (226, 180, 30), (0, 62, 81), (0, 142, 170)
-_MR, _GN, _OR = (111, 38, 61), (20, 85, 60), (205, 110, 40)
+def _enlisted(name, chevrons=0, rifles=True, rockers=0, stripes=0):
+    return {"name": name, "chevrons": chevrons, "rifles": rifles, "rockers": rockers, "stripes": stripes}
 
 
-def _mirror(*half):
-    return list(half) + list(half[-2::-1])
+def _navy(name, kind, count, rocker=False, striker=False, stripes=0):
+    return {"name": name, "navy": (kind, count, rocker, striker), "stripes": stripes}
 
 
-RIBBON_DEFS = {
-    "mc_good_conduct": [(_MR, 418.4), (_DN, 187.2), (_MR, 418.4)],
-    "navy_good_conduct": [(_SC, 1)],
-    "ndsm": _mirror((_SC, 324.75), (_WH, 23.4), (_NV, 23.4), (_WH, 23.4), (_YL, 187.25)),
-    "gwotsm": _mirror((_NV, 8), (_YL, 34), (_SC, 5), (_WH, 3), (_NV, 5)),
-    "ssdr": _mirror((_DN, 114.1), (_SC, 117), (_GD, 117), (_TL, 70.2), (_LB, 187.2)),
-    "nam": [(_OR, 10), (_GN, 80), (_OR, 10)],
-    "ncm": [(_GN, 12), (_WH, 16), (_GN, 44), (_WH, 16), (_GN, 12)],
-}
-# The rack renders darker than the coat for the same texture value, and silk should
-# not outshine the cloth it sits on. Set by comparing the two in game.
-RIBBON_BACKGROUND = 1.6
-RIBBON_LEVEL = 0.62
-# Rack layout on the vanilla ribbon sheet, in fractions of it. Three ribbons to a row,
-# with a short row on top and centred, senior ribbon first. Which ribbons each rack
-# holds is a plausible set for the grade, not anyone's real record.
-RACK_ROWS = [(0.424, 0.703), (0.703, 1.0)]
-RIBBON_RACKS = {
-    "junior": ["ndsm", "gwotsm"],
-    "nco": ["mc_good_conduct", "ndsm", "gwotsm"],
-    "snco": ["nam", "mc_good_conduct", "ndsm", "gwotsm", "ssdr"],
-    "hm_nco": ["navy_good_conduct", "ndsm", "gwotsm"],
-    "hm_snco": ["nam", "navy_good_conduct", "ndsm", "gwotsm", "ssdr"],
-    "officer_junior": ["ndsm", "gwotsm", "ssdr"],
-    "officer": ["ncm", "nam", "ndsm", "gwotsm", "ssdr"],
-}
-
-
-def _enlisted(name, chevrons=0, rifles=True, rockers=0, stripes=0, rack="junior"):
-    return {"name": name, "chevrons": chevrons, "rifles": rifles, "rockers": rockers,
-            "stripes": stripes, "rack": rack}
-
-
-def _navy(name, kind, count, rocker=False, striker=False, stripes=0, rack="junior"):
-    return {"name": name, "navy": (kind, count, rocker, striker), "stripes": stripes, "rack": rack}
-
-
-def _officer(name, kind, colour, count=1, rack="officer"):
-    return {"name": name, "metal": (kind, colour, count), "rack": rack}
+def _officer(name, kind, colour, count=1):
+    return {"name": name, "metal": (kind, colour, count)}
 
 
 # The ranks PTF actually uses. Service stripe counts are typical time in grade at
-# one stripe per four years, not a rule from the order. Pvt and PFC have no rack.
+# one stripe per four years, not a rule from the order.
 RANKS = {
-    "Pvt": _enlisted("Private (E-1)", rack=None),
-    "PFC": _enlisted("Private First Class (E-2)", 1, rifles=False, rack=None),
+    "Pvt": _enlisted("Private (E-1)"),
+    "PFC": _enlisted("Private First Class (E-2)", 1, rifles=False),
     "LCpl": _enlisted("Lance Corporal (E-3)", 1),
     "Cpl": _enlisted("Corporal (E-4)", 2),
-    "Sgt": _enlisted("Sergeant (E-5)", 3, stripes=1, rack="nco"),
-    "SSgt": _enlisted("Staff Sergeant (E-6)", 3, rockers=1, stripes=2, rack="snco"),
-    "GySgt": _enlisted("Gunnery Sergeant (E-7)", 3, rockers=2, stripes=3, rack="snco"),
+    "Sgt": _enlisted("Sergeant (E-5)", 3, stripes=1),
+    "SSgt": _enlisted("Staff Sergeant (E-6)", 3, rockers=1, stripes=2),
+    "GySgt": _enlisted("Gunnery Sergeant (E-7)", 3, rockers=2, stripes=3),
     # NAVPERS 15665: paygrade E-1 wears no group rate mark.
-    "HR": _navy("Hospitalman Recruit (HR)", "group", 0, rack=None),
-    "HA": _navy("Hospitalman Apprentice (HA)", "group", 2, striker=True, rack=None),
+    "HR": _navy("Hospitalman Recruit (HR)", "group", 0),
+    "HA": _navy("Hospitalman Apprentice (HA)", "group", 2, striker=True),
     "HN": _navy("Hospitalman (HN)", "group", 3, striker=True),
     "HM3": _navy("Hospital Corpsman 3rd Class (HM3)", "crow", 1),
-    "HM2": _navy("Hospital Corpsman 2nd Class (HM2)", "crow", 2, stripes=1, rack="hm_nco"),
-    "HM1": _navy("Hospital Corpsman 1st Class (HM1)", "crow", 3, stripes=2, rack="hm_snco"),
-    "HMC": _navy("Chief Hospital Corpsman (HMC)", "crow", 3, rocker=True, stripes=3, rack="hm_snco"),
-    "WO1": _officer("Warrant Officer (W-1)", "warrant", GOLD, "two", "officer_junior"),
-    "CWO2": _officer("Chief Warrant Officer 2 (W-2)", "warrant", GOLD, "three", "officer_junior"),
+    "HM2": _navy("Hospital Corpsman 2nd Class (HM2)", "crow", 2, stripes=1),
+    "HM1": _navy("Hospital Corpsman 1st Class (HM1)", "crow", 3, stripes=2),
+    "HMC": _navy("Chief Hospital Corpsman (HMC)", "crow", 3, rocker=True, stripes=3),
+    "WO1": _officer("Warrant Officer (W-1)", "warrant", GOLD, "two"),
+    "CWO2": _officer("Chief Warrant Officer 2 (W-2)", "warrant", GOLD, "three"),
     "CWO3": _officer("Chief Warrant Officer 3 (W-3)", "warrant", SILVER, "two"),
     "CWO4": _officer("Chief Warrant Officer 4 (W-4)", "warrant", SILVER, "three"),
     "CWO5": _officer("Chief Warrant Officer 5 (W-5)", "warrant", SILVER, "stripe"),
-    "2ndLt": _officer("Second Lieutenant (O-1)", "bars", GOLD, rack="officer_junior"),
-    "1stLt": _officer("First Lieutenant (O-2)", "bars", SILVER, rack="officer_junior"),
+    "2ndLt": _officer("Second Lieutenant (O-1)", "bars", GOLD),
+    "1stLt": _officer("First Lieutenant (O-2)", "bars", SILVER),
     "Capt": _officer("Captain (O-3)", "bars", SILVER, 2),
     "Maj": _officer("Major (O-4)", "oak", GOLD),
     "LtCol": _officer("Lieutenant Colonel (O-5)", "oak", SILVER),
@@ -1208,31 +1165,6 @@ def build_suitpack(tools: Tools) -> np.ndarray:
     return out
 
 
-def build_ribbons(rack) -> np.ndarray:
-    W, H = 1024, 256
-    # The rack geometry is a full rectangle, so space around a short top row has to
-    # look like the coat rather than black.
-    img = np.ones((H, W, 3), float) * GREEN * RIBBON_BACKGROUND
-    bottom = rack[-3:]
-    top = rack[:-3]
-    for (ry0, ry1), row in zip(RACK_ROWS, (top, bottom)):
-        for i, name in enumerate(row):
-            cx0 = 0.5 + (i - len(row) / 2) / 3
-            x0, x1, y0, y1 = int(cx0 * W), int((cx0 + 1 / 3) * W), int(ry0 * H), int(ry1 * H)
-            stripes = RIBBON_DEFS[name]
-            total = sum(s[1] for s in stripes)
-            x = float(x0)
-            for colour, width in stripes:
-                nx = x + (x1 - x0) * width / total
-                img[y0:y1, int(x):int(nx) + 1] = colour
-                x = nx
-            # silk rib, plus a dark gap between neighbouring ribbons
-            img[y0:y1, x0:x1] *= RIBBON_LEVEL * (0.93 + 0.07 * np.sin(np.arange(y1 - y0) * 2.2))[:, None, None]
-            img[y0:y1, x0:x0 + 2] *= 0.55
-            img[y0:y0 + 2, x0:x1] *= 0.7
-    return img
-
-
 def build_detail() -> np.ndarray:
     """Tiling fine grain for close-up cloth. Averages 0.5, so brightness is untouched."""
     v = 128 + noise((1024, 1024), 0.8, 1020) * 3 + noise((1024, 1024), 6, 1021) * 1
@@ -1246,11 +1178,6 @@ def write_config(ranks):
     for ab in ranks:
         s = RANKS[ab]
         low = ab.lower()
-        # An empty entry hides the ribbon rack on ranks that have none.
-        ribbon = "\\" + data_path(f"ptf_dress_usmc_ribbons_{s['rack']}_co.paa") if s["rack"] else ""
-        # Vanilla's material lights the rack differently, so its background stood out
-        # from the coat as a dark box.
-        ribbon_mat = "\\" + data_path("ptf_dress_usmc_ribbons.rvmat") if s["rack"] else ""
         veh.append(f"""class PTF_Dress_USMC_A_{ab}_Unit : PTF_Dress_USMC_A_Base
 {{
    scope = 1;
@@ -1260,7 +1187,7 @@ def write_config(ranks):
       "\\{data_path(f'ptf_dress_usmc_a_{low}_co.paa')}",
       "",
       "\\{data_path('ptf_dress_usmc_decor_co.paa')}",
-      "{ribbon}",
+      "",
       ""
    }};
    hiddenSelectionsMaterials[] =
@@ -1268,7 +1195,9 @@ def write_config(ranks):
       "\\{data_path(f'ptf_dress_usmc_a_{low}.rvmat')}",
       "",
       "\\{data_path('ptf_dress_usmc_decor.rvmat')}",
-      "{ribbon_mat}"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    }};
 }};
 """)
@@ -1328,13 +1257,6 @@ def main():
                 data_path("ptf_dress_usmc_cover_smdi.paa"), dt_tile=4, power=120, env=r"a3\data_f\env_land_co.paa"), newline="\n")
 
         tools.save(build_suitpack(tools), "ptf_dress_usmc_suitpack_co")
-        print("Ribbons:")
-        (DATA / "ptf_dress_usmc_ribbons.rvmat").write_text(rvmat(
-            "#(argb,8,8,3)color(1,0.1,0.1,0.12,TI)", "#(argb,8,8,3)color(0.5,0.5,1,1,NOHQ)",
-            "#(argb,8,8,3)color(0.5,0.5,0.5,1,DT)", "#(argb,8,8,3)color(1,0.03,0.1,1,SMDI)"), newline="\n")
-        for rack, names in RIBBON_RACKS.items():
-            tools.save(build_ribbons(names), f"ptf_dress_usmc_ribbons_{rack}_co")
-
         print("Ranks:")
         for ab in args.ranks:
             low = ab.lower()

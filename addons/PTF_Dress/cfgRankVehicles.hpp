@@ -16,6 +16,8 @@ class PTF_Dress_USMC_A_Pvt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_pvt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
       ""
    };
 };
@@ -37,6 +39,8 @@ class PTF_Dress_USMC_A_PFC_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_pfc.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
       ""
    };
 };
@@ -50,7 +54,7 @@ class PTF_Dress_USMC_A_LCpl_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_lcpl_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -58,7 +62,9 @@ class PTF_Dress_USMC_A_LCpl_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_lcpl.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -71,7 +77,7 @@ class PTF_Dress_USMC_A_Cpl_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cpl_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -79,7 +85,9 @@ class PTF_Dress_USMC_A_Cpl_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cpl.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -92,7 +100,7 @@ class PTF_Dress_USMC_A_Sgt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_sgt_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_nco_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -100,7 +108,9 @@ class PTF_Dress_USMC_A_Sgt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_sgt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -113,7 +123,7 @@ class PTF_Dress_USMC_A_SSgt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_ssgt_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_snco_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -121,7 +131,9 @@ class PTF_Dress_USMC_A_SSgt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_ssgt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -134,7 +146,7 @@ class PTF_Dress_USMC_A_GySgt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_gysgt_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_snco_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -142,7 +154,9 @@ class PTF_Dress_USMC_A_GySgt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_gysgt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -163,6 +177,8 @@ class PTF_Dress_USMC_A_HR_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hr.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
       ""
    };
 };
@@ -184,6 +200,8 @@ class PTF_Dress_USMC_A_HA_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_ha.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
       ""
    };
 };
@@ -197,7 +215,7 @@ class PTF_Dress_USMC_A_HN_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hn_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -205,7 +223,9 @@ class PTF_Dress_USMC_A_HN_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hn.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -218,7 +238,7 @@ class PTF_Dress_USMC_A_HM3_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hm3_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -226,7 +246,9 @@ class PTF_Dress_USMC_A_HM3_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hm3.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -239,7 +261,7 @@ class PTF_Dress_USMC_A_HM2_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hm2_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_hm_nco_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -247,7 +269,9 @@ class PTF_Dress_USMC_A_HM2_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hm2.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -260,7 +284,7 @@ class PTF_Dress_USMC_A_HM1_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hm1_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_hm_snco_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -268,7 +292,9 @@ class PTF_Dress_USMC_A_HM1_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hm1.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -281,7 +307,7 @@ class PTF_Dress_USMC_A_HMC_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hmc_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_hm_snco_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -289,7 +315,9 @@ class PTF_Dress_USMC_A_HMC_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_hmc.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -302,7 +330,7 @@ class PTF_Dress_USMC_A_WO1_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_wo1_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -310,7 +338,9 @@ class PTF_Dress_USMC_A_WO1_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_wo1.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -323,7 +353,7 @@ class PTF_Dress_USMC_A_CWO2_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo2_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -331,7 +361,9 @@ class PTF_Dress_USMC_A_CWO2_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo2.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -344,7 +376,7 @@ class PTF_Dress_USMC_A_CWO3_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo3_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -352,7 +384,9 @@ class PTF_Dress_USMC_A_CWO3_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo3.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -365,7 +399,7 @@ class PTF_Dress_USMC_A_CWO4_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo4_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -373,7 +407,9 @@ class PTF_Dress_USMC_A_CWO4_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo4.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -386,7 +422,7 @@ class PTF_Dress_USMC_A_CWO5_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo5_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -394,7 +430,9 @@ class PTF_Dress_USMC_A_CWO5_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_cwo5.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -407,7 +445,7 @@ class PTF_Dress_USMC_A_2ndLt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_2ndlt_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -415,7 +453,9 @@ class PTF_Dress_USMC_A_2ndLt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_2ndlt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -428,7 +468,7 @@ class PTF_Dress_USMC_A_1stLt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_1stlt_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_junior_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -436,7 +476,9 @@ class PTF_Dress_USMC_A_1stLt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_1stlt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -449,7 +491,7 @@ class PTF_Dress_USMC_A_Capt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_capt_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -457,7 +499,9 @@ class PTF_Dress_USMC_A_Capt_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_capt.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -470,7 +514,7 @@ class PTF_Dress_USMC_A_Maj_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_maj_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -478,7 +522,9 @@ class PTF_Dress_USMC_A_Maj_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_maj.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -491,7 +537,7 @@ class PTF_Dress_USMC_A_LtCol_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_ltcol_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -499,7 +545,9 @@ class PTF_Dress_USMC_A_LtCol_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_ltcol.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
 
@@ -512,7 +560,7 @@ class PTF_Dress_USMC_A_Col_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_col_co.paa",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor_co.paa",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons_officer_co.paa",
+      "",
       ""
    };
    hiddenSelectionsMaterials[] =
@@ -520,6 +568,8 @@ class PTF_Dress_USMC_A_Col_Unit : PTF_Dress_USMC_A_Base
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_a_col.rvmat",
       "",
       "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_decor.rvmat",
-      "\z\PTF\addons\PTF_Dress\data\ptf_dress_usmc_ribbons.rvmat"
+      // No rack: a rack is only ever shown when it is the wearer's own. Both of these
+      // must stay empty to hide it, as a material alone brings back vanilla's ribbons.
+      ""
    };
 };
