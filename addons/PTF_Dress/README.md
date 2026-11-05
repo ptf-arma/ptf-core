@@ -32,7 +32,7 @@ See `credits_and_license.txt` for the terms.
 `tools/dress-review/make_icons.py`. Rerun it after changing how a rank looks.
 
 The uniforms have no ribbon rack by default: a rack is only ever the wearer's own. It
-appears when the server runs billet-link 0.13.7 or later and Billet can match them to
+appears when the server runs billet-link 0.13.8 or later and Billet can match them to
 a member (`fnc/fn_rackInit.sqf`).
 
 The rack is a small generated model attached to the chest, shaped to it and sized and placed
