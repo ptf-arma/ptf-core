@@ -1,0 +1,7 @@
+author = "PTF smoke test";
+onLoadName = "PTF smoke";
+skipLobby = 1;
+joinUnassigned = 1;
+respawn = 3;
+respawnDelay = 1;
+class Header { gameType = Coop; minPlayers = 1; maxPlayers = 4; };
