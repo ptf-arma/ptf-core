@@ -8,7 +8,8 @@ drive them. Root of most of the scripted behaviour in PTF Core.
 
 Four functions run server-authoritatively and forward themselves with
 `remoteExec`, and all of them report back to the caller with
-`remoteExec ["hint", …]`:
+`remoteExec ["hint", …]`. Beanbag rounds also run code where the target unit is
+local, which is the server or a headless client for an AI:
 
 | Entry | Kind | Target | Why |
 |-------|------|--------|-----|
@@ -16,13 +17,16 @@ Four functions run server-authoritatively and forward themselves with
 | `PTF_fnc_Salvage` | function | server (`2`) | `deleteVehicle` on a server-owned aircraft, plus the same ticket pool |
 | `PTF_fnc_lz` | function | server (`2`) | callsigns come from one canonical pool; two players marking at once must not get the same one |
 | `PTF_fnc_re` | function | server (`2`) | same pool, resupply callsigns |
-| `ace_medical_fnc_addDamageToUnit` | function | clients (`1`) | beanbag leg damage has to run where the victim is local |
-| `hint` | command | clients (`1`) | server sends the "no tickets" / "pad blocked" / "salvaged" / "created LZ" feedback back to whoever used the action |
+| `ace_medical_fnc_addDamageToUnit` | function | any machine (`0`) | beanbag leg damage has to run where the victim is local |
+| `PTF_fnc_Disarm` | function | any machine (`0`) | beanbag disarm has to run where the victim is local |
+| `hint` | command | clients (`1`) | server sends the "no tickets" / "pad blocked" / "salvaged" / "created LZ" feedback back to whoever used the action, and the helicopter loadouts send "A rearm vic is not within 25m" |
+| `flyInHeight`, `flyInHeightASL` | command | any machine (`0`) | `turret_enhanced_2026`'s altitude command has to run where the vehicle is local |
 
 By default Arma permits these, so nothing has to be done for a mission that
 does not restrict remote execution. **If a mission's `description.ext` defines
-`CfgRemoteExec`, it must list all three or the actions fail silently** — the
-player clicks, nothing spawns, and there is no error.
+`CfgRemoteExec`, it must list all of these or the actions fail silently** — the
+player clicks, nothing spawns, and there is no error. `PTF_Sound` has its own
+list in [its README](../PTF_Sound/README.md).
 
 ```cpp
 class CfgRemoteExec {
@@ -30,10 +34,16 @@ class CfgRemoteExec {
         mode = 1;
         class PTF_fnc_SpawnFunction { allowedTargets = 2; };
         class PTF_fnc_Salvage       { allowedTargets = 2; };
+        class PTF_fnc_lz            { allowedTargets = 2; };
+        class PTF_fnc_re            { allowedTargets = 2; };
+        class PTF_fnc_Disarm        { allowedTargets = 0; };
+        class ace_medical_fnc_addDamageToUnit { allowedTargets = 0; };
     };
     class Commands {
         mode = 1;
         class hint { allowedTargets = 1; };
+        class flyInHeight { allowedTargets = 0; };
+        class flyInHeightASL { allowedTargets = 0; };
     };
 };
 ```
@@ -50,7 +60,7 @@ anything the mod declared is ignored. (A mission that wants to keep it can
 In the other direction it is not merely useless but risky: every addon's
 `CfgRemoteExec` merges into the single `configFile` tree and `mode` is taken
 from the last config parsed, so a `mode` declared here could change remote
-execution behaviour for the ~40 other PBOs in the repack.
+execution behaviour for the 39 other PBOs in the repack.
 
 ## CBA settings
 

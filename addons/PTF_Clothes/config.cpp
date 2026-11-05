@@ -60,6 +60,7 @@ class cfgPatches
 
 class cfgWeapons
 {
+#include "helmets\cfgHelmetMacros.hpp"
 #include "helmets\cfgInfantryHelmets.hpp"
 #include "helmets\cfgAirHelmets.hpp"
 #include "helmets\cfgSpecialHelmets.hpp"
