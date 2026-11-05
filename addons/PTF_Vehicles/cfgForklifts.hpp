@@ -5,12 +5,7 @@ class PTF_Atlas : boxloader_atlas
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    maximumLoad = 375;
    side = 1;
    maxSpeed = 20;
@@ -90,12 +85,7 @@ class PTF_Kalmar : boxloader_kalmar
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    maximumLoad = 375;
    side = 1;
    maxSpeed = 20;

@@ -280,6 +280,7 @@ class CfgWeapons
 class CfgVehicles
 {
    // External base classes must be declared in the scope they are used in.
+#include "cfgMacros.hpp"
 #include "cfgImport.hpp"
 #include "perenos\cfgPerenosMen.hpp"
 #include "perenos\cfgPerenosVehicles.hpp"
