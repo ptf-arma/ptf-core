@@ -34,6 +34,7 @@ class CfgVehicles {
     };
     class Land_Screwdriver_V1_F;
     class slr_slingload_hook: Land_Screwdriver_V1_F {
+        scope = 1; // PTF: created by script only, not placeable
         author = "Ampersand";
         model = "\a3\data_f\Hook\Hook_F.p3d";
         displayName = CSTRING(SlingLoadHook);

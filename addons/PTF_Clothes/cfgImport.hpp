@@ -132,7 +132,7 @@ class rhs_uniform_g3_rgr;
 class rhs_uniform_g3_tan;
 //Special Uniforms
 class U_B_Wetsuit;
-class U_C_CBRN_Suit_01_Wdl_F;
+class U_B_CBRN_Suit_01_Wdl_F;
 class Uniform_Base;
 //Ammo
 class BulletBase;

@@ -178,7 +178,7 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
    displayName = "Large - VicBox";
   class EventHandlers
    {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_BigVicBox_init', 0, true]";
+      init = "if (isServer && {!is3DEN}) then {[_this select 0] call PTF_fnc_BigVicBox_init}"; // once, on the server: ACE publishes the cargo
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
@@ -209,7 +209,6 @@ class PTF_Cargo_Large_Refuel : PTF_Large_Box
    ace_cargo_canLoad = 1;
    model = "\boxloader_cargo\mdl\boxloader_sixcon_dar.p3d";
    supplyRadius = 10;
-   transportRefuel = 200000000;
    ace_refuel_fuelCargo = 100000; // Maximum fuel cargo amount (in liters)
    ace_refuel_hooks[] = {{0,0,0},{0,0,0}}; // Nozzle hooks
 };

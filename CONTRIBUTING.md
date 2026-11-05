@@ -124,8 +124,9 @@ later when `develop` is merged into `master` and published to the Workshop.
 
 ## 4. Common gotchas
 
-- **"It works on my PC but CI is red."** Almost always a capitalization
-  mismatch (see above) — Linux is picky where Windows isn't.
+- **"It works on my PC but not on the server."** Check capitalization (see
+  above). CI only warns about a wrong-case `#include` (`PW4` in the Lint log), so
+  a green run doesn't prove the case is right.
 - **"LF will be replaced by CRLF" warnings.** Harmless; `.gitattributes`
   handles line endings for you.
 - **Huge diff you didn't expect.** You probably committed build output or a
