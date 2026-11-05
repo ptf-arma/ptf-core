@@ -582,7 +582,8 @@ def chevron_insignia(chevrons, rifles, rockers=0) -> Image.Image:
     stripe, gap = (0.105, 0.028) if rockers else (0.135, 0.035)
     fall = 0.40  # how far a wing drops across half the insignia width
     bowl = (0.40 if rockers else 0.46) if rifles else 0.0
-    side_y = fall + chevrons * (stripe + gap) + (bowl * 0.15 if rifles else 0)
+    # With no rifles the backing follows the stripe, so it needs its own scarlet edge below.
+    side_y = fall + chevrons * (stripe + gap) + (bowl * 0.15 if rifles else 0.065)
     depth = bowl * 0.85
     # Includes a scarlet edge below the last rocker.
     rocker_h = rockers * (stripe + gap) + (0.03 if rockers else 0)
