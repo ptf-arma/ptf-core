@@ -36,6 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check project
         run: |
+          # Without pipefail, the tee would hide a failing hemtt check.
+          set -o pipefail
           hemtt check 2>&1 | tee hemtt-check.log
           # hemtt only warns about a wrong-case #include, but it can break on a
           # case-sensitive filesystem, so treat it as a failure here.
