@@ -1,4 +1,4 @@
-params ["_arsenal"];
+params ["_arsenal", ["_global", true]];
 
 // PTF_fnc_arsenalWhitelist allocates ~950 string literals across 16 sub-arrays
 // and concatenates them, and this init runs for every arsenal and crate on the
@@ -16,7 +16,7 @@ _whitelists params ["_standardArsenal", "_psoArsenal"];
 
 private _whitelist = _standardArsenal;
 
-[_arsenal, _whitelist, true] call ace_arsenal_fnc_initBox;
+[_arsenal, _whitelist, _global] call ace_arsenal_fnc_initBox;
 
 // Registers the PTF role kits with ACE once per machine, not once per box.
 call PTF_fnc_registerDefaultLoadouts;

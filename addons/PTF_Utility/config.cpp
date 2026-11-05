@@ -31,7 +31,11 @@ class CfgPatches
           "PTF_Spawner",
           "PTF_Pso_Arsenal",
           "PTF_Standard_Arsenal_No_Ammo",
-          "PTF_Limited_Arsenal"
+          "PTF_Limited_Arsenal",
+          "PTF_Cargo_Small",
+          "PTF_Large_Box",
+          "PTF_Cargo_Industrial_Static_Cargo",
+          "PTF_Salvage"
           };
       weapons[] = {};
       requiredVersion = 1.32;

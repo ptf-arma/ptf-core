@@ -206,7 +206,7 @@ class PTF_Cargo_Vic : PTF_Cargo_Small
    displayname = "Small - Vic Box";
    class EventHandlers
    {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_SmallVicBox_init', 0, true]";
+      init = "if (isServer && {!is3DEN}) then {[_this select 0] call PTF_fnc_SmallVicBox_init}"; // once, on the server: ACE publishes the cargo
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
@@ -223,7 +223,7 @@ class PTF_Cargo_Tracks : PTF_Cargo_Small
    displayname = "Track Box";
    class EventHandlers
    {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_Tracks_init', 0, true]";
+      init = "if (isServer && {!is3DEN}) then {[_this select 0] call PTF_fnc_Tracks_init}"; // once, on the server: ACE publishes the cargo
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
