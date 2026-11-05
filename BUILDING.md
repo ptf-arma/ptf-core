@@ -31,9 +31,9 @@ reflects the latest build. Arma and the Arma 3 Publisher read straight through
 it — treat it as a normal folder.
 
 > ⚠️ **You must set `PTF_EXTERNAL_ADDONS`** (see [Environment
-> variables](#environment-variables)). This repo builds only 21 of the ~57 PBOs
-> the mod ships — the other ~40 are merged in from that folder. **`hemtt build`
-> on its own is not a testable mod**: it produces the 17 repo PBOs, which are
+> variables](#environment-variables)). This repo builds only 23 of the 62 PBOs
+> the mod ships — the other 39 are merged in from that folder. **`hemtt build`
+> on its own is not a testable mod**: it produces the 23 repo PBOs, which are
 > incomplete and won't load correctly on their own.
 
 ## Everyday commands
@@ -43,7 +43,7 @@ it — treat it as a normal folder.
 | `hemtt check` | Lint and validate every config and SQF file. Fast; run before committing. |
 | `tools\release.ps1 -NoSign` | **Complete, loadable mod** folder — the normal local test build. |
 | `tools\release.ps1` | Signed, Workshop-ready mod folder (needs the key and the externals). |
-| `hemtt dev` / `hemtt build` | Repo-only build (21 PBOs) into `.hemttout/dev` / `.hemttout/build`. Fast for config iteration, but **not** a complete mod. |
+| `hemtt dev` / `hemtt build` | Repo-only build (23 PBOs) into `.hemttout/dev` / `.hemttout/build`. Fast for config iteration, but **not** a complete mod. |
 | `hemtt launch` | Launch Arma 3 with the *dev* (repo-only) build plus framework mods, per `.hemtt/launch.toml`. Load the published mod alongside it for the external PBOs, or use `release.ps1 -NoSign` instead for a self-contained copy. |
 | `hemtt release` | Unsigned build into `.hemttout/release`. `release.ps1` calls this — you rarely run it directly. |
 
@@ -78,8 +78,8 @@ is never copied into the repo or committed.
 
 ## External PBOs (not in git)
 
-The published mod contains ~57 PBOs but this repo only builds 20. The
-rest (~40: ctab, boxloader, grad_trenches, Peral, Dagger Island, Moe's,
+The published mod contains 62 PBOs but this repo only builds 23. The
+rest (39: ctab, boxloader, grad_trenches, Peral, Dagger Island, Moe's,
 NDS, ptf_sql, and other reuploads) are kept outside
 git because they cannot be rebuilt (binarized/obfuscated third-party
 PBOs), are too large, or are complex third-party addons that rarely
@@ -90,12 +90,12 @@ without them the mod is incomplete and won't load correctly. Set
 `PTF_EXTERNAL_ADDONS` (or pass `-ExternalAddons`) to the folder holding them.
 The subscribed Workshop copy of the published mod is the current source of
 truth, so pointing this at that copy's `addons` folder is the easiest setup;
-`release.ps1` copies only the ~40 PBOs this repo doesn't build itself (repo
+`release.ps1` copies only the 39 PBOs this repo doesn't build itself (repo
 builds always win).
 
 `release.ps1` **requires** this — it refuses to run without it, so a release
-can't silently ship missing the ~40 external PBOs. For a deliberate repo-only
-build (fast config iteration on the 17 tracked PBOs, never for the Workshop
+can't silently ship missing the 39 external PBOs. For a deliberate repo-only
+build (fast config iteration on the 23 tracked PBOs, never for the Workshop
 and not a complete mod) pass `-NoExternal`. A future build server needs a
 canonical store for these PBOs.
 
@@ -110,7 +110,7 @@ environment variables*) or pass the equivalent flag on each run.
 | Variable | Equivalent flag | Points to |
 | --- | --- | --- |
 | `PTF_KEYS_DIR` | `-KeyDir` | Folder holding `ptf2.1.biprivatekey` + `ptf2.1.bikey` (the signing key — never committed). |
-| `PTF_EXTERNAL_ADDONS` | `-ExternalAddons` | Folder holding the ~40 prebuilt external PBOs that get merged into a release. |
+| `PTF_EXTERNAL_ADDONS` | `-ExternalAddons` | Folder holding the 39 prebuilt external PBOs that get merged into a release. |
 | `PTF_RELEASE_DIR` | `-OutputDir` | Where the ready-to-use `@[PTF] Paramarine Milsim Core` folder is published. Defaults to `<repo>\releases`. Point it at your Arma 3 mods folder to load builds directly. |
 
 ### release.ps1 flags
@@ -125,8 +125,9 @@ environment variables*) or pass the equivalent flag on each run.
 
 ### Incremental by default
 
-`release.ps1` keeps `.hemttout\release` between runs and only redoes what
-changed:
+`hemtt release` deletes `.hemttout\release` every time, so `release.ps1` moves
+the external PBOs and their signatures to `.hemttout\release-parked` during the
+build and back after it. It then only redoes what changed:
 
 - **External PBOs** are copied only when missing, a different size, or newer
   than the copy already in the output.
@@ -135,17 +136,24 @@ changed:
   against the public key at the end, so a stale or wrong signature is still
   caught.
 - Anything that isn't part of the current release (e.g. an external PBO removed
-  upstream) is **pruned** from the output, which is what makes it safe to keep
-  the folder between runs.
+  upstream) is **pruned** from the output, which is what makes it safe to reuse
+  the files between runs.
 
 Use `-Force` if you ever want to rule out the cache and rebuild from scratch.
+
+## Testing a whole build
+
+[`tools/mp-test`](tools/mp-test/README.md) runs a build on a dedicated server with
+two headless clients, with no game window, and compares it against an earlier
+build: every config class, crate and arsenal behaviour as machines join, and RPT
+errors. Use it for anything that could affect other classes or multiplayer.
 
 ## Releasing to the Workshop
 
 1. Merge `develop` into `master` and push. This triggers
    `.github/workflows/release.yml`, which computes the next version
    (`Y+1`, `Z=0`), tags it `vX.Y.0`, and cuts a GitHub Release with a
-   changelog and an unsigned reference build. Tag/Release creation happens
+   changelog and no build attached. Tag/Release creation happens
    **only on master** — develop pushes never cut a release.
 2. On a Windows machine with Arma 3 Tools installed, with `PTF_KEYS_DIR`
    and `PTF_EXTERNAL_ADDONS` set (or pass `-KeyDir`/`-ExternalAddons`),
@@ -191,7 +199,8 @@ history (`fetch-depth: 0`) so `gen-version.sh` can derive the version.
 
 `.github/workflows/release.yml` runs **only on push to `master`** (or a
 manual dispatch). It bumps the release version, tags `vX.Y.0`, and creates
-a GitHub Release with a changelog and an unsigned reference build. It never
+a GitHub Release with a changelog. It attaches no build, because
+`credits_and_license.txt` limits who may share some of the PBOs. It never
 runs on `develop`, so only a `develop -> master` merge cuts a release.
 
 ## History
