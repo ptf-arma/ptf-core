@@ -2,7 +2,7 @@ class cfgPatches
 {
    class PTF_Clothes
    {
-      units[] = {"PTF_MAG_Pilot"};
+      units[] = {"PTF_MAG_Pilot", "PTF_SSO_AR2"};
       weapons[] =
          {
             "PTF_Infantry_Weapon_Scope_M8541A",
@@ -49,7 +49,9 @@ class cfgPatches
               "tfw_radios_ilbe",   // tfw_ilbe_* long-range radio backpacks
               "Scotty_LPVO",       // Scot_Trij_Accu* optics (GOLD Optics)
               "cba_jr",            // asdg_OpticRail, extended by cfgOpticRail.hpp
-              "cba_jam"            // CBA_556x45_STANAG / CBA_762x51_SCAR wells
+              "cba_jam",           // CBA_556x45_STANAG / CBA_762x51_SCAR wells
+              "rhssaf_c_weapons",  // parents of the SCAR magazines in cfgMagazines.hpp
+              "A3_Characters_F_Enoch" // U_B_CBRN_Suit_01_Wdl_F
             };
    };
 };

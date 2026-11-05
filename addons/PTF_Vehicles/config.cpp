@@ -63,6 +63,8 @@ class cfgPatches
               "PTF_Models",
               "boxloader_tractor",
               "rhsusf_c_mrzr",
+              "rhsusf_c_markvsoc", // PTF_MKVSOC
+              "rhsusf_c_hmmwv", // PTF_M1123, PTF_M1025_tow
               "rhsusf_c_fmtv",
               "rhsusf_c_m11xx",
               "rhsusf_c_hemtt_a4",
@@ -117,7 +119,7 @@ class cfgMagazines
    };
 };
 
-#include "\z\PTF\addons\PTF_Utility\CfgDefinitions.hpp"
+#include "\z\PTF\addons\PTF_Utility\cfgDefinitions.hpp"
 
 //Defines Vehicles
 class cfgVehicles

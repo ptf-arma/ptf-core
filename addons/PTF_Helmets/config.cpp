@@ -21,12 +21,12 @@ class cfgPatches
 		};
 	};
 };
+// Declared at file root, not in cfgWeapons: a stub in there becomes a fake weapon
+// called ItemInfo, which the engine then tries to create and logs errors about.
+class ItemInfo;
 class cfgWeapons
 {
 	class rhsusf_ach_helmet_headset_ucp_alt;
-	class HitpointsProtectionInfo;
-	class ItemInfo;
-	class Head;
 	class rhsusf_hgu56p_mask_black;
 	class rhsusf_hgu56p_visor_mask_black;
 	class rhsusf_hgu56p_visor_black;

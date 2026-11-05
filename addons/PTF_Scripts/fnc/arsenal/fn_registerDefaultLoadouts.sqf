@@ -1,6 +1,6 @@
 // Hand the PTF role kits to ACE as arsenal default loadouts.
 //
-// Called from all three arsenal inits, so it runs for every arsenal and crate
+// Called from every arsenal init, so it runs for every arsenal and crate
 // on the map and has to be idempotent and cheap. Until 2026-08 this was an
 // #include of defaultloadouts.hpp in each of those functions, which re-pushed
 // all 50 kits through ace_arsenal_fnc_addDefaultLoadout per box. That was only

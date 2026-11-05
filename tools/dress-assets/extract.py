@@ -81,6 +81,33 @@ def quatrefoil(doc):
     return Image.fromarray(np.dstack([tone, tone, tone, alpha]).astype("uint8"), "RGBA")
 
 
+def rifles(doc):
+    """The crossed rifles from figure 4-6's lance corporal, as a mask on transparency."""
+    page = doc[103]
+    pix = page.get_pixmap(dpi=600)
+    a = np.frombuffer(pix.samples, np.uint8).reshape(pix.h, pix.w, pix.n)[..., :3].mean(axis=2) < 128
+    # The insignia on the page, and the part of it below the chevron and above its lower edge.
+    k = pix.w / 765
+    x0, y0, x1, y1 = (int(v * k) for v in (252, 552, 347, 642))
+    a = a[y0:y1, x0:x1]
+    a = a[np.where(a.any(axis=1))[0].min():, np.where(a.any(axis=0))[0].min():]
+    w = np.where(a.any(axis=0))[0].max() + 1
+    seen = np.zeros(a.shape, bool)
+    stack = [(y, x) for y in range(int(.5 * w), int(.6 * w)) for x in range(int(.4 * w), int(.6 * w)) if a[y, x]]
+    while stack:
+        y, x = stack.pop()
+        if 0 <= y < a.shape[0] and 0 <= x < a.shape[1] and a[y, x] and not seen[y, x]:
+            seen[y, x] = True
+            stack += [(y + dy, x + dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1)]
+    mask = Image.fromarray(seen.astype("uint8") * 255)
+    mask = mask.crop(mask.getbbox())
+    # The figure is coarse: enlarge and smooth away its stair steps.
+    mask = mask.resize((mask.width * 4, mask.height * 4), Image.BICUBIC).filter(ImageFilter.GaussianBlur(3))
+    mask = mask.point(lambda v: min(255, max(0, (v - 110) * 6)))
+    white = Image.new("L", mask.size, 255)
+    return Image.merge("RGBA", (white, white, white, mask))
+
+
 doc = pymupdf.open(sys.argv[1])
 ega(doc).save(OUT / "ega.png")
 key_white(load(doc, EAGLE)).save(OUT / "eagle.png")
@@ -88,3 +115,4 @@ key_white(load(doc, OAK_SILVER)).save(OUT / "oak_silver.png")
 key_white(load(doc, OAK_GOLD)).save(OUT / "oak_gold.png")
 visor_ornament(doc).save(OUT / "visor_field.png")
 quatrefoil(doc).save(OUT / "quatrefoil.png")
+rifles(doc).save(OUT / "rifles.png")

@@ -70,6 +70,7 @@ class CfgVehicles
 {
 class CargoNet_01_box_F;
 class PTF_DummyHolder: CargoNet_01_box_F {
+	scope = 1; // spawned by PTF_fnc_Disarm; not placeable
 	displayName = "PTF_DummyHolder";
 	model = "\A3\Weapons_f\DummyWeapon_Single.p3d";
 	showWeaponCargo = 1;
