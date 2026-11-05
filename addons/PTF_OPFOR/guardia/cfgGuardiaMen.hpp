@@ -67,36 +67,21 @@ class PTF_Guardia_base: rhsgref_ins_uniform_specter
    // than the garrison rather than only better-shooting.
    // Uniform (40): aid kit 8 + two AK 22.94 + one RGD-5 6.82 = 37.76.
    // Carrier (140): six AK 68.82 + one RGD-5 6.82 + two RDG-2 20 = 95.64.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Line troops -----------------------------------------------------------
@@ -151,36 +136,28 @@ class PTF_Guardia_grenadier: PTF_Guardia_base
    // Uniform (40): aid kit 8 + two AK 22.94 + two VOG 8.25 = 39.19.
    // Carrier (150): four AK 45.88 + six VOG 24.75 + two GDM 8.25
    //   + one RGD-5 6.82 + two RDG-2 20 = 105.70.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_VOG25", "rhs_VOG25", "rhs_VOG25", "rhs_VOG25",
-         "rhs_VOG25", "rhs_VOG25", "rhs_VOG25", "rhs_VOG25",
-         "rhs_GDM40", "rhs_GDM40",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_VOG25", "rhs_VOG25", "rhs_VOG25", "rhs_VOG25",
-         "rhs_VOG25", "rhs_VOG25", "rhs_VOG25", "rhs_VOG25",
-         "rhs_GDM40", "rhs_GDM40",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_VOG25", \
+      "rhs_GDM40", \
+      "rhs_GDM40", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The machinegunner's belt pack. The AT gunner's rocket pack below works the
@@ -245,22 +222,14 @@ class PTF_Guardia_machinegunner: PTF_Guardia_base
    // no belt will ever fit in it, so the grenades cost him nothing at all.
    // Uniform (40): aid kit 8 + one RGD-5 6.82 + two RDG-2 20 = 34.82.
    // Carrier (160): two belts 128.70, unchanged.
-   magazines[] =
-      {
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_100Rnd_762x54mmR_green",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_100Rnd_762x54mmR_green", \
+      "rhs_100Rnd_762x54mmR_green", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The AT gunner's rocket pack. Same mechanism as PTF_B_guardia_pkp above,
@@ -324,24 +293,15 @@ class PTF_Guardia_at: PTF_Guardia_base
    //   of slack in the whole rig. A second smoke, or anything else added
    //   here, is dropped silently at spawn -- and the rockets stay first in
    //   the array so it is never a rocket that gets dropped.
-   magazines[] =
-      {
-         "rhs_rpg7_PG7VR_mag",
-         "rhs_rpg7_TBG7V_mag",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_rpg7_PG7VR_mag",
-         "rhs_rpg7_TBG7V_mag",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_rpg7_PG7VR_mag", \
+      "rhs_rpg7_TBG7V_mag", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Guardia_marksman: PTF_Guardia_base
@@ -367,38 +327,22 @@ class PTF_Guardia_marksman: PTF_Guardia_base
    // Uniform (40): aid kit 8 + six SVD 30.72 = 38.72.
    // Carrier (140): two SVD 10.24 + two pistol 14.98 + one RGD-5 6.82
    //   + two RDG-2 20 = 52.04.
-   magazines[] =
-      {
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_mag_9x19_17",
-         "rhs_mag_9x19_17",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_mag_9x19_17",
-         "rhs_mag_9x19_17",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_mag_9x19_17", \
+      "rhs_mag_9x19_17", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // Six magazines rather than the standard eight: the Medikit is 80 mass on
@@ -423,30 +367,18 @@ class PTF_Guardia_medic: PTF_Guardia_base
    // Uniform (40): aid kit 8 + two AK 22.94 + one RGD-5 6.82 = 37.76.
    // Carrier (160): Medikit 80 + four AK 45.88 + one RGD-5 6.82
    //   + one RDG-2 10 = 142.70.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // La Guardia does the work the garrison will not. That includes demolitions,
@@ -471,24 +403,15 @@ class PTF_Guardia_engineer: PTF_Guardia_base
    // Uniform (40): aid kit 8 + mine detector 20 + one AK 11.47 = 39.47.
    // Carrier (140): toolkit 80 + three AK 34.41 + one RGD-5 6.82
    //   + one RDG-2 10 = 131.23.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Guardia_crewman: PTF_Guardia_base
@@ -502,24 +425,15 @@ class PTF_Guardia_crewman: PTF_Guardia_base
    // is room for more, but a dismounted crew should still feel like a crew.
    // Uniform (40): aid kit 8 + two AK 22.94 + one RGD-5 6.82 = 37.76.
    // Carrier (140): two AK 22.94 + one RDG-2 10 = 32.94.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Cadre -----------------------------------------------------------------
@@ -541,36 +455,21 @@ class PTF_Guardia_teamleader: PTF_Guardia_rifleman_vet
    //   + one NSP-D 10 = 89.52.
    // The HVT inherits this list into a 100 carrier, not a 150 one. Read the
    // note on PTF_Guardia_hvt below before adding anything here.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_9x19_17",
-         "rhs_mag_rgd5",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_nspd"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_9x19_17",
-         "rhs_mag_rgd5",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_rdg2_white",
-         "rhs_mag_nspd"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_9x19_17", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white", \
+      "rhs_mag_rdg2_white", \
+      "rhs_mag_nspd"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Guardia_squadleader: PTF_Guardia_teamleader

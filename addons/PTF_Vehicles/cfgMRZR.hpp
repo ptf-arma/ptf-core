@@ -5,12 +5,7 @@ class PTF_MRZR4 : rhsusf_mrzr4_d
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Cars";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";
@@ -196,12 +191,7 @@ class PTF_Command_MRZR_HQ : PTF_MRZR4
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Personal";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    side = 1;
    author = "Paramarine Task Force";
    displayName = "MRZR (Unit HQ) [PTF]";
@@ -225,12 +215,7 @@ class PTF_Command_MRZR_1ST : PTF_MRZR4
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Personal";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    side = 1;
    author = "Paramarine Task Force";
    displayName = "MRZR (1stPlt HQ) [PTF]";
@@ -254,12 +239,7 @@ class PTF_Command_MRZR_2ND : PTF_MRZR4
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Personal";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    side = 1;
    author = "Paramarine Task Force";
    displayName = "MRZR (2ndPlt HQ) [PTF]";
@@ -283,12 +263,7 @@ class PTF_Command_MRZR_MAG36 : PTF_MRZR4
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_PersonalAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    side = 1;
    author = "Paramarine Task Force";
    displayName = "MRZR (MAG36 HQ) [PTF]";

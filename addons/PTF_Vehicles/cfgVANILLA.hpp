@@ -5,12 +5,7 @@ class PTF_Quadbike : B_T_Quadbike_01_F
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";
@@ -101,12 +96,7 @@ class PTF_SDV : B_SDV_01_F
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Boat";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";

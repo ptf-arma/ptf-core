@@ -84,26 +84,16 @@ class PTF_Pereno_base: rhsgref_hidf_base
    respawnWeapons[] = {"rhs_weap_l1a1_wood", "Throw", "Put"};
    // Six magazines and a grenade: 8 + 99 + 8.8 = 115.8 of the 160 the
    // uniform (40) and ALICE webbing (120) hold, first aid kit packed first.
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_m67"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Rank and file ---------------------------------------------------------
@@ -132,20 +122,13 @@ class PTF_Pereno_sentry: PTF_Pereno_base
    displayName = "Sentry";
    sensitivity = 0.8;
    cost = 25000;
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_f1"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_f1"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_f1"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The same teenager out of a different crate. The battalion has M3A1 grease
@@ -172,20 +155,13 @@ class PTF_Pereno_sentry_m3a1: PTF_Pereno_sentry
    // Both arrays overridden. The inherited magazines are 7.62x51 FAL and
    // would not chamber -- a variant that changes the weapon and not the
    // ammunition spawns a man who cannot fire a shot, and nothing warns.
-   magazines[] =
-      {
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhs_grenade_mkii_mag"
-      };
-   respawnMagazines[] =
-      {
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhs_grenade_mkii_mag"
-      };
+   #define PTF_MAGS \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhs_grenade_mkii_mag"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Pereno_conscript: PTF_Pereno_base
@@ -200,24 +176,15 @@ class PTF_Pereno_conscript: PTF_Pereno_base
    // container: the uniform takes the first aid kit (8), magazine 1 (16.5)
    // and the grenade (13.2) for 37.7 of 40; magazines 2 to 5 land in the
    // webbing at 66 of 120.
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_f1"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_f1"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_f1"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The MP44 crate. 7.92x33 Kurz is shared with nothing else on the island, so
@@ -241,24 +208,15 @@ class PTF_Pereno_conscript_mp44: PTF_Pereno_conscript
    // Capitalisation matters: the RHS class is rhs_weap_MP44, not
    // rhs_weap_mp44. And both magazine arrays are overridden because the
    // inherited ones are 7.62x51 FAL, which this rifle cannot chamber.
-   magazines[] =
-      {
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhs_grenade_mkii_mag"
-      };
-   respawnMagazines[] =
-      {
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhsgref_30Rnd_792x33_SmE_StG",
-         "rhs_grenade_mkii_mag"
-      };
+   #define PTF_MAGS \
+      "rhsgref_30Rnd_792x33_SmE_StG", \
+      "rhsgref_30Rnd_792x33_SmE_StG", \
+      "rhsgref_30Rnd_792x33_SmE_StG", \
+      "rhsgref_30Rnd_792x33_SmE_StG", \
+      "rhsgref_30Rnd_792x33_SmE_StG", \
+      "rhs_grenade_mkii_mag"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // Helmet is randomised per spawn: bare and painted M1 shells in a mix, so a
@@ -295,26 +253,16 @@ class PTF_Pereno_rifleman_akm: PTF_Pereno_rifleman
    respawnWeapons[] = {"rhs_weap_akm", "Throw", "Put"};
    // Six steel mags to mirror the FAL men's six. An AK magazine is lighter
    // than a FAL one, so this sits well inside the same 160.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_mag_m67"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_mag_m67"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_mag_m67"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // A third shipment, and the only one that was any use to the second. The
@@ -367,22 +315,22 @@ class PTF_Pereno_grenadier: PTF_Pereno_rifleman
    backpack = "rhsgref_hidf_alicepack_gr";
    weapons[] = {"rhs_weap_m79", "rhsusf_weap_m1911a1", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_m79", "rhsusf_weap_m1911a1", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M433_HEDP", "rhs_mag_M433_HEDP",
-         "rhsusf_mag_7x45acp_MHP", "rhsusf_mag_7x45acp_MHP",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M433_HEDP", "rhs_mag_M433_HEDP",
-         "rhsusf_mag_7x45acp_MHP", "rhsusf_mag_7x45acp_MHP",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M433_HEDP", \
+      "rhs_mag_M433_HEDP", \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The FN MAG is the battalion's real weapon. It is also the thing most worth
@@ -418,28 +366,17 @@ class PTF_Pereno_machinegunner_assist: PTF_Pereno_rifleman
    displayName = "Assistant Machine Gunner";
    cost = 100000;
    backpack = "rhsgref_hidf_alicepack_mg";
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_m67", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The AT man's spare rockets. magazines[] can only reach the uniform and the
@@ -492,26 +429,16 @@ class PTF_Pereno_at: PTF_Pereno_rifleman
    backpack = "PTF_B_pereno_rpg";
    weapons[] = {"rhs_weap_l1a1_wood", "rhs_weap_rpg7", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_l1a1_wood", "rhs_weap_rpg7", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_PG7V_mag",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_PG7V_mag",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal"
-      };
+   #define PTF_MAGS \
+      "rhs_rpg7_PG7V_mag", \
+      "rhs_rpg7_PG7V_mag", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // L1A1 with the old SUIT sight -- the closest thing the garrison has to a
@@ -530,26 +457,16 @@ class PTF_Pereno_marksman: PTF_Pereno_rifleman
    sensitivity = 2.0;
    weapons[] = {"rhs_weap_l1a1_suit", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_l1a1_suit", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_20Rnd_762x51_m61_fnfal",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m61_fnfal", \
+      "rhs_mag_20Rnd_762x51_m61_fnfal", \
+      "rhs_mag_20Rnd_762x51_m61_fnfal", \
+      "rhs_mag_20Rnd_762x51_m61_fnfal", \
+      "rhs_mag_20Rnd_762x51_m61_fnfal", \
+      "rhs_mag_20Rnd_762x51_m61_fnfal", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The other precision rifle, and the best thing in the battalion's armoury:
@@ -583,26 +500,16 @@ class PTF_Pereno_marksman_m14: PTF_Pereno_marksman
    respawnWeapons[] = {"rhs_weap_m14", "Throw", "Put"};
    // Both arrays overridden: the inherited magazines are FAL-pattern and do
    // not fit an M14, even though both are 7.62x51.
-   magazines[] =
-      {
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhsusf_20Rnd_762x51_m118_special_Mag",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhsusf_20Rnd_762x51_m118_special_Mag", \
+      "rhsusf_20Rnd_762x51_m118_special_Mag", \
+      "rhsusf_20Rnd_762x51_m118_special_Mag", \
+      "rhsusf_20Rnd_762x51_m118_special_Mag", \
+      "rhsusf_20Rnd_762x51_m118_special_Mag", \
+      "rhsusf_20Rnd_762x51_m118_special_Mag", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // He carries a white smoke on top of the base class's load, for the same
@@ -618,28 +525,17 @@ class PTF_Pereno_medic: PTF_Pereno_rifleman
    attendant = 1;
    icon = "iconManMedic";
    backpack = "rhsgref_hidf_alicepack_medic";
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_m67", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The engine packs per container, not against a combined total, so the sum of
@@ -668,18 +564,12 @@ class PTF_Pereno_engineer: PTF_Pereno_rifleman
    backpack = "rhsgref_hidf_alicepack";
    Items[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The other M3A1 in the battalion, and the reason the sentry variant above
@@ -695,20 +585,13 @@ class PTF_Pereno_crewman: PTF_Pereno_base
    cost = 80000;
    weapons[] = {"rhs_weap_m3a1", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_m3a1", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG"
-      };
-   respawnMagazines[] =
-      {
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG"
-      };
+   #define PTF_MAGS \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Cadre -----------------------------------------------------------------
@@ -741,28 +624,17 @@ class PTF_Pereno_teamleader: PTF_Pereno_rifleman
    // 2 to 6 and the red smoke). That leaves 6.7 and 5.62, and the lightest
    // grenade in the addon is 6.82. A second smoke does not go on the corporal
    // -- it goes on the sergeant, who has the vest for it.
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_m18_red"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_m18_red"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_red"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Pereno_squadleader: PTF_Pereno_teamleader
@@ -778,28 +650,17 @@ class PTF_Pereno_squadleader: PTF_Pereno_teamleader
    // but the split is what matters: the uniform is at 33.30 of 40 and the
    // vest at 89.76 of 100. A sixth magazine is 16.5 and fits neither, so it
    // would be dropped at spawn. Five is the ceiling here.
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_m18_red",
-         "rhs_mag_m18_yellow"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_m67",
-         "rhs_mag_m18_red",
-         "rhs_mag_m18_yellow"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_red", \
+      "rhs_mag_m18_yellow"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Pereno_officer: PTF_Pereno_squadleader
@@ -823,32 +684,19 @@ class PTF_Pereno_officer: PTF_Pereno_squadleader
    // to 5, both smokes at 11.88, then the grenade at 6.82, which does not fit
    // the uniform's remaining 4.94). That is 3.42 of headroom left in the vest
    // and nothing worth adding fits it.
-   magazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhs_mag_m18_red",
-         "rhs_mag_m18_purple",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhs_mag_20Rnd_762x51_m80_fnfal",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhs_mag_m18_red",
-         "rhs_mag_m18_purple",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhs_mag_20Rnd_762x51_m80_fnfal", \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhs_mag_m18_red", \
+      "rhs_mag_m18_purple", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- HVT -------------------------------------------------------------------
@@ -874,20 +722,13 @@ class PTF_Pereno_hvt: PTF_Pereno_officer
    respawnLinkedItems[] = {"rhsgref_hat_M1951", "rhsgref_chestrig", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhsusf_weap_m1911a1", "Throw", "Put", "Binocular"};
    respawnWeapons[] = {"rhsusf_weap_m1911a1", "Throw", "Put", "Binocular"};
-   magazines[] =
-      {
-         "rhsusf_mag_7x45acp_MHP",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhs_mag_m18_red"
-      };
-   respawnMagazines[] =
-      {
-         "rhsusf_mag_7x45acp_MHP",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhsusf_mag_7x45acp_MHP",
-         "rhs_mag_m18_red"
-      };
+   #define PTF_MAGS \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhsusf_mag_7x45acp_MHP", \
+      "rhs_mag_m18_red"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // A crewman who flies. No flight suit, no survival vest -- the battalion's

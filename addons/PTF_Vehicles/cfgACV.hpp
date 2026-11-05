@@ -5,12 +5,7 @@ class PTF_ACV : Peral_ACV
 	faction = "BLU_F";
 	editorCategory = "PTF";
 	editorSubcategory = "PTF_Armor";
-	ace_cargo_space = 15;
-	ace_cargo_hasCargo = 1;
-	ace_cargo_size = 0;
-	ace_cargo_canLoad = 0;
-	ace_dragging_canCarry = 0;
-	ace_dragging_canDrag = 0;
+	PTF_ACE_CARGO_SPACE(15)
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
 	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
 	// load cut 20% from the previous 3250.
@@ -70,12 +65,7 @@ class PTF_ACV_MK19 : Peral_ACV_MK19
 	faction = "BLU_F";
 	editorCategory = "PTF";
 	editorSubcategory = "PTF_Armor";
-	ace_cargo_space = 15;
-	ace_cargo_hasCargo = 1;
-	ace_cargo_size = 0;
-	ace_cargo_canLoad = 0;
-	ace_dragging_canCarry = 0;
-	ace_dragging_canDrag = 0;
+	PTF_ACE_CARGO_SPACE(15)
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
 	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
 	// load cut 20% from the previous 3250.
@@ -135,12 +125,7 @@ class PTF_ACV_30 : Peral_ACV_30
 	faction = "BLU_F";
 	editorCategory = "PTF";
 	editorSubcategory = "PTF_Armor";
-	ace_cargo_space = 15;
-	ace_cargo_hasCargo = 1;
-	ace_cargo_size = 0;
-	ace_cargo_canLoad = 0;
-	ace_dragging_canCarry = 0;
-	ace_dragging_canDrag = 0;
+	PTF_ACE_CARGO_SPACE(15)
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
 	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
 	// load cut 20% from the previous 3250.
@@ -199,12 +184,7 @@ class PTF_ACV_E : Peral_ACV_E
 	faction = "BLU_F";
 	editorCategory = "PTF";
 	editorSubcategory = "PTF_Armor";
-	ace_cargo_space = 15;
-	ace_cargo_hasCargo = 1;
-	ace_cargo_size = 0;
-	ace_cargo_canLoad = 0;
-	ace_dragging_canCarry = 0;
-	ace_dragging_canDrag = 0;
+	PTF_ACE_CARGO_SPACE(15)
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
 	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
 	// load cut 20% from the previous 3250.
@@ -257,12 +237,7 @@ class PTF_ACV_R : Peral_ACV_R
 	faction = "BLU_F";
 	editorCategory = "PTF";
 	editorSubcategory = "PTF_Armor";
-	ace_cargo_space = 15;
-	ace_cargo_hasCargo = 1;
-	ace_cargo_size = 0;
-	ace_cargo_canLoad = 0;
-	ace_dragging_canCarry = 0;
-	ace_dragging_canDrag = 0;
+	PTF_ACE_CARGO_SPACE(15)
 	ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
 	// Speed capped below the Peral_ACV_Base_F default of 138; inventory
 	// load cut 20% from the previous 3250.

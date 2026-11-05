@@ -5,12 +5,7 @@ class PTF_M1152 : rhsusf_m1152_rsv_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Cars";
-   ace_cargo_space = 10;
-   ace_cargo_hasCargo = 1;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_CARGO_SPACE(10)
    maximumLoad = 5000;
    side = 1;
    author = "Paramarine Task Force";
