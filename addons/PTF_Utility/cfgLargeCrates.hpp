@@ -21,6 +21,16 @@ class PTF_Large_Box : Boxloader_Ammo_West
        "camo",
        "camo_signs"};
    hiddenSelectionsTextures[] = {};
+   // ACE's interaction point is at the centre of the pallet's base, and its
+   // default 2 m reach is less than the distance from a standing player's eyes
+   // to there. 5 m is what ACE itself sets on the Huron containers.
+   class ACE_Actions : ACE_Actions
+   {
+      class ACE_MainActions : ACE_MainActions
+      {
+         distance = 5;
+      };
+   };
    class VehicleTransport
    {
       class Cargo

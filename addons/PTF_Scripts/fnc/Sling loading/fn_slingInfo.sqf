@@ -65,3 +65,10 @@ if (_capacity > 0 && {alive _target}) then {
 };
 
 hintSilent parseText (_lines joinString "<br/>");
+
+// Clear it sooner than a hint would go by itself, unless a newer readout has
+// replaced it in the meantime.
+PTF_slingInfo_shownAt = diag_tickTime;
+[{
+    if (_this isEqualTo PTF_slingInfo_shownAt) then {hintSilent ""};
+}, PTF_slingInfo_shownAt, 8] call CBA_fnc_waitAndExecute;

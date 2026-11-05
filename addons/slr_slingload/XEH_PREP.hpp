@@ -14,6 +14,7 @@ PREP(canRigCargoAuto);
 PREP(canRigCargoManual);
 PREP(checkLoad);
 PREP(createHookRopes);
+PREP(createRope);
 PREP(destroyRope);
 PREP(getCargoLiftPoints);
 PREP(getHookPositions);

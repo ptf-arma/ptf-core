@@ -53,7 +53,7 @@ private _ropeEnd = [[0,0,-11], [0,0,-1]] select (_source isKindOf "slr_slingload
     };
 
     private _length = _oldRope getVariable [QGVAR(ropeLength), ropeLength _oldRope];
-    private _newRope = ropeCreate [_source, _sourcePoint, _target, _targetPoint, _length, ["", [0,0,-1]], ["RopeEnd", _ropeEnd]];
+    private _newRope = [_source, _sourcePoint, _target, _targetPoint, _length, _ropeEnd] call FUNC(createRope);
     if (isNull _newRope) then {continue};
 
     {

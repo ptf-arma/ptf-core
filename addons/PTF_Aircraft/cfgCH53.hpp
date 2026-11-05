@@ -11,6 +11,8 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
    author = "Paramarine Task Force";
    displayName = "CH-53E GAU-21 [MAG36]";
    slingLoadMaxCargoMass = 16329;
+   // RotorLib only lifts about half the rating (8 t measured in play). Read by PTF_fnc_slingMassApply.
+   PTF_slingMassFactorAFM = 0.5;
    weapons[] = {"CMFlareLauncher"};
    magazines[] = {
        "240Rnd_CMFlare_Chaff_Magazine",
@@ -47,6 +49,8 @@ class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
    author = "Paramarine Task Force";
    displayName = "CH-53E Cargo [MAG36]";
    slingLoadMaxCargoMass = 16329;
+   // RotorLib only lifts about half the rating (8 t measured in play). Read by PTF_fnc_slingMassApply.
+   PTF_slingMassFactorAFM = 0.5;
    weapons[] = {"CMFlareLauncher"};
    magazines[] = {
        "240Rnd_CMFlare_Chaff_Magazine",
