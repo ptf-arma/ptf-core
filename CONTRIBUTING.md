@@ -125,8 +125,8 @@ later when `develop` is merged into `master` and published to the Workshop.
 ## 4. Common gotchas
 
 - **"It works on my PC but not on the server."** Check capitalization (see
-  above). A wrong-case `#include` fails Lint on your PR (`PW4` in the log), even
-  though `hemtt check` passes on Windows.
+  above). A wrong-case `#include` fails Lint on your PR (`PE12` or `PW4` in the
+  log), even though `hemtt check` passes on Windows.
 - **"LF will be replaced by CRLF" warnings.** Harmless; `.gitattributes`
   handles line endings for you.
 - **Huge diff you didn't expect.** You probably committed build output or a

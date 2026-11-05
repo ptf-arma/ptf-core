@@ -39,8 +39,8 @@ jobs:
           # Without pipefail, the tee would hide a failing hemtt check.
           set -o pipefail
           hemtt check 2>&1 | tee hemtt-check.log
-          # hemtt only warns about a wrong-case #include, but it can break on a
-          # case-sensitive filesystem, so treat it as a failure here.
+          # hemtt only warns about wrong case in an absolute #include path, so treat
+          # that as a failure here. A wrong-case relative path already fails (PE12).
           if grep -F 'PW4' hemtt-check.log; then
             echo "::error::Wrong-case #include (PW4). Match the file's exact case."
             exit 1
