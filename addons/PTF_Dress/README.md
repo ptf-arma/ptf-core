@@ -17,6 +17,11 @@ turns its screenshot into the labelled image for sharing.
 
 The belt is the same for every rank (MCO 1020.34H para 3002).
 
+The uniforms carry no service stripes, by PTF's choice. Corpsmen wear their rate on the left sleeve only, as Navy rates are.
+
+The weave is in the tiling detail texture (`ptf_dress_wool_dt`), not the colour sheets. The cloth
+is too dark on the sheet for fine detail to survive compression, and comes out as blotches.
+
 Judge colour in daylight on real terrain. Exposure varies a lot by map and time.
 
 Every rank sheet carries a PTF watermark in parts of the texture the model never

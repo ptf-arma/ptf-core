@@ -54,6 +54,17 @@ GAIN_COAT = 2.75
 # coat front has a hard edge down its centre, which higher values turn into two halves of
 # visibly different colour.
 CLOTH_DIFFUSE = 0.3
+# Wool has a soft sheen rather than none, which is much of what keeps it from looking flat.
+# Keep it faint: much more washes the coat out and turns the belt tan in the sun.
+CLOTH_SPEC, CLOTH_GLOSS = 8, 25
+CLOTH_POWER = 60
+# How much of vanilla's fold shading to keep on the coat and trousers. Much more brings out
+# a jagged line down the coat's front.
+CLOTH_FOLDS = 0.12
+# The cloth is so dark that compression has only a couple of shades to work with near it,
+# which shows as blotches. So the sheets are painted brighter than the colours above, and the
+# material darkens them back by this much. See lifted().
+MATERIAL_DIM = 0.3
 
 
 def daylight(*rgb, gain=GAIN_COAT):
@@ -135,6 +146,8 @@ STRAP_ZONE = (1645, 1630, 1815, 1740)
 # only one side has to go on the plate itself.
 # It is heavily squeezed in x: about 25 px per inch, against 85 px per inch in y.
 DECOR_K = 2
+# The belt's colour against the coat's, matched by measuring both in game.
+BELT_TINT = (0.96, 0.96, 0.98)
 BELT_Y = (0, 196)
 PLATE = (0, 208, 324, 446)
 COAT_BUTTON = (927, 300, 90, 88)
@@ -147,12 +160,12 @@ CAP_CROWN = (256, 265, 248)  # centre and radius of the crown's top
 CAP_CROWN_ROTATION = -12
 CAP_VISOR = (505, 340, 890, 535)
 
-def _enlisted(name, chevrons=0, rifles=True, rockers=0, stripes=0):
-    return {"name": name, "chevrons": chevrons, "rifles": rifles, "rockers": rockers, "stripes": stripes}
+def _enlisted(grade, name, chevrons=0, rifles=True, rockers=0):
+    return {"grade": grade, "name": name, "chevrons": chevrons, "rifles": rifles, "rockers": rockers}
 
 
-def _navy(name, kind, count, rocker=False, striker=False, stripes=0):
-    return {"name": name, "navy": (kind, count, rocker, striker), "stripes": stripes}
+def _navy(grade, name, kind, count, rocker=False, striker=False):
+    return {"grade": grade, "name": name, "navy": (kind, count, rocker, striker)}
 
 
 # The rack model, measured in the unit's own coordinates at attention. Its bottom centre
@@ -174,39 +187,39 @@ RACK_BONE_Y = np.array([0.045166, 0.996094, -0.0825167])
 RACK_BONE_Z = np.array([-0.00610352, 0.0830078, 0.996666])
 
 
-def _officer(name, kind, colour, count=1):
-    return {"name": name, "metal": (kind, colour, count)}
+def _officer(grade, name, kind, colour, count=1):
+    return {"grade": grade, "name": name, "metal": (kind, colour, count)}
 
 
-# The ranks PTF actually uses. Service stripe counts are typical time in grade at
-# one stripe per four years, not a rule from the order.
+# The ranks PTF actually uses. No rank carries service stripes: PTF leaves them off.
+# Named by grade first, so an alphanumeric sort of the Arsenal puts them in rank order.
 RANKS = {
-    "Pvt": _enlisted("Private (E-1)"),
-    "PFC": _enlisted("Private First Class (E-2)", 1, rifles=False),
-    "LCpl": _enlisted("Lance Corporal (E-3)", 1),
-    "Cpl": _enlisted("Corporal (E-4)", 2),
-    "Sgt": _enlisted("Sergeant (E-5)", 3, stripes=1),
-    "SSgt": _enlisted("Staff Sergeant (E-6)", 3, rockers=1, stripes=2),
-    "GySgt": _enlisted("Gunnery Sergeant (E-7)", 3, rockers=2, stripes=3),
+    "Pvt": _enlisted("E-1", "Private"),
+    "PFC": _enlisted("E-2", "Private First Class", 1, rifles=False),
+    "LCpl": _enlisted("E-3", "Lance Corporal", 1),
+    "Cpl": _enlisted("E-4", "Corporal", 2),
+    "Sgt": _enlisted("E-5", "Sergeant", 3),
+    "SSgt": _enlisted("E-6", "Staff Sergeant", 3, rockers=1),
+    "GySgt": _enlisted("E-7", "Gunnery Sergeant", 3, rockers=2),
     # NAVPERS 15665: paygrade E-1 wears no group rate mark.
-    "HR": _navy("Hospitalman Recruit (HR)", "group", 0),
-    "HA": _navy("Hospitalman Apprentice (HA)", "group", 2, striker=True),
-    "HN": _navy("Hospitalman (HN)", "group", 3, striker=True),
-    "HM3": _navy("Hospital Corpsman 3rd Class (HM3)", "crow", 1),
-    "HM2": _navy("Hospital Corpsman 2nd Class (HM2)", "crow", 2, stripes=1),
-    "HM1": _navy("Hospital Corpsman 1st Class (HM1)", "crow", 3, stripes=2),
-    "HMC": _navy("Chief Hospital Corpsman (HMC)", "crow", 3, rocker=True, stripes=3),
-    "WO1": _officer("Warrant Officer (W-1)", "warrant", GOLD, "two"),
-    "CWO2": _officer("Chief Warrant Officer 2 (W-2)", "warrant", GOLD, "three"),
-    "CWO3": _officer("Chief Warrant Officer 3 (W-3)", "warrant", SILVER, "two"),
-    "CWO4": _officer("Chief Warrant Officer 4 (W-4)", "warrant", SILVER, "three"),
-    "CWO5": _officer("Chief Warrant Officer 5 (W-5)", "warrant", SILVER, "stripe"),
-    "2ndLt": _officer("Second Lieutenant (O-1)", "bars", GOLD),
-    "1stLt": _officer("First Lieutenant (O-2)", "bars", SILVER),
-    "Capt": _officer("Captain (O-3)", "bars", SILVER, 2),
-    "Maj": _officer("Major (O-4)", "oak", GOLD),
-    "LtCol": _officer("Lieutenant Colonel (O-5)", "oak", SILVER),
-    "Col": _officer("Colonel (O-6)", "eagle", SILVER),
+    "HR": _navy("E-1", "Hospitalman Recruit", "group", 0),
+    "HA": _navy("E-2", "Hospitalman Apprentice", "group", 2, striker=True),
+    "HN": _navy("E-3", "Hospitalman", "group", 3, striker=True),
+    "HM3": _navy("E-4", "Hospital Corpsman Third Class", "crow", 1),
+    "HM2": _navy("E-5", "Hospital Corpsman Second Class", "crow", 2),
+    "HM1": _navy("E-6", "Hospital Corpsman First Class", "crow", 3),
+    "HMC": _navy("E-7", "Chief Hospital Corpsman", "crow", 3, rocker=True),
+    "WO1": _officer("W-1", "Warrant Officer", "warrant", GOLD, "two"),
+    "CWO2": _officer("W-2", "Chief Warrant Officer 2", "warrant", GOLD, "three"),
+    "CWO3": _officer("W-3", "Chief Warrant Officer 3", "warrant", SILVER, "two"),
+    "CWO4": _officer("W-4", "Chief Warrant Officer 4", "warrant", SILVER, "three"),
+    "CWO5": _officer("W-5", "Chief Warrant Officer 5", "warrant", SILVER, "stripe"),
+    "2ndLt": _officer("O-1", "Second Lieutenant", "bars", GOLD),
+    "1stLt": _officer("O-2", "First Lieutenant", "bars", SILVER),
+    "Capt": _officer("O-3", "Captain", "bars", SILVER, 2),
+    "Maj": _officer("O-4", "Major", "oak", GOLD),
+    "LtCol": _officer("O-5", "Lieutenant Colonel", "oak", SILVER),
+    "Col": _officer("O-6", "Colonel", "eagle", SILVER),
 }
 
 
@@ -311,10 +324,12 @@ def noise(shape, sigma, seed):
 
 
 def cloth_grain(shape, seed):
-    """Fine heathered wool: per-channel flecks over a soft mottle. Multiplies to ~1."""
-    fine = noise(shape, 0.7, seed) * 0.022 + noise(shape, 22, seed + 1) * 0.01
-    flecks = np.stack([noise(shape, 0.8, seed + 2 + i) * 0.012 for i in range(3)], axis=2)
-    return 1 + fine[..., None] + flecks
+    """A little heather in the sheet itself. Multiplies to ~1.
+
+    The weave lives in the detail texture instead. The cloth is so dark on the sheet, around
+    22 of 255, that texture compression turns anything finer or fainter than this into blotches.
+    """
+    return 1 + (noise(shape, 1.2, seed) * 0.012)[..., None]
 
 
 def flatten_normals(n, folds=0.0):
@@ -361,11 +376,27 @@ def relief(rgba: Image.Image, strength=1.0, shadow=True) -> Image.Image:
 # Stage6 is close to no reflection, unlike vanilla's fresnel(1,0.7), which lays a pale
 # veil of sky over the whole sun-facing side, right over black insignia. Reflectance
 # is ((n-1)^2+k^2)/((n+1)^2+k^2), so it is n=1, k=0 that gives none, not low values.
-def rvmat(ti, nohq, dt, smdi, dt_tile=1, power=300, env=r"a3\data_f\env_co.paa", diffuse=CLOTH_DIFFUSE):
+def lifted(colour):
+    """A colour sheet as saved, for a material from rvmat() at its default dimming.
+
+    Textures are sRGB, so this converts exactly rather than by a flat factor, which would
+    leave the brighter colours overbright. Each colour renders as it did undimmed. It takes
+    the cloth from about 22 to 45, and anything above about 150 clips.
+    """
+    v = np.arange(256) / 255
+    linear = np.where(v <= 0.04045, v / 12.92, ((v + 0.055) / 1.055) ** 2.4) / MATERIAL_DIM
+    linear = np.minimum(linear, 1)
+    table = np.where(linear <= 0.0031308, linear * 12.92, 1.055 * linear ** (1 / 2.4) - 0.055) * 255
+    return np.interp(colour, np.arange(256), table)
+
+
+def rvmat(ti, nohq, dt, smdi, dt_tile=1, power=CLOTH_POWER, env=r"a3\data_f\env_co.paa", diffuse=CLOTH_DIFFUSE, dim=MATERIAL_DIM):
     def stage(i, tex, tile=1):
+        tx, ty = tile if isinstance(tile, tuple) else (tile, tile)
         return (f'class Stage{i}\n{{\n\ttexture="{tex}";\n\tuvSource="tex";\n\tclass uvTransform\n\t{{\n'
-                f'\t\taside[]={{{tile},0,0}};\n\t\tup[]={{0,{tile},0}};\n\t\tdir[]={{0,0,0}};\n\t\tpos[]={{0,0,0}};\n\t}};\n}};\n')
-    return (f'class StageTI\n{{\n\ttexture="{ti}";\n}};\nambient[]={{1,1,1,1}};\ndiffuse[]={{{diffuse},{diffuse},{diffuse},1}};\n'
+                f'\t\taside[]={{{tx},0,0}};\n\t\tup[]={{0,{ty},0}};\n\t\tdir[]={{0,0,0}};\n\t\tpos[]={{0,0,0}};\n\t}};\n}};\n')
+    ambient, diffuse = round(dim, 4), round(diffuse * dim, 4)
+    return (f'class StageTI\n{{\n\ttexture="{ti}";\n}};\nambient[]={{{ambient},{ambient},{ambient},1}};\ndiffuse[]={{{diffuse},{diffuse},{diffuse},1}};\n'
             f'forcedDiffuse[]={{0,0,0,0}};\nemmisive[]={{0,0,0,1}};\nspecular[]={{0.8,0.8,0.8,0.8}};\n'
             f'specularPower={power};\nPixelShaderID="Super";\nVertexShaderID="Super";\n'
             + stage(1, nohq) + stage(2, dt, dt_tile)
@@ -495,14 +526,14 @@ def build_base(tools: Tools):
     colour *= 1 - np.clip(np.abs(gx) + np.abs(gy), 0, 1)[..., None] * 0.5 * fabric_hi
 
     # Normals: flattened fabric, plus a fine weave for light to catch up close.
-    flat = flatten_normals(nohq)
+    flat = flatten_normals(nohq, CLOTH_FOLDS)
     original = nohq[..., :2] - 128.0
     xy = np.where(fabric[..., None], flat, original)
     xy = upscale(xy, size)
     xy[..., 0] -= gx * 60
     xy[..., 1] -= gy * 60
-    xy[..., 0] += fabric_hi[..., 0] * noise(size, 0.9, 77) * 1.5
-    xy[..., 1] += fabric_hi[..., 0] * noise(size, 0.9, 78) * 1.5
+    xy[..., 0] += fabric_hi[..., 0] * noise(size, 0.9, 77) * 1.0
+    xy[..., 1] += fabric_hi[..., 0] * noise(size, 0.9, 78) * 1.0
     emboss_collar_emblems(xy)
     normals = normals_from(xy)
 
@@ -518,7 +549,7 @@ def build_base(tools: Tools):
         xy[..., i] = xy[..., i] * (1 - shoes_hi[..., 0]) + blur(xy[..., i], 6) * shoes_hi[..., 0]
     normals = normals_from(xy)
     spec = smdi.copy()
-    spec[fabric, 1], spec[fabric, 2] = 2, 8
+    spec[fabric, 1], spec[fabric, 2] = CLOTH_SPEC, CLOTH_GLOSS
     spec[shirt | tie, 1], spec[shirt | tie, 2] = 2, 8
     # Any stronger and the shoe mirrors the blotchy reflection map like camouflage.
     spec[shoes, 1] = 90
@@ -605,36 +636,34 @@ def chevron_insignia(chevrons, rifles, rockers=0) -> Image.Image:
     return relief(Image.fromarray(np.clip(arr, 0, 255).astype("uint8"), "RGBA"), 0.5)
 
 
-def service_stripes(count: int, rear: int, back=SCARLET, fill=INSIGNIA_GREEN, degrees=30, scale=1.0) -> Image.Image:
-    """Green on scarlet, 30 degrees, front end low. Proportions from fig. 4-6.
+def group_marks(count: int, rear: int, colour=NAVY_BLUE, degrees=30, scale=0.6):
+    """A junior corpsman's diagonal stripes, front end low, centred on their canvas.
 
-    Navy stripes on the same coat are blue on green at 45 degrees (para 8000).
+    Also returns how far above the centre the top stripe's upper edge is on the centreline,
+    which is where the striker mark sits.
     """
     length, width, gap = (CHEVRON_W * v * scale for v in (1.1, 0.17, 0.05))
     ang = np.radians(degrees)
-    W = int((length * np.cos(ang) + width + 12) * SS)
-    H = int((length * np.sin(ang) + (count + 0.3) * (width + gap) / np.cos(ang) + 12) * SS)
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
     ux, uy = np.cos(ang), -np.sin(ang)  # along the stripe, rising to the rear
     nx, ny = -uy, ux  # across it
-    half, wd, pad = length / 2 * SS, width * SS, 0.012 * CHEVRON_W * SS
-    cx, cy = W / 2, H - (length / 2 * np.sin(ang) + width) * SS
+    stack = count * width + (count - 1) * gap
+    margin = 6 * K
+    W = int(2 * (length / 2 * np.cos(ang) + stack / 2 * np.sin(ang) + margin)) * SS
+    H = int(2 * (length / 2 * np.sin(ang) + stack / 2 * np.cos(ang) + margin)) * SS
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    half, wd = length / 2 * SS, width * SS
 
     for i in range(count):
-        o = -i * (width + gap) * SS
-        c = (cx + nx * o, cy + ny * o)
-
-        def quad(along, across):
-            return [(c[0] + sa * along * ux + sb * across * nx, c[1] + sa * along * uy + sb * across * ny)
-                    for sa, sb in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
-        d.polygon(quad(half, wd / 2), fill=back + (255,))
-        d.polygon(quad(half - pad * 2, wd / 2 - pad * 2), fill=fill + (255,))
+        o = (i - (count - 1) / 2) * (width + gap) * SS
+        c = (W / 2 + nx * o, H / 2 + ny * o)
+        d.polygon([(c[0] + sa * half * ux + sb * wd / 2 * nx, c[1] + sa * half * uy + sb * wd / 2 * ny)
+                   for sa, sb in ((-1, -1), (1, -1), (1, 1), (-1, 1))], fill=colour + (255,))
 
     out = img.resize((W // SS, H // SS), Image.LANCZOS)
     if rear < 0:
         out = out.transpose(Image.FLIP_LEFT_RIGHT)
-    return relief(out, 0.4)
+    return relief(out, 0.4), stack / 2 / np.cos(ang)
 
 
 def on_khaki(colour):
@@ -728,17 +757,19 @@ def rate_badge(chevrons, rocker) -> Image.Image:
     eagle = navy_eagle(W * 0.72)
     mark = caduceus(W * 0.36)
     stripe, gap, fall = 0.065, 0.04, 0.3
-    cad_top = eagle.height / W + (0.1 if rocker else -0.02)
+    cad_top = eagle.height / W + (0.13 if rocker else -0.02)
     cad_bottom = cad_top + mark.height / W
     wing_y = cad_bottom - 0.2
     H = int((wing_y + fall + chevrons * (stripe + gap) + 0.04) * W)
-    layer = Image.new("RGBA", (W * SS, H * SS), (0, 0, 0, 0))
+    # Room around the drawing, so the edges and their shadow aren't cut off by the canvas.
+    M = max(4 * K, W // 24)
+    layer = Image.new("RGBA", ((W + 2 * M) * SS, (H + 2 * M) * SS), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    u = (W - 2) * SS
+    u = W * SS
     blue = NAVY_BLUE + (255,)
 
     def pt(x, y):
-        return (SS + x * u, SS + y * u)
+        return (M * SS + x * u, M * SS + y * u)
 
     for i in range(chevrons):
         y = wing_y + i * (stripe + gap)
@@ -751,9 +782,9 @@ def rate_badge(chevrons, rocker) -> Image.Image:
             pts = [pt(s, wing_y - 0.02 + offset - (wing_y - 0.02 - top) * np.sin(np.pi * s)) for s in ss]
             return pts[::-1] if reverse else pts
         d.polygon(arc(0) + arc(thick, True), fill=blue)
-    img = layer.resize((W, H), Image.LANCZOS)
-    img.alpha_composite(mark, (W // 2 - mark.width // 2, int(cad_top * W)))
-    img.alpha_composite(eagle, (W // 2 - eagle.width // 2, 0))
+    img = layer.resize((W + 2 * M, H + 2 * M), Image.LANCZOS)
+    img.alpha_composite(mark, (M + W // 2 - mark.width // 2, M + int(cad_top * W)))
+    img.alpha_composite(eagle, (M + W // 2 - eagle.width // 2, M))
     arr = np.asarray(img, float).copy()
     # Thread texture, so it reads as embroidery rather than flat paint.
     arr[..., :3] *= (1 + noise(arr.shape[:2], 0.7, 6) * 0.06)[..., None]
@@ -761,7 +792,7 @@ def rate_badge(chevrons, rocker) -> Image.Image:
 
 
 def apply_navy(a, sm, spec):
-    """Everything goes on the left sleeve: rate midway to the elbow, stripes at the cuff."""
+    """The rate goes on the left sleeve only, midway to the elbow."""
     kind, count, rocker, striker = spec["navy"]
     s = LEFT_SLEEVE
     centre = s["seam_y"] * K + int(RATE_CENTRE_IN * PX_PER_IN)
@@ -770,15 +801,11 @@ def apply_navy(a, sm, spec):
     elif count:
         # NAVPERS 15665: 3 inch stripes at 30 degrees, lower end forward, with any
         # striker mark centred immediately above.
-        marks = service_stripes(count, s["rear"], NAVY_BLUE, NAVY_BLUE, 30, 0.6)
+        marks, top = group_marks(count, s["rear"])
         stamp(a, sm, marks, s["cx"] * K, centre)
         if striker:
             mark = relief(caduceus(1.3 * PX_PER_IN), 0.5)
-            stamp(a, sm, mark, s["cx"] * K, centre - int(marks.height * 0.32) - mark.height // 2)
-    if spec["stripes"]:
-        st = service_stripes(spec["stripes"], s["rear"], NAVY_BLUE, NAVY_BLUE, 45, 0.8)
-        bottom = s["cuff_y"] * K - int((CUFF_PEAK_IN + 0.5) * PX_PER_IN)
-        stamp(a, sm, st, s["cx"] * K, bottom - st.height // 2)
+            stamp(a, sm, mark, s["cx"] * K, centre - int(top + 0.3 * PX_PER_IN) - mark.height // 2)
 
 
 def watermark(sheet):
@@ -933,12 +960,6 @@ def apply_rank(base, base_spec, spec):
                 # 4 inches below the shoulder seam (para 4004).
                 top = s["seam_y"] * K + int(4 * PX_PER_IN)
                 stamp(a, sm, insignia, s["cx"] * K, top + insignia.height // 2)
-        if spec["stripes"]:
-            for s in SLEEVES:
-                st = service_stripes(spec["stripes"], s["rear"])
-                # Lower edge 1/2 inch above the point of the cuff (para 4008).
-                bottom = s["cuff_y"] * K - int((CUFF_PEAK_IN + 0.5) * PX_PER_IN)
-                stamp(a, sm, st, s["cx"] * K, bottom - st.height // 2)
     watermark(a)
     return a, sm
 
@@ -975,10 +996,7 @@ def build_decor(tools: Tools):
     xy = upscale(nohq[..., :2] - 128.0, size)
     spec = upscale(smdi, size)
 
-    # Measured beside the buckle in game: the same value renders darker and greener here
-    # than on the coat.
-    cloth = GREEN * np.array((1.2, 1.1, 1.115))
-    grain = cloth_grain(size, 2040)
+    cloth = GREEN * np.array(BELT_TINT)
     height = np.zeros(size)
     h, w = size
 
@@ -987,13 +1005,18 @@ def build_decor(tools: Tools):
     belt_tone = np.ones((y1 - y0, w))
     stitch = np.zeros((y1 - y0, w))
     for yy_s in (14 * k, (BELT_Y[1] - 14) * k):
-        stitch[yy_s - 2:yy_s + 2, :] = 1
+        stitch[yy_s - 3:yy_s + 3, :] = 1
     # The belt is squeezed in x, so stitches are short in sheet space.
     dashes = (np.arange(w) // 6) % 2 == 0
     stitch *= dashes[None, :]
 
-    belt_tone *= 1 - stitch * 0.32
-    colour[y0:y1] = cloth * belt_tone[..., None] * grain[y0:y1]
+    belt_tone *= 1 - stitch * 0.45
+    colour[y0:y1] = cloth * belt_tone[..., None]
+    # The strip under the belt shows as a pale line along its lower edge if left as vanilla.
+    gap = PLATE[1] * k
+    colour[y1:gap] = cloth
+    spec[y1:gap, :, 1], spec[y1:gap, :, 2] = CLOTH_SPEC, CLOTH_GLOSS
+    xy[y1:gap] = 0
 
     # Plate: geometry far wider than a real buckle, so the belt runs across it and
     # the buckle is painted smaller. Same for every rank: para 3002 sets one belt
@@ -1001,7 +1024,7 @@ def build_decor(tools: Tools):
     # than the belt, with its inner edge on the coat front.
     px0, py0, px1, py1 = (v * k for v in PLATE)
     pw, ph = px1 - px0, py1 - py0
-    colour[py0:py1, px0:px1] = cloth * grain[py0:py1, px0:px1]
+    colour[py0:py1, px0:px1] = cloth
 
     fh = ph
     fw = int(fh * 0.56)
@@ -1046,14 +1069,16 @@ def build_decor(tools: Tools):
     # Normals: belt and plate come from the drawn height, not vanilla's eagle.
     gy, gx = np.gradient(height)
     drawn = np.stack([-gx * 90, -gy * 90], axis=2)
-    weave = noise(size, 0.9, 79) * 3.0
+    # The coat's fine surface. Made on a sheet squeezed the other way, so it comes out even
+    # on the model instead of smeared along the belt.
+    squeeze = (h // 3, w)
+    weave = np.stack([upscale(noise(squeeze, 1.0, 79 + i), size) * 1.0 for i in range(2)], axis=2)
     for yr0, yr1, xr0, xr1 in ((y0, y1, 0, w), (py0, py1, px0, px1)):
-        xy[yr0:yr1, xr0:xr1, 0] = drawn[yr0:yr1, xr0:xr1, 0] + weave[yr0:yr1, xr0:xr1]
-        xy[yr0:yr1, xr0:xr1, 1] = drawn[yr0:yr1, xr0:xr1, 1] + weave[yr0:yr1, xr0:xr1]
+        xy[yr0:yr1, xr0:xr1] = drawn[yr0:yr1, xr0:xr1] + weave[yr0:yr1, xr0:xr1]
 
     # Specular: matte cloth, polished buckle.
-    spec[y0:y1, :, 1], spec[y0:y1, :, 2] = 2, 8
-    spec[py0:py1, px0:px1, 1], spec[py0:py1, px0:px1, 2] = 2, 8
+    spec[y0:y1, :, 1], spec[y0:y1, :, 2] = CLOTH_SPEC, CLOTH_GLOSS
+    spec[py0:py1, px0:px1, 1], spec[py0:py1, px0:px1, 2] = CLOTH_SPEC, CLOTH_GLOSS
     tgt = spec[by0:by0 + fh, bx0:bx0 + fw]
     tgt[..., 1] = tgt[..., 1] * (1 - alpha) + 200 * alpha
     tgt[..., 2] = tgt[..., 2] * (1 - alpha) + 190 * alpha
@@ -1233,7 +1258,7 @@ def build_award_ribbons(tools: Tools):
     offset = build_rack_model()
     (DATA / "ptf_dress_rack.rvmat").write_text(rvmat(
         "#(argb,8,8,3)color(1,0.1,0.1,0.12,TI)", "#(argb,8,8,3)color(0.5,0.5,1,1,NOHQ)",
-        "#(argb,8,8,3)color(0.5,0.5,0.5,1,DT)", "#(argb,8,8,3)color(1,0.03,0.1,1,SMDI)"), newline="\n")
+        "#(argb,8,8,3)color(0.5,0.5,0.5,1,DT)", "#(argb,8,8,3)color(1,0.03,0.1,1,SMDI)", power=300, dim=1), newline="\n")
     header = "// GENERATED by tools/generate-dress-uniforms.py - do not edit by hand.\n"
     (ADDON / "cfgRibbons.hpp").write_text(header + f"""class CfgPTFDressRibbons
 {{
@@ -1386,9 +1411,17 @@ def build_rack_model():
 
 
 def build_detail() -> np.ndarray:
-    """Tiling fine grain for close-up cloth. Averages 0.5, so brightness is untouched."""
-    v = 128 + noise((1024, 1024), 0.8, 1020) * 3 + noise((1024, 1024), 6, 1021) * 1
-    return np.dstack([v, v, v])
+    """Tiling diagonal wool weave for the cloth. Averages 0.5, so brightness is untouched.
+
+    One tile covers about 11 inches of coat, so this is some 12 lines to the inch. The period
+    must divide the sheet exactly, or it won't tile. It fades to plain grey in the mip maps.
+    """
+    size = 1024
+    yy, xx = np.mgrid[:size, :size]
+    twill = np.sin(2 * np.pi * ((xx + yy) % 8) / 8)
+    v = 128 + twill * 9 + noise((size, size), 0.8, 1020) * 2
+    heather = [noise((size, size), 1.0, 1021 + i) * 1.5 for i in range(3)]
+    return np.dstack([v + h for h in heather])
 
 
 # --- Config ----------------------------------------------------------------
@@ -1424,7 +1457,7 @@ def write_config(ranks):
         wep.append(f"""class PTF_Uniform_Dress_USMC_A_{ab} : PTF_Uniform_Dress_USMC_A_Base
 {{
    scope = 2;
-   displayName = "[Dress] Service A - {s['name']} [PTF]";
+   displayName = "[Service A] {s['grade']}, {s['name']} [PTF]";
    picture = "\\z\\PTF\\addons\\PTF_Dress\\ui\\ptf_dress_icon_{low}_ca.paa";
    class ItemInfo : ItemInfo
    {{
@@ -1459,16 +1492,17 @@ def main():
         tools.save(build_detail(), "ptf_dress_wool_dt")
 
         decor, decor_n, decor_s = build_decor(tools)
-        tools.save(decor, "ptf_dress_usmc_decor_co")
+        tools.save(lifted(decor), "ptf_dress_usmc_decor_co")
         tools.save(decor_n, "ptf_dress_usmc_decor_nohq")
         tools.save(decor_s, "ptf_dress_usmc_decor_smdi")
         (DATA / "ptf_dress_usmc_decor.rvmat").write_text(rvmat(
             "#(argb,8,8,3)color(1,0.1,0.1,0.12,TI)", data_path("ptf_dress_usmc_decor_nohq.paa"), dt,
-            data_path("ptf_dress_usmc_decor_smdi.paa"), dt_tile=4, power=120), newline="\n")
+            # The sheet covers about 40 by 6 inches, so this keeps the weave's lines even.
+            data_path("ptf_dress_usmc_decor_smdi.paa"), dt_tile=(3.7, 0.55)), newline="\n")
 
         cap_colours, cap_normals, cap_spec = build_caps(tools)
         for suffix, img in cap_colours.items():
-            tools.save(img, f"ptf_dress_usmc_cover{suffix}_co")
+            tools.save(lifted(img), f"ptf_dress_usmc_cover{suffix}_co")
         tools.save(cap_spec, "ptf_dress_usmc_cover_smdi")
         for suffix, img in cap_normals.items():
             tools.save(img, f"ptf_dress_usmc_cover{suffix}_nohq")
@@ -1484,7 +1518,7 @@ def main():
         for ab in args.ranks:
             low = ab.lower()
             sheet, spec = apply_rank(base, base_spec, RANKS[ab])
-            tools.save(sheet, f"ptf_dress_usmc_a_{low}_co")
+            tools.save(lifted(sheet), f"ptf_dress_usmc_a_{low}_co")
             tools.save(spec, f"ptf_dress_usmc_a_{low}_smdi")
             (DATA / f"ptf_dress_usmc_a_{low}.rvmat").write_text(rvmat(
                 r"a3\characters_f_aow\uniforms\data\paradeuniform_01_ti_ca.paa", data_path("ptf_dress_usmc_nohq.paa"), dt,

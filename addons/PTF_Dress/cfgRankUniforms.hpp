@@ -2,7 +2,7 @@
 class PTF_Uniform_Dress_USMC_A_Pvt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Private (E-1) [PTF]";
+   displayName = "[Service A] E-1, Private [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_pvt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -13,7 +13,7 @@ class PTF_Uniform_Dress_USMC_A_Pvt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_PFC : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Private First Class (E-2) [PTF]";
+   displayName = "[Service A] E-2, Private First Class [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_pfc_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -24,7 +24,7 @@ class PTF_Uniform_Dress_USMC_A_PFC : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_LCpl : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Lance Corporal (E-3) [PTF]";
+   displayName = "[Service A] E-3, Lance Corporal [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_lcpl_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -35,7 +35,7 @@ class PTF_Uniform_Dress_USMC_A_LCpl : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_Cpl : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Corporal (E-4) [PTF]";
+   displayName = "[Service A] E-4, Corporal [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_cpl_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -46,7 +46,7 @@ class PTF_Uniform_Dress_USMC_A_Cpl : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_Sgt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Sergeant (E-5) [PTF]";
+   displayName = "[Service A] E-5, Sergeant [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_sgt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -57,7 +57,7 @@ class PTF_Uniform_Dress_USMC_A_Sgt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_SSgt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Staff Sergeant (E-6) [PTF]";
+   displayName = "[Service A] E-6, Staff Sergeant [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_ssgt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -68,7 +68,7 @@ class PTF_Uniform_Dress_USMC_A_SSgt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_GySgt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Gunnery Sergeant (E-7) [PTF]";
+   displayName = "[Service A] E-7, Gunnery Sergeant [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_gysgt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -79,7 +79,7 @@ class PTF_Uniform_Dress_USMC_A_GySgt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HR : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Hospitalman Recruit (HR) [PTF]";
+   displayName = "[Service A] E-1, Hospitalman Recruit [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_hr_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -90,7 +90,7 @@ class PTF_Uniform_Dress_USMC_A_HR : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HA : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Hospitalman Apprentice (HA) [PTF]";
+   displayName = "[Service A] E-2, Hospitalman Apprentice [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_ha_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -101,7 +101,7 @@ class PTF_Uniform_Dress_USMC_A_HA : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HN : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Hospitalman (HN) [PTF]";
+   displayName = "[Service A] E-3, Hospitalman [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_hn_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -112,7 +112,7 @@ class PTF_Uniform_Dress_USMC_A_HN : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HM3 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Hospital Corpsman 3rd Class (HM3) [PTF]";
+   displayName = "[Service A] E-4, Hospital Corpsman Third Class [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_hm3_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -123,7 +123,7 @@ class PTF_Uniform_Dress_USMC_A_HM3 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HM2 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Hospital Corpsman 2nd Class (HM2) [PTF]";
+   displayName = "[Service A] E-5, Hospital Corpsman Second Class [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_hm2_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -134,7 +134,7 @@ class PTF_Uniform_Dress_USMC_A_HM2 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HM1 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Hospital Corpsman 1st Class (HM1) [PTF]";
+   displayName = "[Service A] E-6, Hospital Corpsman First Class [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_hm1_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -145,7 +145,7 @@ class PTF_Uniform_Dress_USMC_A_HM1 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_HMC : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Chief Hospital Corpsman (HMC) [PTF]";
+   displayName = "[Service A] E-7, Chief Hospital Corpsman [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_hmc_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -156,7 +156,7 @@ class PTF_Uniform_Dress_USMC_A_HMC : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_WO1 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Warrant Officer (W-1) [PTF]";
+   displayName = "[Service A] W-1, Warrant Officer [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_wo1_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -167,7 +167,7 @@ class PTF_Uniform_Dress_USMC_A_WO1 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_CWO2 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Chief Warrant Officer 2 (W-2) [PTF]";
+   displayName = "[Service A] W-2, Chief Warrant Officer 2 [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_cwo2_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -178,7 +178,7 @@ class PTF_Uniform_Dress_USMC_A_CWO2 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_CWO3 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Chief Warrant Officer 3 (W-3) [PTF]";
+   displayName = "[Service A] W-3, Chief Warrant Officer 3 [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_cwo3_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -189,7 +189,7 @@ class PTF_Uniform_Dress_USMC_A_CWO3 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_CWO4 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Chief Warrant Officer 4 (W-4) [PTF]";
+   displayName = "[Service A] W-4, Chief Warrant Officer 4 [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_cwo4_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -200,7 +200,7 @@ class PTF_Uniform_Dress_USMC_A_CWO4 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_CWO5 : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Chief Warrant Officer 5 (W-5) [PTF]";
+   displayName = "[Service A] W-5, Chief Warrant Officer 5 [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_cwo5_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -211,7 +211,7 @@ class PTF_Uniform_Dress_USMC_A_CWO5 : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_2ndLt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Second Lieutenant (O-1) [PTF]";
+   displayName = "[Service A] O-1, Second Lieutenant [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_2ndlt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -222,7 +222,7 @@ class PTF_Uniform_Dress_USMC_A_2ndLt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_1stLt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - First Lieutenant (O-2) [PTF]";
+   displayName = "[Service A] O-2, First Lieutenant [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_1stlt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -233,7 +233,7 @@ class PTF_Uniform_Dress_USMC_A_1stLt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_Capt : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Captain (O-3) [PTF]";
+   displayName = "[Service A] O-3, Captain [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_capt_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -244,7 +244,7 @@ class PTF_Uniform_Dress_USMC_A_Capt : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_Maj : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Major (O-4) [PTF]";
+   displayName = "[Service A] O-4, Major [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_maj_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -255,7 +255,7 @@ class PTF_Uniform_Dress_USMC_A_Maj : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_LtCol : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Lieutenant Colonel (O-5) [PTF]";
+   displayName = "[Service A] O-5, Lieutenant Colonel [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_ltcol_ca.paa";
    class ItemInfo : ItemInfo
    {
@@ -266,7 +266,7 @@ class PTF_Uniform_Dress_USMC_A_LtCol : PTF_Uniform_Dress_USMC_A_Base
 class PTF_Uniform_Dress_USMC_A_Col : PTF_Uniform_Dress_USMC_A_Base
 {
    scope = 2;
-   displayName = "[Dress] Service A - Colonel (O-6) [PTF]";
+   displayName = "[Service A] O-6, Colonel [PTF]";
    picture = "\z\PTF\addons\PTF_Dress\ui\ptf_dress_icon_col_ca.paa";
    class ItemInfo : ItemInfo
    {
