@@ -2,12 +2,12 @@ class StageTI
 {
 	texture="#(argb,8,8,3)color(1,0.1,0.1,0.12,TI)";
 };
-ambient[]={1,1,1,1};
-diffuse[]={0.3,0.3,0.3,1};
+ambient[]={0.3,0.3,0.3,1};
+diffuse[]={0.09,0.09,0.09,1};
 forcedDiffuse[]={0,0,0,0};
 emmisive[]={0,0,0,1};
 specular[]={0.8,0.8,0.8,0.8};
-specularPower=120;
+specularPower=60;
 PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
@@ -28,8 +28,8 @@ class Stage2
 	uvSource="tex";
 	class uvTransform
 	{
-		aside[]={4,0,0};
-		up[]={0,4,0};
+		aside[]={3.7,0,0};
+		up[]={0,0.55,0};
 		dir[]={0,0,0};
 		pos[]={0,0,0};
 	};

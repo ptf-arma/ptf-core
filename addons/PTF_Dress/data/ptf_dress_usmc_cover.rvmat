@@ -2,8 +2,8 @@ class StageTI
 {
 	texture="a3\characters_f_aow\headgear\data\paradedresscap_01_ti_ca.paa";
 };
-ambient[]={1,1,1,1};
-diffuse[]={0.3,0.3,0.3,1};
+ambient[]={0.3,0.3,0.3,1};
+diffuse[]={0.09,0.09,0.09,1};
 forcedDiffuse[]={0,0,0,0};
 emmisive[]={0,0,0,1};
 specular[]={0.8,0.8,0.8,0.8};

@@ -17,6 +17,11 @@ turns its screenshot into the labelled image for sharing.
 
 The belt is the same for every rank (MCO 1020.34H para 3002).
 
+The uniforms carry no service stripes, by PTF's choice. Corpsmen wear their rate on the left sleeve only, as Navy rates are.
+
+The weave is in the tiling detail texture (`ptf_dress_wool_dt`), not the colour sheets. The cloth
+is too dark on the sheet for fine detail to survive compression, and comes out as blotches.
+
 Judge colour in daylight on real terrain. Exposure varies a lot by map and time.
 
 Every rank sheet carries a PTF watermark in parts of the texture the model never
@@ -27,7 +32,7 @@ See `credits_and_license.txt` for the terms.
 `tools/dress-review/make_icons.py`. Rerun it after changing how a rank looks.
 
 The uniforms have no ribbon rack by default: a rack is only ever the wearer's own. It
-appears when the server runs billet-link 0.13.7 or later and Billet can match them to
+appears when the server runs billet-link 0.13.8 or later and Billet can match them to
 a member (`fnc/fn_rackInit.sqf`).
 
 The rack is a small generated model attached to the chest, shaped to it and sized and placed
