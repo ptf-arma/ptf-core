@@ -80,7 +80,7 @@ KHAKI = daylight(190, 165, 135)
 # from what earlier builds rendered as rather than from the formula.
 BRASS = (78, 66, 38)
 # Scarlet and green are set well apart in brightness. Hue alone blurs away at a distance.
-SCARLET = (88, 13, 15)
+SCARLET = (76, 18, 16)
 INSIGNIA_GREEN = (11, 13, 7)
 SILVER = (70, 71, 73)
 GOLD = (112, 90, 42)
@@ -159,6 +159,8 @@ CAP_CROWN = (256, 265, 248)  # centre and radius of the crown's top
 # The crown's front-to-back axis is this far from the sheet's vertical, in degrees.
 CAP_CROWN_ROTATION = -12
 CAP_VISOR = (505, 340, 890, 535)
+# About 17% of the crown across, as in the order's photographs.
+CAP_EMBLEM_WIDTH = 130
 
 def _enlisted(grade, name, chevrons=0, rifles=True, rockers=0):
     return {"grade": grade, "name": name, "chevrons": chevrons, "rifles": rifles, "rockers": rockers}
@@ -543,7 +545,8 @@ def build_base(tools: Tools):
     # Smoothed, since vanilla's leather grain reads as suede rather than a shine.
     # Never brighter than the source, or the blur pulls light in from around the sole.
     shoe_tone = np.minimum(blur(grey(colour), 5), grey(colour))
-    colour = colour * (1 - shoes_hi) + shoe_tone[..., None] * 0.26 * shoes_hi
+    # A little blue, as the warm sun turns neutral black leather brown.
+    colour = colour * (1 - shoes_hi) + shoe_tone[..., None] * np.array((0.15, 0.16, 0.19)) * shoes_hi
     # The smooth surface comes from the normal map too, keeping only the broad shape.
     for i in range(2):
         xy[..., i] = xy[..., i] * (1 - shoes_hi[..., 0]) + blur(xy[..., i], 6) * shoes_hi[..., 0]
@@ -551,9 +554,12 @@ def build_base(tools: Tools):
     spec = smdi.copy()
     spec[fabric, 1], spec[fabric, 2] = CLOTH_SPEC, CLOTH_GLOSS
     spec[shirt | tie, 1], spec[shirt | tie, 2] = 2, 8
-    # Any stronger and the shoe mirrors the blotchy reflection map like camouflage.
-    spec[shoes, 1] = 90
-    spec[shoes, 2] = 170
+    # The strap's top is seen edge-on from the front, where any sheen brightens it into a streak.
+    sx0, sy0, sx1, sy1 = STRAP_ZONE
+    spec[sy0:sy1, sx0:sx1, 1], spec[sy0:sy1, sx0:sx1, 2] = 1, 4
+    # Polished: a strong, tight highlight, on leather dark enough to stay black beside it.
+    spec[shoes, 1] = 170
+    spec[shoes, 2] = 255
     spec[..., 0] = 255
     return colour, normals, spec[..., :3]
 
@@ -576,61 +582,81 @@ def stamp(sheet, spec, rgba: Image.Image, cx, cy, metal=False):
         target[..., 2] = target[..., 2] * (1 - small) + 170 * small
 
 
+# Fig. 4-6 measured at 600 dpi, as fractions of the insignia's width below its top point. Each
+# edge is given at the centre and at 0.25, 0.4 and 0.45 of the width out from it.
+CHEVRON_TOP_EDGE = (0, 0.309, 0.449, 0.489)
+CHEVRON_STRIPES = (((0.063, 0.358, 0.494, 0.531), (0.264, 0.511, 0.635, 0.670)),
+                   ((0.304, 0.545, 0.667, 0.702), (0.462, 0.684, 0.798, 0.834)),
+                   ((0.499, 0.716, 0.829, 0.866), (0.653, 0.852, 0.956, 0.988)))
+CHEVRON_ROCKERS = (((1.040, 1.009, 0.960, 0.930), (1.176, 1.139, 1.071, 1.040)),
+                   ((1.204, 1.167, 1.105, 1.071), (1.343, 1.307, 1.239, 1.207)))
+# The PFC's stripe, and the backing's lower edge, which follows it.
+PFC_STRIPE = ((0.069, 0.367, 0.505, 0.540), (0.258, 0.523, 0.643, 0.680))
+PFC_LOWER_EDGE = (0.336, 0.580, 0.698, 0.735)
+# The lower edge by chevrons and rockers, and where the crossed rifles centre.
+CHEVRON_LOWER_EDGE = {(1, 0): (0.905, 0.883, 0.820, 0.788), (2, 0): (1.110, 1.088, 1.019, 0.991),
+                      (3, 0): (1.218, 1.195, 1.129, 1.096), (3, 1): (1.216, 1.179, 1.111, 1.080),
+                      (3, 2): (1.380, 1.352, 1.289, 1.258)}
+CHEVRON_RIFLES_Y = {(1, 0): 0.5725, (2, 0): 0.71, (3, 0): 0.883, (3, 1): 0.859, (3, 2): 0.859}
+CHEVRON_RIFLES_W = 0.522
+CHEVRON_STRIPE_END = 0.045
+
+
+def wing(samples):
+    """An edge through the figure's samples, as a function of the distance from the centre."""
+    fit = np.polyfit((0, 0.25, 0.4, 0.45), samples, 3)
+    return lambda d: np.polyval(fit, np.abs(d))
+
+
+def bowl(samples):
+    """A smooth lower edge through the figure's samples, level at the centre."""
+    d = np.array((0, 0.25, 0.4, 0.45))
+    a = np.stack([np.ones(4), d ** 2, d ** 4], axis=1)
+    fit = np.linalg.lstsq(a, np.array(samples), rcond=None)[0]
+    return lambda x: fit[0] + fit[1] * x ** 2 + fit[2] * x ** 4
+
+
 def chevron_insignia(chevrons, rifles, rockers=0) -> Image.Image:
-    """Green on scarlet cloth chevrons, point up (MCO 1020.34H fig. 4-6)."""
-    # Rockered grades pack their stripes tighter, as the figure shows.
-    stripe, gap = (0.105, 0.028) if rockers else (0.135, 0.035)
-    fall = 0.40  # how far a wing drops across half the insignia width
-    bowl = (0.40 if rockers else 0.46) if rifles else 0.0
-    # With no rifles the backing follows the stripe, so it needs its own scarlet edge below.
-    side_y = fall + chevrons * (stripe + gap) + (bowl * 0.15 if rifles else 0.065)
-    depth = bowl * 0.85
-    # Includes a scarlet edge below the last rocker.
-    rocker_h = rockers * (stripe + gap) + (0.03 if rockers else 0)
+    """Green on scarlet cloth chevrons, point up, drawn to fig. 4-6's proportions."""
     W = CHEVRON_W * SS
-    H = int((side_y + depth + rocker_h + 0.04) * W)
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
     u = W - 2 * SS
     green = INSIGNIA_GREEN + (255,)
+    across = np.linspace(-0.5, 0.5, 201)
+    stripes_across = np.linspace(-0.5 + CHEVRON_STRIPE_END, 0.5 - CHEVRON_STRIPE_END, 161)
 
     def pt(x, y):
-        return (SS + x * u, SS + y * u)
+        return (SS + (x + 0.5) * u, SS + y * u)
 
-    def curve(y, x0=1.0, x1=0.0):
-        return [pt(x0 + (x1 - x0) * s, y + depth * np.sin(np.pi * s)) for s in np.linspace(0, 1, 60)]
-
-    # Scarlet backing with a bowl-shaped lower edge.
-    outline = [pt(0.5, 0), pt(1, fall), pt(1, side_y + rocker_h)]
     if rifles:
-        outline += curve(side_y + rocker_h)
+        key = (chevrons, rockers)
+        lower = bowl(CHEVRON_LOWER_EDGE[key])
+        stripes = CHEVRON_STRIPES[:chevrons]
     else:
-        outline.append(pt(0.5, side_y - fall))
-    outline += [pt(0, side_y + rocker_h), pt(0, fall)]
-    d.polygon(outline, fill=SCARLET + (255,))
+        lower = wing(PFC_LOWER_EDGE)
+        stripes = (PFC_STRIPE,)
+    height = max(float(lower(d)) for d in across) + 0.01
+    img = Image.new("RGBA", (W, int(height * u) + 2 * SS), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
 
-    margin = 0.03
-    wing = fall * (1 - 2 * margin)
-    for i in range(chevrons):
-        y = 0.05 + i * (stripe + gap)
-        d.polygon([pt(0.5, y), pt(1 - margin, y + wing), pt(1 - margin, y + wing + stripe),
-                   pt(0.5, y + stripe), pt(margin, y + wing + stripe), pt(margin, y + wing)], fill=green)
+    top = wing(CHEVRON_TOP_EDGE)
+    d.polygon([pt(x, top(x)) for x in across] + [pt(x, lower(x)) for x in across[::-1]], fill=SCARLET + (255,))
 
+    for upper, under in stripes:
+        upper, under = wing(upper), wing(under)
+        d.polygon([pt(x, upper(x)) for x in stripes_across] + [pt(x, under(x)) for x in stripes_across[::-1]], fill=green)
     for i in range(rockers):
-        top = side_y + gap + i * (stripe + gap)
-        d.polygon(curve(top, 1 - margin, margin) + curve(top + stripe, margin, 1 - margin), fill=green)
+        # Rockers bow downward, so each edge is a smooth curve rather than a point.
+        upper, under = bowl(CHEVRON_ROCKERS[i][0]), bowl(CHEVRON_ROCKERS[i][1])
+        d.polygon([pt(x, upper(x)) for x in stripes_across] + [pt(x, under(x)) for x in stripes_across[::-1]], fill=green)
 
     if rifles:
-        v_tip = 0.05 + chevrons * (stripe + gap)
-        cx, cy = 0.5, (v_tip + side_y + depth) / 2 + 0.05
-        for sgn in (-1, 1):
-            # stock end thick, barrel thin, crossing at the centre
-            a, b = pt(cx + sgn * 0.33, cy + 0.10), pt(cx - sgn * 0.33, cy - 0.10)
-            mid = pt(cx + sgn * 0.08, cy + 0.024)
-            d.line([a, mid], fill=green, width=int(0.07 * u))
-            d.line([mid, b], fill=green, width=int(0.035 * u))
+        mask = Image.open(ASSETS / "rifles.png").getchannel("A")
+        w = int(CHEVRON_RIFLES_W * u)
+        mask = mask.resize((w, int(mask.height * w / mask.width)), Image.LANCZOS)
+        x, y = pt(0, CHEVRON_RIFLES_Y[key])
+        img.paste(Image.new("RGBA", mask.size, green), (int(x - mask.width / 2), int(y - mask.height / 2)), mask)
 
-    out = img.resize((W // SS, H // SS), Image.LANCZOS)
+    out = img.resize((W // SS, img.height // SS), Image.LANCZOS)
     arr = np.asarray(out, float).copy()
     # Thread texture, so it reads as embroidery rather than flat paint.
     arr[..., :3] *= (1 + noise(arr.shape[:2], 0.7, 5) * 0.06)[..., None]
@@ -792,10 +818,50 @@ def rate_badge(chevrons, rocker) -> Image.Image:
     return relief(Image.fromarray(np.clip(arr, 0, 255).astype("uint8"), "RGBA"), 0.5)
 
 
+def chief_anchor() -> Image.Image:
+    """A chief's black metal collar device: fouled anchor and USN, 1 by 5/8 inch (para 8001.3c)."""
+    h = int(1.05 * PX_PER_IN) * SS
+    w = int(h * 0.68)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    black = PIN_BLACK + (255,)
+    cx = w / 2
+    # Ring, stock and shank.
+    ring = h * 0.05
+    d.ellipse([cx - ring, 0, cx + ring, ring * 2], outline=black, width=int(h * 0.028))
+    d.rectangle([cx - w * 0.3, h * 0.11, cx + w * 0.3, h * 0.165], fill=black)
+    d.rectangle([cx - h * 0.035, h * 0.09, cx + h * 0.035, h * 0.93], fill=black)
+    # Arms rising from the crown, ending in flukes.
+    d.arc([cx - w * 0.46, h * 0.46, cx + w * 0.46, h * 0.98], 25, 155, fill=black, width=int(h * 0.05))
+    for sign in (-1, 1):
+        tip = (cx + sign * w * 0.5, h * 0.56)
+        d.polygon([tip, (cx + sign * w * 0.30, h * 0.70), (cx + sign * w * 0.46, h * 0.82)], fill=black)
+    # The fouling line, winding round the shank from the ring.
+    ys = np.linspace(h * 0.05, h * 0.9, 80)
+    d.line([(cx + np.sin((y / h) * 2.2 * 2 * np.pi + 0.6) * w * 0.17, y) for y in ys], fill=black, width=int(h * 0.024), joint="curve")
+    # USN across the shank, with room cleared behind it so the letters read.
+    font = ImageFont.truetype("arialbd.ttf", int(h * 0.24))
+    x0, y0, x1, y1 = d.textbbox((0, 0), "USN", font=font)
+    tx, ty = cx - (x1 - x0) / 2 - x0, h * 0.33 - y0
+    plate = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(plate).rectangle([tx + x0 - h * 0.03, ty + y0 - h * 0.025, tx + x1 + h * 0.03, ty + y1 + h * 0.025], fill=255)
+    img.putalpha(Image.composite(Image.new("L", (w, h), 0), img.getchannel("A"), plate))
+    ImageDraw.Draw(img).text((tx, ty), "USN", font=font, fill=black)
+    # Room around it, so its edges and shadow aren't cut off by the canvas.
+    pad = 4 * K * SS
+    framed = Image.new("RGBA", (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
+    framed.paste(img, (pad, pad))
+    return relief(framed.resize((framed.width // SS, framed.height // SS), Image.LANCZOS), 0.8)
+
+
 def apply_navy(a, sm, spec):
     """The rate goes on the left sleeve only, midway to the elbow."""
     kind, count, rocker, striker = spec["navy"]
     s = LEFT_SLEEVE
+    if rocker:
+        # A chief's shirt collar carries black metal grade insignia, placed as an officer's.
+        for x, y, rot in SHIRT_COLLAR:
+            stamp(a, sm, chief_anchor().rotate(rot, expand=True, resample=Image.BICUBIC), x * K, y * K)
     centre = s["seam_y"] * K + int(RATE_CENTRE_IN * PX_PER_IN)
     if kind == "crow":
         stamp(a, sm, rate_badge(count, rocker), s["cx"] * K, centre)
@@ -1134,7 +1200,7 @@ def build_caps(tools: Tools):
 
     # Visor: darker, or sky light turns its dark grey blue in game.
     visor = box_mask(a.shape, [(505, 330, 900, 540), (800, 0, 1024, 340)]) & (lum < 70)
-    a[visor] *= 0.5
+    a[visor] *= 0.28
 
     k = 2
     size = (a.shape[0] * k, a.shape[1] * k)
@@ -1147,7 +1213,7 @@ def build_caps(tools: Tools):
     x0, y0, x1, y1 = 666 * k, 580 * k, 1017 * k, 801 * k
     colour[y0:y1, x0:x1] = PIN_BLACK
     alpha[y0:y1, x0:x1] = 0
-    badge = np.asarray(ega(200 * k, shadow=False), float)
+    badge = np.asarray(ega(CAP_EMBLEM_WIDTH * k, shadow=False), float)
     bh, bw = badge.shape[:2]
     bx, by = 845 * k - bw // 2, 690 * k - bh // 2
     colour[by:by + bh, bx:bx + bw] = badge[..., :3]
@@ -1160,6 +1226,10 @@ def build_caps(tools: Tools):
     # Gloss visor and strap, but less of it: at full strength the visor mirrors the
     # sky and reads grey instead of black.
     spec = upscale(smdi, size) * np.array([1, 0.35, 0.7])
+    # High gloss: a strong, tight highlight on near-black, rather than a broad grey sheen.
+    visor_hi = upscale(visor.astype(float), size) > 0.5
+    spec[..., 1][visor_hi] = 150
+    spec[..., 2][visor_hi] = 255
     spec[..., 1][fabric_hi[..., 0] > 0.5] = 2
     spec[..., 2][fabric_hi[..., 0] > 0.5] = 8
     spec[..., 0] = 255

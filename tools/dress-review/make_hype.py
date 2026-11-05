@@ -176,12 +176,38 @@ def ranks(img):
     shadowed(img, paint)
 
 
+def drill_left(img):
+    """The drill instructor out in front, with the sky clear to his right."""
+    def paint(l):
+        d = ImageDraw.Draw(l)
+        l.alpha_composite(logo("ptf-emblem-652w.png", 190), (70, 60))
+        d.text((285, 50), "IT STARTS", font=ImageFont.truetype(str(HEAD), 112), fill=WHITE + (255,))
+        d.text((285, 165), "HERE.", font=ImageFont.truetype(str(HEAD), 112), fill=GOLD + (255,))
+        spaced(d, (290, 295), "PARAMARINE TASK FORCE", ImageFont.truetype(str(SUB), 32), WHITE + (255,), 5)
+    shadowed(img, paint)
+
+
+def drill_right(img):
+    """Nose to nose, with the sky clear at the top right."""
+    w = img.width
+
+    def paint(l):
+        d = ImageDraw.Draw(l)
+        d.text((w - 70, 50), "IT STARTS", font=ImageFont.truetype(str(HEAD), 112), fill=WHITE + (255,), anchor="ra")
+        d.text((w - 70, 165), "HERE.", font=ImageFont.truetype(str(HEAD), 112), fill=GOLD + (255,), anchor="ra")
+        m = logo("ptf-logo-horizontal-reversed-800w.png", 400)
+        l.alpha_composite(m, (w - 70 - m.width, 300))
+    shadowed(img, paint)
+
+
 # Name, output, overlay, sun position in pixels, and whether real sky shows above the walls.
 SHOTS = [
     ("hype_c_low", "PTF_Dress_hype_1_formation", formation, (1500, 900), False),
     ("hype_c_lower", "PTF_Dress_hype_2_earn_the_alphas", commander, (500, 1000), True),
     ("hype_c_left", "PTF_Dress_hype_3_one_standard", hills, (2100, 1000), False),
     ("hype_c_rank", "PTF_Dress_hype_4_ranks", ranks, (1400, 900), False),
+    ("hype_di_portrait", "PTF_Dress_hype_5_it_starts_here", drill_left, (2100, 950), False),
+    ("hype_di_nose", "PTF_Dress_hype_6_nose_to_nose", drill_right, (1900, 900), False),
 ]
 
 
