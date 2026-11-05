@@ -390,6 +390,7 @@ private _vests = [
 ];
 
 private _helmets = [
+	"PTF_DI_COVER",
 	"PTF_Headgear_Dress_USMC_Cover",
 	"PTF_Headgear_Dress_USMC_Cover_Officer",
 	"PTF_Headgear_Dress_USMC_Cover_Field",
