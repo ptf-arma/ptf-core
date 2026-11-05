@@ -31,13 +31,24 @@ SIZE = 2048
 FELT = (58, 54, 38)
 LEATHER = (36, 33, 24)
 SWEATBAND = (58, 42, 28)
+# Para 7003: the hat is trimmed with a grosgrain ribbon and bow, and has four eyelets in the crown.
+RIBBON = (32, 31, 22)
+EYELET = (14, 14, 12)
+# The bow's side of the hat, as the sign of model x, and its size along the band in metres.
+BOW_SIDE = 1
+BOW_WIDTH = 0.05
+BOW_KNOT = 0.011
+# Eyelets sit around the crown at this height. The front one holds the emblem, so isn't drawn.
+EYELET_HEIGHT = 0.822
+EYELET_RADIUS = 0.0048
+HAT_CENTRE = (0.0, -0.02)
 EMBLEM = (24, 24, 23)
 EMBLEM_LIGHT = (92, 90, 85)
 BUCKLE = (58, 48, 30)
 THREAD = (74, 70, 46)
 
 # Specular (green) and gloss (blue) for the SMDI sheet.
-SMDI = {"felt": (16, 14), "leather": (58, 90), "sweatband": (40, 60), "emblem": (32, 50), "buckle": (110, 120)}
+SMDI = {"felt": (16, 14), "leather": (58, 90), "ribbon": (18, 30), "sweatband": (40, 60), "emblem": (32, 50), "buckle": (110, 120)}
 
 # Where ega.png's globe sits, and where the model's globe sits, to line the two up.
 ART_GLOBE = (160.0, 180.0)
@@ -105,15 +116,15 @@ def masks(faces, names):
 
 
 def surface_position(pts, faces, names, key):
-    """x and y on the model behind each sheet pixel of one part, NaN elsewhere."""
-    out = np.full((SIZE, SIZE, 2), np.nan, np.float32)
+    """x, y and z on the model behind each sheet pixel of one part, NaN elsewhere."""
+    out = np.full((SIZE, SIZE, 3), np.nan, np.float32)
     for vs, name in zip(faces, names):
         if name != key:
             continue
         for i in range(1, len(vs) - 1):
             tri = [vs[0], vs[i], vs[i + 1]]
             uv = np.array([(v[2] * SIZE, v[3] * SIZE) for v in tri])
-            xy = pts[[v[0] for v in tri]][:, :2]
+            xyz = pts[[v[0] for v in tri]]
             x0, y0 = np.floor(uv.min(0)).astype(int) - 1
             x1, y1 = np.ceil(uv.max(0)).astype(int) + 2
             yy, xx = np.mgrid[max(y0, 0):min(y1, SIZE), max(x0, 0):min(x1, SIZE)]
@@ -124,7 +135,7 @@ def surface_position(pts, faces, names, key):
             b = ((uv[2, 1] - uv[0, 1]) * (xx - uv[2, 0]) + (uv[0, 0] - uv[2, 0]) * (yy - uv[2, 1])) / d
             c = 1 - a - b
             inside = (a >= -0.03) & (b >= -0.03) & (c >= -0.03)
-            value = a[..., None] * xy[0] + b[..., None] * xy[1] + c[..., None] * xy[2]
+            value = a[..., None] * xyz[0] + b[..., None] * xyz[1] + c[..., None] * xyz[2]
             out[yy[inside], xx[inside]] = value[inside]
     return out
 
@@ -198,7 +209,46 @@ def polar(mask):
     return np.arctan2(yy - cy, xx - cx)
 
 
-def paint(m, relief):
+def around_hat(pos):
+    """Angle round the hat from its front, in radians, for each sheet pixel."""
+    return np.arctan2(pos[..., 0] - HAT_CENTRE[0], -(pos[..., 2] - HAT_CENTRE[1]))
+
+
+def eyelets(pos):
+    """Distance on the crown to the nearest eyelet at the sides and back, in metres."""
+    known = np.isfinite(pos[..., 0])
+    angle = around_hat(pos)
+    best = np.full((SIZE, SIZE), np.inf, np.float32)
+    for target in (math.pi / 2, -math.pi / 2, math.pi):
+        off = np.abs((angle - target + math.pi) % (2 * math.pi) - math.pi)
+        score = np.where(known, off * 0.09 + np.abs(pos[..., 1] - EYELET_HEIGHT), np.inf)
+        centre = pos[np.unravel_index(np.argmin(score), score.shape)]
+        dist = np.linalg.norm(np.nan_to_num(pos) - centre, axis=2)
+        best = np.minimum(best, np.where(known, dist, np.inf))
+    return best
+
+
+def bow_shape(pos, band):
+    """The bow's loops and knot on the band, each a mask, from where each pixel sits on the hat.
+
+    The band is a ring on the sheet, so its distance from the ring's middle runs across its width.
+    """
+    known = np.isfinite(pos[..., 0]) & band
+    along = np.nan_to_num(((around_hat(pos) - BOW_SIDE * math.pi / 2 + math.pi) % (2 * math.pi) - math.pi) * 0.09)
+    ys, xs = np.nonzero(band)
+    yy, xx = np.mgrid[0:SIZE, 0:SIZE]
+    ring = np.hypot(xx - (xs.min() + xs.max()) / 2, yy - (ys.min() + ys.max()) / 2)
+    near = known & (np.abs(along) < BOW_WIDTH)
+    mid, half = np.median(ring[near]), (ring[near].max() - ring[near].min()) / 2
+    up = np.abs(ring - mid) / max(half, 1)
+    across = np.abs(along) / (BOW_WIDTH / 2)
+    # Each loop is narrow at the knot, and widens to almost the band's full width at its end.
+    loop = known & (across < 1) & (up < 0.3 + 0.55 * np.minimum(across * 1.6, 1))
+    knot = known & (np.abs(along) < BOW_KNOT / 2) & (up < 0.72)
+    return loop, knot
+
+
+def paint(m, relief, pos_band, pos_crown):
     rng = np.random.default_rng(1775)
     colour = np.empty((SIZE, SIZE, 3), np.float32)
     colour[:] = FELT  # bleed colour for everything outside a part
@@ -227,18 +277,29 @@ def paint(m, relief):
             height[groove] -= 0.6
             height[hit] += 0.5
 
-    # Hatband: dark leather strap with fine grain and stitched edges.
+    # Hatband: grosgrain ribbon, with fine ribs across its width, and its bow.
     grow_band = grow(m["band"], 4)
     grain = noise(rng, 2.5) * 0.08 + noise(rng, 12) * 0.025
-    colour[grow_band] = np.array(LEATHER, np.float32) * (1 + grain[grow_band])[..., None]
-    spec[grow_band], gloss[grow_band] = SMDI["leather"]
-    d = edge_distance(m["band"], 14)
-    a = polar(m["band"])
-    hit = stitches(m["band"], d, 5, 1.8, a, 2 * math.pi / 300)
-    colour[hit] = np.array(LEATHER, np.float32) * 2.0
-    height[grow_band] = (noise(rng, 2.5) * 0.08)[grow_band]
-    height[hit] += 0.5
-    height[(np.abs(d - 5) <= 2) & m["band"]] -= 0.3
+    along = np.nan_to_num(around_hat(pos_band)) * 0.09
+    ribs = np.sin(along / 0.003 * 2 * math.pi)
+    colour[grow_band] = np.array(RIBBON, np.float32) * (1 + (grain + ribs * 0.05)[grow_band])[..., None]
+    spec[grow_band], gloss[grow_band] = SMDI["ribbon"]
+    height[grow_band] = (ribs * 0.35)[grow_band]
+    loop, knot = bow_shape(pos_band, m["band"])
+    # Stands proud of the ribbon, with a shadow on it round the edge.
+    shadow = grow(loop | knot, 3) & m["band"] & ~(loop | knot)
+    colour[shadow] *= 0.45
+    colour[loop] = np.array(RIBBON, np.float32) * (1.2 + (ribs * 0.06)[loop])[..., None]
+    height[loop] += 1.5
+    colour[knot] = np.array(RIBBON, np.float32) * 1.4
+    height[knot] += 2.5
+
+    # Ventilation eyelets, dark metal round a hole.
+    dist = eyelets(pos_crown)
+    colour[dist < EYELET_RADIUS] = EYELET
+    spec[dist < EYELET_RADIUS], gloss[dist < EYELET_RADIUS] = SMDI["buckle"]
+    height[dist < EYELET_RADIUS] += 2.0
+    height[dist < EYELET_RADIUS * 0.55] -= 4.0
 
     grow_sweat = grow(m["sweatband"], 4) & ~m["band"]
     colour[grow_sweat] = np.array(SWEATBAND, np.float32) * (1 + grain[grow_sweat])[..., None]
@@ -282,8 +343,8 @@ def main():
     pts, nms, faces = read_first_lod(ADDON / "DICover.p3d")
     names = classify(pts, nms, faces)
     print({k: names.count(k) for k in sorted(set(names))})
-    relief = emblem_relief(surface_position(pts, faces, names, "emblem"))
-    co, smdi, nohq = paint(masks(faces, names), relief)
+    relief = emblem_relief(surface_position(pts, faces, names, "emblem")[..., :2])
+    co, smdi, nohq = paint(masks(faces, names), relief, surface_position(pts, faces, names, "band"), surface_position(pts, faces, names, "crown"))
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
