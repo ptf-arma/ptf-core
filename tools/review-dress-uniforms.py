@@ -54,7 +54,7 @@ def prepare(args) -> Path:
     shutil.rmtree(WORK, ignore_errors=True)
     addons = WORK / "@ptf_dress_review" / "addons"
     addons.mkdir(parents=True)
-    for pbo in ("PTF_Dress.pbo", "PTF_Main.pbo"):
+    for pbo in ("PTF_Dress.pbo", "PTF_Main.pbo", "PTF_DICoverUSMC.pbo"):
         shutil.copy2(REPO / ".hemttout" / "build" / "addons" / pbo, addons / pbo)
 
     mission = WORK / MISSION_NAME
