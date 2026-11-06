@@ -61,6 +61,22 @@ CLOTH_POWER = 60
 # How much of vanilla's fold shading to keep on the coat and trousers. Much more brings out
 # a jagged line down the coat's front.
 CLOTH_FOLDS = 0.12
+# How much more of them to keep where cloth really bends. See joint_mask().
+JOINT_FOLDS = 0.55
+# Along the sleeve from seam to cuff, and the spread, as fractions of its length.
+JOINT_SLEEVE = ((0.06, 0.07), (0.55, 0.11), (0.93, 0.06))
+# Height on the sheet and spread, in vanilla pixels: crotch, knee and the break above the shoe.
+JOINT_TROUSERS = ((1120, 45), (1590, 85), (1950, 55))
+# The shadow map: how deep it goes on plain cloth and on the joints, and at the darkest.
+SHADOW_CLOTH, SHADOW_JOINTS, SHADOW_FLOOR = 0.5, 0.9, 0.55
+# Mixed fibres in the detail texture: how far colour drifts, and how long each fleck runs.
+FIBRE_STRENGTH, FIBRE_LENGTH = 5.0, 5
+# Twill in the normal map, at about 12 lines to the inch. The period suits the compression's 4 px blocks.
+TWILL_PERIOD, TWILL_STRENGTH = 4, 5.0
+# A row of stitches beside each seam, in vanilla pixels from it, and how raised they are.
+STITCH_OFFSET, STITCH_STRENGTH = 5, 90
+# The coat's four pockets. Elsewhere the seam finder also rings stray specks of the vanilla map.
+STITCH_ZONES = [(700, 385, 860, 590), (1090, 385, 1270, 590), (740, 680, 940, 790), (1010, 680, 1215, 790)]
 # The cloth is so dark that compression has only a couple of shades to work with near it,
 # which shows as blotches. So the sheets are painted brighter than the colours above, and the
 # material darkens them back by this much. See lifted().
@@ -72,10 +88,10 @@ def daylight(*rgb, gain=GAIN_COAT):
     return np.array(rgb, float) / gain
 
 
-# Darkened from the shade first picked by eye (80, 78, 58): the coats in the order's
-# photographs measure 60 to 75, against 100 to 130 in game.
-GREEN = daylight(60, 58.5, 43.5)
-KHAKI = daylight(190, 165, 135)
+# Between the first shade picked by eye, (80, 78, 58), which the owner found too light, and
+# (60, 58.5, 43.5), which read as near black in game. Green stays above red so it never turns brown.
+GREEN = daylight(68, 71, 50)
+KHAKI = daylight(176, 146, 108)
 # Metal and saturated cloth did not follow the fabric's gain, so these were set
 # from what earlier builds rendered as rather than from the formula.
 BRASS = (78, 66, 38)
@@ -88,6 +104,8 @@ PIN_BLACK = (9, 9, 9)
 # Navy grade insignia on the Marine service coat is blue on green (para 8000). Very
 # low and barely saturated, since the game brightens saturated colours a long way.
 NAVY_BLUE = (5, 7, 18)
+# The lighter thread of the embroidery, for the feathers and stripes to read against the outline.
+NAVY_THREAD = (8, 11, 28)
 
 # Grey level of the vanilla pieces each target colour is anchored to.
 GREEN_REF = 43.0
@@ -112,6 +130,10 @@ LEFT_SLEEVE = SLEEVES[0]
 RATE_W = int(CHEVRON_W * 0.85)
 RATE_CENTRE_IN = 6.5
 SHOULDER_STRAP = {"x1": 1807, "cy": 1669}
+# The emblem art's globe: centre x, y and radius as fractions of its width, and how far above the
+# globe's centre the eagle's talons begin, as a fraction of the radius.
+EGA_GLOBE = (0.52, 0.585, 0.27)
+EGA_TALONS = 0.72
 # Centres of the collar leaves, and the sheet's rotation there as seen on the model.
 # Centred on the collar leaf between the gorge seam and the fold, as the order says
 # ("centered on the collar"), measured with tools/dress-review/probe_fine.py. The
@@ -131,6 +153,7 @@ SHOE_ZONES = [(1205, 1040, 1590, 1550), (1590, 1245, 1645, 1550), (1205, 1550, 1
 # which the photographs never show, so it is left as coat cloth.
 SHIRT_ZONES = [(1150, 0, 1680, 112), (1262, 1335, 1445, 1545),
                (1650, 1240, 2048, 1715)]
+CUFF_STRIP = (1445, 640, 1592, 1078)
 ARMHOLE = (1915, 680, 62)
 # Parts of the sheet the model never shows, standing or saluting, checked in game by
 # painting them in strong colours and searching every review camera for those colours.
@@ -147,7 +170,7 @@ STRAP_ZONE = (1645, 1630, 1815, 1740)
 # It is heavily squeezed in x: about 25 px per inch, against 85 px per inch in y.
 DECOR_K = 2
 # The belt's colour against the coat's, matched by measuring both in game.
-BELT_TINT = (0.96, 0.96, 0.98)
+BELT_TINT = (1.0, 0.96, 0.94)
 BELT_Y = (0, 196)
 PLATE = (0, 208, 324, 446)
 COAT_BUTTON = (927, 300, 90, 88)
@@ -334,11 +357,28 @@ def cloth_grain(shape, seed):
     return 1 + (noise(shape, 1.2, seed) * 0.012)[..., None]
 
 
+def joint_mask(size=2048):
+    """1 where cloth really bends: the elbows and armpits, knees, hems and crotch. 0 elsewhere."""
+    yy, xx = np.mgrid[:size, :size].astype(float)
+    mask = np.zeros((size, size))
+    for s in SLEEVES:
+        length = s["cuff_y"] - s["seam_y"]
+        across = np.exp(-((xx - s["cx"]) / 210) ** 4)
+        for at, spread in JOINT_SLEEVE:
+            mask = np.maximum(mask, across * np.exp(-((yy - s["seam_y"] - at * length) / (spread * length)) ** 2))
+    x0, y0, x1, y1 = TROUSERS
+    inside = ((xx >= x0) & (xx < x1) & (yy >= y0) & (yy < y1)).astype(float)
+    for y, spread in JOINT_TROUSERS:
+        mask = np.maximum(mask, inside * np.exp(-((yy - y) / spread) ** 2))
+    return mask
+
+
 def flatten_normals(n, folds=0.0):
     """Filter folds out of a tangent-space normal map, keeping seams and edges.
 
     Folds sit in the middle frequencies. Seams and pocket edges are much finer, and
     vanilla's fine weave is low amplitude, so a soft threshold removes it as well.
+    `folds` is how much to keep, as one number or an array over the sheet.
     """
     xy = n[..., :2] - 128.0
     out = np.empty_like(xy)
@@ -392,7 +432,8 @@ def lifted(colour):
     return np.interp(colour, np.arange(256), table)
 
 
-def rvmat(ti, nohq, dt, smdi, dt_tile=1, power=CLOTH_POWER, env=r"a3\data_f\env_co.paa", diffuse=CLOTH_DIFFUSE, dim=MATERIAL_DIM):
+def rvmat(ti, nohq, dt, smdi, dt_tile=1, power=CLOTH_POWER, env=r"a3\data_f\env_co.paa", diffuse=CLOTH_DIFFUSE, dim=MATERIAL_DIM,
+          shadows="#(argb,8,8,3)color(1,1,1,1,AS)"):
     def stage(i, tex, tile=1):
         tx, ty = tile if isinstance(tile, tuple) else (tile, tile)
         return (f'class Stage{i}\n{{\n\ttexture="{tex}";\n\tuvSource="tex";\n\tclass uvTransform\n\t{{\n'
@@ -402,7 +443,7 @@ def rvmat(ti, nohq, dt, smdi, dt_tile=1, power=CLOTH_POWER, env=r"a3\data_f\env_
             f'forcedDiffuse[]={{0,0,0,0}};\nemmisive[]={{0,0,0,1}};\nspecular[]={{0.8,0.8,0.8,0.8}};\n'
             f'specularPower={power};\nPixelShaderID="Super";\nVertexShaderID="Super";\n'
             + stage(1, nohq) + stage(2, dt, dt_tile)
-            + stage(3, "#(argb,8,8,3)color(0,0,0,0,MC)") + stage(4, "#(argb,8,8,3)color(1,1,1,1,AS)")
+            + stage(3, "#(argb,8,8,3)color(0,0,0,0,MC)") + stage(4, shadows)
             + stage(5, smdi)
             + 'class Stage6\n{\n\ttexture="#(ai,64,64,1)fresnel(1,0.01)";\n\tuvSource="none";\n};\n'
             + stage(7, env))
@@ -454,12 +495,32 @@ def tailoring_height(size):
     return blur(h, 1.3)
 
 
+def mirrored_ega(e: Image.Image) -> Image.Image:
+    """The emblem facing the other way, with its globe left as it was: flipping that too would
+    put the Western Hemisphere's continents the wrong way round."""
+    flipped = e.transpose(Image.FLIP_LEFT_RIGHT).convert("RGBA")
+    w, h = e.size
+    r = EGA_GLOBE[2] * w
+    gx, gy = EGA_GLOBE[0] * w, EGA_GLOBE[1] * w
+    mask = Image.new("L", (w * 4, h * 4), 0)
+    ImageDraw.Draw(mask).ellipse([(gx - r) * 4, (gy - r) * 4, (gx + r) * 4, (gy + r) * 4], fill=255)
+    # The eagle's talons stand on top of the globe, so they stay with the flipped eagle.
+    ImageDraw.Draw(mask).rectangle([0, 0, w * 4, (gy - r * EGA_TALONS) * 4], fill=0)
+    mask = mask.resize((w, h), Image.LANCZOS)
+    globe = e.crop((int(gx - r - 2), 0, int(gx + r + 3), h))
+    gmask = mask.crop((int(gx - r - 2), 0, int(gx + r + 3), h))
+    x = int(w - gx - r - 2)
+    flipped.paste(globe, (x, 0), gmask)
+    return flipped
+
+
 def collar_emblem(index, px_per_k=24, k=K, shadow=True) -> Image.Image:
-    """The coat collar's emblem, turned for its leaf. Eagles face inboard: the drawn
-    eagle looks right, so the other leaf is flipped."""
+    """The coat collar's emblem, turned for its leaf. Eagles face inboard (para 4001). The drawn
+    eagle looks to the viewer's left, which suits the wearer's left leaf, index 1, as it is,
+    so the wearer's right leaf is the mirrored one. Check the beak, not the anchor."""
     e = ega(px_per_k * k, shadow=shadow)
-    if index:
-        e = e.transpose(Image.FLIP_LEFT_RIGHT)
+    if not index:
+        e = mirrored_ega(e)
     return e.rotate(COAT_COLLAR[index][2], expand=True, resample=Image.BICUBIC)
 
 
@@ -475,6 +536,34 @@ def emboss_collar_emblems(xy):
         x0, y0 = x * BASE_K - w // 2, y * BASE_K - h // 2
         xy[y0:y0 + h, x0:x0 + w, 0] -= gx * 110
         xy[y0:y0 + h, x0:x0 + w, 1] -= gy * 110
+
+
+def stitch_height(nohq, fabric, size):
+    """Rows of stitching beside the pocket seams the vanilla normal map already has."""
+    xy = nohq[..., :2] - 128.0
+    fine = np.hypot(*(soft_threshold(xy[..., i] - blur(xy[..., i], 3), 6) for i in range(2)))
+    # Long seams only: a seam stays after blurring, while specks fade away.
+    seam = (blur((fine > 9).astype(float), 2) > 0.3) & fabric
+    img = Image.fromarray(seam.astype("uint8") * 255)
+    near = np.asarray(img.filter(ImageFilter.MaxFilter(2 * STITCH_OFFSET - 1)), float)
+    far = np.asarray(img.filter(ImageFilter.MaxFilter(2 * STITCH_OFFSET + 1)), float)
+    row = ((far - near) / 255 > 0.5) & fabric & box_mask(fabric.shape, STITCH_ZONES)
+    band = upscale(row.astype(float), (size, size)) > 0.5
+    yy, xx = np.mgrid[:size, :size]
+    # Dashes about 1/8 inch long whichever way the seam runs.
+    return blur((band & (((xx + yy) // 6) % 2 == 0)).astype(float), 0.7)
+
+
+def shadow_map(lum):
+    """Where cloth sits in shadow, baked from vanilla's own shading: under the lapels, pocket flaps
+    and belt, in the armpits and through the folds. The engine uses it for ambient light only,
+    so it deepens the creases without staining the cloth the way the same shading did in the sheet.
+    """
+    local = blur(lum, 5) / np.maximum(blur(lum, 70), 8)
+    dark = np.clip(1 - local, 0, 1)
+    depth = SHADOW_CLOTH + (SHADOW_JOINTS - SHADOW_CLOTH) * joint_mask()
+    shade = np.clip(1 - dark * 2.2 * depth, SHADOW_FLOOR, 1)
+    return np.dstack([blur(shade, 2) * 255] * 3)
 
 
 def build_base(tools: Tools):
@@ -509,6 +598,8 @@ def build_base(tools: Tools):
     # Seams only darken: vanilla's bright flecks along them read as pale scratches.
     seams = np.clip(soft_threshold(lum - blur(lum, 4), 7) / GREEN_REF * 0.9, -0.5, 0.02)
     tone = np.clip(broad + seams, 0.5, 1.25)
+    # The cuff strip is shirt in vanilla, whose brightness would leave it a pale band.
+    tone[CUFF_STRIP[1]:CUFF_STRIP[3], CUFF_STRIP[0]:CUFF_STRIP[2]] = 0.85
     out = co.copy()
     out[fabric] = GREEN * tone[fabric][..., None]
     out[shirt] = KHAKI * ((lum[shirt] / SHIRT_REF) ** 0.5)[..., None]
@@ -528,7 +619,7 @@ def build_base(tools: Tools):
     colour *= 1 - np.clip(np.abs(gx) + np.abs(gy), 0, 1)[..., None] * 0.5 * fabric_hi
 
     # Normals: flattened fabric, plus a fine weave for light to catch up close.
-    flat = flatten_normals(nohq, CLOTH_FOLDS)
+    flat = flatten_normals(nohq, CLOTH_FOLDS + JOINT_FOLDS * joint_mask())
     original = nohq[..., :2] - 128.0
     xy = np.where(fabric[..., None], flat, original)
     xy = upscale(xy, size)
@@ -536,6 +627,13 @@ def build_base(tools: Tools):
     xy[..., 1] -= gy * 60
     xy[..., 0] += fabric_hi[..., 0] * noise(size, 0.9, 77) * 1.0
     xy[..., 1] += fabric_hi[..., 0] * noise(size, 0.9, 78) * 1.0
+    yy, xx = np.mgrid[:BASE, :BASE]
+    ridge = np.cos(2 * np.pi * ((xx + yy) % TWILL_PERIOD) / TWILL_PERIOD) * TWILL_STRENGTH * fabric_hi[..., 0]
+    xy[..., 0] += ridge
+    xy[..., 1] += ridge
+    gy_s, gx_s = np.gradient(stitch_height(nohq, fabric, BASE))
+    xy[..., 0] -= gx_s * STITCH_STRENGTH
+    xy[..., 1] -= gy_s * STITCH_STRENGTH
     emboss_collar_emblems(xy)
     normals = normals_from(xy)
 
@@ -546,7 +644,7 @@ def build_base(tools: Tools):
     # Never brighter than the source, or the blur pulls light in from around the sole.
     shoe_tone = np.minimum(blur(grey(colour), 5), grey(colour))
     # A little blue, as the warm sun turns neutral black leather brown.
-    colour = colour * (1 - shoes_hi) + shoe_tone[..., None] * np.array((0.15, 0.16, 0.19)) * shoes_hi
+    colour = colour * (1 - shoes_hi) + shoe_tone[..., None] * np.array((0.10, 0.11, 0.14)) * shoes_hi
     # The smooth surface comes from the normal map too, keeping only the broad shape.
     for i in range(2):
         xy[..., i] = xy[..., i] * (1 - shoes_hi[..., 0]) + blur(xy[..., i], 6) * shoes_hi[..., 0]
@@ -561,7 +659,7 @@ def build_base(tools: Tools):
     spec[shoes, 1] = 170
     spec[shoes, 2] = 255
     spec[..., 0] = 255
-    return colour, normals, spec[..., :3]
+    return colour, normals, spec[..., :3], shadow_map(lum)
 
 
 # --- Insignia --------------------------------------------------------------
@@ -663,7 +761,7 @@ def chevron_insignia(chevrons, rifles, rockers=0) -> Image.Image:
     return relief(Image.fromarray(np.clip(arr, 0, 255).astype("uint8"), "RGBA"), 0.5)
 
 
-def group_marks(count: int, rear: int, colour=NAVY_BLUE, degrees=30, scale=0.6):
+def group_marks(count: int, rear: int, degrees=30, scale=0.6):
     """A junior corpsman's diagonal stripes, front end low, centred on their canvas.
 
     Also returns how far above the centre the top stripe's upper edge is on the centreline,
@@ -685,7 +783,7 @@ def group_marks(count: int, rear: int, colour=NAVY_BLUE, degrees=30, scale=0.6):
         o = (i - (count - 1) / 2) * (width + gap) * SS
         c = (W / 2 + nx * o, H / 2 + ny * o)
         d.polygon([(c[0] + sa * half * ux + sb * wd / 2 * nx, c[1] + sa * half * uy + sb * wd / 2 * ny)
-                   for sa, sb in ((-1, -1), (1, -1), (1, 1), (-1, 1))], fill=colour + (255,))
+                   for sa, sb in ((-1, -1), (1, -1), (1, 1), (-1, 1))], fill=NAVY_THREAD + (255,), outline=NAVY_BLUE + (255,), width=int(wd * 0.12))
 
     out = img.resize((W // SS, H // SS), Image.LANCZOS)
     if rear < 0:
@@ -734,48 +832,69 @@ def warrant_bar(colour, pattern, scale=1.0) -> Image.Image:
     return polished(relief(img.resize((W // SS, H // SS), Image.LANCZOS), 1.6))
 
 
+def feather(d, x, y, degrees, length, width, outline):
+    """One pointed feather from (x, y), at an angle above the horizontal, in thread and outline."""
+    ang = np.radians(degrees)
+    ux, uy = np.cos(ang), -np.sin(ang)
+    side = [(t, width * np.sin(np.pi * t ** 0.8) ** 0.7) for t in np.linspace(0, 1, 14)]
+    pts = [(x + ux * length * t + uy * w, y + uy * length * t - ux * w) for t, w in side]
+    pts += [(x + ux * length * t - uy * w, y + uy * length * t + ux * w) for t, w in side[::-1]]
+    d.polygon(pts, fill=NAVY_THREAD + (255,), outline=NAVY_BLUE + (255,), width=outline)
+
+
 def caduceus(height) -> Image.Image:
-    """The Hospital Corps mark: staff, two serpents and spread wings, in one colour."""
+    """The Hospital Corps mark: staff, two serpents and spread wings, embroidered."""
     h = int(height) * SS
     w = int(h * 0.8)
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    blue = NAVY_BLUE + (255,)
+    blue, thread = NAVY_BLUE + (255,), NAVY_THREAD + (255,)
     cx = w / 2
-    # Staff and knob.
-    d.rectangle([cx - h * 0.018, h * 0.1, cx + h * 0.018, h], fill=blue)
-    d.ellipse([cx - h * 0.05, h * 0.03, cx + h * 0.05, h * 0.13], fill=blue)
-    # Wings: feathers swept up and out from the staff's head.
+    line = max(int(h * 0.012), 1)
+    # Wings, each feather shorter than the one above it.
     for sign in (-1, 1):
         for i in range(5):
-            root = h * (0.16 + i * 0.025)
-            tip_x = cx + sign * w * (0.48 - i * 0.075)
-            tip_y = h * (0.06 + i * 0.075)
-            d.polygon([(cx, root), (tip_x, tip_y), (tip_x - sign * w * 0.05, tip_y + h * 0.05), (cx, root + h * 0.05)], fill=blue)
-    # Two serpents winding round the staff.
+            angle = (28 - i * 13) if sign > 0 else (180 - 28 + i * 13)
+            feather(d, cx, h * (0.2 + i * 0.012), angle, w * (0.48 - i * 0.055), h * 0.032, line)
+    # Staff and knob.
+    d.rectangle([cx - h * 0.024, h * 0.1, cx + h * 0.024, h], fill=blue)
+    d.ellipse([cx - h * 0.055, h * 0.03, cx + h * 0.055, h * 0.14], fill=thread, outline=blue, width=line)
+    # Two serpents winding round the staff, their thread down the middle of a dark outline.
     ys = np.linspace(h * 0.3, h * 0.92, 90)
     for phase in (0, np.pi):
         pts = [(cx + np.sin((y / h - 0.3) * 3 * 2 * np.pi + phase) * w * 0.17 * (1 - (y / h - 0.3) * 0.7), y) for y in ys]
-        d.line(pts, fill=blue, width=int(h * 0.035), joint="curve")
+        d.line(pts, fill=blue, width=int(h * 0.05), joint="curve")
+        d.line(pts, fill=thread, width=int(h * 0.024), joint="curve")
     return img.resize((w // SS, h // SS), Image.LANCZOS)
 
 
 def navy_eagle(width) -> Image.Image:
-    """The order's eagle, cut above the arrows it holds as a colonel's, with a tail added."""
+    """The order's eagle, cut above the arrows it holds as a colonel's, as two-tone embroidery.
+
+    Its modelling becomes thread against a darker outline, so the feathers read up close. It
+    faces left on the sheet, which is toward the front of the coat on the left sleeve.
+    """
     src = Image.open(ASSETS / "eagle.png").convert("RGBA")
     src = src.resize((int(width), int(src.height * width / src.width)), Image.LANCZOS)
     a = np.asarray(src, float).copy()
     h, w = a.shape[:2]
     cut = int(h * 0.68)
     a[cut:, ..., 3] = 0
-    level = grey(a[a[..., 3] > 128, :3]).mean()
-    tone = np.clip(grey(a) / max(level, 1), 0.3, 1.6)
-    a[..., :3] = np.array(NAVY_BLUE, float) * (0.55 + tone * 0.6)[..., None]
-    img = Image.fromarray(crisp(np.clip(a, 0, 255)).astype("uint8"), "RGBA")
-    d = ImageDraw.Draw(img)
-    d.polygon([(w * 0.43, cut - h * 0.03), (w * 0.57, cut - h * 0.03), (w * 0.62, h * 0.94), (w * 0.38, h * 0.94)], fill=NAVY_BLUE + (255,))
+    solid = a[..., 3] > 128
+    tone = grey(a)
+    low, high = np.percentile(tone[solid], (12, 72))
+    tone = np.clip((tone - low) / max(high - low, 1), 0, 1)[..., None]
+    a[..., :3] = np.array(NAVY_BLUE, float) * 0.7 + (np.array(NAVY_THREAD, float) * 1.25 - np.array(NAVY_BLUE, float) * 0.7) * tone
+    img = Image.fromarray(np.clip(crisp(np.clip(a, 0, 255)), 0, 255).astype("uint8"), "RGBA")
+    # The tail, fanned below where the arrows were cut away.
+    tail = Image.new("RGBA", (w * SS, h * SS), (0, 0, 0, 0))
+    d = ImageDraw.Draw(tail)
+    for angle in (-116, -103, -90, -77, -64):
+        feather(d, w * SS / 2, (cut - h * 0.05) * SS, angle, h * 0.31 * SS, w * 0.03 * SS, max(int(w * 0.008) * SS, 1))
+    tail = tail.resize((w, h), Image.LANCZOS)
+    tail.alpha_composite(img)
     # Faces the front of the coat on the left sleeve.
-    return img.transpose(Image.FLIP_LEFT_RIGHT)
+    return tail.transpose(Image.FLIP_LEFT_RIGHT)
 
 
 def rate_badge(chevrons, rocker) -> Image.Image:
@@ -800,7 +919,8 @@ def rate_badge(chevrons, rocker) -> Image.Image:
 
     for i in range(chevrons):
         y = wing_y + i * (stripe + gap)
-        d.polygon([pt(0, y), pt(0.5, y + fall), pt(1, y), pt(1, y + stripe), pt(0.5, y + fall + stripe), pt(0, y + stripe)], fill=blue)
+        d.polygon([pt(0, y), pt(0.5, y + fall), pt(1, y), pt(1, y + stripe), pt(0.5, y + fall + stripe), pt(0, y + stripe)],
+                  fill=NAVY_THREAD + (255,), outline=blue, width=int(0.008 * u))
     if rocker:
         # A chief's arc over the mark, its ends meeting the top chevron's.
         top, thick = cad_top - 0.09, 0.065
@@ -808,7 +928,7 @@ def rate_badge(chevrons, rocker) -> Image.Image:
             ss = np.linspace(0, 1, 60)
             pts = [pt(s, wing_y - 0.02 + offset - (wing_y - 0.02 - top) * np.sin(np.pi * s)) for s in ss]
             return pts[::-1] if reverse else pts
-        d.polygon(arc(0) + arc(thick, True), fill=blue)
+        d.polygon(arc(0) + arc(thick, True), fill=NAVY_THREAD + (255,), outline=blue, width=int(0.008 * u))
     img = layer.resize((W + 2 * M, H + 2 * M), Image.LANCZOS)
     img.alpha_composite(mark, (M + W // 2 - mark.width // 2, M + int(cad_top * W)))
     img.alpha_composite(eagle, (M + W // 2 - eagle.width // 2, M))
@@ -1096,27 +1216,8 @@ def build_decor(tools: Tools):
     fh = ph
     fw = int(fh * 0.56)
     bx0, by0 = px0 + int(pw * 0.24), py0
-    tail = np.zeros((ph, pw))
-    # Free end, passed through toward the wearer's left, tapering to a point. Cut off
-    # by the plate's edge, as the belt either side of it is shared between both sides
-    # of the waist, so this is shorter than the order's 2 3/4 inches.
-    tail_top, tail_bottom = int(ph * 0.16), int(ph * 0.84)
-    tail_x0, tail_x1 = bx0 - px0 + fw - 4 * k, pw - 8 * k
-    point = int((tail_bottom - tail_top) * 0.42)
-    for x in range(tail_x0, tail_x1):
-        inset = max(0, x - (tail_x1 - point)) * (tail_bottom - tail_top) / 2 / point
-        tail[tail_top + int(inset):tail_bottom - int(inset), x] = 1
-    # Cloth keeper, midway between the buckle and the tip, proud of the tail.
-    keeper = np.zeros((ph, pw))
-    kx = (bx0 - px0 + fw + tail_x1) // 2 - 16 * k
-    keeper[:, kx:kx + 15 * k] = 1
-    layer = blur(tail, 1.6) * 0.8 + blur(keeper, 1.4) * 1.3
-    gy, gx = np.gradient(layer)
-    # Edges in shadow, and the doubled-over end a touch darker than the belt beneath.
-    edge = blur(np.abs(gx) + np.abs(gy), 1.2)
-    shade = np.clip(1 - edge * 1.6, 0.55, 1) * (1 - np.clip(blur(tail, 1.6), 0, 1) * 0.07)
-    colour[py0:py1, px0:px1] *= shade[..., None]
-    height[py0:py1, px0:px1] = layer
+    # No free end or keeper, though the order has both. The belt either side of the plate is shared
+    # between both sides of the waist, so the end would be cut short, and it read as an odd triangle.
 
     canvas = Image.new("RGBA", (fw * SS, fh * SS), (0, 0, 0, 0))
     d = ImageDraw.Draw(canvas)
@@ -1259,6 +1360,72 @@ def build_caps(tools: Tools):
 
     colours = {"": np.dstack([colour, alpha]), "_officer": np.dstack([officer, alpha]), "_field": np.dstack([field, alpha])}
     return colours, {"": normals_from(xy), "_officer": normals_from(officer_xy)}, spec
+
+
+# The cap's model comes from riku_class_a, whose sheets aren't used: everything here is drawn
+# fresh. The model has a plate with alpha on the wearer's left, which takes the emblem (para 4001).
+# Its plate on the right is opaque and lit unlike the cap, so that stays empty and the grade insignia
+# (para 4005) is painted on the cloth, on the flap, mirroring the emblem. The para has the flap's edge
+# bisect it, but the sheet is cut along that edge, so it sits just above. Read off the model with a grid.
+GARRISON_CLOTH = 1.25
+GARRISON_SHEET = 2048
+GARRISON_RANK_AT = (928, 1748)
+GARRISON_PX_PER_IN = 114  # on that sheet, there
+GARRISON_LEFT = (256, 128)
+# The plate shows only this square of its sheet, which is why art must be centred on it.
+GARRISON_LEFT_CENTRE = (192, 64)
+
+
+def garrison_rank(metal) -> Image.Image:
+    """Collar grade insignia, bright for the cloth rather than dulled for the shirt. Upright."""
+    kind, colour, count = metal
+    if kind == "warrant":
+        art = warrant_bar(colour, count, 0.75)
+    elif kind == "bars":
+        art = bars(count, colour, 0.75)
+    elif kind == "oak":
+        art = metal_asset("oak_gold" if colour == GOLD else "oak_silver", colour, 0.72 * PX_PER_IN, 1.5)
+    else:
+        # Head toward the cap's top and facing forward, on the wearer's right (para 4005).
+        art = metal_asset("eagle", colour, 0.97 * PX_PER_IN, 1.5)
+    scale = GARRISON_PX_PER_IN / PX_PER_IN
+    # The sheet is the other way up from the cap here.
+    return art.resize((int(art.width * scale), int(art.height * scale)), Image.LANCZOS).rotate(180)
+
+
+def garrison_variants():
+    """Class suffix, label, emblem plate and the rank that picks its cloth, for every cap."""
+    out = [("", "Enlisted", "ega", None), ("_Chief", "E-7, Chief Hospital Corpsman", "anchor", None)]
+    for ab, spec in RANKS.items():
+        if "metal" in spec:
+            out.append((f"_{ab}", f"{spec['grade']}, {spec['name']}", "ega", ab.lower()))
+    return out
+
+
+def build_garrison(tools: Tools):
+    """The garrison cap's plain cloth, the cloth with each grade's insignia, and the left plates."""
+    size = (GARRISON_SHEET, GARRISON_SHEET)
+    # Uses the model's own material, which doesn't dim the sheet, so this isn't lifted. Measured
+    # beside the coat in game.
+    cloth = np.broadcast_to(GREEN, size + (3,)).copy() * cloth_grain(size, 4040) * GARRISON_CLOTH
+    tools.save(cloth, "ptf_dress_usmc_garrison_co")
+    for ab, spec in RANKS.items():
+        if "metal" in spec:
+            sheet = cloth.copy()
+            stamp(sheet, None, garrison_rank(spec["metal"]), *GARRISON_RANK_AT)
+            tools.save(sheet, f"ptf_dress_usmc_garrison_{ab.lower()}_co")
+
+    def left(art, name):
+        canvas = Image.new("RGBA", GARRISON_LEFT, (0, 0, 0, 0))
+        x, y = GARRISON_LEFT_CENTRE
+        canvas.alpha_composite(art, (x - art.width // 2, y - art.height // 2))
+        tools.save(np.asarray(canvas, float), name)
+
+    # Black, as the service emblem and a chief's device both are, and about 1 inch across.
+    # The left collar's emblem (para 4001), whose eagle faces the front of the cap here.
+    left(ega(92, shadow=False), "ptf_dress_garrison_ega_ca")
+    anchor = chief_anchor()
+    left(anchor.resize((int(anchor.width * 92 / anchor.height), 92), Image.LANCZOS), "ptf_dress_garrison_anchor_ca")
 
 
 def build_suitpack(tools: Tools) -> np.ndarray:
@@ -1491,8 +1658,15 @@ def build_detail() -> np.ndarray:
     yy, xx = np.mgrid[:size, :size]
     twill = np.sin(2 * np.pi * ((xx + yy) % 8) / 8)
     v = 128 + twill * 9 + noise((size, size), 0.8, 1020) * 2
-    heather = [noise((size, size), 1.0, 1021 + i) * 1.5 for i in range(3)]
-    return np.dstack([v + h for h in heather])
+
+    def fibres(seed):
+        """Colour flecks drawn out along the twill's lines. Rolling keeps the tile seamless."""
+        n = np.random.default_rng(seed).normal(0, 1, (size, size))
+        n = sum(np.roll(n, (i, -i), axis=(0, 1)) for i in range(-FIBRE_LENGTH, FIBRE_LENGTH + 1))
+        return n / n.std()
+
+    # Red and blue fibres drift apart while the green holds, as blended gabardine does.
+    return np.dstack([v + fibres(1021) * FIBRE_STRENGTH, v + fibres(1022) * FIBRE_STRENGTH * 0.5, v + fibres(1023) * FIBRE_STRENGTH])
 
 
 # --- Config ----------------------------------------------------------------
@@ -1536,7 +1710,24 @@ def write_config(ranks):
    }};
 }};
 """)
+    caps = []
+    for suffix, label, left, rank in garrison_variants():
+        sheet = f"ptf_dress_usmc_garrison_{rank}_co.paa" if rank else "ptf_dress_usmc_garrison_co.paa"
+        slots = f'"\\{data_path(sheet)}", "", "\\{data_path(f"ptf_dress_garrison_{left}_ca.paa")}"'
+        caps.append(f"""class PTF_Headgear_Dress_USMC_Garrison{suffix} : PTF_Headgear_Dress_USMC_Garrison_Base
+{{
+   scope = 2;
+   displayName = "[Dress] Garrison Cap - {label} [PTF]";
+   picture = "\\z\\PTF\\addons\\PTF_Dress\\ui\\ptf_dress_icon_garrison{suffix.lower()}_ca.paa";
+   hiddenSelectionsTextures[] = {{{slots}}};
+   class ItemInfo : ItemInfo
+   {{
+      hiddenSelectionsTextures[] = {{{slots}}};
+   }};
+}};
+""")
     header = "// GENERATED by tools/generate-dress-uniforms.py - do not edit by hand.\n"
+    (ADDON / "cfgGarrison.hpp").write_text(header + "\n".join(caps), newline="\n")
     (ADDON / "cfgRankVehicles.hpp").write_text(header + "\n".join(veh), newline="\n")
     (ADDON / "cfgRankUniforms.hpp").write_text(header + "\n".join(wep), newline="\n")
 
@@ -1557,9 +1748,10 @@ def main():
     with tempfile.TemporaryDirectory() as t:
         tools = Tools(Path(t))
         print("Base sheet...")
-        base, base_normals, base_spec = build_base(tools)
+        base, base_normals, base_spec, base_shadows = build_base(tools)
         print("Shared textures:")
         tools.save(base_normals, "ptf_dress_usmc_nohq")
+        tools.save(base_shadows, "ptf_dress_usmc_as")
         tools.save(build_detail(), "ptf_dress_wool_dt")
 
         decor, decor_n, decor_s = build_decor(tools)
@@ -1582,6 +1774,8 @@ def main():
                 data_path("ptf_dress_usmc_cover_smdi.paa"), dt_tile=4, power=120, env=r"a3\data_f\env_land_co.paa"), newline="\n")
 
         tools.save(build_suitpack(tools), "ptf_dress_usmc_suitpack_co")
+        print("Garrison cap:")
+        build_garrison(tools)
         print("Award ribbons:")
         build_award_ribbons(tools)
 
@@ -1593,7 +1787,7 @@ def main():
             tools.save(spec, f"ptf_dress_usmc_a_{low}_smdi")
             (DATA / f"ptf_dress_usmc_a_{low}.rvmat").write_text(rvmat(
                 r"a3\characters_f_aow\uniforms\data\paradeuniform_01_ti_ca.paa", data_path("ptf_dress_usmc_nohq.paa"), dt,
-                data_path(f"ptf_dress_usmc_a_{low}_smdi.paa"), dt_tile=8), newline="\n")
+                data_path(f"ptf_dress_usmc_a_{low}_smdi.paa"), dt_tile=8, shadows=data_path("ptf_dress_usmc_as.paa")), newline="\n")
     write_config(list(RANKS))
 
 

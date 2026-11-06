@@ -13,7 +13,9 @@ class CfgPatches
          "A3_Characters_F",
          // Every uniform here retextures the Art of War parade uniform and cap.
          "A3_Characters_F_AoW",
-         "A3_Characters_F_AoW_Headgear"
+         "A3_Characters_F_AoW_Headgear",
+         // The garrison cap uses this addon's model.
+         "riku_class_a"
       };
    };
 };
@@ -70,6 +72,29 @@ class CfgWeapons
       };
    };
    #include "cfgRankUniforms.hpp"
+
+   class ItemCore;
+   class HeadgearItem;
+   class PTF_Headgear_Dress_USMC_Garrison_Base : ItemCore
+   {
+      scope = 0;
+      author = "Paramarine Task Force";
+      weaponPoolAvailable = 1;
+      model = "\z\PTF\addons\riku_class_a\GarrisonCap_off.p3d";
+      // Cloth, an unused plate on the wearer's right, and the emblem's plate on the left.
+      hiddenSelections[] = {"camo", "camo1", "rank"};
+      class ItemInfo : HeadgearItem
+      {
+         mass = 2;
+         allowedSlots[] = {901, 701, 605};
+         uniformModel = "\z\PTF\addons\riku_class_a\GarrisonCap_off.p3d";
+         modelSides[] = {6};
+         armor = 0;
+         passThrough = 0.8;
+         hiddenSelections[] = {"camo", "camo1", "rank"};
+      };
+   };
+   #include "cfgGarrison.hpp"
 
    class H_ParadeDressCap_01_base_F;
    class H_ParadeDressCap_01_US_F : H_ParadeDressCap_01_base_F

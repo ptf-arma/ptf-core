@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Screenshot the PTF_Dress uniforms in game, with no manual steps.
 
-Builds the addon, loads only PTF_Dress and PTF_Main so the game starts quickly,
+Builds the addon, loads only the few PBOs the uniforms need so the game starts quickly,
 runs tools/dress-review/mission through Arma's -autotest, and collects the
 screenshots into .hemttout/dress-review/shots. Refuses to run while Arma is open.
 The game window opens and takes focus for the duration.
 
 Usage:  python tools/review-dress-uniforms.py --ranks Sgt Capt --views front belt
-        (omit --views for every camera position, --cap to add the frame cap)
+        (omit --views for every camera position, --cap to add the frame cap,
+        --garrison for the garrison cap instead)
 """
 import argparse
 import shutil
@@ -54,12 +55,16 @@ def prepare(args) -> Path:
     shutil.rmtree(WORK, ignore_errors=True)
     addons = WORK / "@ptf_dress_review" / "addons"
     addons.mkdir(parents=True)
-    for pbo in ("PTF_Dress.pbo", "PTF_Main.pbo", "PTF_DICoverUSMC.pbo"):
+    for pbo in ("PTF_Dress.pbo", "PTF_Main.pbo", "PTF_DICoverUSMC.pbo", "riku_class_a.pbo"):
         shutil.copy2(REPO / ".hemttout" / "build" / "addons" / pbo, addons / pbo)
 
     mission = WORK / MISSION_NAME
     shutil.copytree(REPO / "tools" / "dress-review" / "mission", mission)
     def cap(rank):
+        if args.garrison:
+            ranked = ("WO1", "CWO2", "CWO3", "CWO4", "CWO5", "2ndLt", "1stLt", "Capt", "Maj", "LtCol", "Col")
+            suffix = f"_{rank}" if rank in ranked else ("_Chief" if rank == "HMC" else "")
+            return f'"PTF_Headgear_Dress_USMC_Garrison{suffix}"'
         if not args.cap:
             return '""'
         suffix = {"WO1": "_Officer", "CWO2": "_Officer", "CWO3": "_Officer", "CWO4": "_Officer", "CWO5": "_Officer",
@@ -91,6 +96,7 @@ def main():
     ap.add_argument("--ranks", nargs="+", default=["Sgt", "Capt"])
     ap.add_argument("--views", nargs="*", default=[])
     ap.add_argument("--cap", action="store_true")
+    ap.add_argument("--garrison", action="store_true", help="wear each rank's garrison cap")
     ap.add_argument("--anim", default="AmovPercMstpSnonWnonDnon", help="pose for the rank review")
     ap.add_argument("--lights", nargs="+", default=["noon"], choices=list(LIGHTS))
     ap.add_argument("--settle", type=float, default=1.5)
@@ -98,7 +104,7 @@ def main():
     ap.add_argument("--timeout", type=int, default=420)
     ap.add_argument("--extra-mod", help="another mod folder to load, such as billet-link")
     ap.add_argument("--script", help="run tools/dress-review/<name>/init.sqf as the mission")
-    ap.add_argument("--icons", action="store_true", help="shoot the Arsenal icon source images, needs --cap")
+    ap.add_argument("--icons", action="store_true", help="shoot the Arsenal icon source images, needs --cap or --garrison")
     ap.add_argument("--demo", action="store_true", help="run the posed lineup mission instead of the rank review")
     ap.add_argument("--ease", default="AmovPercMstpSnonWnonDnon_Ease", help="at-ease animation for --demo")
     ap.add_argument("--salute", default="AmovPercMstpSnonWnonDnon_Salute", help="salute animation for --demo")
