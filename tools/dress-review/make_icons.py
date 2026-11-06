@@ -6,8 +6,12 @@ addons/PTF_Dress/ui. Cap icons are a tight crop of the head, from one rank per c
 
 Usage:  python tools/review-dress-uniforms.py --icons --cap --ranks <all ranks>
         python tools/dress-review/make_icons.py
+
+For garrison cap icons, shoot GySgt, HMC and every officer with --icons --garrison, then run
+this with --garrison.
 """
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -21,6 +25,8 @@ TOOL = Path(r"C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\ImageTo
 SIZE = 128
 # Which rank's shot supplies each cap's icon.
 CAPS = {"cover": "GySgt", "cover_officer": "Capt", "cover_field": "Maj"}
+# The ranks whose shots supply a garrison cap icon: one enlisted, the chief, and every officer.
+GARRISON_ICON_RANKS = ("GySgt", "HMC", "WO1", "CWO2", "CWO3", "CWO4", "CWO5", "2ndLt", "1stLt", "Capt", "Maj", "LtCol", "Col")
 
 
 def cut_out(shot: Path):
@@ -66,6 +72,14 @@ def main():
             rank = shot.stem.removeprefix("icon_")
             rgba, (x0, y0, x1, y1) = cut_out(shot)
             height = int((y1 - y0) / 0.62)  # the wall's edge cuts the figure at about the thighs
+            if "--garrison" in sys.argv:
+                if rank not in GARRISON_ICON_RANKS:
+                    continue
+                head = int(height * 0.17)
+                mid = (x0 + x1) // 2 + int(np.where(rgba[y0 + head // 2, x0:x1, 3] > 128)[0].mean()) - (x1 - x0) // 2
+                name = {"GySgt": "garrison", "HMC": "garrison_chief"}.get(rank, f"garrison_{rank.lower()}")
+                sheet.append(save(rgba, (mid - head // 2, y0 - 8, mid + head // 2, y0 + head), name, tmp))
+                continue
             # Collar to mid-thigh.
             top = y0 + int(height * 0.14)
             sheet.append(save(rgba, (x0, top, x1, min(top + int(height * 0.42), y1)), rank.lower(), tmp))
