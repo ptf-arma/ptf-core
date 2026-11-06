@@ -71,7 +71,7 @@ class CfgVehicles
 		model = "\z\PTF\addons\riku_class_a\riku_CA.p3d";
 		hiddenSelections[] = {"camo","camo2","rank","insignia"};
 		hiddenSelectionsTextures[] = {"\z\PTF\addons\riku_class_a\data\CA_co_3.paa","\z\PTF\addons\riku_class_a\data\prewar lapels\CO_AB_INF_2.paa","\z\PTF\addons\riku_class_a\data\ranks\13) 2lt.paa",""};
-		hiddenSelectionsMaterials[] = {"\z\ptf\addons\riku_class_a\data\ca.rvmat"};
+		hiddenSelectionsMaterials[] = {"\z\PTF\addons\riku_class_a\data\ca.rvmat"};
 	};
 	class riku_class_a_ab_inf_FirstLT: riku_class_a_ab_inf_SecondLT
 	{
@@ -120,7 +120,7 @@ class cfgWeapons
 		model = "\z\PTF\addons\riku_class_a\suitpack_ca.p3d";
 		picture = "\z\PTF\addons\riku_class_a\icons\riku_ca.paa";
 		descriptionShort = "Coats, Wool, Elastique, Officer's, O.D.";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\riku_class_a\data\ca_co.paa"};
+		hiddenSelectionsTextures[] = {"\z\PTF\addons\riku_class_a\data\CA_co.paa"};
 		class ItemInfo: ItemInfo
 		{
 			uniformClass = "riku_class_a_ab_inf_SecondLT";

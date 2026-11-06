@@ -130,36 +130,21 @@ class PTF_Kestrel_base: rhsgref_nat_base
    // DPM man's SPC patchless at 100, and with the uniform's 40 that is 140.
    // Per container it clears either way round: magazines alone are 107.11, so
    // at worst one item spills into the uniform's 32 free.
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Operators -------------------------------------------------------------
@@ -256,28 +241,17 @@ class PTF_Kestrel_machinegunner: PTF_Kestrel_base
    hiddenSelectionsTextures[] = {"\rhsgref\addons\rhsgref_infantry\data_gue\m93_dpm_co.paa"};
    weapons[] = {"rhs_weap_m249_light_L_elcan", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_m249_light_L_elcan", "rhsusf_weap_glock17g4", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_100Rnd_556x45_soft_pouch",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhsusf_100Rnd_556x45_soft_pouch", \
+      "rhsusf_100Rnd_556x45_soft_pouch", \
+      "rhsusf_100Rnd_556x45_soft_pouch", \
+      "rhsusf_100Rnd_556x45_soft_pouch", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Kestrel_marksman: PTF_Kestrel_base
@@ -299,38 +273,22 @@ class PTF_Kestrel_marksman: PTF_Kestrel_base
    // magazines (12), the M67 (8.8), the M18 (11.88) and two AN-M8 (17.96) --
    // 124.09 of 200, and 116.09 of that is magazines, so it would fit in the
    // plateframe on its own.
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Kestrel_sniper: PTF_Kestrel_base
@@ -360,36 +318,21 @@ class PTF_Kestrel_sniper: PTF_Kestrel_base
    // and carrier hold, and the 60.00 of magazines would fit in the carrier by
    // itself. Second screening smoke for the same reason as the marksman: the
    // pair works detached, and nobody is coming to cover their move.
-   magazines[] =
-      {
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_5Rnd_300winmag_xm2010",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhsusf_5Rnd_300winmag_xm2010", \
+      "rhsusf_5Rnd_300winmag_xm2010", \
+      "rhsusf_5Rnd_300winmag_xm2010", \
+      "rhsusf_5Rnd_300winmag_xm2010", \
+      "rhsusf_5Rnd_300winmag_xm2010", \
+      "rhsusf_5Rnd_300winmag_xm2010", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // M107 with Mk211 multipurpose. This is the man who makes an airframe
@@ -427,24 +370,15 @@ class PTF_Kestrel_antimateriel: PTF_Kestrel_base
    // hand him a fourth box or a demo charge without silently dropping
    // something. One frag and one screening smoke, and the margin stays.
    // Total worn is 155.20 of 200.
-   magazines[] =
-      {
-         "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_M33",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_mk211",
-         "rhsusf_mag_10Rnd_STD_50BMG_M33",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhsusf_mag_10Rnd_STD_50BMG_mk211", \
+      "rhsusf_mag_10Rnd_STD_50BMG_mk211", \
+      "rhsusf_mag_10Rnd_STD_50BMG_M33", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Air defence -----------------------------------------------------------
@@ -492,32 +426,19 @@ class PTF_Kestrel_aa_stinger: PTF_Kestrel_base
    backpack = "PTF_B_kestrel_fim92";
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_fim92", "rhsusf_weap_glock17g4", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // Same treatment as the Stinger above, and for the same reason: a 9K38
@@ -545,32 +466,19 @@ class PTF_Kestrel_aa_igla: PTF_Kestrel_base
    backpack = "PTF_B_kestrel_igla";
    weapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_mk18_eotech_sup", "rhs_weap_igla", "rhsusf_weap_glock17g4", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Support ---------------------------------------------------------------
@@ -603,32 +511,19 @@ class PTF_Kestrel_medic: PTF_Kestrel_base
    // follow them there because the uniform has only 3.95 left. Final state:
    // uniform 36.05 of 40, plateframe 143.71 of 160. Nothing dropped, and the
    // carrier still has 16.29 spare.
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Kestrel_breacher: PTF_Kestrel_base
@@ -665,26 +560,16 @@ class PTF_Kestrel_breacher: PTF_Kestrel_base
    // floor for a man expected to fight his way back off an objective. If the
    // breacher ever needs smoke it goes in a preloaded backpack, the way every
    // other overflow in this addon was solved.
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The SPC Crewman carrier is cut down to fit a vehicle hatch and holds only
@@ -704,28 +589,17 @@ class PTF_Kestrel_crewman: PTF_Kestrel_base
    cost = 800000;
    linkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_crewman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    respawnLinkedItems[] = {"rhsusf_bowman_cap", "rhsusf_spc_crewman", "rhsusf_ANPVS_15", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Kestrel_teamleader: PTF_Kestrel_base
@@ -753,38 +627,22 @@ class PTF_Kestrel_teamleader: PTF_Kestrel_base
    // green M18 (11.88), the AN-M8 (8.98) and the red M18 (11.88) is 126.99 of
    // 200 -- and the 118.99 of magazines fits in the plateframe by itself, so
    // there is no per-container question to answer here at all.
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_m18_red"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_m18_red"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc", \
+      "rhs_mag_m18_red"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // Kestrel's senior man on the island. Killing him does not end the contract;
@@ -804,38 +662,22 @@ class PTF_Kestrel_commander: PTF_Kestrel_teamleader
    // worn load as the team leader, against the 180 his uniform and SPC
    // Squad Leader hold, and again the 118.99 of magazines clears the carrier
    // (140) unaided.
-   magazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_m18_purple"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhs_mag_30Rnd_556x45_Mk318_Stanag",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhsusf_mag_17Rnd_9x19_JHP",
-         "rhs_mag_m67",
-         "rhs_mag_m18_green",
-         "rhs_mag_an_m8hc",
-         "rhs_mag_m18_purple"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhs_mag_30Rnd_556x45_Mk318_Stanag", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhsusf_mag_17Rnd_9x19_JHP", \
+      "rhs_mag_m67", \
+      "rhs_mag_m18_green", \
+      "rhs_mag_an_m8hc", \
+      "rhs_mag_m18_purple"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- HVT -------------------------------------------------------------------

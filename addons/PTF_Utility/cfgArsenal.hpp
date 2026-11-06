@@ -21,9 +21,12 @@ class PTF_Standard_Arsenal : Box_NATO_Equip_F
        "\z\PTF\addons\PTF_Textures\objects\arsenal\equipment_box_blufor_ca.paa"};
    class EventHandlers
    {
+      // A config init already runs on every machine, including JIP, so set the box up
+      // locally with no network traffic. It sits beside the XEH subclass, not inside it:
+      // an init in there replaces CBA's own and stops every XEH handler on this class.
+      init = "if (!is3DEN) then {[_this select 0, false] call PTF_fnc_arsenal_init}";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenal_init', 0, true]";
       };
    };
    class Transportitems : Transportitems{};
@@ -36,9 +39,12 @@ class PTF_Standard_Arsenal_No_Ammo : PTF_Standard_Arsenal
    displayname = "Standard Arsenal (No ammo) [PTF]";
    class EventHandlers
    {
+      // A config init already runs on every machine, including JIP, so set the box up
+      // locally with no network traffic. It sits beside the XEH subclass, not inside it:
+      // an init in there replaces CBA's own and stops every XEH handler on this class.
+      init = "if (!is3DEN) then {[_this select 0, false] call PTF_fnc_arsenalnoammo_init}";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
-       init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalnoammo_init', 0, true]";
       };
    };
 };
@@ -53,9 +59,12 @@ class PTF_Pso_Arsenal : PTF_Standard_Arsenal
        "\z\PTF\addons\PTF_Textures\objects\arsenal\PSO_equipment_box_blufor_ca.paa"};
    class EventHandlers
    {
+      // A config init already runs on every machine, including JIP, so set the box up
+      // locally with no network traffic. It sits beside the XEH subclass, not inside it:
+      // an init in there replaces CBA's own and stops every XEH handler on this class.
+      init = "if (!is3DEN) then {[_this select 0, false] call PTF_fnc_arsenalPSO_init}";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
-       init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalPSO_init', 0, true]";
       };
    };
 };
@@ -64,9 +73,12 @@ class PTF_Limited_Arsenal : PTF_Standard_Arsenal
    displayname = "Limited Arsenal [PTF]";
    class EventHandlers
    {
+      // A config init already runs on every machine, including JIP, so set the box up
+      // locally with no network traffic. It sits beside the XEH subclass, not inside it:
+      // an init in there replaces CBA's own and stops every XEH handler on this class.
+      init = "if (!is3DEN) then {[_this select 0, false] call PTF_fnc_arsenalLimited_init}";
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
-       init = "[(_this select 0)] remoteExec ['PTF_fnc_arsenalLimited_init', 0, true]";
       };
    };
 };

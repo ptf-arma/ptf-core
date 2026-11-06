@@ -6,17 +6,22 @@ folder plus its classes in cfgSounds.hpp, cfgModules.hpp and
 cfgPatchesUnits.hpp; playlists must reference existing sounds; and no stray
 OGGs may linger in the addon.
 
+Also checks the sample rate of every OGG under addons/. Arma refuses anything
+above 48 kHz and plays silence, with nothing in the RPT.
+
 Usage: python tools/check_sound_data.py [--strict]
   --strict  exit 1 on problems (CI gating); default reports only.
 """
 
 import json
+import struct
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 ADDON = REPO / "addons" / "PTF_Sound"
 SOUNDS = ADDON / "sounds"
+MAX_SAMPLE_RATE = 48000
 
 data = json.loads((REPO / "tools" / "sound_lines.json").read_text(encoding="utf-8"))
 entries = data["lines"] + data.get("music", []) + data.get("synth", [])
@@ -58,6 +63,17 @@ for pl in playlists:
 for stray in sorted(SOUNDS.rglob("*.ogg")):
     if stray not in expected_oggs:
         problems.append(f"stray OGG not in sound_lines.json: {stray.relative_to(REPO)}")
+
+for ogg in sorted((REPO / "addons").rglob("*.ogg")):
+    head = ogg.read_bytes()[:256]
+    marker = head.find(b"vorbis")
+    if marker < 0:
+        problems.append(f"not an Ogg Vorbis file: {ogg.relative_to(REPO)}")
+        continue
+    rate = struct.unpack_from("<I", head, marker + 12)[0]
+    if rate > MAX_SAMPLE_RATE:
+        problems.append(f"{rate} Hz is above Arma's {MAX_SAMPLE_RATE} Hz limit and plays silent: "
+                        f"{ogg.relative_to(REPO)}")
 
 print("== PTF_Sound data consistency ==")
 if problems:

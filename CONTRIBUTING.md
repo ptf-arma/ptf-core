@@ -29,11 +29,11 @@ page is about the *workflow* around a change.
    checks on your PR.
 
 5. **To build a copy you can load in Arma**, set one environment variable:
-   **`PTF_EXTERNAL_ADDONS`** → the folder holding the ~40 PBOs this repo doesn't
+   **`PTF_EXTERNAL_ADDONS`** → the folder holding the 39 PBOs this repo doesn't
    build (your subscribed Workshop copy's `addons` folder works). Windows →
    *Edit the system environment variables*. See [BUILDING.md](BUILDING.md).
 
-> **Why?** This repo only builds 20 of the ~57 PBOs the mod ships. Without those
+> **Why?** This repo only builds 23 of the 62 PBOs the mod ships. Without those
 > externals merged in, the mod is incomplete and won't load properly — so
 > `hemtt build` alone is *not* a testable mod.
 >
@@ -124,8 +124,9 @@ later when `develop` is merged into `master` and published to the Workshop.
 
 ## 4. Common gotchas
 
-- **"It works on my PC but CI is red."** Almost always a capitalization
-  mismatch (see above) — Linux is picky where Windows isn't.
+- **"It works on my PC but not on the server."** Check capitalization (see
+  above). A wrong-case `#include` fails Lint on your PR (`PE12` or `PW4` in the
+  log), even though `hemtt check` passes on Windows.
 - **"LF will be replaced by CRLF" warnings.** Harmless; `.gitattributes`
   handles line endings for you.
 - **Huge diff you didn't expect.** You probably committed build output or a

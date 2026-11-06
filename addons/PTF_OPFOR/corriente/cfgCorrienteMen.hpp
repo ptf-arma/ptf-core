@@ -64,26 +64,16 @@ class PTF_Corr_base: I_G_Soldier_base_F
    // Six bakelites and a grenade, same arithmetic as the Sindicato base
    // class: 6 x 11.5 + 6.82 + 8 = 83.82 against the 170 the bandit shirt
    // (30) and chest rig (140) hold. The cartel is not short of ammunition.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- The lookout network -----------------------------------------------------
@@ -186,24 +176,15 @@ class PTF_Corr_miliciano_akms: PTF_Corr_base
    // The tac vest holds 100 against the rig's 140: five bakelites, not six.
    // Per container the shirt takes the aid kit and one magazine (19.50 of 30)
    // and the vest the other four and the grenade (52.82 of 100).
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The captured-army-rifle tier -- the deck's "Galils", see the header note.
@@ -229,26 +210,16 @@ class PTF_Corr_fusilero: PTF_Corr_base
    respawnLinkedItems[] = {"H_Booniehat_tan", "V_Chestrig_khk", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_ak74m", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_ak74m", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_30Rnd_545x39_7N10_AK",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_545x39_7N10_AK", \
+      "rhs_30Rnd_545x39_7N10_AK", \
+      "rhs_30Rnd_545x39_7N10_AK", \
+      "rhs_30Rnd_545x39_7N10_AK", \
+      "rhs_30Rnd_545x39_7N10_AK", \
+      "rhs_30Rnd_545x39_7N10_AK", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Support weapons ---------------------------------------------------------
@@ -266,20 +237,21 @@ class PTF_Corr_granadero: PTF_Corr_base
    respawnLinkedItems[] = {"H_Shemag_olive", "V_TacVest_brn", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_m79", "rhs_weap_tt33", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_m79", "rhs_weap_tt33", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M433_HEDP", "rhs_mag_M433_HEDP",
-         "rhs_mag_762x25_8", "rhs_mag_762x25_8"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE", "rhs_mag_M441_HE",
-         "rhs_mag_M433_HEDP", "rhs_mag_M433_HEDP",
-         "rhs_mag_762x25_8", "rhs_mag_762x25_8"
-      };
+   #define PTF_MAGS \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M441_HE", \
+      "rhs_mag_M433_HEDP", \
+      "rhs_mag_M433_HEDP", \
+      "rhs_mag_762x25_8", \
+      "rhs_mag_762x25_8"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The machinegunner's spare belts, same TransportMagazines mechanism as
@@ -318,20 +290,13 @@ class PTF_Corr_ametrallador: PTF_Corr_base
    backpack = "PTF_B_corr_pkm";
    weapons[] = {"rhs_weap_pkm", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_pkm", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_100Rnd_762x54mmR",
-         "rhs_100Rnd_762x54mmR",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_100Rnd_762x54mmR",
-         "rhs_100Rnd_762x54mmR",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_100Rnd_762x54mmR", \
+      "rhs_100Rnd_762x54mmR", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The AT gunner's reloads. Two more PG-7Vs (31.5 each) in a carryall.
@@ -369,20 +334,13 @@ class PTF_Corr_rpg: PTF_Corr_base
    backpack = "PTF_B_corr_rpg";
    weapons[] = {"rhs_weap_akms", "rhs_weap_rpg7", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_akms", "rhs_weap_rpg7", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_PG7V_mag",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_rpg7_PG7V_mag",
-         "rhs_rpg7_PG7V_mag",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
-      };
+   #define PTF_MAGS \
+      "rhs_rpg7_PG7V_mag", \
+      "rhs_rpg7_PG7V_mag", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // A Dragunov that came across a border, scope still on it. The riverbank
@@ -402,22 +360,18 @@ class PTF_Corr_tirador: PTF_Corr_base
    respawnLinkedItems[] = {"H_Booniehat_tan", "V_BandollierB_cbr", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_svds_pso1", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_svds_pso1", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_10Rnd_762x54mmR_7N1", "rhs_10Rnd_762x54mmR_7N1",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_10Rnd_762x54mmR_7N1", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- The bought tier ---------------------------------------------------------
@@ -447,28 +401,17 @@ class PTF_Corr_sicario: PTF_Corr_base
    // 93.82 against the 170 the guerrilla shirt (30) and chest rig (140)
    // hold. Not eight magazines -- eight is La Guardia's number, and the
    // sicario is not La Guardia.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_30Rnd_762x39mm_polymer",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_30Rnd_762x39mm_polymer", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- Specialists -------------------------------------------------------------
@@ -491,20 +434,13 @@ class PTF_Corr_dronero: PTF_Corr_base
    backpack = "I_UAV_01_backpack_F";
    weapons[] = {"rhs_weap_akms", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_akms", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The boat crew. The rivers are the cartel's roads; he is the driver.
@@ -530,20 +466,13 @@ class PTF_Corr_lanchero: PTF_Corr_base
    respawnLinkedItems[] = {"H_Bandanna_gry", "V_BandollierB_cbr", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_akms", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_akms", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Corr_sanitario: PTF_Corr_base
@@ -583,30 +512,18 @@ class PTF_Corr_jefe: PTF_Corr_base
    respawnLinkedItems[] = {"H_Booniehat_tan", "V_TacChestrig_cbr_F", "ItemMap", "ItemCompass", "ItemWatch", "ItemRadio"};
    weapons[] = {"rhs_weap_akm", "rhs_weap_tt33", "Throw", "Put", "Binocular"};
    respawnWeapons[] = {"rhs_weap_akm", "rhs_weap_tt33", "Throw", "Put", "Binocular"};
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_762x25_8",
-         "rhs_mag_762x25_8",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_762x25_8",
-         "rhs_mag_762x25_8",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_mag_762x25_8", \
+      "rhs_mag_762x25_8", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // "Machete". Field commander; name unknown -- the deck's one named box on

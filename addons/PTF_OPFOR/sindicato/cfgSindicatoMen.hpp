@@ -60,26 +60,16 @@ class PTF_Sind_base: I_G_Soldier_base_F
    // mags (11.7 each), the grenade (6.82) and the first aid kit (8) come to
    // 85.02 against the 170 the shirt (30, not the 40 a PTF uniform holds)
    // and chest rig (140) hold, so nothing gets dropped at spawn.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // --- The union rank and file ----------------------------------------------
@@ -126,26 +116,26 @@ class PTF_Sind_estibador: PTF_Sind_base
    // the grenade go into the coveralls at 30.82 of 40 and the bandolier
    // spawns empty at 0 of 80. He has that much slack, so the grenade is one
    // because a docker carries one, not because a second would not fit.
-   magazines[] =
-      {
-         "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
-         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck", "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_00Buck",
-         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
-         "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug", "rhsgref_1Rnd_Slug",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_00Buck", \
+      "rhsgref_1Rnd_Slug", \
+      "rhsgref_1Rnd_Slug", \
+      "rhsgref_1Rnd_Slug", \
+      "rhsgref_1Rnd_Slug", \
+      "rhsgref_1Rnd_Slug", \
+      "rhsgref_1Rnd_Slug", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The timberman. A Yugoslav rifle that has felled more pigs than men.
@@ -171,26 +161,16 @@ class PTF_Sind_maderero: PTF_Sind_base
    // The grenade at 6.82 fits either of those; a seventh magazine at 13.53
    // fits neither. That is the whole argument for giving him a grenade rather
    // than more ammunition.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_30Rnd_762x39mm",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_30Rnd_762x39mm", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // Grandfather's rifle. He is, infuriatingly, the best shot in the union.
@@ -220,24 +200,21 @@ class PTF_Sind_cazador: PTF_Sind_base
    // the aid kit, all ten clips and the grenade (41.22 of 50) and the
    // bandolier takes the smoke (10 of 80). Nobody issued him either. He is the
    // reason the union has any.
-   magazines[] =
-      {
-         "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38", "rhsgref_5Rnd_762x54_m38",
-         "rhsgref_5Rnd_762x54_m38",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhsgref_5Rnd_762x54_m38", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // A grease gun that came off a freighter in 1971 and never left.
@@ -263,26 +240,16 @@ class PTF_Sind_contrabandista: PTF_Sind_base
    // (87.35 of 100), so the grenade at 6.82 goes into the vest (94.17 of 100).
    // It will not fit the shirt's remaining 4.53 -- put it earlier in the array
    // and it takes a stick's place instead of its own.
-   magazines[] =
-      {
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhsgref_30rnd_1143x23_M1911B_SMG",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhsgref_30rnd_1143x23_M1911B_SMG", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The machinegunner's spare belts. Same mechanism as PTF_B_guardia_pkp:
@@ -347,20 +314,13 @@ class PTF_Sind_ametrallador: PTF_Sind_base
    backpack = "PTF_B_sind_pkm";
    weapons[] = {"rhs_weap_pkm", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_pkm", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_100Rnd_762x54mmR",
-         "rhs_100Rnd_762x54mmR",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_100Rnd_762x54mmR",
-         "rhs_100Rnd_762x54mmR",
-         "rhs_mag_rgd5",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_100Rnd_762x54mmR", \
+      "rhs_100Rnd_762x54mmR", \
+      "rhs_mag_rgd5", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // Dockyard dynamite, union-audited. What he does to a culvert is nobody's
@@ -400,18 +360,12 @@ class PTF_Sind_dinamitero: PTF_Sind_base
    RespawnItems[] = {"FirstAidKit", "ToolKit", "MineDetector"};
    weapons[] = {"rhs_weap_akms", "Throw", "Put"};
    respawnWeapons[] = {"rhs_weap_akms", "Throw", "Put"};
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_rgd5"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_mag_rgd5"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 class PTF_Sind_sanitario: PTF_Sind_base
@@ -485,30 +439,18 @@ class PTF_Sind_cabecilla: PTF_Sind_base
    // is time to go. Handing him the matched frag-and-smoke pair his men do not
    // have would make him look like somebody's soldier, which is the one thing
    // he is not.
-   magazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_762x25_8",
-         "rhs_mag_762x25_8",
-         "rhs_mag_rdg2_white"
-      };
-   respawnMagazines[] =
-      {
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_30Rnd_762x39mm_bakelite",
-         "rhs_mag_762x25_8",
-         "rhs_mag_762x25_8",
-         "rhs_mag_rdg2_white"
-      };
+   #define PTF_MAGS \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_30Rnd_762x39mm_bakelite", \
+      "rhs_mag_762x25_8", \
+      "rhs_mag_762x25_8", \
+      "rhs_mag_rdg2_white"
+   PTF_KIT_MAGAZINES
+   #undef PTF_MAGS
 };
 
 // The union boss. He will get your wounded off the island and never let you

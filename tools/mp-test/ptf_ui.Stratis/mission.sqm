@@ -1,0 +1,84 @@
+version=54;
+binarizationWanted=0;
+addons[]={"A3_Characters_F"};
+randomSeed=1020;
+class ScenarioData { author="PTF"; };
+class Mission
+{
+ class Intel { year=2035; month=6; day=15; hour=11; minute=0; };
+ class Entities
+ {
+  items=6;
+  class Item0
+{
+ dataType="Object";
+ class PositionInfo { position[]={1820,5,5700}; };
+ side="Empty";
+ flags=4;
+ class Attributes { name="box_0"; };
+ id=10;
+ type="PTF_Limited_Arsenal";
+};
+class Item1
+{
+ dataType="Object";
+ class PositionInfo { position[]={1832,5,5700}; };
+ side="Empty";
+ flags=4;
+ class Attributes { name="box_1"; };
+ id=11;
+ type="PTF_Standard_Arsenal";
+};
+class Item2
+{
+ dataType="Object";
+ class PositionInfo { position[]={1844,5,5700}; };
+ side="Empty";
+ flags=4;
+ class Attributes { name="box_2"; };
+ id=12;
+ type="PTF_Cargo_Large_VicBox";
+};
+class Item3
+{
+ dataType="Object";
+ class PositionInfo { position[]={1856,5,5700}; };
+ side="Empty";
+ flags=4;
+ class Attributes { name="box_3"; };
+ id=13;
+ type="PTF_Cargo_Vic";
+};
+class Item4
+{
+ dataType="Object";
+ class PositionInfo { position[]={1868,5,5700}; };
+ side="Empty";
+ flags=4;
+ class Attributes { name="box_4"; };
+ id=14;
+ type="PTF_Cargo_Tracks";
+};
+class Item5
+{
+ dataType="Group";
+ side="West";
+ class Entities
+ {
+  items=1;
+  class Item0
+  {
+   dataType="Object";
+   class PositionInfo { position[]={1800,5,5680}; };
+   side="West";
+   flags=7;
+   class Attributes { isPlayer=1; };
+   id=2;
+   type="B_Soldier_F";
+  };
+ };
+ class Attributes {};
+ id=1;
+};
+ };
+};

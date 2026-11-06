@@ -14,6 +14,3 @@ class PTF_weap_mastersafe : Default
    maxRangeProbab = 0.001;
 };
 
-class VehicleMagazine;
-class HighROF;
-class LowROF;
