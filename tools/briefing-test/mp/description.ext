@@ -1,0 +1,5 @@
+author = "PTF briefing MP test";
+onLoadName = "PTF briefing MP";
+skipLobby = 1;
+joinUnassigned = 1;
+class Header { gameType = Coop; minPlayers = 1; maxPlayers = 2; };
