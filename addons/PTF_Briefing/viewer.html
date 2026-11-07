@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PTF briefing viewer</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  img { position: fixed; }
+</style>
+</head>
+<body>
+  <img id="slide" alt="">
+  <script>
+    // This page runs sandboxed with no network access. Slides arrive from SQF as
+    // JPEG data URLs (base64 only, so nothing in them can break out of a script
+    // string), and PTF_Briefing_fnc_clientLoop calls show() with each one.
+    //
+    // Arma only makes power-of-two textures, so this page is drawn 2:1 and then
+    // stretched onto a screen of a different shape. setAspect() is told the real
+    // screen's width/height, and layout() pre-squashes the slide by the same
+    // amount so it lands on the screen at its true proportions.
+    const img = document.getElementById('slide');
+    let screenAspect = innerWidth / innerHeight;
+
+    function layout() {
+      if (!img.naturalWidth) return;
+      const pw = innerWidth, ph = innerHeight;
+      const xScale = (pw / ph) / screenAspect;          // page px per screen px, across
+      const imageAspect = img.naturalWidth / img.naturalHeight;
+      // Fit the slide inside the screen, in the screen's own proportions...
+      const h = Math.min(ph, ph * screenAspect / imageAspect);
+      const w = h * imageAspect;
+      // ...then convert its width back to page pixels.
+      img.style.width = (w * xScale) + 'px';
+      img.style.height = h + 'px';
+      img.style.left = ((pw - w * xScale) / 2) + 'px';
+      img.style.top = ((ph - h) / 2) + 'px';
+    }
+    img.onload = layout;
+    window.setAspect = (a) => { screenAspect = a; layout(); };
+    window.show = (dataUrl) => { img.src = dataUrl; };
+    window.clear = () => { img.removeAttribute('src'); };
+  </script>
+</body>
+</html>
