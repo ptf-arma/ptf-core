@@ -6,6 +6,8 @@ class PTF_Large_Box : Boxloader_Ammo_West
    epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_hasCargo = 0;
+   // Too big to load into a vehicle as ACE cargo. Every large box inherits this;
+   // move them by forklift, boxloader or sling instead.
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -171,8 +173,6 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
 {
    ace_cargo_space = 40;
    ace_cargo_hasCargo = 1;
-   ace_cargo_size = 5;
-   ace_cargo_canload = 1;
    ace_dragging_canCarry = 0;
    ace_dragging_candrag = 0;
    displayName = "Large - VicBox";
@@ -205,8 +205,6 @@ class PTF_Cargo_Large_Refuel : PTF_Large_Box
          class Carrier{};
       };
    displayname = "Large - Refuel";
-   ace_cargo_size = 5;
-   ace_cargo_canLoad = 1;
    model = "\boxloader_cargo\mdl\boxloader_sixcon_dar.p3d";
    supplyRadius = 10;
    ace_refuel_fuelCargo = 100000; // Maximum fuel cargo amount (in liters)

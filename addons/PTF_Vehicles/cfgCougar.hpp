@@ -5,7 +5,7 @@ class PTF_MRAP_CGRCAT1A2_MK19 : rhsusf_CGRCAT1A2_Mk19_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_MRAP";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(10)
    maximumLoad = 750;
    side = 1;
    author = "Paramarine Task Force";
@@ -173,7 +173,7 @@ class PTF_MRAP_CGRCAT1A2_M2 : rhsusf_CGRCAT1A2_M2_usmc_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_MRAP";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(10)
    maximumLoad = 750;
    side = 1;
    author = "Paramarine Task Force";

@@ -5,7 +5,7 @@ class PTF_M1085A1P2 : rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Utility";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(10)
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";
@@ -70,7 +70,7 @@ class PTF_M1078A1P2 : rhsusf_M1078A1P2_WD_fmtv_usarmy
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Cars";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(20)
    maximumLoad = 1500;
    side = 1;
    author = "Paramarine Task Force";
@@ -168,7 +168,7 @@ class PTF_M1078A1P2_M2 : rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_ArmedCars";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(20)
    maximumLoad = 1500;
    side = 1;
    author = "Paramarine Task Force";
