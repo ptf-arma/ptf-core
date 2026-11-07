@@ -29,7 +29,6 @@ class cfgWeapons
 {
 	class rhsusf_ach_helmet_headset_ucp_alt;
 	class rhsusf_hgu56p_mask_black;
-	class rhsusf_hgu56p_visor_mask_black;
 	class rhsusf_hgu56p_visor_black;
 	class PTF_Helmet_Infantry_Mich2000_S;
 	class PTF_Helmet_Infantry_Mich2000_WD;
@@ -303,22 +302,6 @@ class cfgWeapons
 		displayName="[Inf] MICH 2000 (S) [Personal - S.Jettison]";
 		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_jettison.paa")
 	};
-	//  Holt Helmets
-	class PTF_Helmet_Holt_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (D) [Personal - G.Holt]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_Holt.paa")
-	};
-	class PTF_Helmet_Holt_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (WD) [Personal - G.Holt]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_Holt.paa")
-	};
-	class PTF_Helmet_Holt_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (S) [Personal - G.Holt]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_Holt.paa")
-	};
 	class PTF_Helmet_Lowe_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
 		displayName="[Inf] MICH 2000 (WD) [Personal - B.Lowe]";
@@ -333,21 +316,6 @@ class cfgWeapons
 	{
 		displayName="[Inf] MICH 2000 (S) [Personal - B.Lowe]";
 		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_lowe.paa")
-	};
-	class PTF_Helmet_Soarin_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (WD) [Personal - B.Soarin]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_Soarin.paa")
-	};
-	class PTF_Helmet_Soarin_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (D) [Personal - B.Soarin]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_soarin.paa")
-	};
-	class PTF_Helmet_Soarin_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (S) [Personal - B.Soarin]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_soarin.paa")
 	};
 		class PTF_Helmet_Walker_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
@@ -378,21 +346,6 @@ class cfgWeapons
 	{
 		displayName="[Inf] MICH 2000 (S) [Personal - T.Adams]";
 		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_adams.paa")
-	};
-		class PTF_Helmet_Byrnes_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (WD) [Personal - M.Byrnes]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_wd_co_byrnes.paa")
-	};
-		class PTF_Helmet_Byrnes_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (D) [Personal - M.Byrnes]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_byrnes.paa")
-	};
-		class PTF_Helmet_Byrnes_Infantry_Mich2000_S: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (S) [Personal - M.Byrnes]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_snow_co_byrnes.paa")
 	};
 	class PTF_Helmet_Wolff_Infantry_Mich2000_WD: PTF_Helmet_Infantry_Mich2000_Headset_WD
 	{
@@ -454,11 +407,6 @@ class cfgWeapons
         displayName="[Inf] MICH 2000 (D) HQ";
         PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_HQ.paa")
     };
-    class PTF_Helmet_Halstead_Infantry_Mich2000_D: PTF_Helmet_Infantry_Mich2000_Headset_WD
-	{
-		displayName="[Inf] MICH 2000 (D) [Personal - W.Halstead]";
-		PTF_MICH_TEXTURES("\z\PTF\addons\PTF_Textures\gear\helmets\ptf_mich_covered_rhino_des_co_halstead.paa")
-	};
 	class PTF_Goltred_rhsusf_hgu56p_visor_black : PTF_Helmet_Air_HMDS
 	{
 		displayName = "[MAG] HGU [Personal - F.Goltred] (Black)";
@@ -488,22 +436,6 @@ class cfgWeapons
 			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gute.paa"
 		};
 	};
-	class PTF_Jesus_rhsusf_hgu56p_visor_black: rhsusf_hgu56p_visor_black
-	{
-		displayName="[MAG] HGU [Personal - S.Jesus]";
-		hiddenSelectionsTextures[]=
-		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Jesus.paa"
-		};
-	};
-	class PTF_Gustav_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
-	{
-		displayName="[MAG] HGU [Personal - T. Gustav]";
-		hiddenSelectionsTextures[]=
-		{
-			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Gustav.paa"
-		};
-	};
 	class PTF_David_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
 	{
 		displayName="[MAG] HGU [Personal - J. David]";
@@ -511,16 +443,6 @@ class cfgWeapons
 		{
 			"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_David.paa"
 		};
-	};
-	class PTF_Halstead_rhsusf_hgu56p_mask_black: rhsusf_hgu56p_visor_black
-	{
-		displayName="[MAG] HGU [Personal - W. Halstead]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
-	};
-	class PTF_Halstead_rhsusf_hgu56p_mask_Visor_black: rhsusf_hgu56p_visor_mask_black
-	{
-		displayName="[MAG] HGU [Personal - W. Halstead - Mask]";
-		hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\helmets\HGU_Halstead.paa","\rhsusf\addons\rhsusf_infantry2\gear\head\hgu56\Data\rhs_hgu56_patches_empire_co.paa"};
 	};
 	class PTF_ACV_3_4: rhsusf_cvc_green_alt_helmet
 	{
