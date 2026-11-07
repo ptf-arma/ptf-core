@@ -12,7 +12,8 @@ class PTF_MV22_Ramp : DEGA_MV22_Infantry_NATO
    editorSubcategory = "PTF_Air";
    side = 1;
    faction = "BLU_F";
-   ace_cargo_hasCargo = 0;
+   ace_cargo_hasCargo = 1;
+   ace_cargo_space = 40; // less than the other MV-22s: the ramp gun takes room
    author = "Paramarine Task Force";
    displayName = "MV-22 [MAG36]";
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\Aircraft\MV22\mv22_1_co.paa", "\z\PTF\addons\PTF_Textures\Aircraft\MV22\mv22_2_co.paa"};

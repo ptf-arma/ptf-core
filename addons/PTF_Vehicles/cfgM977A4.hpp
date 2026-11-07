@@ -101,7 +101,7 @@ class PTF_M977A4_Repair : rhsusf_M977A4_REPAIR_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(20)
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";
@@ -166,7 +166,7 @@ class PTF_M977A4_Ammo : rhsusf_M977A4_AMMO_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   PTF_ACE_NO_CARGO
+   PTF_ACE_CARGO_SPACE(20)
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";
