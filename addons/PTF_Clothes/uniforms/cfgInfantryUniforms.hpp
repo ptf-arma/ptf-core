@@ -49,7 +49,7 @@ class PTF_Uniform_Infantry_G3_Tan : rhs_uniform_g3_tan
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_tan_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa","rhsusf\addons\rhsusf_infantry2\data\Mechanix_tan2_co.paa"};
    class ItemInfo : UniformItem
    {
-      uniformClass = "PTFInfantry_Inf_3rd_Green";
+      uniformClass = "PTFInfantry_Inf_3rd_Tan";
       containerClass = "Supply60";
       mass = 20;
    };
@@ -64,7 +64,7 @@ class PTF_Uniform_Infantry_G3_Green : rhs_uniform_g3_tan
    hiddenSelectionsTextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\gen3_green_co.paa","rhsusf\addons\rhsusf_infantry2\data\merrells_co.paa","rhsusf\addons\rhsusf_infantry2\data\Mechanix_green_co.paa"};
    class ItemInfo : UniformItem
    {
-      uniformClass = "PTFInfantry_Inf_3rd_Tan";
+      uniformClass = "PTFInfantry_Inf_3rd_Green";
       containerClass = "Supply60";
       mass = 20;
    };

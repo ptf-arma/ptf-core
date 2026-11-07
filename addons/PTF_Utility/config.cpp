@@ -30,7 +30,12 @@ class CfgPatches
           "PTF_Cargo_Tiny_Ammo",
           "PTF_Spawner",
           "PTF_Pso_Arsenal",
-          "PTF_Standard_Arsenal_No_Ammo"
+          "PTF_Standard_Arsenal_No_Ammo",
+          "PTF_Limited_Arsenal",
+          "PTF_Cargo_Small",
+          "PTF_Large_Box",
+          "PTF_Cargo_Industrial_Static_Cargo",
+          "PTF_Salvage"
           };
       weapons[] = {};
       requiredVersion = 1.32;
@@ -47,6 +52,7 @@ class CfgPatches
           "boxloader_tractor",
           "ace_main",
           "ace_arsenal",
+          "ace_interaction", // ACE_Actions on the large crates
           "A3_Supplies_F_Heli",
           "A3_Props_F_Enoch",
           "boxloader_fort",

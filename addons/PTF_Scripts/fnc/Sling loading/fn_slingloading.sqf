@@ -1,33 +1,31 @@
-params ["_Heli"];
+// Sling-load mass override for the PTF CH-53s and MV-22s. Called from those
+// aircraft's config init, so it runs on every machine.
+//
+// Sling Load Rigging hangs loads on plain physics ropes, so the airframe has to
+// out-lift the real weight - slingLoadMaxCargoMass only governs vanilla sling
+// loading - and at full weight these aircraft cannot lift the vehicles that opt
+// in. A cargo class opts in with
+//     SlingloadingWeight = "[<mass under a CH-53>, <mass under an MV-22>]";
+// and weighs that much for as long as it hangs from one of these aircraft.
+//
+// Locality is the whole difficulty. setMass only takes effect on the machine
+// that owns the cargo, and a slung load changes owner mid-lift: Sling Load
+// Rigging hands it to the pilot after the ropes go on. So the rope handlers here
+// only decide what the mass should be (PTF_fnc_slingMassUpdate); the cargo's
+// owner applies it (PTF_fnc_slingMassApply), and applies it again whenever the
+// cargo moves to another machine (the Local handler in XEH_postInit.sqf).
+params ["_heli"];
 
-_Heli addEventHandler ["RopeAttach", {
- params ["_Heli", "_rope", "_Object"];
-private _RopesAttached = _Object getVariable ["PTF_RopesAttached", 0];
-if (_RopesAttached >= 1) exitwith {};
-if(isNil{[configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry;}) exitwith {false};
+// Register once per machine, however many times this is called.
+if (_heli getVariable ["PTF_slingMassHandlers", false]) exitWith {};
+_heli setVariable ["PTF_slingMassHandlers", true];
 
-private  _HeliCheck = (typeOf _heli splitString "_");
-_HeliCheck resize 2;
-_HeliCheck = _HeliCheck joinString "";
-
-if (_HeliCheck == "PTFCH53" || _HeliCheck == "PTFMV22") then {
-_Object setVariable ["PTF_ObjectMass", getmass _Object, true];
-Private _selectHash = createHashMapFromArray [
-["PTFCH53",0],
-["PTFMV22",1]
-];
-if(isNil{parseSimpleArray ([configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry)}) exitwith {};
-Private _setmass = parseSimpleArray ([configFile >> 'CfgVehicles' >> typeof _Object ,"SlingloadingWeight"] call BIS_fnc_returnConfigEntry);
-_Object setMass (_setmass select (_selectHash get _HeliCheck));
-_Object setVariable ["PTF_RopesAttached", 1, true];
-}
+_heli addEventHandler ["RopeAttach", {
+    params ["_heli", "_rope", "_cargo"];
+    [_heli, _rope, _cargo, true] call PTF_fnc_slingMassUpdate;
 }];
 
-_Heli addEventHandler ["RopeBreak", {
-params ["_object1", "_rope", "_object2"];
-private _RopesAttached = _object2 getVariable ["PTF_RopesAttached", 0];
-private _Defultmass = _object2 getVariable ["PTF_ObjectMass", -1];
-if (_RopesAttached == 0) exitwith {};
-_object2 setmass _Defultmass;
-_object2 setVariable ["PTF_RopesAttached", 0, true];
+_heli addEventHandler ["RopeBreak", {
+    params ["_heli", "_rope", "_cargo"];
+    [_heli, _rope, _cargo, false] call PTF_fnc_slingMassUpdate;
 }];

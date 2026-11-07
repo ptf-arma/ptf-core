@@ -5,12 +5,7 @@ class PTF_Badger : B_APC_Wheeled_01_cannon_F
 	faction = "BLU_F";
     editorCategory = "PTF";
     editorSubcategory = "PTF_Armor";
-    ace_cargo_space = 6;
-    ace_cargo_hasCargo = 1;
-    ace_cargo_size = 0;
-    ace_cargo_canLoad = 0;
-    ace_dragging_canCarry = 0;
-    ace_dragging_canDrag = 0;
+    PTF_ACE_CARGO_SPACE(6)
     ace_hunterkiller[] = {{{0}, 3}, {{0,0}, 3}};
     maximumLoad = 3250;
     side = 1;

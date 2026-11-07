@@ -1,0 +1,16 @@
+# Deliberate exceptions for tools/check_config_structure.py, one finding per line
+# exactly as it prints them (without the [file:line] part). Say why above each.
+
+# Reopens LaserTarget itself instead of inheriting from it, so this class merges
+# with ACE's. It replaces nothing.
+bare-eventhandlers turret_enhanced_2026 CfgVehicles/LaserTarget/EventHandlers
+
+# Vanilla flag poles with an init that sets the texture. PTF_OPFOR keeps to RHS
+# dependencies, and CBA's fallback loop covers these classes in PTF's modset, so
+# they lose nothing today. Add the XEH subclass if these flags ever need XEH.
+bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Valmera_F/EventHandlers
+bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Perenos_F/EventHandlers
+bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Guardia_F/EventHandlers
+bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Kestrel_F/EventHandlers
+bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Sindicato_F/EventHandlers
+bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Corriente_F/EventHandlers

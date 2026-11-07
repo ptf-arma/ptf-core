@@ -87,19 +87,23 @@ $swTotal = [System.Diagnostics.Stopwatch]::StartNew()
 Push-Location $repo
 try {
     $out = Join-Path $repo ".hemttout\release"
-    # hemtt does not clean its release output. Rather than wipe the whole folder
-    # every run (which forced a full multi-GB re-copy and re-sign of the ~40
-    # external PBOs), we keep it and prune precisely: after the external merge
-    # below, anything that isn't part of THIS release is deleted. That kills the
-    # stale-PBO leak just as reliably while letting the copy/sign steps skip work
-    # that's already current. -Force restores the old wipe-everything behaviour.
-    if ($Force -and (Test-Path -LiteralPath $out)) {
+    # `hemtt release` deletes its whole output folder, so the external PBOs and
+    # their signatures are parked here during the build and moved back after it.
+    # That saves a multi-GB re-copy and re-sign of about 40 PBOs on every run. If a
+    # run dies part way, the parked files are still the good set, so a later run
+    # reuses them. -Force throws them away and rebuilds everything.
+    $parked = Join-Path $repo ".hemttout\release-parked"
+    if ($Force) {
         Write-Host "-Force: wiping $out for a full rebuild"
-        Remove-Item -LiteralPath $out -Recurse -Force
+        foreach ($dir in @($out, $parked)) {
+            if (Test-Path -LiteralPath $dir) { Remove-Item -LiteralPath $dir -Recurse -Force }
+        }
     }
 
     # Derive the X.Y.Z version from git and write MINOR/PATCH into
     # script_version.hpp BEFORE building, so the PBOs carry the right version.
+    # The file is put back straight after the build, so a build never leaves it
+    # modified for someone to commit by accident.
     # This mirrors tools/gen-version.sh (used by CI) but is implemented natively
     # so it needs no `sh` on PATH. Pull tags first (best effort) so a release tag
     # cut by CI is visible: on master after that tag exists this yields the
@@ -107,7 +111,15 @@ try {
     #   X (MAJOR) : hand-maintained in script_version.hpp.
     #   Y (MINOR) : number of release tags at this major (v<MAJOR>.*).
     #   Z (PATCH) : first-parent commits since the most recent release tag.
+    # With "Stop" in force, PowerShell 5.1 turns the stderr of a failed native
+    # command into a terminating error, so relax it for this one call.
+    $ErrorActionPreference = "Continue"
     git fetch --tags --quiet 2>$null
+    $fetchExit = $LASTEXITCODE
+    $ErrorActionPreference = "Stop"
+    if ($fetchExit -ne 0) {
+        Write-Warning "git fetch failed, so the version comes from the tags already on this machine."
+    }
     $verFile = Join-Path $repo "addons\PTF_Main\script_version.hpp"
     $vhText = Get-Content -Raw $verFile
     if ($vhText -notmatch '#define\s+MAJOR\s+(\d+)') {
@@ -128,15 +140,29 @@ try {
         $patch = [int](git rev-list --count --first-parent HEAD)
     }
 
+    $vhOriginal = [System.IO.File]::ReadAllBytes($verFile)
     $vhText = $vhText -replace '#define\s+MINOR\s+\d+', "#define MINOR $minor"
     $vhText = $vhText -replace '#define\s+PATCH\s+\d+', "#define PATCH $patch"
-    Set-Content -LiteralPath $verFile -Value $vhText -NoNewline
     $version = "$major.$minor.$patch"
     Write-Host "Version: $version"
 
+    # A leftover parked folder means the last run died part way. It holds the good
+    # set, and whatever is in the output folder now is incomplete.
+    $outAddons = Join-Path $out "addons"
+    if (-not (Test-Path -LiteralPath $parked) -and (Test-Path -LiteralPath $outAddons)) {
+        try { [System.IO.Directory]::Move($outAddons, $parked) }
+        catch { throw "Could not move $outAddons aside. Close Arma and the Publisher if they have this mod loaded. $_" }
+    }
+
     $swBuild = [System.Diagnostics.Stopwatch]::StartNew()
-    & $hemtt release
-    if ($LASTEXITCODE -ne 0) { throw "hemtt release failed" }
+    Set-Content -LiteralPath $verFile -Value $vhText -NoNewline
+    try {
+        & $hemtt release
+        if ($LASTEXITCODE -ne 0) { throw "hemtt release failed" }
+    }
+    finally {
+        [System.IO.File]::WriteAllBytes($verFile, $vhOriginal)
+    }
     $swBuild.Stop()
     $timings['hemtt release'] = $swBuild.Elapsed
 
@@ -155,6 +181,19 @@ try {
     $built = @((Get-ChildItem "$out\addons\*.pbo").Name)
     $expected = [System.Collections.Generic.HashSet[string]]::new(
         [string[]]$built, [System.StringComparer]::OrdinalIgnoreCase)
+
+    # Bring back the parked external PBOs and signatures. Repo-built PBOs are new
+    # this run, so their old signatures are left behind and they get signed again.
+    if (Test-Path -LiteralPath $parked) {
+        foreach ($file in Get-ChildItem -LiteralPath $parked -File) {
+            $pboName = $file.Name -replace '\.[^.]+\.bisign$', ''
+            if ($built -notcontains $pboName) {
+                [System.IO.File]::Move($file.FullName, (Join-Path $outAddons $file.Name))
+            }
+        }
+        Remove-Item -LiteralPath $parked -Recurse -Force
+    }
+
     if (-not $NoExternal) {
         if (-not (Test-Path -LiteralPath $ExternalAddons)) {
             throw "External addons folder not found: $ExternalAddons"

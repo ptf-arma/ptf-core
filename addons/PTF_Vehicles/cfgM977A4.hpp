@@ -5,12 +5,7 @@ class PTF_M977A4_M2 : rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_Utility";
-   ace_cargo_space = 20;
-   ace_cargo_hasCargo = 1;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_CARGO_SPACE(20)
    ace_repair_canRepair = 0;
    maximumLoad = 10000;
    side = 1;
@@ -40,12 +35,7 @@ class PTF_M977A4_Refuel : rhsusf_M978A4_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_NO_CARGO
    maximumLoad = 375;
    side = 1;
    transportFuel = 22000;
@@ -111,12 +101,7 @@ class PTF_M977A4_Repair : rhsusf_M977A4_REPAIR_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_CARGO_SPACE(20)
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";
@@ -181,12 +166,7 @@ class PTF_M977A4_Ammo : rhsusf_M977A4_AMMO_usarmy_wd
    faction = "BLU_F";
    editorCategory = "PTF";
    editorSubcategory = "PTF_UtilityAir";
-   ace_cargo_space = 0;
-   ace_cargo_hasCargo = 0;
-   ace_cargo_size = 0;
-   ace_cargo_canLoad = 0;
-   ace_dragging_canCarry = 0;
-   ace_dragging_canDrag = 0;
+   PTF_ACE_CARGO_SPACE(20)
    maximumLoad = 375;
    side = 1;
    author = "Paramarine Task Force";

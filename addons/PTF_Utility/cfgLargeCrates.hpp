@@ -6,6 +6,8 @@ class PTF_Large_Box : Boxloader_Ammo_West
    epeImpulseDamageCoef = 100;
    faction = "BLU_F";
    ace_cargo_hasCargo = 0;
+   // Too big to load into a vehicle as ACE cargo. Every large box inherits this;
+   // move them by forklift, boxloader or sling instead.
    ace_cargo_size = 0;
    ace_cargo_canLoad = 0;
    ace_dragging_canCarry = 0;
@@ -21,6 +23,16 @@ class PTF_Large_Box : Boxloader_Ammo_West
        "camo",
        "camo_signs"};
    hiddenSelectionsTextures[] = {};
+   // ACE's interaction point is at the centre of the pallet's base, and its
+   // default 2 m reach is less than the distance from a standing player's eyes
+   // to there. 5 m is what ACE itself sets on the Huron containers.
+   class ACE_Actions : ACE_Actions
+   {
+      class ACE_MainActions : ACE_MainActions
+      {
+         distance = 5;
+      };
+   };
    class VehicleTransport
    {
       class Cargo
@@ -147,7 +159,13 @@ class PTF_Cargo_Large_Medical : PTF_Large_Box
       item_xx(kat_naloxone,30);
       item_xx(kat_norepinephrine,30);
       item_xx(kat_phenylephrine,30);
+      item_xx(kat_phenylephrineAuto,30);
       item_xx(kat_TXA,30);
+      item_xx(kat_guedel,40);
+      item_xx(kat_larynx,75);
+      item_xx(kat_suction,35);
+      item_xx(kat_accuvac,10);
+      item_xx(kat_Pulseoximeter,25);
    };
 };
 
@@ -155,14 +173,12 @@ class PTF_Cargo_Large_VicBox : PTF_Large_Box
 {
    ace_cargo_space = 40;
    ace_cargo_hasCargo = 1;
-   ace_cargo_size = 5;
-   ace_cargo_canload = 1;
    ace_dragging_canCarry = 0;
    ace_dragging_candrag = 0;
    displayName = "Large - VicBox";
   class EventHandlers
    {
-      init = "[(_this select 0)] remoteExec ['PTF_fnc_BigVicBox_init', 0, true]";
+      init = "if (isServer && {!is3DEN}) then {[_this select 0] call PTF_fnc_BigVicBox_init}"; // once, on the server: ACE publishes the cargo
       class CBA_Extended_EventHandlers : CBA_Extended_EventHandlers_base
       {
       };
@@ -189,11 +205,8 @@ class PTF_Cargo_Large_Refuel : PTF_Large_Box
          class Carrier{};
       };
    displayname = "Large - Refuel";
-   ace_cargo_size = 5;
-   ace_cargo_canLoad = 1;
    model = "\boxloader_cargo\mdl\boxloader_sixcon_dar.p3d";
    supplyRadius = 10;
-   transportRefuel = 200000000;
    ace_refuel_fuelCargo = 100000; // Maximum fuel cargo amount (in liters)
    ace_refuel_hooks[] = {{0,0,0},{0,0,0}}; // Nozzle hooks
 };

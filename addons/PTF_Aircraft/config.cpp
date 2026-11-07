@@ -51,20 +51,25 @@ class CfgPatches
 			"dega_vehicles_v22",
 			"ace_interaction",
 			"USAF_C130J",
+			"USAF_C130J_C", // USAF_C130J and _Cargo; "USAF_C130J" alone does not load this
 			"USAF_C17",
+			"USAF_C17_C", // USAF_C17; same split
+			"USAF_AGM114_C", // USAF_AGM114R_Launcher
+			"USAF_BRU_C", // parent of PTF_PylonRack_4Rnd_AGM114R
 			"USAF_MQ9",
 			"usaf_kc135_c",
 			"USAF_RQ4A",
 			"rhsgref_a29",
-			// FIR_AirWeaponSystem_US: cfgAH1Z uses FIR_APKWS_M282_P_7rnd_M.
-			// ace_cargo: ace_cargo_hasCargo / ace_cargo_space are set on most
-			// aircraft here. Both were used without being declared.
-			"FIR_AirWeaponSystem_US",
-			"ace_cargo"
+			"ace_cargo",
+			"ace_fastroping",
+			"cba_xeh"
 		};
 	};
 };
 #include "cfgIMPORT.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgPTFSlingFleet.hpp"
+#include "\z\PTF\addons\PTF_Utility\cfgDefinitions.hpp"
 class cfgVehicles
 {
 #include "cfgAH1Z.hpp"

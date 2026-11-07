@@ -8,7 +8,8 @@ drive them. Root of most of the scripted behaviour in PTF Core.
 
 Four functions run server-authoritatively and forward themselves with
 `remoteExec`, and all of them report back to the caller with
-`remoteExec ["hint", …]`:
+`remoteExec ["hint", …]`. Beanbag rounds also run code where the target unit is
+local, which is the server or a headless client for an AI:
 
 | Entry | Kind | Target | Why |
 |-------|------|--------|-----|
@@ -16,13 +17,16 @@ Four functions run server-authoritatively and forward themselves with
 | `PTF_fnc_Salvage` | function | server (`2`) | `deleteVehicle` on a server-owned aircraft, plus the same ticket pool |
 | `PTF_fnc_lz` | function | server (`2`) | callsigns come from one canonical pool; two players marking at once must not get the same one |
 | `PTF_fnc_re` | function | server (`2`) | same pool, resupply callsigns |
-| `ace_medical_fnc_addDamageToUnit` | function | clients (`1`) | beanbag leg damage has to run where the victim is local |
-| `hint` | command | clients (`1`) | server sends the "no tickets" / "pad blocked" / "salvaged" / "created LZ" feedback back to whoever used the action |
+| `ace_medical_fnc_addDamageToUnit` | function | any machine (`0`) | beanbag leg damage has to run where the victim is local |
+| `PTF_fnc_Disarm` | function | any machine (`0`) | beanbag disarm has to run where the victim is local |
+| `hint` | command | clients (`1`) | server sends the "no tickets" / "pad blocked" / "salvaged" / "created LZ" feedback back to whoever used the action, and the helicopter loadouts send "A rearm vic is not within 25m" |
+| `flyInHeight`, `flyInHeightASL` | command | any machine (`0`) | `turret_enhanced_2026`'s altitude command has to run where the vehicle is local |
 
 By default Arma permits these, so nothing has to be done for a mission that
 does not restrict remote execution. **If a mission's `description.ext` defines
-`CfgRemoteExec`, it must list all three or the actions fail silently** — the
-player clicks, nothing spawns, and there is no error.
+`CfgRemoteExec`, it must list all of these or the actions fail silently** — the
+player clicks, nothing spawns, and there is no error. `PTF_Sound` has its own
+list in [its README](../PTF_Sound/README.md).
 
 ```cpp
 class CfgRemoteExec {
@@ -30,10 +34,16 @@ class CfgRemoteExec {
         mode = 1;
         class PTF_fnc_SpawnFunction { allowedTargets = 2; };
         class PTF_fnc_Salvage       { allowedTargets = 2; };
+        class PTF_fnc_lz            { allowedTargets = 2; };
+        class PTF_fnc_re            { allowedTargets = 2; };
+        class PTF_fnc_Disarm        { allowedTargets = 0; };
+        class ace_medical_fnc_addDamageToUnit { allowedTargets = 0; };
     };
     class Commands {
         mode = 1;
         class hint { allowedTargets = 1; };
+        class flyInHeight { allowedTargets = 0; };
+        class flyInHeightASL { allowedTargets = 0; };
     };
 };
 ```
@@ -50,7 +60,7 @@ anything the mod declared is ignored. (A mission that wants to keep it can
 In the other direction it is not merely useless but risky: every addon's
 `CfgRemoteExec` merges into the single `configFile` tree and `mode` is taken
 from the last config parsed, so a `mode` declared here could change remote
-execution behaviour for the ~40 other PBOs in the repack.
+execution behaviour for the 39 other PBOs in the repack.
 
 ## CBA settings
 
@@ -82,3 +92,133 @@ Ticket sliders (`PTF_Uh1yTickets`, `PTF_Ah1zTickets`, `PTF_PlaneTickets`,
 its configured value on any settings refresh, so the live count lives in a
 matching `<setting>Current` variable in `missionNamespace`. Do not write the
 settings themselves from script.
+
+## Respawn loadout
+
+Arma does not restore a unit on respawn, it builds a **new** one from the config
+of whatever class the mission's playable slot uses. Gear applied in Eden, at
+mission start, or out of an arsenal is not part of that class, so the player
+comes back in whatever the class itself declares — and PTF Core defines no
+BLUFOR man classes (`PTF_OPFOR` bakes kit into config; nothing equivalent exists
+for players), so that is a vanilla or stock RHS kit.
+
+Two server-forced CBA settings under **Paramarine Task Force → Respawn** override
+that:
+
+| Setting | Type | Default | Effect |
+|---------|------|---------|--------|
+| `PTF_RespawnLoadoutEnabled` | CHECKBOX | **off** | Master switch. Off means respawn behaves exactly as it always has. |
+| `PTF_RespawnLoadoutName` | LIST | `Rifleman D` | Which kit from `defaultloadouts.hpp` respawning players get. |
+
+Both are `isGlobal` — one server-wide rule, and a client must not be able to
+opt itself into a better kit than everyone else.
+
+### How it is wired
+
+`XEH_postInit.sqf` adds an `EntityRespawned` mission EH on machines with an
+interface, filters it to the local player, and calls `PTF_fnc_respawnLoadout`
+via `CBA_fnc_execNextFrame`. Two deliberate choices there:
+
+- **`EntityRespawned`, not an init EH.** It fires only on an actual respawn,
+  never on initial spawn or JIP, so a mission maker's Eden loadout is never
+  touched. Only the vanilla-kit-on-death case is.
+- **A frame late.** ACE's own respawn gear handling (`ace_respawn_savePreDeathGear`)
+  and any mission-side `onPlayerRespawn.sqf` run on the respawn frame, and the
+  last write to the unit's loadout wins. Going next frame makes PTF Core that
+  last write instead of a coin toss.
+
+The kit is applied with `[_unit, _loadout, true] call CBA_fnc_setLoadout` — the
+`true` refills partially-loaded magazines, so a forced respawn kit never starts
+dry.
+
+### Missions that own their own respawn gear
+
+A mission that already handles respawn loadouts — an `onPlayerRespawn.sqf`,
+`respawnTemplates[] = {"MenuInventory"}` with a `CfgRespawnInventory`, or a
+training map that wants the Eden slot's kit — opts out in `init.sqf`:
+
+```sqf
+PTF_RespawnLoadoutDisabled = true;
+```
+
+This matters because the setting is server-wide: without an opt-out, turning it
+on would silently overwrite the respawn handling of **every** mission on the
+server, side ops and training included.
+
+### Interaction with ACE
+
+ACE ships `ace_respawn_savePreDeathGear`, which restores the gear a player died
+in (depleted magazines and all). It solves an overlapping problem from the other
+direction. Pick one — with both on, PTF Core's fixed kit lands a frame later and
+wins, which makes the ACE setting look broken.
+
+## Default loadouts
+
+`fnc/arsenal/defaultloadouts.hpp` is the 50 PTF role kits. It is **pure data** —
+a bare array of `[name, loadout]` pairs with no engine calls — so `tests/` can
+interpret it with sqflint (see `tests/test_default_loadouts.py`). Each `loadout`
+is either a bare 10-element `getUnitLoadout` array or ACE's
+`[loadout, extendedInfo]` pair; `ace_arsenal_fnc_addDefaultLoadout` and
+`CBA_fnc_setLoadout` both accept either.
+
+It is built **once per machine** in `XEH_preInit.sqf` into `PTF_defaultLoadouts`
+(ordered array) and `PTF_defaultLoadoutsMap` (name → loadout HashMap). An
+`#include` rather than a function call, because the `PTF_RespawnLoadoutName`
+LIST setting needs the kit names while CBA settings are still being registered,
+and that is earlier than any assumption about CfgFunctions compilation order is
+worth making.
+
+`PTF_fnc_registerDefaultLoadouts` hands the kits to ACE, guarded so it only runs
+for the first arsenal on the map. Until 2026-08 the data file was `#include`d
+into all three arsenal init functions instead, which re-pushed all 50 kits
+through `ace_arsenal_fnc_addDefaultLoadout` for every arsenal and crate placed —
+harmless (ACE overwrites by name) but 30 KB of array literal evaluated dozens of
+times to no effect.
+
+Kit names are user-visible twice over: in the arsenal's loadout list and in the
+`PTF_RespawnLoadoutName` setting. Renaming one silently resets any server that
+had it selected, and `Rifleman D` in particular is the setting's default index.
+
+## Sling-load mass
+
+The PTF CH-53s and MV-22s can lift some vehicles on Sling Load Rigging ropes
+only because those vehicles are lightened while they hang. A cargo class opts in
+with `SlingloadingWeight = "[<under a CH-53>, <under an MV-22>]"` (currently the
+Badger, the CAT HMMWVs, the M1025 TOW and SLR's wreck dummy). Rope loads are
+plain physics, so `slingLoadMaxCargoMass` on the aircraft does nothing for them.
+
+`setMass` only takes effect on the machine that owns the object, and a slung load
+changes owner: SLR (forked in `addons/slr_slingload`) moves it to the pilot's
+machine before the ropes go on, and again if the aircraft changes pilot. So:
+
+- the aircraft's rope handlers (`PTF_fnc_slingMassUpdate`) only decide the mass,
+  and send it to the cargo's owner as the CBA event `PTF_slingMass_apply`;
+- the owner applies it (`PTF_fnc_slingMassApply`), records the real mass once in
+  `PTF_ObjectMass`, and stores the decision in `PTF_SlingMass`;
+- a `Local` class handler (`XEH_postInit.sqf`) applies it again on whichever
+  machine takes ownership next.
+
+The real mass comes back only when no rope ties the cargo to the aircraft, not
+on the first rope to break (or when SLR swaps a rope for a new one); the cargo's
+owner, which also owns the ropes, makes that call a frame after the break. Everything goes through CBA events, so nothing here
+needs a `CfgRemoteExec` entry.
+
+### Sling info readout
+
+An ACE **Sling info** action (registered in `XEH_postInit.sqf`, shown by
+`PTF_fnc_slingInfo`) answers "will this fly?" without trial and error:
+
+- **On cargo** (anything Sling Load Rigging can rig): its mass, and for each
+  aircraft in `CfgPTFSlingFleet` (`PTF_Aircraft/CfgPTFSlingFleet.hpp`) what it
+  would weigh on that aircraft's ropes against the aircraft's rating, as OK / NO.
+- **On an aircraft** (outside, or as a self-action from inside): its rated sling
+  capacity and what it is carrying right now.
+
+"On the ropes" uses the same rule as the sling-mass script
+(`PTF_fnc_slingMassFor`: the real mass, or the `SlingloadingWeight` for that
+aircraft if lighter), and both read `SlingloadingWeight` through
+`PTF_fnc_slingWeightFor`, so the readout can't disagree with what is actually
+applied. Ratings are each aircraft's `slingLoadMaxCargoMass`; SLR's rope
+physics don't enforce them, so they are the numbers to fly by, not hard
+limits. To add an aircraft to the cargo readout, add an entry to
+`CfgPTFSlingFleet`.

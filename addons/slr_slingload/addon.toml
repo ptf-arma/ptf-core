@@ -1,0 +1,4 @@
+# Sling Load Rigging (Ampersand, MIT), forked into PTF Core. It keeps
+# upstream's `z\slr\addons\...` prefix and CfgPatches names so missions,
+# PTF_Vehicles' wreckDummy override and other mods referencing SLR still work.
+ignore_pboprefix = true

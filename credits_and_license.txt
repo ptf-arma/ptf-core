@@ -27,6 +27,12 @@ PTF_Utility.pbo
 PTF_Vehicles.pbo
 PTF_*.pbo (covers all PBO's with PTF prefix)
 
+Note on PTF_Dress.pbo: the textures are PTF's own work under the license above, and the rank sheets carry a hidden PTF watermark.
+They are built on Bohemia Interactive's Art of War parade uniform model and textures, which remain Bohemia's.
+Its garrison caps use the cap model in riku_class_a.pbo, credited below, with textures drawn by PTF.
+Insignia artwork is taken from Marine Corps Order 1020.34H. The USMC emblem is used with approval obtained by the PTF for this mod,
+and that approval does not extend to anyone else.
+
 ========================================================================================================================
 Mod: US WWII Class A Dress Uniform
 Original Author: Unitatoe24
@@ -40,7 +46,10 @@ riku_class_a.pbo
 Mod: Sling Load Rigging
 Author: Ampersand
 Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2128676112
+Source Code: https://github.com/ampersand38/sling-load-rigging
 License: MIT
+Modified: forked into this repo (addons/slr_main, addons/slr_slingload) with
+multiplayer locality fixes; see addons/slr_slingload/README.md.
 Includes PBO files:
 slr_main.pbo
 slr_slingload.pbo

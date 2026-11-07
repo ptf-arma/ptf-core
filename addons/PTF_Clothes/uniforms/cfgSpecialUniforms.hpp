@@ -11,7 +11,7 @@ class PTF_Uniform_Wetsuit : U_B_Wetsuit
       mass = 20;
    };
 };
-class PTF_Uniform_CBRN : U_C_CBRN_Suit_01_Wdl_F
+class PTF_Uniform_CBRN : U_B_CBRN_Suit_01_Wdl_F
 {
    scope = 2;
    side = 1;

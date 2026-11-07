@@ -297,6 +297,31 @@ private _backpacks = [
 ];
 
 private _uniforms = [
+	"PTF_Uniform_Dress_USMC_A_Pvt",
+	"PTF_Uniform_Dress_USMC_A_PFC",
+	"PTF_Uniform_Dress_USMC_A_LCpl",
+	"PTF_Uniform_Dress_USMC_A_Cpl",
+	"PTF_Uniform_Dress_USMC_A_Sgt",
+	"PTF_Uniform_Dress_USMC_A_SSgt",
+	"PTF_Uniform_Dress_USMC_A_GySgt",
+	"PTF_Uniform_Dress_USMC_A_HR",
+	"PTF_Uniform_Dress_USMC_A_HA",
+	"PTF_Uniform_Dress_USMC_A_HN",
+	"PTF_Uniform_Dress_USMC_A_HM3",
+	"PTF_Uniform_Dress_USMC_A_HM2",
+	"PTF_Uniform_Dress_USMC_A_HM1",
+	"PTF_Uniform_Dress_USMC_A_HMC",
+	"PTF_Uniform_Dress_USMC_A_WO1",
+	"PTF_Uniform_Dress_USMC_A_CWO2",
+	"PTF_Uniform_Dress_USMC_A_CWO3",
+	"PTF_Uniform_Dress_USMC_A_CWO4",
+	"PTF_Uniform_Dress_USMC_A_CWO5",
+	"PTF_Uniform_Dress_USMC_A_2ndLt",
+	"PTF_Uniform_Dress_USMC_A_1stLt",
+	"PTF_Uniform_Dress_USMC_A_Capt",
+	"PTF_Uniform_Dress_USMC_A_Maj",
+	"PTF_Uniform_Dress_USMC_A_LtCol",
+	"PTF_Uniform_Dress_USMC_A_Col",
 	"PTF_Uniform_Infantry_FROG_D",
 	"PTF_Uniform_Infantry_FROG_S",
 	"PTF_Uniform_Infantry_FROG_WD",
@@ -365,9 +390,23 @@ private _vests = [
 ];
 
 private _helmets = [
-	"FIR_GroundCrew_Headset2",
-	"FIR_JHMCS",
-	"FIR_JHMCS_II",
+	"PTF_DI_COVER",
+	"PTF_Headgear_Dress_USMC_Cover",
+	"PTF_Headgear_Dress_USMC_Cover_Officer",
+	"PTF_Headgear_Dress_USMC_Cover_Field",
+	"PTF_Headgear_Dress_USMC_Garrison",
+	"PTF_Headgear_Dress_USMC_Garrison_Chief",
+	"PTF_Headgear_Dress_USMC_Garrison_WO1",
+	"PTF_Headgear_Dress_USMC_Garrison_CWO2",
+	"PTF_Headgear_Dress_USMC_Garrison_CWO3",
+	"PTF_Headgear_Dress_USMC_Garrison_CWO4",
+	"PTF_Headgear_Dress_USMC_Garrison_CWO5",
+	"PTF_Headgear_Dress_USMC_Garrison_2ndLt",
+	"PTF_Headgear_Dress_USMC_Garrison_1stLt",
+	"PTF_Headgear_Dress_USMC_Garrison_Capt",
+	"PTF_Headgear_Dress_USMC_Garrison_Maj",
+	"PTF_Headgear_Dress_USMC_Garrison_LtCol",
+	"PTF_Headgear_Dress_USMC_Garrison_Col",
 	"PTF_Helmet_Infantry_Mich2000_norotos_WD",
 	"PTF_Helmet_Infantry_Mich2000_norotos_S",
 	"PTF_Helmet_Infantry_Mich2000_norotos_D",
@@ -524,17 +563,19 @@ private _helmets = [
 	"rhs_8point_marpatd",
 	"rhs_8point",
 	"rhs_8point_marpatwd",
-	"PTF_LAV_3A",
-	"PTF_LAV_3B",
-	"PTF_LAV_3C",
-	"PTF_LAV_3E",
+	"PTF_ACV_3_1",
+	"PTF_ACV_3_2",
+	"PTF_ACV_3_3",
+	"PTF_ACV_3_4",
 	"PTF_Helmet_HQ_Infantry_Mich2000_DES",
 	"PTF_Helmet_1st_plt_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_4_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_3_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_2_Infantry_Mich2000_DES",
 	"PTF_Helmet_1_1_Infantry_Mich2000_DES",
-	"PTF_ACV_David_Green"
+	"PTF_ACV_David_rhsusf_cvc_green_ess",
+	"PTF_ACV_Chmielewski_rhsusf_cvc_green_alt",
+	"PTF_ACV_Brown_rhsusf_cvc_green_alt"
 ];
 
 private _glasses = [
@@ -809,11 +850,17 @@ private _medical = [
 	"kat_nitroglycerin",
 	"kat_norepinephrine",
 	"kat_phenylephrine",
+	"kat_phenylephrineAuto",
 	"kat_TXA",
 	"kat_Carbonate",
 	"kat_Painkiller",
 	"kat_sealant",
-	"kat_atropine"
+	"kat_atropine",
+	"kat_guedel",
+	"kat_larynx",
+	"kat_suction",
+	"kat_accuvac",
+	"kat_Pulseoximeter"
 ];
 
 private _demolition = [
@@ -880,7 +927,6 @@ private _equipment = [
 	"ace_marker_flags_red",
 	"ItemMap",
 	"ItemCompass",
-	"rhsusf_acc_premier_anpvs27",
 	"acex_intelitems_notepad",
 	"ACE_PlottingBoard",
 	"ACE_Altimeter",
@@ -919,7 +965,10 @@ private _nightvision = [
 	"PTF_Nightvision_PVS15_WP",
 	"PTF_Nightvision_PVS15_GN",
 	"USP_PVS31_WP_MID_TAN",
-	"USP_PVS31_WP_MID"
+	"USP_PVS31_WP_MID",
+	// Clip-on night weapon sight rather than head-mounted goggles, but
+	// grouped here so the Limited Arsenal drops it along with the NVGs.
+	"rhsusf_acc_premier_anpvs27"
 ];
 
 // PSO Additional items
@@ -951,4 +1000,10 @@ private _standardArsenal = _rifles + _launchers + _pistols + _attachments + _bac
 
 private _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
-[_standardArsenal, _psoArsenal]
+// Standard minus head-mounted night vision, for the Limited Arsenal.
+// Derived by subtraction rather than a second hand-kept sum, so anything
+// added to the sub-arrays above is picked up here automatically and only
+// _nightvision has to be maintained to keep this list correct.
+private _limitedArsenal = _standardArsenal - _nightvision;
+
+[_standardArsenal, _psoArsenal, _limitedArsenal]

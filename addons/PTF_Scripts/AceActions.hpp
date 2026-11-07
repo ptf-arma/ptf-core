@@ -54,37 +54,7 @@ class Car : LandVehicle
                };
             };
 
-            class PTF_3rd_Flags : PTF_Flag_Raise
-            {
-               displayName = "3rd Platoon Flags";
-               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
-               class 3_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3rd Platoon Flag";
-                  statement = "0 = [_target, ""3flag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3A_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-A Flag";
-                  statement = "0 = [_target, ""3Aflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3B_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-B Flag";
-                  statement = "0 = [_target, ""3Bflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3C_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-C Flag";
-                  statement = "0 = [_target, ""3Cflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3E_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-E Flag";
-                  statement = "0 = [_target, ""3Eflag.paa""] call PTF_fnc_FlagRaise";
-               };
-
-            };
+            #include "cfgAceActions3rdFlags.hpp"
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
@@ -125,8 +95,12 @@ class Car : LandVehicle
    };
 };
 
-class Tank;
-class Tank_F : Tank
+// On Tank, not Tank_F: ACE defines ACE_Actions (no parent) on Car, Tank and
+// Ship_F, and Tank_F only inherits it (ace_logistics_uavbattery declares
+// `ACE_Actions: ACE_Actions` there). A bare ACE_Actions on Tank_F reset that
+// parent and stripped ACE's repair/rearm/tow/passenger actions from every
+// tracked vehicle. These blocks must stay parentless and on these classes.
+class Tank : LandVehicle
 {
    class ACE_Actions
    {
@@ -181,37 +155,7 @@ class Tank_F : Tank
                };
             };
 
-            class PTF_3rd_Flags : PTF_Flag_Raise
-            {
-               displayName = "3rd Platoon Flags";
-               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
-               class 3_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3rd Platoon Flag";
-                  statement = "0 = [_target, ""3flag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3A_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-A Flag";
-                  statement = "0 = [_target, ""3Aflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3B_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-B Flag";
-                  statement = "0 = [_target, ""3Bflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3C_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-C Flag";
-                  statement = "0 = [_target, ""3Cflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3E_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-E Flag";
-                  statement = "0 = [_target, ""3Eflag.paa""] call PTF_fnc_FlagRaise";
-               };
-
-            };
+            #include "cfgAceActions3rdFlags.hpp"
 
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
@@ -308,37 +252,8 @@ class Ship_F : Ship
                };
             };
 
-            class PTF_3rd_Flags : PTF_Flag_Raise
-            {
-               displayName = "3rd Platoon Flags";
-               icon = "\z\PTF\addons\PTF_Textures\Icons\flagup_ico.paa";
-               class 3_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3rd Platoon Flag";
-                  statement = "0 = [_target, ""3flag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3A_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-A Flag";
-                  statement = "0 = [_target, ""3Aflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3B_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-B Flag";
-                  statement = "0 = [_target, ""3Bflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3C_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-C Flag";
-                  statement = "0 = [_target, ""3Cflag.paa""] call PTF_fnc_FlagRaise";
-               };
-               class 3E_flag_Raise : PTF_Flag_Raise
-               {
-                  displayName = "Raise 3-E Flag";
-                  statement = "0 = [_target, ""3Eflag.paa""] call PTF_fnc_FlagRaise";
-               };
+            #include "cfgAceActions3rdFlags.hpp"
 
-            };
             class PTF_Squadron_Flags : PTF_Flag_Raise
             {
                displayName = "MAG36 Flags";

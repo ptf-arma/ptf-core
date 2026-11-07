@@ -10,6 +10,7 @@ class CfgPatches
       requiredAddons[] = {
           "PTF_Main",
           "ace_pylons",
+          "ace_interaction",
           "cba_main"
           };
       author = "Paramarine Task Force";
@@ -19,10 +20,10 @@ class CfgPatches
 /*
     CfgRemoteExec - deliberately NOT defined here. See README.md.
 
-    PTF_fnc_SpawnFunction and PTF_fnc_Salvage forward themselves to the server
-    with remoteExec, and both report back with remoteExec ["hint", _caller]. If a
-    mission whitelists remote execution, those three entries have to be in the
-    MISSION's description.ext - an addon config cannot supply them:
+    Several functions forward themselves with remoteExec and report back with
+    remoteExec ["hint", _caller]. If a mission whitelists remote execution, the
+    entries listed in README.md have to be in the MISSION's description.ext - an
+    addon config cannot supply them:
 
       - Lookup order is missionConfigFile > campaignConfigFile > configFile, and
         an addon config.cpp only reaches configFile. A description.ext
@@ -69,6 +70,7 @@ class CfgVehicles
 {
 class CargoNet_01_box_F;
 class PTF_DummyHolder: CargoNet_01_box_F {
+	scope = 1; // spawned by PTF_fnc_Disarm; not placeable
 	displayName = "PTF_DummyHolder";
 	model = "\A3\Weapons_f\DummyWeapon_Single.p3d";
 	showWeaponCargo = 1;
