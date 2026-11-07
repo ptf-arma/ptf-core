@@ -3,7 +3,8 @@ class PTF_C17 : USAF_C17
    scope = 2;
    editorCategory = "PTF";
    editorSubcategory = "PTF_Air";
-   ace_cargo_hasCargo = 0;
+   ace_cargo_hasCargo = 1;
+   ace_cargo_space = 80; // double the C-130J
    maximumLoad = 375;
    faction = "BLU_F";
    side = 1;

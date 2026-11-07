@@ -38,7 +38,7 @@ private _check = {
     private _cap = configFile >> "CfgWeapons" >> _x;
     [_x + " picture", getText (_cap >> "picture")] call _check;
     {[_x + " texture", _x] call _check} forEach getArray (_cap >> "hiddenSelectionsTextures");
-} forEach ["PTF_Headgear_Dress_USMC_Cover", "PTF_Headgear_Dress_USMC_Cover_Officer", "PTF_Headgear_Dress_USMC_Cover_Field"];
+} forEach ["PTF_Headgear_Dress_USMC_Cover", "PTF_Headgear_Dress_USMC_Cover_Officer", "PTF_Headgear_Dress_USMC_Cover_Field", "PTF_Headgear_Dress_USMC_Garrison", "PTF_Headgear_Dress_USMC_Garrison_Chief", "PTF_Headgear_Dress_USMC_Garrison_WO1", "PTF_Headgear_Dress_USMC_Garrison_CWO2", "PTF_Headgear_Dress_USMC_Garrison_CWO3", "PTF_Headgear_Dress_USMC_Garrison_CWO4", "PTF_Headgear_Dress_USMC_Garrison_CWO5", "PTF_Headgear_Dress_USMC_Garrison_2ndLt", "PTF_Headgear_Dress_USMC_Garrison_1stLt", "PTF_Headgear_Dress_USMC_Garrison_Capt", "PTF_Headgear_Dress_USMC_Garrison_Maj", "PTF_Headgear_Dress_USMC_Garrison_LtCol", "PTF_Headgear_Dress_USMC_Garrison_Col"];
 diag_log format ["DRESSREVIEW paths missing=%1 ranks=%2", _bad, count dress_subjects];
 
 // On the ground, in the open.

@@ -29,6 +29,7 @@ PTF_*.pbo (covers all PBO's with PTF prefix)
 
 Note on PTF_Dress.pbo: the textures are PTF's own work under the license above, and the rank sheets carry a hidden PTF watermark.
 They are built on Bohemia Interactive's Art of War parade uniform model and textures, which remain Bohemia's.
+Its garrison caps use the cap model in riku_class_a.pbo, credited below, with textures drawn by PTF.
 Insignia artwork is taken from Marine Corps Order 1020.34H. The USMC emblem is used with approval obtained by the PTF for this mod,
 and that approval does not extend to anyone else.
 
