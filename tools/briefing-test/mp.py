@@ -5,10 +5,18 @@ The server loads a public Google deck through billet-link, the headless client a
 for every slide over the network, and the server checks each arrived intact
 (BRIEFMP ... MATCH in the server RPT). No game window opens.
 
+billet-link is linked to a stand-in Billet run here (a billet_link.toml in the test mod's
+folder, which wins over any in the server's folder), so the load also goes through the
+"Load briefing slides" permission check: the stand-in grants it to TEST_UID only, and the
+run fails unless billet-link asked about exactly that player.
+
 Usage:  python tools/briefing-test/mp.py --billet-dll <path to billet_link.dll> [--no-build] [--port 2412]
 """
 import argparse
+import http.server
+import json
 import shutil
+import threading
 import subprocess
 import sys
 import time
@@ -33,6 +41,7 @@ except ImportError:
 WORKSHOP = common.STEAM / "workshop" / "content" / "107410"
 MODS = ["450814997", "463939057", "3596653038"]  # CBA_A3, ACE3, Peral LHA
 DEFAULT_URL = "https://docs.google.com/presentation/d/1EAYk18WDjIG-zp_0vLm3CsfQh_i8eXc67Jo2O9C6Vuc/edit"
+TEST_UID = "76561198000000001"  # mp/init.sqf passes this SteamID
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--billet-dll", required=True)
@@ -51,6 +60,33 @@ mod = out / "@ptf_briefing_test"
 (mod / "addons").mkdir(parents=True)
 shutil.copy2(REPO / ".hemttout" / "build" / "addons" / "PTF_Briefing.pbo", mod / "addons")
 shutil.copy2(args.billet_dll, mod / "billet_link_x64.dll")
+
+# Stand-in for Billet's tablet endpoint: grants slides_load to TEST_UID only.
+asked = []
+
+
+class FakeBillet(http.server.BaseHTTPRequestHandler):
+    def do_POST(self):
+        body = json.loads(self.rfile.read(int(self.headers.get("content-length", 0))) or b"{}")
+        asked.append(body)
+        reply = {"ok": True, "kind": "slides_role", "allowed": body.get("uid") == TEST_UID}
+        if body.get("kind") != "slides_role":
+            reply = {"ok": False, "reason": "unknown_kind"}
+        data = json.dumps(reply, separators=(",", ":")).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
+    def log_message(self, *_):
+        pass
+
+
+billet = http.server.HTTPServer(("127.0.0.1", 0), FakeBillet)
+threading.Thread(target=billet.serve_forever, daemon=True).start()
+(mod / "billet_link.toml").write_text(
+    f'endpoint = "http://127.0.0.1:{billet.server_port}/api/ingest/heartbeat"\nkey = "blk_briefing_test"\n')
 mod_arg = "-mod=" + ";".join([str(WORKSHOP / m) for m in MODS] + [str(mod)])
 
 server_dir = common.server_dir()
@@ -120,5 +156,9 @@ for name in ("server.rpt", "hc.rpt"):
         for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
             if any(k in line for k in ("BRIEFMP", "PTF_Briefing", "billet", "rror in expression")):
                 print(f"  {name}: {line[:260]}")
+print("billet asked:", asked)
+if [a.get("uid") for a in asked] != [TEST_UID]:
+    print("FAIL: billet-link should have asked the stand-in Billet once, about", TEST_UID)
+    ok = False
 print("results in", out)
 sys.exit(0 if ok else 1)

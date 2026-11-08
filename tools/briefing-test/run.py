@@ -7,6 +7,7 @@ through -autotest, keeps the game in the background, and collects screenshots
 plus Arma-window captures into .hemttout/briefing-test.
 
 Usage:  python tools/briefing-test/run.py --billet-dll <path to billet_link.dll> [--no-build] [--url URL]
+                                          [--billet-endpoint http://127.0.0.1:<port>/api/ingest/heartbeat]
 """
 import argparse
 import ctypes
@@ -87,6 +88,8 @@ def main():
     ap.add_argument("--url", default=DEFAULT_URL)
     ap.add_argument("--billet-dll", required=True, help="billet_link.dll built from the Billet repo")
     ap.add_argument("--timeout", type=int, default=420)
+    ap.add_argument("--billet-endpoint", help="link billet-link to this Billet (its heartbeat URL) so loading asks it for the "
+                    "slides_load permission; without it nobody is asked and the load goes ahead")
     args = ap.parse_args()
 
     if "arma3_x64.exe" in subprocess.run(["tasklist"], capture_output=True, text=True).stdout.lower():
@@ -101,6 +104,9 @@ def main():
     shutil.copy2(REPO / ".hemttout" / "build" / "addons" / "PTF_Briefing.pbo", addons)
     # Arma looks for extensions in each loaded mod's root folder.
     shutil.copy2(args.billet_dll, WORK / "@ptf_briefing_test" / "billet_link_x64.dll")
+    if args.billet_endpoint:
+        (WORK / "@ptf_briefing_test" / "billet_link.toml").write_text(
+            f'endpoint = "{args.billet_endpoint}"\nkey = "blk_briefing_test"\n')
     mission = WORK / "brief_test.Stratis"
     shutil.copytree(Path(__file__).parent / "mission", mission)
     (mission / "test_settings.sqf").write_text(f'brief_url = "{args.url}";\n')
