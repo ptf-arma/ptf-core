@@ -90,7 +90,13 @@ if (_lhit isNotEqualTo []) then {
 [_lha, brief_url, false] call PTF_Briefing_fnc_requestLoad;
 _t = time;
 waitUntil {(_lha getVariable ["PTF_Briefing_deck", []]) isNotEqualTo [] || time - _t > 60};
-diag_log format ["BRIEFTEST deck %1 after %2 s, slide %3", _lha getVariable ["PTF_Briefing_deck", []], time - _t, _lha getVariable ["PTF_Briefing_slide", -9]];
+diag_log format ["BRIEFTEST deck %1 after %2 s, slide %3 (player uid %4)", _lha getVariable ["PTF_Briefing_deck", []], time - _t, _lha getVariable ["PTF_Briefing_slide", -9], getPlayerUID player];
+// refused (no slides_load permission, say): nothing more to look at
+if ((_lha getVariable ["PTF_Briefing_deck", []]) isEqualTo []) exitWith {
+	diag_log format ["BRIEFTEST done (no deck), reload link '%1'", _lha getVariable ["PTF_Briefing_url", ""]];
+	disableUserInput false;
+	endMission "END1";
+};
 sleep 6;
 
 private _close = {

@@ -10,12 +10,13 @@ if !(_kind in ["slides", "slides_err"]) exitWith {};
 private _pending = PTF_Briefing_pending getOrDefault [_req, []];
 if (_pending isEqualTo []) exitWith {};
 PTF_Briefing_pending deleteAt _req;
-_pending params ["_ship", "_owner", "_keepSlide"];
+_pending params ["_ship", "_owner", "_keepSlide", ["_url", ""]];
 private _tell = {[_this] remoteExecCall ["PTF_Briefing_fnc_notify", _owner]};
 if (isNull _ship) exitWith {};
 
 if (_kind == "slides_err") exitWith {
 	_ship setVariable ["PTF_Briefing_loading", -1e9];
+	diag_log format ["[PTF_Briefing] deck %1 not loaded: %2", _req, _data];
 	(switch (_data) do {
 		case "not_public": {"That deck isn't public. In Google Slides, Share it as 'Anyone with the link can view'."};
 		case "not_found": {"Google couldn't find that deck. Check the link."};
@@ -24,14 +25,21 @@ if (_kind == "slides_err") exitWith {
 		case "too_large";
 		case "too_many_slides": {"That deck is too big (150 slides or 50 MB at most)."};
 		case "unreachable": {"The server couldn't reach Google. Try again."};
+		case "not_allowed": {"Loading slides needs the Billet permission 'Load briefing slides'."};
+		case "not_linked";
+		case "not_member": {"Loading slides needs a Billet account linked to your Steam account, with the 'Load briefing slides' permission."};
+		case "not_on_server": {"Billet hasn't seen you on this server yet. Try again in a minute."};
+		case "no_player": {"Billet couldn't tell who you are, so the slides weren't loaded."};
+		case "billet_unreachable": {"The server couldn't reach Billet to check your permission. Try again."};
+		case "billet_config": {"The server's Billet link is misconfigured, so nobody can load slides. Tell an admin."};
 		default {format ["The slides couldn't be loaded (%1).", _data]};
 	}) call _tell;
 };
 
 // Reading a big deck is a few thousand extension calls: do it scheduled, so it
 // spreads over frames instead of stalling one.
-[_ship, _req, parseNumber _data, _keepSlide, _owner] spawn {
-	params ["_ship", "_req", "_count", "_keepSlide", "_owner"];
+[_ship, _req, parseNumber _data, _keepSlide, _owner, _url] spawn {
+	params ["_ship", "_req", "_count", "_keepSlide", "_owner", "_url"];
 	private _tell = {[_this] remoteExecCall ["PTF_Briefing_fnc_notify", _owner]};
 	private _slides = [];
 	for "_i" from 0 to _count - 1 do {
@@ -64,6 +72,9 @@ if (_kind == "slides_err") exitWith {
 	_ship setVariable ["PTF_Briefing_slide", _slide, true];
 	_ship setVariable ["PTF_Briefing_blank", false, true];
 	_ship setVariable ["PTF_Briefing_deck", [_req, _count], true];
+	// The link Reload uses, kept only once Billet allowed the load: a refused
+	// player must not leave theirs for the next officer's Reload.
+	if (_url != "") then {_ship setVariable ["PTF_Briefing_url", _url, true]};
 	private _chars = 0;
 	{_chars = _chars + count _x} forEach _slides;
 	diag_log format ["[PTF_Briefing] deck %1 loaded on %2: %3 slides, %4 KB", _req, _ship, _count, round (_chars / 1024)];

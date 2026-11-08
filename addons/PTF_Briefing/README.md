@@ -16,14 +16,20 @@ Peral's PBO is never edited: this addon only retextures the two screens (hiddenS
    slide 1 for everyone, including players who join later.
 4. Edited the deck during the brief? Reload slides fetches it again and keeps your place.
 
-Only players at the laptop, or a Zeus, can change slides.
+Only players at the laptop, or a Zeus, can change slides. Loading a deck (Load and Reload)
+also needs the Billet permission **Load briefing slides** (`slides_load`): give it to a role
+in the unit's Billet settings. billet-link asks Billet about the player's SteamID, taken
+from their network connection, before it fetches anything; someone without it is told so.
+A server whose billet-link isn't linked to a Billet unit (no `billet_link.toml`) lets anyone
+at the laptop load.
 
 ## What it needs
 
-- **Server:** billet-link with slide support (`caps` includes `slides`), loaded as a
-  server mod. It downloads the deck from Google and renders it; the source is in the
-  Billet repo, `mod/extension/src/slides.rs`. Without it the screens stay as they are
-  and the laptop menu says so.
+- **Server:** billet-link with slides and the Billet permission check (`caps` includes
+  `slides_auth`: any billet-link release after 0.13.9), loaded as a server mod. It
+  downloads the deck from Google and renders it; the source is in the Billet repo,
+  `mod/extension/src/slides.rs`. Without it, or with an older one that would let anyone
+  load, the screens stay as they are and the laptop menu says so.
 - **Players:** nothing extra. Slides reach them as images over the mission's own network
   traffic, about 100-200 KB per slide, fetched only near the ship: the slide on screen and
   the next one.

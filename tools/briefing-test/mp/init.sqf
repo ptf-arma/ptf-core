@@ -18,7 +18,8 @@ if (isServer) then {
 		PTF_Briefing_nextReq = 1;
 		PTF_Briefing_pending set ["1", [_lha, 2, false]];
 		_lha setVariable ["PTF_Briefing_loading", time];
-		diag_log format ["BRIEFMP SERVER queued %1", ("billet_link" callExtension ["slides", ["1", brief_url]]) select 0];
+		// mp.py's stand-in Billet grants "Load briefing slides" to this SteamID only.
+		diag_log format ["BRIEFMP SERVER queued %1", ("billet_link" callExtension ["slides", ["1", brief_url, "76561198000000001"]]) select 0];
 		private _t = time;
 		waitUntil {(_lha getVariable ["PTF_Briefing_deck", []]) isNotEqualTo [] || time - _t > 60};
 		private _mine = (PTF_Briefing_decks getOrDefault ["1", []]) apply {[count _x, hashValue _x]};

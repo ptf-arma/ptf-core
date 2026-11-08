@@ -4,15 +4,17 @@
 	menu says why.
 */
 private _caps = "billet_link" callExtension "caps";
-PTF_Briefing_ready = "slides" in (_caps splitString ",");
+// slides_auth: billet-link also checks Billet's "Load briefing slides"
+// permission. An older one loads for anyone, so it isn't used.
+PTF_Briefing_ready = "slides_auth" in (_caps splitString ",");
 publicVariable "PTF_Briefing_ready";
 if (!PTF_Briefing_ready) exitWith {
-	diag_log format ["[PTF_Briefing] billet-link with slides support is not loaded on the server (caps: '%1'), so the briefing screens are off", _caps];
+	diag_log format ["[PTF_Briefing] billet-link with slides and permission support is not loaded on the server (caps: '%1'), so the briefing screens are off", _caps];
 };
 
 PTF_Briefing_decks = createHashMap;   // request id -> [base64 JPEG per slide]
 PTF_Briefing_deckOrder = [];          // request ids, oldest first
-PTF_Briefing_pending = createHashMap; // request id -> [ship, owner of the player who asked, keep slide]
+PTF_Briefing_pending = createHashMap; // request id -> [ship, owner of the player who asked, keep slide, url]
 PTF_Briefing_ships = [];              // ships that have shown slides this mission
 PTF_Briefing_nextReq = 0;
 // billet-link stays loaded across mission restarts, so a load still running from
