@@ -40,6 +40,15 @@
             <English>Main</English>
             <Chinesesimp>主货勾</Chinesesimp>
         </Key>
+        <Key ID="STR_SLR_SlingLoad_CargoOccupied">
+            <English>Not attached: get everyone out of the vehicle first.</English>
+        </Key>
+        <Key ID="STR_SLR_SlingLoad_HandoverFailed">
+            <English>Not attached: the load couldn't be handed to the pilot's machine.</English>
+        </Key>
+        <Key ID="STR_SLR_SlingLoad_HookInUse">
+            <English>Not attached: another load already hangs from that hook or one too close to it, and the two would hit each other.</English>
+        </Key>
         <Key ID="STR_SLR_SlingLoad_LengthenShorten">
             <English>Lengthen/Shorten</English>
             <Chinesesimp>伸长/缩短</Chinesesimp>
@@ -61,6 +70,9 @@
         <Key ID="STR_SLR_SlingLoad_RemoveRigging">
             <English>Remove Rigging</English>
             <Chinesesimp>移除吊钩</Chinesesimp>
+        </Key>
+        <Key ID="STR_SLR_SlingLoad_RigAgain">
+            <English>Rig the load again to retry.</English>
         </Key>
         <Key ID="STR_SLR_SlingLoad_RigForSlingLoad">
             <English>Rig For Sling Load</English>

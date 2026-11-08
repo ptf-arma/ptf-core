@@ -43,7 +43,11 @@ _unit setVariable ["slr_slingload_heldFitting", _af, true];
         private _cargo = _af getVariable ["slr_slingload_cargo4Fitting", objNull];
         private _ropes = ropes _af;
         if (isNull _cargo || {(_ropes - [objNull]) isEqualTo []}) then {
-            deleteVehicle _af;
+            // PTF fork: while attachCargo waits for the fitting's ropes to
+            // go, it deletes the fitting itself once they have.
+            if !(_af getVariable [QGVAR(hookingUp), false]) then {
+                deleteVehicle _af;
+            };
         } else {
             {
                 private _reps = ropeEndPosition _x;

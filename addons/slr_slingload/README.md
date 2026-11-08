@@ -47,6 +47,23 @@ Version is 1.1.17.1. Changes, all for multiplayer locality:
   points. The points nearer the aircraft's nose go to the forward hook and
   the rest to the aft hook, so long loads hang lined up with the aircraft and
   don't spin. Releasing one hook leaves the load on the other.
+- **Loads that would hit each other are refused** (`hookConflict`). A second
+  load can only go on an aircraft if, for each pair of hooks the two loads
+  use, the hooks are further apart than the loads' horizontal half-diagonals
+  added together. On the CH-53, whose hooks are within 3.1 m of each other,
+  that means one vehicle at a time, though two small pallets fit forward and
+  aft. Two loads pressed together on ropes can blow up the physics and crash
+  the game. `attachCargo` checks before the fitting is touched, and the
+  aircraft's owner checks again, because two players can hook up in the same
+  second.
+- **Occupied vehicles can't be hooked.** The engine won't hand a vehicle with
+  anyone inside to the aircraft's owner, so its ropes would be simulated on
+  one machine and the vehicle on another. For the same reason, if the cargo
+  hasn't arrived after 3 s the hook-up is refused instead of creating the
+  ropes anyway. Refusals after the fitting is gone tell the rigger to rig
+  again (`hookRefused`).
+- **The fitting is deleted only once its ropes are gone**, which may take a
+  network round trip when another machine owns them.
 - **Public `slr_slingload_fnc_getHookPositions`** `[heli]` returns the
   aircraft's cargo hook positions in model space (`[main, forward, aft]` from
   `slr_customHooks`, else the config sling point). SLR's own attach code uses
