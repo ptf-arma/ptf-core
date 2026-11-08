@@ -93,7 +93,7 @@ waitUntil {(_lha getVariable ["PTF_Briefing_deck", []]) isNotEqualTo [] || time 
 diag_log format ["BRIEFTEST deck %1 after %2 s, slide %3 (player uid %4)", _lha getVariable ["PTF_Briefing_deck", []], time - _t, _lha getVariable ["PTF_Briefing_slide", -9], getPlayerUID player];
 // refused (no slides_load permission, say): nothing more to look at
 if ((_lha getVariable ["PTF_Briefing_deck", []]) isEqualTo []) exitWith {
-	diag_log "BRIEFTEST done (no deck)";
+	diag_log format ["BRIEFTEST done (no deck), reload link '%1'", _lha getVariable ["PTF_Briefing_url", ""]];
 	disableUserInput false;
 	endMission "END1";
 };

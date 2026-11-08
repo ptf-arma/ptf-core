@@ -25,11 +25,11 @@ at the laptop load.
 
 ## What it needs
 
-- **Server:** billet-link with slide support (`caps` includes `slides`) and the Billet
-  permission check (any billet-link release after 0.13.9), loaded as a server mod. It
+- **Server:** billet-link with slides and the Billet permission check (`caps` includes
+  `slides_auth`: any billet-link release after 0.13.9), loaded as a server mod. It
   downloads the deck from Google and renders it; the source is in the Billet repo,
-  `mod/extension/src/slides.rs`. Without it the screens stay as they are and the laptop
-  menu says so.
+  `mod/extension/src/slides.rs`. Without it, or with an older one that would let anyone
+  load, the screens stay as they are and the laptop menu says so.
 - **Players:** nothing extra. Slides reach them as images over the mission's own network
   traffic, about 100-200 KB per slide, fetched only near the ship: the slide on screen and
   the next one.

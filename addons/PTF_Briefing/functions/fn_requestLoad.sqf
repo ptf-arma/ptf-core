@@ -45,7 +45,7 @@ if (time - (_ship getVariable ["PTF_Briefing_loading", -1e9]) < 120) exitWith {"
 PTF_Briefing_nextReq = PTF_Briefing_nextReq + 1;
 private _req = PTF_Briefing_reqBase + (PTF_Briefing_nextReq toFixed 0);
 // Registered before asking: the answer can come back before this script resumes.
-PTF_Briefing_pending set [_req, [_ship, _owner, _keepSlide]];
+PTF_Briefing_pending set [_req, [_ship, _owner, _keepSlide, _url]];
 private _answer = ("billet_link" callExtension ["slides", [_req, _url, _uid]]) select 0;
 if (_answer != "queued") exitWith {
 	PTF_Briefing_pending deleteAt _req;
@@ -57,5 +57,4 @@ if (_answer != "queued") exitWith {
 	}) call _tell;
 };
 _ship setVariable ["PTF_Briefing_loading", time];
-_ship setVariable ["PTF_Briefing_url", _url, true];
 "Loading slides..." call _tell;

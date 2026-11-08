@@ -104,7 +104,7 @@ def main():
     shutil.copy2(REPO / ".hemttout" / "build" / "addons" / "PTF_Briefing.pbo", addons)
     # Arma looks for extensions in each loaded mod's root folder.
     shutil.copy2(args.billet_dll, WORK / "@ptf_briefing_test" / "billet_link_x64.dll")
-    if args.billet_endpoint:
+    if args.billet_endpoint is not None:
         (WORK / "@ptf_briefing_test" / "billet_link.toml").write_text(
             f'endpoint = "{args.billet_endpoint}"\nkey = "blk_briefing_test"\n')
     mission = WORK / "brief_test.Stratis"
