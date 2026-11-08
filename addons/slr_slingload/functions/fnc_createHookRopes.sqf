@@ -11,6 +11,7 @@
  * 3: Cargo hook position, heli model space <ARRAY>
  * 4: Lift points, cargo model space <ARRAY>
  * 5: Rope lengths, one per lift point <ARRAY>
+ * 6: Player who attached the cargo, told if it is refused <OBJECT> <OPTIONAL>
  *
  * Return Value:
  * None
@@ -19,7 +20,7 @@
  * [_heli, _cargo, "slr_slingload_cargoHookMain", _hookPos, _liftPoints, _lengths] call slr_slingload_fnc_createHookRopes
  */
 
-params ["_heli", "_cargo", "_cargoHookName", "_cargoHookPosition", "_liftPoints", "_lengths"];
+params ["_heli", "_cargo", "_cargoHookName", "_cargoHookPosition", "_liftPoints", "_lengths", ["_requester", objNull]];
 
 if (isNull _heli || {isNull _cargo}) exitWith {};
 
@@ -27,6 +28,20 @@ if (isNull _heli || {isNull _cargo}) exitWith {};
 // the cargo follows it to the new owner.
 if (!local _heli) exitWith {
     [QGVAR(hookCargo), _this] call CBA_fnc_serverEvent;
+};
+
+// PTF fork: the cargo never arrived here (the 3 s wait in eventHandlers.hpp
+// ran out). Ropes from this machine to a load simulated on another one fight
+// each other, so leave the load on the ground instead.
+if (!local _cargo) exitWith {
+    [_requester, LSTRING(HandoverFailed)] call FUNC(hookRefused);
+};
+
+// PTF fork: every hook-up request for this aircraft ends up here, one after
+// another, so this is where two players hooking at once are told apart.
+// attachCargo checks the same before anything is torn down.
+if ([_heli, _cargo, [_cargoHookPosition]] call FUNC(hookConflict)) exitWith {
+    [_requester, LSTRING(HookInUse)] call FUNC(hookRefused);
 };
 
 private _ropes4Hook = _heli getVariable [_cargoHookName, []];

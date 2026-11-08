@@ -7,8 +7,13 @@
 // Server: move the cargo to the aircraft's owner, then have that machine
 // create the hook ropes.
 [QGVAR(hookCargo), {
-    params ["_heli", "_cargo"];
+    params ["_heli", "_cargo", "", "", "", "", ["_requester", objNull]];
     if (isNull _heli || {isNull _cargo}) exitWith {};
+    // The engine won't move a vehicle with anyone inside to another machine.
+    // attachCargo checks this too; this catches someone getting in meanwhile.
+    if ((crew _cargo) findIf {alive _x} > -1) exitWith {
+        [_requester, LSTRING(CargoOccupied)] call FUNC(hookRefused);
+    };
     private _heliOwner = owner _heli;
     if (isMultiplayer && {owner _cargo != _heliOwner}) then {
         _cargo setOwner _heliOwner;
@@ -16,8 +21,9 @@
     [QGVAR(createHookRopes), _this, _heli] call CBA_fnc_targetEvent;
 }] call CBA_fnc_addEventHandler;
 
-// Aircraft owner: give the cargo up to 3 s to arrive, then create the ropes
-// (anyway, if it never does, e.g. it has crew and setOwner refused).
+// Aircraft owner: give the cargo up to 3 s to arrive, then create the ropes.
+// If it never arrives, createHookRopes refuses rather than hang a load from
+// ropes simulated on another machine.
 [QGVAR(createHookRopes), {
     [{
         params ["_heli", "_cargo"];
@@ -57,6 +63,15 @@
     if (isNull _object || {!isMultiplayer} || {!(_object isKindOf "slr_slingload_apexFitting")}) exitWith {};
     if (owner _object != _clientOwner) then {
         _object setOwner _clientOwner;
+    };
+}] call CBA_fnc_addEventHandler;
+
+// The player whose hook-up was refused (see hookRefused): say why.
+[QGVAR(hookRefused), {
+    params ["_stringName"];
+    if (hasInterface) then {
+        // The fitting is gone by now, so the load has to be rigged again
+        hint format ["%1 %2", localize _stringName, localize LSTRING(RigAgain)];
     };
 }] call CBA_fnc_addEventHandler;
 

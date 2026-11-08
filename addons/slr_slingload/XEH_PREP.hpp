@@ -19,6 +19,8 @@ PREP(destroyRope);
 PREP(getCargoLiftPoints);
 PREP(getHookPositions);
 PREP(handleScrollWheel);
+PREP(hookConflict);
+PREP(hookRefused);
 PREP(pickUpFitting);
 PREP(releaseCargo);
 PREP(removeRigging);

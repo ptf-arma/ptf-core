@@ -27,11 +27,32 @@ private _cargoWreck = _cargo getVariable [QGVAR(wreckDummy), objNull];
 if !(isNull _cargoWreck) then {
     _cargo = _cargoWreck;
 };
+private _riggedObject = _apexFitting getVariable ["slr_slingload_cargo4Fitting", objNull];
+
+// PTF fork: checks made before anything is torn down, so a refused hook-up
+// leaves the load rigged and the fitting in hand.
+// A vehicle with anyone inside can't be handed to the aircraft's owner, so its
+// ropes would end up simulated on one machine and the vehicle on another.
+if ((crew _riggedObject) findIf {alive _x} > -1) exitWith {
+    hint localize LSTRING(CargoOccupied);
+    false
+};
+// Two loads hanging close together are pulled into each other.
+private _hookPositions = [_heli] call FUNC(getHookPositions);
+private _newHooks = if (_cargoHookIndex < 0) then {
+    [_hookPositions param [1, []], _hookPositions param [2, []]]
+} else {
+    [_hookPositions param [_cargoHookIndex, []]]
+} select {_x isNotEqualTo []};
+if ([_heli, _cargo, _newHooks] call FUNC(hookConflict)) exitWith {
+    hint localize LSTRING(HookInUse);
+    false
+};
+
 private _fittingRopes = ropes _apexFitting;
 
 // The fitting's ropes are tracked on the rigged object (the wreck itself for
 // a wreck, not its dummy); drop them from that list before destroying them.
-private _riggedObject = _apexFitting getVariable ["slr_slingload_cargo4Fitting", objNull];
 private _riggedRopes = _riggedObject getVariable ["slr_slingload_ropes4Cargo", []];
 _riggedObject setVariable ["slr_slingload_ropes4Cargo", _riggedRopes - _fittingRopes - [objNull], true];
 
@@ -45,19 +66,12 @@ private _lengths = _liftPoints apply {
     if (_index < 0) then {10} else {(_fittingRopes select _index) getVariable ["slr_slingload_ropeLength", 10]}
 };
 
-// Unlink the fitting before its ropes go: if a RopeBreak deletes it first,
-// its Deleted handler would otherwise wipe the cargo's rope list.
-_apexFitting setVariable ["slr_slingload_cargo4Fitting", objNull, true];
-{
-    [_x] call FUNC(destroyRope);
-} forEach _fittingRopes;
-deleteVehicle _apexFitting;
-
-// PTF fork: dual point (index -1). The lift points nearer the aircraft's nose
-// go to the forward hook and the rest to the aft hook, so a long load hangs
-// level and lined up with the aircraft instead of spinning under one hook.
-if (_cargoHookIndex < 0) exitWith {
-    private _hookPositions = [_heli] call FUNC(getHookPositions);
+// What to hook where: [hook variable name, hook position, lift points, lengths]
+private _requests = if (_cargoHookIndex < 0) then {
+    // PTF fork: dual point (index -1). The lift points nearer the aircraft's
+    // nose go to the forward hook and the rest to the aft hook, so a long load
+    // hangs level and lined up with the aircraft instead of spinning under one
+    // hook.
     private _heliDir = vectorDir _heli;
     private _order = [];
     {
@@ -65,33 +79,49 @@ if (_cargoHookIndex < 0) exitWith {
     } forEach _liftPoints;
     _order sort false;
     private _frontCount = ceil (count _order / 2);
-    {
-        _x params ["_hookName", "_hookIndex", "_indices"];
-        [QGVAR(hookCargo), [
-            _heli,
-            _cargo,
-            _hookName,
-            _hookPositions param [_hookIndex, [0, 0, 0]],
-            _indices apply {_liftPoints select _x},
-            _indices apply {_lengths param [_x, 10]}
-        ]] call CBA_fnc_serverEvent;
-    } forEach [
+    [
         ["slr_slingload_cargoHookForward", 1, (_order select [0, _frontCount]) apply {_x select 1}],
         ["slr_slingload_cargoHookAft", 2, (_order select [_frontCount]) apply {_x select 1}]
-    ];
-    true
+    ] apply {
+        _x params ["_hookName", "_hookIndex", "_indices"];
+        [_hookName, _hookPositions param [_hookIndex, [0, 0, 0]], _indices apply {_liftPoints select _x}, _indices apply {_lengths param [_x, 10]}]
+    }
+} else {
+    [[
+        ["slr_slingload_cargoHookMain", "slr_slingload_cargoHookForward", "slr_slingload_cargoHookAft"] select _cargoHookIndex,
+        _hookPositions param [_cargoHookIndex, [0, 0, 0]],
+        _liftPoints,
+        _lengths
+    ]]
 };
 
-private _cargoHookName = [
-    "slr_slingload_cargoHookMain",
-    "slr_slingload_cargoHookForward",
-    "slr_slingload_cargoHookAft"
-] select _cargoHookIndex;
+// Unlink the fitting before its ropes go: if a RopeBreak deletes it first,
+// its Deleted handler would otherwise wipe the cargo's rope list. The flag
+// stops the holder's per-frame handler (pickUpFitting) deleting the fitting
+// before its ropes are gone.
+_apexFitting setVariable [QGVAR(hookingUp), true];
+_apexFitting setVariable ["slr_slingload_cargo4Fitting", objNull, true];
+{
+    [_x] call FUNC(destroyRope);
+} forEach _fittingRopes;
 
-private _cargoHookPosition = ([_heli] call FUNC(getHookPositions)) param [_cargoHookIndex, [0, 0, 0]];
-
-// PTF fork: hand over to the server, which moves the cargo to the
+// PTF fork: delete the fitting only once its ropes are gone. They may be
+// simulated by another machine, and deleting an object under live ropes can
+// crash the game. Then hand over to the server, which moves the cargo to the
 // aircraft's owner and has that machine create the hook ropes.
-[QGVAR(hookCargo), [_heli, _cargo, _cargoHookName, _cargoHookPosition, _liftPoints, _lengths]] call CBA_fnc_serverEvent;
+private _fnc_hookUp = {
+    params ["_apexFitting", "_heli", "_cargo", "_requests", "_unit"];
+    if (!isNull _apexFitting) then {
+        deleteVehicle _apexFitting;
+    };
+    {
+        _x params ["_hookName", "_hookPosition", "_points", "_hookLengths"];
+        [QGVAR(hookCargo), [_heli, _cargo, _hookName, _hookPosition, _points, _hookLengths, _unit]] call CBA_fnc_serverEvent;
+    } forEach _requests;
+};
+[{
+    params ["_apexFitting"];
+    isNull _apexFitting || {(ropes _apexFitting - [objNull]) isEqualTo []}
+}, _fnc_hookUp, [_apexFitting, _heli, _cargo, _requests, _unit], 2, _fnc_hookUp] call CBA_fnc_waitUntilAndExecute;
 
 true

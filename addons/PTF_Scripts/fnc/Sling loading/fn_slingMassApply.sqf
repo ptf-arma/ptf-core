@@ -40,8 +40,22 @@ if (!isNull _heli) exitWith {
     }, [_cargo, _slingMass, _heli]] call CBA_fnc_execNextFrame;
 };
 
-if (!isNil "_afmFactor") then {
+if (!isNil "_afmFactor") exitWith {
+    // A rope was attached. One arrives per rope, each in the frame its rope is
+    // created, and changing a vehicle's mass while its rope joints are being
+    // built may crash the game. So record the decision now and change the mass
+    // once, half a second after the last rope. Re-applying the stored decision
+    // also restores the real mass if the load was released in the meantime.
     _cargo setVariable ["PTF_SlingMassFactorAFM", _afmFactor, true];
+    _cargo setVariable ["PTF_SlingMass", _slingMass, true];
+    private _token = (_cargo getVariable ["PTF_SlingMassPending", 0]) + 1;
+    _cargo setVariable ["PTF_SlingMassPending", _token];
+    [{
+        params ["_cargo", "_token"];
+        if (!isNull _cargo && {(_cargo getVariable ["PTF_SlingMassPending", 0]) == _token}) then {
+            [_cargo] call PTF_fnc_slingMassApply;
+        };
+    }, [_cargo, _token], 0.5] call CBA_fnc_waitAndExecute;
 };
 
 if (isNil "_slingMass") then {
@@ -68,12 +82,17 @@ if (_slingMass > 0) exitWith {
     if (difficultyEnabledRTD) then {
         _mass = _mass * (_cargo getVariable ["PTF_SlingMassFactorAFM", 1]);
     };
-    _cargo setMass _mass;
+    // Rope swaps on a pilot change re-apply the same mass: leave it alone
+    if (abs (getMass _cargo - _mass) > 1) then {
+        _cargo setMass _mass;
+    };
 };
 
 private _objectMass = _cargo getVariable ["PTF_ObjectMass", -1];
 if (_objectMass > 0) then {
-    _cargo setMass _objectMass;
+    if (abs (getMass _cargo - _objectMass) > 1) then {
+        _cargo setMass _objectMass;
+    };
     _cargo setVariable ["PTF_ObjectMass", nil, true];
 };
 _cargo setVariable ["PTF_SlingMassFactorAFM", nil, true];
