@@ -1,0 +1,12 @@
+author = "PTF Lives test";
+onLoadName = "PTF Lives test";
+skipLobby = 1;
+joinUnassigned = 1;
+disabledAI = 1;
+cba_settings_hasSettingsFile = 1;
+respawn = "BASE";
+respawnDelay = 5;
+respawnOnStart = -1;
+// "Tickets": the vanilla side pool, which Lives keeps full while it is on
+respawnTemplates[] = {"Counter", "Tickets"};
+class Header { gameType = Coop; minPlayers = 1; maxPlayers = 2; };
