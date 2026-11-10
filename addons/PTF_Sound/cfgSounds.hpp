@@ -143,6 +143,66 @@ class PTF_Sound_sindicato_business
 	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\valmera\sindicato_business.ogg", 5.62, 1, 700};
 	titles[] = {};
 };
+class PTF_Sound_1mc_flight_quarters
+{
+	name = "PTF PA - 1MC: Flight Quarters";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_flight_quarters.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_secure_flight_quarters
+{
+	name = "PTF PA - 1MC: Secure from Flight Quarters";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_secure_flight_quarters.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_general_quarters
+{
+	name = "PTF PA - 1MC: General Quarters";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_general_quarters.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_secure_general_quarters
+{
+	name = "PTF PA - 1MC: Secure from General Quarters";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_secure_general_quarters.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_away_landing_force
+{
+	name = "PTF PA - 1MC: Away the Landing Force";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_away_landing_force.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_recover_landing_force
+{
+	name = "PTF PA - 1MC: Recover the Landing Force";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_recover_landing_force.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_fod_walkdown
+{
+	name = "PTF PA - 1MC: FOD Walkdown";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_fod_walkdown.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_man_overboard
+{
+	name = "PTF PA - 1MC: Man Overboard";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_man_overboard.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_reveille
+{
+	name = "PTF PA - 1MC: Reveille";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_reveille.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
+class PTF_Sound_1mc_taps
+{
+	name = "PTF PA - 1MC: Taps";
+	sound[] = {"\z\PTF\addons\PTF_Sound\sounds\navy\1mc_taps.ogg", 5.62, 1, 150};
+	titles[] = {};
+};
 class PTF_Sound_anthem_valmera
 {
 	name = "PTF PA - Music: Himno de la Republica";

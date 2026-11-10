@@ -263,6 +263,116 @@ class PTF_Sound_Module_sindicato_business: PTF_Sound_Module_base
 	PTF_duration = 15.1;
 	PTF_pause = 20;
 };
+class PTF_Sound_Module_1mc_flight_quarters: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Flight Quarters";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_flight_quarters";
+	PTF_distance = 150;
+	PTF_duration = 11.6;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_secure_flight_quarters: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Secure from Flight Quarters";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_secure_flight_quarters";
+	PTF_distance = 150;
+	PTF_duration = 5.5;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_general_quarters: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: General Quarters";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_general_quarters";
+	PTF_distance = 150;
+	PTF_duration = 14.3;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_secure_general_quarters: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Secure from General Quarters";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_secure_general_quarters";
+	PTF_distance = 150;
+	PTF_duration = 9.6;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_away_landing_force: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Away the Landing Force";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_away_landing_force";
+	PTF_distance = 150;
+	PTF_duration = 8.3;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_recover_landing_force: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Recover the Landing Force";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_recover_landing_force";
+	PTF_distance = 150;
+	PTF_duration = 8.1;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_fod_walkdown: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: FOD Walkdown";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_fod_walkdown";
+	PTF_distance = 150;
+	PTF_duration = 6.5;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_man_overboard: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Man Overboard";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_man_overboard";
+	PTF_distance = 150;
+	PTF_duration = 7.0;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_reveille: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Reveille";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_reveille";
+	PTF_distance = 150;
+	PTF_duration = 9.4;
+	PTF_pause = 60;
+};
+class PTF_Sound_Module_1mc_taps: PTF_Sound_Module_base
+{
+	scope = 2;
+	scopeCurator = 2;
+	displayName = "1MC: Taps";
+	category = "PTF_Sound_navy";
+	PTF_soundClass = "PTF_Sound_1mc_taps";
+	PTF_distance = 150;
+	PTF_duration = 9.0;
+	PTF_pause = 60;
+};
 class PTF_Sound_Module_anthem_valmera: PTF_Sound_Module_base
 {
 	scope = 2;
