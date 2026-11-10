@@ -27,6 +27,13 @@ class CfgFactionClasses
 		priority=91;
 		side=7;
 	};
+	// Shipboard 1MC announcements. PTF_LHA plays them ship-wide on the LHA.
+	class PTF_Sound_navy
+	{
+		displayName="PTF Loudspeakers (Navy)";
+		priority=92;
+		side=7;
+	};
 };
 class CfgFunctions
 {

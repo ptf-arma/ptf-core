@@ -13,7 +13,7 @@ class PTF_Boat {
             	icon = "RHICC\addons\data\side_rhicc_ca.paa";
 				};
 				class PTF_RHICC_GRAY {
-				statement = "['RHICC_GRAY', 'Boat'] call PTF_fnc_SpawnFunction";
+				statement = "['RHICC_GREY', 'Boat'] call PTF_fnc_SpawnFunction";
             	displayName = "Spawn RHICC Gray";
             	icon = "RHICC\addons\data\side_rhicc_ca.paa";
 				};

@@ -198,6 +198,106 @@
       "voice": "es-DO-EmilioNeural",
       "rate": "+3%",
       "text": "El Sindicato reminds you: we buy fuel, medicine, and information. We pay in dollars, not in promises. You know how to find us. Do not come with problems. Come with product."
+    },
+    {
+      "name": "1mc_flight_quarters",
+      "display": "1MC: Flight Quarters",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Flight quarters, flight quarters. All hands man your flight quarters stations. The smoking lamp is out on the flight deck, the hangar deck and all weather decks."
+    },
+    {
+      "name": "1mc_secure_flight_quarters",
+      "display": "1MC: Secure from Flight Quarters",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Secure from flight quarters. Secure from flight quarters."
+    },
+    {
+      "name": "1mc_general_quarters",
+      "display": "1MC: General Quarters",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "General quarters, general quarters. All hands man your battle stations. Up and forward to starboard, down and aft to port. Set material condition Zebra throughout the ship."
+    },
+    {
+      "name": "1mc_secure_general_quarters",
+      "display": "1MC: Secure from General Quarters",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Secure from general quarters. Secure from general quarters. Set material condition Yoke throughout the ship."
+    },
+    {
+      "name": "1mc_away_landing_force",
+      "display": "1MC: Away the Landing Force",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Away the landing force, away the landing force. All embarked troops, lay to your debarkation stations."
+    },
+    {
+      "name": "1mc_recover_landing_force",
+      "display": "1MC: Recover the Landing Force",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Stand by to recover the landing force. All hands stand clear of the well deck and the aircraft elevators."
+    },
+    {
+      "name": "1mc_fod_walkdown",
+      "display": "1MC: FOD Walkdown",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Now all hands not actively engaged in watch standing, lay to the flight deck for a FOD walkdown."
+    },
+    {
+      "name": "1mc_man_overboard",
+      "display": "1MC: Man Overboard",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Man overboard, man overboard. All hands muster at your man overboard stations."
+    },
+    {
+      "name": "1mc_reveille",
+      "display": "1MC: Reveille",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Reveille, reveille. All hands heave out and trice up. The smoking lamp is lighted in all authorized spaces."
+    },
+    {
+      "name": "1mc_taps",
+      "display": "1MC: Taps",
+      "category": "navy",
+      "voice": "en-US-GuyNeural",
+      "rate": "-5%",
+      "distance": 150,
+      "pause": 60,
+      "text": "Taps, taps. Lights out. Maintain silence about the decks. Now taps."
     }
   ],
   "music": [

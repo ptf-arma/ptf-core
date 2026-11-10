@@ -14,3 +14,8 @@ bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Guardia_F/EventHandlers
 bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Kestrel_F/EventHandlers
 bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Sindicato_F/EventHandlers
 bare-eventhandlers PTF_OPFOR CfgVehicles/PTF_Flag_Corriente_F/EventHandlers
+
+# Reopens Peral's own EventHandlers on Peral_LHA (same class, no parent in Peral's
+# either) to add a PTF_LHA subclass beside Peral's init. It merges and replaces
+# nothing. Peral's LHA has no XEH; adding it is out of scope here.
+bare-eventhandlers PTF_LHA CfgVehicles/Peral_LHA/EventHandlers
