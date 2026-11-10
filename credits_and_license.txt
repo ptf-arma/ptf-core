@@ -209,3 +209,35 @@ Source Link: https://steamcommunity.com/sharedfiles/filedetails/?id=2942075551
 License: see author
 Includes PBO files:
 RHICC.pbo
+======================================================================
+Mod: AN/TPS-80 G/ATOR model (ptf_gator_data.pbo)
+Author: 3dmi (CGTrader), "AN-TPS-80 Ground Air Radar System Deployed", model #7108279
+Source Link: https://www.cgtrader.com/3d-models/military/other/an-tps-80-ground-air-radar-system-deployed
+License: CGTrader Royalty Free License (no AI); bought for PTF and cleared for use in the mod.
+Note: Not committed to the public repo. ptf_gator_data.pbo is built from the purchased files by
+tools/gator/build_data.py (split into moving parts, reduced and converted; generator moved
+0.2 m forward so the antenna can turn) and ships as an external PBO. PTF_GATOR.pbo (config and
+scripts) is PTF's own work.
+Includes PBO files:
+ptf_gator_data.pbo
+
+======================================================================
+Mod: PTF_GATOR sound effects (inside PTF_GATOR.pbo)
+Author: Pixabay uploaders "freesound_community", "freesoundfx" and "audiopapkin"
+Source Link: https://pixabay.com/sound-effects/ (sound IDs 69303, 388827, 314780, 83044)
+License: Pixabay Content License, https://pixabay.com/service/license-summary/
+Note: The generator start, running and stop sounds, antenna hum, array motor and leg clunk in
+sounds\ are trimmed, levelled and loop-crossfaded cuts from these recordings, made by
+tools/gator/import_sounds.py.
+Includes PBO files:
+PTF_GATOR.pbo (sounds\ only)
+
+======================================================================
+Mod: PTF_GATOR incoming alarm (inside PTF_GATOR.pbo)
+Author: supplied by the PTF owner; the recording's file name says it was made with Voicemod
+("c-ram-incoming-alarm-(alarm-red-iraq)-made-with-Voicemod.mp3")
+License: unconfirmed. Check Voicemod's terms for redistributing its sounds before a Workshop release.
+Note: sounds\alarm.ogg is one cycle of the recording, made mono and loopable and played
+through a loudspeaker filter (band-limited, compressed) by tools/gator/import_sounds.py.
+Includes PBO files:
+PTF_GATOR.pbo (sounds\alarm.ogg only)
