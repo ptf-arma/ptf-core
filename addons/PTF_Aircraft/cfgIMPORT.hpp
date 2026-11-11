@@ -130,6 +130,7 @@ class UserActions;
 class ViewPilot;
 
 class USAF_MQ9 {
+ class EventHandlers;
  class ACE_Actions {
   class ACE_MainActions {};
  };

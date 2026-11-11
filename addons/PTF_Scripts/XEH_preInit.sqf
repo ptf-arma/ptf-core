@@ -61,6 +61,19 @@
     true // needRestart
 ] call CBA_fnc_addSetting;
 
+// MQ-9 external fuel pods (PTF_fnc_mq9ExtFuel). Each pod is worth this much of
+// a full internal tank, so with the default two pods give +100% endurance: a
+// 300 gal pod against roughly 600 gal of internal fuel.
+[
+    "PTF_MQ9PodFuel", "SLIDER",
+    ["MQ-9 fuel per pod", "Fuel each external pod holds, as a fraction of the MQ-9's internal tank. 0.5 = half a tank per pod."],
+    ["Paramarine Task Force", "Aircraft"],
+    [0, 2, 0.5, 2],
+    true, // isGlobal - the drone's owner changes, so every machine must agree
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+
 // ---------------------------------------------------------------------------
 // Respawn loadout
 //
