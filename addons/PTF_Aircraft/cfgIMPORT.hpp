@@ -24,12 +24,14 @@ class rhsusf_CH53E_USMC_D {
  class Turrets;
 };
 class rhsusf_CH53E_USMC_GAU21_D {
+ class RotorLibHelicopterProperties;
  class Turrets {
   class CopilotTurret;
   class GAU21;
  };
 };
 class rhsusf_CH53e_USMC_D_cargo {
+ class RotorLibHelicopterProperties;
  class Turrets {
   class CopilotTurret;
  };
@@ -128,6 +130,7 @@ class UserActions;
 class ViewPilot;
 
 class USAF_MQ9 {
+ class EventHandlers;
  class ACE_Actions {
   class ACE_MainActions {};
  };
