@@ -7,6 +7,7 @@
 if (!isServer) exitWith {};
 ([] call PTF_Lives_fnc_callerUid) params ["", "_uid", "_unit"];
 if (_uid isEqualTo "" || {isNull _unit}) exitWith {};
+if (alive _unit) then {_unit setVariable ["PTF_Lives_uid", _uid]};
 
 private _entry = PTF_Lives_book getOrDefault [_uid, []];
 if (_entry isEqualTo []) then {
