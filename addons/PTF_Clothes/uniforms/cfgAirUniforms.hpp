@@ -1,29 +1,3 @@
-class PTF_Uniform_Air_CWU27P_WD : CWU27P_Base
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Air] CWU-27/P (WD) [PTF]";
-   author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
-   {
-      containerClass = "Supply60";
-      mass = 20;
-   };
-};
-class PTF_Uniform_Air_CWU27P_D : CWU27PTan_Base
-{
-   scope = 2;
-   side = 1;
-   faction = "BLU_F";
-   displayName = "[Air] CWU-27/P (D) [PTF]";
-   author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
-   {
-      containerClass = "Supply60";
-      mass = 20;
-   };
-};
 class PTF_Uniform_Air_CSU15BP_WD : CSU15BP_Base_Rolled_FG
 {
    scope = 2;
@@ -67,44 +41,44 @@ class PTF_Uniform_Air_SNA_USN : CWU27P_Base
       mass = 20;
    };
 };
-class PTF_Uniform_Air_CWU27P_Gunfighters_CO : CWU27PUSMC323
+class PTF_Uniform_Air_CWU27P_Gunfighters : CWU27P_Base
 {
    scope = 2;
    side = 1;
    faction = "BLU_F";
-   displayName = "[Air] CWU-27/P (Gunfighters CO) [PTF]";
+   displayName = "[Air] CWU-27/P (Gunfighters) [PTF]";
    author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
+   class ItemInfo : UniformItem
    {
       uniformModel = "-";
-      uniformClass = "PTFInfantry_Air_CWU27P_Gunfighters_CO";
+      uniformClass = "PTFInfantry_Air_CWU27P_Gunfighters";
       containerClass = "Supply60";
       mass = 20;
    };
 };
-class PTF_Uniform_Air_CWU27P_Gunfighters_XO : CWU27PUSMC323
+class PTF_Uniform_Air_CWU27P_Gunfighters_Rolled : CWU27P_Base_Rolled
 {
    scope = 2;
    side = 1;
    faction = "BLU_F";
-   displayName = "[Air] CWU-27/P (Gunfighters XO) [PTF]";
+   displayName = "[Air] CWU-27/P (Gunfighters, Rolled) [PTF]";
    author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
+   class ItemInfo : UniformItem
    {
       uniformModel = "-";
-      uniformClass = "PTFInfantry_Air_CWU27P_Gunfighters_XO";
+      uniformClass = "PTFInfantry_Air_CWU27P_Gunfighters_Rolled";
       containerClass = "Supply60";
       mass = 20;
    };
 };
-class PTF_Uniform_Air_CWU27P_MAG_CO : CWU27PUSMC323
+class PTF_Uniform_Air_CWU27P_MAG_CO : CWU27P_Base
 {
    scope = 2;
    side = 1;
    faction = "BLU_F";
    displayName = "[Air] CWU-27/P (MAG CO) [PTF]";
    author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
+   class ItemInfo : UniformItem
    {
       uniformModel = "-";
       uniformClass = "PTFInfantry_Air_CWU27P_MAG_CO";
@@ -112,17 +86,47 @@ class PTF_Uniform_Air_CWU27P_MAG_CO : CWU27PUSMC323
       mass = 20;
    };
 };
-class PTF_Uniform_Air_CWU27P_MAG_XO : CWU27PUSMC323
+class PTF_Uniform_Air_CWU27P_MAG_CO_Rolled : CWU27P_Base_Rolled
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (MAG CO, Rolled) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_MAG_CO_Rolled";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_MAG_XO : CWU27P_Base
 {
    scope = 2;
    side = 1;
    faction = "BLU_F";
    displayName = "[Air] CWU-27/P (MAG XO) [PTF]";
    author = "Paramarine Task Force";
-   class ItemInfo : ItemInfo
+   class ItemInfo : UniformItem
    {
       uniformModel = "-";
       uniformClass = "PTFInfantry_Air_CWU27P_MAG_XO";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_MAG_XO_Rolled : CWU27P_Base_Rolled
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (MAG XO, Rolled) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_MAG_XO_Rolled";
       containerClass = "Supply60";
       mass = 20;
    };

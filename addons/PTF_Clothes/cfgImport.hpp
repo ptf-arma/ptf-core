@@ -122,8 +122,7 @@ class V_LegStrapBag_Coyote_F;
 class V_LegStrapBag_black_F;
 //MOES Uniforms
 class CWU27P_Base;
-class CWU27PTan_Base;
-class CWU27PUSMC323;
+class CWU27P_Base_Rolled;
 class CSU15BP_Base_Rolled_FG;
 class CSU15BPTan_Base_Rolled_FG;
 //RHS Uniforms

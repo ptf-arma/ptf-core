@@ -67,6 +67,7 @@ class cfgWeapons
 #include "vests\cfgAirVests.hpp"
 #include "vests\cfgInfantryVests.hpp"
 #include "vests\cfgSpecialVests.hpp"
+#include "uniforms\cfgHideMoeUniforms.hpp"
 #include "uniforms\cfgAirUniforms.hpp"
 #include "uniforms\cfgInfantryUniforms.hpp"
 #include "uniforms\cfgSpecialUniforms.hpp"
