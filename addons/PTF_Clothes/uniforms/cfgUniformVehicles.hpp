@@ -28,6 +28,37 @@ class PTFInfantry_Air : B_Pilot_F
    hiddenselections[] = {"NomexTex"};
    hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_blue.paa"};
 };
+// Custom squadron/command CWU-27/P coveralls (worn models for the
+// PTF_Uniform_Air_CWU27P_* items in cfgAirUniforms.hpp). Same Moe model and
+// NomexTex selection as PTFInfantry_Air, with a per-uniform texture.
+class PTFInfantry_Air_CWU27P_Gunfighters_CO : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (Gunfighters CO) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_Gunfighters_CO";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_Gunfighters_CO_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_Gunfighters_XO : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (Gunfighters XO) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_Gunfighters_XO";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_Gunfighters_XO_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_MAG_CO : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (MAG CO) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_MAG_CO";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_MAG_CO_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_MAG_XO : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (MAG XO) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_MAG_XO";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_MAG_XO_Green_co.paa"};
+};
 class PTFInfantry_Inf : B_Pilot_F
 {
    faction = "Moe_Faction";
