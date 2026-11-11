@@ -338,8 +338,9 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
   Clear all) and Air (Identify). A row with a place centres the map on it. Its status bar
   calls out a missile inbound, traced rounds coming down (how many, seconds to the first)
   and jamming. It closes 3 m from the computer. The laptop's actions sit in its one ACE
-  interaction, beside Carry. Without Billet there's no console; the computer still
-  switches manual and automatic by ACE. On the tablet, the G/ATOR section of Tracks only
+  interaction, beside Carry; Take manual control opens the console too. It needs the
+  Billet-Link tablet 0.15 or newer: with an older one (or none), Open G/ATOR console says so,
+  and the computer still switches manual and automatic by ACE. On the tablet, the G/ATOR section of Tracks only
   reads.
 
 - **Emissions and the enemy's fix**: while it transmits, the enemy direction-finds it. Their
