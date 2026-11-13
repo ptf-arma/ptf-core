@@ -128,6 +128,18 @@ if (!hasInterface) exitWith {};
 		sleep 1.5;
 		["phone"] call blk_fnc_tabletToggle;
 		sleep 2;
+		// a death costs exactly one life (here the server and the player's game
+		// both report it), and on the last one the spectator comes up
+		["action", "sub", _uid, ""] call PTF_Lives_fnc_tablet;
+		sleep 2;
+		(format ["UI before dying: %1", call _mine]) call _say;
+		player setDamage 1;
+		sleep 4;
+		(format ["UI died: %1, respawn in %2, spectating %3, ACE spectator %4, ACE screen %5",
+			call _mine, round playerRespawnTime, PTF_Lives_spectating,
+			missionNamespace getVariable ["ace_spectator_isSet", "-"], !isNull (findDisplay 60000)]) call _say;
+		(format ["snap %1", "lives_died"]) call _say;
+		sleep 1.5;
 		"UI DONE" call _say;
 	};
 
