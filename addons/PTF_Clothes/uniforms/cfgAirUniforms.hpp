@@ -1,3 +1,29 @@
+class PTF_Uniform_Air_CWU27P_WD : CWU27P_Base
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (WD) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : ItemInfo
+   {
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_D : CWU27PTan_Base
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (D) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : ItemInfo
+   {
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
 class PTF_Uniform_Air_CSU15BP_WD : CSU15BP_Base_Rolled_FG
 {
    scope = 2;
