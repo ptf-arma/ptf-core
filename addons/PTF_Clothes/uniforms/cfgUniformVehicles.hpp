@@ -28,6 +28,55 @@ class PTFInfantry_Air : B_Pilot_F
    hiddenselections[] = {"NomexTex"};
    hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_blue.paa"};
 };
+// Custom squadron/command CWU-27/P coveralls (worn models for the
+// PTF_Uniform_Air_CWU27P_* items in cfgAirUniforms.hpp). Same Moe model and
+// NomexTex selection as PTFInfantry_Air, with a per-uniform texture; the
+// _Rolled variants swap in Moe's rolled-sleeves model.
+class PTFInfantry_Air_CWU27P_Gunfighters : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (Gunfighters) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_Gunfighters";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_Gunfighters_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_Gunfighters_Rolled : PTFInfantry_Air
+{
+   model = "\MoeCoveralls\RolledSleeves\NomexRolledSleeves.p3d";
+   displayName = "[Air] CWU-27/P (Gunfighters, Rolled) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_Gunfighters_Rolled";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_Gunfighters_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_MAG_CO : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (MAG CO) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_MAG_CO";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_MAG_CO_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_MAG_CO_Rolled : PTFInfantry_Air
+{
+   model = "\MoeCoveralls\RolledSleeves\NomexRolledSleeves.p3d";
+   displayName = "[Air] CWU-27/P (MAG CO, Rolled) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_MAG_CO_Rolled";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_MAG_CO_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_MAG_XO : PTFInfantry_Air
+{
+   displayName = "[Air] CWU-27/P (MAG XO) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_MAG_XO";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_MAG_XO_Green_co.paa"};
+};
+class PTFInfantry_Air_CWU27P_MAG_XO_Rolled : PTFInfantry_Air
+{
+   model = "\MoeCoveralls\RolledSleeves\NomexRolledSleeves.p3d";
+   displayName = "[Air] CWU-27/P (MAG XO, Rolled) [PTF]";
+   uniformClass = "PTF_Uniform_Air_CWU27P_MAG_XO_Rolled";
+   hiddenselections[] = {"NomexTex"};
+   hiddenselectionstextures[] = {"\z\PTF\addons\PTF_Textures\gear\uniforms\CWU27P_MAG_XO_Green_co.paa"};
+};
 class PTFInfantry_Inf : B_Pilot_F
 {
    faction = "Moe_Faction";

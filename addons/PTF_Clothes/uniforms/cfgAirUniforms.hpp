@@ -67,3 +67,93 @@ class PTF_Uniform_Air_SNA_USN : CWU27P_Base
       mass = 20;
    };
 };
+class PTF_Uniform_Air_CWU27P_Gunfighters : CWU27P_Base
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (Gunfighters) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_Gunfighters";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_Gunfighters_Rolled : CWU27P_Base_Rolled
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (Gunfighters, Rolled) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_Gunfighters_Rolled";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_MAG_CO : CWU27P_Base
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (MAG CO) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_MAG_CO";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_MAG_CO_Rolled : CWU27P_Base_Rolled
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (MAG CO, Rolled) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_MAG_CO_Rolled";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_MAG_XO : CWU27P_Base
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (MAG XO) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_MAG_XO";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
+class PTF_Uniform_Air_CWU27P_MAG_XO_Rolled : CWU27P_Base_Rolled
+{
+   scope = 2;
+   side = 1;
+   faction = "BLU_F";
+   displayName = "[Air] CWU-27/P (MAG XO, Rolled) [PTF]";
+   author = "Paramarine Task Force";
+   class ItemInfo : UniformItem
+   {
+      uniformModel = "-";
+      uniformClass = "PTFInfantry_Air_CWU27P_MAG_XO_Rolled";
+      containerClass = "Supply60";
+      mass = 20;
+   };
+};
