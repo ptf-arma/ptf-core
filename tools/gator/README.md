@@ -252,17 +252,18 @@ indirect fire back to where it came from. Numbers are in `script_gator.hpp` (`CB
   vanilla radar the sensor is already needs line of sight.
 - **Tracing** (`fn_cbReport.sqf`, server): fired from within 10 km, a round gets a firing
   point off the true one by, on average, the server's "Counter-battery error" setting
-  (Addon Options > Paramarine Task Force > G/ATOR, 4% by default) of its distance (a 2D
-  normal error, so 40 m at 1 km). Points that fall close together (within three times that, or 150 m) are one track,
+  (Addon Options > Paramarine Task Force > G/ATOR, 8% by default) of its distance (a 2D
+  normal error, so 80 m at 1 km). Points that fall close together (within three times that, or 150 m) are one track,
   whose point is their average, so its error shrinks with the square root of its rounds
   (16 m after six rounds at 1 km). Fired from further off, a round only gives a bearing;
   rounds on the same bearing within 4 degrees are one bearing track. Each track keeps up to
   12 impact points.
 - **The network** (`fn_satcom.sqf`, `fn_cbPublish.sqf`): a G/ATOR's tracks reach the tablets
   only through its SATCOM antenna. "Take out SATCOM antenna" puts it (the TFW RF-3080 where
-  loaded, else a vanilla satellite antenna: `ptf_gator_satcomClasses`) at the player's feet,
-  the cable already run to it from the box's side (a real rope, TFAR's black intercom wire
-  where TFAR is loaded), and the player straight into an ACE drag with it. Wherever they set
+  loaded, else a vanilla satellite antenna: `ptf_gator_satcomClasses`) past the player on the
+  side away from the trailer, the cable already run to it from the box's side (a real rope,
+  TFAR's black intercom wire where TFAR is loaded), and turns the player away from the trailer
+  straight into an ACE carry with it (a drag put it inside the box). Wherever they set
   it down within the cable's 40 m (`ptf_gator_cableLength`), the G/ATOR is on the network;
   closer than 3 m it hears the radar's own interference instead, and the player who set it
   down is told. While it's being dragged or carried it's off the network. A cable that
@@ -272,8 +273,10 @@ indirect fire back to where it came from. Numbers are in `script_gator.hpp` (`CB
   G/ATOR's own tracks are on it (`PTF_GATOR_cbOwn`); the networked ones, with their air
   tracks, make up `PTF_GATOR_picture`. Its operator console shows its own, network or not,
   and clears them.
-- **The tablet**: three map layers of their own on the Billet tablet, each switched on and
-  off in the map's Layers panel (Billet's `blk_tabletLayers` slot, added for this), drawn in
+- **The tablet**: one map layer of its own on the Billet tablet, **Radar**
+  (`fn_radarLayer.sqf`), switched on and off in the map's Layers panel (Billet's
+  `blk_tabletLayers` slot, added for this), with one Radar section in the Tracks list: the
+  G/ATORs, then the air picture, then counter-battery. It is made of three parts, drawn in
   the tablet's MIL-STD style: Arma's NATO marker textures, as its groups are, lines and rings
   at least 2 px wide (thinner ones aliased badly), and Billet's own label font and shadow.
   - **G/ATOR** (`fn_gatorLayer.sqf`): each networked G/ATOR's symbol, a friendly radar
@@ -297,7 +300,7 @@ indirect fire back to where it came from. Numbers are in `script_gator.hpp` (`CB
   equal-power fades would swell), and played through a loudspeaker first (`SPEAKER`: a horn's
   band, its cone's break-up, a PA's compression). Mono, so the game places it; loud (volume 8.5) with a 2 km
   reach, so it's faint but directional out there.
-- **Air tracks** (`fn_airLayer.sqf`): the third layer. Every other second the server reads
+- **Air tracks** (`fn_airLayer.sqf`): the Radar layer's third part. Every other second the server reads
   what each transmitting G/ATOR's radar sees (`getSensorTargets` of its sensor, aircraft
   only) and, while it is on the network, adds them to the picture. On the map each aircraft
   is its MIL-STD symbol (hostile, friendly, or neutral's frame for unknown; rotary wing,
@@ -330,10 +333,11 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
 - **The console** (`fn_console.sqf`, `fn_initComputer.sqf`): "Open G/ATOR console" on the
   computer opens Billet's console slot (`blk_tabletConsoles` in config.cpp, added to Billet
   for this, generic for any mod): the tablet's map full screen on a rugged bezel, with the
-  G/ATOR, counter-battery and air layers, and this G/ATOR's own picture whether it's on the
+  Radar layer, and this G/ATOR's own picture whether it's on the
   network or not. The panel beside it keeps its controls in view, one compact row each:
   Control (Auto, Manual), Emissions (Transmit, Silent), Scan (Full turn, Sector), the
-  sector's edges (Sweep from, Sweep to: 15 degrees a click) and the incoming alarm. Their
+  sector's edges (Sweep from, Sweep to: 15 degrees a click, or a bearing typed in) and the
+  incoming alarm. Their
   explanations are tooltips. Its lists scroll beneath: Counter-battery (Look closer, Erase,
   Clear all) and Air (Identify). A row with a place centres the map on it. Its status bar
   calls out a missile inbound, traced rounds coming down (how many, seconds to the first)
@@ -360,6 +364,14 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
   watched meanwhile. Its miss halves, or, if jamming made it up, it is shown false and goes.
   On an unknown aircraft it is **Identify** (IFF): it shows as hostile, friendly or neutral
   by its crew's side from then on.
+- **What it sees** (`fn_cbFired.sqf`, `fn_radarLoop.sqf`): counter-battery traces artillery,
+  mortar and rocket rounds: ammo the artillery computer can lock, anything a vehicle with an
+  artillery computer fires, and any shell or rocket lobbed at 20 degrees or more with at least
+  20 indirect damage (a hand-held mortar, an improvised rocket; 40 mm grenades have 8). The
+  Air list adds what the vanilla radar misses: small drones within 3 km in its line of sight
+  ("Small UAS", unknown until identified), and missiles in flight within 8 km (red arrows on
+  the map, top of the list). Each costs a cached hashmap lookup per shot, and one
+  `nearEntities` a second per transmitting G/ATOR.
 - **Splash warnings**: a traced round's impact is predicted on the gun's machine (its flight
   run on under gravity and its ammo's air friction, once, when traced) and drawn on the map
   with a countdown. Everyone within 200 m of it hears Arma's "incoming" call on their radio
@@ -373,9 +385,14 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
 - **CROWS Electronic Warfare**: CROWS jammers (its `crowsEW_main_jamMap`) jam the G/ATOR as
   CROWS jams radios: fully inside the jammer's effective radius, fading across its falloff.
   Jammed, it hears rounds at 40% of the range, its misses grow up to 2.5 times, its air
-  radar shrinks to 4 km, and it now and then shows a ghost firing point. Any jammer within
-  15 km leaves a strobe (a bearing line on the tablet) while the G/ATOR is up and powered,
-  silent or not; strobes from two places cross on the jammer. Transmitting, the G/ATOR is
+  radar shrinks to 4 km, and it now and then shows a ghost firing point. Jammed at all, it is
+  off the network (no tracks to the tablets) and off the data link. It hears any jammer within
+  15 km while it is up and powered, silent or not, but finding its bearing is the operator's
+  work: in manual, a sector swept over the jammer and held still for 10 s gives a strobe (a
+  bearing line on the tablet), off by up to the sector's width over 15 (2 degrees in a 30
+  degree sector). The console says whether the jammer is in the sector, and counts down. A
+  full turn only hears that one is there. Strobes from two places cross on the jammer.
+  Transmitting, the G/ATOR is
   itself a CROWS spectrum signal (`crowsEW_spectrum_addBeacon`, 990 to 1089 MHz), so the
   enemy, or friendly EW practising, can find it with a spectrum device.
 - **Zeus** (`fn_initZeus.sqf`, with Zeus Enhanced): under "PTF G/ATOR", Launch ARM at G/ATOR

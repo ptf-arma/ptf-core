@@ -148,6 +148,10 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 		};
 	};
 
+	// What should be playing, from public state (PTF_GATOR_fnc_soundWants): the same answer on
+	// every machine, so a sound never sticks on for players who weren't the one working it.
+	private _wants = [_radar] call PTF_GATOR_fnc_soundWants;
+
 	// Generator.
 	private _power = [_radar] call PTF_GATOR_fnc_powerState;
 	private _powerTime = _radar getVariable ["PTF_GATOR_powerTime", -1e6];
@@ -162,7 +166,7 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 	};
 	// The running loop takes over as the start clip settles to idle.
 	private _startTime = getNumber (configOf _radar >> "ptf_gator_powerStartTime");
-	if (_power == "on" || {_power == "starting" && {CBA_missionTime - _powerTime > _startTime - OVERLAP}}) then {
+	if ("gen" in _wants) then {
 		["gen", "PTF_GATOR_gen_loop", GEN_LOOP_PERIOD, "generator", 200] call _loop;
 	} else {
 		["gen"] call _stop;
@@ -217,8 +221,10 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 		_state set ["array", _array];
 		_state set ["arrayMoving", _now + 0.3];
 	};
-	// Moving: between its ends, or changed just now (an instant move to an end).
-	if (_array > 0.0005 && {_array < 0.9995} || {_now < _state get "arrayMoving"}) then {
+	// Moving: its phase changed just now on this machine. Not "between its ends" (let go part
+	// way, the array stops there, and so must its motor), and not "short of where it was sent"
+	// (an animation can rest a hair off that on another machine, and the motor never stopped).
+	if (_now < _state get "arrayMoving") then {
 		["motor", "PTF_GATOR_motor_loop", MOTOR_LOOP_PERIOD, "motor_source", 100, true, "PTF_GATOR_motor_start", MOTOR_START_HANDOVER] call _loop;
 	} else {
 		["motor", OVERLAP] call _stop;
@@ -226,7 +232,7 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 
 	// Radar hum: while it transmits (its sensor is up; silent, turning or not, it's quiet), from
 	// in front of the array's face.
-	if (!isNull (_radar getVariable ["PTF_GATOR_sensor", objNull])) then {
+	if ("hum" in _wants) then {
 		["hum", "PTF_GATOR_radar_hum", HUM_PERIOD, "hum_source", 120, true] call _loop;
 	} else {
 		["hum", OVERLAP] call _stop;
@@ -245,7 +251,8 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 		// there. (Leveling moves legs that are already down: no clunk.)
 		if (_then < 0.001 && {_x > _then}) then {_landing set [_forEachIndex, true]};
 		private _legState = [_radar, _leg] call PTF_GATOR_fnc_legState;
-		if (_now < _moving select _forEachIndex || {_legState == "moving"}) then {
+		// while its phase moves on this machine (see the array's motor above)
+		if (_now < _moving select _forEachIndex) then {
 			["leg_" + _leg, "PTF_GATOR_leg_motor", LEG_MOTOR_PERIOD, "leg_" + _leg, 50] call _loop;
 		} else {
 			["leg_" + _leg, 0.3] call _stop;
@@ -304,7 +311,7 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 
 	// The incoming alarm, while rounds it traced are in the air (PTF_GATOR_fnc_cbReport): loud,
 	// heard faint 2 km off, from the trailer, so its direction carries.
-	if (CBA_missionTime < _radar getVariable ["PTF_GATOR_alarmUntil", -1]) then {
+	if ("alarm" in _wants) then {
 		["alarm", "PTF_GATOR_alarm", ALARM_PERIOD, "interact", ALARM_RANGE] call _loop;
 	} else {
 		["alarm", OVERLAP] call _stop;
@@ -312,7 +319,7 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 
 	// An anti-radiation missile homing on it (PTF_GATOR_fnc_armReport): the missile warning,
 	// heard at the trailer.
-	if ((_radar getVariable ["PTF_GATOR_arm", []]) isNotEqualTo []) then {
+	if ("arm" in _wants) then {
 		["arm", "PTF_GATOR_armAlarm", 1, "interact", 300] call _loop;
 	} else {
 		["arm"] call _stop;
@@ -320,7 +327,8 @@ _radar setVariable ["PTF_GATOR_soundLog", []];
 
 	// Tail lights: lit while towed by a vehicle with its lights on.
 	private _tower = _radar getVariable ["PTF_GATOR_tower", objNull];
-	private _lit = !isNull _tower && {isLightOn _tower};
+	// (on a machine showing the towed copy, PTF_GATOR_fnc_towLoop, the copy carries the lights)
+	private _lit = !isNull _tower && {isLightOn _tower} && {isNull (_radar getVariable ["PTF_GATOR_towCopy", objNull])};
 	if (_lit isNotEqualTo (_state get "lit")) then {
 		_state set ["lit", _lit];
 		_radar setObjectMaterial [3, ["\z\ptf_gator\addons\data\data\lights.rvmat", "\z\ptf_gator\addons\data\data\lights_on.rvmat"] select _lit];

@@ -2,12 +2,13 @@
  * Author: Paramarine Task Force
  * The G/ATOR operator console: what its operator computer shows on the Billet tablet's console
  * slot (class blk_tabletConsoles in config.cpp; see Billet's fn_tabletConsole for the format).
- * The map is the tablet's, with the G/ATOR, counter-battery and air layers, this G/ATOR's own
+ * The map is the tablet's, with the Radar layer (PTF_GATOR_fnc_radarLayer), this G/ATOR's own
  * picture on them whether it's on the network or not. Beside it, the panel: its controls, which
  * stay in view, and its lists, which scroll beneath them.
  *  - Control: automatic (it turns and transmits by itself) or manual (the operator has it)
  *  - in manual: Emissions (Transmit / Silent) and Scan (Full turn / Sector), and a sector's two
- *    edges, 15 degrees a click; the array sweeps back and forth between them
+ *    edges, 15 degrees a click or typed in; the array sweeps back and forth between them
+ *  - a jammer heard: how finding its bearing is going
  *  - the incoming alarm
  *  - on its status bar, a missile inbound (bearing and seconds), rounds it traced coming down
  *    (how many, and seconds to the first; where, on the map) and how jammed it is
@@ -84,7 +85,7 @@ private _state = call {
 	if (_tx) exitWith {[["TRANSMITTING · FULL TURN", format ["TRANSMITTING · SWEEPING %1°-%2°", _from, _to]] select _sector, "ok"]};
 	["ARRAY NOT TURNING", "acc"]
 };
-if (_jam > 0 && {_arm isEqualTo []} && {_incoming isEqualTo []}) then {_state = [format ["JAMMED %1%% · %2", round (_jam * 100), _state select 0], "bad"]};
+if (_jam > 0 && {_arm isEqualTo []} && {_incoming isEqualTo []}) then {_state = [format ["JAMMED %1%% · OFF NET · %2", round (_jam * 100), _state select 0], "bad"]};
 private _blocks = [];
 
 // The controls.
@@ -102,11 +103,24 @@ if (_manual && {_linked}) then {
 		["note", "A sector halves each round's miss and slows the enemy's fix; rounds and aircraft outside it go unseen."],
 		["buttons", [["full", "Full turn", !_sector] call _button, ["sector", "Sector", _sector] call _button]]]] call _block);
 	if (_sector) then {
-		_blocks pushBack (["stepper", [["id", "sectorFrom"], ["label", "Sweep from"], ["value", _from], ["step", 15], ["wrap", 360], ["unit", "°"],
+		_blocks pushBack (["stepper", [["id", "sectorFrom"], ["label", "Sweep from"], ["value", _from], ["step", 15], ["wrap", 360], ["unit", "°"], ["typed", true],
 			["note", format ["The sector's left edge. It sweeps clockwise from here to the right edge, %1° across at least.", SECTOR_MIN]]]] call _block);
-		_blocks pushBack (["stepper", [["id", "sectorTo"], ["label", "Sweep to"], ["value", _to], ["step", 15], ["wrap", 360], ["unit", "°"],
+		_blocks pushBack (["stepper", [["id", "sectorTo"], ["label", "Sweep to"], ["value", _to], ["step", 15], ["wrap", 360], ["unit", "°"], ["typed", true],
 			["note", "The sector's right edge."]]] call _block);
 	};
+};
+// A jammer heard: finding its bearing is the operator's work (PTF_GATOR_fnc_operatorTick).
+(_radar getVariable ["PTF_GATOR_dfShow", [0, 0, -1]]) params ["_heard", "_inSector", "_left"];
+if (_heard > 0) then {
+	private _strobe = (_radar getVariable ["PTF_GATOR_strobes", []]) param [count (_radar getVariable ["PTF_GATOR_strobes", []]) - 1, []];
+	private _text = call {
+		if (!_manual || {!_sector}) exitWith {"Jammer heard, bearing unknown. To find it: manual, Sector, and sweep a sector over it. The narrower the sector, the sharper the bearing."};
+		if (_inSector == 0) exitWith {"Jammer heard, but not in this sector. Move or widen the sector to find it."};
+		if (_left > 0) exitWith {format ["Jammer in this sector: bearing in %1 s. Hold the sector still.", _left]};
+		format ["Bearing taken%1. Narrow the sector round it for a sharper one; bearings from two places cross on the jammer.",
+			["", format [": %1° ±%2°", round (_strobe select 1), round (_strobe param [4, 2])]] select (_strobe isNotEqualTo [])]
+	};
+	_blocks pushBack (["note", [["text", _text], ["tone", ["acc", "bad"] select (_inSector > 0 && {_left > 0})]]] call _block);
 };
 _blocks pushBack (["toggle", [["id", "alarm"], ["label", "Alarm"], ["on", _radar getVariable ["PTF_GATOR_alarm", false]],
 	["note", "The incoming alarm: sounds at the trailer while traced rounds are in the air."]]] call _block);
@@ -136,13 +150,17 @@ _blocks pushBack (["list", [["title", "Counter-battery"], ["rows", _tracks], ["e
 private _iff = _radar getVariable ["PTF_GATOR_iff", createHashMap];
 private _word = createHashMapFromArray [["enemy", "HOSTILE"], ["unknown", "UNKNOWN"], ["friendly", "FRIEND"], ["neutral", "NEUTRAL"]];
 private _air = (_radar getVariable ["PTF_GATOR_air", []]) apply {
-	_x params ["_id", "_label", "_rel", "_at", "_height", "_speed", "_heading"];
+	_x params ["_id", "_label", "_rel", "_at", "_height", "_speed", "_heading", ["_kind", "air"]];
 	_rel = _iff getOrDefault [_id, _rel];
+	private _missile = _kind == "missile";
 	createHashMapFromArray [["key", _id regexReplace [":", "-"]], ["label", format ["%1 · %2", _label, mapGridPosition _at]], ["at", _at],
 		["note", format ["%1 m · %2 km/h · heading %3°", _height, _speed, _heading]],
-		["value", _word getOrDefault [_rel, "UNKNOWN"]], ["tone", createHashMapFromArray [["enemy", "bad"], ["unknown", "acc"], ["friendly", "ok"]] getOrDefault [_rel, ""]],
-		["actions", [[], [["iff", "Identify"] call _act]] select (_manual && {_rel == "unknown"})]]
+		["value", [_word getOrDefault [_rel, "UNKNOWN"], "MISSILE"] select _missile],
+		["tone", [createHashMapFromArray [["enemy", "bad"], ["unknown", "acc"], ["friendly", "ok"]] getOrDefault [_rel, ""], "bad"] select _missile],
+		["actions", [[], [["iff", "Identify"] call _act]] select (_manual && {_rel == "unknown"} && {!_missile})]]
 };
+// missiles at the top
+_air = [_air, [], {parseNumber ((_x get "value") != "MISSILE")}] call BIS_fnc_sortBy;
 _blocks pushBack (["list", [["title", "Air"], ["rows", _air], ["empty", ["Not transmitting", "No aircraft within 10 km"] select _tx]]] call _block);
 
 createHashMapFromArray [["title", format ["G/ATOR · %1", mapGridPosition _radar]], ["status", _state select 0], ["tone", _state select 1], ["blocks", _blocks]]

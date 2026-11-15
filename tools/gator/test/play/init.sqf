@@ -53,4 +53,4 @@ _zeus setVariable ["Addons", 3, true];
 player assignCurator _zeus;
 _zeus addCuratorEditableObjects [[_radar], true];
 
-hint parseText "<t size='1.2'>G/ATOR walk-around</t><br/><br/>ACE interact (Win key) on each leg, the generator (front), then the box's left side (G/ATOR): Raise array, Start antenna rotation, Take out SATCOM antenna (drag it 3 m+ away).<br/><br/>Operator: G/ATOR > Take out operator computer, set it down, then on the computer: Take manual control, Open G/ATOR console.<br/><br/>Zeus (Y) > Modules > PTF G/ATOR: enemy batteries, harass, ARM at the G/ATOR.";
+hint parseText "<t size='1.2'>G/ATOR walk-around</t><br/><br/>ACE interact (Win key) on each leg, the generator (front), then the box's left side (G/ATOR): Raise array, Start antenna rotation, Take out SATCOM antenna (carry it 3 m+ away).<br/><br/>Operator: G/ATOR > Take out operator computer, set it down, then on the computer: Take manual control, Open G/ATOR console.<br/><br/>Zeus (Y) > Modules > PTF G/ATOR: enemy batteries, harass, ARM at the G/ATOR.";

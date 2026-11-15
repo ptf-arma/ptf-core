@@ -1,9 +1,9 @@
 // Server settings (Addon Options > Paramarine Task Force > G/ATOR).
 [
 	"PTF_GATOR_cbError", "SLIDER",
-	["Counter-battery error (%)", "How far off a firing point traced from one round is, on average, as a share of its distance from the G/ATOR (4: 40 m at 1 km). A track of several rounds is more accurate: this over the square root of its rounds."],
+	["Counter-battery error (%)", "How far off a firing point traced from one round is, on average, as a share of its distance from the G/ATOR (8: 80 m at 1 km). A track of several rounds is more accurate: this over the square root of its rounds."],
 	["Paramarine Task Force", "G/ATOR"],
-	[0, 20, 4, 1],
+	[0, 20, 8, 1],
 	1, // global: the server's value is everyone's
 	{},
 	false

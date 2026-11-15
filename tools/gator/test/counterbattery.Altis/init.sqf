@@ -40,7 +40,7 @@ private _setDown = {
 	[_radar, "out", player] call PTF_GATOR_fnc_satcom;
 	sleep 2;
 	private _a = _radar getVariable ["PTF_GATOR_antenna", objNull];
-	[player, _a] call ace_dragging_fnc_dropObject;
+	[player, _a] call ace_dragging_fnc_dropObject_carry;
 	sleep 0.5;
 	_a setPosATL ((_radar modelToWorld [-14, -2, 0]) vectorMultiply [1, 1, 0]);
 	sleep 3;
@@ -96,15 +96,17 @@ waitUntil {sleep 1; count (call _tracks) > 0 || {time - _t0 > 150}};
 sleep 1;
 private _first = (call _tracks) param [0, createHashMap];
 private _miss = (_first getOrDefault ["point", [0, 0]]) distance2D (getPosASL _mortar);
-["one round traced", count (call _tracks) == 1 && {(_first getOrDefault ["kind", ""]) == "point"} && {_miss < 3.5 * 0.04 * _range},
-	format ["after %1 s: tracks %2, miss %3 m at %4 m (4 pc is %5 m), error shown %6", round (time - _t0), count (call _tracks), round _miss, round _range, round (0.04 * _range), _first getOrDefault ["error", -1]]] call _check;
+// the server's error setting (8% by default)
+private _pct = (missionNamespace getVariable ["PTF_GATOR_cbError", 8]) / 100;
+["one round traced", count (call _tracks) == 1 && {(_first getOrDefault ["kind", ""]) == "point"} && {_miss < 3.5 * _pct * _range},
+	format ["after %1 s: tracks %2, miss %3 m at %4 m (the setting's %5 is %6 m), error shown %7", round (time - _t0), count (call _tracks), round _miss, round _range, _pct, round (_pct * _range), _first getOrDefault ["error", -1]]] call _check;
 [_mortar, _aimM, _magM, 7] call _fire;
 _t0 = time;
 waitUntil {sleep 1; _first = (call _tracks) param [0, createHashMap]; (_first getOrDefault ["rounds", 0]) >= 6 || {time - _t0 > 150}};
 sleep 8;
 _first = (call _tracks) param [0, createHashMap];
 _miss = (_first getOrDefault ["point", [0, 0]]) distance2D (getPosASL _mortar);
-["rounds average down", count (call _tracks) == 1 && {(_first getOrDefault ["rounds", 0]) >= 6} && {(_first getOrDefault ["error", 1e9]) < 0.04 * _range / 2.2} && {_miss < 3 * (_first getOrDefault ["error", 0])},
+["rounds average down", count (call _tracks) == 1 && {(_first getOrDefault ["rounds", 0]) >= 6} && {(_first getOrDefault ["error", 1e9]) < _pct * _range / 2} && {_miss < 3 * (_first getOrDefault ["error", 0])},
 	format ["tracks %1, rounds %2, error shown %3 m, miss %4 m", count (call _tracks), _first getOrDefault ["rounds", 0], round (_first getOrDefault ["error", -1]), round _miss]] call _check;
 
 // An enemy helicopter circling 5 km off: an air track.
@@ -164,16 +166,16 @@ diag_log "GATORTEST SNAP cb_tablet_layers";
 sleep 3;
 sleep 1;
 private _shapesOn = count (uiNamespace getVariable ["BLK_tabLayerDraw", []]);
-["document.querySelector('[data-alayer=ptf_counterbattery]').click()"] call blk_fnc_tabletExec;
+["document.querySelector('[data-alayer=ptf_radar]').click()"] call blk_fnc_tabletExec;
 sleep 2.5;
-// the air layer stays on, so only the counter-battery shapes go
+// the one Radar layer: all its shapes go
 private _shapesOff = count (uiNamespace getVariable ["BLK_tabLayerDraw", []]);
-["layer switches off", _shapesOff < _shapesOn && {(profileNamespace getVariable ["blk_tab_addonLayers", ""]) find "ptf_counterbattery:0" >= 0},
+["layer switches off", _shapesOff < _shapesOn && {(profileNamespace getVariable ["blk_tab_addonLayers", ""]) find "ptf_radar:0" >= 0},
 	format ["shapes %1 -> %2, saved %3", _shapesOn, _shapesOff, profileNamespace getVariable ["blk_tab_addonLayers", ""]]] call _check;
 diag_log "GATORTEST SNAP cb_tablet_off";
 sleep 3;
 sleep 1;
-["document.querySelector('[data-alayer=ptf_counterbattery]').click()"] call blk_fnc_tabletExec;
+["document.querySelector('[data-alayer=ptf_radar]').click()"] call blk_fnc_tabletExec;
 sleep 2;
 ["mk.tool=null;renderTools();document.querySelector('[data-sidetab=tracks]').click()"] call blk_fnc_tabletExec;
 sleep 3;
@@ -230,9 +232,21 @@ sleep 2;
 _pic = missionNamespace getVariable ["PTF_GATOR_picture", [0, [], [], []]];
 ["stowed: off the network", (_pic select 1) isEqualTo [] && {(_pic select 2) isEqualTo []} && {ropes _radar isEqualTo []} && {count (_radar getVariable ["PTF_GATOR_cbOwn", []]) >= 1},
 	format ["picture %1, own %2", _pic, count (_radar getVariable ["PTF_GATOR_cbOwn", []])]] call _check;
-// Carried off, the antenna pulls its cable out.
-_satcom = call _setDown;
-_satcom setPosATL ((_radar modelToWorld [-60, 0, 0]) vectorMultiply [1, 1, 0]);
+// Carried off, the antenna pulls its cable out: walked 60 m off in the player's arms, set down.
+[_radar, "out", player] call PTF_GATOR_fnc_satcom;
+sleep 2.5;
+_satcom = _radar getVariable ["PTF_GATOR_antenna", objNull];
+private _walk = (_radar modelToWorld [-60, 0, 0]) vectorMultiply [1, 1, 0];
+for "_i" from 1 to 12 do {player setPosATL ((getPosATL _radar) vectorAdd (((_walk vectorDiff getPosATL _radar) vectorMultiply (_i / 12)) vectorMultiply [1, 1, 0])); sleep 0.5};
+sleep 1.5;
+[player, _satcom] call ace_dragging_fnc_dropObject_carry;
 sleep 3;
-["cable comes out when the antenna is carried off", isNull (_radar getVariable ["PTF_GATOR_satcom", objNull])] call _check;
+["cable comes out when the antenna is carried off", isNull (_radar getVariable ["PTF_GATOR_satcom", objNull]),
+	format ["%1 m off, attached to %2, ropes %3", round (_satcom distance2D _radar), attachedTo _satcom, ropes _radar]] call _check;
+// back within reach, the cable goes back in
+player setPosATL (_radar modelToWorld [-12, 0, 0]);
+_satcom setPosATL ((_radar modelToWorld [-10, 0, 0]) vectorMultiply [1, 1, 0]);
+sleep 3;
+["and back in once the antenna is within reach", (_radar getVariable ["PTF_GATOR_satcom", objNull]) isEqualTo _satcom && {ropes _radar isNotEqualTo []},
+	format ["%1 m off, ropes %2", round (_satcom distance2D _radar), ropes _radar]] call _check;
 diag_log "GATORTEST DONE";

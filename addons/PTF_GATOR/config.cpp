@@ -60,6 +60,7 @@ class CfgFunctions
 			class gatorLayer {};
 			class cbLayer {};
 			class airLayer {};
+			class radarLayer {};
 			class cbClear {};
 			class operator {};
 			class operatorTick {};
@@ -72,6 +73,7 @@ class CfgFunctions
 			class computer {};
 			class sweep {};
 			class facing {};
+			class soundWants {};
 			class console {};
 			class initComputer { postInit = 1; };
 		};
@@ -94,29 +96,16 @@ class Extended_FiredBIS_EventHandlers
 	};
 };
 
-// On the Billet tablet: map layers of their own (Billet's map layer slot), each with a section
-// in the map's Tracks list beside Groups. Without Billet nothing reads these.
+// On the Billet tablet: one map layer of its own (Billet's map layer slot), "Radar": the
+// G/ATORs, the air picture and counter-battery (PTF_GATOR_fnc_radarLayer), with a section in the
+// map's Tracks list beside Groups. Without Billet nothing reads this.
 class blk_tabletLayers
 {
-	class ptf_gator
+	class ptf_radar
 	{
-		title = "G/ATOR";
-		note = "Networked G/ATORs, their sensor arcs and reach";
-		function = "PTF_GATOR_fnc_gatorLayer";
-		on = 1;
-	};
-	class ptf_counterbattery
-	{
-		title = "Counter-battery";
-		note = "Enemy firing points traced by G/ATOR";
-		function = "PTF_GATOR_fnc_cbLayer";
-		on = 1;
-	};
-	class ptf_airtracks
-	{
-		title = "Air tracks";
-		note = "Aircraft the G/ATOR radar sees, 10 km out";
-		function = "PTF_GATOR_fnc_airLayer";
+		title = "Radar";
+		note = "G/ATOR: radars, aircraft and enemy firing points";
+		function = "PTF_GATOR_fnc_radarLayer";
 		on = 1;
 	};
 };
@@ -130,7 +119,7 @@ class blk_tabletConsoles
 	{
 		title = "G/ATOR operator console";
 		function = "PTF_GATOR_fnc_console";
-		layers[] = {"ptf_gator", "ptf_counterbattery", "ptf_airtracks"};
+		layers[] = {"ptf_radar"};
 		range = 3;
 	};
 };

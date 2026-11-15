@@ -41,7 +41,7 @@ private _setUp = {
 	[_radar, "out", player] call PTF_GATOR_fnc_satcom;
 	sleep 2;
 	private _antenna = _radar getVariable ["PTF_GATOR_antenna", objNull];
-	[player, _antenna] call ace_dragging_fnc_dropObject;
+	[player, _antenna] call ace_dragging_fnc_dropObject_carry;
 	sleep 0.5;
 	_antenna setPosATL ((_radar modelToWorld [-9, 4, 0]) vectorMultiply [1, 1, 0]);
 	_zeus addCuratorEditableObjects [[_radar], true];

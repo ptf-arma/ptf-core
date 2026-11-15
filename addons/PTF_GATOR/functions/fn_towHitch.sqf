@@ -24,6 +24,10 @@ if (isNull _radar) exitWith {};
 if (isNull _tower) then {
 	_radar setVariable ["PTF_GATOR_tower", objNull, true];
 	_radar animateSource ["ptf_gator_stand", 0];
+	// Back to the server, which moves its legs and array and levels it: left with the player
+	// who towed it, the server's moves fought that player's machine and the machines fell out
+	// of step (legs down on one, up on another).
+	if (isMultiplayer && {!local _radar}) then {_radar setOwner 2};
 } else {
 	_radar setVariable ["PTF_GATOR_towHitch", [_tower] call PTF_GATOR_fnc_towHitchPoint, true];
 	_radar setVariable ["PTF_GATOR_tower", _tower, true];

@@ -9,7 +9,9 @@
  * missiles can find it (the vanilla sensor is a real emitter); the crew can go silent
  * (PTF_GATOR_emcon). Also lets enemy AI hear the generator (PTF_GATOR_fnc_hearGenerator), lists
  * it for counter-battery while it transmits (PTF_GATOR_cbRadars, PTF_GATOR_fnc_cbFired) and
- * keeps it on the network or off it by its SATCOM antenna (PTF_GATOR_fnc_satcom).
+ * keeps it on the network or off it by its SATCOM antenna (PTF_GATOR_fnc_satcom); jammed, it is
+ * off the network and the data link. Its air picture adds what the vanilla radar can't see:
+ * small drones within UAS_RANGE and missiles in flight within MISSILE_RANGE.
  * Runs on the server once a second (from the XEH init).
  *
  * Arguments:
@@ -71,6 +73,16 @@ missionNamespace setVariable ["PTF_GATOR_all", _all];
 		[_handle] call CBA_fnc_removePerFrameHandler;
 	};
 
+	// Standing on its own it belongs to the server, whoever last had it (a Zeus who moved it,
+	// say): the server moves its legs and array and levels it. Towed, slung under a
+	// helicopter, carried as cargo or attached to anything but its own leveling anchor, it goes
+	// with whatever has it.
+	if (isMultiplayer && {!local _radar} && {isNull (_radar getVariable ["PTF_GATOR_tower", objNull])}
+		&& {isNull ropeAttachedTo _radar} && {isNull isVehicleCargo _radar}
+		&& {isNull attachedTo _radar || {(attachedTo _radar) isEqualTo (_radar getVariable ["PTF_GATOR_anchor", objNull])}}) then {
+		_radar setOwner 2;
+	};
+
 	// On the network or not: its SATCOM antenna, set down clear of it, cable in.
 	[_radar, "update"] call PTF_GATOR_fnc_satcom;
 	// Its operator computer: cabled in, or it goes back to automatic control.
@@ -115,6 +127,8 @@ missionNamespace setVariable ["PTF_GATOR_all", _all];
 		_radar setVariable ["PTF_GATOR_sensor", _sensor, true];
 	};
 	if (!_active && {!isNull _sensor}) then _remove;
+	// Jammed, it can't put what it sees on the network: not on the data link either.
+	if (!isNull _sensor && {(_jam == 0) isNotEqualTo (vehicleReportRemoteTargets _sensor)}) then {_sensor setVehicleReportRemoteTargets (_jam == 0)};
 	[_active] call _listen;
 
 	// Air tracks: what its radar sees, every other second, for the network's picture
@@ -123,7 +137,11 @@ missionNamespace setVariable ["PTF_GATOR_all", _all];
 	(_radar getVariable ["PTF_GATOR_sector", [0, 360]]) params ["_from", "_to"];
 	private _span = [360, ((_to - _from) + 360) % 360] select _sector;
 	private _air = [];
+	// missiles that have hit or gone, off the list
+	private _missiles = missionNamespace getVariable ["PTF_GATOR_missiles", []];
+	if (_missiles findIf {isNull (_x select 0)} >= 0) then {missionNamespace setVariable ["PTF_GATOR_missiles", _missiles select {!isNull (_x select 0)}]};
 	if (_active && {!isNull _sensor}) then {
+		private _radarAt = getPosASL _radar;
 		{
 			_x params ["_target", "_type", "_relationship", ["_sources", []]];
 			// what its own radar sees, not what the data link reports (friendly aircraft broadcast
@@ -137,6 +155,33 @@ missionNamespace setVariable ["PTF_GATOR_all", _all];
 					round ((getPosATL _target) select 2), round abs speed _target, round getDir _target, _kind];
 			};
 		} forEach getSensorTargets _sensor;
+
+		// What the game's radar can't see. Each must be in its sector and above the ridge line
+		// (terrain only, from the array).
+		private _eye = _radarAt vectorAdd [0, 0, CB_EYE];
+		private _inView = {
+			params ["_pos"];
+			(((_radar getDir _pos) - _from + 360) % 360) <= _span && {!terrainIntersectASL [_eye, _pos]}
+		};
+		// Small drones (an FPV, a quadcopter): too small for it, so looked for here, closer in.
+		// An unidentified small track until its operator identifies it.
+		{
+			private _id = netId _x;
+			if (alive _x && {unitIsUAV _x} && {((getPosATL _x) select 2) > 1} && {_air findIf {(_x select 0) isEqualTo _id} < 0}
+				&& {[getPosASL _x] call _inView}) then {
+				private _at = getPosASL _x;
+				_air pushBack [_id, "Small UAS", "unknown", [_at select 0, _at select 1], round ((getPosATL _x) select 2), round abs speed _x, round getDir _x, "uav"];
+			};
+		} forEach (_radar nearEntities [["Air"], UAS_RANGE]);
+		// Missiles in flight (PTF_GATOR_fnc_cbFired lists them).
+		{
+			_x params ["_missile", "_id"];
+			private _at = getPosASL _missile;
+			if (_at distance _radarAt < MISSILE_RANGE && {((getPosATL _missile) select 2) > 3} && {[_at] call _inView}) then {
+				_air pushBack [_id, "Missile", "unknown", [_at select 0, _at select 1], round ((getPosATL _missile) select 2),
+					round (vectorMagnitude velocity _missile * 3.6), round getDir _missile, "missile"];
+			};
+		} forEach (missionNamespace getVariable ["PTF_GATOR_missiles", []]);
 	};
 	if (_air isNotEqualTo (_radar getVariable ["PTF_GATOR_air", []]) && {_air isEqualTo [] || {diag_tickTime >= _radar getVariable ["PTF_GATOR_airAt", 0]}}) then {
 		// public: the operator console reads its own G/ATOR's, on the network or not
