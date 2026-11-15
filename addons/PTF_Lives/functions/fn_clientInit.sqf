@@ -14,12 +14,15 @@
 */
 PTF_Lives_holding = false;     // respawn timer held
 PTF_Lives_spectating = false;
+PTF_Lives_menuAway = false;    // the mission's respawn menu put away (fn_spectate)
 PTF_Lives_death = [-1, 0, false]; // [time of death, charges then, held at once]
 PTF_Lives_delay = getMissionConfigValue ["respawnDelay", 0];
 
 addMissionEventHandler ["EntityKilled", {
 	params ["_unit"];
 	if (_unit isNotEqualTo player) exitWith {};
+	// the server counts it too; this covers a death it can't put a name to
+	[_unit] remoteExecCall ["PTF_Lives_fnc_died", 2];
 	private _mine = call PTF_Lives_fnc_mine;
 	private _hold = (missionNamespace getVariable ["PTF_Lives_on", false]) && {(_mine param [2, 99]) <= 1};
 	PTF_Lives_death = [time, _mine param [4, 0], _hold];
@@ -64,13 +67,15 @@ addMissionEventHandler ["EntityRespawned", {
 					setPlayerRespawnTime 1e10;
 					PTF_Lives_holding = true;
 				};
-				if (_settled && {!PTF_Lives_spectating}) then {[true] call PTF_Lives_fnc_spectate};
+				if (_settled) then {[["keep", true] select !PTF_Lives_spectating] call PTF_Lives_fnc_spectate};
 			} else {
+				// a respawn menu coming back needs a moment to pick a position in
+				private _pick = [1, 5] select PTF_Lives_menuAway;
 				if (PTF_Lives_spectating) then {[false] call PTF_Lives_fnc_spectate};
 				if (PTF_Lives_holding) then {
 					PTF_Lives_holding = false;
-					// what is left of the mission's delay, at least a second
-					setPlayerRespawnTime ((PTF_Lives_delay - (time - _at)) max 1);
+					// what is left of the mission's delay, at least a second (or five)
+					setPlayerRespawnTime ((PTF_Lives_delay - (time - _at)) max _pick);
 				};
 			};
 		};

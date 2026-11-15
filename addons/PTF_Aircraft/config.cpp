@@ -54,8 +54,8 @@ class CfgPatches
 			"USAF_C130J_C", // USAF_C130J and _Cargo; "USAF_C130J" alone does not load this
 			"USAF_C17",
 			"USAF_C17_C", // USAF_C17; same split
-			"USAF_AGM114_C", // USAF_AGM114R_Launcher
-			"USAF_BRU_C", // parent of PTF_PylonRack_4Rnd_AGM114R
+			"USAF_AGM114_C", // USAF_AGM114R_Launcher, USAF_PylonRack_2Rnd_AGM114R (parent of PTF_PylonRack_4Rnd_AGM114R)
+			"USAF_BRU_C", // AGM114HellfirePod.p3d rack model
 			"USAF_MQ9",
 			"usaf_kc135_c",
 			"USAF_RQ4A",

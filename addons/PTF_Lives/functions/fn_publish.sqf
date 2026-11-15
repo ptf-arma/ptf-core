@@ -8,6 +8,8 @@ private _users = createHashMap; // SteamID -> [owner, unit]
 {
 	_x params ["_uid", "_owner", "_unit"];
 	_users set [_uid, [_owner, _unit]];
+	// whose body this is, for when it dies (fn_serverInit's EntityKilled)
+	if (alive _unit) then {_unit setVariable ["PTF_Lives_uid", _uid]};
 } forEach (call PTF_Lives_fnc_users);
 
 private _table = [];

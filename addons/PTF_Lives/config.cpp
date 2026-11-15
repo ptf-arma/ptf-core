@@ -34,6 +34,7 @@ class CfgFunctions
 			class serverInit {};
 			class clientInit {};
 			class charge {};
+			class died {};
 			class retire {};
 			class publish {};
 			class isAdmin {};

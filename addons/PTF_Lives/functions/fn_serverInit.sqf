@@ -52,15 +52,19 @@ addMissionEventHandler ["PlayerConnected", {
 }];
 
 // Dying uses a life. That includes the pause menu's Respawn, which kills the unit.
+// Whose body it was comes from the tag fn_publish and fn_hello put on each
+// player's living body: on a dedicated server the engine can no longer name the
+// player of a body that just died (tested 2026-11-10: deaths went uncounted).
+// The player's own game also reports its death (fn_died); either way it is
+// counted once (fn_charge).
 addMissionEventHandler ["EntityKilled", {
 	params ["_unit"];
 	if !(_unit isKindOf "CAManBase") exitWith {};
-	private _uid = getPlayerUID _unit;
-	if (_uid isEqualTo "") exitWith {};
-	// only the player's own body: not an AI a Zeus is remote-controlling
-	private _user = (call PTF_Lives_fnc_users) select {(_x select 0) isEqualTo _uid};
-	if (_user isNotEqualTo [] && {((_user select 0) select 2) isNotEqualTo _unit}) exitWith {};
+	// not an AI a Zeus is remote-controlling
 	if !(isNull (_unit getVariable ["bis_fnc_moduleRemoteControl_owner", objNull])) exitWith {};
+	private _uid = _unit getVariable ["PTF_Lives_uid", ""];
+	if (_uid isEqualTo "") then {_uid = getPlayerUID _unit};
+	if (_uid isEqualTo "") exitWith {};
 	[_unit, _uid, "died"] call PTF_Lives_fnc_charge;
 }];
 
@@ -70,6 +74,8 @@ addMissionEventHandler ["HandleDisconnect", {
 	if (alive _unit && {(_unit getVariable ["ACE_isUnconscious", false]) || {lifeState _unit isEqualTo "INCAPACITATED"}}) then {
 		[_unit, _uid, "left while unconscious"] call PTF_Lives_fnc_charge;
 	};
+	// the body is no longer theirs: if it stays on as AI, its death costs them nothing
+	_unit setVariable ["PTF_Lives_uid", nil];
 	call PTF_Lives_fnc_publish;
 	// never true: that would keep the unit as AI, which is the mission's call
 	nil

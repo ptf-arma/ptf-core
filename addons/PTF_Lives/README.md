@@ -69,6 +69,7 @@ Missions with `CfgRemoteExec` mode 1 must allow these, or nothing reaches the se
 class CfgRemoteExec {
     class Functions {
         class PTF_Lives_fnc_hello { allowedTargets = 2; };
+        class PTF_Lives_fnc_died { allowedTargets = 2; };
         class PTF_Lives_fnc_askAdmin { allowedTargets = 2; };
         class PTF_Lives_fnc_admin { allowedTargets = 2; };
         class PTF_Lives_fnc_notify { allowedTargets = 1; };
@@ -80,12 +81,19 @@ class CfgRemoteExec {
 
 | what | where | file |
 | --- | --- | --- |
-| The book of lives (SteamID: name, lives, lives used), deaths, unconscious disconnects, the side pool | server | `fn_serverInit`, `fn_charge` |
+| The book of lives (SteamID: name, lives, lives used), deaths, unconscious disconnects, the side pool | server | `fn_serverInit`, `fn_charge`, `fn_died` |
 | Everyone's lives, status and the admin list, sent when they change | server, public | `fn_publish` |
 | Admin check: `#login`, host, or Billet's answer to `lives_role` | server | `fn_isAdmin`, `fn_askAdmin` |
 | A fresh body with no lives behind it is hidden and killed, at no cost | server | `fn_hello`, `fn_retire` |
 | Holding a player dead (the respawn timer set out of reach, as the vanilla Tickets template does) and the spectator | client | `fn_clientInit`, `fn_spectate` |
 | The tablet's Home panel and Lives tab | client | `fn_tablet` (through Billet's add-on slot, `class blk_tabletApps` in `config.cpp`) |
+
+A death is counted from two sides, once: the server tags each player's living body with their
+SteamID (on a dedicated server the engine can't name the player of a body that just died), and
+the player's own game reports its death.
+
+The mission's respawn menu (MenuPosition) is a full-screen map that would cover the spectator,
+so it is put away while a player is out of lives and opened again when they get one back.
 
 A client holds itself the instant it dies on its last life, before the server's count arrives,
 so a short respawn delay can't slip past. If a respawn ever does, the server retires the new
