@@ -1,6 +1,6 @@
 // Short test of the operator role: the operator computer and manual control, its console (with
 // a Billet build: --extra <billet>/mod/.hemttout/build/addons), staring at a sector (and pointing the array), a closer look
-// and jamming's ghosts, CROWS jamming and strobes, the enemy's fix and hunt (a shoot-and-scoot
+// and jamming's ghosts, lobbed rounds, small drones and missiles, CROWS jamming and taking a jammer's bearing, the enemy's fix and hunt (a shoot-and-scoot
 // mortar team) with splash prediction, take cover, the tablet panel, the server tick's cost, and
 // anti-radiation missiles (silent defeats one, transmitting takes the hit).
 //   python tools/gator/test/run.py --mission tools/gator/test/operator.Stratis
@@ -111,15 +111,84 @@ sleep 6;
 sleep 2;
 ["full turn again", _radar getVariable ["PTF_GATOR_spinning", false] && {call _sensor == "PTF_GATOR_Sensor"}, call _sensor] call _check;
 
+// --- What else it sees: lobbed rounds, a small drone, a missile in flight -----------------------------------
+// Lobbed: a tank's HE shell fired steeply by a man is traced; flat, or a 40 mm grenade, isn't.
+private _lob = {
+	params ["_ammo", "_pitch"];
+	private _p = _radar getPos [5000, 270];
+	private _shell = createVehicle [_ammo, [_p select 0, _p select 1, 800], [], 0, "CAN_COLLIDE"];
+	_shell setVectorDirAndUp [[0, cos _pitch, sin _pitch], [0, -sin _pitch, cos _pitch]];
+	private _before = count (missionNamespace getVariable ["PTF_GATOR_cbFlights", []]);
+	[player, "", "", "", _ammo, "", _shell, objNull] call PTF_GATOR_fnc_cbFired;
+	private _listed = count (missionNamespace getVariable ["PTF_GATOR_cbFlights", []]) > _before;
+	deleteVehicle _shell;
+	[_listed, getNumber (configFile >> "CfgAmmo" >> _ammo >> "indirectHit")]
+};
+private _lobs = [["Sh_120mm_HE", 45], ["Sh_120mm_HE", 3], ["G_40mm_HE", 45]] apply {_x call _lob};
+call PTF_GATOR_fnc_cbWatch;
+["lobbed: a big shell fired steeply is traced; flat, or a 40 mm grenade, isn't", (_lobs apply {_x select 0}) isEqualTo [true, false, false],
+	format ["120 mm at 45°, 120 mm at 3°, 40 mm at 45°: %1", _lobs]] call _check;
+// A small drone 900 m off, 80 m up.
+private _uavAt = _radar getPos [900, 300];
+private _uav = createVehicle ["B_UAV_01_F", [_uavAt select 0, _uavAt select 1, 80], [], 0, "FLY"];
+createVehicleCrew _uav;
+_uav flyInHeight 80;
+_uav setVelocityModelSpace [0, 8, 0];
+// A missile in flight: a Titan AA fired up and away to the north-east.
+private _aa = createVehicle ["B_static_AA_F", _radar getPos [150, 45], [], 0, "NONE"];
+createVehicleCrew _aa;
+_aa allowDamage false;
+sleep 1;
+(gunner _aa) doWatch ((_aa getPos [2000, 45]) vectorAdd [0, 0, 1500]);
+sleep 4;
+[_aa, (_aa weaponsTurret [0]) param [0, ""]] call BIS_fnc_fire;
+private _sawMissile = false;
+private _sawUav = false;
+for "_i" from 1 to 12 do {
+	sleep 0.5;
+	private _air = _radar getVariable ["PTF_GATOR_air", []];
+	if (_air findIf {(_x param [7, ""]) == "missile"} >= 0) then {_sawMissile = true};
+	if (_air findIf {(_x select 0) == netId _uav} >= 0) then {_sawUav = true};
+};
+["the small drone and the missile on the Air list", _sawUav && {_sawMissile},
+	format ["drone %1, missile %2 (listed %3), air %4", _sawUav, _sawMissile, count (missionNamespace getVariable ["PTF_GATOR_missiles", []]),
+		(_radar getVariable ["PTF_GATOR_air", []]) apply {[_x select 1, _x param [7, ""]]}]] call _check;
+diag_log "GATORTEST SNAP air";
+deleteVehicleCrew _uav;
+deleteVehicle _uav;
+deleteVehicleCrew _aa;
+deleteVehicle _aa;
+
 // --- CROWS jamming: a jammer 1 km east, as CROWS lists it (its jam map) ---------------------------------
 private _jammer = createVehicle ["Land_Can_V3_F", _radar getPos [1000, 90], [], 0, "CAN_COLLIDE"];
 private _crows = missionNamespace getVariable ["crowsEW_main_jamMap", createHashMap];
 missionNamespace setVariable ["crowsEW_main_jamMap", createHashMapFromArray [[netId _jammer, [_jammer, 500, 1500, true, ["DroneJammer"]]]]];
 sleep 2.5;
 private _strobes = _radar getVariable ["PTF_GATOR_strobes", []];
-["jammed: shorter reach, rougher tracks, a strobe on the jammer", (_radar getVariable ["PTF_GATOR_jam", 0]) == 1 && {call _sensor == "PTF_GATOR_SensorJammed"}
-	&& {abs ((_radar getVariable ["PTF_GATOR_reach", 0]) - 800) < 1} && {count _strobes == 1} && {([(_strobes select 0) select 1, 90] call _off) < 3},
-	format ["jam %1, sensor %2, reach %3, strobes %4", _radar getVariable ["PTF_GATOR_jam", 0], call _sensor, _radar getVariable ["PTF_GATOR_reach", 0], _strobes]] call _check;
+private _status = (["panel", _computer] call PTF_GATOR_fnc_console) getOrDefault ["status", ""];
+["jammed: shorter reach, rougher tracks, off the network; heard, no bearing yet", (_radar getVariable ["PTF_GATOR_jam", 0]) == 1 && {call _sensor == "PTF_GATOR_SensorJammed"}
+	&& {abs ((_radar getVariable ["PTF_GATOR_reach", 0]) - 800) < 1} && {_strobes isEqualTo []} && {(_radar getVariable ["PTF_GATOR_dfShow", []]) isEqualTo [1, 0, -1]}
+	&& {"OFF NET" in _status} && {!vehicleReportRemoteTargets (_radar getVariable ["PTF_GATOR_sensor", objNull])},
+	format ["jam %1, sensor %2, reach %3, strobes %4, df %5, status %6", _radar getVariable ["PTF_GATOR_jam", 0], call _sensor, _radar getVariable ["PTF_GATOR_reach", 0],
+		_strobes, _radar getVariable ["PTF_GATOR_dfShow", []], _status]] call _check;
+// Its bearing, by hand: a sector away from it hears nothing; one over it gives a strobe after 10 s.
+[_radar, "sector"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorFrom", "180"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorTo", "270"] call PTF_GATOR_fnc_operator;
+sleep 2.5;
+private _away = _radar getVariable ["PTF_GATOR_dfShow", []];
+[_radar, "sectorFrom", "60"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorTo", "120"] call PTF_GATOR_fnc_operator;
+sleep 3;
+private _counting = _radar getVariable ["PTF_GATOR_dfShow", []];
+diag_log "GATORTEST SNAP df";
+sleep 9;
+_strobes = _radar getVariable ["PTF_GATOR_strobes", []];
+["a jammer's bearing takes a sector held over it", (_away select 1) == 0 && {(_counting select 1) == 1} && {(_counting select 2) > 0}
+	&& {count _strobes == 1} && {([(_strobes select 0) select 1, 90] call _off) <= 4.01} && {((_strobes select 0) param [4, 0]) == 4}
+	&& {((_radar getVariable ["PTF_GATOR_dfShow", []]) select 2) == 0},
+	format ["away %1, over it %2, then %3, strobes %4", _away, _counting, _radar getVariable ["PTF_GATOR_dfShow", []], _strobes]] call _check;
+[_radar, "full"] call PTF_GATOR_fnc_operator;
 missionNamespace setVariable ["crowsEW_main_jamMap", _crows];
 deleteVehicle _jammer;
 sleep 2;
@@ -175,11 +244,16 @@ if (!isNil "blk_fnc_tabletConsole") then {
 	sleep 3;
 	diag_log "GATORTEST SNAP console_sector";
 	sleep 4;
-	private _clicked = _radar getVariable ["PTF_GATOR_mode", ""] == "sector" && {(_radar getVariable ["PTF_GATOR_sector", []]) isEqualTo [30, 135]};
+	private _clicked = _radar getVariable ["PTF_GATOR_mode", ""] == "sector" && {(_radar getVariable ["PTF_GATOR_sector", []]) isEqualTo [60, 135]};
+	// a bearing typed into the right edge's box, then Enter, on the page itself
+	["(function () { const i = document.querySelector('[data-appset=sectorTo]'); if (!i) return; i.focus(); i.value = '200'; i.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); })()"] call blk_fnc_tabletExec;
+	sleep 3;
+	private _typed = (_radar getVariable ["PTF_GATOR_sector", []]) isEqualTo [60, 200];
+	diag_log "GATORTEST SNAP console_typed";
 	["con:full:scan:"] call blk_fnc_tabletMessage;
 	sleep 1;
-	["the console's buttons and steppers work the radar", _clicked && {_radar getVariable ["PTF_GATOR_mode", ""] == "full"},
-		str (_radar getVariable ["PTF_GATOR_sector", []])] call _check;
+	["the console's buttons, steppers and a typed bearing work the radar", _clicked && {_typed} && {_radar getVariable ["PTF_GATOR_mode", ""] == "full"},
+		format ["clicked %1, typed %2, now %3", _clicked, _typed, _radar getVariable ["PTF_GATOR_sector", []]]] call _check;
 	// walking away closes it
 	player setPosATL (_computer modelToWorld [0, -6, 0]);
 	sleep 1.5;

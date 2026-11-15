@@ -1,6 +1,6 @@
 /*
  * Author: Paramarine Task Force
- * The G/ATOR layer on the Billet tablet's map (class blk_tabletLayers in config.cpp), and on
+ * The G/ATOR part of the Billet tablet's Radar layer (PTF_GATOR_fnc_radarLayer), and on
  * its operator console (PTF_GATOR_fnc_console). The G/ATORs it shows are those on the network
  * (PTF_GATOR_picture) and any within OP_RANGE of this player (its crew, at the trailer).
  *
@@ -13,8 +13,8 @@
  *    is handed over with how fast it turns and Billet turns it every frame in between.
  *    Sweeping a sector, the sector is drawn too, and the arc pans back and forth across it.
  *  - its 2 km ring (where it hears rounds) and its 10 km ring (its reach)
- *  - CROWS jammers it hears: a strobe, a red line on the jammer's bearing; strobes from two
- *    places cross on the jammer
+ *  - CROWS jammers its operator took a bearing on: a strobe, a red line on the jammer's bearing
+ *    and how sharp it is; strobes from two places cross on the jammer
  *  - an anti-radiation missile inbound: a red line on its bearing, and its time to impact
  * ["tracks"]: the G/ATOR section of the map's Tracks list, to read: each one's state
  *  (automatic or manual, transmitting or silent, full turn or a sector), jamming and missiles
@@ -84,9 +84,9 @@ if (_cmd == "tracks") exitWith {
 		if (_jam > 0 || {_strobes isNotEqualTo []}) then {
 			private _last = _strobes param [count _strobes - 1, []];
 			_rows pushBack createHashMapFromArray [["key", _key + ".j"],
-				["label", format ["Jamming%1", ["", format [" · strobe %1°", round (_last select 1)]] select (_last isNotEqualTo [])]],
+				["label", format ["Jamming%1", ["", format [" · strobe %1° ±%2°", round (_last select 1), round (_last param [4, 2])]] select (_last isNotEqualTo [])]],
 				["note", [format ["Strobes: %1. Strobes from two places cross on the jammer.", count _strobes],
-					format ["%1%% jammed: reach %2 km, tracks %3x rougher, false tracks likely",
+					format ["%1%% jammed, off the network: reach %2 km, tracks %3x rougher, false tracks likely",
 						round (_jam * 100), (CB_DETECT * (1 - (1 - JAM_REACH) * _jam) / 1000) toFixed 1, (1 + (JAM_ERROR - 1) * _jam) toFixed 1]] select (_jam > 0)],
 				["value", [format ["%1 STB", count _strobes], format ["%1%%", round (_jam * 100)]] select (_jam > 0)], ["tone", ["acc", "bad"] select (_jam > 0)], ["at", _home]];
 		};
@@ -118,7 +118,7 @@ private _shapes = [];
 		_x params ["_from", "_bearing"];
 		_shapes pushBack ["line", _from, _from vectorAdd [sin _bearing * JAM_HEAR, cos _bearing * JAM_HEAR], RED + [0.55], 2];
 		if (_forEachIndex == count (_radar getVariable ["PTF_GATOR_strobes", []]) - 1) then {
-			_shapes pushBack ["text", _from vectorAdd [sin _bearing * 3000, cos _bearing * 3000], format ["JAM %1°", round _bearing], RED + [0.9], 0.035, "sans"];
+			_shapes pushBack ["text", _from vectorAdd [sin _bearing * 3000, cos _bearing * 3000], format ["JAM %1° ±%2°", round _bearing, round (_x param [4, 2])], RED + [0.9], 0.035, "sans"];
 		};
 	} forEach (_radar getVariable ["PTF_GATOR_strobes", []]);
 	// missiles inbound

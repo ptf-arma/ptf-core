@@ -33,11 +33,17 @@ sleep 1;
 [_radar, "out", player] call PTF_GATOR_fnc_satcom;
 sleep 3;
 private _antenna = _radar getVariable ["PTF_GATOR_antenna", objNull];
-["antenna out, dragged, cabled", !isNull _antenna && {attachedTo _antenna isEqualTo player} && {ropes _radar isNotEqualTo []}
-	&& {isNull (_radar getVariable ["PTF_GATOR_satcom", objNull])},
-	format ["antenna %1 attached to %2, ropes %3", typeOf _antenna, attachedTo _antenna, ropes _radar]] call _check;
+// (and not inside the trailer: its foot outside the trailer's box)
+private _inBox = {
+	private _p = _radar worldToModel (ASLToAGL getPosASL _antenna);
+	(boundingBoxReal _radar) params ["_lo", "_hi"];
+	(_p select 0) > (_lo select 0) && {(_p select 0) < (_hi select 0)} && {(_p select 1) > (_lo select 1)} && {(_p select 1) < (_hi select 1)}
+};
+["antenna out, carried, cabled, clear of the trailer", !isNull _antenna && {attachedTo _antenna isEqualTo player} && {ropes _radar isNotEqualTo []}
+	&& {isNull (_radar getVariable ["PTF_GATOR_satcom", objNull])} && {!call _inBox},
+	format ["antenna %1 attached to %2, ropes %3, in the trailer's box %4", typeOf _antenna, attachedTo _antenna, ropes _radar, call _inBox]] call _check;
 // Set down 2 m off: interference.
-[player, _antenna] call ace_dragging_fnc_dropObject;
+[player, _antenna] call ace_dragging_fnc_dropObject_carry;
 sleep 0.5;
 _antenna setPosATL (_radar modelToWorld [-2, 0, 0]);
 sleep 2.5;

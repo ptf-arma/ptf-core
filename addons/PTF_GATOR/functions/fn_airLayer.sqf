@@ -1,6 +1,6 @@
 /*
  * Author: Paramarine Task Force
- * The air tracks layer on the Billet tablet's map (class blk_tabletLayers in config.cpp): the
+ * The air part of the Billet tablet's Radar layer (PTF_GATOR_fnc_radarLayer): the
  * aircraft the networked G/ATORs' radars see out to 10 km (PTF_GATOR_picture, refreshed every
  * two seconds). Billet asks once a second while the tablet is open; see Billet's
  * fn_tabletLayers for the format.
@@ -10,7 +10,8 @@
  *  use): hostile, friendly, or unknown by what the radar makes of it, rotary wing, fixed wing or
  *  drone, coloured hostile red, friendly blue, unknown yellow, neutral green; a leader line to
  *  where it will be in 30 seconds; and a label: type, height, speed.
- * ["tracks"]: its section of the map's Tracks list, hostile first, nearest the top within each;
+ *  Missiles in flight: a red arrow on their heading.
+ * ["tracks"]: its section of the map's Tracks list, missiles first, then hostile, nearest the top within each;
  *  a click centres the map on the aircraft.
  * Besides the network's picture, a G/ATOR within OP_RANGE (its crew, at its operator console)
  * shows what its own radar sees, on the network or not. An aircraft its operator identified
@@ -23,6 +24,7 @@
  * Shapes <ARRAY>, or the Tracks section <HASHMAP>
  */
 #include "..\script_gator.hpp"
+#define RED_MSL [1, 0.353, 0.282]
 params [["_cmd", "", [""]]];
 
 (missionNamespace getVariable ["PTF_GATOR_picture", [0, [], [], []]]) params ["", "_radars", "", "_air"];
@@ -54,12 +56,15 @@ if (_cmd == "tracks") exitWith {
 	if (isNil {missionNamespace getVariable "PTF_GATOR_picture"}) exitWith {nil};
 	private _rank = createHashMapFromArray [["enemy", 0], ["unknown", 1], ["neutral", 2], ["friendly", 3]];
 	private _home = (_radars param [0, [[0, 0]]]) select 0;
-	private _sorted = [_air, [], {(_rank getOrDefault [_x select 2, 1]) * 100000 + ((_x select 3) distance2D _home)}] call BIS_fnc_sortBy;
+	// missiles first, then hostile
+	private _sorted = [_air, [], {([_rank getOrDefault [_x select 2, 1], -1] select ((_x param [7, ""]) == "missile")) * 100000 + ((_x select 3) distance2D _home)}] call BIS_fnc_sortBy;
 	private _rows = _sorted apply {
-		_x params ["", "_name", "_rel", "_at", "_height", "_speed", "_heading"];
+		_x params ["", "_name", "_rel", "_at", "_height", "_speed", "_heading", ["_kind", "air"]];
+		private _missile = _kind == "missile";
 		createHashMapFromArray [["label", format ["%1 · grid %2", _name, mapGridPosition _at]],
 			["note", format ["%1 m · %2 km/h · heading %3", _height, _speed, _heading]],
-			["value", _word getOrDefault [_rel, "UNKNOWN"]], ["tone", createHashMapFromArray [["enemy", "bad"], ["unknown", "acc"], ["friendly", "ok"]] getOrDefault [_rel, ""]],
+			["value", [_word getOrDefault [_rel, "UNKNOWN"], "MISSILE"] select _missile],
+			["tone", [createHashMapFromArray [["enemy", "bad"], ["unknown", "acc"], ["friendly", "ok"]] getOrDefault [_rel, ""], "bad"] select _missile],
 			["at", _at]]
 	};
 	createHashMapFromArray [["title", "Air"], ["rows", _rows],
@@ -76,6 +81,14 @@ private _groups = uiNamespace getVariable ["BLK_tabGroups", []];
 	_x params ["_id", "_name", "_rel", "_at", "_height", "_speed", "_heading", ["_kind", "air"]];
 	private _plane = objectFromNetId _id;
 	if (_plane in _tracked || {!isNull _plane && {(group effectiveCommander _plane) in _groups}}) then {continue};
+	if (_kind == "missile") then {
+		// a red arrow on its heading, a leader line to where it will be in 5 seconds
+		private _lead = _speed * 5 / 3.6;
+		_shapes pushBack ["line", _at, _at vectorAdd [sin _heading * _lead, cos _heading * _lead], RED_MSL + [0.9], 2];
+		_shapes pushBack ["icon", _at, "\A3\ui_f\data\map\markers\military\arrow2_CA.paa", 20, RED_MSL + [1], _heading];
+		_shapes pushBack ["text", _at, format ["MISSILE  %1 M  %2 KM/H", _height, _speed], RED_MSL + [1], 0.035, "sans"];
+		continue;
+	};
 	private _c = _colour getOrDefault [_rel, [1, 0.86, 0.2]];
 	private _lead = _speed * 30 / 3.6;   // metres in 30 s: km/h is m/s times 3.6
 	_shapes pushBack ["line", _at, _at vectorAdd [sin _heading * _lead, cos _heading * _lead], _c + [0.8], 2];

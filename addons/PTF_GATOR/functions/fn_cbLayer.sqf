@@ -1,6 +1,6 @@
 /*
  * Author: Paramarine Task Force
- * The counter-battery layer on the Billet tablet's map (class blk_tabletLayers in config.cpp),
+ * The counter-battery part of the Billet tablet's Radar layer (PTF_GATOR_fnc_radarLayer),
  * from the network's picture (PTF_GATOR_picture). Billet asks once a second while the tablet
  * is open; see Billet's fn_tabletLayers for the format.
  *

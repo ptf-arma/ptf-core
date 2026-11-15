@@ -40,7 +40,7 @@ private _setDown = {
 	[_radar, "out", player] call PTF_GATOR_fnc_satcom;
 	sleep 2;
 	private _a = _radar getVariable ["PTF_GATOR_antenna", objNull];
-	[player, _a] call ace_dragging_fnc_dropObject;
+	[player, _a] call ace_dragging_fnc_dropObject_carry;
 	sleep 0.5;
 	_a setPosATL ((_radar modelToWorld [-14, -2, 0]) vectorMultiply [1, 1, 0]);
 	sleep 3;
@@ -164,16 +164,16 @@ diag_log "GATORTEST SNAP cb_tablet_layers";
 sleep 3;
 sleep 1;
 private _shapesOn = count (uiNamespace getVariable ["BLK_tabLayerDraw", []]);
-["document.querySelector('[data-alayer=ptf_counterbattery]').click()"] call blk_fnc_tabletExec;
+["document.querySelector('[data-alayer=ptf_radar]').click()"] call blk_fnc_tabletExec;
 sleep 2.5;
-// the air layer stays on, so only the counter-battery shapes go
+// the one Radar layer: all its shapes go
 private _shapesOff = count (uiNamespace getVariable ["BLK_tabLayerDraw", []]);
-["layer switches off", _shapesOff < _shapesOn && {(profileNamespace getVariable ["blk_tab_addonLayers", ""]) find "ptf_counterbattery:0" >= 0},
+["layer switches off", _shapesOff < _shapesOn && {(profileNamespace getVariable ["blk_tab_addonLayers", ""]) find "ptf_radar:0" >= 0},
 	format ["shapes %1 -> %2, saved %3", _shapesOn, _shapesOff, profileNamespace getVariable ["blk_tab_addonLayers", ""]]] call _check;
 diag_log "GATORTEST SNAP cb_tablet_off";
 sleep 3;
 sleep 1;
-["document.querySelector('[data-alayer=ptf_counterbattery]').click()"] call blk_fnc_tabletExec;
+["document.querySelector('[data-alayer=ptf_radar]').click()"] call blk_fnc_tabletExec;
 sleep 2;
 ["mk.tool=null;renderTools();document.querySelector('[data-sidetab=tracks]').click()"] call blk_fnc_tabletExec;
 sleep 3;

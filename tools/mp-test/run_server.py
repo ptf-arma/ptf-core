@@ -12,6 +12,7 @@ import shutil
 import subprocess
 import sys
 import time
+from pathlib import Path
 
 import common
 
@@ -21,13 +22,16 @@ ap.add_argument("mod", help="the built mod folder, with an addons folder inside 
 # 2302 is left alone because other local servers tend to be using it.
 ap.add_argument("--port", type=int, default=2402)
 ap.add_argument("--timeout", type=int, default=1200, help="seconds allowed for each stage")
+ap.add_argument("--mission", default=str(common.HERE / "ptf_smoke.Stratis"),
+                help="mission folder to play (default: ptf_smoke.Stratis); it must log PTFSMOKE SERVER READY, HC2GO and DONE as that one does")
 args = ap.parse_args()
 
 server_dir = common.server_dir()
 exe = str(server_dir / "arma3server_x64.exe")
 mod_arg = common.mod_argument(args.mod)
 out = common.output_dir(args.label)
-mission = server_dir / "mpmissions" / "ptf_smoke.Stratis"
+source = Path(args.mission)
+mission = server_dir / "mpmissions" / source.name
 
 config = out / "server.cfg"
 config.write_text("""hostname = "ptf smoke";
@@ -40,11 +44,11 @@ BattlEye = 0;
 headlessClients[] = {"127.0.0.1"};
 localClient[] = {"127.0.0.1"};
 allowedFilePatching = 0;
-class Missions { class M1 { template = "ptf_smoke.Stratis"; difficulty = "Regular"; }; };
-""")
+class Missions { class M1 { template = "%s"; difficulty = "Regular"; }; };
+""" % source.name)
 
 shutil.rmtree(mission, ignore_errors=True)
-shutil.copytree(common.HERE / "ptf_smoke.Stratis", mission)
+shutil.copytree(source, mission)
 server_profile = out / "profile_server"
 server_profile.mkdir()
 server = subprocess.Popen(

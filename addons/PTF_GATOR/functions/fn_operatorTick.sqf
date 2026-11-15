@@ -11,9 +11,11 @@
  * - CROWS Electronic Warfare: the nearest enabled CROWS jammer (crowsEW_main_jamMap) jams it as
  *   CROWS jams radios: fully inside the jammer's effective radius, fading out across its falloff.
  *   Jammed, it reaches JAM_REACH as far, its error grows up to JAM_ERROR times, and now and then
- *   it shows a ghost firing point (a dwell finds it out). Any enabled jammer within JAM_HEAR
- *   leaves a strobe, a bearing to it, while the G/ATOR is up and powered (its receiver hears
- *   even when it is silent); strobes from two places, or two G/ATORs, cross on the jammer.
+ *   it shows a ghost firing point (a dwell finds it out), and it is off the network. It hears
+ *   any enabled jammer within JAM_HEAR while it is up and powered (its receiver hears even when
+ *   it is silent), but its bearing takes the operator: in manual, a sector swept over the
+ *   jammer for DF_TIME seconds gives a strobe, a bearing to it, off by up to the sector's width
+ *   over DF_SHARP. Strobes from two places, or two G/ATORs, cross on the jammer.
  *   Transmitting, the G/ATOR is itself a CROWS signal source, found with a spectrum device.
  * - What its error and reach are now (for PTF_GATOR_fnc_cbReport, cbWatch).
  *
@@ -35,28 +37,66 @@ private _sector = _radar getVariable ["PTF_GATOR_mode", "full"] == "sector";
 // --- Jamming (CROWS) ------------------------------------------------------------------------------
 private _jam = 0;
 private _strobes = (_radar getVariable ["PTF_GATOR_strobes", []]) select {_now - (_x select 2) < JAM_STROBE_LIFE};
+// [its netId, its true bearing] for each jammer it hears: the crew isn't told the bearing, they find it
+private _heard = [];
 private _jamMap = missionNamespace getVariable ["crowsEW_main_jamMap", createHashMap];
 {
 	_y params [["_jammer", objNull], ["_falloff", 0], ["_effective", 0], ["_on", false]];
 	if (_on && {alive _jammer}) then {
 		private _d = _jammer distance2D _radar;
 		_jam = _jam max (linearConversion [_effective, _effective + (_falloff max 1), _d, 1, 0, true]);
-		if (_receiving && {_d < JAM_HEAR}) then {
-			// a strobe from here, unless one from near here is already up for this jammer
-			private _id = netId _jammer;
-			if (_strobes findIf {(_x select 3) == _id && {((_x select 0) distance2D _at) < 200}} < 0) then {
-				_strobes pushBack [[_at select 0, _at select 1], ((_radar getDir _jammer) + random 4 - 2 + 360) % 360, _now, _id];
-			};
-		};
+		if (_receiving && {_d < JAM_HEAR}) then {_heard pushBack [netId _jammer, _radar getDir _jammer]};
 	};
 } forEach _jamMap;
+
+// Direction finding, by hand: in manual, sweeping a sector with a jammer in it, it takes a
+// bearing once the sector has stayed put DF_TIME seconds, as sharp as the sector is narrow
+// (its width over DF_SHARP). A new sector starts again. A full turn only hears that one is there.
+// PTF_GATOR_df: netId -> [the sector, when it went in it (or -1, its bearing taken)]
+private _df = _radar getVariable ["PTF_GATOR_df", createHashMap];
+private _inSector = [];
+private _waits = [];
+private _taken = false;
+if (_receiving && {_sector} && {_radar getVariable ["PTF_GATOR_manual", false]}) then {
+	(_radar getVariable ["PTF_GATOR_sector", [0, 90]]) params ["_from", "_to"];
+	private _span = ((_to - _from) + 360) % 360;
+	{
+		_x params ["_id", "_bearing"];
+		if ((((_bearing - _from) + 360) % 360) > _span) then {continue};
+		_inSector pushBack _id;
+		private _was = _df getOrDefault [_id, []];
+		if (_was isEqualTo [] || {(_was select 0) isNotEqualTo [_from, _to]}) then {
+			_df set [_id, [[_from, _to], _now]];
+			_was = [[_from, _to], _now];
+		};
+		if ((_was select 1) < 0) then {_taken = true; continue};
+		private _wait = DF_TIME - (_now - (_was select 1));
+		if (_wait > 0) then {_waits pushBack ceil _wait; continue};
+		// a bearing: it replaces the one taken from near here on this jammer
+		private _err = (_span / DF_SHARP) max 1;
+		_strobes = _strobes select {!((_x select 3) == _id && {((_x select 0) distance2D _at) < 200})};
+		_strobes pushBack [[_at select 0, _at select 1], ((_bearing + random (2 * _err) - _err) + 360) % 360, _now, _id, _err];
+		_df set [_id, [[_from, _to], -1]];
+		_taken = true;
+	} forEach _heard;
+};
+{if !(_x in _inSector) then {_df deleteAt _x}} forEach keys _df;
+_radar setVariable ["PTF_GATOR_df", _df];
+// for its console: [jammers heard, how many in the sector, seconds to a bearing (0 taken, -1 none in it)]
+private _dfShow = [count _heard, count _inSector, [[-1, 0] select _taken, selectMin _waits] select (_waits isNotEqualTo [])];
+if (_dfShow isNotEqualTo (_radar getVariable ["PTF_GATOR_dfShow", [0, 0, -1]])) then {_radar setVariable ["PTF_GATOR_dfShow", _dfShow, true]};
 if (_strobes isNotEqualTo (_radar getVariable ["PTF_GATOR_strobes", []])) then {_radar setVariable ["PTF_GATOR_strobes", _strobes, true]};
 _jam = (round (_jam * 20)) / 20;
-if (_jam != (_radar getVariable ["PTF_GATOR_jam", 0])) then {_radar setVariable ["PTF_GATOR_jam", _jam, true]};
+private _wasJam = _radar getVariable ["PTF_GATOR_jam", 0];
+if (_jam != _wasJam) then {
+	_radar setVariable ["PTF_GATOR_jam", _jam, true];
+	// jammed, it drops off the network (PTF_GATOR_fnc_cbPublish); clear, it's back
+	if ((_jam == 0) isNotEqualTo (_wasJam == 0)) then {call PTF_GATOR_fnc_cbPublish};
+};
 
 // Ghosts: jamming makes up a firing point now and then, off toward the jammer.
 if (_active && {_jam > 0.25} && {random 1 < _jam * 0.012}) then {
-	private _toward = (_strobes param [count _strobes - 1, [0, 0, random 360]]) select 1;
+	private _toward = (_heard param [0, ["", random 360]]) select 1;
 	private _ghost = _radar getPos [2000 + random 7000, _toward + random 80 - 40];
 	private _range = _ghost distance2D _radar;
 	private _id = (missionNamespace getVariable ["PTF_GATOR_cbNext", 0]) + 1;

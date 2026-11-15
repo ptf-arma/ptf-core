@@ -15,15 +15,20 @@
 
 // Counter-battery: a round is detected while within CB_DETECT metres of a transmitting
 // G/ATOR; its firing point is traced back if within CB_TRACE metres; each traced point is off
-// by CB_ERROR of its distance on average (the server's Addon Options setting, 4% by default,
-// so 40 m at 1 km), and a track of n rounds by that over the square root of n.
+// by CB_ERROR of its distance on average (the server's Addon Options setting, 8% by default,
+// so 80 m at 1 km), and a track of n rounds by that over the square root of n.
 #define CB_DETECT 2000
 #define CB_TRACE 10000
 // The array's height above the ground, where its sight line starts; how often a round in range
 // but behind a hill is looked for again, in seconds.
 #define CB_EYE 4.5
 #define CB_LOOK 0.3
-#define CB_ERROR ((missionNamespace getVariable ["PTF_GATOR_cbError", 4]) / 100)
+#define CB_ERROR ((missionNamespace getVariable ["PTF_GATOR_cbError", 8]) / 100)
+// Lobbed rounds the artillery computer doesn't know (a hand-held mortar, an improvised rocket):
+// a shell or rocket launched at least LOB_MIN degrees up, with at least LOB_HIT indirect
+// damage (an 82 mm mortar bomb has 52, a 40 mm grenade 8), is traced like artillery.
+#define LOB_MIN 20
+#define LOB_HIT 20
 // The incoming alarm: seconds it sounds after a round is traced, at most, and after the last
 // traced round lands; its clip's repeat (tools/gator/import_sounds.py) and reach.
 #define ALARM_HOLD 30
@@ -57,3 +62,12 @@
 #define JAM_STROBE_LIFE 600
 #define JAM_REACH 0.4
 #define JAM_ERROR 2.5
+// Finding a jammer's bearing: a G/ATOR in manual, sweeping a sector the jammer is in, takes a
+// bearing after DF_TIME seconds, off by up to the sector's width over DF_SHARP (2 degrees in
+// a 30 degree sector). In a full turn it only hears that there is one.
+#define DF_TIME 10
+#define DF_SHARP 15
+// What the game's radar misses: small drones (scripted, within UAS_RANGE m in its line of
+// sight) and missiles in flight (within MISSILE_RANGE m), shown with the aircraft.
+#define UAS_RANGE 3000
+#define MISSILE_RANGE 8000

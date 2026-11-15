@@ -18,5 +18,6 @@ params [["_radar", objNull, [objNull]], ["_leg", "", [""]]];
 
 private _target = _radar getVariable ["PTF_GATOR_legTarget_" + _leg, 0];
 private _phase = _radar animationSourcePhase ("ptf_gator_leg_" + _leg);
-if (abs (_phase - _target) > 0.001) exitWith {"moving"};
+// (a leg the server stopped can rest a few thousandths off on another machine: that's arrived)
+if (abs (_phase - _target) > 0.01) exitWith {"moving"};
 ["up", "down"] select (_target > 0)
