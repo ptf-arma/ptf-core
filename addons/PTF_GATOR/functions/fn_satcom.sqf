@@ -100,6 +100,12 @@ if (_held) then {
 };
 private _distance = _antenna distance2D _radar;
 private _rope = _radar getVariable ["PTF_GATOR_cable", objNull];
+// Carried to the end of its cable, the cable pulls out (a taut rope would yank the antenna back
+// toward the trailer once it's set down); back within reach, it goes back in.
+if (!isNull _rope && {_held} && {_distance > _length - 1}) then {
+	ropeDestroy _rope;
+	_rope = objNull;
+};
 if (isNull _rope && {_distance < _length - 1}) then {call _cable; _rope = _radar getVariable ["PTF_GATOR_cable", objNull]};
 private _tooClose = !_held && {_distance < SATCOM_CLEAR};
 if (_tooClose && {!(_antenna getVariable ["PTF_GATOR_warned", false])}) then {
