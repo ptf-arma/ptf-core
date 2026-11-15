@@ -965,7 +965,86 @@ private _helmetsPSO = [
 	"PTF_MSO_FASTMTC_M81_CMGSW",
 	"PTF_MSO_FASTMTC_M81_CMSW",
 	"PTF_MSO_FASTMTC_M81_CGSW",
-	"PTF_MSO_FASTMTC_M81_CS"
+	"PTF_MSO_FASTMTC_M81_CS",
+	"rhs_Booniehat_m81",
+	"USP_BASEBALL_CAP_M81",
+	"USP_BASEBALL_CAPB_M81"
+];
+
+// Tier One Weapons (Workshop 2268351256) and SOLGW MK1 CAR (Workshop 3744455505)
+
+private _riflesPSO = [
+	// SOLGW MK1 11.5
+	"SOLGW_MK1_CTR_GREY",
+	"SOLGW_MK1_CTR_FDE",
+	"SOLGW_MK1_LMT_GREY",
+	"SOLGW_MK1_LMT_FDE",
+	"SOLGW_MK1_SLK_GREY",
+	"SOLGW_MK1_SLK_FDE",
+	// SOLGW MK1 14.5
+	"SOLGW_MK1_145_CTR_GREY",
+	"SOLGW_MK1_145_CTR_FDE",
+	"SOLGW_MK1_145_LMT_GREY",
+	"SOLGW_MK1_145_LMT_FDE",
+	"SOLGW_MK1_145_SLK_GREY",
+	"SOLGW_MK1_145_SLK_FDE",
+	// Tier One
+	"Tier1_MK46_Mod1_Savit",
+	"Tier1_MK46_Mod1_Savit_Desert",
+	"Tier1_MK48_Mod1",
+	"Tier1_MK48_Mod1_Desert",
+	"Tier1_M110k5_ACS",
+	"rhsusf_weap_MP7A2"
+];
+
+private _pistolsPSO = [
+	"Tier1_Glock19_Urban"
+];
+
+private _attachmentsPSO = [
+	// Rail
+	"mk1_side1_IR",
+	"mk1_side2_IR",
+	"mk1_side3_IR",
+	"mk1_side4_IR",
+	"Tier1_URX4_LA5_M600V_Black",
+	"Tier1_URX4_NGAL_M600V_Black",
+	"Tier1_Mk46Mod0_LA5_M600V_Black",
+	"Tier1_Mk48Mod0_LA5_M600V_Black",
+	// Bipod / underbarrel
+	"Tier1_Harris_Bipod_DD_MLOK_Black",
+	"Tier1_Harris_Bipod_DD_MLOK_Tan",
+	"isky_idhandstop",
+	"isky_mod3",
+	// Muzzle
+	"Tier1_KAC_762_DSR",
+	"Tier1_KAC_762_QDC_Black",
+	"Tier1_KAC_762_QDC_Tan",
+	"isky_rc4_blk",
+	"isky_rc4_tan",
+	"rhsusf_acc_m24_silencer_black",
+	// Optics
+	"Tier1_MicroT2_Leap_Black",
+	"Tier1_MicroT2_Leap_Tan",
+	"Tier1_MicroT2_Leap_G33_Black_Up",
+	"Tier1_MicroT2_Leap_G33_Desert_Up",
+	"Tier1_Romeo4T_BCQ_Riser_Black",
+	"Tier1_Romeo4T_BCQ_Riser_Tan",
+	"Tier1_Romeo4T_BCQ_G33_Riser_Black_Up",
+	"Tier1_EXPS3_0_3xMag_Riser_Black_Up",
+	"Tier1_ATACR18_Geissele_Docter_Black",
+	"Tier1_ATACR18_Geissele_Docter_Desert",
+	// Pistol (MHS_X300U and rhsusf_acc_rotex_mp7 are already in _attachments)
+	"Tier1_SIG_Romeo1"
+];
+
+private _ammoPSO = [
+	"Tier1_20Rnd_9x19_JHP"
+];
+
+private _equipmentPSO = [
+	"ACE_MX2A",
+	"ACE_M26_Clacker"
 ];
 
 private _uniformsPSO = [
@@ -979,12 +1058,14 @@ private _uniformsPSO = [
 
 private _nightvisionPSO = [
 	"USP_GPNVG18_BLK",
-	"USP_GPNVG18_WP_BLK"
+	"USP_GPNVG18_WP_BLK",
+	"USP_GPNVG18_CB2_BLK",
+	"USP_GPNVG18_CB2_TAN"
 ];
 
 private _standardArsenal = _rifles + _launchers + _pistols + _attachments + _backpacks + _uniforms + _vests + _helmets + _glasses + _ammo + _throwables + _medical + _demolition + _equipment + _binoculars + _nightvision;
 
-private _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
+private _psoArsenal = _standardArsenal + _riflesPSO + _pistolsPSO + _attachmentsPSO + _ammoPSO + _equipmentPSO + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
 // Standard minus head-mounted night vision, for the Limited Arsenal.
 // Derived by subtraction rather than a second hand-kept sum, so anything
