@@ -56,6 +56,7 @@ if (isNull _radar) exitWith {};
 	if (_fireStart < 0 && {_radar getHitPointDamage "HitFuel" >= 0.9} && {fuel _radar > 0.02}) then {
 		_fireStart = CBA_missionTime;
 		_radar setVariable ["PTF_GATOR_fireStart", _fireStart, true];
+		diag_log format ["PTF_GATOR damage %1: fuel tank on fire t=%2, %3", _radar, round CBA_missionTime, [_radar] call PTF_GATOR_fnc_damageState];
 		_radar setVariable ["PTF_GATOR_fireSound", createSoundSource ["Sound_Fire", _radar modelToWorld (_radar selectionPosition ["destructionEffect1", "Memory"]), [], 0]];
 		call _stopGenerator;
 	};

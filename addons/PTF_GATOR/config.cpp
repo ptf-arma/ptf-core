@@ -48,6 +48,8 @@ class CfgFunctions
 			class hearGenerator {};
 			class alertGroup {};
 			class fuelReport {};
+			class damageLog {};
+			class damageState {};
 			class cbFired {};
 			class cbWatch {};
 			class cbReport {};
@@ -65,7 +67,6 @@ class CfgFunctions
 			class cbClear {};
 			class operator {};
 			class operatorTick {};
-			class splashWarn {};
 			class armWatch {};
 			class armReport {};
 			class armLaunch {};
@@ -144,6 +145,11 @@ class Extended_Init_EventHandlers
 		class PTF_GATOR_fuel
 		{
 			init = "_this call PTF_GATOR_fnc_fuelLoop";
+		};
+		// What hurts it, in the owner's RPT ("PTF_GATOR damage").
+		class PTF_GATOR_damageLog
+		{
+			init = "_this call PTF_GATOR_fnc_damageLog";
 		};
 		class PTF_GATOR_tow
 		{
