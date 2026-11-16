@@ -79,3 +79,24 @@ if (hasInterface) then {
     }] call ace_interact_menu_fnc_createAction;
     ["Air", 1, ["ACE_SelfActions"], _selfAction, true] call ace_interact_menu_fnc_addActionToClass;
 };
+
+// Touchdown guard (PTF_fnc_touchdownGuardDamage). Every aircraft gets the damage
+// handler on every machine; parachutes are aircraft to Arma, but not to us.
+PTF_touchdownGuard_aircraft = [];
+["Air", "init", {_this call PTF_fnc_touchdownGuardInit}, true, ["ParachuteBase"], true] call CBA_fnc_addClassEventHandler;
+
+// The handler needs each aircraft's speed from just before a hit: by the time it
+// runs, the collision has already changed it. Keep the last two samples, a tenth
+// of a second apart, on the machine where the aircraft is local.
+[{
+    if (!(missionNamespace getVariable ["PTF_TouchdownGuardEnabled", true])) exitWith {};
+    PTF_touchdownGuard_aircraft = PTF_touchdownGuard_aircraft select {alive _x};
+    {
+        private _aircraft = _x;
+        if (local _aircraft) then {
+            private _last = (_aircraft getVariable ["PTF_touchdownGuard_samples", []]) param [0, []];
+            private _now = [time, velocity _aircraft, (getPos _aircraft) select 2];
+            _aircraft setVariable ["PTF_touchdownGuard_samples", [_now, _last] select {_x isNotEqualTo []}];
+        };
+    } forEach PTF_touchdownGuard_aircraft;
+}, 0.1] call CBA_fnc_addPerFrameHandler;
