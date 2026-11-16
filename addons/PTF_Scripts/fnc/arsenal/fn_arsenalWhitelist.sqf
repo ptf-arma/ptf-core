@@ -869,7 +869,7 @@ private _demolition = [
 
 private _equipment = [
 	"TFAR_anprc152",
-	"ItemcTab",
+	"blk_tabletItem",
 	"B_UavTerminal",
 	"ACE_artilleryTable",
 	"ItemGPS",
@@ -881,7 +881,6 @@ private _equipment = [
 	"ACE_EarPlugs",
 	"ACE_EntrenchingTool",
 	"ACE_Flashlight_MX991",
-	"ItemcTabHCam",
 	"ACE_IR_Strobe_Item",
 	"ACE_Clacker",
 	"ACE_Flashlight_XL50",
@@ -898,7 +897,7 @@ private _equipment = [
 	"ACE_UAVBattery",
 	"ACE_wirecutter",
 	"ACE_Flashlight_Maglite_ML300L",
-	"ItemAndroid",
+	"blk_phoneItem",
 	"DemoCharge_Remote_Mag",
 	"ACE_Kestrel4500",
 	"ACE_RangeCard",
