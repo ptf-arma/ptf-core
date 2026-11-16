@@ -93,6 +93,39 @@ its configured value on any settings refresh, so the live count lives in a
 matching `<setting>Current` variable in `missionNamespace`. Do not write the
 settings themselves from script.
 
+## Touchdown guard
+
+Aircraft sometimes blow up touching down gently, mostly UH-1Ys and mostly on the
+LHA. It's Arma's collision response: on one frame it finds a skid or wheel a
+little inside the deck or ground and pushes it out with a huge impulse, which
+counts as collision damage. Skids have no suspension to soften it, and a ship's
+deck is an object, whose collisions are harsher than terrain's.
+
+`PTF_fnc_touchdownGuardDamage` is a `HandleDamage` handler on every aircraft
+(parachutes excepted) that ignores **collision** damage when, a moment before the
+hit, the aircraft was within 5 m of the surface below it, slower than
+`PTF_TouchdownGuardMaxSpeed` (30 km/h) and descending slower than
+`PTF_TouchdownGuardMaxDescent` (4 m/s). Still damaging, whatever the speed:
+
+- weapons and explosions (anything with a projectile or someone who fired it)
+- being rammed by another vehicle with someone aboard
+- rotor strikes (the rotor hitpoints are never protected)
+- hard or fast landings, and crashes from any height
+
+The speed it checks is sampled every 0.1 s by a per-frame handler in
+`XEH_postInit.sqf`, because inside `HandleDamage` the collision has already
+changed the aircraft's velocity. The handler is added a frame after the
+aircraft's init so it is the last `HandleDamage` handler, whose return value
+wins; RHS and ACE add none to aircraft.
+
+Every bit of damage it ignores is logged to the RPT of the machine flying the
+aircraft, as `PTF touchdown guard: ignored collision damage ...` with the speed
+and descent rate. That is how to tell whether it is stopping real explosions.
+`PTF_TouchdownGuardEnabled` turns it off. Crew can still be hurt by the jolt:
+ACE medical handles their damage separately.
+
+Test: `python tools/lha-test/run.py --mission tools/touchdown-test/mission`.
+
 ## Respawn loadout
 
 Arma does not restore a unit on respawn, it builds a **new** one from the config

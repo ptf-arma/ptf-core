@@ -40,6 +40,8 @@ class cfgFunctions {
 			class uh1_obsHandler {};
 			class uh1_toggleCam {};
 			class formatDaytime {};
+			class touchdownGuardInit {};
+			class touchdownGuardDamage {};
 		};
 		class AH1zLoadoutFunctions {
 			file = "\z\PTF\addons\PTF_Scripts\fnc\Loadouts\AH1z";

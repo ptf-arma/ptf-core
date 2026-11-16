@@ -109,3 +109,46 @@ if (_defaultLoadout < 0) then {_defaultLoadout = 0};
     {},
     false // needRestart
 ] call CBA_fnc_addSetting;
+
+// ---------------------------------------------------------------------------
+// Touchdown guard (PTF_fnc_touchdownGuardDamage): stops a gentle landing from
+// destroying an aircraft through Arma's collision response. isGlobal: the
+// server's values apply to everyone, since damage is handled on whichever
+// machine is flying the aircraft.
+// ---------------------------------------------------------------------------
+[
+    "PTF_TouchdownGuardEnabled", "CHECKBOX",
+    [
+        "Touchdown guard",
+        "Ignore collision damage to helicopters and planes touching down slowly and gently, so the engine's collision glitches can't blow them up on landing. Weapons, rotor strikes and hard or fast landings still do damage."
+    ],
+    ["Paramarine Task Force", "Aircraft"],
+    true,
+    true,  // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_TouchdownGuardMaxSpeed", "SLIDER",
+    [
+        "Touchdown guard: top speed (km/h)",
+        "The guard only covers aircraft moving slower than this across the ground just before they touch."
+    ],
+    ["Paramarine Task Force", "Aircraft"],
+    [0, 60, 30, 0],
+    true,  // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
+[
+    "PTF_TouchdownGuardMaxDescent", "SLIDER",
+    [
+        "Touchdown guard: top descent rate (m/s)",
+        "The guard only covers aircraft coming down slower than this just before they touch. A gentle landing is under 2 m/s."
+    ],
+    ["Paramarine Task Force", "Aircraft"],
+    [0, 10, 4, 1],
+    true,  // isGlobal
+    {},
+    false // needRestart
+] call CBA_fnc_addSetting;
