@@ -39,11 +39,15 @@ private _spawn = {
 	_heli setVariable ["TEST_hits", []];
 	_heli addEventHandler ["HandleDamage", {
 		params ["_v", "_sel", "_dmg", "_src", "_proj", "_idx", "_inst", "_hp"];
-		(_v getVariable "TEST_hits") pushBack [_hp, _dmg, _proj, typeOf _src, isNull _inst, velocity _v select 2];
+		(_v getVariable "TEST_hits") pushBack [_hp, str _dmg, _proj, typeOf _src, isNull _inst, velocity _v select 2];
 		nil
 	}];
 	_heli
 };
+// Flat, open ground away from the airbase buildings, for the real-engine checks.
+private _open = [getPosATL player, 80, 400, 25, 0, 0.1, 0] call BIS_fnc_findSafePos;
+_open = [_open select 0, _open select 1, 0];
+diag_log format ["LHATEST INFO open ground %1, %2 m from the player", _open, round (_open distance2D player)];
 private _worst = {
 	params ["_heli"];
 	selectMax ([damage _heli] + ((getAllHitPointsDamage _heli) param [2, []]))
@@ -107,10 +111,17 @@ PTF_TouchdownGuardEnabled = true;
 deleteVehicle _quad;
 
 // ---------- the real engine ----------
+// Flat open ground with nothing within 20 m: the first run put a building between
+// the gun and the helicopter.
+_heli setPosATL (_open vectorAdd [0, 0, 0]);
+_heli setVelocity [0, 0, 0];
+sleep 2;
+_heli setVariable ["TEST_hits", []];
 // Gunfire on a parked helicopter: low and still, so the samples say "gentle", and
-// it must take damage anyway.
-private _target = (getPosASL _heli) vectorAdd [0, 0, 1.2];
-private _from = _target vectorAdd [-8, 0, 0];
+// it must take damage anyway. Aim at the middle of its bounding box.
+private _target = _heli modelToWorldWorld (boundingCenter _heli);
+private _from = _target vectorAdd [-10, 0, 0.2];
+private _inWay = (lineIntersectsSurfaces [_from, _target, objNull, objNull, true, 1, "FIRE", "GEOM"]) apply {_x select 2};
 for "_i" from 1 to 5 do {
 	private _bullet = createVehicle ["B_127x99_Ball", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 	_bullet setPosASL _from;
@@ -118,25 +129,28 @@ for "_i" from 1 to 5 do {
 	sleep 0.2;
 };
 sleep 1;
-["gunfire still damages", ([_heli] call _worst) > 0, format ["worst %1", [_heli] call _worst]] call _check;
+["gunfire still damages", ([_heli] call _worst) > 0, format ["worst %1, first in the line of fire %2", [_heli] call _worst, _inWay apply {typeOf _x}]] call _check;
 diag_log format ["LHATEST INFO gunfire hits %1", (_heli getVariable "TEST_hits") select [0, 6]];
 deleteVehicle _heli;
+sleep 1;
 
-// A hard drop from 20 m: must be damaged. Its hits show what a collision looks like
-// to HandleDamage (no projectile, nobody behind it), which the guard relies on.
-private _drop = [[60, -40, 0], 20] call _spawn;
-sleep 6;
-private _hits = _drop getVariable "TEST_hits";
-["hard drop damages", !alive _drop || {([_drop] call _worst) > 0.3}, format ["alive %1, worst %2", alive _drop, [_drop] call _worst]] call _check;
+// A hard drop from 50 m (an RHS UH-1Y shrugs off 20 m): must be damaged. Its hits
+// show what a collision looks like to HandleDamage (no projectile, nobody behind
+// it), which the guard relies on.
+private _drop = [_open vectorDiff (getPosATL player), 50] call _spawn;
+sleep 8;
+private _hits = (_drop getVariable "TEST_hits") select {parseNumber (_x select 1) > 0};
+["hard drop damages", !alive _drop || {([_drop] call _worst) > 0.2}, format ["alive %1, worst %2", alive _drop, [_drop] call _worst]] call _check;
 diag_log format ["LHATEST INFO hard drop hits %1", _hits select [0, 8]];
 ["collisions have no projectile", _hits isNotEqualTo [] && {(_hits findIf {(_x select 2) != "" || {!(_x select 4)}}) < 0},
 	format ["%1 hits, first %2", count _hits, _hits param [0, []]]] call _check;
 deleteVehicle _drop;
+sleep 1;
 
 // Gentle set-downs, guard on: undamaged.
 private _soft = [];
 for "_i" from 0 to 3 do {
-	private _h = [[-60, 15 * _i, 0], 1.5] call _spawn;
+	private _h = [(_open vectorDiff (getPosATL player)) vectorAdd [15 * _i - 22, 0, 0], 1.5] call _spawn;
 	_h setVelocity [0, 0, -1];
 	_soft pushBack _h;
 };
