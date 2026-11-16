@@ -37,13 +37,8 @@ if (isNull _radar) exitWith {};
 
 private _antenna = _radar getVariable ["PTF_GATOR_antenna", objNull];
 private _length = getNumber (configOf _radar >> "ptf_gator_cableLength");
-private _cable = {
-	// From the box's left side, where the crew works, to the antenna's foot.
-	private _type = ["Rope", "TFAR_RopeSmallWire"] select isClass (configFile >> "CfgVehicles" >> "TFAR_RopeSmallWire");
-	private _rope = ropeCreate [_radar, _radar selectionPosition ["interact", "Memory"], _antenna, [0, 0, 0.25], _length,
-		["", [0, 0, -1]], ["", [0, 0, -1]], _type];
-	_radar setVariable ["PTF_GATOR_cable", _rope];
-};
+private _end = [0, 0, 0.25];   // the antenna's foot
+private _cable = {["rope", _radar, _antenna, "PTF_GATOR_cable", _length, _end] call PTF_GATOR_fnc_cable};
 private _network = {
 	params ["_on"];
 	private _now = [objNull, _antenna] select _on;
@@ -57,12 +52,7 @@ if (_cmd == "out") exitWith {
 	private _class = (getArray (configOf _radar >> "ptf_gator_satcomClasses")) param [
 		(getArray (configOf _radar >> "ptf_gator_satcomClasses")) findIf {isClass (configFile >> "CfgVehicles" >> _x)}, ""];
 	if (_class == "") exitWith {};
-	// Clear of the trailer: past the player, on the side away from it (a drag put it in front
-	// of a player facing the trailer, inside the box).
-	private _away = _radar getDir _unit;
-	private _spot = _unit getPos [1.5, _away];
-	_antenna = createVehicle [_class, _spot, [], 0, "CAN_COLLIDE"];
-	_antenna setDir _away;
+	_antenna = createVehicle [_class, [0, 0, 0], [], 0, "CAN_COLLIDE"];
 	// The RF-3080 is wrecked by the knock of being dragged into place; it can't be hurt, on
 	// whichever machine ends up with it.
 	[_antenna, false] remoteExecCall ["allowDamage", 0, _antenna];
@@ -74,13 +64,10 @@ if (_cmd == "out") exitWith {
 	if (getNumber (configOf _antenna >> "ace_dragging_canDrag") != 1) then {
 		[_antenna, true, [0, 1.2, 0], 0, true] remoteExecCall ["ace_dragging_fnc_setDraggable", 0, _antenna];
 	};
+	// Into their arms, turned away from the trailer; the cable pays out as they walk.
+	["takeOut", _radar, _antenna, _unit, [0, 1.1, 0.9]] call PTF_GATOR_fnc_cable;
 	call _cable;
-	// Into their arms: turned away from the trailer, an ACE carry.
-	[{
-		params ["_unit", "_antenna", "_away"];
-		_unit setDir _away;
-		[_unit, _antenna] call ace_dragging_fnc_startCarry;
-	}, [_unit, _antenna, _away]] remoteExecCall ["CBA_fnc_execNextFrame", _unit];
+	["reel", _radar, _antenna, "PTF_GATOR_cable", _length, _end] call PTF_GATOR_fnc_cable;
 };
 
 if (_cmd == "stow") exitWith {
@@ -100,13 +87,9 @@ if (_held) then {
 };
 private _distance = _antenna distance2D _radar;
 private _rope = _radar getVariable ["PTF_GATOR_cable", objNull];
-// Carried to the end of its cable, the cable pulls out (a taut rope would yank the antenna back
-// toward the trailer once it's set down); back within reach, it goes back in.
-if (!isNull _rope && {_held} && {_distance > _length - 1}) then {
-	ropeDestroy _rope;
-	_rope = objNull;
-};
-if (isNull _rope && {_distance < _length - 1}) then {call _cable; _rope = _radar getVariable ["PTF_GATOR_cable", objNull]};
+// Carried to the end of its cable, the cable pulls out (PTF_GATOR_fnc_cable, "reel"); back
+// within reach, it goes back in.
+if (isNull _rope && {_distance < _length - 3}) then {_rope = call _cable};
 private _tooClose = !_held && {_distance < SATCOM_CLEAR};
 if (_tooClose && {!(_antenna getVariable ["PTF_GATOR_warned", false])}) then {
 	_antenna setVariable ["PTF_GATOR_warned", true];

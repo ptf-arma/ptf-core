@@ -104,7 +104,7 @@ private _shapes = [];
 		} forEach _impacts;
 		_shapes pushBack ["disc", _at, _error max 5, RED + [0.14 * _fade]];
 		_shapes pushBack ["ring", _at, _error max 5, RED + [0.9 * _fade], 2];
-		_shapes pushBack ["icon", _at, format ["\A3\ui_f\data\map\markers\nato\o_%1.paa", ["art", "mortar"] select (_weapon == "mortar")], 28, RED + [_fade], 0];
+		_shapes pushBack ["icon", _at, format ["\A3\ui_f\data\map\markers\nato\o_%1.paa", ["art", "mortar", "inf"] select (((["mortar", "launcher"] find _weapon)) + 1)], 28, RED + [_fade], 0];
 		_shapes pushBack ["text", _at, format ["%1  %2 RDS  ±%3 M  %4", [_id] call _name, _rounds, round _error, _ago], RED + [_fade], 0.04, "sans"];
 	};
 } forEach _tracks;

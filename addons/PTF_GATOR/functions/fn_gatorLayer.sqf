@@ -111,8 +111,30 @@ private _shapes = [];
 	private _radar = _x;
 	private _asl = getPosASL _radar;
 	private _at = [_asl select 0, _asl select 1];
-	_shapes pushBack ["ring", _at, CB_TRACE, BLUE + [0.3], 2];
-	_shapes pushBack ["ring", _at, _radar getVariable ["PTF_GATOR_reach", CB_DETECT], BLUE + [0.55], 2];
+	private _sweep = _radar getVariable ["PTF_GATOR_mode", "full"] == "sector";
+	(_radar getVariable ["PTF_GATOR_sector", [0, 90]]) params ["_from", "_to"];
+	private _span = ((_to - _from) + 360) % 360;
+	private _reach = _radar getVariable ["PTF_GATOR_reach", CB_DETECT];
+	if (_sweep) then {
+		// the sector only, out to where it hears rounds and where it traces them back from: its
+		// two edges and the arcs between
+		{
+			_x params ["_radius", "_alpha", "_step"];
+			private _edge = {_at vectorAdd [sin _this * _radius, cos _this * _radius]};
+			private _n = 2 max ceil (_span / _step);
+			for "_i" from 1 to _n do {
+				_shapes pushBack ["line", (_from + _span * (_i - 1) / _n) call _edge, (_from + _span * _i / _n) call _edge, BLUE + [_alpha], 2];
+			};
+		} forEach [[CB_TRACE, 0.3, 10], [_reach, 0.85, 6]];
+		private _edge = {_at vectorAdd [sin (_this select 0) * (_this select 1), cos (_this select 0) * (_this select 1)]};
+		{
+			_shapes pushBack ["line", _at, [_x, _reach] call _edge, BLUE + [0.85], 2];
+			_shapes pushBack ["line", [_x, _reach] call _edge, [_x, CB_TRACE] call _edge, BLUE + [0.3], 2];
+		} forEach [_from, _to];
+	} else {
+		_shapes pushBack ["ring", _at, CB_TRACE, BLUE + [0.3], 2];
+		_shapes pushBack ["ring", _at, _reach, BLUE + [0.55], 2];
+	};
 	// strobes on the jammers it hears
 	{
 		_x params ["_from", "_bearing"];
@@ -127,20 +149,6 @@ private _shapes = [];
 		_shapes pushBack ["line", _at, _at vectorAdd [sin _bearing * 8000, cos _bearing * 8000], RED + [1], 3];
 		_shapes pushBack ["text", _at vectorAdd [sin _bearing * 2500, cos _bearing * 2500], format ["ARM %1 S", _eta], RED + [1], 0.045, "sans"];
 	} forEach (_radar getVariable ["PTF_GATOR_arm", []]);
-	private _sweep = _radar getVariable ["PTF_GATOR_mode", "full"] == "sector";
-	(_radar getVariable ["PTF_GATOR_sector", [0, 90]]) params ["_from", "_to"];
-	private _span = ((_to - _from) + 360) % 360;
-	private _reach = _radar getVariable ["PTF_GATOR_reach", CB_DETECT];
-	if (_sweep) then {
-		// the sector, out to where it hears rounds: its two edges and the arc between
-		private _edge = {_at vectorAdd [sin _this * _reach, cos _this * _reach]};
-		_shapes pushBack ["line", _at, _from call _edge, BLUE + [0.85], 2];
-		_shapes pushBack ["line", _at, _to call _edge, BLUE + [0.85], 2];
-		private _n = 2 max ceil (_span / 5);
-		for "_i" from 1 to _n do {
-			_shapes pushBack ["line", (_from + _span * (_i - 1) / _n) call _edge, (_from + _span * _i / _n) call _edge, BLUE + [0.85], 2];
-		};
-	};
 	if (!isNull (_radar getVariable ["PTF_GATOR_sensor", objNull])) then {
 		// Which way the array faces.
 		private _heading = [_radar] call PTF_GATOR_fnc_facing;

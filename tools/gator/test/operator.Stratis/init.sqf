@@ -128,6 +128,27 @@ private _lobs = [["Sh_120mm_HE", 45], ["Sh_120mm_HE", 3], ["G_40mm_HE", 45]] app
 call PTF_GATOR_fnc_cbWatch;
 ["lobbed: a big shell fired steeply is traced; flat, or a 40 mm grenade, isn't", (_lobs apply {_x select 0}) isEqualTo [true, false, false],
 	format ["120 mm at 45°, 120 mm at 3°, 40 mm at 45°: %1", _lobs]] call _check;
+// An RPG fired flat by a man 400 m off, where the radar can see along the ground to him: traced back to him.
+private _rpgAt = [];
+{
+	private _p = _radar getPos [400, _x];
+	if (_rpgAt isEqualTo [] && {!surfaceIsWater _p} && {!terrainIntersectASL [(getPosASL _radar) vectorAdd [0, 0, 4.5], (AGLToASL _p) vectorAdd [0, 0, 2]]}) then {_rpgAt = _p};
+} forEach [0, 45, 90, 135, 180, 225, 270, 315];
+private _rpgMan = (createGroup east) createUnit ["O_Soldier_LAT_F", _rpgAt, [], 0, "CAN_COLLIDE"];
+_rpgMan disableAI "ALL";
+private _rpgDir = _rpgAt getDir _radar;
+private _rocket = createVehicle ["R_PG32V_F", (AGLToASL _rpgAt) vectorAdd [0, 0, 1.6], [], 0, "CAN_COLLIDE"];
+_rocket setPosASL ((AGLToASL _rpgAt) vectorAdd [sin _rpgDir * 2, cos _rpgDir * 2, 1.6]);
+_rocket setVectorDirAndUp [[sin (_rpgDir + 30), cos (_rpgDir + 30), 0], [0, 0, 1]];
+_rocket setVelocity [sin (_rpgDir + 30) * 140, cos (_rpgDir + 30) * 140, 0];
+[_rpgMan, "launch_RPG32_F", "", "", "R_PG32V_F", "", _rocket, objNull] call PTF_GATOR_fnc_cbFired;
+sleep 2.5;
+private _rpgTrack = (_radar getVariable ["PTF_GATOR_cbTracks", []]) select {(_x getOrDefault ["weapon", ""]) == "launcher"};
+["an RPG fired flat by a man is traced back to him", _rpgAt isNotEqualTo [] && {_rpgTrack isNotEqualTo []}
+	&& {((_rpgTrack select 0) getOrDefault ["point", [0, 0]]) distance2D _rpgAt < 80},
+	format ["from %1, tracks %2", _rpgAt, _rpgTrack apply {[_x get "weapon", (_x getOrDefault ["point", [0, 0]]) distance2D _rpgAt]}]] call _check;
+deleteVehicle _rpgMan;
+{[_radar, "erase", str (_x get "id")] call PTF_GATOR_fnc_operator} forEach _rpgTrack;
 // A small drone 900 m off, 80 m up.
 private _uavAt = _radar getPos [900, 300];
 private _uav = createVehicle ["B_UAV_01_F", [_uavAt select 0, _uavAt select 1, 80], [], 0, "FLY"];
@@ -167,27 +188,45 @@ sleep 2.5;
 private _strobes = _radar getVariable ["PTF_GATOR_strobes", []];
 private _status = (["panel", _computer] call PTF_GATOR_fnc_console) getOrDefault ["status", ""];
 ["jammed: shorter reach, rougher tracks, off the network; heard, no bearing yet", (_radar getVariable ["PTF_GATOR_jam", 0]) == 1 && {call _sensor == "PTF_GATOR_SensorJammed"}
-	&& {abs ((_radar getVariable ["PTF_GATOR_reach", 0]) - 800) < 1} && {_strobes isEqualTo []} && {(_radar getVariable ["PTF_GATOR_dfShow", []]) isEqualTo [1, 0, -1]}
+	&& {abs ((_radar getVariable ["PTF_GATOR_reach", 0]) - 800) < 1} && {_strobes isEqualTo []} && {(_radar getVariable ["PTF_GATOR_dfShow", []]) isEqualTo [1, -1, -3]}
 	&& {"OFF NET" in _status} && {!vehicleReportRemoteTargets (_radar getVariable ["PTF_GATOR_sensor", objNull])},
 	format ["jam %1, sensor %2, reach %3, strobes %4, df %5, status %6", _radar getVariable ["PTF_GATOR_jam", 0], call _sensor, _radar getVariable ["PTF_GATOR_reach", 0],
 		_strobes, _radar getVariable ["PTF_GATOR_dfShow", []], _status]] call _check;
-// Its bearing, by hand: a sector away from it hears nothing; one over it gives a strobe after 10 s.
+// Its bearing, by hand: a sector away from it reads no signal; a wide one over it a weak one and no
+// bearing; narrowed but off centre, no bearing; turned onto it, a stronger signal and a strobe
+// along the sector's centre line after 8 s.
 [_radar, "sector"] call PTF_GATOR_fnc_operator;
 [_radar, "sectorFrom", "180"] call PTF_GATOR_fnc_operator;
 [_radar, "sectorTo", "270"] call PTF_GATOR_fnc_operator;
 sleep 2.5;
 private _away = _radar getVariable ["PTF_GATOR_dfShow", []];
-[_radar, "sectorFrom", "60"] call PTF_GATOR_fnc_operator;
-[_radar, "sectorTo", "120"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorFrom", "0"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorTo", "300"] call PTF_GATOR_fnc_operator;
+sleep 2.5;
+private _wide = _radar getVariable ["PTF_GATOR_dfShow", []];
+[_radar, "sectorFrom", "85"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorTo", "175"] call PTF_GATOR_fnc_operator;
+sleep 2.5;
+private _offCentre = _radar getVariable ["PTF_GATOR_dfShow", []];
+// the console's turn button, as the operator would: 5 degrees left, eight times
+for "_i" from 1 to 8 do {["action", _computer, "panL", "", ""] call PTF_GATOR_fnc_console};
 sleep 3;
 private _counting = _radar getVariable ["PTF_GATOR_dfShow", []];
+private _sector = _radar getVariable ["PTF_GATOR_sector", []];
 diag_log "GATORTEST SNAP df";
-sleep 9;
+sleep 7;
 _strobes = _radar getVariable ["PTF_GATOR_strobes", []];
-["a jammer's bearing takes a sector held over it", (_away select 1) == 0 && {(_counting select 1) == 1} && {(_counting select 2) > 0}
-	&& {count _strobes == 1} && {([(_strobes select 0) select 1, 90] call _off) <= 4.01} && {((_strobes select 0) param [4, 0]) == 4}
+["a jammer's bearing takes the signal found and centred, then held", (_away select 1) <= 3 && {(_away select 2) == -3}
+	&& {(_wide select 1) > 10} && {(_wide select 1) < 45} && {(_wide select 2) == -1}
+	&& {(_offCentre select 2) == -2} && {_sector isEqualTo [45, 135]}
+	&& {(_counting select 1) > (_wide select 1) + 25} && {(_counting select 2) > 0}
+	&& {count _strobes == 1} && {((_strobes select 0) select 1) == 90} && {((_strobes select 0) param [4, 99]) <= 10}
 	&& {((_radar getVariable ["PTF_GATOR_dfShow", []]) select 2) == 0},
-	format ["away %1, over it %2, then %3, strobes %4", _away, _counting, _radar getVariable ["PTF_GATOR_dfShow", []], _strobes]] call _check;
+	format ["away %1, wide %2, off centre %3, turned to %4: %5, then %6, strobes %7", _away, _wide, _offCentre, _sector, _counting,
+		_radar getVariable ["PTF_GATOR_dfShow", []], _strobes]] call _check;
+// back to the sector the console checks start from
+[_radar, "sectorFrom", "60"] call PTF_GATOR_fnc_operator;
+[_radar, "sectorTo", "120"] call PTF_GATOR_fnc_operator;
 [_radar, "full"] call PTF_GATOR_fnc_operator;
 missionNamespace setVariable ["crowsEW_main_jamMap", _crows];
 deleteVehicle _jammer;
@@ -249,10 +288,14 @@ if (!isNil "blk_fnc_tabletConsole") then {
 	["(function () { const i = document.querySelector('[data-appset=sectorTo]'); if (!i) return; i.focus(); i.value = '200'; i.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); })()"] call blk_fnc_tabletExec;
 	sleep 3;
 	private _typed = (_radar getVariable ["PTF_GATOR_sector", []]) isEqualTo [60, 200];
+	// and one typed with no Enter at all: it goes in a moment after the last key
+	["(function () { const i = document.querySelector('[data-appset=sectorFrom]'); if (!i) return; i.focus(); i.value = '75'; i.dispatchEvent(new Event('input', { bubbles: true })); })()"] call blk_fnc_tabletExec;
+	sleep 3.5;
+	_typed = _typed && {(_radar getVariable ["PTF_GATOR_sector", []]) isEqualTo [75, 200]};
 	diag_log "GATORTEST SNAP console_typed";
 	["con:full:scan:"] call blk_fnc_tabletMessage;
 	sleep 1;
-	["the console's buttons, steppers and a typed bearing work the radar", _clicked && {_typed} && {_radar getVariable ["PTF_GATOR_mode", ""] == "full"},
+	["the console's buttons, steppers and typed bearings (Enter, or none) work the radar", _clicked && {_typed} && {_radar getVariable ["PTF_GATOR_mode", ""] == "full"},
 		format ["clicked %1, typed %2, now %3", _clicked, _typed, _radar getVariable ["PTF_GATOR_sector", []]]] call _check;
 	// walking away closes it
 	player setPosATL (_computer modelToWorld [0, -6, 0]);

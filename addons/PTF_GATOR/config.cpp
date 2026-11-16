@@ -55,6 +55,7 @@ class CfgFunctions
 			class cbImpact {};
 			class cbErase {};
 			class satcom {};
+			class cable {};
 			class task {};
 			class halt {};
 			class gatorLayer {};

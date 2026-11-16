@@ -123,9 +123,15 @@ turntable. So the hum comes from wherever the antenna faces.
 ## Fuel, sling loading, towing
 
 - **Fuel:** the generator burns the trailer's own fuel (`fn_fuelLoop.sqf`): 20 L, 25
-  minutes (`ptf_gator_fuelMinutes`). ACE refuels it, with the hook at the generator's left
-  side. It won't start dry, and stops itself when the tank runs out. "Check fuel" on the
-  generator gives the tank and the minutes left (`fn_fuelReport.sqf`).
+  minutes (`ptf_gator_fuelMinutes`). It won't start dry, and stops itself when the tank runs
+  out. "Check fuel" on the generator gives the tank and the minutes left (`fn_fuelReport.sqf`).
+- **Refuelling** is plain ACE: take a truck's nozzle or pick up a jerrycan, look at the trailer
+  from within 2 m and left-click (there is no menu entry for it); it fills by itself, about
+  1 L a second. ACE takes one nozzle per vehicle. A jerrycan that runs dry stays plugged in,
+  and the next can won't go in until someone Disconnects the empty one. Running or stopped,
+  legs up or down, makes no difference. (`ace_refuel_hooks` only matters on fuel sources.)
+  Tested by `test/refuel.Stratis`: a truck twice, two cans in a row with it set up and running,
+  and an empty can blocking the next.
 - **No storage:** no ACE cargo and no inventory, by the owner's call.
 - **Fuel fire:** a wrecked tank (`HitFuel`) with fuel in it catches fire (`fn_fuelLoop.sqf`).
   A full tank pours out and burns in 45 s, charring the generator, body and antenna as it
@@ -260,10 +266,14 @@ indirect fire back to where it came from. Numbers are in `script_gator.hpp` (`CB
   12 impact points.
 - **The network** (`fn_satcom.sqf`, `fn_cbPublish.sqf`): a G/ATOR's tracks reach the tablets
   only through its SATCOM antenna. "Take out SATCOM antenna" puts it (the TFW RF-3080 where
-  loaded, else a vanilla satellite antenna: `ptf_gator_satcomClasses`) past the player on the
-  side away from the trailer, the cable already run to it from the box's side (a real rope,
-  TFAR's black intercom wire where TFAR is loaded), and turns the player away from the trailer
-  straight into an ACE carry with it (a drag put it inside the box). Wherever they set
+  loaded, else a vanilla satellite antenna: `ptf_gator_satcomClasses`) straight into the
+  player's arms, an ACE carry, and turns them away from the trailer (`fn_cable.sqf`). It is
+  attached to them the moment it's made, at its resting height, so it never stands on its own:
+  made on the ground it was inside the box or under a raised deck, and in multiplayer it fell
+  before the player had it. Its cable (a real rope, TFAR's black intercom wire where TFAR is
+  loaded) runs from the box's side and pays out as they walk, never more than 2 m longer than
+  the way to it (a full-length cable piled up at the trailer, where people tangled in its
+  physics). Carried past the end, it pulls out. Wherever they set
   it down within the cable's 40 m (`ptf_gator_cableLength`), the G/ATOR is on the network;
   closer than 3 m it hears the radar's own interference instead, and the player who set it
   down is told. While it's being dragged or carried it's off the network. A cable that
@@ -323,7 +333,8 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
 
 - **The operator computer** (`fn_computer.sqf`): "Take out operator computer" on the trailer
   puts a rugged laptop (the first of `ptf_gator_computerClasses` loaded) into the player's
-  hands, an ACE carry, on a 20 m cable (`ptf_gator_computerCable`). Set down within reach,
+  hands, an ACE carry, on a 20 m cable (`ptf_gator_computerCable`), taken out and paid out as
+  the SATCOM antenna is. Set down within reach,
   it's connected (`PTF_GATOR_console`). Out of reach, towed, or stowed, it isn't, and the
   G/ATOR goes back to automatic. The trailer won't hitch until it's stowed.
 - **Automatic and manual**: automatic (the default) turns all the way round and transmits,
@@ -336,8 +347,9 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
   Radar layer, and this G/ATOR's own picture whether it's on the
   network or not. The panel beside it keeps its controls in view, one compact row each:
   Control (Auto, Manual), Emissions (Transmit, Silent), Scan (Full turn, Sector), the
-  sector's edges (Sweep from, Sweep to: 15 degrees a click, or a bearing typed in) and the
-  incoming alarm. Their
+  sector's edges (Sweep from, Sweep to: 15 degrees a click, or a bearing typed in, which goes
+  in on Enter, on leaving the box or a moment after the last key), Turn sector (the whole
+  sector 5 degrees left or right, its width kept) and the incoming alarm. Their
   explanations are tooltips. Its lists scroll beneath: Counter-battery (Look closer, Erase,
   Clear all) and Air (Identify). A row with a place centres the map on it. Its status bar
   calls out a missile inbound, traced rounds coming down (how many, seconds to the first)
@@ -358,7 +370,8 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
   (`PTF_GATOR_sector`, clockwise from one to the other, 30 degrees across at least; at first
   90 degrees round where it faces), at the antenna's turning speed. Rounds and aircraft
   outside it go unseen, inside it each round's miss is halved, and the fix grows more slowly.
-  The map draws the sector out to where it hears rounds (2 km, less jammed), with its beam
+  The map draws the sector only (not the full circle), out to where it hears rounds (2 km,
+  less jammed) and faintly to where it traces them back from (10 km), with its beam
   (20 degrees, Billet's `beam` shape, out to the same reach) panning across all of it.
 - **Look closer** (a dwell): the array turns to one firing point for 5 s and nothing else is
   watched meanwhile. Its miss halves, or, if jamming made it up, it is shown false and goes.
@@ -367,7 +380,9 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
 - **What it sees** (`fn_cbFired.sqf`, `fn_radarLoop.sqf`): counter-battery traces artillery,
   mortar and rocket rounds: ammo the artillery computer can lock, anything a vehicle with an
   artillery computer fires, and any shell or rocket lobbed at 20 degrees or more with at least
-  20 indirect damage (a hand-held mortar, an improvised rocket; 40 mm grenades have 8). The
+  20 indirect damage (a hand-held mortar, an improvised rocket; 40 mm grenades have 8). It
+  also traces a man's launcher fired flat (an RPG, a recoilless or a guided missile: rocket or
+  missile ammo from a man), shown as an infantry firing point. The
   Air list adds what the vanilla radar misses: small drones within 3 km in its line of sight
   ("Small UAS", unknown until identified), and missiles in flight within 8 km (red arrows on
   the map, top of the list). Each costs a cached hashmap lookup per shot, and one
@@ -388,10 +403,15 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
   radar shrinks to 4 km, and it now and then shows a ghost firing point. Jammed at all, it is
   off the network (no tracks to the tablets) and off the data link. It hears any jammer within
   15 km while it is up and powered, silent or not, but finding its bearing is the operator's
-  work: in manual, a sector swept over the jammer and held still for 10 s gives a strobe (a
-  bearing line on the tablet), off by up to the sector's width over 15 (2 degrees in a 30
-  degree sector). The console says whether the jammer is in the sector, and counts down. A
-  full turn only hears that one is there. Strobes from two places cross on the jammer.
+  work. In manual, sweeping a sector, the console reads the strongest jammer's signal (0 to
+  100): strongest with the jammer on the sector's centre line, nothing outside the sector,
+  stronger the narrower the sector (a near-full turn reads about a fifth), a little weaker
+  from farther off, and never quite steady. The operator narrows the sector and turns it to
+  the strongest signal. At 90 degrees or narrower, with the jammer well inside (the signal at
+  least half its best) and held still for 8 s, it gives a strobe (a bearing line on the
+  tablet) along the sector's centre line, give or take what the signal says it's off by. So
+  the bearing is only as good as the centring. The console says what to do next and counts
+  down. A full turn only hears that one is there. Strobes from two places cross on the jammer.
   Transmitting, the G/ATOR is
   itself a CROWS spectrum signal (`crowsEW_spectrum_addBeacon`, 990 to 1089 MHz), so the
   enemy, or friendly EW practising, can find it with a spectrum device.

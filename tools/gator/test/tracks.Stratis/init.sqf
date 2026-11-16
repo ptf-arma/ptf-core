@@ -109,4 +109,38 @@ sleep 3;
 diag_log "GATORTEST SNAP tr_erased";
 sleep 3;
 ["auto"] call blk_fnc_tabletToggle;
+
+// On a raised deck (a cargo HQ's roof, 25 m off): the antenna and the computer taken out up there
+// are in hand, stay on the deck when set down, and their cables are only a little longer than
+// the way to them.
+[_radar, "stow"] call PTF_GATOR_fnc_satcom;
+private _hq = createVehicle ["Land_Cargo_HQ_V1_F", _radar modelToWorld [-25, 0, 0], [], 0, "CAN_COLLIDE"];
+_hq setDir getDir _radar;
+sleep 1;
+private _hqAt = getPosASL _hq;
+private _hits = lineIntersectsSurfaces [_hqAt vectorAdd [0, 0, 30], _hqAt, player, objNull, true, 1, "GEOM", "NONE"];
+private _roof = [(_hqAt select 2) + 6, (_hits param [0, [[0, 0, 0]]]) select 0 select 2] select (_hits isNotEqualTo []);
+player setPosASL [_hqAt select 0, _hqAt select 1, _roof + 0.1];
+sleep 1.5;
+private _deck = [];
+{
+	_x params ["_fnc", "_var", "_ropeVar"];
+	[_radar, "out", player] call _fnc;
+	sleep 3;
+	private _thing = _radar getVariable [_var, objNull];
+	private _held = !isNull _thing && {attachedTo _thing isEqualTo player} && {player getVariable ["ace_dragging_isCarrying", false]};
+	private _rope = _radar getVariable [_ropeVar, objNull];
+	// past the cable's end (the computer's is 20 m) it has pulled out, as it should
+	private _spare = call {
+		if ((_thing distance _radar) > getNumber (configOf _radar >> ["ptf_gator_cableLength", "ptf_gator_computerCable"] select (_var == "PTF_GATOR_computer")) - 1) exitWith {[0, 99] select (!isNull _rope)};
+		[99, (ropeLength _rope) - (_thing distance _radar)] select (!isNull _rope)
+	};
+	[player, _thing] call ace_dragging_fnc_dropObject_carry;
+	sleep 3;
+	_deck pushBack [_var, _held, (((getPosASL _thing) select 2) - _roof) toFixed 2, _spare toFixed 1];
+	[_radar, "stow"] call _fnc;
+	sleep 1;
+} forEach [[PTF_GATOR_fnc_satcom, "PTF_GATOR_antenna", "PTF_GATOR_cable"], [PTF_GATOR_fnc_computer, "PTF_GATOR_computer", "PTF_GATOR_computerRope"]];
+["on a raised deck: in hand, set down on the deck, cable paid out", _deck findIf {!(_x select 1) || {parseNumber (_x select 2) < -0.5} || {parseNumber (_x select 3) > 4}} < 0,
+	format ["roof at %1: %2", _roof toFixed 1, _deck]] call _check;
 diag_log "GATORTEST DONE";

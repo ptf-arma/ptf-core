@@ -19,7 +19,7 @@
  * 1: Where it was fired from, ASL <ARRAY>
  * 2: Ammo class <STRING>
  * 3: The round's key, for its impact <STRING>
- * 4: What fired it, "mortar" or "artillery" <STRING>
+ * 4: What fired it, "mortar", "artillery" or "launcher" <STRING>
  * 5: Where it will come down, [x, y] (default: [], not known) <ARRAY>
  * 6: In how many seconds <NUMBER>
  *
