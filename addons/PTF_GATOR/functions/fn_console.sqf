@@ -41,6 +41,8 @@ if (_cmd == "action") exitWith {
 		case "erase": {[_action, _key] call _do};
 		case "sectorFrom";
 		case "sectorTo": {[_action, _value] call _do};
+		case "panL": {["pan", "-5"] call _do};
+		case "panR": {["pan", "5"] call _do};
 		default {[_action] call _do};
 	};
 	nil
@@ -107,20 +109,26 @@ if (_manual && {_linked}) then {
 			["note", format ["The sector's left edge. It sweeps clockwise from here to the right edge, %1° across at least.", SECTOR_MIN]]]] call _block);
 		_blocks pushBack (["stepper", [["id", "sectorTo"], ["label", "Sweep to"], ["value", _to], ["step", 15], ["wrap", 360], ["unit", "°"], ["typed", true],
 			["note", "The sector's right edge."]]] call _block);
+		_blocks pushBack (["buttons", [["id", "pan"], ["label", "Turn sector"],
+			["note", "Turns the whole sector 5° at a time, its width kept: for centring it on a jammer's signal."],
+			["buttons", [["panL", "5° left"] call _button, ["panR", "5° right"] call _button]]]] call _block);
 	};
 };
 // A jammer heard: finding its bearing is the operator's work (PTF_GATOR_fnc_operatorTick).
-(_radar getVariable ["PTF_GATOR_dfShow", [0, 0, -1]]) params ["_heard", "_inSector", "_left"];
+(_radar getVariable ["PTF_GATOR_dfShow", [0, -1, -3]]) params ["_heard", "_signal", "_df"];
 if (_heard > 0) then {
 	private _strobe = (_radar getVariable ["PTF_GATOR_strobes", []]) param [count (_radar getVariable ["PTF_GATOR_strobes", []]) - 1, []];
+	private _reading = format ["Jammer signal %1 of 100. ", _signal];
 	private _text = call {
-		if (!_manual || {!_sector}) exitWith {"Jammer heard, bearing unknown. To find it: manual, Sector, and sweep a sector over it. The narrower the sector, the sharper the bearing."};
-		if (_inSector == 0) exitWith {"Jammer heard, but not in this sector. Move or widen the sector to find it."};
-		if (_left > 0) exitWith {format ["Jammer in this sector: bearing in %1 s. Hold the sector still.", _left]};
-		format ["Bearing taken%1. Narrow the sector round it for a sharper one; bearings from two places cross on the jammer.",
+		if (!_manual || {!_sector} || {_signal < 0}) exitWith {"Jammer heard, bearing unknown. To find it: manual, Sector, then narrow the sector and turn it to the strongest signal."};
+		if (_df == -3) exitWith {"Jammer heard, no signal in this sector. Widen or turn the sector to find it."};
+		if (_df == -1) exitWith {_reading + format ["Narrow the sector to %1° or less to take a bearing, keeping the signal strong.", DF_WIDE]};
+		if (_df == -2) exitWith {_reading + "Off centre: turn the sector toward it until the signal peaks."};
+		if (_df > 0) exitWith {_reading + format ["On it: bearing in %1 s. Hold the sector still.", _df]};
+		_reading + format ["Bearing taken%1. Narrow and centre the sector for a sharper one; bearings from two places cross on the jammer.",
 			["", format [": %1° ±%2°", round (_strobe select 1), round (_strobe param [4, 2])]] select (_strobe isNotEqualTo [])]
 	};
-	_blocks pushBack (["note", [["text", _text], ["tone", ["acc", "bad"] select (_inSector > 0 && {_left > 0})]]] call _block);
+	_blocks pushBack (["note", [["text", _text], ["tone", ["acc", "bad"] select (_df > 0)]]] call _block);
 };
 _blocks pushBack (["toggle", [["id", "alarm"], ["label", "Alarm"], ["on", _radar getVariable ["PTF_GATOR_alarm", false]],
 	["note", "The incoming alarm: sounds at the trailer while traced rounds are in the air."]]] call _block);

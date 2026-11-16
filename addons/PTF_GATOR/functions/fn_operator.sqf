@@ -19,6 +19,7 @@
  *                         usual, and the enemy's fix grows more slowly
  *   "sectorFrom", "sectorTo" (key: a bearing)  the sector's edges, clockwise from one to the
  *                         other; at least SECTOR_MIN degrees apart
+ *   "pan" (key: degrees)  the whole sector turned, clockwise for more than 0, its width kept
  *   "dwell" (key: track)  the array turns to stare at one counter-battery track for DWELL_TIME
  *                         seconds: its error comes down by DWELL_GAIN, or, if jamming made
  *                         it up, it is shown to be false and goes. Nothing else is watched
@@ -68,7 +69,7 @@ private _inSector = {
 };
 
 // The radar's own controls are the operator's, in manual only.
-if (_cmd in ["silent", "transmit", "full", "sector", "sectorFrom", "sectorTo", "dwell", "iff"] && {!(_radar getVariable ["PTF_GATOR_manual", false])}) exitWith {
+if (_cmd in ["silent", "transmit", "full", "sector", "sectorFrom", "sectorTo", "pan", "dwell", "iff"] && {!(_radar getVariable ["PTF_GATOR_manual", false])}) exitWith {
 	["Automatic control: take manual control at the operator computer first."] call _tell;
 };
 
@@ -126,6 +127,12 @@ switch (_cmd) do {
 			[format ["A sector is %1 degrees across at least.", SECTOR_MIN]] call _tell;
 		};
 		_radar setVariable ["PTF_GATOR_sector", [_from, _to], true];
+	};
+	case "pan": {
+		// the whole sector turned, its width kept
+		private _by = round parseNumber _key;
+		(_radar getVariable ["PTF_GATOR_sector", [0, 90]]) params ["_from", "_to"];
+		_radar setVariable ["PTF_GATOR_sector", [(_from + _by + 360) % 360, (_to + _by + 360) % 360], true];
 	};
 	case "dwell";
 	case "iff": {

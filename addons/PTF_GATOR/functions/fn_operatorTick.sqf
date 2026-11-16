@@ -37,7 +37,7 @@ private _sector = _radar getVariable ["PTF_GATOR_mode", "full"] == "sector";
 // --- Jamming (CROWS) ------------------------------------------------------------------------------
 private _jam = 0;
 private _strobes = (_radar getVariable ["PTF_GATOR_strobes", []]) select {_now - (_x select 2) < JAM_STROBE_LIFE};
-// [its netId, its true bearing] for each jammer it hears: the crew isn't told the bearing, they find it
+// [its netId, its true bearing, how far] for each jammer it hears: the crew isn't told the bearing, they find it
 private _heard = [];
 private _jamMap = missionNamespace getVariable ["crowsEW_main_jamMap", createHashMap];
 {
@@ -45,46 +45,65 @@ private _jamMap = missionNamespace getVariable ["crowsEW_main_jamMap", createHas
 	if (_on && {alive _jammer}) then {
 		private _d = _jammer distance2D _radar;
 		_jam = _jam max (linearConversion [_effective, _effective + (_falloff max 1), _d, 1, 0, true]);
-		if (_receiving && {_d < JAM_HEAR}) then {_heard pushBack [netId _jammer, _radar getDir _jammer]};
+		if (_receiving && {_d < JAM_HEAR}) then {_heard pushBack [netId _jammer, _radar getDir _jammer, _d]};
 	};
 } forEach _jamMap;
 
-// Direction finding, by hand: in manual, sweeping a sector with a jammer in it, it takes a
-// bearing once the sector has stayed put DF_TIME seconds, as sharp as the sector is narrow
-// (its width over DF_SHARP). A new sector starts again. A full turn only hears that one is there.
-// PTF_GATOR_df: netId -> [the sector, when it went in it (or -1, its bearing taken)]
+// Direction finding, by hand. In manual, sweeping a sector, the receiver reads each jammer's
+// signal (0 to 100): strongest with the jammer on the sector's centre line, falling away to
+// nothing at its edges, and stronger the narrower the sector (a whole turn barely hears it),
+// a little weaker from farther off, and never quite steady. The operator narrows the sector and
+// pans it to the strongest signal. A sector no wider than DF_WIDE, with the jammer well inside
+// it (the signal at least half what it would be dead centre) and held still DF_TIME seconds,
+// takes a bearing: the sector's centre line, give or take what the signal says it's off by.
+// So it's only as good as the operator's centring. A new sector starts the count again.
+// PTF_GATOR_df: netId -> [the sector, when it was found well inside it (or -1, its bearing taken)]
 private _df = _radar getVariable ["PTF_GATOR_df", createHashMap];
-private _inSector = [];
-private _waits = [];
-private _taken = false;
+private _holding = [];
+// the strongest jammer's: [signal (-1 none read), state (seconds to a bearing, 0 taken, -1 the
+// sector too wide, -2 off centre, -3 not in the sector)]
+private _best = [-1, -3];
 if (_receiving && {_sector} && {_radar getVariable ["PTF_GATOR_manual", false]}) then {
 	(_radar getVariable ["PTF_GATOR_sector", [0, 90]]) params ["_from", "_to"];
 	private _span = ((_to - _from) + 360) % 360;
+	if (_span == 0) then {_span = 360};
+	private _half = _span / 2;
+	private _mid = (_from + _half) % 360;
+	private _focus = linearConversion [360, SECTOR_MIN, _span, 0.2, 1, true];
 	{
-		_x params ["_id", "_bearing"];
-		if ((((_bearing - _from) + 360) % 360) > _span) then {continue};
-		_inSector pushBack _id;
-		private _was = _df getOrDefault [_id, []];
-		if (_was isEqualTo [] || {(_was select 0) isNotEqualTo [_from, _to]}) then {
-			_df set [_id, [[_from, _to], _now]];
-			_was = [[_from, _to], _now];
+		_x params ["_id", "_bearing", "_d"];
+		private _off = abs ((((_bearing - _mid) + 540) % 360) - 180);
+		private _beam = [0, 1 - (_off / _half) ^ 2] select (_off < _half);
+		private _full = 100 * _focus * linearConversion [0, JAM_HEAR, _d, 1, 0.6, true];
+		private _signal = round (0 max (100 min (_full * _beam + random 6 - 3)));
+		private _state = call {
+			if (_beam <= 0) exitWith {-3};
+			if (_span > DF_WIDE) exitWith {-1};
+			if (_beam < 0.5) exitWith {-2};
+			_holding pushBack _id;
+			private _was = _df getOrDefault [_id, []];
+			if (_was isEqualTo [] || {(_was select 0) isNotEqualTo [_from, _to]}) then {
+				_was = [[_from, _to], _now];
+				_df set [_id, _was];
+			};
+			if ((_was select 1) < 0) exitWith {0};
+			private _wait = DF_TIME - (_now - (_was select 1));
+			if (_wait > 0) exitWith {ceil _wait};
+			// the centre line, and how far off it the signal says the jammer is
+			private _err = 2 max round (_half * sqrt (0 max (1 - _signal / _full)) + 1);
+			_strobes = _strobes select {!((_x select 3) == _id && {((_x select 0) distance2D _at) < 200})};
+			_strobes pushBack [[_at select 0, _at select 1], _mid, _now, _id, _err];
+			_df set [_id, [[_from, _to], -1]];
+			0
 		};
-		if ((_was select 1) < 0) then {_taken = true; continue};
-		private _wait = DF_TIME - (_now - (_was select 1));
-		if (_wait > 0) then {_waits pushBack ceil _wait; continue};
-		// a bearing: it replaces the one taken from near here on this jammer
-		private _err = (_span / DF_SHARP) max 1;
-		_strobes = _strobes select {!((_x select 3) == _id && {((_x select 0) distance2D _at) < 200})};
-		_strobes pushBack [[_at select 0, _at select 1], ((_bearing + random (2 * _err) - _err) + 360) % 360, _now, _id, _err];
-		_df set [_id, [[_from, _to], -1]];
-		_taken = true;
+		if (_signal > (_best select 0)) then {_best = [_signal, _state]};
 	} forEach _heard;
 };
-{if !(_x in _inSector) then {_df deleteAt _x}} forEach keys _df;
+{if !(_x in _holding) then {_df deleteAt _x}} forEach keys _df;
 _radar setVariable ["PTF_GATOR_df", _df];
-// for its console: [jammers heard, how many in the sector, seconds to a bearing (0 taken, -1 none in it)]
-private _dfShow = [count _heard, count _inSector, [[-1, 0] select _taken, selectMin _waits] select (_waits isNotEqualTo [])];
-if (_dfShow isNotEqualTo (_radar getVariable ["PTF_GATOR_dfShow", [0, 0, -1]])) then {_radar setVariable ["PTF_GATOR_dfShow", _dfShow, true]};
+// for its console: [jammers heard, the strongest signal, its state]
+private _dfShow = [count _heard] + _best;
+if (_dfShow isNotEqualTo (_radar getVariable ["PTF_GATOR_dfShow", [0, -1, -3]])) then {_radar setVariable ["PTF_GATOR_dfShow", _dfShow, true]};
 if (_strobes isNotEqualTo (_radar getVariable ["PTF_GATOR_strobes", []])) then {_radar setVariable ["PTF_GATOR_strobes", _strobes, true]};
 _jam = (round (_jam * 20)) / 20;
 private _wasJam = _radar getVariable ["PTF_GATOR_jam", 0];

@@ -5,8 +5,9 @@
  * either ammo the artillery computer can lock (artilleryLock) or a shell, rocket or
  * submunition fired by a vehicle with an artillery computer (artilleryScanner), or lobbed: a
  * shell or rocket big enough (LOB_HIT) launched steeply (LOB_MIN), as a hand-held mortar or an
- * improvised rocket is. Each one is watched in flight on the machine that fired it (its
- * projectile is local there, PTF_GATOR_fnc_cbWatch). The moment it is within CB_DETECT metres
+ * improvised rocket is. And a man's launcher, fired flat: an RPG, a recoilless rifle's round or
+ * a guided missile, traced back to where it was fired from. Each one is watched in flight on
+ * the machine that fired it (its projectile is local there, PTF_GATOR_fnc_cbWatch). The moment it is within CB_DETECT metres
  * of a transmitting G/ATOR and in its line of sight, in the air, that G/ATOR traces it
  * (PTF_GATOR_fnc_cbReport on the server); where it lands follows when it does
  * (PTF_GATOR_fnc_cbImpact).
@@ -16,8 +17,8 @@
  * for the radars to show (PTF_GATOR_fnc_radarLoop).
  *
  * It costs one variable check per shot while no G/ATOR is transmitting, and two or three
- * hashmap lookups per shot otherwise (is it indirect fire, or big enough to be if lobbed; is it
- * a guided missile, for PTF_GATOR_fnc_armWatch).
+ * hashmap lookups per shot otherwise (is it indirect fire, or big enough to be if lobbed, or a
+ * launcher's; is it a guided missile, for PTF_GATOR_fnc_armWatch).
  *
  * Arguments: the FiredBIS event's
  *
@@ -64,14 +65,21 @@ private _lobbed = !_indirect && {_cache getOrDefaultCall ["l:" + _ammo, {
 	toLowerANSI getText (_config >> "simulation") in ["shotshell", "shotrocket", "shotsubmunitions"]
 		&& {getNumber (_config >> "indirectHit") >= LOB_HIT}
 }, true]} && {((vectorDir _projectile) select 2) >= sin LOB_MIN};
-if (!_indirect && {!_lobbed}) exitWith {};
+// A man's launcher: an RPG, a recoilless or a guided missile, fired flat at what he can see.
+private _launcher = !_indirect && {!_lobbed} && {_unit isKindOf "CAManBase"} && {_cache getOrDefaultCall ["r:" + _ammo, {
+	toLowerANSI getText (configFile >> "CfgAmmo" >> _ammo >> "simulation") in ["shotrocket", "shotmissile"]
+}, true]};
+if (!_indirect && {!_lobbed} && {!_launcher}) exitWith {};
 
 // [projectile, fired from (ASL), fired at, ammo, G/ATORs that saw it, last seen (ASL), its key, mortar or artillery]
 private _flights = missionNamespace getVariable ["PTF_GATOR_cbFlights", []];
 private _n = (missionNamespace getVariable ["PTF_GATOR_cbShot", 0]) + 1;
 missionNamespace setVariable ["PTF_GATOR_cbShot", _n];
 _flights pushBack [_projectile, getPosASL _unit, CBA_missionTime, _ammo, [], getPosASL _projectile, format ["%1.%2", clientOwner, _n],
-	["artillery", "mortar"] select (_unit isKindOf "StaticMortar" || {_lobbed && {_unit isKindOf "CAManBase"}})];
+	call {
+		if (_launcher) exitWith {"launcher"};
+		["artillery", "mortar"] select (_unit isKindOf "StaticMortar" || {_lobbed && {_unit isKindOf "CAManBase"}})
+	}];
 missionNamespace setVariable ["PTF_GATOR_cbFlights", _flights];
 if (missionNamespace getVariable ["PTF_GATOR_cbWatching", false]) exitWith {};
 missionNamespace setVariable ["PTF_GATOR_cbWatching", true];

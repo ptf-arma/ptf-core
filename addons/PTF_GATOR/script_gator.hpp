@@ -62,11 +62,12 @@
 #define JAM_STROBE_LIFE 600
 #define JAM_REACH 0.4
 #define JAM_ERROR 2.5
-// Finding a jammer's bearing: a G/ATOR in manual, sweeping a sector the jammer is in, takes a
-// bearing after DF_TIME seconds, off by up to the sector's width over DF_SHARP (2 degrees in
-// a 30 degree sector). In a full turn it only hears that there is one.
-#define DF_TIME 10
-#define DF_SHARP 15
+// Finding a jammer's bearing: a G/ATOR in manual, sweeping a sector, reads the jammer's signal;
+// a sector no wider than DF_WIDE degrees, well centred on it and held DF_TIME seconds, takes a
+// bearing along its centre line (PTF_GATOR_fnc_operatorTick). In a full turn it only hears
+// that there is one.
+#define DF_TIME 8
+#define DF_WIDE 90
 // What the game's radar misses: small drones (scripted, within UAS_RANGE m in its line of
 // sight) and missiles in flight (within MISSILE_RANGE m), shown with the aircraft.
 #define UAS_RANGE 3000
