@@ -54,7 +54,7 @@
 #define FIX_GOOD 0.6
 #define FIX_LOCKED 0.85
 #define FIX_MISS [500, 100, 25]
-// Splash warnings: players this close (m) to where a traced round will land are warned.
+// Predicted splashes: the danger ring drawn round each on the tablet map (m).
 #define SPLASH_WARN 200
 // CROWS jammers: a G/ATOR hears one this far off (m), its strobe lasts (s), and at full
 // jamming its reach shrinks to JAM_REACH of usual and its error grows by JAM_ERROR times.

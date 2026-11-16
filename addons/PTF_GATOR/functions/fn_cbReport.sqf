@@ -100,24 +100,13 @@ if (_range > CB_TRACE) then {
 };
 _radar setVariable ["PTF_GATOR_cbTracks", _tracks];
 // Where it will come down (a little off: the radar's prediction): drawn on the tablets until
-// then, and everyone within SPLASH_WARN metres of it is warned, if this G/ATOR is on the network.
+// then. (No spoken warning: the incoming alarm is the warning.)
 if (_splash isNotEqualTo []) then {
 	_splash = _splash vectorAdd [random 30 - 15, random 30 - 15];
 	private _lands = _now + _eta;
 	private _splashes = (_radar getVariable ["PTF_GATOR_splashes", []]) select {(_x select 1) > _now - 5};
 	_splashes pushBack [_splash, _lands];
 	_radar setVariable ["PTF_GATOR_splashes", _splashes, true];
-	if (!isNull (_radar getVariable ["PTF_GATOR_satcom", objNull]) && {_eta > 2}) then {
-		// once every eight seconds a player at most, however many rounds are coming
-		private _warned = missionNamespace getVariable ["PTF_GATOR_warnedAt", createHashMap];
-		missionNamespace setVariable ["PTF_GATOR_warnedAt", _warned];
-		{
-			if (_x distance2D _splash < SPLASH_WARN && {_now >= _warned getOrDefault [getPlayerUID _x, 0]}) then {
-				_warned set [getPlayerUID _x, _now + 8];
-				[_splash, _lands] remoteExecCall ["PTF_GATOR_fnc_splashWarn", _x];
-			};
-		} forEach allPlayers;
-	};
 };
 // The incoming alarm, where its crew switched it on: from now until shortly after the last
 // traced round lands (PTF_GATOR_fnc_cbImpact), ALARM_HOLD seconds at most without news.

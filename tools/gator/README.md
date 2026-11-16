@@ -210,6 +210,15 @@ it back to where it stood on its wheels, then lets it go.
   `HitRadar` (array), and the wheels `HitLF2Wheel` and `HitRF2Wheel`. They live in the hit
   points LOD (`HIT_POINTS` in `build_model.py`), and ACE repairs them. A wrecked generator
   won't start and stalls if running. A wrecked antenna stops turning.
+- **Damage log** (`fn_damageLog.sqf`): the owner's RPT (usually the server's) gets a
+  `PTF_GATOR damage` line for every hit that raises a hit point by 0.1 or more (any hit at
+  all on the fuel tank), every hard knock (PhysX contact over 300), the fuel fire starting,
+  and its destruction. Each line gives the cause (shooter, projectile or vehicle) and its
+  state: grid, speed, which way up, array and leg phases, tow vehicle, owner, fuel. Added
+  after a unit saw one catch fire unprovoked in travel mode, unhitched, with what looked
+  like a one-frame flash of the deployed pose. That wasn't reproduced: multiplayer hitching
+  and towing, the fire, and its destruction all keep the pose. A truck forced back into
+  the tongue at 10 km/h does climb it and tip the trailer over, but does no damage.
 - **Wheels:** a shot-off or removed wheel disappears (a hide animation on the wheel's bone,
   from the hit point's damage). ACE can remove and replace them. The wheels' hit points are
   kept out of the wheel bones in the hit points LOD: hiding the bone pulled the hit point
@@ -389,9 +398,9 @@ from the radar loop. Fire control ("send to fires") waits for the M777 project.
   `nearEntities` a second per transmitting G/ATOR.
 - **Splash warnings**: a traced round's impact is predicted on the gun's machine (its flight
   run on under gravity and its ammo's air friction, once, when traced) and drawn on the map
-  with a countdown. Everyone within 200 m of it hears Arma's "incoming" call on their radio
-  if the G/ATOR is on the network: no popup, nothing on their screen. The countdown is on
-  the operator console.
+  with a countdown and a 200 m ring. The countdown is also on the operator console. There is
+  no spoken warning (Arma's announcer "incoming" was removed at the owner's request: odd,
+  and heard far too far off); the incoming alarm is the warning.
 - **Anti-radiation missiles** (`fn_armWatch.sqf`, `fn_armReport.sqf`): any guided missile
   whose target is a G/ATOR's sensor is watched where it was fired. The trailer beeps Arma's
   missile warning, the console's status bar and the tablet show its bearing and seconds to impact. Going silent

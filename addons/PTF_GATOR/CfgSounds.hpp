@@ -19,14 +19,6 @@ class CfgSounds
 		sound[] = {"\A3\Sounds_F\vehicles\air\noises\alarm_locked_by_missile_1", 3, 1, 300};
 		titles[] = {};
 	};
-	// A traced round coming down near a player (PTF_GATOR_fnc_splashWarn): Arma's own
-	// "incoming" call, on their radio.
-	class PTF_GATOR_incoming
-	{
-		name = "G/ATOR incoming call";
-		sound[] = {"\A3\Dubbing_F_Warlords\announcer\BLUFOR\incoming.ogg", 1.5, 1};
-		titles[] = {};
-	};
 	class PTF_GATOR_gen_start
 	{
 		name = "G/ATOR generator start";
