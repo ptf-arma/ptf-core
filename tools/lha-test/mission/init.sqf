@@ -220,8 +220,20 @@ private _people = [];
 	_people pushBack _man;
 } forEach [["br_light_06", 0], ["br_light_08", 90], ["br_light_10", 180], ["br_light_12", 270]];
 private _brEye = (["br_light_01"] call _floorUnder) vectorAdd [0, 0, 1.7];
+private _brLook = (["br_light_17"] call _floorUnder) vectorAdd [0, 0, 1.2];
+// And a row of four, 6 m in front of the camera: facing it, away, left, right.
+private _fwd = _brEye vectorFromTo _brLook;
+private _side = _fwd vectorCrossProduct [0, 0, 1];
+{
+	private _pos = (_brEye vectorAdd (_fwd vectorMultiply 6)) vectorAdd (_side vectorMultiply ((_forEachIndex - 1.5) * 1.6));
+	private _man = createAgent ["B_Soldier_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+	_man setPosASL [_pos select 0, _pos select 1, (_brEye select 2) - 1.7];
+	_man setDir (((_fwd select 0) atan2 (_fwd select 1)) + 180 + _x);
+	_man disableAI "ANIM";
+	_people pushBack _man;
+} forEach [0, 180, 90, 270];
 _cam camSetPos ASLToAGL _brEye;
-_cam camSetTarget ASLToAGL ((["br_light_17"] call _floorUnder) vectorAdd [0, 0, 1.2]);
+_cam camSetTarget ASLToAGL _brLook;
 _cam camCommit 0;
 sleep 1;
 ["briefing_on"] call _shot;
@@ -229,6 +241,26 @@ sleep 1;
 sleep 1;
 ["briefing_off"] call _shot;
 {deleteVehicle _x} forEach _people;
+
+// The island's corridors (the House group), with someone standing in the light.
+(getArray (configFile >> "CfgVehicles" >> "Peral_LHA" >> "House") select 0) params ["_houseClass", "_housePrefix", "_houseFirst"];
+private _house = [_houseClass] call _part;
+private _housePoint = {params ["_i"]; _house modelToWorldWorld (_house selectionPosition format ["%1%2", _housePrefix, [str _i, "0" + str _i] select (_i < 10)])};
+private _hEye = ([_houseFirst] call _housePoint) vectorAdd [0, 0, -0.9];
+private _hLook = ([_houseFirst + 1] call _housePoint) vectorAdd [0, 0, -1.4];
+private _hMan = createAgent ["B_Soldier_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+private _hPos = _hEye vectorAdd ((_hEye vectorFromTo _hLook) vectorMultiply 3);
+_hMan setPosASL [_hPos select 0, _hPos select 1, (_hEye select 2) - 1.7];
+_hMan setDir ((((_hLook vectorDiff _hEye) select 0) atan2 ((_hLook vectorDiff _hEye) select 1)) + 90);
+_hMan disableAI "ANIM";
+[_h1, "House", 1] call PTF_LHA_fnc_setLights;
+_cam camSetPos ASLToAGL _hEye;
+_cam camSetTarget ASLToAGL _hLook;
+_cam camCommit 0;
+sleep 2;
+["house_on"] call _shot;
+[_h1, "House", 0] call PTF_LHA_fnc_setLights;
+deleteVehicle _hMan;
 
 _cam cameraEffect ["terminate", "back"];
 camDestroy _cam;

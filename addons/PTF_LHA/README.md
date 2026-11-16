@@ -13,7 +13,7 @@ including ones already placed in missions. Without the LHA loaded, the addon ski
 | Hull number 8 instead of a random digit each mission | `PTF_LHA_hullNumber`, painted by `fn_shipInit` |
 | The CIWS mounts and SAM launchers no longer get AI crews, so the ship doesn't shoot at aircraft by itself | `turrets[]` on `LHA_Aft` and `LHA_house_1` |
 | Ship lights show for every player, including players who join later | light switch actions call `fn_setLights` / `fn_localLights` |
-| Lit rooms light people from every side. Peral's lights shone only towards the bow, so anyone facing aft was a black silhouette against the glowing walls | `fn_localLights` points each light down and adds ambient fill; values in `PTF_LHA_LightGroups` |
+| People in lit rooms show in their real colours. Peral's lights were bow-facing spots with colour values in the thousands and a 5 m reach, so people came out grey, or black where no light reached, against the glowing walls | `fn_localLights` makes plain white lights that shine every way; intensity, colour and each group's reach in `PTF_LHA_LightGroups` |
 | The two island light switches stay in step | `PTF_LHA_LightGroups` in config.cpp |
 | Light switch names are spelled out properly ("Trun On Lights", "Main Hillway", "Hanger") | `UserActions` displayName |
 | The spawner won't delete a vehicle that has someone aboard to make room for a new one | `fn_spawnerSelectVehicle` replaces `LHA_fnc_lha_spawner_selectVehicle`, then runs Peral's script |
@@ -118,4 +118,5 @@ python tools/lha-test/run.py
 
 It plays the LHA in single player with the full modset and the release build, checks every
 change above, and screenshots the hangar with its lights off and on, and people in the
-briefing room with its lights on and off, into `.hemttout/lha-test/shots`. The check lines start with `LHATEST` in the RPT.
+briefing room with its lights on and off, and someone in an island corridor with its
+lights on, into `.hemttout/lha-test/shots`. The check lines start with `LHATEST` in the RPT.

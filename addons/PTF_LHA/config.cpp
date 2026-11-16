@@ -74,16 +74,16 @@ class CfgFunctions
 class PTF_LHA_LightGroups
 {
 	// Each ceiling light, for every group. Peral's lights were half-sphere spots
-	// pointing towards the bow, with no ambient term: anyone facing aft, or aft of a
-	// light, was lit by nothing but the glowing night walls and showed as a black
-	// silhouette. These point straight down from the ceiling, so the half sphere
-	// covers the whole room below, and add an ambient fill that lights every side.
-	intensity = 0.2;
-	color[] = {2500, 4000, 6000};
-	ambient[] = {500, 800, 1200};
+	// facing the bow, with colour values in the thousands and a 5 m reach. People
+	// came out grey where they were lit, and black wherever no light reached, against
+	// walls that glow on their own (the night material). These shine every way, in a
+	// plain white with a normal intensity, and reach far enough to cover each room
+	// (measured in game with tools/lha-test).
+	intensity = 1000;
+	color[] = {1, 0.95, 0.9};
 	class House
 	{
-		range = 5;
+		range = 8;
 		switches[] = {{"LHA_house_1", "lvl1_lights_swich"}, {"LHA_house_2", "h_light_swich"}};
 	};
 	class HangerLVL1
@@ -98,12 +98,12 @@ class PTF_LHA_LightGroups
 	};
 	class StairCase
 	{
-		range = 5;
+		range = 8;
 		switches[] = {{"LHA_house_2", "mh_light_swich"}};
 	};
 	class BriefingRoom
 	{
-		range = 5;
+		range = 12;
 		switches[] = {{"LHA_house_2", "br_light_swich"}};
 	};
 };
