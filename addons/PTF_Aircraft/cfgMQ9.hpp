@@ -18,6 +18,14 @@ class PTF_MQ9 : USAF_MQ9
    LESH_WheelOffset[] = {0.35,0};
    AL_canBeMoved = 1;
    AL_CraneAttachpoint[] = {0,3.5,0.45};
+   // Inherits USAF_MQ9's EventHandlers (so CBA's XEH entry and `fired` stay)
+   // and replaces only `init`. USAF's init.sqf starts its own external fuel
+   // scripts, which burn the pods on a timer and stack one drain loop per
+   // machine in MP; PTF_fnc_mq9ExtFuel (CfgEventHandlers.hpp) does it instead.
+   // The tail-code half of USAF's init.sqf is kept here.
+   class EventHandlers : EventHandlers {
+      init = "if (!is3DEN) then {[_this select 0] spawn USAF_TailCodes_fnc_aircraftInit}";
+   };
    class ACE_Actions : ACE_Actions {
       class ACE_MainActions : ACE_MainActions {
          class AH1z_Loadouts {

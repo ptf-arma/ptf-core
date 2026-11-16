@@ -26,6 +26,7 @@ PTF_Textures.pbo
 PTF_Utility.pbo
 PTF_Vehicles.pbo
 PTF_*.pbo (covers all PBO's with PTF prefix)
+Exception: PTF_Aircraft.pbo's data\RTD_CH53E_PTF.xml is a modified RHS file under APL-SA; see the RHS CH-53E entry below.
 
 Note on PTF_Dress.pbo: the textures are PTF's own work under the license above, and the rank sheets carry a hidden PTF watermark.
 They are built on Bohemia Interactive's Art of War parade uniform model and textures, which remain Bohemia's.
@@ -41,6 +42,18 @@ License: https://www.gnu.org/licenses/quick-guide-gplv3.html
 License Basics: You cannot share this PBO. You can head straight to the author at the source link to get permission and download the full version.
 Included PBO files:
 riku_class_a.pbo
+
+======================================================================
+Mod: RHS: United States Armed Forces - CH-53E flight model
+Author: Red Hammer Studios (based on Bohemia Interactive's CH-49 Mohawk RotorLib config)
+Source Link: https://www.rhsmods.org/ (Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=843577117)
+License: Arma Public License Share Alike (APL-SA), https://www.bohemia.net/community/licenses/arma-public-license-share-alike
+(RHS licenses rhsusf_c_ch53.pbo and rhsusf_ch53.pbo under APL-SA; the rest of RHS is CC BY-NC-ND and is not redistributed here.)
+Modified: RTD_CH53E2.xml copied from rhsusf_c_ch53.pbo as data\RTD_CH53E_PTF.xml, with the keyboard/mouse
+pitch-rate controller gain lowered (0.2 -> 0.03) so the PTF CH-53Es stop rocking for mouse pilots on the
+advanced flight model. The modified file remains under APL-SA.
+Includes files:
+PTF_Aircraft.pbo (data\RTD_CH53E_PTF.xml only)
 
 ======================================================================
 Mod: Sling Load Rigging

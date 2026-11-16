@@ -29,6 +29,14 @@ class Extended_Init_EventHandlers {
             init = "[_this select 0] call PTF_fnc_slingloading";
         };
     };
+    // Every machine (JIP included): the loop only acts where the drone is
+    // local, so it follows UAV control from player to player. Subclasses
+    // (SCARFACE, HQ) inherit it.
+    class PTF_MQ9 {
+        class PTF_mq9ExtFuel {
+            init = "[_this select 0] call PTF_fnc_mq9ExtFuel";
+        };
+    };
     // Server only: equipFRIES createVehicle's a global FRIES object, so
     // calling it on every machine would stack one FRIES per client.
     class PTF_UH1Y {

@@ -24,6 +24,13 @@ class PTF_CH53_Ramp : rhsusf_CH53E_USMC_GAU21_D
    LESH_AxisOffsetTarget[] = {0,12,-3.5};
    LESH_WheelOffset[] = {0,4};
 
+   // RHS's AFM file with the keyboard/mouse pitch gain fixed (it rocked the
+   // airframe for mouse pilots). See the header of the XML.
+   class RotorLibHelicopterProperties: RotorLibHelicopterProperties
+   {
+      RTDconfig = "z\PTF\addons\PTF_Aircraft\data\RTD_CH53E_PTF.xml";
+   };
+
    class Turrets: Turrets
    {
       class CopilotTurret: CopilotTurret
@@ -61,6 +68,12 @@ class PTF_CH53_Cargo : rhsusf_CH53e_USMC_D_cargo
    LESH_towFromFront = 1;
    LESH_AxisOffsetTarget[] = {0,12,-3.5};
    LESH_WheelOffset[] = {0,4};
+
+   // Same AFM file as PTF_CH53_Ramp
+   class RotorLibHelicopterProperties: RotorLibHelicopterProperties
+   {
+      RTDconfig = "z\PTF\addons\PTF_Aircraft\data\RTD_CH53E_PTF.xml";
+   };
 
    class Turrets: Turrets
    {
