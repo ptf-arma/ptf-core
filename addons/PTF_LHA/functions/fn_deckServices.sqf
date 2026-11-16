@@ -4,7 +4,8 @@
  *
  * - Invisible helipads on Peral's six deck spots, for AI helicopters to land on.
  * - At each of Peral's three deck refuel points (the modelled hose reels): an ACE
- *   fuel hose with unlimited fuel, and a vehicle ammo box that ACE rearms from.
+ *   fuel hose with unlimited fuel and, except beside the runway, a vehicle ammo box
+ *   that ACE rearms from.
  *
  * Everything is removed again if the ship is deleted.
  *
@@ -65,7 +66,7 @@ private _fixProp = {
 getArray (_cfg >> "fuelOffset") params ["_fuelIn", "_fuelAft"];
 getArray (_cfg >> "ammoOffset") params ["_ammoIn", "_ammoAft"];
 {
-	_x params ["_class", "_point"];
+	_x params ["_class", "_point", ["_withAmmo", 1]];
 	private _onPart = [_class] call _part;
 	private _reel = _onPart selectionPosition _point;
 	if (!isNull _onPart && {_reel isNotEqualTo [0, 0, 0]}) then {
@@ -81,6 +82,7 @@ getArray (_cfg >> "ammoOffset") params ["_ammoIn", "_ammoAft"];
 		};
 		_made pushBack _hose;
 
+		if (_withAmmo != 1) then {continue};
 		private _ammo = createVehicle [getText (_cfg >> "ammoProp"), [0, 0, 0], [], 0, "CAN_COLLIDE"];
 		[_ammo, _onPart, _reel vectorAdd [_inboard * _ammoIn, _ammoAft, 0]] call _place;
 		[_ammo] call _fixProp;

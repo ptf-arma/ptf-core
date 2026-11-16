@@ -73,9 +73,17 @@ class CfgFunctions
 // together and always show the same state.
 class PTF_LHA_LightGroups
 {
+	// Each ceiling light, for every group. Peral's lights were half-sphere spots
+	// facing the bow, with colour values in the thousands and a 5 m reach. People
+	// came out grey where they were lit, and black wherever no light reached, against
+	// walls that glow on their own (the night material). These shine every way, in a
+	// plain white with a normal intensity, and reach far enough to cover each room
+	// (measured in game with tools/lha-test).
+	intensity = 1000;
+	color[] = {1, 0.95, 0.9};
 	class House
 	{
-		range = 5;
+		range = 8;
 		switches[] = {{"LHA_house_1", "lvl1_lights_swich"}, {"LHA_house_2", "h_light_swich"}};
 	};
 	class HangerLVL1
@@ -90,12 +98,12 @@ class PTF_LHA_LightGroups
 	};
 	class StairCase
 	{
-		range = 5;
+		range = 8;
 		switches[] = {{"LHA_house_2", "mh_light_swich"}};
 	};
 	class BriefingRoom
 	{
-		range = 5;
+		range = 12;
 		switches[] = {{"LHA_house_2", "br_light_swich"}};
 	};
 };
@@ -116,9 +124,11 @@ class PTF_LHA_Deck
 		{"LHA_Med_4", {12.144, -7.923, 13.003}}
 	};
 	// Peral's deck refuel points: the hose reels modelled at the deck edge. Each
-	// gets an ACE fuel hose (a coiled hose on the deck beside the reel) and a
-	// vehicle ammo box a little aft along the edge.
-	fuelPoints[] = {{"LHA_Bow", "refuelpoint"}, {"LHA_Bow", "refuelpoint2"}, {"LHA_Med_4", "refuelpoint"}};
+	// gets an ACE fuel hose (a coiled hose on the deck beside the reel) and, where
+	// the last value is 1, a vehicle ammo box a little aft along the edge. The port
+	// bow reel is at the edge of the runway, so it has no ammo box: players carry
+	// ammo from the starboard bow box, 35 m across the deck.
+	fuelPoints[] = {{"LHA_Bow", "refuelpoint", 1}, {"LHA_Bow", "refuelpoint2", 0}, {"LHA_Med_4", "refuelpoint", 1}};
 	fuelProp = "Land_RefuelingHose_01_F";
 	// Flight deck height in the parts' model space (Med_1, Med_4 and Bow alike).
 	deckHeight = 13.0;

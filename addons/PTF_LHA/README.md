@@ -13,11 +13,12 @@ including ones already placed in missions. Without the LHA loaded, the addon ski
 | Hull number 8 instead of a random digit each mission | `PTF_LHA_hullNumber`, painted by `fn_shipInit` |
 | The CIWS mounts and SAM launchers no longer get AI crews, so the ship doesn't shoot at aircraft by itself | `turrets[]` on `LHA_Aft` and `LHA_house_1` |
 | Ship lights show for every player, including players who join later | light switch actions call `fn_setLights` / `fn_localLights` |
+| People in lit rooms show in their real colours. Peral's lights were bow-facing spots with colour values in the thousands and a 5 m reach, so people came out grey, or black where no light reached, against the glowing walls | `fn_localLights` makes plain white lights that shine every way; intensity, colour and each group's reach in `PTF_LHA_LightGroups` |
 | The two island light switches stay in step | `PTF_LHA_LightGroups` in config.cpp |
 | Light switch names are spelled out properly ("Trun On Lights", "Main Hillway", "Hanger") | `UserActions` displayName |
 | The spawner won't delete a vehicle that has someone aboard to make room for a new one | `fn_spawnerSelectVehicle` replaces `LHA_fnc_lha_spawner_selectVehicle`, then runs Peral's script |
 | AI helicopters can land on any of the six deck spots, not just Peral's single pad aft | invisible helipads, `fn_deckServices` |
-| ACE fuel (unlimited) and ammo at Peral's three deck refuel points, where the model's hoses come up from the catwalk | a coiled hose and a vehicle ammo box on the deck, `fn_deckServices` |
+| ACE fuel (unlimited) at Peral's three deck refuel points, where the model's hoses come up from the catwalk, and ammo at the two starboard ones (the port one is beside the runway) | a coiled hose and a vehicle ammo box on the deck, `fn_deckServices` |
 | The hangar is an ACE repair facility | markers on the hangar floors, `fn_repairMarkers` |
 | Ship's 1MC: ten announcements (flight quarters, general quarters, away the landing force, reveille, taps...) played through the whole ship | ACE "Ship's 1MC" at the light switch panel at the foot of the island, or the Zeus module PTF LHA > 1MC Announcement; `fn_announce` |
 | A logistics console in the hangar spawns PTF's crates, forklifts and flight deck equipment on the ship | ACE "Ship's Logistics" at the console against the port hangar wall; `fn_logisticsSpawn` |
@@ -116,5 +117,6 @@ python tools/lha-test/run.py
 ```
 
 It plays the LHA in single player with the full modset and the release build, checks every
-change above, and screenshots the hangar with its lights off and on into
-`.hemttout/lha-test/shots`. The check lines start with `LHATEST` in the RPT.
+change above, and screenshots the hangar with its lights off and on, and people in the
+briefing room with its lights on and off, and someone in an island corridor with its
+lights on, into `.hemttout/lha-test/shots`. The check lines start with `LHATEST` in the RPT.

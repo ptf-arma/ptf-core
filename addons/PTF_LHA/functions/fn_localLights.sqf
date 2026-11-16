@@ -1,7 +1,8 @@
 /*
  * Make or remove this machine's light sources for one LHA light group. Sent to every
- * machine by PTF_LHA_fnc_setLights. The lights match Peral's LHA_fnc_lha_Lights; they
- * are local objects, so each player's game needs its own.
+ * machine by PTF_LHA_fnc_setLights. The lights sit where Peral's LHA_fnc_lha_Lights puts
+ * them, but shine every way in plain white and reach further (PTF_LHA_LightGroups,
+ * config.cpp); they are local objects, so each player's game needs its own.
  *
  * Arguments:
  * 0: The ship <OBJECT>
@@ -24,7 +25,10 @@ private _t = diag_tickTime;
 waitUntil {(_ship getVariable ["bis_carrierparts", []]) isNotEqualTo [] || {diag_tickTime - _t > 30} || {isNull _ship}};
 if (isNull _ship) exitWith {};
 
-private _range = getNumber (configFile >> "PTF_LHA_LightGroups" >> _group >> "range");
+private _groups = configFile >> "PTF_LHA_LightGroups";
+private _range = getNumber (_groups >> _group >> "range");
+private _intensity = getNumber (_groups >> "intensity");
+private _color = getArray (_groups >> "color");
 private _lightsCfg = getArray (configFile >> "CfgVehicles" >> "Peral_LHA" >> _group);
 private _lights = [];
 {
@@ -35,9 +39,8 @@ private _lights = [];
 			for "_i" from _first to _last do {
 				private _point = format ["%1%2", _prefix, [str _i, "0" + str _i] select (_i < 10)];
 				private _light = "#lightpoint" createVehicleLocal [0, 0, 0];
-				_light setLightConePars [180, 0, 1];
-				_light setLightIntensity 0.2;
-				_light setLightColor [2500, 4000, 6000];
+				_light setLightIntensity _intensity;
+				_light setLightColor _color;
 				_light setLightAttenuation [0.1, 0, 1, 0.5, 0.1, _range];
 				_light attachTo [_part, [0, 0, 0], _point];
 				_lights pushBack _light;
