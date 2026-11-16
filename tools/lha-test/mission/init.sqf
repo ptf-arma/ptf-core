@@ -79,7 +79,7 @@ private _boxes = _deckObjs select {typeOf _x == "Box_NATO_AmmoVeh_F"};
 ["AI helipads", count _pads == 6 && {(_pads findIf {isNull attachedTo _x}) < 0}, format ["%1 pads", count _pads]] call _check;
 ["fuel points", count _hoses == 3 && {(_hoses findIf {(_x getVariable ["ace_refuel_capacity", 0]) != -10}) < 0},
 	format ["%1 hoses, capacity %2", count _hoses, _hoses apply {_x getVariable ["ace_refuel_capacity", "nil"]}]] call _check;
-["ammo points", count _boxes == 3 && {(_boxes findIf {(_x getVariable ["ace_rearm_currentSupply", 0]) < 1e5}) < 0},
+["ammo points", count _boxes == 2 && {(_boxes findIf {(_x getVariable ["ace_rearm_currentSupply", 0]) < 1e5}) < 0},
 	format ["%1 boxes, supply %2", count _boxes, _boxes apply {_x getVariable ["ace_rearm_currentSupply", "nil"]}]] call _check;
 // Each prop's bottom should be at flight deck height. Ray tests can't check this:
 // near the deck edge the deck is walkable surface only, which rays don't see. In
@@ -202,7 +202,33 @@ private _screenMat = (getObjectMaterials _lha) select 0;
 sleep 2;
 ["screens untouched", ((getObjectMaterials _lha) select 0) == _screenMat && {count (["BriefingRoom"] call _lights) == 17},
 	format ["%1 -> %2", _screenMat, (getObjectMaterials _lha) select 0]] call _check;
+// People in the lit briefing room, facing four ways: none should be a black
+// silhouette (the screenshot is the check).
+private _med2 = (_parts select {typeOf _x == "LHA_Med_2"}) select 0;
+private _floorUnder = {
+	params ["_point"];
+	private _at = _med2 modelToWorldWorld (_med2 selectionPosition _point);
+	((lineIntersectsSurfaces [_at vectorAdd [0, 0, -0.3], _at vectorAdd [0, 0, -6], objNull, objNull, true, 1, "GEOM", "VIEW"]) param [0, [_at vectorAdd [0, 0, -3]]]) select 0
+};
+private _people = [];
+{
+	_x params ["_point", "_dir"];
+	private _man = createAgent ["B_Soldier_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+	_man setPosASL ([_point] call _floorUnder);
+	_man setDir ((getDir _med2) + _dir);
+	_man disableAI "ANIM";
+	_people pushBack _man;
+} forEach [["br_light_06", 0], ["br_light_08", 90], ["br_light_10", 180], ["br_light_12", 270]];
+private _brEye = (["br_light_01"] call _floorUnder) vectorAdd [0, 0, 1.7];
+_cam camSetPos ASLToAGL _brEye;
+_cam camSetTarget ASLToAGL ((["br_light_17"] call _floorUnder) vectorAdd [0, 0, 1.2]);
+_cam camCommit 0;
+sleep 1;
+["briefing_on"] call _shot;
 [_h2, "BriefingRoom", 0] call PTF_LHA_fnc_setLights;
+sleep 1;
+["briefing_off"] call _shot;
+{deleteVehicle _x} forEach _people;
 
 _cam cameraEffect ["terminate", "back"];
 camDestroy _cam;

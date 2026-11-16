@@ -73,6 +73,14 @@ class CfgFunctions
 // together and always show the same state.
 class PTF_LHA_LightGroups
 {
+	// Each ceiling light, for every group. Peral's lights were half-sphere spots
+	// pointing towards the bow, with no ambient term: anyone facing aft, or aft of a
+	// light, was lit by nothing but the glowing night walls and showed as a black
+	// silhouette. These point straight down from the ceiling, so the half sphere
+	// covers the whole room below, and add an ambient fill that lights every side.
+	intensity = 0.2;
+	color[] = {2500, 4000, 6000};
+	ambient[] = {500, 800, 1200};
 	class House
 	{
 		range = 5;
@@ -116,9 +124,11 @@ class PTF_LHA_Deck
 		{"LHA_Med_4", {12.144, -7.923, 13.003}}
 	};
 	// Peral's deck refuel points: the hose reels modelled at the deck edge. Each
-	// gets an ACE fuel hose (a coiled hose on the deck beside the reel) and a
-	// vehicle ammo box a little aft along the edge.
-	fuelPoints[] = {{"LHA_Bow", "refuelpoint"}, {"LHA_Bow", "refuelpoint2"}, {"LHA_Med_4", "refuelpoint"}};
+	// gets an ACE fuel hose (a coiled hose on the deck beside the reel) and, where
+	// the last value is 1, a vehicle ammo box a little aft along the edge. The port
+	// bow reel is at the edge of the runway, so it has no ammo box: players carry
+	// ammo from the starboard bow box, 35 m across the deck.
+	fuelPoints[] = {{"LHA_Bow", "refuelpoint", 1}, {"LHA_Bow", "refuelpoint2", 0}, {"LHA_Med_4", "refuelpoint", 1}};
 	fuelProp = "Land_RefuelingHose_01_F";
 	// Flight deck height in the parts' model space (Med_1, Med_4 and Bow alike).
 	deckHeight = 13.0;
