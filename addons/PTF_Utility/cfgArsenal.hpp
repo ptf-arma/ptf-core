@@ -50,7 +50,7 @@ class PTF_Standard_Arsenal_No_Ammo : PTF_Standard_Arsenal
 };
 class PTF_Pso_Arsenal : PTF_Standard_Arsenal
 {
-   displayname = "PSO Arsenal [PTF]";
+   displayname = "MSO Arsenal [PTF]";
    hiddenselections[] = {
        "camo",
        "camo_signs"};

@@ -970,7 +970,65 @@ private _helmetsPSO = [
 	"PTF_MSO_FASTMTC_M81_CMGSW",
 	"PTF_MSO_FASTMTC_M81_CMSW",
 	"PTF_MSO_FASTMTC_M81_CGSW",
-	"PTF_MSO_FASTMTC_M81_CS"
+	"PTF_MSO_FASTMTC_M81_CS",
+	"rhs_Booniehat_m81",
+	"USP_BASEBALL_CAP_M81",
+	"USP_BASEBALL_CAPB_M81"
+];
+
+// SOLGW MK1 CAR (Workshop 3744455505) plus items from mods already in the pack
+
+private _riflesPSO = [
+	// SOLGW MK1 11.5
+	"SOLGW_MK1_CTR_GREY",
+	"SOLGW_MK1_CTR_FDE",
+	"SOLGW_MK1_LMT_GREY",
+	"SOLGW_MK1_LMT_FDE",
+	"SOLGW_MK1_SLK_GREY",
+	"SOLGW_MK1_SLK_FDE",
+	// SOLGW MK1 14.5
+	"SOLGW_MK1_145_CTR_GREY",
+	"SOLGW_MK1_145_CTR_FDE",
+	"SOLGW_MK1_145_LMT_GREY",
+	"SOLGW_MK1_145_LMT_FDE",
+	"SOLGW_MK1_145_SLK_GREY",
+	"SOLGW_MK1_145_SLK_FDE",
+	// Already in the pack
+	"rhsusf_weap_MP7A2",
+	"PTF_weap_kestrel_xm2010",
+	"rhs_weap_m24sws"
+];
+
+private _attachmentsPSO = [
+	// Rail
+	"mk1_side1_IR",
+	"mk1_side2_IR",
+	"mk1_side3_IR",
+	"mk1_side4_IR",
+	// Grip / handstop
+	"isky_idhandstop",
+	"isky_mod3",
+	// Muzzle
+	"isky_rc4_blk",
+	"isky_rc4_tan",
+	// Suppressors already in the pack (rhsusf_acc_rotex_mp7 is already in _attachments)
+	"rhsusf_acc_m24_silencer_black",
+	"rhsusf_acc_M2010S"
+];
+
+// M24 SWS magazines (its magazines[] in rhsusf_c_weapons)
+private _ammoPSO = [
+	"rhsusf_5Rnd_762x51_m118_special_Mag",
+	"rhsusf_5Rnd_762x51_m993_Mag",
+	"rhsusf_5Rnd_762x51_m62_Mag"
+];
+
+private _binocularsPSO = [
+	"ACE_MX2A"
+];
+
+private _equipmentPSO = [
+	"ACE_M26_Clacker"
 ];
 
 private _uniformsPSO = [
@@ -979,17 +1037,20 @@ private _uniformsPSO = [
 	"PTF_Uniform_MSOT_G3F_G3C_MX_M81",
 	"PTF_Uniform_MSOT_RUGBY_G3C_KP2_MX_RGR_M81",
 	"PTF_Uniform_MSOT_SOFTSHELL_G3C_MX_RGR_M81",
-	"PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81"
+	"PTF_Uniform_MSOT_TSHIRT2_G3C_MX_GRN_M81",
+	"USP_OVERWHITE_G3C_GRN_M81"
 ];
 
 private _nightvisionPSO = [
 	"USP_GPNVG18_BLK",
-	"USP_GPNVG18_WP_BLK"
+	"USP_GPNVG18_WP_BLK",
+	"USP_GPNVG18_CB2_BLK",
+	"USP_GPNVG18_CB2_TAN"
 ];
 
 private _standardArsenal = _rifles + _launchers + _pistols + _attachments + _backpacks + _uniforms + _vests + _helmets + _glasses + _ammo + _throwables + _medical + _demolition + _equipment + _binoculars + _nightvision;
 
-private _psoArsenal = _standardArsenal + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
+private _psoArsenal = _standardArsenal + _riflesPSO + _attachmentsPSO + _ammoPSO + _binocularsPSO + _equipmentPSO + _helmetsPSO + _uniformsPSO + _nightvisionPSO;
 
 // Standard minus head-mounted night vision, for the Limited Arsenal.
 // Derived by subtraction rather than a second hand-kept sum, so anything
